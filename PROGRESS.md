@@ -29,13 +29,13 @@ Validate content with `python pipeline/build_index.py` (`--partial` allows links
 - [x] primer-gradient-descent
 - [x] primer-classification
 - [x] primer-overfitting
-- [ ] primer-neural-networks
-- [ ] primer-backprop-intuition
-- [ ] primer-embeddings
-- [ ] primer-how-to-read-papers
+- [x] primer-neural-networks
+- [x] primer-backprop-intuition
+- [x] primer-embeddings
+- [x] primer-how-to-read-papers
 
 ### Foundations
-- [ ] paper-turing-test
+- [x] paper-turing-test
 - [ ] paper-perceptron
 - [ ] paper-backpropagation
 - [ ] paper-support-vector-networks

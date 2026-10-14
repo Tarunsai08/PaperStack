@@ -1,7 +1,7 @@
 {
- "content_version": "439a2380c9ee4dad",
+ "content_version": "66ef802cef8353ad",
  "generated_at": "2026-10-14",
- "count": 7,
+ "count": 12,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -531,6 +531,457 @@
    "hash": "55f910f913af",
    "word_count": 1059,
    "excerpt": "Two students prepare for the same exam. Riya gets hold of last year's paper and memorizes every answer, word for word. Arjun works through the same paper too, but keeps asking why each answer is right. On exam day, the questions are new. Riya, who scored perfectly on every practice run, freezes.…"
+  },
+  {
+   "id": "primer-neural-networks",
+   "kind": "primer",
+   "slug": "neural-networks",
+   "title": "Neural Networks from One Neuron Up",
+   "subtitle": "How stacking thousands of tiny calculators produces something that can see, read and talk",
+   "track": "start-here",
+   "track_order": 7,
+   "prerequisites": [
+    "primer-classification"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "foundations",
+    "neural networks",
+    "deep learning"
+   ],
+   "glossary": [
+    {
+     "term": "Neuron",
+     "definition": "The basic unit of a neural network: it multiplies its inputs by weights, adds them up with a bias, and passes the result through an activation function."
+    },
+    {
+     "term": "Weight",
+     "definition": "A learned number on a connection that says how strongly one input influences a neuron."
+    },
+    {
+     "term": "Activation function",
+     "definition": "A simple non-linear function applied to a neuron's sum, such as ReLU or sigmoid. Without it, stacking layers would add no power."
+    },
+    {
+     "term": "ReLU",
+     "definition": "Rectified Linear Unit: the activation function max(0, z). It keeps positive numbers and turns negatives into zero."
+    },
+    {
+     "term": "Layer",
+     "definition": "A group of neurons that all read the same inputs and pass their outputs on together to the next group."
+    },
+    {
+     "term": "Hidden layer",
+     "definition": "Any layer between the input and the output. Its neurons learn intermediate features that nobody labeled."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What does a single artificial neuron compute?",
+     "options": [
+      "A random number",
+      "A weighted sum of its inputs plus a bias, passed through an activation function",
+      "The average of all training examples",
+      "A copy of its input"
+     ],
+     "answer": 1,
+     "explain": "Multiply, add, then apply a simple non-linear function. That is the whole job of one neuron."
+    },
+    {
+     "q": "Why do neural networks need non-linear activation functions like ReLU?",
+     "options": [
+      "To make training slower",
+      "Because without them, many stacked layers collapse into the power of a single straight-line model",
+      "Because computers cannot multiply without them",
+      "To keep all outputs positive for display"
+     ],
+     "answer": 1,
+     "explain": "Stacking purely linear steps gives another linear step. The bends added by activation functions are what let networks learn curved boundaries."
+    },
+    {
+     "q": "What do hidden layers learn?",
+     "options": [
+      "The labels, which are copied in by humans",
+      "Intermediate features that help the final prediction, discovered automatically during training",
+      "Nothing; they only pass data through",
+      "The learning rate"
+     ],
+     "answer": 1,
+     "explain": "Nobody tells hidden neurons what to detect. Training shapes them into useful feature detectors, like edges in an image."
+    }
+   ],
+   "cover_seed": "neural-networks-one-neuron",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.9,
+   "path": "primers/neural-networks.md",
+   "hash": "2ad7aa489e0d",
+   "word_count": 1023,
+   "excerpt": "Each artificial neuron in a neural network does something a ten-year-old could do with a pencil: multiply a few numbers, add them up, and decide whether the result is worth passing on. That is all. There is no magic inside. And yet, wire up a few million of these little calculators in the right…"
+  },
+  {
+   "id": "primer-backprop-intuition",
+   "kind": "primer",
+   "slug": "backprop-intuition",
+   "title": "Backpropagation Without the Scary Math",
+   "subtitle": "How a network figures out which of its million knobs to blame for a mistake",
+   "track": "start-here",
+   "track_order": 8,
+   "prerequisites": [
+    "primer-neural-networks",
+    "primer-gradient-descent"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "foundations",
+    "backpropagation",
+    "training",
+    "neural networks"
+   ],
+   "glossary": [
+    {
+     "term": "Backpropagation",
+     "definition": "The algorithm that computes the gradient of the loss for every weight in a network by passing blame backward from the output, layer by layer."
+    },
+    {
+     "term": "Forward pass",
+     "definition": "Running inputs through the network, layer by layer, to get a prediction and a loss."
+    },
+    {
+     "term": "Backward pass",
+     "definition": "Going from the loss back toward the inputs, computing how much each weight contributed to the error."
+    },
+    {
+     "term": "Chain rule",
+     "definition": "The calculus rule that says the effect of a change passing through several steps is the product of each step's local effect."
+    },
+    {
+     "term": "Gradient",
+     "definition": "For each weight, the slope of the loss: how much the loss would change if that weight were nudged up a little."
+    },
+    {
+     "term": "Vanishing gradient",
+     "definition": "A problem in deep networks where blame signals shrink as they travel backward through many layers, so early layers barely learn."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What does backpropagation actually compute?",
+     "options": [
+      "The final prediction",
+      "The gradient of the loss with respect to every weight",
+      "The best learning rate",
+      "Which training examples to delete"
+     ],
+     "answer": 1,
+     "explain": "Backpropagation is a fast way to get all the slopes. Gradient descent then uses those slopes to update the weights."
+    },
+    {
+     "q": "Why is backpropagation so much faster than nudging each weight one at a time to see what happens?",
+     "options": [
+      "It skips half the weights",
+      "It reuses shared intermediate results, so one backward pass gives the slopes for all weights at once",
+      "It uses smaller numbers",
+      "It only works on tiny networks"
+     ],
+     "answer": 1,
+     "explain": "Nudging each weight separately needs a full run of the network per weight. Backprop gets every slope for roughly the cost of one extra pass."
+    },
+    {
+     "q": "What is the vanishing gradient problem?",
+     "options": [
+      "Gradients become too large and overflow",
+      "Blame signals shrink as they are multiplied backward through many layers, so early layers learn very slowly",
+      "The loss disappears",
+      "Weights are deleted during training"
+     ],
+     "answer": 1,
+     "explain": "Multiplying many numbers smaller than 1 gives a tiny number. Early layers get almost no signal to learn from."
+    }
+   ],
+   "cover_seed": "backprop-intuition",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.88,
+   "path": "primers/backprop-intuition.md",
+   "hash": "8322b9c583ba",
+   "word_count": 1183,
+   "excerpt": "A restaurant gets a one-star review: \"The biryani was cold and bland.\" The owner has to fix it. But whose fault was it? The cook who under-salted it? The supplier whose spices were stale? The waiter who left it on the counter for ten minutes? To improve, the owner has to divide the blame fairly,…"
+  },
+  {
+   "id": "primer-embeddings",
+   "kind": "primer",
+   "slug": "embeddings",
+   "title": "How Words Become Numbers With Meaning",
+   "subtitle": "Embeddings: the map of meaning hiding inside every search engine, recommender and chatbot",
+   "track": "start-here",
+   "track_order": 9,
+   "prerequisites": [
+    "primer-neural-networks"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "foundations",
+    "embeddings",
+    "nlp",
+    "representation"
+   ],
+   "glossary": [
+    {
+     "term": "Embedding",
+     "definition": "A list of numbers that represents a word, product, image or anything else, learned so that similar things get similar lists."
+    },
+    {
+     "term": "Vector",
+     "definition": "An ordered list of numbers, which you can also picture as a point or an arrow in space."
+    },
+    {
+     "term": "One-hot encoding",
+     "definition": "Representing an item as a long list of zeros with a single 1 in its own position. Simple, but it says nothing about meaning."
+    },
+    {
+     "term": "Dimension",
+     "definition": "One position in a vector. A 300-dimensional embedding is a list of 300 numbers."
+    },
+    {
+     "term": "Cosine similarity",
+     "definition": "A score from -1 to 1 that measures how closely two vectors point in the same direction. Close to 1 means very similar."
+    },
+    {
+     "term": "Context",
+     "definition": "The words that appear around a word. Embeddings are usually learned from context."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is the main problem with one-hot encoding for words?",
+     "options": [
+      "It uses too few numbers",
+      "Every word is equally different from every other word, so it captures no meaning",
+      "It cannot be stored on a computer",
+      "It only works for English"
+     ],
+     "answer": 1,
+     "explain": "In one-hot form, 'cat' is exactly as far from 'kitten' as it is from 'volcano'. There is no notion of similarity."
+    },
+    {
+     "q": "How do models usually learn word embeddings?",
+     "options": [
+      "Linguists type in the numbers by hand",
+      "From the contexts words appear in: words used in similar contexts get similar vectors",
+      "By sorting words alphabetically",
+      "From the length of each word"
+     ],
+     "answer": 1,
+     "explain": "This is the idea that you can know a word by the company it keeps. Shared contexts pull vectors together."
+    },
+    {
+     "q": "In a good embedding space, what might king minus man plus woman land closest to?",
+     "options": [
+      "Prince",
+      "Queen",
+      "Castle",
+      "Man"
+     ],
+     "answer": 1,
+     "explain": "Directions in the space can capture relationships. Removing 'male' and adding 'female' to king moves you toward queen."
+    }
+   ],
+   "cover_seed": "embeddings-map-of-meaning",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.92,
+   "path": "primers/embeddings.md",
+   "hash": "f43928297ef5",
+   "word_count": 1000,
+   "excerpt": "In 2013, a group of researchers led by Tomas Mikolov trained a model on a large pile of text and then tried a strange piece of arithmetic. They took the numbers representing \"king,\" subtracted the numbers for \"man,\" added the numbers for \"woman,\" and looked for the closest word to the result. It…"
+  },
+  {
+   "id": "primer-how-to-read-papers",
+   "kind": "primer",
+   "slug": "how-to-read-papers",
+   "title": "How to Read a Research Paper Without Falling Asleep",
+   "subtitle": "The three-pass method researchers actually use, and the five questions that unlock any paper",
+   "track": "start-here",
+   "track_order": 10,
+   "prerequisites": [
+    "primer-ai-ml-dl-map"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "research skills",
+    "reading papers",
+    "meta"
+   ],
+   "glossary": [
+    {
+     "term": "Abstract",
+     "definition": "The short paragraph at the top of a paper that summarises the problem, the method and the main result."
+    },
+    {
+     "term": "Baseline",
+     "definition": "An existing method that a new paper compares itself against. A result only means something relative to good baselines."
+    },
+    {
+     "term": "Benchmark",
+     "definition": "A standard dataset and scoring method that many papers use, so their results can be compared fairly."
+    },
+    {
+     "term": "Ablation study",
+     "definition": "An experiment that removes one part of a method at a time to see how much each part actually matters."
+    },
+    {
+     "term": "State of the art",
+     "definition": "The best published result on a benchmark at a given time, often shortened to SOTA."
+    },
+    {
+     "term": "Preprint",
+     "definition": "A paper posted publicly, usually on arXiv, before or without formal peer review."
+    },
+    {
+     "term": "Peer review",
+     "definition": "The process where other experts judge a paper before a conference or journal accepts it."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is the goal of the first pass through a paper?",
+     "options": [
+      "Check every equation carefully",
+      "Get the big picture in a few minutes: what problem, what idea, what result",
+      "Reimplement the method in code",
+      "Read every reference"
+     ],
+     "answer": 1,
+     "explain": "The first pass is a quick skim of the title, abstract, introduction, headings, figures and conclusion, so you can decide whether to go deeper."
+    },
+    {
+     "q": "What does an ablation study tell you?",
+     "options": [
+      "How fast the method runs",
+      "How much each component of the method contributes, by removing them one at a time",
+      "Who reviewed the paper",
+      "Which dataset is largest"
+     ],
+     "answer": 1,
+     "explain": "If removing a component barely changes the result, that component was not doing much."
+    },
+    {
+     "q": "A paper reports a big improvement but only compares against weak, outdated baselines. What should you think?",
+     "options": [
+      "The result is definitely groundbreaking",
+      "Be cautious: the improvement may shrink against strong, current methods",
+      "Baselines do not matter",
+      "The paper must be fake"
+     ],
+     "answer": 1,
+     "explain": "A gain is only as meaningful as the baseline it beats. Strong, fair baselines make a claim far more convincing."
+    }
+   ],
+   "cover_seed": "how-to-read-papers",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.8,
+   "path": "primers/how-to-read-papers.md",
+   "hash": "da7a6f5354e1",
+   "word_count": 1059,
+   "excerpt": "The first time you open a real machine learning paper, it can feel like walking into the middle of a conversation in a language you half know. Dense paragraphs. Greek letters. Tables of numbers in bold. References to twenty other papers you have never heard of. Here is a secret that might make you…"
+  },
+  {
+   "id": "paper-turing-test",
+   "kind": "paper",
+   "slug": "turing-test",
+   "title": "Can Machines Think? Turing's Brilliant Dodge",
+   "subtitle": "How a 1950 thought experiment replaced an unanswerable question with a game, and predicted learning machines",
+   "track": "foundations",
+   "track_order": 1,
+   "prerequisites": [
+    "primer-ai-ml-dl-map"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 7,
+   "topics": [
+    "history",
+    "philosophy",
+    "turing test",
+    "artificial intelligence"
+   ],
+   "paper_title": "Computing Machinery and Intelligence",
+   "authors": [
+    "Alan M. Turing"
+   ],
+   "year": 1950,
+   "venue": "Mind",
+   "paper_url": "https://doi.org/10.1093/mind/LIX.236.433",
+   "glossary": [
+    {
+     "term": "Imitation game",
+     "definition": "Turing's test: a judge chats by text with a hidden human and a hidden machine and tries to tell which is which."
+    },
+    {
+     "term": "Digital computer",
+     "definition": "A machine that follows a stored list of precise instructions, step by step. Turing argued one machine could imitate any other such machine."
+    },
+    {
+     "term": "Universal machine",
+     "definition": "Turing's idea that a single computer, given the right program, can carry out any procedure that any other computer can."
+    },
+    {
+     "term": "Child machine",
+     "definition": "Turing's proposal to build a simple machine that learns from experience and teaching, instead of programming an adult mind directly."
+    },
+    {
+     "term": "Lady Lovelace's objection",
+     "definition": "The argument, from Ada Lovelace's 1843 notes, that a machine can only do what we tell it and can never originate anything."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why did Turing replace 'Can machines think?' with the imitation game?",
+     "options": [
+      "Because he believed machines could never think",
+      "Because 'think' is too vague to answer, while a game has a clear, testable outcome",
+      "Because he wanted to build a chess computer",
+      "Because the journal required a game"
+     ],
+     "answer": 1,
+     "explain": "Turing called the original question too meaningless to deserve discussion and swapped it for something you could actually test."
+    },
+    {
+     "q": "What did Turing suggest instead of programming an adult mind directly?",
+     "options": [
+      "Copying a human brain cell by cell",
+      "Building a child machine that learns through teaching and experience",
+      "Waiting for faster computers",
+      "Using only logic rules"
+     ],
+     "answer": 1,
+     "explain": "He proposed simulating a child's mind and educating it, an early sketch of machine learning."
+    },
+    {
+     "q": "What is the main criticism of the Turing test as a measure of intelligence?",
+     "options": [
+      "It is too hard for any machine to ever pass",
+      "It measures how well a machine imitates human conversation, which is not the same as understanding",
+      "It requires a physical robot",
+      "It only works in English"
+     ],
+     "answer": 1,
+     "explain": "Critics argue a system could fool judges through clever imitation without genuinely understanding anything."
+    }
+   ],
+   "cover_seed": "computing-machinery-intelligence",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.9,
+   "path": "papers/turing-test.md",
+   "hash": "2afcf052eeb0",
+   "word_count": 1457,
+   "excerpt": "In 1950, there were only a handful of electronic computers on the planet. They filled rooms, broke down constantly, and were used mostly to crunch numbers for physicists. Their memories could hold a few thousand numbers. That year, a 38-year-old mathematician in Manchester published a paper in a…"
   },
   {
    "id": "paper-attention-is-all-you-need",
