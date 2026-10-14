@@ -77,13 +77,13 @@ Validate content with `python pipeline/build_index.py` (`--partial` allows links
 - [x] paper-scaling-laws
 - [x] paper-chinchilla
 - [x] paper-vit
-- [ ] paper-clip
+- [x] paper-clip
 
 ### Making LLMs useful
-- [ ] paper-instructgpt
-- [ ] paper-chain-of-thought
-- [ ] paper-rag
-- [ ] paper-lora
+- [x] paper-instructgpt
+- [x] paper-chain-of-thought
+- [x] paper-rag
+- [x] paper-lora
 - [ ] paper-dpo
 - [ ] paper-llama
 

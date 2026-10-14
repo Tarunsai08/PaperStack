@@ -1,7 +1,7 @@
 {
- "content_version": "2ca58c49825fff87",
+ "content_version": "222dba902dc5f8a2",
  "generated_at": "2026-10-14",
- "count": 42,
+ "count": 47,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -4086,6 +4086,523 @@
    "hash": "bab7788fb16e",
    "word_count": 1410,
    "excerpt": "For thirty years, computer vision and convolutional networks were nearly inseparable. From LeNet reading cheques to ResNet winning ImageNet, the idea that images need sliding filters seemed as natural as gravity. In October 2020, a team at Google Research in Zurich posted a paper with a playful…"
+  },
+  {
+   "id": "paper-clip",
+   "kind": "paper",
+   "slug": "clip",
+   "title": "Teaching Vision With the Internet's Captions",
+   "subtitle": "CLIP: 400 million image-text pairs, one shared space for pictures and words, and classifiers you create by typing",
+   "track": "transformers-llms",
+   "track_order": 8,
+   "prerequisites": [
+    "paper-vit",
+    "paper-word2vec"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "clip",
+    "multimodal",
+    "contrastive learning",
+    "zero-shot",
+    "computer vision"
+   ],
+   "paper_title": "Learning Transferable Visual Models From Natural Language Supervision",
+   "authors": [
+    "Alec Radford",
+    "Jong Wook Kim",
+    "Chris Hallacy",
+    "Aditya Ramesh",
+    "Gabriel Goh",
+    "et al."
+   ],
+   "year": 2021,
+   "venue": "ICML",
+   "paper_url": "https://arxiv.org/abs/2103.00020",
+   "glossary": [
+    {
+     "term": "Contrastive learning",
+     "definition": "Training a model to pull matching pairs together and push non-matching pairs apart in an embedding space."
+    },
+    {
+     "term": "Joint embedding space",
+     "definition": "A single vector space where both images and texts are placed, so a picture and a sentence describing it end up close together."
+    },
+    {
+     "term": "Zero-shot classification",
+     "definition": "Classifying images into categories the model was never explicitly trained on, by comparing images with text descriptions of each category."
+    },
+    {
+     "term": "Natural language supervision",
+     "definition": "Learning from the free-form text that naturally accompanies images online, instead of from a fixed list of labels."
+    },
+    {
+     "term": "Cosine similarity",
+     "definition": "A score from -1 to 1 measuring how closely two vectors point in the same direction."
+    },
+    {
+     "term": "Distribution shift",
+     "definition": "When the data a model is used on looks different from the data it was trained on, such as sketches instead of photos."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is CLIP trained to do?",
+     "options": [
+      "Generate images from captions",
+      "Match each image in a batch with its correct caption, among many wrong ones",
+      "Label images with one of 1,000 ImageNet classes",
+      "Translate captions into other languages"
+     ],
+     "answer": 1,
+     "explain": "CLIP learns by contrast: correct image-caption pairs should score high, mismatched pairs low."
+    },
+    {
+     "q": "How does CLIP classify images zero-shot?",
+     "options": [
+      "By retraining on each new dataset",
+      "By turning each class name into a sentence like 'a photo of a dog', embedding it, and picking the class whose text is closest to the image",
+      "By counting pixels of each colour",
+      "It cannot classify images"
+     ],
+     "answer": 1,
+     "explain": "The text encoder creates a classifier on the fly from class names, with no task-specific training."
+    },
+    {
+     "q": "What was one notable weakness of CLIP?",
+     "options": [
+      "It could not recognise any common objects",
+      "It struggled with tasks like counting objects and with some specialised or abstract tasks, such as handwritten digits",
+      "It needed labeled ImageNet data to work",
+      "It only worked on black-and-white images"
+     ],
+     "answer": 1,
+     "explain": "The paper notes poor performance on systematic tasks like counting and on datasets unlike its web training data, such as MNIST."
+    }
+   ],
+   "cover_seed": "clip-contrastive",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.92,
+   "path": "papers/clip.md",
+   "hash": "ca2eaadd4c16",
+   "word_count": 1431,
+   "excerpt": "To teach a computer to recognise dogs, cats and 998 other things, ImageNet's creators organised thousands of crowd workers to label over a million photos. Every new kind of object a model needed to know meant more labeling. Meanwhile, the internet was already full of labels nobody had to pay for.…"
+  },
+  {
+   "id": "paper-instructgpt",
+   "kind": "paper",
+   "slug": "instructgpt",
+   "title": "How a Text Predictor Learned to Be Helpful",
+   "subtitle": "InstructGPT: human demonstrations, human rankings and reinforcement learning, the recipe that became ChatGPT",
+   "track": "useful-llms",
+   "track_order": 1,
+   "prerequisites": [
+    "paper-gpt-3",
+    "paper-ppo"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "rlhf",
+    "alignment",
+    "instruction following",
+    "large language models"
+   ],
+   "paper_title": "Training Language Models to Follow Instructions with Human Feedback",
+   "authors": [
+    "Long Ouyang",
+    "Jeff Wu",
+    "Xu Jiang",
+    "Diogo Almeida",
+    "Carroll L. Wainwright",
+    "et al."
+   ],
+   "year": 2022,
+   "venue": "NeurIPS",
+   "paper_url": "https://arxiv.org/abs/2203.02155",
+   "glossary": [
+    {
+     "term": "Alignment",
+     "definition": "Making an AI system's behaviour match what its users and designers actually intend, such as being helpful, honest and harmless."
+    },
+    {
+     "term": "Supervised fine-tuning",
+     "definition": "Training a pre-trained model further on examples of the desired behaviour, here prompts paired with ideal responses written by people."
+    },
+    {
+     "term": "Reward model",
+     "definition": "A model trained to predict which of several responses humans would prefer, giving a score that stands in for human judgement."
+    },
+    {
+     "term": "RLHF",
+     "definition": "Reinforcement learning from human feedback: optimising a model to maximise a reward model trained on human preferences."
+    },
+    {
+     "term": "KL penalty",
+     "definition": "A term that discourages the fine-tuned model from drifting too far from its starting point, which helps prevent it from gaming the reward model."
+    },
+    {
+     "term": "Alignment tax",
+     "definition": "A drop in performance on some standard tasks that can come with alignment training."
+    },
+    {
+     "term": "Hallucination",
+     "definition": "When a language model states made-up information as if it were true."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What are the three steps of the InstructGPT training recipe?",
+     "options": [
+      "Pre-train, prune, quantize",
+      "Supervised fine-tuning on human demonstrations, training a reward model on human rankings, then optimising with reinforcement learning",
+      "Collect images, label them, train a classifier",
+      "Translate, summarise, answer"
+     ],
+     "answer": 1,
+     "explain": "Demonstrations teach the format, rankings teach preferences, and PPO optimises the model against the learned reward."
+    },
+    {
+     "q": "What surprising comparison did the paper report?",
+     "options": [
+      "Labelers preferred GPT-3's raw outputs over InstructGPT's",
+      "Labelers preferred outputs from a 1.3 billion parameter InstructGPT over those of the 175 billion parameter GPT-3",
+      "InstructGPT could not follow any instructions",
+      "All models performed identically"
+     ],
+     "answer": 1,
+     "explain": "Despite being over 100 times smaller, the aligned model was preferred, showing how much the training method matters."
+    },
+    {
+     "q": "Why is a KL penalty used during the reinforcement learning step?",
+     "options": [
+      "To make the model forget everything",
+      "To keep the model close to its supervised starting point, so it does not exploit quirks of the reward model",
+      "To increase the vocabulary",
+      "To speed up GPUs"
+     ],
+     "answer": 1,
+     "explain": "Without it, the model could find strange outputs that score highly with the reward model but that humans would dislike."
+    }
+   ],
+   "cover_seed": "instructgpt-rlhf",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.97,
+   "path": "papers/instructgpt.md",
+   "hash": "8f976a6c68b3",
+   "word_count": 1461,
+   "excerpt": "Ask the raw GPT-3 to \"Explain the moon landing to a six-year-old,\" and it might reply with a list of similar requests: \"Explain the theory of gravity to a six-year-old. Explain the theory of relativity to a six-year-old.\" Perfectly reasonable, if your only goal is to continue text that looks like…"
+  },
+  {
+   "id": "paper-chain-of-thought",
+   "kind": "paper",
+   "slug": "chain-of-thought",
+   "title": "Show Your Working: The Prompt That Unlocked Reasoning",
+   "subtitle": "Chain-of-thought prompting: a few worked examples with steps made giant language models dramatically better at maths and logic",
+   "track": "useful-llms",
+   "track_order": 2,
+   "prerequisites": [
+    "paper-gpt-3"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 7,
+   "topics": [
+    "prompting",
+    "reasoning",
+    "large language models",
+    "chain of thought"
+   ],
+   "paper_title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+   "authors": [
+    "Jason Wei",
+    "Xuezhi Wang",
+    "Dale Schuurmans",
+    "Maarten Bosma",
+    "Brian Ichter",
+    "et al."
+   ],
+   "year": 2022,
+   "venue": "NeurIPS",
+   "paper_url": "https://arxiv.org/abs/2201.11903",
+   "glossary": [
+    {
+     "term": "Chain of thought",
+     "definition": "A series of intermediate reasoning steps written out in natural language before giving a final answer."
+    },
+    {
+     "term": "Few-shot prompting",
+     "definition": "Putting a handful of worked examples in the prompt so the model can imitate their format on a new question."
+    },
+    {
+     "term": "Exemplar",
+     "definition": "One worked example included in a prompt to show the model what to do."
+    },
+    {
+     "term": "Emergent ability",
+     "definition": "An ability that is absent in smaller models and appears only once models pass a certain scale."
+    },
+    {
+     "term": "Benchmark",
+     "definition": "A standard set of test questions used to compare models fairly."
+    },
+    {
+     "term": "Self-consistency",
+     "definition": "A follow-up technique that samples many different reasoning chains and takes the most common final answer."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What changes in a chain-of-thought prompt compared with a standard few-shot prompt?",
+     "options": [
+      "The questions are harder",
+      "Each example answer includes the intermediate reasoning steps, not just the final answer",
+      "The model is retrained",
+      "The prompt is written in code"
+     ],
+     "answer": 1,
+     "explain": "The exemplars demonstrate reasoning, so the model writes its own steps before answering new questions."
+    },
+    {
+     "q": "How did chain-of-thought prompting interact with model size?",
+     "options": [
+      "It helped small models most",
+      "It helped equally at every size",
+      "It only gave large gains for very large models, around 100 billion parameters and up",
+      "It made every model worse"
+     ],
+     "answer": 2,
+     "explain": "Smaller models produced fluent but illogical chains; the benefit emerged at large scale."
+    },
+    {
+     "q": "Which ablation showed that the reasoning content mattered, not just extra text?",
+     "options": [
+      "Writing reasoning in French",
+      "Replacing the reasoning with a string of dots of the same length, which did not help",
+      "Removing all examples",
+      "Using bigger fonts"
+     ],
+     "answer": 1,
+     "explain": "Simply giving the model more tokens to 'think' with did not help; the actual natural-language steps did."
+    }
+   ],
+   "cover_seed": "chain-of-thought",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.92,
+   "path": "papers/chain-of-thought.md",
+   "hash": "ebdae7a14e1a",
+   "word_count": 1440,
+   "excerpt": "Here is a puzzle for a language model: \"The cafeteria had 23 apples. If they used 20 to make lunch and bought 6 more, how many apples do they have?\" In early 2022, Google's 540-billion-parameter language model PaLM, one of the largest in the world, could get questions like this wrong when asked for…"
+  },
+  {
+   "id": "paper-rag",
+   "kind": "paper",
+   "slug": "rag",
+   "title": "Let the Model Look Things Up",
+   "subtitle": "Retrieval-augmented generation: pairing a language model with a searchable library so it can cite facts instead of guessing",
+   "track": "useful-llms",
+   "track_order": 3,
+   "prerequisites": [
+    "paper-bert",
+    "paper-seq2seq"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "retrieval",
+    "rag",
+    "question answering",
+    "knowledge"
+   ],
+   "paper_title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+   "authors": [
+    "Patrick Lewis",
+    "Ethan Perez",
+    "Aleksandra Piktus",
+    "Fabio Petroni",
+    "Vladimir Karpukhin",
+    "et al."
+   ],
+   "year": 2020,
+   "venue": "NeurIPS",
+   "paper_url": "https://arxiv.org/abs/2005.11401",
+   "glossary": [
+    {
+     "term": "Parametric memory",
+     "definition": "Knowledge stored implicitly in a model's weights, learned during training."
+    },
+    {
+     "term": "Non-parametric memory",
+     "definition": "Knowledge stored outside the model, such as a collection of documents, that the model can search and read."
+    },
+    {
+     "term": "Retriever",
+     "definition": "The component that finds the documents most relevant to a query, here by comparing embedding vectors."
+    },
+    {
+     "term": "Dense retrieval",
+     "definition": "Searching by comparing learned embedding vectors of queries and documents, instead of matching exact keywords."
+    },
+    {
+     "term": "Generator",
+     "definition": "The sequence-to-sequence model that writes the final answer, conditioned on the question and the retrieved documents."
+    },
+    {
+     "term": "Knowledge-intensive task",
+     "definition": "A task that a person could not reasonably do without looking up facts, such as answering open trivia questions."
+    },
+    {
+     "term": "Index",
+     "definition": "A precomputed, searchable store of document embeddings that makes fast nearest-neighbour lookup possible."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What are the two kinds of memory combined in RAG?",
+     "options": [
+      "RAM and disk",
+      "Parametric memory in the generator's weights and non-parametric memory in a searchable document index",
+      "Short-term and long-term human memory",
+      "Two copies of the same model"
+     ],
+     "answer": 1,
+     "explain": "The generator knows things from training, and the retriever adds fresh, inspectable knowledge from Wikipedia."
+    },
+    {
+     "q": "How could RAG's knowledge be updated without retraining?",
+     "options": [
+      "It cannot be updated",
+      "By swapping in a newer document index",
+      "By changing the learning rate",
+      "By deleting the generator"
+     ],
+     "answer": 1,
+     "explain": "The paper showed that replacing an older Wikipedia index with a newer one changed answers about who held various positions, with no retraining."
+    },
+    {
+     "q": "What kind of retrieval did RAG use?",
+     "options": [
+      "Exact keyword matching only",
+      "Dense retrieval: comparing embedding vectors of the question and the passages",
+      "Asking a human librarian",
+      "Random selection of documents"
+     ],
+     "answer": 1,
+     "explain": "A BERT-based encoder turned questions and passages into vectors, and the closest passages were retrieved."
+    }
+   ],
+   "cover_seed": "rag-retrieval",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.92,
+   "path": "papers/rag.md",
+   "hash": "1e1fe871d0e3",
+   "word_count": 1435,
+   "excerpt": "Ask a friend who reads a lot, \"Who won the 2018 Booker Prize?\" They might be sure, they might half remember, or they might confidently get it wrong. Now give that same friend a phone with Wikipedia open. Their answer becomes reliable, up to date, and you can check where it came from. Large language…"
+  },
+  {
+   "id": "paper-lora",
+   "kind": "paper",
+   "slug": "lora",
+   "title": "Fine-Tune a Giant by Training a Tiny Add-On",
+   "subtitle": "LoRA: freeze the huge model, learn two skinny matrices, and cut trainable parameters by up to ten thousand times",
+   "track": "useful-llms",
+   "track_order": 4,
+   "prerequisites": [
+    "paper-gpt-3"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "fine-tuning",
+    "lora",
+    "efficiency",
+    "large language models"
+   ],
+   "paper_title": "LoRA: Low-Rank Adaptation of Large Language Models",
+   "authors": [
+    "Edward J. Hu",
+    "Yelong Shen",
+    "Phillip Wallis",
+    "Zeyuan Allen-Zhu",
+    "Yuanzhi Li",
+    "et al."
+   ],
+   "year": 2021,
+   "venue": "ICLR",
+   "paper_url": "https://arxiv.org/abs/2106.09685",
+   "glossary": [
+    {
+     "term": "Fine-tuning",
+     "definition": "Further training a pre-trained model on a specific task or dataset."
+    },
+    {
+     "term": "Weight matrix",
+     "definition": "A grid of learned numbers inside a layer that transforms its input vector into an output vector."
+    },
+    {
+     "term": "Rank",
+     "definition": "Roughly, the number of independent directions a matrix can represent. A low-rank matrix can be written as the product of two thin matrices."
+    },
+    {
+     "term": "Adapter",
+     "definition": "A small set of extra trainable parameters added to a frozen pre-trained model so it can learn a new task."
+    },
+    {
+     "term": "Frozen weights",
+     "definition": "Parameters that are kept fixed during training and receive no updates."
+    },
+    {
+     "term": "Inference latency",
+     "definition": "How long a model takes to produce an output once it is deployed."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What does LoRA train during fine-tuning?",
+     "options": [
+      "Every weight in the model",
+      "Only two small low-rank matrices per adapted weight matrix, while the original weights stay frozen",
+      "Only the last layer's bias",
+      "Nothing; it uses prompts instead"
+     ],
+     "answer": 1,
+     "explain": "The weight update is represented as B times A, two thin matrices, and only they are trained."
+    },
+    {
+     "q": "Why does LoRA add no extra delay when the model is deployed?",
+     "options": [
+      "Because it skips layers",
+      "Because the learned update B times A can be added into the original weight matrix before deployment",
+      "Because it uses a faster GPU",
+      "It does add a large delay"
+     ],
+     "answer": 1,
+     "explain": "W plus BA is just another matrix of the same size, so the deployed model has exactly the original architecture."
+    },
+    {
+     "q": "Why is B initialised to zero?",
+     "options": [
+      "To save memory",
+      "So that at the start of training the update BA is zero and the model behaves exactly like the pre-trained model",
+      "Because random values are not allowed",
+      "To make training impossible"
+     ],
+     "answer": 1,
+     "explain": "Starting from zero means fine-tuning begins from the original model and moves away only as the data demands."
+    }
+   ],
+   "cover_seed": "lora-low-rank",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.9,
+   "path": "papers/lora.md",
+   "hash": "d38919b42788",
+   "word_count": 1418,
+   "excerpt": "Suppose you want GPT-3 to write in your company's style, or to answer questions about Indian tax law. The standard approach in 2020 was full fine-tuning: keep training all 175 billion parameters on your data. Then you have a new 175-billion-parameter model, about 350 gigabytes, just for one task.…"
   }
  ]
 }
