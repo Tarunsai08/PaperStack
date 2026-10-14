@@ -1,7 +1,7 @@
 {
- "content_version": "49e2a93e1b210731",
+ "content_version": "787da9667a4d6afb",
  "generated_at": "2026-10-14",
- "count": 52,
+ "count": 54,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -4189,6 +4189,201 @@
    "hash": "ca2eaadd4c16",
    "word_count": 1431,
    "excerpt": "To teach a computer to recognise dogs, cats and 998 other things, ImageNet's creators organised thousands of crowd workers to label over a million photos. Every new kind of object a model needed to know meant more labeling. Meanwhile, the internet was already full of labels nobody had to pay for.…"
+  },
+  {
+   "id": "paper-swin-transformer-hierarchical-vision-transformer-using-shift",
+   "kind": "paper",
+   "slug": "swin-transformer-hierarchical-vision-transformer-using-shift",
+   "title": "Shift the Window, Scale the Vision",
+   "subtitle": "How hierarchical shifted windows let Transformers conquer high-resolution images",
+   "track": "transformers-llms",
+   "track_order": 9,
+   "prerequisites": [
+    "paper-attention-is-all-you-need",
+    "paper-resnet",
+    "paper-vit"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 9,
+   "topics": [
+    "computer vision",
+    "transformers",
+    "object detection",
+    "semantic segmentation"
+   ],
+   "paper_title": "Swin Transformer: Hierarchical Vision Transformer using Shifted Windows",
+   "authors": [
+    "Ze Liu",
+    "Yutong Lin",
+    "Yue Cao",
+    "et al."
+   ],
+   "year": 2021,
+   "venue": "IEEE International Conference on Computer Vision",
+   "paper_url": "https://arxiv.org/abs/2103.14030",
+   "glossary": [
+    {
+     "term": "W-MSA",
+     "definition": "Window-based Multi-Head Self-Attention, computing self-attention strictly inside local non-overlapping spatial windows."
+    },
+    {
+     "term": "SW-MSA",
+     "definition": "Shifted Window Multi-Head Self-Attention, shifting the window partition grid to connect neighboring windows across consecutive layers."
+    },
+    {
+     "term": "Patch Merging",
+     "definition": "An operation that combines neighboring patch tokens to reduce spatial resolution while expanding channel dimensions."
+    },
+    {
+     "term": "Cyclic Shift",
+     "definition": "A tensor rearrangement that wraps edge fragments around a grid so shifted windows can be computed in standard batches."
+    },
+    {
+     "term": "Relative Position Bias",
+     "definition": "A learnable offset added to attention scores based on the spatial distance between two tokens."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why is standard Vision Transformer (ViT) self-attention computationally intractable for high-resolution dense vision tasks?",
+     "options": [
+      "Its computational complexity scales quadratically with the total number of image patches.",
+      "It cannot compute backward passes on modern GPUs.",
+      "It requires image inputs to be strictly black and white.",
+      "Convolutional heads must be added to every layer to avoid gradient vanishing."
+     ],
+     "answer": 0,
+     "explain": "Standard multi-head self-attention computes relationships between every pair of patches across the whole image, creating O((hw)^2) complexity which becomes prohibitive at high resolutions."
+    },
+    {
+     "q": "What is the primary function of alternating between regular (W-MSA) and shifted (SW-MSA) window partitioning?",
+     "options": [
+      "To randomly drop tokens for regularization like Dropout.",
+      "To allow information to flow across window boundaries while keeping linear computational complexity.",
+      "To increase the image resolution dynamically at each layer.",
+      "To avoid needing an MLP block in the Transformer architecture."
+     ],
+     "answer": 1,
+     "explain": "Regular window attention confines computation within disconnected windows; shifting the window boundaries in the next layer introduces connections between previously separated windows without increasing complexity."
+    },
+    {
+     "q": "How does Swin Transformer handle the variable and smaller window sizes caused by shifting the partition grid?",
+     "options": [
+      "By discarding boundary pixels completely.",
+      "By running sliding-window convolutions over boundary regions.",
+      "By applying a cyclic shift toward the top-left and using attention masks to prevent unrelated sub-windows from attending to each other.",
+      "By interpolating the missing patches using bi-cubic upsampling."
+     ],
+     "answer": 2,
+     "explain": "Swin uses a cyclic shift to assemble boundary pieces into regular M x M windows, paired with a masking mechanism that restricts self-attention within contiguous sub-windows."
+    }
+   ],
+   "cover_seed": "swin-transformer-hierarchical-vision-transformer-using-shift",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.94,
+   "path": "papers/swin-transformer-hierarchical-vision-transformer-using-shift.md",
+   "hash": "f5e3253a39cf",
+   "word_count": 2009,
+   "excerpt": "When researchers first adapted the Transformer to images, it felt like magic. Instead of stacking dozens of convolutional layers, you chopped an image into square patches, treated those patches like words, and let self-attention do the rest. But try feeding that model a high-resolution photograph…"
+  },
+  {
+   "id": "paper-blip-2-bootstrapping-language-image-pre-training-with-frozen",
+   "kind": "paper",
+   "slug": "blip-2-bootstrapping-language-image-pre-training-with-frozen",
+   "title": "Teaching Blind LLMs to See Without Retraining Them",
+   "subtitle": "How 32 queries bridged vision and language on a shoestring compute budget",
+   "track": "transformers-llms",
+   "track_order": 10,
+   "prerequisites": [
+    "paper-clip",
+    "paper-vit",
+    "paper-bert"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 10,
+   "topics": [
+    "multimodal",
+    "vision-language",
+    "llms",
+    "q-former",
+    "zero-shot"
+   ],
+   "paper_title": "BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models",
+   "authors": [
+    "Junnan Li",
+    "Dongxu Li",
+    "S. Savarese",
+    "et al."
+   ],
+   "year": 2023,
+   "venue": "International Conference on Machine Learning",
+   "paper_url": "https://arxiv.org/abs/2301.12597",
+   "glossary": [
+    {
+     "term": "Q-Former (Querying Transformer)",
+     "definition": "A lightweight 188-million parameter transformer that extracts language-aligned visual features using learned query tokens."
+    },
+    {
+     "term": "Information Bottleneck",
+     "definition": "A compression mechanism where fixed query vectors compress high-dimensional image representations into a small set of informative tokens."
+    },
+    {
+     "term": "Image-Text Contrastive Learning (ITC)",
+     "definition": "A pre-training objective that pulls representations of matching image-text pairs closer together while pushing unmatched pairs apart."
+    },
+    {
+     "term": "Image-Grounded Text Generation (ITG)",
+     "definition": "A generative pre-training task where a model produces the matching caption conditioned on visual query features."
+    },
+    {
+     "term": "Image-Text Matching (ITM)",
+     "definition": "A binary classification task that trains the model to decide whether a given image and caption truly belong together."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does BLIP-2 freeze both the vision encoder and the LLM during pre-training?",
+     "options": [
+      "To save massive amounts of compute and prevent the models from forgetting their original capabilities",
+      "Because backpropagation cannot mathematically pass through two different architectures",
+      "To avoid needing any text captions during training",
+      "Because frozen models run significantly faster at inference time"
+     ],
+     "answer": 0,
+     "explain": "Freezing off-the-shelf vision models and LLMs saves huge training costs and protects the models from catastrophic forgetting."
+    },
+    {
+     "q": "What is the primary purpose of the 32 learned queries in the Q-Former?",
+     "options": [
+      "To act as an information bottleneck that distills text-relevant features from the frozen image encoder",
+      "To replace the text tokenizer inside the language model",
+      "To classify images into 32 predefined visual categories",
+      "To generate raw image pixels from text inputs"
+     ],
+     "answer": 0,
+     "explain": "The 32 queries interact with image features through cross-attention to extract only the visual information most useful for language."
+    },
+    {
+     "q": "Why did BLIP-2 struggle with few-shot in-context learning compared to models like Flamingo?",
+     "options": [
+      "Its language model backbone was too small to understand prompts",
+      "Its pre-training data consisted only of single image-text pairs rather than interleaved web documents",
+      "Vision transformers cannot process more than one image at test time",
+      "The Q-Former is mathematically restricted to a single forward pass per conversation"
+     ],
+     "answer": 1,
+     "explain": "BLIP-2 trained exclusively on single image-caption pairs, so it never saw sequences containing multiple images and texts arranged together."
+    }
+   ],
+   "cover_seed": "blip-2-bootstrapping-language-image-pre-training-with-frozen",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.83,
+   "path": "papers/blip-2-bootstrapping-language-image-pre-training-with-frozen.md",
+   "hash": "3204bd111104",
+   "word_count": 2191,
+   "excerpt": "Imagine you have two geniuses in a room. One is a master photographer who inspects pictures with forensic precision but speaks only in coordinate vectors. The other is a brilliant writer who has read every book in human history, knows how to reason through complex logic, but was born completely…"
   },
   {
    "id": "paper-instructgpt",
