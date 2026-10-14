@@ -150,7 +150,7 @@ function Shell() {
         </Suspense>
       </div>
       {showTabs && <TabBar />}
-      <Toaster />
+      <Toaster aboveTabs={showTabs} />
       <UpdatePrompt />
       <Celebration />
     </>

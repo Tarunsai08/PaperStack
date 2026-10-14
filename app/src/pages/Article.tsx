@@ -9,7 +9,7 @@ import {
   Type,
 } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Link, useNavigate, useNavigationType, useParams } from 'react-router-dom';
+import { Link, useNavigate, useNavigationType, useParams, useSearchParams } from 'react-router-dom';
 import { ArticleCard } from '../components/ArticleCard';
 import { BottomSheet } from '../components/BottomSheet';
 import { CoverArt } from '../components/CoverArt';
@@ -24,6 +24,7 @@ import { ArticleSkeleton, Skeleton } from '../components/Skeleton';
 import { celebrateTrack } from '../lib/celebrate';
 import { loadArticleBody, relatedArticles } from '../lib/content';
 import { normalizeTerm } from '../lib/frontmatter';
+import { offsetsToRange } from '../lib/highlights';
 import { haptic, openExternal, share } from '../lib/native';
 import { completeArticle, justFinishedTrack, recordReading, saveScroll } from '../lib/progress';
 import { store, toggleSaved, useStore } from '../lib/storage';
@@ -41,6 +42,8 @@ export default function ArticlePage() {
   const { id = '' } = useParams();
   const navigate = useNavigate();
   const navType = useNavigationType();
+  const [searchParams] = useSearchParams();
+  const jumpTo = searchParams.get('hl');
   const content = useContent();
   const article = content.byId.get(id);
   const track = article ? content.trackById.get(article.track) : undefined;
@@ -78,6 +81,19 @@ export default function ArticlePage() {
   useEffect(() => {
     if (!body || restored.current) return;
     restored.current = true;
+    if (jumpTo) {
+      // Opened from Library -> Highlights: scroll to that highlight.
+      const t = setTimeout(() => {
+        const h = store.get('highlights')[id]?.find((x) => x.id === jumpTo);
+        const root = bodyRef.current;
+        const range = h && root ? offsetsToRange(root, h.start, h.end) : null;
+        if (range) {
+          const top = range.getBoundingClientRect().top + window.scrollY - 140;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      }, 450);
+      return () => clearTimeout(t);
+    }
     const startPct = store.get('progress')[id]?.scrollPct ?? 0;
     if (navType === 'POP' || startPct < 0.03 || startPct > 0.97) {
       if (navType !== 'POP') window.scrollTo(0, 0);
@@ -89,7 +105,7 @@ export default function ArticlePage() {
       toast('Picked up where you left off');
     }, 380);
     return () => clearTimeout(t);
-  }, [body, id, navType]);
+  }, [body, id, navType, jumpTo]);
 
   // Track scroll position + reading time
   useEffect(() => {

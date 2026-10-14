@@ -13,7 +13,8 @@ const emit = () => listeners.forEach((l) => l());
 
 export function toast(message: string, action?: Toast['action'], ms = 3200): void {
   const t = { id: nextId++, message, action };
-  toasts = [...toasts.slice(-2), t];
+  // One toast at a time keeps the screen calm; the newest message wins.
+  toasts = [t];
   emit();
   setTimeout(() => dismissToast(t.id), ms);
 }

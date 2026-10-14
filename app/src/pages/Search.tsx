@@ -55,16 +55,18 @@ export default function Search() {
       <div className="chrome sticky top-0 z-30 bg-bg/95 backdrop-blur-xl pt-safe">
         <div className="px-5 pb-3 pt-5">
           <h1 className="text-[30px] font-bold leading-tight tracking-[-0.02em]">Search</h1>
-          <div className="mt-3 flex h-12 items-center gap-2 rounded-2xl bg-surface-2 px-4">
+          <div className="mt-3 flex h-12 items-center gap-2 rounded-2xl bg-surface-2 px-4 ring-brand/60 focus-within:ring-2">
             <SearchIcon size={19} className="shrink-0 text-muted" />
             <input
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Papers, ideas, people, terms…"
-              className="h-full min-w-0 flex-1 bg-transparent text-[16px] outline-none placeholder:text-muted"
+              className="h-full min-w-0 flex-1 bg-transparent text-[16px] outline-none placeholder:text-muted focus-visible:outline-none"
               aria-label="Search articles"
               enterKeyHint="search"
-              type="search"
+              inputMode="search"
+              autoComplete="off"
+              type="text"
             />
             {q && (
               <button onClick={() => setQ('')} className="press -mr-2 flex h-10 w-10 items-center justify-center text-muted" aria-label="Clear search">

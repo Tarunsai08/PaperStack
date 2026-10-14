@@ -14,7 +14,7 @@ Validate content with `python pipeline/build_index.py` (`--partial` allows links
   - [x] Shared validator: `app/src/lib/frontmatter.ts` + `pipeline/build_index.py`, both tested against `tests/fixtures`
   - [x] `content/tracks.json` + 2 sample articles (1 primer, 1 paper)
 - [x] **Phase 2: Seed content** (52 articles, 71,828 words; all pass `build_index.py --strict`)
-- [ ] **Phase 3: Core screens** (Home, Learn, Track, Article, Search, Library, Settings, Onboarding, streaks, progress)
+- [x] **Phase 3: Core screens** (Home, Learn, Track, Article, Search, Library, Settings, Onboarding, streaks, progress; verified end to end in Chromium at 390px)
 - [ ] **Phase 4: Manual import and content sync**
 - [ ] **Phase 5: Android app and CI** (Capacitor, icons, splash, native plugins, update check, workflows, README)
 - [ ] **Phase 6: Pipeline and automation** (llm.py, fetch, extract, generate, daily workflow, run.sh)
