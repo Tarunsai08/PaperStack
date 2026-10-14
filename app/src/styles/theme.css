@@ -123,6 +123,13 @@ header {
   border-radius: 6px;
 }
 
+/* Text fields show focus through their own border colour instead. */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }

@@ -15,7 +15,7 @@ Validate content with `python pipeline/build_index.py` (`--partial` allows links
   - [x] `content/tracks.json` + 2 sample articles (1 primer, 1 paper)
 - [x] **Phase 2: Seed content** (52 articles, 71,828 words; all pass `build_index.py --strict`)
 - [x] **Phase 3: Core screens** (Home, Learn, Track, Article, Search, Library, Settings, Onboarding, streaks, progress; verified end to end in Chromium at 390px)
-- [ ] **Phase 4: Manual import and content sync**
+- [x] **Phase 4: Manual import and content sync** (verified: remote sync against a local copy of the deployed site, prompt copy, validation errors, auto-fix, preview, import into My Additions)
 - [ ] **Phase 5: Android app and CI** (Capacitor, icons, splash, native plugins, update check, workflows, README)
 - [ ] **Phase 6: Pipeline and automation** (llm.py, fetch, extract, generate, daily workflow, run.sh)
 - [ ] **Phase 7: Polish and final review**
