@@ -36,11 +36,11 @@ Validate content with `python pipeline/build_index.py` (`--partial` allows links
 
 ### Foundations
 - [x] paper-turing-test
-- [ ] paper-perceptron
-- [ ] paper-backpropagation
-- [ ] paper-support-vector-networks
-- [ ] paper-random-forests
-- [ ] paper-few-useful-things
+- [x] paper-perceptron
+- [x] paper-backpropagation
+- [x] paper-support-vector-networks
+- [x] paper-random-forests
+- [x] paper-few-useful-things
 
 ### Deep learning
 - [ ] paper-lenet

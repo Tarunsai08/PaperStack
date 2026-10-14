@@ -1,7 +1,7 @@
 {
- "content_version": "66ef802cef8353ad",
+ "content_version": "b82798aa99542b5f",
  "generated_at": "2026-10-14",
- "count": 12,
+ "count": 17,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -982,6 +982,492 @@
    "hash": "2afcf052eeb0",
    "word_count": 1457,
    "excerpt": "In 1950, there were only a handful of electronic computers on the planet. They filled rooms, broke down constantly, and were used mostly to crunch numbers for physicists. Their memories could hold a few thousand numbers. That year, a 38-year-old mathematician in Manchester published a paper in a…"
+  },
+  {
+   "id": "paper-perceptron",
+   "kind": "paper",
+   "slug": "perceptron",
+   "title": "The Machine That Learned From Its Mistakes",
+   "subtitle": "Rosenblatt's perceptron: the 1958 invention that started neural networks, and the hype that nearly ended them",
+   "track": "foundations",
+   "track_order": 2,
+   "prerequisites": [
+    "primer-classification",
+    "primer-neural-networks"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 7,
+   "topics": [
+    "history",
+    "neural networks",
+    "perceptron",
+    "classification"
+   ],
+   "paper_title": "The Perceptron: A Probabilistic Model for Information Storage and Organization in the Brain",
+   "authors": [
+    "Frank Rosenblatt"
+   ],
+   "year": 1958,
+   "venue": "Psychological Review",
+   "paper_url": "https://doi.org/10.1037/h0042519",
+   "glossary": [
+    {
+     "term": "Perceptron",
+     "definition": "Rosenblatt's learning machine: it adds up weighted inputs and outputs yes if the total passes a threshold, and it adjusts its weights after every mistake."
+    },
+    {
+     "term": "Weight",
+     "definition": "A number on each input connection that says how strongly that input pushes the decision."
+    },
+    {
+     "term": "Step function",
+     "definition": "An all-or-nothing activation: output 1 if the input is above zero, otherwise 0."
+    },
+    {
+     "term": "Perceptron learning rule",
+     "definition": "After a wrong answer, add the input to the weights if the answer should have been yes, and subtract it if it should have been no."
+    },
+    {
+     "term": "Linearly separable",
+     "definition": "Describes data where a single straight line (or flat surface) can perfectly separate the two classes."
+    },
+    {
+     "term": "AI winter",
+     "definition": "A period when interest and funding for AI research collapsed after promises went unmet."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "When does the perceptron change its weights?",
+     "options": [
+      "After every example, even correct ones",
+      "Only when it makes a mistake",
+      "Never, they are fixed by hand",
+      "Only at the end of training"
+     ],
+     "answer": 1,
+     "explain": "The learning rule only fires on errors: no mistake, no change."
+    },
+    {
+     "q": "What did Minsky and Papert's 1969 book famously show?",
+     "options": [
+      "That perceptrons can learn any function",
+      "That single-layer perceptrons cannot learn some simple patterns, such as XOR",
+      "That neural networks need GPUs",
+      "That the brain uses backpropagation"
+     ],
+     "answer": 1,
+     "explain": "A single perceptron can only draw a straight-line boundary, so patterns like XOR are out of reach."
+    },
+    {
+     "q": "What does the perceptron convergence theorem guarantee?",
+     "options": [
+      "The perceptron always finds the best possible boundary",
+      "If the data is linearly separable, the learning rule will find a separating line in a finite number of steps",
+      "The perceptron never makes mistakes",
+      "Training takes exactly 50 steps"
+     ],
+     "answer": 1,
+     "explain": "When a straight-line separator exists, the simple correct-on-mistakes rule is guaranteed to find one eventually."
+    }
+   ],
+   "cover_seed": "rosenblatt-perceptron",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.88,
+   "path": "papers/perceptron.md",
+   "hash": "e327093bbbd2",
+   "word_count": 1446,
+   "excerpt": "In July 1958, the New York Times ran a story about a machine funded by the US Navy. The Navy, it reported, expected the device to eventually \"walk, talk, see, write, reproduce itself and be conscious of its existence.\" The machine in question could, at that point, learn to tell whether a square was…"
+  },
+  {
+   "id": "paper-backpropagation",
+   "kind": "paper",
+   "slug": "backpropagation",
+   "title": "Four Pages That Woke Up Neural Networks",
+   "subtitle": "How backpropagation taught hidden layers to invent their own features, and ended the perceptron's long winter",
+   "track": "foundations",
+   "track_order": 3,
+   "prerequisites": [
+    "primer-backprop-intuition",
+    "paper-perceptron"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "backpropagation",
+    "neural networks",
+    "history",
+    "representation learning"
+   ],
+   "paper_title": "Learning Representations by Back-propagating Errors",
+   "authors": [
+    "David E. Rumelhart",
+    "Geoffrey E. Hinton",
+    "Ronald J. Williams"
+   ],
+   "year": 1986,
+   "venue": "Nature",
+   "paper_url": "https://doi.org/10.1038/323533a0",
+   "glossary": [
+    {
+     "term": "Hidden unit",
+     "definition": "A neuron that is neither an input nor an output. Its job is not specified by anyone; it learns whatever helps."
+    },
+    {
+     "term": "Backpropagation",
+     "definition": "The method of computing how much every weight contributed to the error by sending error signals backward through the network, layer by layer."
+    },
+    {
+     "term": "Internal representation",
+     "definition": "The pattern of activity across hidden units for a given input: the network's own learned description of that input."
+    },
+    {
+     "term": "Chain rule",
+     "definition": "The calculus rule that the effect of a change through several steps is the product of each step's local effect."
+    },
+    {
+     "term": "Momentum",
+     "definition": "A training trick that lets each weight update carry along part of the previous update, smoothing and speeding up the descent."
+    },
+    {
+     "term": "Local minimum",
+     "definition": "A point where the error is lower than everywhere nearby but not the lowest possible, where gradient descent can get stuck."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What was the key problem that stopped multi-layer perceptrons from being trained before backpropagation became widely known?",
+     "options": [
+      "Computers could not store weights",
+      "Nobody had a practical way to decide how to adjust the weights of hidden units",
+      "There was no training data",
+      "Hidden layers were illegal in neural network theory"
+     ],
+     "answer": 1,
+     "explain": "Hidden units have no target values of their own, so it was unclear how to correct them. Backpropagation computes exactly how much each one contributed to the error."
+    },
+    {
+     "q": "What did the family-tree experiment demonstrate?",
+     "options": [
+      "That networks can memorize names",
+      "That hidden units spontaneously learned meaningful features such as nationality and generation that nobody had labeled",
+      "That backpropagation is faster than humans",
+      "That family trees are linearly separable"
+     ],
+     "answer": 1,
+     "explain": "The network was only given relationship facts, yet its hidden units came to encode useful properties of the people, an early demonstration of representation learning."
+    },
+    {
+     "q": "Which limitation did the authors openly acknowledge?",
+     "options": [
+      "Gradient descent can get stuck in local minima, and the method is probably not how the brain learns",
+      "The method only works on images",
+      "The method cannot use hidden units",
+      "It requires quantum computers"
+     ],
+     "answer": 0,
+     "explain": "They noted that the error surface can contain local minima and that the procedure is not a plausible model of learning in real brains."
+    }
+   ],
+   "cover_seed": "backprop-1986-nature",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.95,
+   "path": "papers/backpropagation.md",
+   "hash": "ec5eae8b2e97",
+   "word_count": 1453,
+   "excerpt": "By the early 1980s, neural networks were a career risk. Minsky and Papert's book had shown what single-layer perceptrons could not do, funding had dried up, and serious researchers were advised to work on something else. Then, in October 1986, the journal Nature published a paper just four pages…"
+  },
+  {
+   "id": "paper-support-vector-networks",
+   "kind": "paper",
+   "slug": "support-vector-networks",
+   "title": "Draw the Widest Road Between Two Crowds",
+   "subtitle": "Support vector machines: the margin idea that dominated machine learning before deep learning took over",
+   "track": "foundations",
+   "track_order": 4,
+   "prerequisites": [
+    "primer-classification",
+    "primer-overfitting"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "svm",
+    "classification",
+    "kernels",
+    "margins"
+   ],
+   "paper_title": "Support-Vector Networks",
+   "authors": [
+    "Corinna Cortes",
+    "Vladimir Vapnik"
+   ],
+   "year": 1995,
+   "venue": "Machine Learning",
+   "paper_url": "https://doi.org/10.1007/BF00994018",
+   "glossary": [
+    {
+     "term": "Margin",
+     "definition": "The width of the empty gap between the decision boundary and the closest training points of either class."
+    },
+    {
+     "term": "Support vector",
+     "definition": "A training point that sits on the edge of the margin, or inside it. Only these points determine where the boundary goes."
+    },
+    {
+     "term": "Soft margin",
+     "definition": "A margin that allows some points to be on the wrong side, with a penalty, so messy real-world data can still be separated."
+    },
+    {
+     "term": "Slack variable",
+     "definition": "A number for each training point that measures how far it breaks the margin rule. Zero for well-behaved points."
+    },
+    {
+     "term": "Kernel trick",
+     "definition": "A way to get the effect of mapping data into a much higher-dimensional space without ever computing that mapping directly."
+    },
+    {
+     "term": "Feature space",
+     "definition": "The space the data lives in after a transformation; a straight boundary there can correspond to a curved one in the original space."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Among all lines that separate two classes, which one does an SVM choose?",
+     "options": [
+      "The first one it finds",
+      "The one with the widest empty margin to the nearest points",
+      "The one that passes through the most points",
+      "The steepest line"
+     ],
+     "answer": 1,
+     "explain": "A wide margin leaves room for new points to land on the correct side, which tends to generalize better."
+    },
+    {
+     "q": "Why does the soft margin matter?",
+     "options": [
+      "It makes the boundary curved",
+      "Real data is noisy and often not perfectly separable, so the model must be allowed some penalised mistakes",
+      "It removes the need for training data",
+      "It speeds up the GPU"
+     ],
+     "answer": 1,
+     "explain": "Cortes and Vapnik's soft margin lets some points violate the margin at a cost controlled by a parameter C."
+    },
+    {
+     "q": "What does the kernel trick allow?",
+     "options": [
+      "Training without labels",
+      "Learning curved boundaries by implicitly working in a richer feature space, without computing it directly",
+      "Using fewer support vectors than training points is forbidden",
+      "Replacing the margin with a neural network"
+     ],
+     "answer": 1,
+     "explain": "Kernels compute similarities as if the data had been mapped into a high-dimensional space where a straight boundary works."
+    }
+   ],
+   "cover_seed": "support-vector-networks",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.86,
+   "path": "papers/support-vector-networks.md",
+   "hash": "35a6f2d9fff6",
+   "word_count": 1466,
+   "excerpt": "Imagine two crowds of fans after a cricket match, spilling out onto the same open ground. The police want to put up a barrier between them. Many barrier positions would technically separate the groups. But if you put it right next to one crowd, the first person who steps sideways ends up on the…"
+  },
+  {
+   "id": "paper-random-forests",
+   "kind": "paper",
+   "slug": "random-forests",
+   "title": "Why a Crowd of Bad Guessers Beats an Expert",
+   "subtitle": "Breiman's random forests: deliberately weakened decision trees that vote their way to excellent predictions",
+   "track": "foundations",
+   "track_order": 5,
+   "prerequisites": [
+    "primer-overfitting"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "random forests",
+    "decision trees",
+    "ensembles",
+    "classic ml"
+   ],
+   "paper_title": "Random Forests",
+   "authors": [
+    "Leo Breiman"
+   ],
+   "year": 2001,
+   "venue": "Machine Learning",
+   "paper_url": "https://doi.org/10.1023/A:1010933404324",
+   "glossary": [
+    {
+     "term": "Decision tree",
+     "definition": "A model that makes predictions by asking a series of yes-or-no questions about the features, like a flowchart."
+    },
+    {
+     "term": "Ensemble",
+     "definition": "A group of models whose predictions are combined, usually by voting or averaging, to get a better overall prediction."
+    },
+    {
+     "term": "Bootstrap sample",
+     "definition": "A new training set made by drawing examples at random from the original data, with replacement, so some appear twice and others not at all."
+    },
+    {
+     "term": "Bagging",
+     "definition": "Short for bootstrap aggregating: train each model on a different bootstrap sample and combine their votes."
+    },
+    {
+     "term": "Out-of-bag error",
+     "definition": "An error estimate computed by testing each tree only on the examples left out of its bootstrap sample, giving a free built-in test set."
+    },
+    {
+     "term": "Feature importance",
+     "definition": "A measure of how much a model relies on each feature, for example by scrambling that feature and seeing how much worse predictions get."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does a random forest add randomness when growing each tree?",
+     "options": [
+      "To make each tree more accurate on its own",
+      "To make the trees different from each other, so their mistakes do not line up",
+      "To speed up the computer's clock",
+      "Randomness is a bug that Breiman could not remove"
+     ],
+     "answer": 1,
+     "explain": "Voting only helps if the voters make different mistakes. Random samples and random feature choices decorrelate the trees."
+    },
+    {
+     "q": "What happens to a random forest's test error as you keep adding more trees?",
+     "options": [
+      "It rises sharply because the forest overfits",
+      "It settles down to a limit instead of getting worse",
+      "It becomes exactly zero",
+      "It oscillates forever"
+     ],
+     "answer": 1,
+     "explain": "Breiman showed that the error converges as trees are added. More trees cost time, but they do not cause overfitting."
+    },
+    {
+     "q": "What is out-of-bag error?",
+     "options": [
+      "Errors caused by missing data",
+      "An error estimate that tests each tree on the examples it never saw during its own training",
+      "The error on the training data",
+      "The error from the largest tree"
+     ],
+     "answer": 1,
+     "explain": "Each bootstrap sample leaves out roughly a third of the examples, and those left-out examples act as a built-in test set."
+    }
+   ],
+   "cover_seed": "breiman-random-forests",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.84,
+   "path": "papers/random-forests.md",
+   "hash": "16a8615703b2",
+   "word_count": 1437,
+   "excerpt": "In 1906, at a country fair in England, around 800 people paid to guess the weight of an ox. Most guesses were off, some wildly. But when the scientist Francis Galton looked at all the guesses together, the middle value was within about one percent of the true weight. The crowd, as a whole, beat the…"
+  },
+  {
+   "id": "paper-few-useful-things",
+   "kind": "paper",
+   "slug": "few-useful-things",
+   "title": "The Folk Wisdom Textbooks Forgot to Teach",
+   "subtitle": "Pedro Domingos' twelve hard-won lessons about what actually makes machine learning work",
+   "track": "foundations",
+   "track_order": 6,
+   "prerequisites": [
+    "primer-overfitting"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 7,
+   "topics": [
+    "machine learning practice",
+    "generalization",
+    "features",
+    "overview"
+   ],
+   "paper_title": "A Few Useful Things to Know About Machine Learning",
+   "authors": [
+    "Pedro Domingos"
+   ],
+   "year": 2012,
+   "venue": "Communications of the ACM",
+   "paper_url": "https://doi.org/10.1145/2347736.2347755",
+   "glossary": [
+    {
+     "term": "Representation",
+     "definition": "The family of models a learner can express, such as decision trees, linear models or neural networks."
+    },
+    {
+     "term": "Bias",
+     "definition": "A model's tendency to consistently learn the same wrong thing, usually because it is too simple."
+    },
+    {
+     "term": "Variance",
+     "definition": "A model's tendency to learn random things that change with the particular training data it happened to see."
+    },
+    {
+     "term": "Curse of dimensionality",
+     "definition": "The way many things that work in low dimensions break down as the number of features grows, because the space becomes vast and data becomes sparse."
+    },
+    {
+     "term": "Feature engineering",
+     "definition": "The human work of designing good input features from raw data, often the deciding factor in classic machine learning projects."
+    },
+    {
+     "term": "No free lunch theorem",
+     "definition": "A result showing that, averaged over all possible problems, no learner beats random guessing; every learner must make assumptions to succeed."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "According to Domingos, what is the fundamental goal of machine learning?",
+     "options": [
+      "To get perfect accuracy on the training data",
+      "To generalize beyond the examples in the training set",
+      "To use the most complex model available",
+      "To minimise training time"
+     ],
+     "answer": 1,
+     "explain": "Doing well on training data is easy and almost meaningless. Generalizing to new examples is the whole point."
+    },
+    {
+     "q": "What does 'more data beats a cleverer algorithm' mean in practice?",
+     "options": [
+      "Algorithms do not matter at all",
+      "A simple learner with lots of data often beats a sophisticated one with little data",
+      "You should never change your algorithm",
+      "Data is cheaper than electricity"
+     ],
+     "answer": 1,
+     "explain": "Given the choice, adding data is often the most reliable way to improve. Domingos also warns that it brings the challenge of scalability."
+    },
+    {
+     "q": "Why does intuition fail in high dimensions?",
+     "options": [
+      "Computers cannot store high-dimensional data",
+      "As features multiply, data becomes extremely sparse and notions like 'nearby' behave very differently from our 3D experience",
+      "High-dimensional data is always random",
+      "Humans are bad at arithmetic"
+     ],
+     "answer": 1,
+     "explain": "This is the curse of dimensionality: the space grows so fast that even huge datasets cover only a tiny fraction of it."
+    }
+   ],
+   "cover_seed": "domingos-useful-things",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.82,
+   "path": "papers/few-useful-things.md",
+   "hash": "6c08762106a9",
+   "word_count": 1435,
+   "excerpt": "Every craft has two kinds of knowledge. There is what the textbook says, and there is what the old hands know: the tricks, the traps, the \"never do this on a Friday\" rules that nobody writes down because everybody learned them the hard way. In 2012, Pedro Domingos wrote down machine learning's…"
   },
   {
    "id": "paper-attention-is-all-you-need",
