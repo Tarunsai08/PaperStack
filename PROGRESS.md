@@ -72,11 +72,11 @@ Validate content with `python pipeline/build_index.py` (`--partial` allows links
 ### Transformers and LLMs
 - [x] paper-attention-is-all-you-need
 - [x] paper-gpt-1
-- [ ] paper-bert
-- [ ] paper-gpt-3
-- [ ] paper-scaling-laws
-- [ ] paper-chinchilla
-- [ ] paper-vit
+- [x] paper-bert
+- [x] paper-gpt-3
+- [x] paper-scaling-laws
+- [x] paper-chinchilla
+- [x] paper-vit
 - [ ] paper-clip
 
 ### Making LLMs useful

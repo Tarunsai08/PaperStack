@@ -1,7 +1,7 @@
 {
- "content_version": "ca68edebceb2daf3",
+ "content_version": "2ca58c49825fff87",
  "generated_at": "2026-10-14",
- "count": 37,
+ "count": 42,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -3577,6 +3577,515 @@
    "hash": "76e6bc821915",
    "word_count": 1473,
    "excerpt": "In June 2018, OpenAI posted a blog post and a short technical report. It did not appear at a big conference. It had no flashy demo. Its main claim was modest-sounding: a model pre-trained on a pile of books did better on a collection of language understanding tests. But hidden in that report was…"
+  },
+  {
+   "id": "paper-bert",
+   "kind": "paper",
+   "slug": "bert",
+   "title": "Fill in the Blanks, Understand Everything",
+   "subtitle": "BERT: reading in both directions with a fill-in-the-blank game, and the model that changed Google Search",
+   "track": "transformers-llms",
+   "track_order": 3,
+   "prerequisites": [
+    "paper-attention-is-all-you-need"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "bert",
+    "pre-training",
+    "transformers",
+    "nlp",
+    "transfer learning"
+   ],
+   "paper_title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+   "authors": [
+    "Jacob Devlin",
+    "Ming-Wei Chang",
+    "Kenton Lee",
+    "Kristina Toutanova"
+   ],
+   "year": 2018,
+   "venue": "NAACL",
+   "paper_url": "https://arxiv.org/abs/1810.04805",
+   "glossary": [
+    {
+     "term": "Bidirectional",
+     "definition": "Able to use context from both the left and the right of a word at the same time."
+    },
+    {
+     "term": "Masked language model",
+     "definition": "A pre-training task where some words in a sentence are hidden and the model must predict them from the surrounding words."
+    },
+    {
+     "term": "Next sentence prediction",
+     "definition": "BERT's second pre-training task: given two sentences, predict whether the second really follows the first in the original text."
+    },
+    {
+     "term": "Encoder",
+     "definition": "The half of a Transformer where every token can attend to every other token, producing a contextual vector for each one."
+    },
+    {
+     "term": "Fine-tuning",
+     "definition": "Briefly training a pre-trained model on a specific labeled task, usually updating all of its weights."
+    },
+    {
+     "term": "Contextual embedding",
+     "definition": "A vector for a word that depends on the sentence it appears in, so 'bank' in 'river bank' and 'bank loan' get different vectors."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why couldn't BERT simply be trained to predict the next word, like GPT?",
+     "options": [
+      "Next-word prediction is illegal",
+      "With full bidirectional attention, each word could see itself and the answer, so the task would be trivial",
+      "BERT has no output layer",
+      "Books were not available"
+     ],
+     "answer": 1,
+     "explain": "If every word can attend to every other word, predicting the next word is cheating. Masking hides the targets so bidirectional context can be used fairly."
+    },
+    {
+     "q": "In BERT's masked language model, what happens to the selected 15% of tokens?",
+     "options": [
+      "All are deleted from the sentence",
+      "Most become a [MASK] token, some become a random word, and some stay unchanged",
+      "They are translated into French",
+      "They are moved to the end of the sentence"
+     ],
+     "answer": 1,
+     "explain": "80% become [MASK], 10% a random token and 10% stay the same, so the model cannot rely on always seeing [MASK] during pre-training."
+    },
+    {
+     "q": "What is the main advantage of a contextual embedding over a word2vec vector?",
+     "options": [
+      "It uses fewer numbers",
+      "The same word gets different vectors depending on its sentence, capturing its meaning in context",
+      "It ignores grammar",
+      "It only works for nouns"
+     ],
+     "answer": 1,
+     "explain": "BERT's output for 'bank' changes with the surrounding words, which resolves ambiguity that a single fixed vector cannot."
+    }
+   ],
+   "cover_seed": "bert-bidirectional",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.94,
+   "path": "papers/bert.md",
+   "hash": "84cd179b90d6",
+   "word_count": 1475,
+   "excerpt": "Try this: \"I went to the to deposit my salary.\" You filled the gap with \"bank\" instantly. But notice how you did it. You used \"went to the\" on the left and \"deposit my salary\" on the right. Without the right side, the blank could be \"market,\" \"gym\" or \"beach.\" In October 2018, a team at Google…"
+  },
+  {
+   "id": "paper-gpt-3",
+   "kind": "paper",
+   "slug": "gpt-3",
+   "title": "Just Show It a Few Examples",
+   "subtitle": "GPT-3: 175 billion parameters, no fine-tuning, and the surprise that a model could learn new tasks from its prompt",
+   "track": "transformers-llms",
+   "track_order": 4,
+   "prerequisites": [
+    "paper-gpt-1"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "gpt-3",
+    "large language models",
+    "in-context learning",
+    "scaling"
+   ],
+   "paper_title": "Language Models are Few-Shot Learners",
+   "authors": [
+    "Tom B. Brown",
+    "Benjamin Mann",
+    "Nick Ryder",
+    "Melanie Subbiah",
+    "Jared Kaplan",
+    "et al."
+   ],
+   "year": 2020,
+   "venue": "NeurIPS",
+   "paper_url": "https://arxiv.org/abs/2005.14165",
+   "glossary": [
+    {
+     "term": "In-context learning",
+     "definition": "Picking up a task from instructions or examples given in the prompt itself, without any change to the model's weights."
+    },
+    {
+     "term": "Prompt",
+     "definition": "The text you give a language model to continue, which can include instructions and examples."
+    },
+    {
+     "term": "Few-shot",
+     "definition": "Giving a model a handful of worked examples of a task in its prompt before asking it to do a new one."
+    },
+    {
+     "term": "Zero-shot",
+     "definition": "Asking a model to do a task from an instruction alone, with no examples."
+    },
+    {
+     "term": "Parameter",
+     "definition": "One of the learned numbers inside a model. GPT-3 has about 175 billion of them."
+    },
+    {
+     "term": "Data contamination",
+     "definition": "When test questions accidentally appear in a model's training data, which can make benchmark scores look better than true ability."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is in-context learning?",
+     "options": [
+      "Fine-tuning the model's weights on a new dataset",
+      "The model picking up a task from examples in its prompt, with no weight updates",
+      "Training a model in a classroom",
+      "Copying answers from the internet"
+     ],
+     "answer": 1,
+     "explain": "GPT-3 was given examples as text in the prompt and continued the pattern, without any gradient updates."
+    },
+    {
+     "q": "What happened to few-shot performance as model size grew from millions to 175 billion parameters?",
+     "options": [
+      "It stayed flat",
+      "It got worse",
+      "It improved substantially, and the gap between zero-shot and few-shot widened",
+      "It only improved for arithmetic"
+     ],
+     "answer": 2,
+     "explain": "Larger models made much better use of examples in context, which is the paper's central finding."
+    },
+    {
+     "q": "Which of these was a limitation the authors acknowledged?",
+     "options": [
+      "GPT-3 could not write any coherent text",
+      "GPT-3 could repeat itself, lose coherence over long passages, and reflect biases in its training data",
+      "GPT-3 was too small to be useful",
+      "GPT-3 could not answer any questions"
+     ],
+     "answer": 1,
+     "explain": "The paper has a long, frank limitations section, including repetition, weak common-sense physics, bias and the cost of training."
+    }
+   ],
+   "cover_seed": "gpt-3-few-shot",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.98,
+   "path": "papers/gpt-3.md",
+   "hash": "e4f7ef508772",
+   "word_count": 1409,
+   "excerpt": "Type this into a text box: English: cheese → French: fromage English: house → French: maison English: book → French: A model completes it with \"livre.\" Nobody trained it to translate. Nobody changed a single one of its weights. It looked at two examples, spotted the pattern, and continued it. In…"
+  },
+  {
+   "id": "paper-scaling-laws",
+   "kind": "paper",
+   "slug": "scaling-laws",
+   "title": "The Straight Lines That Launched a Race",
+   "subtitle": "Scaling laws: how language model quality improves predictably with size, data and compute, and why that changed AI strategy",
+   "track": "transformers-llms",
+   "track_order": 5,
+   "prerequisites": [
+    "paper-gpt-3"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "scaling laws",
+    "large language models",
+    "compute",
+    "power laws"
+   ],
+   "paper_title": "Scaling Laws for Neural Language Models",
+   "authors": [
+    "Jared Kaplan",
+    "Sam McCandlish",
+    "Tom Henighan",
+    "Tom B. Brown",
+    "Benjamin Chess",
+    "Rewon Child",
+    "Scott Gray",
+    "Alec Radford",
+    "Jeffrey Wu",
+    "Dario Amodei"
+   ],
+   "year": 2020,
+   "venue": "arXiv",
+   "paper_url": "https://arxiv.org/abs/2001.08361",
+   "glossary": [
+    {
+     "term": "Scaling law",
+     "definition": "A simple mathematical relationship describing how a model's performance changes as you scale up its size, data or compute."
+    },
+    {
+     "term": "Power law",
+     "definition": "A relationship of the form y = a times x to the power b. On a log-log plot it appears as a straight line."
+    },
+    {
+     "term": "Log-log plot",
+     "definition": "A chart where both axes use a logarithmic scale, so each step along an axis means multiplying by ten."
+    },
+    {
+     "term": "Compute",
+     "definition": "The total amount of calculation used to train a model, usually counted in floating point operations (FLOPs)."
+    },
+    {
+     "term": "Test loss",
+     "definition": "The model's average next-token prediction loss on text it was not trained on. Lower means better language modelling."
+    },
+    {
+     "term": "Sample efficiency",
+     "definition": "How much a model learns from each example it sees. A more sample-efficient model reaches a given loss with less data."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What did the paper find about how loss depends on model size?",
+     "options": [
+      "Loss stops improving after 1 billion parameters",
+      "Loss falls as a smooth power law, a straight line on a log-log plot, across many orders of magnitude",
+      "Loss is random",
+      "Smaller models are always better"
+     ],
+     "answer": 1,
+     "explain": "Across more than seven orders of magnitude, test loss improved predictably as a power law in model size, data and compute."
+    },
+    {
+     "q": "According to the paper, which architectural details mattered most for performance?",
+     "options": [
+      "The exact ratio of depth to width",
+      "Very little: within a wide range, total parameter count mattered far more than shape",
+      "The number of attention heads above all",
+      "The choice of activation function"
+     ],
+     "answer": 1,
+     "explain": "Depth, width and head count had only weak effects compared with total scale."
+    },
+    {
+     "q": "What did the paper recommend for a fixed compute budget?",
+     "options": [
+      "Train a small model for a very long time",
+      "Train a very large model and stop well before it fully converges",
+      "Spend most of the compute on data cleaning",
+      "Never train beyond one epoch of a small dataset"
+     ],
+     "answer": 1,
+     "explain": "Larger models are more sample-efficient, so the paper concluded it was best to scale models up and stop early. Chinchilla later revised how the budget should be split."
+    }
+   ],
+   "cover_seed": "scaling-laws-kaplan",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.9,
+   "path": "papers/scaling-laws.md",
+   "hash": "e693e0ba0774",
+   "word_count": 1460,
+   "excerpt": "Most of machine learning is unpredictable. You change something, run an experiment for days, and find out whether it helped. Nobody can tell you in advance how good your model will be. In January 2020, a team at OpenAI published a set of charts that looked almost too clean to be real. Plot a…"
+  },
+  {
+   "id": "paper-chinchilla",
+   "kind": "paper",
+   "slug": "chinchilla",
+   "title": "The Giant Models Were Underfed",
+   "subtitle": "Chinchilla: a smaller model trained on four times more data beat models up to seven times its size",
+   "track": "transformers-llms",
+   "track_order": 6,
+   "prerequisites": [
+    "paper-scaling-laws"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "scaling laws",
+    "large language models",
+    "compute-optimal training",
+    "data"
+   ],
+   "paper_title": "Training Compute-Optimal Large Language Models",
+   "authors": [
+    "Jordan Hoffmann",
+    "Sebastian Borgeaud",
+    "Arthur Mensch",
+    "Elena Buchatskaya",
+    "Trevor Cai",
+    "et al."
+   ],
+   "year": 2022,
+   "venue": "NeurIPS",
+   "paper_url": "https://arxiv.org/abs/2203.15556",
+   "glossary": [
+    {
+     "term": "Compute-optimal",
+     "definition": "The choice of model size and amount of training data that gives the lowest loss for a fixed training compute budget."
+    },
+    {
+     "term": "Training tokens",
+     "definition": "The total number of tokens of text a model processes during training."
+    },
+    {
+     "term": "FLOPs",
+     "definition": "Floating point operations: the basic arithmetic steps a computer performs. Total training FLOPs measure training compute."
+    },
+    {
+     "term": "IsoFLOP curve",
+     "definition": "A set of models trained with the same total compute but different sizes, used to find which size gives the lowest loss for that budget."
+    },
+    {
+     "term": "Undertrained",
+     "definition": "Describes a model that has not seen enough data for its size, so it could have reached a lower loss with more training tokens."
+    },
+    {
+     "term": "Inference",
+     "definition": "Using a trained model to produce outputs. Smaller models are cheaper and faster at inference."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What was Chinchilla's main finding about compute-optimal training?",
+     "options": [
+      "Model size should grow much faster than data",
+      "Model size and training tokens should be scaled up in roughly equal proportion",
+      "Data does not matter",
+      "Models should never be larger than 1 billion parameters"
+     ],
+     "answer": 1,
+     "explain": "If you double the compute-optimal model size, you should roughly double the number of training tokens too."
+    },
+    {
+     "q": "How did Chinchilla (70B parameters) compare with Gopher (280B parameters)?",
+     "options": [
+      "It used the same compute budget, was four times smaller, saw about four times more data, and performed better",
+      "It used ten times more compute",
+      "It performed much worse",
+      "It was larger than Gopher"
+     ],
+     "answer": 0,
+     "explain": "Same compute, different split: a smaller model trained on 1.4 trillion tokens beat the bigger one trained on 300 billion."
+    },
+    {
+     "q": "Why does a smaller, well-trained model matter after training too?",
+     "options": [
+      "It is cheaper and faster to run for every user query",
+      "It uses more electricity",
+      "It cannot be fine-tuned",
+      "It needs more GPUs to serve"
+     ],
+     "answer": 0,
+     "explain": "Inference costs scale with model size, so a smaller model with the same quality is much cheaper to deploy."
+    }
+   ],
+   "cover_seed": "chinchilla-compute-optimal",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.88,
+   "path": "papers/chinchilla.md",
+   "hash": "9851988dba04",
+   "word_count": 1411,
+   "excerpt": "By early 2022, the race to build bigger language models was in full swing. GPT-3 had 175 billion parameters. Google, DeepMind and Microsoft with NVIDIA had built models with 280 billion and even 530 billion. The assumption was simple: bigger models, better results. Then a DeepMind team ran an…"
+  },
+  {
+   "id": "paper-vit",
+   "kind": "paper",
+   "slug": "vit",
+   "title": "What If an Image Is Just a Sentence of Patches?",
+   "subtitle": "The Vision Transformer: chop a picture into squares, read them like words, and match the best convolutional networks",
+   "track": "transformers-llms",
+   "track_order": 7,
+   "prerequisites": [
+    "paper-attention-is-all-you-need",
+    "paper-resnet"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "vision transformer",
+    "computer vision",
+    "transformers",
+    "image classification"
+   ],
+   "paper_title": "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale",
+   "authors": [
+    "Alexey Dosovitskiy",
+    "Lucas Beyer",
+    "Alexander Kolesnikov",
+    "Dirk Weissenborn",
+    "Xiaohua Zhai",
+    "et al."
+   ],
+   "year": 2020,
+   "venue": "ICLR",
+   "paper_url": "https://arxiv.org/abs/2010.11929",
+   "glossary": [
+    {
+     "term": "Patch",
+     "definition": "A small square piece of an image, such as 16 by 16 pixels, treated as one token by the Vision Transformer."
+    },
+    {
+     "term": "Patch embedding",
+     "definition": "The vector made by flattening a patch's pixels and passing them through a learned linear layer."
+    },
+    {
+     "term": "Inductive bias",
+     "definition": "Assumptions built into a model's design, like a convolutional network's assumption that nearby pixels matter most."
+    },
+    {
+     "term": "Class token",
+     "definition": "An extra learnable token added to the sequence whose final vector is used to classify the whole image."
+    },
+    {
+     "term": "Position embedding",
+     "definition": "A learned vector added to each patch embedding so the model knows where in the image the patch came from."
+    },
+    {
+     "term": "Pre-training dataset",
+     "definition": "The large collection of images a model learns from first, before being fine-tuned on a specific task."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How does the Vision Transformer turn an image into a sequence?",
+     "options": [
+      "It reads pixels one by one",
+      "It splits the image into fixed-size patches, flattens each, and projects it into a vector, like a word embedding",
+      "It converts the image to a caption first",
+      "It uses a convolutional network to describe each object"
+     ],
+     "answer": 1,
+     "explain": "A 224 by 224 image with 16 by 16 patches becomes a sequence of 196 patch tokens."
+    },
+    {
+     "q": "Why did ViT underperform ResNets when trained only on ImageNet's 1.3 million images?",
+     "options": [
+      "Transformers cannot process images",
+      "It lacks the built-in assumptions of convolutions, so it needs more data to learn them",
+      "ImageNet images are too small",
+      "It used too few parameters"
+     ],
+     "answer": 1,
+     "explain": "Convolutions bake in locality and translation equivariance. ViT has to learn such patterns from data, which takes more examples."
+    },
+    {
+     "q": "What happened when ViT was pre-trained on very large datasets?",
+     "options": [
+      "It still lost badly to ResNets",
+      "It matched or beat state-of-the-art convolutional networks while using less compute to pre-train",
+      "It forgot how to classify",
+      "It only worked on black and white images"
+     ],
+     "answer": 1,
+     "explain": "With 14 million or 300 million images, the lack of built-in bias stopped mattering, and scale won."
+    }
+   ],
+   "cover_seed": "vision-transformer-vit",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.9,
+   "path": "papers/vit.md",
+   "hash": "bab7788fb16e",
+   "word_count": 1410,
+   "excerpt": "For thirty years, computer vision and convolutional networks were nearly inseparable. From LeNet reading cheques to ResNet winning ImageNet, the idea that images need sliding filters seemed as natural as gravity. In October 2020, a team at Google Research in Zurich posted a paper with a playful…"
   }
  ]
 }
