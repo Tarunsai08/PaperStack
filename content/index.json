@@ -1,7 +1,7 @@
 {
- "content_version": "6d114fa5c7236324",
+ "content_version": "ca68edebceb2daf3",
  "generated_at": "2026-10-14",
- "count": 32,
+ "count": 37,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -2956,6 +2956,413 @@
    "excerpt": "Take a photo of a cat. Add a sprinkle of random static. Then a little more. Keep going for a thousand tiny steps, and eventually the cat is gone: you are left with pure television snow. Now imagine running that film backwards. Start from snow, and at each step remove just a little noise, until a…"
   },
   {
+   "id": "paper-latent-diffusion",
+   "kind": "paper",
+   "slug": "latent-diffusion",
+   "title": "Diffusion in a Smaller World",
+   "subtitle": "Latent diffusion: compress the image first, dream in the compressed space, and suddenly anyone can generate art on a gaming PC",
+   "track": "generative",
+   "track_order": 4,
+   "prerequisites": [
+    "paper-ddpm",
+    "paper-unet"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "diffusion models",
+    "stable diffusion",
+    "text to image",
+    "latent space"
+   ],
+   "paper_title": "High-Resolution Image Synthesis with Latent Diffusion Models",
+   "authors": [
+    "Robin Rombach",
+    "Andreas Blattmann",
+    "Dominik Lorenz",
+    "Patrick Esser",
+    "Björn Ommer"
+   ],
+   "year": 2022,
+   "venue": "CVPR",
+   "paper_url": "https://arxiv.org/abs/2112.10752",
+   "glossary": [
+    {
+     "term": "Latent space",
+     "definition": "A compressed representation of images where each image becomes a much smaller grid of numbers that still captures its content."
+    },
+    {
+     "term": "Perceptual compression",
+     "definition": "Shrinking an image while keeping everything that matters to a human viewer, discarding fine pixel-level detail that the eye barely notices."
+    },
+    {
+     "term": "Autoencoder",
+     "definition": "A pair of networks: an encoder that compresses an image into a small code, and a decoder that rebuilds the image from it."
+    },
+    {
+     "term": "Cross-attention",
+     "definition": "Attention where one set of things, like image regions, looks up information in another, like the words of a text prompt."
+    },
+    {
+     "term": "Conditioning",
+     "definition": "Giving a generative model extra information, such as a caption or a class label, to steer what it creates."
+    },
+    {
+     "term": "Classifier-free guidance",
+     "definition": "A sampling trick that compares the model's predictions with and without the prompt and pushes further in the prompt's direction, making images follow text more closely."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is the key efficiency idea of latent diffusion?",
+     "options": [
+      "Use fewer training images",
+      "Run the diffusion process on a small compressed representation instead of full-resolution pixels",
+      "Skip the denoising network",
+      "Generate only black and white images"
+     ],
+     "answer": 1,
+     "explain": "An autoencoder first compresses images, so the expensive diffusion steps work on a grid many times smaller."
+    },
+    {
+     "q": "How does a text prompt steer the image in a latent diffusion model?",
+     "options": [
+      "The text is pasted onto the image",
+      "Cross-attention layers inside the denoising U-Net let image regions look up information from the encoded prompt",
+      "A human edits each step",
+      "The prompt changes the random seed only"
+     ],
+     "answer": 1,
+     "explain": "At each denoising step, the network attends to the text encoding, so the words shape what emerges from the noise."
+    },
+    {
+     "q": "Why does the autoencoder only need to be trained once?",
+     "options": [
+      "Because it is never used",
+      "Because the same compressed space can be reused for many diffusion models and tasks",
+      "Because it has no parameters",
+      "Because images never change"
+     ],
+     "answer": 1,
+     "explain": "The compression stage is separate and general, so different diffusion models for different tasks can all share it."
+    }
+   ],
+   "cover_seed": "latent-diffusion-stable",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.92,
+   "path": "papers/latent-diffusion.md",
+   "hash": "a2818e9009dd",
+   "word_count": 1421,
+   "excerpt": "In August 2022, something unusual happened in AI. A model that could turn a sentence like \"an astronaut riding a horse, oil painting\" into a detailed picture was released with its weights free for anyone to download. It ran on an ordinary gaming graphics card. Within weeks, millions of people were…"
+  },
+  {
+   "id": "paper-dqn",
+   "kind": "paper",
+   "slug": "dqn",
+   "title": "One Program, Forty-Nine Atari Games",
+   "subtitle": "Deep Q-networks: how an agent learned to play from raw pixels and a score, with no rules and no human tips",
+   "track": "reinforcement",
+   "track_order": 1,
+   "prerequisites": [
+    "paper-alexnet"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "reinforcement learning",
+    "q-learning",
+    "games",
+    "deepmind"
+   ],
+   "paper_title": "Human-level Control through Deep Reinforcement Learning",
+   "authors": [
+    "Volodymyr Mnih",
+    "Koray Kavukcuoglu",
+    "David Silver",
+    "Andrei A. Rusu",
+    "Joel Veness",
+    "et al."
+   ],
+   "year": 2015,
+   "venue": "Nature",
+   "paper_url": "https://doi.org/10.1038/nature14236",
+   "glossary": [
+    {
+     "term": "Reinforcement learning",
+     "definition": "Learning by trial and error: an agent takes actions in an environment and learns from the rewards it receives."
+    },
+    {
+     "term": "Agent",
+     "definition": "The learner that observes the environment and chooses actions."
+    },
+    {
+     "term": "Reward",
+     "definition": "A number the environment gives the agent after an action, such as points in a game. The agent tries to collect as much as possible over time."
+    },
+    {
+     "term": "Q-value",
+     "definition": "An estimate of the total future reward you will get if you take a particular action in a particular situation and play well afterwards."
+    },
+    {
+     "term": "Experience replay",
+     "definition": "Storing past experiences in a memory and training on random samples from it, instead of only on the latest moment."
+    },
+    {
+     "term": "Target network",
+     "definition": "A slowly updated copy of the network used to compute training targets, which keeps learning stable."
+    },
+    {
+     "term": "Exploration",
+     "definition": "Trying actions that are not currently believed to be best, in order to discover better strategies."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What did DQN receive as input when playing Atari games?",
+     "options": [
+      "The game's source code",
+      "Raw screen pixels and the game score",
+      "Hand-written descriptions of each game",
+      "Videos of human experts"
+     ],
+     "answer": 1,
+     "explain": "The same network and settings were used for every game, learning only from pixels and score changes."
+    },
+    {
+     "q": "Why does DQN use experience replay?",
+     "options": [
+      "To save memory",
+      "To break the strong correlation between consecutive frames and reuse each experience many times",
+      "To watch human replays",
+      "To make the game run faster"
+     ],
+     "answer": 1,
+     "explain": "Training on random past moments, rather than a stream of nearly identical consecutive frames, makes learning far more stable and data-efficient."
+    },
+    {
+     "q": "What does a Q-value represent?",
+     "options": [
+      "The quality of the graphics",
+      "The expected total future reward of taking an action in a state and acting well afterwards",
+      "The number of lives left",
+      "The probability of winning immediately"
+     ],
+     "answer": 1,
+     "explain": "Q-values look ahead: they include the immediate reward plus discounted future rewards."
+    }
+   ],
+   "cover_seed": "dqn-atari",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.9,
+   "path": "papers/dqn.md",
+   "hash": "914bec9e54ab",
+   "word_count": 1416,
+   "excerpt": "Imagine handing someone a game controller for a console they have never seen, switched on to a game they have never heard of, with no instructions. They can see the screen and a score. That is all. Within a few hours, they are playing better than most people. In 2015, a London startup that Google…"
+  },
+  {
+   "id": "paper-alphago",
+   "kind": "paper",
+   "slug": "alphago",
+   "title": "The Machine That Mastered Go a Decade Early",
+   "subtitle": "AlphaGo: neural intuition plus careful search cracked the game experts thought computers could not win",
+   "track": "reinforcement",
+   "track_order": 2,
+   "prerequisites": [
+    "paper-dqn"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "reinforcement learning",
+    "games",
+    "tree search",
+    "deepmind"
+   ],
+   "paper_title": "Mastering the Game of Go with Deep Neural Networks and Tree Search",
+   "authors": [
+    "David Silver",
+    "Aja Huang",
+    "Chris J. Maddison",
+    "Arthur Guez",
+    "Laurent Sifre",
+    "et al."
+   ],
+   "year": 2016,
+   "venue": "Nature",
+   "paper_url": "https://doi.org/10.1038/nature16961",
+   "glossary": [
+    {
+     "term": "Policy network",
+     "definition": "A network that looks at a board position and outputs a probability for each possible move, suggesting which moves are worth considering."
+    },
+    {
+     "term": "Value network",
+     "definition": "A network that looks at a board position and predicts who is likely to win from there."
+    },
+    {
+     "term": "Monte Carlo tree search",
+     "definition": "A search method that explores possible future move sequences by simulating many games, focusing effort on the most promising lines."
+    },
+    {
+     "term": "Self-play",
+     "definition": "Training a game-playing system by having it play against copies of itself."
+    },
+    {
+     "term": "Search space",
+     "definition": "All the possible sequences of moves a player could consider. In Go it is astronomically large."
+    },
+    {
+     "term": "Rollout",
+     "definition": "Playing a game out quickly to the end from some position, using a fast simple policy, to estimate who would win."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What did AlphaGo's policy network do?",
+     "options": [
+      "Predict the final score exactly",
+      "Suggest which moves are promising in a given position",
+      "Count the stones on the board",
+      "Choose the board size"
+     ],
+     "answer": 1,
+     "explain": "It narrowed the search by giving each legal move a probability, so the program could focus on the few that strong players would consider."
+    },
+    {
+     "q": "Why was Go considered much harder for computers than chess?",
+     "options": [
+      "Go has more complicated rules",
+      "Go has far more possible moves per turn and longer games, and positions are very hard to evaluate",
+      "Go is played faster",
+      "Computers cannot draw a Go board"
+     ],
+     "answer": 1,
+     "explain": "With around 250 legal moves per position and games of about 150 moves, brute-force search is hopeless, and judging who is ahead is subtle."
+    },
+    {
+     "q": "How was the value network trained?",
+     "options": [
+      "By humans labeling positions",
+      "On positions from games AlphaGo played against itself, predicting the eventual winner",
+      "By copying a chess engine",
+      "It was not trained"
+     ],
+     "answer": 1,
+     "explain": "Self-play generated millions of positions with known outcomes, and the network learned to predict the winner from a position."
+    }
+   ],
+   "cover_seed": "alphago-go",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.9,
+   "path": "papers/alphago.md",
+   "hash": "c338a43a2f33",
+   "word_count": 1505,
+   "excerpt": "In March 2016, in a hotel in Seoul, a board game was broadcast live to millions of viewers around the world. On one side sat Lee Sedol, one of the greatest Go players of his generation. On the other, a person placing stones on behalf of a program called AlphaGo. In the second game, AlphaGo played…"
+  },
+  {
+   "id": "paper-ppo",
+   "kind": "paper",
+   "slug": "ppo",
+   "title": "Learn Fast, But Not Too Fast",
+   "subtitle": "Proximal Policy Optimization: the simple, sturdy algorithm behind game-playing bots, robot hands and ChatGPT's fine-tuning",
+   "track": "reinforcement",
+   "track_order": 3,
+   "prerequisites": [
+    "paper-dqn"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "reinforcement learning",
+    "policy gradients",
+    "optimization",
+    "openai"
+   ],
+   "paper_title": "Proximal Policy Optimization Algorithms",
+   "authors": [
+    "John Schulman",
+    "Filip Wolski",
+    "Prafulla Dhariwal",
+    "Alec Radford",
+    "Oleg Klimov"
+   ],
+   "year": 2017,
+   "venue": "arXiv",
+   "paper_url": "https://arxiv.org/abs/1707.06347",
+   "glossary": [
+    {
+     "term": "Policy",
+     "definition": "The agent's strategy: a function that, given a situation, gives the probability of taking each possible action."
+    },
+    {
+     "term": "Policy gradient",
+     "definition": "A family of methods that directly adjust the policy, making actions that led to good outcomes more likely."
+    },
+    {
+     "term": "Advantage",
+     "definition": "How much better an action turned out than what the agent expected on average in that situation. Positive means better than expected."
+    },
+    {
+     "term": "Probability ratio",
+     "definition": "The new policy's probability of an action divided by the old policy's probability. A ratio of 1.2 means the action became 20% more likely."
+    },
+    {
+     "term": "Clipping",
+     "definition": "Limiting a number to a range. PPO clips the probability ratio so a single update cannot change the policy too much."
+    },
+    {
+     "term": "Trust region",
+     "definition": "A zone around the current policy within which updates are considered safe, because the data collected by the old policy still describes them well."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What problem does PPO's clipping solve?",
+     "options": [
+      "Running out of memory",
+      "Destructively large policy updates that can collapse performance",
+      "Too few actions",
+      "Slow GPUs"
+     ],
+     "answer": 1,
+     "explain": "If one update changes the policy too much, the agent can suddenly perform terribly. Clipping removes the incentive to move far from the old policy."
+    },
+    {
+     "q": "If an action had a positive advantage, what does the policy gradient try to do?",
+     "options": [
+      "Make that action less likely",
+      "Make that action more likely",
+      "Remove the action entirely",
+      "Nothing"
+     ],
+     "answer": 1,
+     "explain": "Positive advantage means the action worked better than expected, so the policy should choose it more often."
+    },
+    {
+     "q": "Why was PPO preferred over TRPO by many practitioners?",
+     "options": [
+      "It gave theoretical guarantees TRPO lacked",
+      "It achieved similar stability with a much simpler, first-order method that is easy to implement",
+      "It does not need any data",
+      "It only works on Atari"
+     ],
+     "answer": 1,
+     "explain": "TRPO enforced its trust region with complex second-order maths. PPO approximates the same behaviour with a clipped objective and ordinary gradient descent."
+    }
+   ],
+   "cover_seed": "ppo-schulman",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.88,
+   "path": "papers/ppo.md",
+   "hash": "a015c9c37ba1",
+   "word_count": 1413,
+   "excerpt": "Picture a cricket coach working with a promising young bowler. The bowler takes a wicket with a slower ball, and the coach, thrilled, says: \"From now on, bowl only slower balls!\" Next match, the batters read it immediately and the bowler is hammered. A good coach would have said, \"That worked. Use…"
+  },
+  {
    "id": "paper-attention-is-all-you-need",
    "kind": "paper",
    "slug": "attention-is-all-you-need",
@@ -3066,6 +3473,110 @@
    "hash": "66ea9a24220a",
    "word_count": 1673,
    "excerpt": "In 2017, the best translation systems in the world read sentences the way you read a long receipt: one item at a time, struggling to remember what came at the top. Eight researchers at Google asked a strange question. What if the model could look at every word at once, and simply decide which ones…"
+  },
+  {
+   "id": "paper-gpt-1",
+   "kind": "paper",
+   "slug": "gpt-1",
+   "title": "Read Seven Thousand Books, Then Take Any Test",
+   "subtitle": "GPT-1: the quiet 2018 report that introduced generative pre-training, the recipe behind every chatbot since",
+   "track": "transformers-llms",
+   "track_order": 2,
+   "prerequisites": [
+    "paper-attention-is-all-you-need"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "gpt",
+    "pre-training",
+    "transformers",
+    "language models",
+    "transfer learning"
+   ],
+   "paper_title": "Improving Language Understanding by Generative Pre-Training",
+   "authors": [
+    "Alec Radford",
+    "Karthik Narasimhan",
+    "Tim Salimans",
+    "Ilya Sutskever"
+   ],
+   "year": 2018,
+   "venue": "OpenAI technical report",
+   "paper_url": "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf",
+   "glossary": [
+    {
+     "term": "Language model",
+     "definition": "A model that predicts the next token in a piece of text, given the tokens before it."
+    },
+    {
+     "term": "Pre-training",
+     "definition": "Training a model on a huge amount of unlabeled data with a general task, like next-word prediction, before adapting it to specific tasks."
+    },
+    {
+     "term": "Fine-tuning",
+     "definition": "Continuing to train a pre-trained model on a smaller labeled dataset for a particular task."
+    },
+    {
+     "term": "Transfer learning",
+     "definition": "Reusing what a model learned on one task to do better on another, usually with much less data."
+    },
+    {
+     "term": "Decoder-only Transformer",
+     "definition": "A Transformer that keeps only the decoder half, where each token can attend to the tokens before it but not after it."
+    },
+    {
+     "term": "Token",
+     "definition": "A chunk of text, often a word or a piece of a word, that the model reads as one unit."
+    },
+    {
+     "term": "Zero-shot",
+     "definition": "Performing a task without any task-specific training examples."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What task was GPT pre-trained on?",
+     "options": [
+      "Classifying sentiment of movie reviews",
+      "Predicting the next token in a large collection of books",
+      "Translating English to French",
+      "Answering trivia questions"
+     ],
+     "answer": 1,
+     "explain": "The model learned language by predicting the next token across thousands of unpublished books, with no labels needed."
+    },
+    {
+     "q": "How did GPT handle different tasks like entailment or multiple-choice questions?",
+     "options": [
+      "A completely different architecture for each task",
+      "By converting each task's inputs into a single sequence of text with special separator tokens, then adding a small output layer",
+      "By retraining from scratch for each task",
+      "It could not handle them"
+     ],
+     "answer": 1,
+     "explain": "Task-specific input formatting let the same pre-trained Transformer handle many tasks with minimal changes."
+    },
+    {
+     "q": "Which kind of Transformer did GPT use?",
+     "options": [
+      "The full encoder-decoder",
+      "Encoder only, reading in both directions",
+      "Decoder only, where each token sees only earlier tokens",
+      "No Transformer at all"
+     ],
+     "answer": 2,
+     "explain": "GPT kept the decoder, with masked attention, which is natural for predicting the next word."
+    }
+   ],
+   "cover_seed": "gpt-1-generative-pretraining",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.92,
+   "path": "papers/gpt-1.md",
+   "hash": "76e6bc821915",
+   "word_count": 1473,
+   "excerpt": "In June 2018, OpenAI posted a blog post and a short technical report. It did not appear at a big conference. It had no flashy demo. Its main claim was modest-sounding: a model pre-trained on a pile of books did better on a collection of language understanding tests. But hidden in that report was…"
   }
  ]
 }

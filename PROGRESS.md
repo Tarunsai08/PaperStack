@@ -62,16 +62,16 @@ Validate content with `python pipeline/build_index.py` (`--partial` allows links
 - [x] paper-vae
 - [x] paper-gan
 - [x] paper-ddpm
-- [ ] paper-latent-diffusion
+- [x] paper-latent-diffusion
 
 ### Reinforcement
-- [ ] paper-dqn
-- [ ] paper-alphago
-- [ ] paper-ppo
+- [x] paper-dqn
+- [x] paper-alphago
+- [x] paper-ppo
 
 ### Transformers and LLMs
 - [x] paper-attention-is-all-you-need
-- [ ] paper-gpt-1
+- [x] paper-gpt-1
 - [ ] paper-bert
 - [ ] paper-gpt-3
 - [ ] paper-scaling-laws
