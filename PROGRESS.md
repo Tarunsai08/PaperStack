@@ -19,7 +19,10 @@ Validate content with `python pipeline/build_index.py` (`--partial` allows links
 - [x] **Phase 5: Android app and CI** (Capacitor, icons, splash, native plugins, update check, workflows, README)
   - Verified locally with the Android SDK: `assembleDebug` and a keystore-signed `assembleRelease` both build; `aapt2` shows versionCode/versionName injected from Gradle properties; `apksigner` verifies the release signature; all 52 articles are bundled in the APK.
   - Workflows pass `actionlint`. The first real Release and Pages deploy happen on the first push to `main`.
-- [ ] **Phase 6: Pipeline and automation** (llm.py, fetch, extract, generate, daily workflow, run.sh)
+- [x] **Phase 6: Pipeline and automation** (llm.py, fetch, extract, generate, daily workflow, run.sh)
+  - 47 pipeline tests (validator, importance scoring, candidate selection, arXiv parsing, section splitting, provider fallback, retries, cache, JSON parsing, full generate flow with a fake model).
+  - Integration run in the sandbox: real arXiv metadata + real PDF extraction + real OpenAI SDK against a local fake endpoint wrote a valid article; a re-run skipped it (no duplicates). Without API keys, `generate_article.py` and the daily workflow exit cleanly.
+  - Not testable here: real Gemini/Groq calls (no keys in this environment).
 - [ ] **Phase 7: Polish and final review**
 
 ## Seed articles

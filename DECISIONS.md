@@ -46,3 +46,13 @@ Choices made while building, so nobody has to guess later.
 - **Content-only commits** (messages containing `[content]`) skip the APK job via a job-level `if`, not `paths-ignore`, so seed-content commits still build APKs.
 - **A separate `ci.yml`** runs tests, lint, strict validation and a web build on pull requests and non-main branches, so problems are caught before they reach `main`.
 - **Local Gradle builds in the sandbox** used Google's Maven Central mirror through a user-level init script, because Maven Central rate-limited the sandbox. Nothing about this is in the repository; CI uses the normal repositories.
+
+## Pipeline
+
+- **Metadata is authoritative, not generated.** Title, authors, year, venue, link, id, slug, track order, `generated_by` and `importance_score` are set by the pipeline from Semantic Scholar or arXiv, overriding whatever the model writes.
+- **Discovery has a fallback.** Semantic Scholar's anonymous quota was exhausted from this environment (HTTP 429), and OpenAlex now requires a key, so `config.yaml` carries a curated `seed_papers` queue of 40 important papers (every arXiv id verified against the arXiv API). It is used whenever discovery finds fewer papers than needed.
+- **Recommendations** use the per-paper endpoint with `from=all-cs`; the multi-seed endpoint only returns very recent papers, which never pass the citation filter.
+- **Per-provider prompt budgets** (`max_input_tokens`): Groq's free tier has tight tokens-per-minute limits, so it gets a shorter paper excerpt than Gemini.
+- **Local providers are opt-in.** Ollama is only used with `--provider ollama` or `PAPERSTACK_USE_LOCAL=1`, so CI never waits on a localhost connection.
+- **Small slips are repaired, not rejected.** Unknown `article:` links become plain text and `[[terms]]` missing from the glossary lose their brackets; structural problems trigger one retry with the validator's exact messages.
+- **The daily workflow starts the web deploy itself** with `gh workflow run`, because pushes made with `GITHUB_TOKEN` do not trigger other workflows.

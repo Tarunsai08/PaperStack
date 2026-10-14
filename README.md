@@ -125,13 +125,15 @@ All three routes produce the same file format, validated by the same rules.
 
 With `GEMINI_API_KEY` or `GROQ_API_KEY` set, the daily workflow:
 
-1. finds important, well-cited papers on Semantic Scholar that are not already in `content/`,
+1. finds important, well-cited papers on Semantic Scholar that are not already in `content/` (and, if Semantic Scholar's free API is busy, takes the next paper from the curated `seed_papers` queue in `pipeline/config.yaml`, using arXiv for metadata),
 2. downloads and extracts the PDF,
 3. asks the model for structured notes, then for the article itself, using the shared writing guide,
 4. validates it (retrying once with the validator's error messages),
 5. commits it with a `[content]` message and redeploys the web app. The Android app picks it up through content sync; no new APK is built for content-only commits.
 
-Run it on demand from **Actions → Daily Generate → Run workflow**.
+Run it on demand from **Actions → Daily Generate → Run workflow**. Each run uploads its structured log (`logs/run-<date>.jsonl`) as an artifact.
+
+Paper metadata (title, authors, year, venue, link) always comes from Semantic Scholar or arXiv, never from the model, and every article must pass the same validator as the seed content. To steer what gets written next, reorder or extend `seed_papers` in `pipeline/config.yaml`. A free `S2_API_KEY` makes discovery much more reliable, because Semantic Scholar's shared anonymous quota is often exhausted.
 
 ### B. On your own computer with Ollama (free, local)
 
@@ -140,6 +142,9 @@ Run it on demand from **Actions → Daily Generate → Run workflow**.
 brew install ollama            # or see https://ollama.com
 ollama pull qwen2.5:14b
 pip install -r pipeline/requirements.txt
+
+# start Ollama with a context window big enough for a paper
+OLLAMA_CONTEXT_LENGTH=32768 ollama serve
 
 # generate two articles with the local model only
 ./pipeline/run.sh --provider ollama --count 2

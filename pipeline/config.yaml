@@ -1,0 +1,99 @@
+# PaperStack content pipeline configuration.
+# Model names and limits live only here. Check the providers' consoles for current free models.
+
+topics:
+  - name: "machine learning foundations"
+    query: "machine learning"
+    track: "foundations"
+  - name: "deep learning architectures"
+    query: "deep neural network architecture"
+    track: "deep-learning"
+  - name: "natural language processing"
+    query: "neural language representation"
+    track: "sequences-language"
+  - name: "generative models"
+    query: "generative model image synthesis"
+    track: "generative"
+  - name: "reinforcement learning"
+    query: "deep reinforcement learning"
+    track: "reinforcement"
+  - name: "transformers"
+    query: "transformer language model pretraining"
+    track: "transformers-llms"
+  - name: "large language models"
+    query: "large language model"
+    track: "useful-llms"
+  - name: "ml systems"
+    query: "efficient training inference large models GPU"
+    track: "ai-systems"
+
+# A curated queue of important papers (arXiv ids, all verified). Used when Semantic Scholar
+# discovery finds nothing new (for example when its free API is rate-limited), and as a way
+# to steer what gets written next. Order = priority. Already-covered papers are skipped.
+seed_papers:
+  - { arxiv: "1607.06450", track: "deep-learning" }        # Layer Normalization
+  - { arxiv: "1503.02531", track: "deep-learning" }        # Knowledge distillation
+  - { arxiv: "1406.1078", track: "sequences-language" }    # RNN encoder-decoder (GRU)
+  - { arxiv: "1706.03741", track: "useful-llms" }          # Deep RL from human preferences
+  - { arxiv: "2203.11171", track: "useful-llms" }          # Self-consistency
+  - { arxiv: "2010.02502", track: "generative" }           # DDIM
+  - { arxiv: "2207.12598", track: "generative" }           # Classifier-free guidance
+  - { arxiv: "1910.10683", track: "transformers-llms" }    # T5
+  - { arxiv: "1907.11692", track: "transformers-llms" }    # RoBERTa
+  - { arxiv: "1701.06538", track: "transformers-llms" }    # Sparsely-gated mixture of experts
+  - { arxiv: "2101.03961", track: "transformers-llms" }    # Switch Transformers
+  - { arxiv: "2210.03629", track: "useful-llms" }          # ReAct
+  - { arxiv: "2302.04761", track: "useful-llms" }          # Toolformer
+  - { arxiv: "2212.08073", track: "useful-llms" }          # Constitutional AI
+  - { arxiv: "2305.14314", track: "useful-llms" }          # QLoRA
+  - { arxiv: "2307.09288", track: "useful-llms" }          # Llama 2
+  - { arxiv: "2310.06825", track: "useful-llms" }          # Mistral 7B
+  - { arxiv: "2312.00752", track: "transformers-llms" }    # Mamba
+  - { arxiv: "1910.02054", track: "ai-systems" }           # ZeRO
+  - { arxiv: "1811.06965", track: "ai-systems" }           # GPipe
+  - { arxiv: "2104.04473", track: "ai-systems" }           # Megatron-LM at scale
+  - { arxiv: "1710.03740", track: "ai-systems" }           # Mixed precision training
+  - { arxiv: "2208.07339", track: "ai-systems" }           # LLM.int8()
+  - { arxiv: "2210.17323", track: "ai-systems" }           # GPTQ
+  - { arxiv: "2211.17192", track: "ai-systems" }           # Speculative decoding
+  - { arxiv: "1409.1556", track: "deep-learning" }         # VGG
+  - { arxiv: "1409.4842", track: "deep-learning" }         # GoogLeNet / Inception
+  - { arxiv: "1506.01497", track: "deep-learning" }        # Faster R-CNN
+  - { arxiv: "1506.02640", track: "deep-learning" }        # YOLO
+  - { arxiv: "1511.06434", track: "generative" }           # DCGAN
+  - { arxiv: "1703.10593", track: "generative" }           # CycleGAN
+  - { arxiv: "1812.04948", track: "generative" }           # StyleGAN
+  - { arxiv: "1609.03499", track: "generative" }           # WaveNet
+  - { arxiv: "1901.02860", track: "transformers-llms" }    # Transformer-XL
+  - { arxiv: "2004.05150", track: "transformers-llms" }    # Longformer
+  - { arxiv: "2204.14198", track: "transformers-llms" }    # Flamingo
+  - { arxiv: "2212.04356", track: "transformers-llms" }    # Whisper
+  - { arxiv: "2304.02643", track: "deep-learning" }        # Segment Anything
+  - { arxiv: "1712.01815", track: "reinforcement" }        # AlphaZero
+  - { arxiv: "1911.08265", track: "reinforcement" }        # MuZero
+seed_importance: 0.8
+
+per_day_new: 2
+min_citations: 200
+prefer_open_access: true
+max_input_tokens: 30000
+
+providers:                     # tried in order with fallback
+  - name: gemini
+    base_url: "https://generativelanguage.googleapis.com/v1beta/openai/"
+    model: "gemini-flash-latest"      # set to the current free Flash model in AI Studio
+    api_key_env: "GEMINI_API_KEY"
+    requests_per_minute: 10
+    max_input_tokens: 30000
+  - name: groq
+    base_url: "https://api.groq.com/openai/v1"
+    model: "llama-3.3-70b-versatile"  # check Groq console for current free models
+    api_key_env: "GROQ_API_KEY"
+    requests_per_minute: 20
+    max_input_tokens: 7000            # free-tier tokens-per-minute limits are tight
+  - name: ollama
+    base_url: "http://localhost:11434/v1"
+    model: "qwen2.5:14b"
+    api_key_env: ""                   # local: only used with --provider ollama or PAPERSTACK_USE_LOCAL=1
+    requests_per_minute: 60
+    max_input_tokens: 12000           # start Ollama with OLLAMA_CONTEXT_LENGTH=32768
