@@ -137,7 +137,7 @@ Write a chain-of-thought exemplar for this question: "A train leaves at 9:40 and
 
 ### Not only arithmetic
 
-The same trick worked on problems with no numbers at all. For a commonsense question like "Would a pear sink in water?", a good chain notes that pears are mostly water and slightly less dense than it, so they float, and only then answers "no." For a symbolic task like "Take the last letters of the words in 'Amy Brown' and join them," the chain spells out "The last letter of Amy is y. The last letter of Brown is n. Joining them gives yn." Writing the intermediate facts down turns one hard leap into several small, checkable hops, whatever the subject.
+The same trick worked on problems with no numbers at all. For a commonsense question like "Would a pear sink in water?", an exemplar from the paper notes that a pear is less dense than water, and that objects less dense than water float, and only then answers "no." For a symbolic task like "Take the last letters of the words in 'Amy Brown' and join them," the chain spells out "The last letter of Amy is y. The last letter of Brown is n. Joining them gives yn." Writing the intermediate facts down turns one hard leap into several small, checkable hops, whatever the subject.
 
 ## What they found
 
