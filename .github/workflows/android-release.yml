@@ -57,6 +57,10 @@ jobs:
           java-version: "21"
           cache: gradle
       - uses: android-actions/setup-android@v3
+        with:
+          # The default list includes the legacy "tools" package, which the
+          # current SDK repository no longer has, so sdkmanager fails.
+          packages: "platform-tools platforms;android-35 build-tools;34.0.0 build-tools;35.0.0"
 
       - name: Decode keystore
         if: env.HAS_KEYSTORE == 'true'
