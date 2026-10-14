@@ -1,7 +1,7 @@
 {
- "content_version": "400f28a94996e8a7",
+ "content_version": "439a2380c9ee4dad",
  "generated_at": "2026-10-14",
- "count": 2,
+ "count": 7,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -89,6 +89,448 @@
    "hash": "e1ec3a5943c1",
    "word_count": 1235,
    "excerpt": "Before lunch today, you probably used AI a dozen times without noticing. Your phone unlocked when it saw your face. Your inbox quietly hid three scam emails. Your keyboard guessed the next word before you typed it. Here is the strange part. If you ask three people what \"AI\" means, you will get…"
+  },
+  {
+   "id": "primer-data-features-labels",
+   "kind": "primer",
+   "slug": "data-features-labels",
+   "title": "What Machines Actually Learn From",
+   "subtitle": "Data, features and labels: the raw ingredients behind every AI system you will ever meet",
+   "track": "start-here",
+   "track_order": 2,
+   "prerequisites": [
+    "primer-ai-ml-dl-map"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "foundations",
+    "data",
+    "features",
+    "supervised learning"
+   ],
+   "glossary": [
+    {
+     "term": "Dataset",
+     "definition": "A collection of examples that a model learns from, often stored like a big spreadsheet."
+    },
+    {
+     "term": "Example",
+     "definition": "One row of a dataset: a single house, email, photo or patient the model can learn from."
+    },
+    {
+     "term": "Feature",
+     "definition": "One measurable property of an example, turned into a number, like a house's area or a mango's softness."
+    },
+    {
+     "term": "Label",
+     "definition": "The correct answer attached to an example, which the model tries to predict, like the price of a house or whether an email is spam."
+    },
+    {
+     "term": "Classification",
+     "definition": "A prediction task where the answer is a category, such as spam or not spam, cat or dog."
+    },
+    {
+     "term": "Regression",
+     "definition": "A prediction task where the answer is a number on a scale, such as a price or a temperature."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In a dataset of houses, which of these is most likely the label?",
+     "options": [
+      "Number of bedrooms",
+      "Distance to the metro",
+      "Selling price",
+      "Floor area"
+     ],
+     "answer": 2,
+     "explain": "The label is the thing you want to predict. Bedrooms, distance and area are features that help predict the price."
+    },
+    {
+     "q": "Predicting tomorrow's temperature in degrees is an example of what kind of task?",
+     "options": [
+      "Classification",
+      "Regression",
+      "Clustering",
+      "It is not machine learning"
+     ],
+     "answer": 1,
+     "explain": "The answer is a number on a continuous scale, which makes it regression."
+    },
+    {
+     "q": "Why must every feature eventually become a number?",
+     "options": [
+      "Because numbers look more scientific",
+      "Because models are mathematical functions that can only multiply and add numbers",
+      "Because text is illegal in datasets",
+      "Because labels are always numbers"
+     ],
+     "answer": 1,
+     "explain": "A model is math: it multiplies, adds and compares numbers. Words, pixels and categories all have to be encoded as numbers first."
+    }
+   ],
+   "cover_seed": "data-features-labels",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.85,
+   "path": "primers/data-features-labels.md",
+   "hash": "960520b507d9",
+   "word_count": 1090,
+   "excerpt": "Watch a seasoned fruit seller pick a mango. She presses it gently, sniffs near the stem, glances at the colour, and says \"this one, eat it tomorrow.\" She never studied botany. She has simply seen tens of thousands of mangoes and remembers how each one turned out. That is exactly what machine…"
+  },
+  {
+   "id": "primer-loss-functions",
+   "kind": "primer",
+   "slug": "loss-functions",
+   "title": "How Wrong Is the Model?",
+   "subtitle": "The single number every AI system is secretly trying to shrink",
+   "track": "start-here",
+   "track_order": 3,
+   "prerequisites": [
+    "primer-data-features-labels"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "foundations",
+    "loss functions",
+    "optimization"
+   ],
+   "glossary": [
+    {
+     "term": "Loss function",
+     "definition": "A formula that takes the model's predictions and the true labels and returns one number saying how wrong the model is. Lower is better."
+    },
+    {
+     "term": "Prediction",
+     "definition": "The model's output for an example: its guess at the label."
+    },
+    {
+     "term": "Mean squared error",
+     "definition": "A loss for numeric predictions: square each error, then average them. Big mistakes count much more than small ones."
+    },
+    {
+     "term": "Cross-entropy",
+     "definition": "A loss for predicted probabilities. It is small when the model gives high probability to the right answer and huge when it is confident and wrong."
+    },
+    {
+     "term": "Parameter",
+     "definition": "One of the adjustable numbers inside a model. Training means finding parameter values that make the loss small."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why do we square errors in mean squared error instead of just adding them up?",
+     "options": [
+      "Squaring makes the numbers smaller",
+      "So positive and negative errors cannot cancel out, and big errors count more",
+      "Because computers cannot add negative numbers",
+      "Squaring is required by law in statistics"
+     ],
+     "answer": 1,
+     "explain": "An error of +10 and one of -10 would add to zero. Squaring makes both 100 and also punishes large mistakes far more than small ones."
+    },
+    {
+     "q": "A model says 'cat' with 99% confidence, but the photo is a dog. What does cross-entropy do?",
+     "options": [
+      "Gives a tiny penalty, because the model was confident",
+      "Gives no penalty",
+      "Gives a very large penalty, because the model was confident and wrong",
+      "Crashes"
+     ],
+     "answer": 2,
+     "explain": "Cross-entropy uses the probability given to the true answer. Here the dog got only 1%, and the negative log of 0.01 is large."
+    },
+    {
+     "q": "What does a model 'want' during training?",
+     "options": [
+      "The highest possible loss",
+      "A loss of exactly 1",
+      "The lowest possible loss",
+      "A loss equal to the number of examples"
+     ],
+     "answer": 2,
+     "explain": "Training adjusts the parameters to make the loss as small as possible."
+    }
+   ],
+   "cover_seed": "loss-functions",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.85,
+   "path": "primers/loss-functions.md",
+   "hash": "2b6aac266681",
+   "word_count": 1053,
+   "excerpt": "A weather app says \"90% chance of rain,\" and the day turns out bright and sunny. Another app said \"60% chance of rain.\" Both were wrong. But was one of them more wrong? Most people feel that the 90% app deserves more blame. It was confident and mistaken. That gut feeling, turned into a precise…"
+  },
+  {
+   "id": "primer-gradient-descent",
+   "kind": "primer",
+   "slug": "gradient-descent",
+   "title": "Finding the Bottom of a Valley Blindfolded",
+   "subtitle": "Gradient descent: the humble walking algorithm that trains almost every AI model",
+   "track": "start-here",
+   "track_order": 4,
+   "prerequisites": [
+    "primer-loss-functions"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "foundations",
+    "optimization",
+    "gradient descent"
+   ],
+   "glossary": [
+    {
+     "term": "Gradient",
+     "definition": "The slope of the loss with respect to each parameter. It points in the direction where the loss rises fastest."
+    },
+    {
+     "term": "Gradient descent",
+     "definition": "A training method that repeatedly nudges every parameter a small step in the direction that lowers the loss."
+    },
+    {
+     "term": "Learning rate",
+     "definition": "The size of each step in gradient descent. Too small and training crawls; too large and it overshoots or blows up."
+    },
+    {
+     "term": "Derivative",
+     "definition": "A number that says how much a function's output changes when you nudge its input a tiny bit, in other words its slope at that point."
+    },
+    {
+     "term": "Mini-batch",
+     "definition": "A small random handful of training examples used to estimate the gradient for one step, instead of using the whole dataset."
+    },
+    {
+     "term": "Local minimum",
+     "definition": "A low point in the loss landscape that is lower than everything nearby but not necessarily the lowest point overall."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In gradient descent, which way do you step?",
+     "options": [
+      "In the direction of the gradient",
+      "Opposite to the gradient, downhill",
+      "In a random direction each time",
+      "Always to the right"
+     ],
+     "answer": 1,
+     "explain": "The gradient points uphill, where the loss increases fastest. Stepping the opposite way lowers the loss."
+    },
+    {
+     "q": "What usually happens if the learning rate is far too large?",
+     "options": [
+      "Training becomes perfectly accurate",
+      "Steps overshoot the valley, and the loss can bounce around or explode",
+      "The model stops using data",
+      "Nothing changes"
+     ],
+     "answer": 1,
+     "explain": "Huge steps leap over the bottom of the valley, sometimes landing higher than where they started."
+    },
+    {
+     "q": "Why do most modern models use mini-batches?",
+     "options": [
+      "Because a few examples give a cheap, good-enough estimate of the slope, so you can take many more steps",
+      "Because using all the data is mathematically wrong",
+      "Because mini-batches remove the need for a loss function",
+      "Because GPUs cannot store whole datasets in principle"
+     ],
+     "answer": 0,
+     "explain": "Computing the exact gradient over millions of examples is slow. A small random batch gives a noisy but useful estimate, so training makes progress much faster."
+    }
+   ],
+   "cover_seed": "gradient-descent",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.88,
+   "path": "primers/gradient-descent.md",
+   "hash": "0230cab4cacf",
+   "word_count": 1122,
+   "excerpt": "You are standing somewhere on a hillside in thick fog. You cannot see more than a metre. Somewhere below is the valley floor, where there is a warm village and a cup of chai. You have no map. What do you do? You feel the ground under your feet, figure out which way slopes down most steeply, and…"
+  },
+  {
+   "id": "primer-classification",
+   "kind": "primer",
+   "slug": "classification",
+   "title": "Yes or No? How Machines Make Decisions",
+   "subtitle": "Logistic regression: a weighted vote, a smooth squash, and the first real classifier you can build by hand",
+   "track": "start-here",
+   "track_order": 5,
+   "prerequisites": [
+    "primer-gradient-descent"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "foundations",
+    "classification",
+    "logistic regression"
+   ],
+   "glossary": [
+    {
+     "term": "Logistic regression",
+     "definition": "A simple classifier that adds up weighted features into a score, then squashes the score into a probability between 0 and 1."
+    },
+    {
+     "term": "Weight",
+     "definition": "A number that says how strongly a feature pushes the decision, and in which direction. Weights are the parameters a classifier learns."
+    },
+    {
+     "term": "Bias",
+     "definition": "An extra learned number added to the score that shifts the decision up or down regardless of the features."
+    },
+    {
+     "term": "Sigmoid",
+     "definition": "An S-shaped function that turns any number into a value between 0 and 1, so a score can be read as a probability."
+    },
+    {
+     "term": "Decision boundary",
+     "definition": "The line (or surface) that separates the region where the model says yes from the region where it says no."
+    },
+    {
+     "term": "Threshold",
+     "definition": "The cut-off probability for saying yes, usually 0.5, which can be moved to make the model more cautious or more eager."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What does the sigmoid function do in logistic regression?",
+     "options": [
+      "It picks the best features automatically",
+      "It squashes any score into a value between 0 and 1",
+      "It removes the need for training",
+      "It sorts the examples by size"
+     ],
+     "answer": 1,
+     "explain": "The sigmoid maps big positive scores close to 1, big negative scores close to 0, and a score of 0 to exactly 0.5."
+    },
+    {
+     "q": "A feature has a large negative weight. What does that mean?",
+     "options": [
+      "The feature is ignored",
+      "Higher values of that feature push the prediction toward 'no'",
+      "Higher values push the prediction toward 'yes'",
+      "The model is broken"
+     ],
+     "answer": 1,
+     "explain": "The weight multiplies the feature. A negative weight means more of that feature lowers the score, which lowers the probability of 'yes'."
+    },
+    {
+     "q": "Why can't plain logistic regression solve every classification problem?",
+     "options": [
+      "It can only draw straight-line boundaries between classes",
+      "It needs more than two features",
+      "It cannot output probabilities",
+      "It only works on images"
+     ],
+     "answer": 0,
+     "explain": "Its decision boundary is always a straight line (or flat surface). Some patterns need curved boundaries, which is where neural networks come in."
+    }
+   ],
+   "cover_seed": "classification-logistic",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.84,
+   "path": "primers/classification.md",
+   "hash": "dc92227be4bc",
+   "word_count": 1058,
+   "excerpt": "Every day, software makes millions of tiny yes-or-no decisions about you. Is this card payment fraud? Is this email spam? Should this loan be approved? Will this user click this ad? Many of these decisions are made by an idea so simple you can compute it on the back of a bus ticket. It has a…"
+  },
+  {
+   "id": "primer-overfitting",
+   "kind": "primer",
+   "slug": "overfitting",
+   "title": "Memorizing vs Learning",
+   "subtitle": "Overfitting, underfitting and test sets: how to tell if a model actually understands anything",
+   "track": "start-here",
+   "track_order": 6,
+   "prerequisites": [
+    "primer-classification"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "foundations",
+    "overfitting",
+    "generalization",
+    "evaluation"
+   ],
+   "glossary": [
+    {
+     "term": "Overfitting",
+     "definition": "When a model learns the training examples too closely, including their noise and quirks, so it does well on them but badly on new data."
+    },
+    {
+     "term": "Underfitting",
+     "definition": "When a model is too simple to capture the real pattern, so it does badly even on the training data."
+    },
+    {
+     "term": "Generalization",
+     "definition": "A model's ability to perform well on new examples it never saw during training. This is the actual goal of machine learning."
+    },
+    {
+     "term": "Training set",
+     "definition": "The examples the model learns from."
+    },
+    {
+     "term": "Validation set",
+     "definition": "A separate set of examples used during development to compare models and choose settings, without touching the final test."
+    },
+    {
+     "term": "Test set",
+     "definition": "Examples locked away until the very end and used once to measure how well the finished model generalizes."
+    },
+    {
+     "term": "Regularization",
+     "definition": "Any technique that discourages a model from becoming too complex, so it learns the general pattern instead of memorizing."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A model gets 99% accuracy on training data and 60% on new data. What is most likely happening?",
+     "options": [
+      "Underfitting",
+      "Overfitting",
+      "Perfect generalization",
+      "The test set is too large"
+     ],
+     "answer": 1,
+     "explain": "A big gap between training and test performance is the classic sign of overfitting: the model memorized instead of learning."
+    },
+    {
+     "q": "Why should the test set be used only once, at the very end?",
+     "options": [
+      "Because it is expensive to load",
+      "Because if you keep tuning against it, it stops being an honest measure of performance on unseen data",
+      "Because models cannot read test data twice",
+      "Because it contains no labels"
+     ],
+     "answer": 1,
+     "explain": "Every decision you make by peeking at test results leaks information into the model, making the score look better than real-world performance."
+    },
+    {
+     "q": "Which of these usually helps reduce overfitting?",
+     "options": [
+      "Making the model much bigger with no other change",
+      "Training on fewer examples",
+      "Getting more training data or adding regularization",
+      "Evaluating only on the training set"
+     ],
+     "answer": 2,
+     "explain": "More data makes memorizing harder, and regularization pushes the model toward simpler, more general patterns."
+    }
+   ],
+   "cover_seed": "overfitting-memorizing",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.86,
+   "path": "primers/overfitting.md",
+   "hash": "55f910f913af",
+   "word_count": 1059,
+   "excerpt": "Two students prepare for the same exam. Riya gets hold of last year's paper and memorizes every answer, word for word. Arjun works through the same paper too, but keeps asking why each answer is right. On exam day, the questions are new. Riya, who scored perfectly on every practice run, freezes.…"
   },
   {
    "id": "paper-attention-is-all-you-need",

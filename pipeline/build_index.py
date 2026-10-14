@@ -396,8 +396,9 @@ def build(content: Path = CONTENT, strict: bool = False, partial: bool = False, 
     for path, raw, data, body in parsed:
         rel = path.relative_to(content).as_posix()
         errors, warnings = validate_article(data, body, track_ids, all_ids)
+        deferred: list[Issue] = []
         if partial:
-            warnings += [e for e in errors if e.code in CROSS_REF_CODES]
+            deferred = [e for e in errors if e.code in CROSS_REF_CODES]
             errors = [e for e in errors if e.code not in CROSS_REF_CODES]
         aid = data.get("id")
         if aid in seen:
@@ -419,6 +420,8 @@ def build(content: Path = CONTENT, strict: bool = False, partial: bool = False, 
             print(f"ERROR {rel}: [{e.code}] {e.message}")
         for w in warnings:
             print(f"WARN  {rel}: [{w.code}] {w.message}")
+        for d in deferred:
+            print(f"LATER {rel}: [{d.code}] {d.message}")
         problems += len(errors) + (len(warnings) if strict else 0)
 
         if errors:

@@ -24,11 +24,11 @@ Validate content with `python pipeline/build_index.py` (`--partial` allows links
 
 ### Track 0: Start Here (primers)
 - [x] primer-ai-ml-dl-map
-- [ ] primer-data-features-labels
-- [ ] primer-loss-functions
-- [ ] primer-gradient-descent
-- [ ] primer-classification
-- [ ] primer-overfitting
+- [x] primer-data-features-labels
+- [x] primer-loss-functions
+- [x] primer-gradient-descent
+- [x] primer-classification
+- [x] primer-overfitting
 - [ ] primer-neural-networks
 - [ ] primer-backprop-intuition
 - [ ] primer-embeddings
