@@ -175,7 +175,7 @@ export default function Import() {
             {!raw && (
               <button
                 onClick={pasteFromClipboard}
-                className="press absolute bottom-4 right-3 flex h-10 items-center gap-1.5 rounded-full bg-surface-2 px-3.5 text-[13px] font-semibold"
+                className="press absolute bottom-4 right-3 flex h-11 items-center gap-1.5 rounded-full bg-surface-2 px-3.5 text-[13px] font-semibold"
               >
                 <ClipboardPaste size={16} /> Paste
               </button>

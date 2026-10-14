@@ -6,6 +6,17 @@ PaperStack is a Substack-style reading app for Android (and the web) that takes 
 
 It costs nothing to run: no server, no database, no accounts. Pushing to `main` builds an installable APK and deploys the web version automatically.
 
+<p align="center">
+  <img src="docs/screenshots/home.webp" width="200" alt="Home screen with continue reading and the next article on the path">
+  <img src="docs/screenshots/article.webp" width="200" alt="Article header in dark mode">
+  <img src="docs/screenshots/reader.webp" width="200" alt="Reading view in sepia with an analogy callout">
+</p>
+<p align="center">
+  <img src="docs/screenshots/learn.webp" width="200" alt="Learning path with progress per part">
+  <img src="docs/screenshots/search.webp" width="200" alt="Search results with filter chips">
+  <img src="docs/screenshots/import.webp" width="200" alt="Import screen for adding your own articles">
+</p>
+
 ---
 
 ## Contents

@@ -17,7 +17,7 @@ function Chip({ active, onClick, children, dot }: { active: boolean; onClick: ()
         onClick();
       }}
       aria-pressed={active}
-      className={`press flex h-9 shrink-0 items-center gap-1.5 rounded-full border px-3.5 text-[13.5px] font-medium transition-colors ${
+      className={`press flex h-11 shrink-0 items-center gap-1.5 rounded-full border px-4 text-[13.5px] font-medium transition-colors ${
         active ? 'border-ink bg-ink text-bg' : 'border-line bg-surface text-ink'
       }`}
     >
@@ -104,7 +104,7 @@ export default function Search() {
               <button
                 key={t}
                 onClick={() => setQ(t)}
-                className="press flex h-10 items-center gap-1.5 rounded-full border border-line bg-surface px-3.5 text-[14px] font-medium"
+                className="press flex h-11 items-center gap-1.5 rounded-full border border-line bg-surface px-4 text-[14px] font-medium"
               >
                 {t}
                 <span className="text-[12px] text-muted">{n}</span>

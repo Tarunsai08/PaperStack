@@ -3,7 +3,6 @@
  * app gets new content without reinstalling. Silent when offline.
  */
 import { BUNDLED_BASE, fetchJson } from './content';
-import { parseAndValidate } from './frontmatter';
 import { store, type RemoteState } from './storage';
 import type { ContentIndex, IndexEntry, Track } from './types';
 
@@ -72,6 +71,7 @@ async function doSync({ force = false }: { force?: boolean; bundledVersion?: str
   const plan = planSync(bundled.articles, prev, remoteIndex.articles);
   const trackIds = new Set([...(remoteTracks ?? []).map((t) => t.id), ...bundled.articles.map((a) => a.track)]);
 
+  const { parseAndValidate } = await import('./frontmatter');
   const articles: Record<string, string> = {};
   const index: IndexEntry[] = [];
   for (const e of plan.keep) {

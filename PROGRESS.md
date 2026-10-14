@@ -23,7 +23,11 @@ Validate content with `python pipeline/build_index.py` (`--partial` allows links
   - 47 pipeline tests (validator, importance scoring, candidate selection, arXiv parsing, section splitting, provider fallback, retries, cache, JSON parsing, full generate flow with a fake model).
   - Integration run in the sandbox: real arXiv metadata + real PDF extraction + real OpenAI SDK against a local fake endpoint wrote a valid article; a re-run skipped it (no duplicates). Without API keys, `generate_article.py` and the daily workflow exit cleanly.
   - Not testable here: real Gemini/Groq calls (no keys in this environment).
-- [ ] **Phase 7: Polish and final review**
+- [x] **Phase 7: Polish and final review**
+  - Visual QA of all 9 main screens in light, dark and sepia at 360px (scripted in Chromium): no console errors, no horizontal overflow. Fixed the text-size slider track in sepia/dark.
+  - Accessibility: every interactive control is at least 44px, reduced motion is honoured by CSS and framer-motion (`MotionConfig reducedMotion="user"`), the Android system font size is applied through the text-zoom plugin, and the sepia accent was darkened so all text pairings meet WCAG AA (4.5:1).
+  - Performance: the start-up bundle no longer pulls in the YAML parser or the validator (split into `markdownText.ts`, loaded on demand); `copy-content` copies incrementally.
+  - Final checks: tsc, eslint, 37 app tests, 47 pipeline tests, `build_index.py --strict`, web build and `assembleDebug` all pass. Screenshots in `docs/screenshots/` and the README.
 
 ## Seed articles
 

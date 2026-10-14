@@ -6,7 +6,7 @@
  *   remote   - downloaded later by contentSync (overrides bundled with the same id)
  *   imported - pasted by the user on the Import screen (never overrides the others)
  */
-import { excerpt, parseArticle, readMinutes, wordCount } from './frontmatter';
+import { excerpt, readMinutes, wordCount } from './markdownText';
 import type { ImportedArticle } from './storage';
 import type { Article, ContentIndex, Frontmatter, IndexEntry, Track } from './types';
 
@@ -102,6 +102,8 @@ export interface BodySources {
 
 export async function loadArticleBody(article: Article, src: BodySources): Promise<string> {
   if (article.source === 'imported') return src.imports[article.id]?.body ?? '';
+  // The YAML parser is loaded on demand so it stays out of the start-up bundle.
+  const { parseArticle } = await import('./frontmatter');
   if (article.source === 'remote' && src.remoteArticles[article.id]) {
     return parseArticle(src.remoteArticles[article.id]).body;
   }

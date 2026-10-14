@@ -24,6 +24,7 @@
     "@capacitor/share": "^7.0.4",
     "@capacitor/splash-screen": "^7.0.5",
     "@capacitor/status-bar": "^7.0.6",
+    "@capacitor/text-zoom": "^7.0.4",
     "@fontsource-variable/inter": "^5.3.0",
     "@fontsource-variable/literata": "^5.3.0",
     "framer-motion": "^12.43.0",

@@ -1,4 +1,4 @@
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, MotionConfig } from 'framer-motion';
 import { lazy, Suspense, useEffect, useRef } from 'react';
 import {
   HashRouter,
@@ -159,10 +159,12 @@ function Shell() {
 
 export default function App() {
   return (
-    <HashRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-      <ContentProvider>
-        <Shell />
-      </ContentProvider>
-    </HashRouter>
+    <MotionConfig reducedMotion="user">
+      <HashRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+        <ContentProvider>
+          <Shell />
+        </ContentProvider>
+      </HashRouter>
+    </MotionConfig>
   );
 }

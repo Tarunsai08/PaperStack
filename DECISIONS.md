@@ -28,6 +28,9 @@ Choices made while building, so nobody has to guess later.
 - **Remote content sync** stores only articles that differ from the bundled copy. Remote articles are validated before they are stored; invalid ones are skipped silently.
 - **Status bar**: the app opts out of Android 15 edge-to-edge (`windowOptOutEdgeToEdgeEnforcement`) so the status bar can be tinted to match each theme.
 - **Primary buttons** use a deeper orange (`#C94A0C`) behind white text so the label meets WCAG AA contrast; the brand orange `#FF6719` is used for accents, icons and the logo.
+- **System font size** on Android comes from the Capacitor text-zoom plugin (the WebView ignores the system setting otherwise). It scales the whole UI; the reader's own text-size slider stacks on top.
+- **Sepia accent text** is `rgb(168 60 10)` rather than the light theme's value, because the lighter orange fell to 4.4:1 on sepia's secondary surface.
+- **Start-up bundle**: plain-text helpers (word count, excerpt, read time) live in `markdownText.ts`; the YAML parser and validator load only when an article is opened, synced or imported.
 - **Reminders** use inexact daily alarms (no exact-alarm permission), which is fine for a reading nudge.
 
 ## Seed content accuracy

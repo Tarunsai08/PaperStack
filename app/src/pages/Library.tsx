@@ -163,7 +163,7 @@ export default function Library() {
                           onClick={() =>
                             shareFile(`${imp.frontmatter.slug}.md`, stringifyArticle(imp.frontmatter, imp.body, (v) => yamlStringify(v, { lineWidth: 0 })))
                           }
-                          className="press flex h-10 items-center gap-1.5 rounded-full border border-line px-3.5 text-[13px] font-semibold"
+                          className="press flex h-11 items-center gap-1.5 rounded-full border border-line px-4 text-[13px] font-semibold"
                         >
                           <Download size={15} /> Export .md
                         </button>
@@ -177,7 +177,7 @@ export default function Library() {
                             });
                             toast('Imported article deleted');
                           }}
-                          className="press flex h-10 items-center gap-1.5 rounded-full border border-line px-3.5 text-[13px] font-semibold text-[#E5484D]"
+                          className="press flex h-11 items-center gap-1.5 rounded-full border border-line px-4 text-[13px] font-semibold text-[#E5484D]"
                         >
                           <Trash2 size={15} /> Delete
                         </button>

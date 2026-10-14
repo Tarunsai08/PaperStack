@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import { Minus, Plus } from 'lucide-react';
 import { haptic } from '../lib/native';
 import { setPrefs, useStore, type ThemePref } from '../lib/storage';
@@ -37,7 +38,7 @@ function Segmented<T extends string | number>({
             haptic('selection');
             onChange(o.v);
           }}
-          className={`press h-10 flex-1 rounded-full text-[14px] font-semibold transition-colors ${
+          className={`press h-11 flex-1 rounded-full text-[14px] font-semibold transition-colors ${
             value === o.v ? 'bg-surface text-ink shadow-card' : 'text-muted'
           }`}
         >
@@ -123,7 +124,8 @@ export function ReaderSettings() {
             step={1}
             value={prefs.fontSize}
             onChange={(e) => setSize(Number(e.target.value))}
-            className="h-11 flex-1 accent-[rgb(var(--brand))]"
+            className="range h-11 flex-1"
+            style={{ '--fill': `${((prefs.fontSize - 16) / 8) * 100}%` } as CSSProperties}
             aria-label="Text size"
           />
           <button

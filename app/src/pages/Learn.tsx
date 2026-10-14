@@ -42,7 +42,7 @@ export default function Learn() {
               {next && (
                 <Link
                   to={`/article/${next.id}`}
-                  className="press mt-3 inline-flex h-10 items-center rounded-full bg-brand-btn px-4 text-[14px] font-semibold text-white"
+                  className="press mt-3 inline-flex h-11 items-center rounded-full bg-brand-btn px-5 text-[14px] font-semibold text-white"
                 >
                   {progress[next.id] ? 'Continue' : overall.done ? 'Next article' : 'Start the path'}
                 </Link>

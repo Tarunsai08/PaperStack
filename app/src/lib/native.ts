@@ -102,6 +102,18 @@ export async function setStatusBar(theme: 'light' | 'dark' | 'sepia', bg: string
   }
 }
 
+/** Apply Android's system font size to the WebView, so the app respects accessibility settings. */
+export async function applySystemTextZoom(): Promise<void> {
+  if (!isNative()) return;
+  try {
+    const { TextZoom } = await import('@capacitor/text-zoom');
+    const { value } = await TextZoom.getPreferred();
+    if (value && Math.abs(value - 1) > 0.01) await TextZoom.set({ value });
+  } catch {
+    /* keep the default size */
+  }
+}
+
 export async function hideSplash(): Promise<void> {
   if (!isNative()) return;
   try {

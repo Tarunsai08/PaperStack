@@ -5,11 +5,11 @@ import './styles/theme.css';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
-import { hideSplash, isNative } from './lib/native';
+import { applySystemTextZoom, hideSplash, isNative } from './lib/native';
 import { store } from './lib/storage';
 
 async function boot() {
-  await store.load();
+  await Promise.all([store.load(), applySystemTextZoom()]);
   createRoot(document.getElementById('root')!).render(
     <StrictMode>
       <App />

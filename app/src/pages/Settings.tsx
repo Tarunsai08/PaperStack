@@ -64,9 +64,11 @@ function Toggle({ on, onChange, label }: { on: boolean; onChange: (v: boolean) =
         haptic('selection');
         onChange(!on);
       }}
-      className={`relative h-[30px] w-[50px] shrink-0 rounded-full transition-colors ${on ? 'bg-[#10AC84]' : 'bg-line'}`}
+      className="flex h-11 w-[58px] shrink-0 items-center justify-center"
     >
-      <span className={`absolute top-[3px] h-6 w-6 rounded-full bg-white shadow transition-all ${on ? 'left-[23px]' : 'left-[3px]'}`} />
+      <span className={`relative h-[30px] w-[50px] rounded-full transition-colors ${on ? 'bg-[#10AC84]' : 'bg-ink/20'}`}>
+        <span className={`absolute top-[3px] h-6 w-6 rounded-full bg-white shadow transition-all ${on ? 'left-[23px]' : 'left-[3px]'}`} />
+      </span>
     </button>
   );
 }

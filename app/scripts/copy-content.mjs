@@ -1,6 +1,6 @@
 // Copies /content into app/public/content so it ships inside the web build and the APK.
 // content/index.json is produced by pipeline/build_index.py (which also validates everything).
-import { cpSync, existsSync, mkdirSync, rmSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readdirSync, rmSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -19,9 +19,16 @@ if (!existsSync(join(src, 'index.json')) || process.env.PAPERSTACK_REBUILD_INDEX
   }
 }
 
-rmSync(dest, { recursive: true, force: true });
+// Copy in place and remove stale files, instead of deleting the folder, so a running
+// dev server never sees the content disappear.
 mkdirSync(dest, { recursive: true });
 for (const item of ['index.json', 'tracks.json', 'papers', 'primers']) {
   if (existsSync(join(src, item))) cpSync(join(src, item), join(dest, item), { recursive: true });
+}
+for (const dir of ['papers', 'primers']) {
+  if (!existsSync(join(dest, dir))) continue;
+  for (const f of readdirSync(join(dest, dir))) {
+    if (!existsSync(join(src, dir, f))) rmSync(join(dest, dir, f));
+  }
 }
 console.log(`Copied content to ${dest}`);

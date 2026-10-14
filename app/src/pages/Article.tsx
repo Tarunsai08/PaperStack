@@ -23,7 +23,7 @@ import { ReadingProgressBar } from '../components/ReadingProgressBar';
 import { ArticleSkeleton, Skeleton } from '../components/Skeleton';
 import { celebrateTrack } from '../lib/celebrate';
 import { loadArticleBody, relatedArticles } from '../lib/content';
-import { normalizeTerm } from '../lib/frontmatter';
+import { normalizeTerm } from '../lib/markdownText';
 import { offsetsToRange } from '../lib/highlights';
 import { haptic, openExternal, share } from '../lib/native';
 import { completeArticle, justFinishedTrack, recordReading, saveScroll } from '../lib/progress';
@@ -390,7 +390,7 @@ export default function ArticlePage() {
                   <button
                     key={g.term}
                     onClick={() => setTerm(g.term)}
-                    className="press min-h-[40px] rounded-full border border-line px-3.5 text-[14px] font-medium"
+                    className="press min-h-[44px] rounded-full border border-line px-4 text-[14px] font-medium"
                   >
                     {g.term}
                   </button>
