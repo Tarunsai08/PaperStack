@@ -43,11 +43,11 @@ Validate content with `python pipeline/build_index.py` (`--partial` allows links
 - [x] paper-few-useful-things
 
 ### Deep learning
-- [ ] paper-lenet
-- [ ] paper-deep-autoencoders
-- [ ] paper-alexnet
-- [ ] paper-dropout
-- [ ] paper-adam
+- [x] paper-lenet
+- [x] paper-deep-autoencoders
+- [x] paper-alexnet
+- [x] paper-dropout
+- [x] paper-adam
 - [ ] paper-batch-normalization
 - [ ] paper-resnet
 - [ ] paper-unet
