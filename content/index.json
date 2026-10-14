@@ -1,7 +1,7 @@
 {
- "content_version": "cf0e76950179958a",
+ "content_version": "8e9bb289cb4e0385",
  "generated_at": "2026-10-14",
- "count": 22,
+ "count": 27,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -1965,6 +1965,500 @@
    "hash": "e75b4a6ad7b6",
    "word_count": 1447,
    "excerpt": "If you have ever trained a neural network, there is a very good chance you typed one particular line of code without thinking about it: something like optimizer = Adam(model.parameters()). It is the default in countless tutorials, research papers and production systems. That line comes from a paper…"
+  },
+  {
+   "id": "paper-batch-normalization",
+   "kind": "paper",
+   "slug": "batch-normalization",
+   "title": "The Simple Fix That Made Deep Networks Train Fast",
+   "subtitle": "Batch normalization: keep every layer's inputs well-behaved, and training suddenly gets fourteen times quicker",
+   "track": "deep-learning",
+   "track_order": 6,
+   "prerequisites": [
+    "paper-alexnet"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "normalization",
+    "training",
+    "deep learning",
+    "optimization"
+   ],
+   "paper_title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift",
+   "authors": [
+    "Sergey Ioffe",
+    "Christian Szegedy"
+   ],
+   "year": 2015,
+   "venue": "ICML",
+   "paper_url": "https://arxiv.org/abs/1502.03167",
+   "glossary": [
+    {
+     "term": "Normalization",
+     "definition": "Rescaling numbers so they have a standard centre and spread, typically a mean of 0 and a standard deviation of 1."
+    },
+    {
+     "term": "Mean",
+     "definition": "The average of a set of numbers."
+    },
+    {
+     "term": "Standard deviation",
+     "definition": "A measure of how spread out numbers are around their mean."
+    },
+    {
+     "term": "Internal covariate shift",
+     "definition": "The paper's name for the way each layer's input distribution keeps changing during training as earlier layers update."
+    },
+    {
+     "term": "Mini-batch",
+     "definition": "The small group of training examples processed together in one training step."
+    },
+    {
+     "term": "Running average",
+     "definition": "An average that is updated step by step during training, used at test time instead of statistics from a single batch."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What does a batch normalization layer do during training?",
+     "options": [
+      "Deletes unusual examples from the batch",
+      "Rescales each feature so it has roughly zero mean and unit spread across the mini-batch, then applies a learned scale and shift",
+      "Sorts the batch by label",
+      "Doubles the learning rate"
+     ],
+     "answer": 1,
+     "explain": "It standardises each feature using the batch's own mean and standard deviation, then lets the network learn the best scale and offset."
+    },
+    {
+     "q": "Why does batch norm include learnable parameters gamma and beta?",
+     "options": [
+      "To make training slower",
+      "So the network can undo or adjust the normalization if a different scale works better",
+      "To store the labels",
+      "They are not needed and are always zero"
+     ],
+     "answer": 1,
+     "explain": "Forcing every feature to exactly mean 0 and spread 1 might limit what the layer can express, so gamma and beta restore that freedom."
+    },
+    {
+     "q": "What does a batch-normalized network use at test time, when there may be just one example?",
+     "options": [
+      "The statistics of the single test example",
+      "Running averages of the mean and variance collected during training",
+      "Random numbers",
+      "It skips the layer entirely"
+     ],
+     "answer": 1,
+     "explain": "A single example has no meaningful batch statistics, so the layer uses averages accumulated over training."
+    }
+   ],
+   "cover_seed": "batch-normalization-2015",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.86,
+   "path": "papers/batch-normalization.md",
+   "hash": "caddf7822c04",
+   "word_count": 1448,
+   "excerpt": "In early 2015, two researchers at Google took one of the best image recognition networks in the world, added a few lines of arithmetic between its layers, and retrained it. The modified network reached the same accuracy as the original using fourteen times fewer training steps. Weeks of computer…"
+  },
+  {
+   "id": "paper-resnet",
+   "kind": "paper",
+   "slug": "resnet",
+   "title": "Why Deeper Got Worse, and the Shortcut That Fixed It",
+   "subtitle": "ResNet: a one-line change that let networks grow past 100 layers and became the most cited paper of the century",
+   "track": "deep-learning",
+   "track_order": 7,
+   "prerequisites": [
+    "paper-batch-normalization"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "residual networks",
+    "computer vision",
+    "deep learning",
+    "architecture"
+   ],
+   "paper_title": "Deep Residual Learning for Image Recognition",
+   "authors": [
+    "Kaiming He",
+    "Xiangyu Zhang",
+    "Shaoqing Ren",
+    "Jian Sun"
+   ],
+   "year": 2015,
+   "venue": "CVPR",
+   "paper_url": "https://arxiv.org/abs/1512.03385",
+   "glossary": [
+    {
+     "term": "Degradation problem",
+     "definition": "The surprising finding that adding more layers to a plain deep network can make its training error worse, not better."
+    },
+    {
+     "term": "Residual",
+     "definition": "The difference between what you want and what you already have. A residual block learns only the change to make to its input."
+    },
+    {
+     "term": "Skip connection",
+     "definition": "A shortcut that adds a block's input directly to its output, letting information and gradients bypass the block's layers."
+    },
+    {
+     "term": "Identity mapping",
+     "definition": "A function that returns its input unchanged. With skip connections, a block can become an identity mapping simply by learning to output zero."
+    },
+    {
+     "term": "Bottleneck block",
+     "definition": "A residual block that shrinks the number of channels, does the expensive work, then expands them again, saving computation in very deep networks."
+    },
+    {
+     "term": "Plain network",
+     "definition": "A deep network made of stacked layers with no skip connections, used in the paper as the comparison."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What surprising problem did the ResNet authors highlight?",
+     "options": [
+      "Deeper plain networks had higher training error than shallower ones",
+      "Deeper networks always overfit",
+      "GPUs could not run deep networks",
+      "Images were too small"
+     ],
+     "answer": 0,
+     "explain": "This was not overfitting: the deeper network was worse even on the training data, which meant it was harder to optimize."
+    },
+    {
+     "q": "What does a residual block compute?",
+     "options": [
+      "Only F(x), ignoring x",
+      "F(x) + x, adding the input back to the block's output",
+      "x divided by F(x)",
+      "A random subset of x"
+     ],
+     "answer": 1,
+     "explain": "The block's layers learn a correction F(x), and the skip connection adds the original input x back."
+    },
+    {
+     "q": "Why do skip connections make very deep networks easier to train?",
+     "options": [
+      "They remove the need for data",
+      "A block can easily do nothing by learning zero, and gradients can flow straight back through the shortcuts",
+      "They make every layer identical",
+      "They reduce the image size"
+     ],
+     "answer": 1,
+     "explain": "Learning to output zero is easy, so extra layers cannot easily hurt, and the additive shortcut gives gradients a direct path to early layers."
+    }
+   ],
+   "cover_seed": "resnet-residual-learning",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.97,
+   "path": "papers/resnet.md",
+   "hash": "1b6c28ddb9ed",
+   "word_count": 1470,
+   "excerpt": "Here is a puzzle. Take a neural network with 20 layers that works well. Add 36 more layers on top. In the worst case, the extra layers could simply pass their input through unchanged, so the bigger network should be at least as good as the small one. When researchers at Microsoft Research Asia…"
+  },
+  {
+   "id": "paper-unet",
+   "kind": "paper",
+   "slug": "unet",
+   "title": "The U-Shaped Network That Learned From Thirty Images",
+   "subtitle": "U-Net: how a clever shape let a network outline every cell in a microscope image, and later paint pictures",
+   "track": "deep-learning",
+   "track_order": 8,
+   "prerequisites": [
+    "paper-lenet"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "segmentation",
+    "medical imaging",
+    "computer vision",
+    "architecture"
+   ],
+   "paper_title": "U-Net: Convolutional Networks for Biomedical Image Segmentation",
+   "authors": [
+    "Olaf Ronneberger",
+    "Philipp Fischer",
+    "Thomas Brox"
+   ],
+   "year": 2015,
+   "venue": "MICCAI",
+   "paper_url": "https://arxiv.org/abs/1505.04597",
+   "glossary": [
+    {
+     "term": "Segmentation",
+     "definition": "Labeling every pixel of an image with a class, such as cell or background, to produce an exact outline of each object."
+    },
+    {
+     "term": "Contracting path",
+     "definition": "The first half of U-Net, which repeatedly shrinks the image while increasing the number of feature channels, capturing what is in the image."
+    },
+    {
+     "term": "Expanding path",
+     "definition": "The second half of U-Net, which repeatedly enlarges the feature maps back to full size to say exactly where things are."
+    },
+    {
+     "term": "Skip connection",
+     "definition": "In U-Net, a link that copies detailed feature maps from the contracting path directly across to the matching level of the expanding path."
+    },
+    {
+     "term": "Upsampling",
+     "definition": "Increasing the width and height of a feature map, for example with a learned transposed convolution."
+    },
+    {
+     "term": "Elastic deformation",
+     "definition": "A data augmentation that randomly and smoothly warps an image, like stretching a rubber sheet, to create realistic new training examples."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is image segmentation?",
+     "options": [
+      "Giving one label to a whole image",
+      "Assigning a label to every pixel, producing exact outlines",
+      "Cutting an image into equal squares",
+      "Compressing an image"
+     ],
+     "answer": 1,
+     "explain": "Classification says 'this image contains a cell'. Segmentation says exactly which pixels belong to which cell."
+    },
+    {
+     "q": "What do U-Net's skip connections provide?",
+     "options": [
+      "Extra training data",
+      "Fine spatial detail from the early layers, so the output can draw precise boundaries",
+      "A way to skip training",
+      "Random noise"
+     ],
+     "answer": 1,
+     "explain": "The contracting path loses detail as it shrinks the image. Skip connections pass that detail directly to the expanding path."
+    },
+    {
+     "q": "How did U-Net manage to train with so few annotated images?",
+     "options": [
+      "It used millions of unlabeled images",
+      "Heavy data augmentation, especially elastic deformations, plus an architecture that uses every pixel as a training signal",
+      "It copied labels from another dataset",
+      "It did not need training"
+     ],
+     "answer": 1,
+     "explain": "Realistic warps of the few labeled images taught the network to be robust to the natural variation of tissue."
+    }
+   ],
+   "cover_seed": "unet-segmentation",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.85,
+   "path": "papers/unet.md",
+   "hash": "e3e3a576afc8",
+   "word_count": 1472,
+   "excerpt": "A biologist stares at a microscope image packed with hundreds of cells, all touching, all slightly different shapes. Her task: trace the exact boundary of every single cell. It takes hours per image, and she has thousands of images. In 2015, a small team at the University of Freiburg in Germany…"
+  },
+  {
+   "id": "paper-lstm",
+   "kind": "paper",
+   "slug": "lstm",
+   "title": "Teaching Networks to Remember for a Long Time",
+   "subtitle": "LSTM: gates, a protected memory lane, and the 1997 design that powered speech recognition and translation for two decades",
+   "track": "sequences-language",
+   "track_order": 1,
+   "prerequisites": [
+    "paper-backpropagation"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "recurrent networks",
+    "lstm",
+    "sequences",
+    "memory"
+   ],
+   "paper_title": "Long Short-Term Memory",
+   "authors": [
+    "Sepp Hochreiter",
+    "Jürgen Schmidhuber"
+   ],
+   "year": 1997,
+   "venue": "Neural Computation",
+   "paper_url": "https://doi.org/10.1162/neco.1997.9.8.1735",
+   "glossary": [
+    {
+     "term": "Recurrent neural network",
+     "definition": "A network that reads a sequence one step at a time and passes a hidden state from each step to the next, giving it a form of memory."
+    },
+    {
+     "term": "Hidden state",
+     "definition": "The vector a recurrent network carries from one step to the next, summarising what it has read so far."
+    },
+    {
+     "term": "Vanishing gradient",
+     "definition": "The way error signals shrink as they are passed back through many steps, so a network cannot learn connections across long gaps."
+    },
+    {
+     "term": "Cell state",
+     "definition": "The LSTM's protected memory lane, which carries information across many time steps with only small, controlled changes."
+    },
+    {
+     "term": "Gate",
+     "definition": "A set of numbers between 0 and 1, computed by the network, that controls how much information flows through, like a dimmer switch."
+    },
+    {
+     "term": "Constant error carousel",
+     "definition": "The paper's name for the self-connected memory cell whose error signal can loop back through time without shrinking."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What problem was LSTM designed to solve?",
+     "options": [
+      "Images being too large",
+      "Recurrent networks forgetting, because error signals vanish over long time gaps",
+      "Too much training data",
+      "Networks being too fast"
+     ],
+     "answer": 1,
+     "explain": "In ordinary recurrent networks, the learning signal shrinks exponentially as it travels back in time, so long-range patterns cannot be learned."
+    },
+    {
+     "q": "What is the role of the gates in an LSTM?",
+     "options": [
+      "They decide, at each step, how much to write to, keep in, and read from the memory cell",
+      "They delete the training data",
+      "They speed up the GPU",
+      "They choose the learning rate"
+     ],
+     "answer": 0,
+     "explain": "Gates are learned dimmer switches: values near 0 block information and values near 1 let it through."
+    },
+    {
+     "q": "Which gate was NOT in the original 1997 LSTM and was added later?",
+     "options": [
+      "Input gate",
+      "Output gate",
+      "Forget gate",
+      "None, all three were in 1997"
+     ],
+     "answer": 2,
+     "explain": "The forget gate, which lets the cell clear old memories, was added by Felix Gers, Schmidhuber and Fred Cummins around 2000."
+    }
+   ],
+   "cover_seed": "lstm-long-short-term-memory",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.92,
+   "path": "papers/lstm.md",
+   "hash": "100e8aea42e2",
+   "word_count": 1489,
+   "excerpt": "Read this sentence: \"The keys to the cabinet that my grandmother left me after she moved back to her village in Kerala are on the table.\" To pick \"are\" instead of \"is,\" your brain had to remember that the subject was \"keys,\" plural, across seventeen intervening words. For years, neural networks…"
+  },
+  {
+   "id": "paper-word2vec",
+   "kind": "paper",
+   "slug": "word2vec",
+   "title": "King Minus Man Plus Woman Equals Queen",
+   "subtitle": "word2vec: a deliberately simple model, a billion words of news, and word vectors that captured meaning as geometry",
+   "track": "sequences-language",
+   "track_order": 2,
+   "prerequisites": [
+    "primer-embeddings"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "embeddings",
+    "nlp",
+    "word vectors",
+    "representation learning"
+   ],
+   "paper_title": "Efficient Estimation of Word Representations in Vector Space",
+   "authors": [
+    "Tomas Mikolov",
+    "Kai Chen",
+    "Greg Corrado",
+    "Jeffrey Dean"
+   ],
+   "year": 2013,
+   "venue": "ICLR Workshop",
+   "paper_url": "https://arxiv.org/abs/1301.3781",
+   "glossary": [
+    {
+     "term": "Word vector",
+     "definition": "A list of a few hundred numbers representing a word, learned so that words with similar meanings get similar vectors."
+    },
+    {
+     "term": "Embedding",
+     "definition": "A learned vector that represents a discrete item, such as a word, as a point in a continuous space."
+    },
+    {
+     "term": "Context window",
+     "definition": "The few words on either side of a target word that are treated as its neighbours during training."
+    },
+    {
+     "term": "CBOW",
+     "definition": "Continuous bag-of-words: a word2vec model that predicts a missing word from the words around it."
+    },
+    {
+     "term": "Skip-gram",
+     "definition": "A word2vec model that does the reverse of CBOW: it predicts the surrounding words from a single word."
+    },
+    {
+     "term": "Analogy test",
+     "definition": "An evaluation that asks questions like 'man is to king as woman is to what?' and checks if vector arithmetic finds the right word."
+    },
+    {
+     "term": "Negative sampling",
+     "definition": "A training shortcut from the follow-up paper: instead of scoring every word in the vocabulary, compare the true neighbour against a few random words."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is the key difference between CBOW and skip-gram?",
+     "options": [
+      "CBOW predicts a word from its neighbours; skip-gram predicts the neighbours from the word",
+      "CBOW uses images and skip-gram uses text",
+      "Skip-gram has no training",
+      "CBOW only works in English"
+     ],
+     "answer": 0,
+     "explain": "They are mirror images. Both learn word vectors as a side effect of a simple prediction task."
+    },
+    {
+     "q": "Why did the authors make their models so simple, with no non-linear hidden layer?",
+     "options": [
+      "Because non-linear layers were not invented yet",
+      "So they could train on billions of words quickly, since more data beat a more complex model",
+      "Because simple models are always more accurate",
+      "Because GPUs cannot run non-linear layers"
+     ],
+     "answer": 1,
+     "explain": "Removing the expensive hidden layer made training so cheap that they could use vastly more text, which mattered more for quality."
+    },
+    {
+     "q": "What does the analogy king - man + woman ≈ queen show?",
+     "options": [
+      "The model memorised a list of royal families",
+      "Relationships between words are captured as consistent directions in the vector space",
+      "Vectors are random",
+      "The model understands grammar rules explicitly"
+     ],
+     "answer": 1,
+     "explain": "The difference between king and man points in roughly the same direction as the difference between queen and woman."
+    }
+   ],
+   "cover_seed": "word2vec-vectors",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.9,
+   "path": "papers/word2vec.md",
+   "hash": "8d3315f377e5",
+   "word_count": 1429,
+   "excerpt": "In 2013, a small team at Google released a free piece of software and a short paper. Feed it a large pile of text, wait a few hours, and it would give you back a list of numbers for every word. Nothing about that sounds exciting. Then people started doing arithmetic with the numbers. Paris minus…"
   },
   {
    "id": "paper-attention-is-all-you-need",

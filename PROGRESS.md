@@ -48,13 +48,13 @@ Validate content with `python pipeline/build_index.py` (`--partial` allows links
 - [x] paper-alexnet
 - [x] paper-dropout
 - [x] paper-adam
-- [ ] paper-batch-normalization
-- [ ] paper-resnet
-- [ ] paper-unet
+- [x] paper-batch-normalization
+- [x] paper-resnet
+- [x] paper-unet
 
 ### Sequences and language
-- [ ] paper-lstm
-- [ ] paper-word2vec
+- [x] paper-lstm
+- [x] paper-word2vec
 - [ ] paper-seq2seq
 - [ ] paper-bahdanau-attention
 
