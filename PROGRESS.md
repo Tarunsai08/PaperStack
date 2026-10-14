@@ -55,13 +55,13 @@ Validate content with `python pipeline/build_index.py` (`--partial` allows links
 ### Sequences and language
 - [x] paper-lstm
 - [x] paper-word2vec
-- [ ] paper-seq2seq
-- [ ] paper-bahdanau-attention
+- [x] paper-seq2seq
+- [x] paper-bahdanau-attention
 
 ### Generative
-- [ ] paper-vae
-- [ ] paper-gan
-- [ ] paper-ddpm
+- [x] paper-vae
+- [x] paper-gan
+- [x] paper-ddpm
 - [ ] paper-latent-diffusion
 
 ### Reinforcement

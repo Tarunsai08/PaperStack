@@ -1,7 +1,7 @@
 {
- "content_version": "8e9bb289cb4e0385",
+ "content_version": "6d114fa5c7236324",
  "generated_at": "2026-10-14",
- "count": 27,
+ "count": 32,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -2459,6 +2459,501 @@
    "hash": "8d3315f377e5",
    "word_count": 1429,
    "excerpt": "In 2013, a small team at Google released a free piece of software and a short paper. Feed it a large pile of text, wait a few hours, and it would give you back a list of numbers for every word. Nothing about that sounds exciting. Then people started doing arithmetic with the numbers. Paris minus…"
+  },
+  {
+   "id": "paper-seq2seq",
+   "kind": "paper",
+   "slug": "seq2seq",
+   "title": "Read the Whole Sentence, Then Write the Translation",
+   "subtitle": "Sequence to sequence learning: two LSTMs, one thought vector, and the first neural translator to beat the old guard",
+   "track": "sequences-language",
+   "track_order": 3,
+   "prerequisites": [
+    "paper-lstm",
+    "paper-word2vec"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "machine translation",
+    "seq2seq",
+    "lstm",
+    "nlp"
+   ],
+   "paper_title": "Sequence to Sequence Learning with Neural Networks",
+   "authors": [
+    "Ilya Sutskever",
+    "Oriol Vinyals",
+    "Quoc V. Le"
+   ],
+   "year": 2014,
+   "venue": "NeurIPS",
+   "paper_url": "https://arxiv.org/abs/1409.3215",
+   "glossary": [
+    {
+     "term": "Encoder",
+     "definition": "The network that reads the input sequence and compresses it into a vector."
+    },
+    {
+     "term": "Decoder",
+     "definition": "The network that generates the output sequence, one token at a time, starting from the encoder's vector."
+    },
+    {
+     "term": "Thought vector",
+     "definition": "An informal name for the fixed-size vector the encoder produces, meant to capture the meaning of the whole input sentence."
+    },
+    {
+     "term": "Beam search",
+     "definition": "A decoding method that keeps the few most promising partial translations at each step, instead of committing to the single best next word."
+    },
+    {
+     "term": "BLEU",
+     "definition": "A standard machine translation score that measures overlap between a system's output and human reference translations. Higher is better."
+    },
+    {
+     "term": "Statistical machine translation",
+     "definition": "The pre-neural approach to translation, built from many separately trained parts such as phrase tables and language models."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How does the seq2seq model translate a sentence?",
+     "options": [
+      "Word by word, looking each word up in a dictionary",
+      "An encoder LSTM reads the whole source sentence into a vector, and a decoder LSTM generates the translation from it",
+      "It searches the internet for existing translations",
+      "It uses hand-written grammar rules"
+     ],
+     "answer": 1,
+     "explain": "The encoder compresses the sentence; the decoder unpacks that summary into the other language."
+    },
+    {
+     "q": "What surprising trick improved results a lot?",
+     "options": [
+      "Translating every sentence twice",
+      "Reversing the order of words in the source sentence",
+      "Removing all verbs",
+      "Using only the first word of each sentence"
+     ],
+     "answer": 1,
+     "explain": "Reversing the input put the first source words close to the first target words, creating many short-range dependencies that made learning easier."
+    },
+    {
+     "q": "What is the main weakness of squeezing a sentence into one fixed-size vector?",
+     "options": [
+      "It uses too little memory",
+      "Long sentences must be crammed into the same small space, which becomes a bottleneck",
+      "It cannot handle the letter e",
+      "It makes training too fast"
+     ],
+     "answer": 1,
+     "explain": "A single vector has a fixed capacity, which motivated attention mechanisms that let the decoder look back at every input word."
+    }
+   ],
+   "cover_seed": "seq2seq-sutskever",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.9,
+   "path": "papers/seq2seq.md",
+   "hash": "de2693515972",
+   "word_count": 1463,
+   "excerpt": "For decades, machine translation systems were giant contraptions. Phrase tables with millions of entries, separate models for word alignment, reordering and fluency, each built by specialists and glued together with careful tuning. Google Translate ran on this kind of machine. In 2014, three…"
+  },
+  {
+   "id": "paper-bahdanau-attention",
+   "kind": "paper",
+   "slug": "bahdanau-attention",
+   "title": "The First Time a Network Learned Where to Look",
+   "subtitle": "Bahdanau attention: letting a translator glance back at the source sentence, and the birth of the most important idea in modern AI",
+   "track": "sequences-language",
+   "track_order": 4,
+   "prerequisites": [
+    "paper-seq2seq"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "attention",
+    "machine translation",
+    "nlp",
+    "alignment"
+   ],
+   "paper_title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+   "authors": [
+    "Dzmitry Bahdanau",
+    "Kyunghyun Cho",
+    "Yoshua Bengio"
+   ],
+   "year": 2014,
+   "venue": "ICLR",
+   "paper_url": "https://arxiv.org/abs/1409.0473",
+   "glossary": [
+    {
+     "term": "Attention",
+     "definition": "A mechanism that lets a model, at each step, compute a weighted mix of all its inputs, putting more weight on the parts that matter most right now."
+    },
+    {
+     "term": "Alignment",
+     "definition": "Which source words correspond to which target words in a translation, such as 'chat' lining up with 'cat'."
+    },
+    {
+     "term": "Annotation",
+     "definition": "The paper's name for the vector the encoder produces for each source word, describing that word in the context of the whole sentence."
+    },
+    {
+     "term": "Bidirectional RNN",
+     "definition": "Two recurrent networks reading a sentence in opposite directions, so each word's vector reflects both what came before and what comes after."
+    },
+    {
+     "term": "Context vector",
+     "definition": "The weighted average of all source annotations, recomputed for every target word, that the decoder uses to choose its next word."
+    },
+    {
+     "term": "Softmax",
+     "definition": "A function that turns a list of scores into positive weights that add up to 1."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What problem with basic encoder-decoder translation did attention solve?",
+     "options": [
+      "Training was too cheap",
+      "Every sentence had to be squeezed into one fixed-size vector, which hurt long sentences",
+      "The decoder could not generate words",
+      "It only worked for French"
+     ],
+     "answer": 1,
+     "explain": "With attention, the decoder no longer depends on a single summary; it can consult every source word's annotation at every step."
+    },
+    {
+     "q": "How are the attention weights computed for one target word?",
+     "options": [
+      "They are fixed by the programmer",
+      "A small network scores each source annotation against the decoder's current state, and a softmax turns the scores into weights",
+      "Words are weighted by their length",
+      "Only the first source word gets weight"
+     ],
+     "answer": 1,
+     "explain": "The scores depend on what the decoder needs right now, so the weights change for every word it produces."
+    },
+    {
+     "q": "What did the attention weights reveal when visualized?",
+     "options": [
+      "Random noise",
+      "Sensible word alignments between the two languages, including reordering, learned without any alignment labels",
+      "The training loss",
+      "The vocabulary size"
+     ],
+     "answer": 1,
+     "explain": "The model learned which source words matched each output word, even where French and English order differ."
+    }
+   ],
+   "cover_seed": "bahdanau-align-translate",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.93,
+   "path": "papers/bahdanau-attention.md",
+   "hash": "08533c98f022",
+   "word_count": 1405,
+   "excerpt": "In the summer of 2014, a young researcher visiting Yoshua Bengio's lab in Montreal was frustrated. The new neural translation systems squeezed every sentence, however long, into a single vector before translating it. That felt wrong. No human translator memorizes a whole sentence, closes the book,…"
+  },
+  {
+   "id": "paper-vae",
+   "kind": "paper",
+   "slug": "vae",
+   "title": "Teaching an Autoencoder to Dream",
+   "subtitle": "Variational autoencoders: fuzzy codes, a smooth map of possibilities, and one clever trick that made it trainable",
+   "track": "generative",
+   "track_order": 1,
+   "prerequisites": [
+    "paper-deep-autoencoders"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "generative models",
+    "vae",
+    "probabilistic models",
+    "latent space"
+   ],
+   "paper_title": "Auto-Encoding Variational Bayes",
+   "authors": [
+    "Diederik P. Kingma",
+    "Max Welling"
+   ],
+   "year": 2013,
+   "venue": "ICLR",
+   "paper_url": "https://arxiv.org/abs/1312.6114",
+   "glossary": [
+    {
+     "term": "Generative model",
+     "definition": "A model that learns the patterns of a dataset well enough to create new examples that look like they came from it."
+    },
+    {
+     "term": "Latent space",
+     "definition": "The hidden space of codes a model uses to describe its data. Points in it correspond to possible outputs."
+    },
+    {
+     "term": "Prior",
+     "definition": "The distribution the model assumes codes come from before seeing any data, here a simple bell curve centred on zero."
+    },
+    {
+     "term": "Reparameterization trick",
+     "definition": "Writing a random sample as a fixed formula plus independent noise, so gradients can flow through the sampling step."
+    },
+    {
+     "term": "KL divergence",
+     "definition": "A measure of how different one probability distribution is from another. Zero means they are identical."
+    },
+    {
+     "term": "Evidence lower bound",
+     "definition": "The objective a VAE maximizes: how well it reconstructs the data, minus a penalty for codes that stray from the prior. Often called the ELBO."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How does a VAE's encoder differ from a plain autoencoder's?",
+     "options": [
+      "It outputs a single exact code",
+      "It outputs a small cloud of possible codes, described by a mean and a spread",
+      "It has no weights",
+      "It outputs the label of the image"
+     ],
+     "answer": 1,
+     "explain": "Each input maps to a distribution over codes. Sampling from it forces nearby codes to decode into similar outputs."
+    },
+    {
+     "q": "Why is the reparameterization trick needed?",
+     "options": [
+      "To make the model smaller",
+      "Because you cannot backpropagate through a random sampling step directly; rewriting it as mean plus spread times noise makes it differentiable",
+      "To remove the decoder",
+      "To speed up data loading"
+     ],
+     "answer": 1,
+     "explain": "With z = mu + sigma times epsilon, the randomness lives in epsilon, and gradients can flow to mu and sigma."
+    },
+    {
+     "q": "What does the KL term in the VAE objective encourage?",
+     "options": [
+      "Perfect reconstructions at any cost",
+      "Codes that stay close to a simple standard bell curve, keeping the latent space smooth and free of holes",
+      "Larger images",
+      "Fewer training examples"
+     ],
+     "answer": 1,
+     "explain": "By pulling every input's code cloud toward the same simple prior, the KL term makes the space continuous, so random points decode to sensible outputs."
+    }
+   ],
+   "cover_seed": "vae-kingma-welling",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.88,
+   "path": "papers/vae.md",
+   "hash": "92333c419457",
+   "word_count": 1519,
+   "excerpt": "A plain autoencoder is a brilliant compressor and a terrible artist. Train one on faces, pick a random point in its code space, decode it, and you usually get a smeared mess, not a new face. The codes it learned are scattered islands in a vast ocean of nonsense. In December 2013, Diederik Kingma…"
+  },
+  {
+   "id": "paper-gan",
+   "kind": "paper",
+   "slug": "gan",
+   "title": "The Counterfeiter and the Detective",
+   "subtitle": "Generative adversarial nets: two networks locked in a game, and an idea sketched in a Montreal bar that learned to fake reality",
+   "track": "generative",
+   "track_order": 2,
+   "prerequisites": [
+    "primer-neural-networks"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "generative models",
+    "gans",
+    "adversarial training",
+    "image generation"
+   ],
+   "paper_title": "Generative Adversarial Nets",
+   "authors": [
+    "Ian J. Goodfellow",
+    "Jean Pouget-Abadie",
+    "Mehdi Mirza",
+    "Bing Xu",
+    "David Warde-Farley",
+    "Sherjil Ozair",
+    "Aaron Courville",
+    "Yoshua Bengio"
+   ],
+   "year": 2014,
+   "venue": "NeurIPS",
+   "paper_url": "https://arxiv.org/abs/1406.2661",
+   "glossary": [
+    {
+     "term": "Generator",
+     "definition": "The network in a GAN that turns random noise into fake samples, trying to make them indistinguishable from real data."
+    },
+    {
+     "term": "Discriminator",
+     "definition": "The network in a GAN that looks at a sample and outputs the probability that it is real rather than generated."
+    },
+    {
+     "term": "Adversarial training",
+     "definition": "Training two models against each other, so that each one's improvement forces the other to improve."
+    },
+    {
+     "term": "Minimax game",
+     "definition": "A two-player game where one player tries to maximize a score that the other tries to minimize."
+    },
+    {
+     "term": "Mode collapse",
+     "definition": "A GAN failure where the generator produces only a few kinds of outputs, ignoring much of the variety in the real data."
+    },
+    {
+     "term": "Noise vector",
+     "definition": "A list of random numbers fed into the generator. Different noise vectors produce different generated samples."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What does the discriminator in a GAN do?",
+     "options": [
+      "Generates new images",
+      "Estimates whether a sample is real data or a fake from the generator",
+      "Labels images with their class",
+      "Compresses images"
+     ],
+     "answer": 1,
+     "explain": "It is the detective: it outputs the probability that its input came from the real dataset."
+    },
+    {
+     "q": "According to the paper's theory, what happens at the ideal end of training?",
+     "options": [
+      "The discriminator wins and always detects fakes",
+      "The generator's samples match the real data distribution, and the discriminator can only guess, outputting one half everywhere",
+      "Both networks stop working",
+      "The generator copies the training set exactly"
+     ],
+     "answer": 1,
+     "explain": "At the theoretical optimum, fakes and real data are indistinguishable, so the best possible detective is a coin flip."
+    },
+    {
+     "q": "What is mode collapse?",
+     "options": [
+      "The discriminator crashing",
+      "The generator producing only a narrow set of outputs instead of the full variety of the data",
+      "Training running out of memory",
+      "Images becoming too colourful"
+     ],
+     "answer": 1,
+     "explain": "A generator can fool the discriminator by perfecting a few outputs, so it stops exploring the full range of real data."
+    }
+   ],
+   "cover_seed": "gan-goodfellow",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.93,
+   "path": "papers/gan.md",
+   "hash": "3ad90cc5085b",
+   "word_count": 1435,
+   "excerpt": "One evening in 2014, a PhD student named Ian Goodfellow was at a bar in Montreal, celebrating a friend's graduation. His friends were describing a plan to build a computer program that could generate realistic photos. Goodfellow thought their approach was too complicated. Then, as he has told the…"
+  },
+  {
+   "id": "paper-ddpm",
+   "kind": "paper",
+   "slug": "ddpm",
+   "title": "Creating Images by Removing Noise",
+   "subtitle": "Denoising diffusion: destroy a picture with static, step by step, then train a network to run the film backwards",
+   "track": "generative",
+   "track_order": 3,
+   "prerequisites": [
+    "paper-vae"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "diffusion models",
+    "generative models",
+    "image generation",
+    "denoising"
+   ],
+   "paper_title": "Denoising Diffusion Probabilistic Models",
+   "authors": [
+    "Jonathan Ho",
+    "Ajay Jain",
+    "Pieter Abbeel"
+   ],
+   "year": 2020,
+   "venue": "NeurIPS",
+   "paper_url": "https://arxiv.org/abs/2006.11239",
+   "glossary": [
+    {
+     "term": "Diffusion model",
+     "definition": "A generative model that learns to reverse a gradual noising process, turning pure random noise into a realistic sample step by step."
+    },
+    {
+     "term": "Forward process",
+     "definition": "The fixed procedure that adds a little Gaussian noise to an image at each of many steps until only noise remains."
+    },
+    {
+     "term": "Reverse process",
+     "definition": "The learned procedure that removes noise step by step, starting from pure noise and ending with a clean image."
+    },
+    {
+     "term": "Gaussian noise",
+     "definition": "Random values drawn from a bell curve, like the static on an old television screen."
+    },
+    {
+     "term": "Noise schedule",
+     "definition": "The plan for how much noise to add at each step of the forward process."
+    },
+    {
+     "term": "FID",
+     "definition": "Fréchet Inception Distance: a score comparing the statistics of generated images with real ones. Lower is better."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What does the network in a diffusion model learn to predict during training?",
+     "options": [
+      "The label of the image",
+      "The noise that was added to a noisy image",
+      "Whether an image is real or fake",
+      "The next pixel from left to right"
+     ],
+     "answer": 1,
+     "explain": "Given a noisy image and the step number, the network predicts the noise, which can then be subtracted out."
+    },
+    {
+     "q": "How do you generate a brand-new image with a trained diffusion model?",
+     "options": [
+      "Start from a random training image",
+      "Start from pure random noise and repeatedly apply the learned denoising step",
+      "Ask a discriminator to approve it",
+      "Decode a single fixed code"
+     ],
+     "answer": 1,
+     "explain": "Sampling runs the reverse process: begin with static and remove a little predicted noise at each of many steps."
+    },
+    {
+     "q": "What was the main practical drawback of the original DDPM?",
+     "options": [
+      "Blurry, low quality images",
+      "Unstable adversarial training",
+      "Slow sampling, since generating one image took about a thousand network evaluations",
+      "It could only generate text"
+     ],
+     "answer": 2,
+     "explain": "Quality was excellent, but each sample required running the network once per step, around 1,000 times."
+    }
+   ],
+   "cover_seed": "ddpm-diffusion",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.93,
+   "path": "papers/ddpm.md",
+   "hash": "7fd27e717d87",
+   "word_count": 1503,
+   "excerpt": "Take a photo of a cat. Add a sprinkle of random static. Then a little more. Keep going for a thousand tiny steps, and eventually the cat is gone: you are left with pure television snow. Now imagine running that film backwards. Start from snow, and at each step remove just a little noise, until a…"
   },
   {
    "id": "paper-attention-is-all-you-need",
