@@ -1,0 +1,62 @@
+name: Deploy Web
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: pipeline/requirements.txt
+      - run: pip install -r pipeline/requirements.txt
+      - name: Validate content and build index
+        run: python pipeline/build_index.py
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - name: Build web app
+        working-directory: app
+        env:
+          VITE_CONTENT_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/content
+          VITE_GITHUB_REPO: ${{ github.repository }}
+          VITE_APP_VERSION: web-${{ github.run_number }}
+        run: |
+          npm ci
+          npm run build
+          # The content folder (index.json, tracks.json, articles) is what the app's content sync fetches.
+          test -f dist/content/index.json
+          touch dist/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: app/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

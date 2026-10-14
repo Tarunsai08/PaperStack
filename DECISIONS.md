@@ -37,3 +37,12 @@ Choices made while building, so nobody has to guess later.
 - **Anecdotes** that come from interviews rather than the papers (Goodfellow's bar story, AlexNet trained in a bedroom) are marked as reported or as the person's own account.
 - **GAN title**: the arXiv listing says "Generative Adversarial Networks"; the NeurIPS proceedings title, used here, is "Generative Adversarial Nets."
 - **Venue for preprint-only papers** (PPO, Scaling Laws, Megatron-LM, LLaMA) is "arXiv"; GPT-1 is an "OpenAI technical report."
+
+## Android and CI
+
+- **App id** is the placeholder `com.paperstack.reader`. The README explains how to change it before the first real install.
+- **Signing**: `app/android/app/build.gradle` signs release builds only when `release.jks` exists and `ANDROID_KEYSTORE_PASSWORD` is set. Without the secrets, CI builds a debug APK and the release notes carry a clear warning.
+- **Version numbers** come from `-PversionCode` / `-PversionName`; CI passes the run number, so every APK installs over the previous one.
+- **Content-only commits** (messages containing `[content]`) skip the APK job via a job-level `if`, not `paths-ignore`, so seed-content commits still build APKs.
+- **A separate `ci.yml`** runs tests, lint, strict validation and a web build on pull requests and non-main branches, so problems are caught before they reach `main`.
+- **Local Gradle builds in the sandbox** used Google's Maven Central mirror through a user-level init script, because Maven Central rate-limited the sandbox. Nothing about this is in the repository; CI uses the normal repositories.

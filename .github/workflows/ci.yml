@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches-ignore: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: pipeline/requirements*.txt
+      - run: pip install -r pipeline/requirements-dev.txt
+      - name: Pipeline tests
+        run: python -m pytest -q pipeline/tests
+      - name: Validate content
+        run: python pipeline/build_index.py --strict
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - name: App lint, tests and build
+        working-directory: app
+        run: |
+          npm ci
+          npm run lint
+          npm test -- --run
+          npm run build

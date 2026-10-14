@@ -16,7 +16,9 @@ Validate content with `python pipeline/build_index.py` (`--partial` allows links
 - [x] **Phase 2: Seed content** (52 articles, 71,828 words; all pass `build_index.py --strict`)
 - [x] **Phase 3: Core screens** (Home, Learn, Track, Article, Search, Library, Settings, Onboarding, streaks, progress; verified end to end in Chromium at 390px)
 - [x] **Phase 4: Manual import and content sync** (verified: remote sync against a local copy of the deployed site, prompt copy, validation errors, auto-fix, preview, import into My Additions)
-- [ ] **Phase 5: Android app and CI** (Capacitor, icons, splash, native plugins, update check, workflows, README)
+- [x] **Phase 5: Android app and CI** (Capacitor, icons, splash, native plugins, update check, workflows, README)
+  - Verified locally with the Android SDK: `assembleDebug` and a keystore-signed `assembleRelease` both build; `aapt2` shows versionCode/versionName injected from Gradle properties; `apksigner` verifies the release signature; all 52 articles are bundled in the APK.
+  - Workflows pass `actionlint`. The first real Release and Pages deploy happen on the first push to `main`.
 - [ ] **Phase 6: Pipeline and automation** (llm.py, fetch, extract, generate, daily workflow, run.sh)
 - [ ] **Phase 7: Polish and final review**
 
