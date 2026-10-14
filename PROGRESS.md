@@ -13,7 +13,7 @@ Validate content with `python pipeline/build_index.py` (`--partial` allows links
   - [x] MarkdownRenderer: GFM, KaTeX, Mermaid (themed, lazy, error fallback, full-screen pinch zoom), callouts, glossary terms, `article:` links, smart quotes
   - [x] Shared validator: `app/src/lib/frontmatter.ts` + `pipeline/build_index.py`, both tested against `tests/fixtures`
   - [x] `content/tracks.json` + 2 sample articles (1 primer, 1 paper)
-- [ ] **Phase 2: Seed content** (52 articles, see checklist below)
+- [x] **Phase 2: Seed content** (52 articles, 71,828 words; all pass `build_index.py --strict`)
 - [ ] **Phase 3: Core screens** (Home, Learn, Track, Article, Search, Library, Settings, Onboarding, streaks, progress)
 - [ ] **Phase 4: Manual import and content sync**
 - [ ] **Phase 5: Android app and CI** (Capacitor, icons, splash, native plugins, update check, workflows, README)
@@ -84,10 +84,10 @@ Validate content with `python pipeline/build_index.py` (`--partial` allows links
 - [x] paper-chain-of-thought
 - [x] paper-rag
 - [x] paper-lora
-- [ ] paper-dpo
-- [ ] paper-llama
+- [x] paper-dpo
+- [x] paper-llama
 
 ### AI systems
-- [ ] paper-megatron-lm
-- [ ] paper-flashattention
-- [ ] paper-vllm
+- [x] paper-megatron-lm
+- [x] paper-flashattention
+- [x] paper-vllm

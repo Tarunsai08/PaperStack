@@ -29,3 +29,11 @@ Choices made while building, so nobody has to guess later.
 - **Status bar**: the app opts out of Android 15 edge-to-edge (`windowOptOutEdgeToEdgeEnforcement`) so the status bar can be tinted to match each theme.
 - **Primary buttons** use a deeper orange (`#C94A0C`) behind white text so the label meets WCAG AA contrast; the brand orange `#FF6719` is used for accents, icons and the logo.
 - **Reminders** use inexact daily alarms (no exact-alarm permission), which is fine for a reading nudge.
+
+## Seed content accuracy
+
+- **Every paper link was checked** against the live source in this session: all 28 arXiv IDs were confirmed against the arXiv API (titles match), the NeurIPS AlexNet page and the OpenAI GPT-1 PDF return 200, and the 12 DOIs resolve to the right publisher pages (publishers return 403 to scripts, but the DOI redirects and Crossref metadata match).
+- **Numbers in articles** are ones the papers report (for example AlexNet's 15.3% vs 26.2% top-5 error, BERT's GLUE 80.5, Chinchilla's 67.5% MMLU). Where a figure is approximate in the paper or commonly rounded, the article says "about."
+- **Anecdotes** that come from interviews rather than the papers (Goodfellow's bar story, AlexNet trained in a bedroom) are marked as reported or as the person's own account.
+- **GAN title**: the arXiv listing says "Generative Adversarial Networks"; the NeurIPS proceedings title, used here, is "Generative Adversarial Nets."
+- **Venue for preprint-only papers** (PPO, Scaling Laws, Megatron-LM, LLaMA) is "arXiv"; GPT-1 is an "OpenAI technical report."

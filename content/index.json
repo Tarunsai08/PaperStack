@@ -1,7 +1,7 @@
 {
- "content_version": "222dba902dc5f8a2",
+ "content_version": "49e2a93e1b210731",
  "generated_at": "2026-10-14",
- "count": 47,
+ "count": 52,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -4393,8 +4393,8 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.92,
    "path": "papers/chain-of-thought.md",
-   "hash": "ebdae7a14e1a",
-   "word_count": 1440,
+   "hash": "2c16d799e669",
+   "word_count": 1444,
    "excerpt": "Here is a puzzle for a language model: \"The cafeteria had 23 apples. If they used 20 to make lunch and bought 6 more, how many apples do they have?\" In early 2022, Google's 540-billion-parameter language model PaLM, one of the largest in the world, could get questions like this wrong when asked for…"
   },
   {
@@ -4603,6 +4603,519 @@
    "hash": "d38919b42788",
    "word_count": 1418,
    "excerpt": "Suppose you want GPT-3 to write in your company's style, or to answer questions about Indian tax law. The standard approach in 2020 was full fine-tuning: keep training all 175 billion parameters on your data. Then you have a new 175-billion-parameter model, about 350 gigabytes, just for one task.…"
+  },
+  {
+   "id": "paper-dpo",
+   "kind": "paper",
+   "slug": "dpo",
+   "title": "Your Language Model Was the Reward Model All Along",
+   "subtitle": "Direct Preference Optimization: aligning models with human preferences using one simple loss, no reinforcement learning required",
+   "track": "useful-llms",
+   "track_order": 5,
+   "prerequisites": [
+    "paper-instructgpt"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "dpo",
+    "alignment",
+    "preference learning",
+    "rlhf"
+   ],
+   "paper_title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+   "authors": [
+    "Rafael Rafailov",
+    "Archit Sharma",
+    "Eric Mitchell",
+    "Stefano Ermon",
+    "Christopher D. Manning",
+    "Chelsea Finn"
+   ],
+   "year": 2023,
+   "venue": "NeurIPS",
+   "paper_url": "https://arxiv.org/abs/2305.18290",
+   "glossary": [
+    {
+     "term": "Preference data",
+     "definition": "Pairs of responses to the same prompt where a person marked one as better (chosen) and the other as worse (rejected)."
+    },
+    {
+     "term": "Reference model",
+     "definition": "A frozen copy of the starting model, used as an anchor so the trained model does not drift too far."
+    },
+    {
+     "term": "Bradley-Terry model",
+     "definition": "A classic way to turn scores into preference probabilities: the chance that A beats B depends on the difference of their scores, passed through a sigmoid."
+    },
+    {
+     "term": "Log probability",
+     "definition": "The logarithm of the probability a model assigns to a piece of text. Language models naturally compute it."
+    },
+    {
+     "term": "Beta",
+     "definition": "A setting in DPO that controls how strongly the model is held close to the reference model."
+    },
+    {
+     "term": "Closed-form solution",
+     "definition": "An exact formula for the answer to a problem, rather than an answer found by iterative search."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What does DPO remove from the RLHF pipeline?",
+     "options": [
+      "The human preference data",
+      "The separately trained reward model and the reinforcement learning loop",
+      "The pre-trained language model",
+      "The tokenizer"
+     ],
+     "answer": 1,
+     "explain": "DPO trains the language model directly on preference pairs with a classification-style loss."
+    },
+    {
+     "q": "In DPO's loss, what makes the loss small?",
+     "options": [
+      "The model assigning the same probability to both responses",
+      "The model raising the chosen response's probability, relative to the reference model, more than the rejected one's",
+      "The model forgetting the reference model",
+      "The model generating long answers"
+     ],
+     "answer": 1,
+     "explain": "The loss depends on the difference between how much the model favours the chosen and the rejected response compared with the reference."
+    },
+    {
+     "q": "What is the role of the reference model in DPO?",
+     "options": [
+      "It generates the training data",
+      "It anchors the trained model so it does not drift too far from sensible language",
+      "It is the human labeler",
+      "It replaces the tokenizer"
+     ],
+     "answer": 1,
+     "explain": "All probabilities are measured relative to the frozen reference, which plays the role of RLHF's KL penalty."
+    }
+   ],
+   "cover_seed": "dpo-preference",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.88,
+   "path": "papers/dpo.md",
+   "hash": "3183aea6daf5",
+   "word_count": 1483,
+   "excerpt": "The recipe that turned GPT-3 into ChatGPT is famously fiddly. Train a reward model on human preferences. Then run reinforcement learning with PPO, juggling four large models at once: the policy, a reference copy, the reward model and a value model. Tune a dozen settings, sample text constantly, and…"
+  },
+  {
+   "id": "paper-llama",
+   "kind": "paper",
+   "slug": "llama",
+   "title": "Small Enough to Share, Strong Enough to Matter",
+   "subtitle": "LLaMA: open models trained on public data that rivalled giants, and set off an explosion of open-source AI",
+   "track": "useful-llms",
+   "track_order": 6,
+   "prerequisites": [
+    "paper-chinchilla"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "llama",
+    "open models",
+    "large language models",
+    "efficiency"
+   ],
+   "paper_title": "LLaMA: Open and Efficient Foundation Language Models",
+   "authors": [
+    "Hugo Touvron",
+    "Thibaut Lavril",
+    "Gautier Izacard",
+    "Xavier Martinet",
+    "Marie-Anne Lachaux",
+    "et al."
+   ],
+   "year": 2023,
+   "venue": "arXiv",
+   "paper_url": "https://arxiv.org/abs/2302.13971",
+   "glossary": [
+    {
+     "term": "Foundation model",
+     "definition": "A large model pre-trained on broad data that can be adapted to many downstream tasks."
+    },
+    {
+     "term": "Open weights",
+     "definition": "Releasing a trained model's parameters so others can download, run and modify it."
+    },
+    {
+     "term": "Inference budget",
+     "definition": "The total computing cost of running a model for users after training, which grows with model size and usage."
+    },
+    {
+     "term": "RMSNorm",
+     "definition": "A simpler, cheaper variant of layer normalization that rescales vectors by their root mean square."
+    },
+    {
+     "term": "SwiGLU",
+     "definition": "An activation function with a learned gate, used in the feed-forward layers, that often trains better than ReLU."
+    },
+    {
+     "term": "Rotary positional embedding",
+     "definition": "A way of encoding token positions by rotating query and key vectors, so attention naturally depends on relative distance."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What was LLaMA's key strategy compared with models like GPT-3?",
+     "options": [
+      "Make models as large as possible",
+      "Train smaller models on many more tokens, so they are cheap to run and still strong",
+      "Use only private data",
+      "Skip pre-training"
+     ],
+     "answer": 1,
+     "explain": "Optimising for inference cost, not just training cost, favours smaller models trained longer."
+    },
+    {
+     "q": "What kind of data was LLaMA trained on?",
+     "options": [
+      "Private user conversations",
+      "Only publicly available datasets, such as filtered web crawls, Wikipedia, books, code, arXiv and Stack Exchange",
+      "Only Wikipedia",
+      "Synthetic data from GPT-4"
+     ],
+     "answer": 1,
+     "explain": "The authors deliberately used only publicly available data so their work could be reproduced and shared."
+    },
+    {
+     "q": "Roughly how did LLaMA-13B compare with GPT-3 (175B)?",
+     "options": [
+      "It was much worse on every benchmark",
+      "It outperformed GPT-3 on most benchmarks despite being over ten times smaller",
+      "It could not run on a GPU",
+      "It was identical in size"
+     ],
+     "answer": 1,
+     "explain": "A well-trained 13B model beating a 175B model highlighted how much data and training choices matter."
+    }
+   ],
+   "cover_seed": "llama-open-models",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.9,
+   "path": "papers/llama.md",
+   "hash": "cf30cce70cfe",
+   "word_count": 1402,
+   "excerpt": "In February 2023, the most capable language models were locked away. You could talk to them through a company's website or API, but you could not download them, inspect them or run them yourself. Studying how they worked was a privilege of a few labs. Then Meta released LLaMA: a family of models…"
+  },
+  {
+   "id": "paper-megatron-lm",
+   "kind": "paper",
+   "slug": "megatron-lm",
+   "title": "When One GPU Is Not Enough",
+   "subtitle": "Megatron-LM: slicing each Transformer layer across GPUs, the trick that let language models grow past a single chip",
+   "track": "ai-systems",
+   "track_order": 1,
+   "prerequisites": [
+    "paper-attention-is-all-you-need"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "distributed training",
+    "model parallelism",
+    "gpus",
+    "systems"
+   ],
+   "paper_title": "Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism",
+   "authors": [
+    "Mohammad Shoeybi",
+    "Mostofa Patwary",
+    "Raul Puri",
+    "Patrick LeGresley",
+    "Jared Casper",
+    "Bryan Catanzaro"
+   ],
+   "year": 2019,
+   "venue": "arXiv",
+   "paper_url": "https://arxiv.org/abs/1909.08053",
+   "glossary": [
+    {
+     "term": "Data parallelism",
+     "definition": "Training with many GPUs that each hold a full copy of the model and process different examples, then average their gradients."
+    },
+    {
+     "term": "Model parallelism",
+     "definition": "Splitting a single model across several GPUs because it is too large to fit on one."
+    },
+    {
+     "term": "Tensor parallelism",
+     "definition": "A form of model parallelism that splits the matrices inside each layer across GPUs, so every GPU computes part of every layer."
+    },
+    {
+     "term": "Pipeline parallelism",
+     "definition": "A form of model parallelism that puts different layers on different GPUs, passing activations along like an assembly line."
+    },
+    {
+     "term": "All-reduce",
+     "definition": "A communication step where every GPU contributes a set of numbers and every GPU receives their sum."
+    },
+    {
+     "term": "Scaling efficiency",
+     "definition": "How close a multi-GPU system comes to the ideal speedup. 100% means doubling the GPUs doubles the throughput."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What problem does model parallelism solve that data parallelism cannot?",
+     "options": [
+      "Too little training data",
+      "A model whose parameters and training state do not fit in one GPU's memory",
+      "Slow internet connections",
+      "Too many labels"
+     ],
+     "answer": 1,
+     "explain": "Data parallelism copies the whole model to every GPU, which fails once the model is larger than a single GPU's memory."
+    },
+    {
+     "q": "How does Megatron-LM split a Transformer's feed-forward layer?",
+     "options": [
+      "Randomly",
+      "The first weight matrix by columns and the second by rows, so each GPU can apply the activation independently and only one sum is needed at the end",
+      "By giving each GPU a different training example",
+      "By putting each layer on a different continent"
+     ],
+     "answer": 1,
+     "explain": "Column-then-row splitting keeps the non-linear activation local to each GPU and needs just one all-reduce in the forward pass."
+    },
+    {
+     "q": "What made Megatron's approach easy to adopt?",
+     "options": [
+      "It needed a new programming language",
+      "It required only a few communication operations added to ordinary PyTorch code, with no new compiler",
+      "It only worked on CPUs",
+      "It removed the need for GPUs"
+     ],
+     "answer": 1,
+     "explain": "The authors emphasised a simple implementation using existing tools, which helped it spread widely."
+    }
+   ],
+   "cover_seed": "megatron-model-parallel",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.82,
+   "path": "papers/megatron-lm.md",
+   "hash": "25b66a9e8780",
+   "word_count": 1434,
+   "excerpt": "In 2019, one of the best GPUs for AI had 32 gigabytes of memory. That sounds like a lot until you do the arithmetic for a language model with 8 billion parameters. Just storing the weights, the gradients and the optimizer's bookkeeping during training takes well over 100 gigabytes. The model simply…"
+  },
+  {
+   "id": "paper-flashattention",
+   "kind": "paper",
+   "slug": "flashattention",
+   "title": "Faster Attention by Doing More Maths",
+   "subtitle": "FlashAttention: the GPU's real bottleneck was memory traffic, and fixing it made exact attention several times faster",
+   "track": "ai-systems",
+   "track_order": 2,
+   "prerequisites": [
+    "paper-attention-is-all-you-need"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "attention",
+    "gpus",
+    "systems",
+    "efficiency",
+    "long context"
+   ],
+   "paper_title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+   "authors": [
+    "Tri Dao",
+    "Daniel Y. Fu",
+    "Stefano Ermon",
+    "Atri Rudra",
+    "Christopher Ré"
+   ],
+   "year": 2022,
+   "venue": "NeurIPS",
+   "paper_url": "https://arxiv.org/abs/2205.14135",
+   "glossary": [
+    {
+     "term": "HBM",
+     "definition": "High Bandwidth Memory: the GPU's large main memory, tens of gigabytes, which is big but comparatively slow to read and write."
+    },
+    {
+     "term": "SRAM",
+     "definition": "The GPU's small on-chip memory, close to the compute units: extremely fast but only a few hundred kilobytes per unit."
+    },
+    {
+     "term": "IO-aware",
+     "definition": "Designed around the cost of moving data between levels of memory, not just around the number of arithmetic operations."
+    },
+    {
+     "term": "Tiling",
+     "definition": "Breaking a large computation into small blocks that fit in fast memory, and processing them one at a time."
+    },
+    {
+     "term": "Online softmax",
+     "definition": "Computing a softmax incrementally, block by block, by keeping a running maximum and running sum and rescaling as new blocks arrive."
+    },
+    {
+     "term": "Kernel",
+     "definition": "A single program that runs on the GPU to perform one operation, such as a matrix multiply or a whole attention computation."
+    },
+    {
+     "term": "Recomputation",
+     "definition": "Recalculating intermediate values during the backward pass instead of storing them, trading extra arithmetic for less memory."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What was the main bottleneck in standard attention on GPUs, according to the paper?",
+     "options": [
+      "Too few arithmetic units",
+      "Reading and writing the large attention matrix to and from slow GPU main memory",
+      "The softmax being mathematically wrong",
+      "Lack of training data"
+     ],
+     "answer": 1,
+     "explain": "Attention spends most of its time moving data to and from HBM, not computing. FlashAttention reduces that traffic."
+    },
+    {
+     "q": "Does FlashAttention approximate attention?",
+     "options": [
+      "Yes, it drops most of the attention weights",
+      "No, it computes exactly the same result as standard attention, just in a different order",
+      "Yes, it only attends to nearby tokens",
+      "It replaces attention with convolutions"
+     ],
+     "answer": 1,
+     "explain": "It is exact. The speedup comes from reorganising the computation, not from skipping any of it."
+    },
+    {
+     "q": "How can FlashAttention compute a softmax without seeing all the scores at once?",
+     "options": [
+      "It guesses the missing scores",
+      "It keeps a running maximum and running sum, and rescales earlier partial results when a new block changes the maximum",
+      "It skips the normalisation",
+      "It sorts all the scores first"
+     ],
+     "answer": 1,
+     "explain": "The online softmax trick lets each block be processed and combined correctly as it streams through fast memory."
+    }
+   ],
+   "cover_seed": "flashattention-io",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.88,
+   "path": "papers/flashattention.md",
+   "hash": "20c69315948f",
+   "word_count": 1473,
+   "excerpt": "For five years after the Transformer arrived, a small army of researchers tried to make attention faster. Most of their ideas approximated it: only attend to nearby words, or to a random sample, or to a compressed summary. Many of these methods cut the number of calculations dramatically.…"
+  },
+  {
+   "id": "paper-vllm",
+   "kind": "paper",
+   "slug": "vllm",
+   "title": "Borrowing an Old OS Trick to Serve Chatbots",
+   "subtitle": "PagedAttention and vLLM: managing a model's memory like virtual memory pages, and serving several times more users per GPU",
+   "track": "ai-systems",
+   "track_order": 3,
+   "prerequisites": [
+    "paper-flashattention"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "llm serving",
+    "systems",
+    "memory management",
+    "kv cache"
+   ],
+   "paper_title": "Efficient Memory Management for Large Language Model Serving with PagedAttention",
+   "authors": [
+    "Woosuk Kwon",
+    "Zhuohan Li",
+    "Siyuan Zhuang",
+    "Ying Sheng",
+    "Lianmin Zheng",
+    "et al."
+   ],
+   "year": 2023,
+   "venue": "SOSP",
+   "paper_url": "https://arxiv.org/abs/2309.06180",
+   "glossary": [
+    {
+     "term": "KV cache",
+     "definition": "Stored keys and values for every token generated so far, kept so the model does not recompute them at each new token."
+    },
+    {
+     "term": "Throughput",
+     "definition": "How many requests or tokens a serving system completes per second."
+    },
+    {
+     "term": "Batching",
+     "definition": "Processing many users' requests together on the GPU so its parallel hardware is used efficiently."
+    },
+    {
+     "term": "Fragmentation",
+     "definition": "Wasted memory caused by reserving space that is not used, or by gaps between allocations that are too small to reuse."
+    },
+    {
+     "term": "Virtual memory",
+     "definition": "An operating system technique that maps a program's contiguous-looking addresses onto scattered physical pages of memory."
+    },
+    {
+     "term": "Block table",
+     "definition": "In PagedAttention, the map from each sequence's logical blocks of tokens to the physical memory blocks where their keys and values are stored."
+    },
+    {
+     "term": "Copy-on-write",
+     "definition": "Letting several users share the same memory until one of them needs to change it, and only then making a private copy."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is the KV cache?",
+     "options": [
+      "A cache of web pages",
+      "Stored attention keys and values for all previous tokens, reused when generating each new token",
+      "The model's weights",
+      "A list of user passwords"
+     ],
+     "answer": 1,
+     "explain": "Without it, generating each token would require recomputing keys and values for the whole sequence."
+    },
+    {
+     "q": "What problem did existing serving systems have with the KV cache?",
+     "options": [
+      "They stored it on the CPU",
+      "They reserved large contiguous chunks for the maximum possible length, wasting most of the memory through fragmentation",
+      "They deleted it after every token",
+      "They encrypted it too slowly"
+     ],
+     "answer": 1,
+     "explain": "The paper found that existing systems used only a small fraction of KV cache memory for actual token data."
+    },
+    {
+     "q": "How does PagedAttention store each sequence's KV cache?",
+     "options": [
+      "In one big contiguous block sized for the maximum length",
+      "In small fixed-size blocks that can sit anywhere in memory, tracked by a block table, like pages in virtual memory",
+      "On a hard disk",
+      "Only for the first token"
+     ],
+     "answer": 1,
+     "explain": "Non-contiguous blocks are allocated on demand, so almost no memory is wasted and blocks can be shared between sequences."
+    }
+   ],
+   "cover_seed": "vllm-pagedattention",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.85,
+   "path": "papers/vllm.md",
+   "hash": "aa188c03d375",
+   "word_count": 1425,
+   "excerpt": "Running a chatbot for millions of people is ruinously expensive. Each GPU costs a fortune, and the number of conversations it can handle at once decides how many GPUs you need. In 2023, researchers at UC Berkeley looked at how existing systems used GPU memory while generating text, and found…"
   }
  ]
 }
