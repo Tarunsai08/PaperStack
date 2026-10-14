@@ -1,0 +1,206 @@
+{
+ "content_version": "400f28a94996e8a7",
+ "generated_at": "2026-10-14",
+ "count": 2,
+ "articles": [
+  {
+   "id": "primer-ai-ml-dl-map",
+   "kind": "primer",
+   "slug": "ai-ml-dl-map",
+   "title": "AI, ML, and Deep Learning: The Map You Wish You Had",
+   "subtitle": "Three buzzwords, one simple picture, and why the difference actually matters",
+   "track": "start-here",
+   "track_order": 1,
+   "prerequisites": [],
+   "difficulty": "beginner",
+   "read_minutes": 6,
+   "topics": [
+    "foundations",
+    "machine learning",
+    "deep learning",
+    "overview"
+   ],
+   "glossary": [
+    {
+     "term": "Artificial intelligence",
+     "definition": "The broad goal of making computers do things that would seem intelligent if a person did them, like reasoning, recognizing images or understanding language."
+    },
+    {
+     "term": "Machine learning",
+     "definition": "A way of building AI where the computer learns patterns from examples instead of following rules a human wrote by hand."
+    },
+    {
+     "term": "Deep learning",
+     "definition": "Machine learning that uses neural networks with many layers, which can learn useful features straight from raw data like pixels or text."
+    },
+    {
+     "term": "Model",
+     "definition": "The thing that gets learned: a function with adjustable numbers inside it that turns an input (an email, a photo) into an output (spam or not, cat or dog)."
+    },
+    {
+     "term": "Training",
+     "definition": "The process of showing a model many examples and nudging its internal numbers so its answers get better."
+    },
+    {
+     "term": "Neural network",
+     "definition": "A model built from many simple connected units, loosely inspired by neurons, that pass numbers to each other in layers."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Which statement best describes how the three terms relate?",
+     "options": [
+      "They are three names for the same thing",
+      "Deep learning is a kind of machine learning, which is one way of doing AI",
+      "AI is a kind of deep learning",
+      "Machine learning and deep learning are unrelated fields"
+     ],
+     "answer": 1,
+     "explain": "Think nesting dolls: AI is the biggest doll, machine learning sits inside it, and deep learning sits inside machine learning."
+    },
+    {
+     "q": "What is the key difference between traditional programming and machine learning?",
+     "options": [
+      "Machine learning needs no data at all",
+      "Traditional programs are always faster",
+      "In machine learning you give examples and answers, and the computer works out the rules",
+      "Machine learning only works on images"
+     ],
+     "answer": 2,
+     "explain": "A programmer writes rules by hand. In machine learning, the rules are learned from examples that already have the right answers."
+    },
+    {
+     "q": "Why did deep learning become so popular after 2012?",
+     "options": [
+      "Because it removed the need for computers",
+      "Because large datasets and fast GPUs let many-layered networks learn their own features",
+      "Because rule-based systems were banned",
+      "Because it needs fewer examples than any other method"
+     ],
+     "answer": 1,
+     "explain": "Deep networks are hungry for data and computation. Once both became available, they started beating hand-designed approaches."
+    }
+   ],
+   "cover_seed": "ai-ml-dl-map",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.9,
+   "path": "primers/ai-ml-dl-map.md",
+   "hash": "e1ec3a5943c1",
+   "word_count": 1235,
+   "excerpt": "Before lunch today, you probably used AI a dozen times without noticing. Your phone unlocked when it saw your face. Your inbox quietly hid three scam emails. Your keyboard guessed the next word before you typed it. Here is the strange part. If you ask three people what \"AI\" means, you will get…"
+  },
+  {
+   "id": "paper-attention-is-all-you-need",
+   "kind": "paper",
+   "slug": "attention-is-all-you-need",
+   "title": "The Paper That Taught Machines Where to Look",
+   "subtitle": "How one simple idea replaced decades of sequence models and gave us ChatGPT",
+   "track": "transformers-llms",
+   "track_order": 1,
+   "prerequisites": [
+    "primer-embeddings",
+    "paper-bahdanau-attention"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 8,
+   "topics": [
+    "transformers",
+    "attention",
+    "nlp",
+    "architecture"
+   ],
+   "paper_title": "Attention Is All You Need",
+   "authors": [
+    "Ashish Vaswani",
+    "Noam Shazeer",
+    "Niki Parmar",
+    "Jakob Uszkoreit",
+    "Llion Jones",
+    "Aidan N. Gomez",
+    "Łukasz Kaiser",
+    "Illia Polosukhin"
+   ],
+   "year": 2017,
+   "venue": "NeurIPS",
+   "paper_url": "https://arxiv.org/abs/1706.03762",
+   "glossary": [
+    {
+     "term": "Attention",
+     "definition": "A way for a model to decide which parts of the input matter most for each output, by giving every part a weight and mixing them together."
+    },
+    {
+     "term": "Self-attention",
+     "definition": "Attention where every word in a sentence looks at every other word in the same sentence to understand its context."
+    },
+    {
+     "term": "Token",
+     "definition": "A small chunk of text, like a word or part of a word, that the model reads as one unit."
+    },
+    {
+     "term": "Recurrent neural network",
+     "definition": "An older kind of network that reads a sequence one step at a time, carrying a memory forward from each step to the next."
+    },
+    {
+     "term": "Query, key and value",
+     "definition": "Three vectors made from each token. The query says what a token is looking for, the key says what it offers, and the value is the information it passes on."
+    },
+    {
+     "term": "Softmax",
+     "definition": "A function that turns a list of scores into positive weights that add up to 1, so bigger scores get bigger shares."
+    },
+    {
+     "term": "Positional encoding",
+     "definition": "Extra numbers added to each token's embedding so the model knows where in the sentence the token sits."
+    },
+    {
+     "term": "BLEU",
+     "definition": "A standard score for machine translation that measures how much a system's output overlaps with human translations. Higher is better."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What did the Transformer remove that earlier translation models depended on?",
+     "options": [
+      "Embeddings",
+      "Recurrence, reading words one at a time",
+      "The softmax function",
+      "Training data"
+     ],
+     "answer": 1,
+     "explain": "Transformers process all tokens at once with self-attention instead of stepping through the sentence word by word."
+    },
+    {
+     "q": "In self-attention, what decides how much one word listens to another?",
+     "options": [
+      "Their distance in the sentence",
+      "Alphabetical order",
+      "How well the first word's query matches the second word's key",
+      "A fixed table written by the researchers"
+     ],
+     "answer": 2,
+     "explain": "Each word's query is compared with every key using a dot product. Higher scores become bigger attention weights after the softmax."
+    },
+    {
+     "q": "Why does the Transformer need positional encodings?",
+     "options": [
+      "To make training slower but more accurate",
+      "Because attention on its own has no sense of word order",
+      "To translate between languages with different alphabets",
+      "To reduce the number of parameters"
+     ],
+     "answer": 1,
+     "explain": "Attention treats the input as a set. Without position information, 'dog bites man' and 'man bites dog' would look identical."
+    }
+   ],
+   "cover_seed": "attention-is-all-you-need",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-10-14",
+   "importance_score": 0.99,
+   "path": "papers/attention-is-all-you-need.md",
+   "hash": "66ea9a24220a",
+   "word_count": 1673,
+   "excerpt": "In 2017, the best translation systems in the world read sentences the way you read a long receipt: one item at a time, struggling to remember what came at the top. Eight researchers at Google asked a strange question. What if the model could look at every word at once, and simply decide which ones…"
+  }
+ ]
+}

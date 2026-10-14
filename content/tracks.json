@@ -1,0 +1,74 @@
+[
+  {
+    "id": "start-here",
+    "title": "Start Here",
+    "subtitle": "The ideas you need before reading any paper",
+    "description": "Ten short primers that give you the vocabulary and intuition of machine learning. No math anxiety, no prior knowledge needed. Everything later in the path builds on these.",
+    "order": 0,
+    "accent": "#6C5CE7"
+  },
+  {
+    "id": "foundations",
+    "title": "Foundations of Machine Learning",
+    "subtitle": "Where ML came from and the classic algorithms",
+    "description": "From Turing's question about thinking machines to the perceptron, backpropagation, support vector machines and random forests. The ideas every later breakthrough stands on.",
+    "order": 1,
+    "accent": "#2E86DE"
+  },
+  {
+    "id": "deep-learning",
+    "title": "Deep Learning Takes Off",
+    "subtitle": "Neural networks that actually work at scale",
+    "description": "How neural networks went from a curiosity to the dominant tool in AI: convolutions, GPUs, dropout, better optimizers, normalization and very deep residual networks.",
+    "order": 2,
+    "accent": "#10AC84"
+  },
+  {
+    "id": "sequences-language",
+    "title": "Teaching Machines Language",
+    "subtitle": "Sequence models, embeddings, early attention",
+    "description": "Language is a sequence, and sequences need memory. Follow the path from LSTMs and word vectors to the first attention mechanism, the direct ancestor of today's chatbots.",
+    "order": 3,
+    "accent": "#E17055"
+  },
+  {
+    "id": "generative",
+    "title": "Machines That Create",
+    "subtitle": "VAEs, GANs, diffusion",
+    "description": "How models learned to generate new images instead of just labeling old ones: variational autoencoders, the adversarial game of GANs, and the diffusion models behind modern image generators.",
+    "order": 4,
+    "accent": "#D63384"
+  },
+  {
+    "id": "reinforcement",
+    "title": "Learning by Doing",
+    "subtitle": "Reinforcement learning and game-playing AI",
+    "description": "Learning from rewards instead of labels. Atari-playing agents, the AlphaGo match, and PPO, the algorithm that later helped align language models.",
+    "order": 5,
+    "accent": "#E58E26"
+  },
+  {
+    "id": "transformers-llms",
+    "title": "Transformers and LLMs",
+    "subtitle": "The architecture behind modern AI",
+    "description": "The Transformer, GPT, BERT, scaling laws and the jump to vision and multimodal models. This is the engine room of modern AI.",
+    "order": 6,
+    "accent": "#FF6719"
+  },
+  {
+    "id": "useful-llms",
+    "title": "Making LLMs Useful",
+    "subtitle": "Alignment, reasoning, retrieval, fine-tuning",
+    "description": "A raw language model is not an assistant. Learn how human feedback, chain-of-thought prompting, retrieval, cheap fine-tuning and open models turned LLMs into tools people use every day.",
+    "order": 7,
+    "accent": "#0FB9B1"
+  },
+  {
+    "id": "ai-systems",
+    "title": "The Systems Behind AI",
+    "subtitle": "How huge models are trained and served efficiently",
+    "description": "Models with billions of parameters do not fit on one chip, and serving them to millions of people is its own engineering puzzle. Meet the systems papers that make modern AI practical.",
+    "order": 8,
+    "accent": "#5F6CAF"
+  }
+]

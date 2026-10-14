@@ -1,0 +1,358 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------ */
+/* Theme tokens. Colors are RGB channels so Tailwind can add alpha.    */
+/* ------------------------------------------------------------------ */
+:root,
+:root[data-theme='light'] {
+  --bg: 255 255 255;
+  --surface: 255 255 255;
+  --surface-2: 246 246 244;
+  --text: 26 26 26;
+  --muted: 107 107 107;
+  --border: 237 237 237;
+  --brand: 255 103 25;
+  --brand-ink: 194 65 12;
+  --brand-btn: 201 74 12;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.04), 0 4px 16px rgb(0 0 0 / 0.06);
+  --shadow-float: 0 8px 40px rgb(0 0 0 / 0.14);
+  --hl-yellow: 255 214 10;
+  --hl-green: 52 199 89;
+  --hl-blue: 10 132 255;
+  --hl-pink: 255 55 140;
+  --hl-alpha: 0.32;
+  --code-bg: 246 246 244;
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: 17 17 17;
+  --surface: 24 24 24;
+  --surface-2: 32 32 32;
+  --text: 236 236 236;
+  --muted: 154 154 154;
+  --border: 38 38 38;
+  --brand: 255 103 25;
+  --brand-ink: 255 138 76;
+  --brand-btn: 201 74 12;
+  --shadow-card: none;
+  --shadow-float: 0 8px 40px rgb(0 0 0 / 0.6);
+  --hl-alpha: 0.38;
+  --code-bg: 30 30 30;
+  color-scheme: dark;
+}
+
+:root[data-theme='sepia'] {
+  --bg: 247 241 227;
+  --surface: 251 247 238;
+  --surface-2: 239 230 211;
+  --text: 59 47 42;
+  --muted: 110 93 81;
+  --border: 228 216 192;
+  --brand: 255 103 25;
+  --brand-ink: 184 67 11;
+  --brand-btn: 201 74 12;
+  --shadow-card: 0 1px 2px rgb(59 47 42 / 0.05), 0 4px 16px rgb(59 47 42 / 0.07);
+  --shadow-float: 0 8px 40px rgb(59 47 42 / 0.18);
+  --hl-alpha: 0.34;
+  --code-bg: 239 230 211;
+  color-scheme: light;
+}
+
+:root {
+  --read-size: 19px;
+  --read-leading: 1.7;
+  --read-font: 'Literata Variable', Literata, Georgia, serif;
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --tabbar-h: 64px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Native feel                                                         */
+/* ------------------------------------------------------------------ */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: rgb(var(--bg));
+}
+
+body {
+  margin: 0;
+  background: rgb(var(--bg));
+  color: rgb(var(--text));
+  font-family: 'Inter Variable', Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+button,
+a,
+[role='button'] {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* UI chrome is not selectable; reading content opts back in. */
+.chrome,
+button,
+nav,
+header {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.selectable {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--brand));
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.pt-safe {
+  padding-top: var(--sat);
+}
+.pb-safe {
+  padding-bottom: var(--sab);
+}
+
+.press {
+  transition: transform 120ms ease, opacity 120ms ease, background-color 150ms ease;
+}
+.press:active {
+  transform: scale(0.97);
+  opacity: 0.9;
+}
+
+/* ------------------------------------------------------------------ */
+/* Reading typography                                                  */
+/* ------------------------------------------------------------------ */
+.prose-read {
+  font-family: var(--read-font);
+  font-size: var(--read-size);
+  line-height: var(--read-leading);
+  color: rgb(var(--text));
+  font-optical-sizing: auto;
+  overflow-wrap: break-word;
+}
+
+.prose-read > * + * {
+  margin-top: 1.1em;
+}
+
+.prose-read h2 {
+  font-family: 'Inter Variable', Inter, sans-serif;
+  font-size: 24px;
+  line-height: 1.3;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  margin-top: 2.2em;
+  margin-bottom: -0.2em;
+  scroll-margin-top: 80px;
+}
+
+.prose-read h3 {
+  font-family: 'Inter Variable', Inter, sans-serif;
+  font-size: 19px;
+  line-height: 1.35;
+  font-weight: 620;
+  margin-top: 1.8em;
+  margin-bottom: -0.3em;
+}
+
+.prose-read p {
+  margin-bottom: 0;
+}
+
+.prose-read a {
+  color: rgb(var(--brand-ink));
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: rgb(var(--brand-ink) / 0.4);
+}
+
+.prose-read strong {
+  font-weight: 650;
+}
+
+.prose-read ul,
+.prose-read ol {
+  padding-left: 1.3em;
+}
+.prose-read ul {
+  list-style: disc;
+}
+.prose-read ol {
+  list-style: decimal;
+}
+.prose-read li + li {
+  margin-top: 0.45em;
+}
+.prose-read li::marker {
+  color: rgb(var(--muted));
+}
+
+.prose-read blockquote {
+  border-left: 3px solid rgb(var(--text));
+  padding-left: 1em;
+  font-style: italic;
+  color: rgb(var(--text) / 0.85);
+}
+
+.prose-read code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.84em;
+  background: rgb(var(--code-bg));
+  padding: 0.12em 0.36em;
+  border-radius: 6px;
+}
+
+.prose-read pre {
+  background: rgb(var(--code-bg));
+  padding: 14px 16px;
+  border-radius: 12px;
+  overflow-x: auto;
+  font-size: 0.8em;
+  line-height: 1.55;
+}
+.prose-read pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+.prose-read hr {
+  border: 0;
+  text-align: center;
+  margin: 2.2em 0;
+}
+.prose-read hr::after {
+  content: '\2022  \2022  \2022';
+  color: rgb(var(--muted));
+  letter-spacing: 0.4em;
+}
+
+.prose-read table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Inter Variable', Inter, sans-serif;
+  font-size: 0.78em;
+  line-height: 1.45;
+  display: block;
+  overflow-x: auto;
+}
+.prose-read th,
+.prose-read td {
+  border-bottom: 1px solid rgb(var(--border));
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+.prose-read th {
+  font-weight: 600;
+  color: rgb(var(--muted));
+}
+
+.prose-read .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.4em 0;
+  font-size: 1.05em;
+}
+.prose-read .katex {
+  font-size: 1.04em;
+}
+
+/* Highlights via the CSS Custom Highlight API (no DOM mutation). */
+::highlight(hl-yellow) {
+  background-color: rgb(var(--hl-yellow) / var(--hl-alpha));
+}
+::highlight(hl-green) {
+  background-color: rgb(var(--hl-green) / var(--hl-alpha));
+}
+::highlight(hl-blue) {
+  background-color: rgb(var(--hl-blue) / var(--hl-alpha));
+}
+::highlight(hl-pink) {
+  background-color: rgb(var(--hl-pink) / var(--hl-alpha));
+}
+
+.prose-read ::selection {
+  background: rgb(var(--brand) / 0.28);
+}
+
+/* Glossary term */
+.gloss {
+  text-decoration: underline dotted;
+  text-decoration-color: rgb(var(--brand-ink) / 0.8);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 150ms ease;
+}
+.gloss:active {
+  background: rgb(var(--brand) / 0.14);
+}
+
+/* Mermaid output */
+.mermaid-wrap svg {
+  max-width: 100%;
+  max-height: 440px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Skeleton shimmer */
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgb(var(--surface-2)) 0px,
+    rgb(var(--border)) 160px,
+    rgb(var(--surface-2)) 320px
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.4s linear infinite;
+}

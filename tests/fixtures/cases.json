@@ -1,0 +1,20 @@
+{
+  "tracks": ["start-here", "transformers-llms"],
+  "articleIds": ["primer-sample", "paper-sample"],
+  "cases": [
+    { "file": "valid-primer.md", "ok": true, "errors": [] },
+    { "file": "valid-paper.md", "ok": true, "errors": [] },
+    { "file": "wrapped-in-fence.md", "ok": true, "errors": [] },
+    { "file": "bad-sections.md", "ok": false, "errors": ["sections"] },
+    { "file": "bad-quiz.md", "ok": false, "errors": ["quiz_count", "quiz_options", "quiz_answer"] },
+    { "file": "bad-glossary.md", "ok": false, "errors": ["glossary_count", "glossary_ref_unknown"] },
+    { "file": "bad-paper-fields.md", "ok": false, "errors": ["field_missing", "paper_url", "mermaid_missing"] },
+    { "file": "bad-crossref.md", "ok": false, "errors": ["track_unknown", "directive_unknown", "prerequisite_unknown", "article_link_unknown"] },
+    { "file": "bad-values.md", "ok": false, "errors": ["id_format", "difficulty_invalid", "date_format", "importance_range"] },
+    { "file": "no-frontmatter.md", "ok": false, "errors": ["frontmatter_missing"] },
+    { "file": "bad-yaml.md", "ok": false, "errors": ["yaml_invalid"] }
+  ],
+  "wordCounts": [
+    { "text": "Hello world, it's a [[Token|token]] and [a link](article:x).\n\n```mermaid\nflowchart LR\n A-->B\n```\n\n$$x^2$$\n\n:::insight\nState-of-the-art 3.5 ideas\n:::", "words": 12 }
+  ]
+}
