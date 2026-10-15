@@ -1,7 +1,7 @@
 {
- "content_version": "787da9667a4d6afb",
- "generated_at": "2026-10-14",
- "count": 54,
+ "content_version": "c4eed2db03fb0f9b",
+ "generated_at": "2026-10-15",
+ "count": 56,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -2658,6 +2658,106 @@
    "excerpt": "In the summer of 2014, a young researcher visiting Yoshua Bengio's lab in Montreal was frustrated. The new neural translation systems squeezed every sentence, however long, into a single vector before translating it. That felt wrong. No human translator memorizes a whole sentence, closes the book,…"
   },
   {
+   "id": "paper-learning-phrase-representations-using-rnn-encoder-decoder-fo",
+   "kind": "paper",
+   "slug": "learning-phrase-representations-using-rnn-encoder-decoder-fo",
+   "title": "Compress, Then Translate: The First Encoder-Decoder",
+   "subtitle": "How two recurrent networks teamed up to rewrite machine translation",
+   "track": "sequences-language",
+   "track_order": 5,
+   "prerequisites": [
+    "paper-lstm",
+    "paper-word2vec"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 9,
+   "topics": [
+    "recurrent neural networks",
+    "encoder-decoder",
+    "machine translation",
+    "gru"
+   ],
+   "paper_title": "Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation",
+   "authors": [
+    "Kyunghyun Cho",
+    "Bart van Merriënboer",
+    "Çaglar Gülçehre",
+    "et al."
+   ],
+   "year": 2014,
+   "venue": "Conference on Empirical Methods in Natural Language Processing",
+   "paper_url": "https://arxiv.org/abs/1406.1078",
+   "glossary": [
+    {
+     "term": "RNN Encoder-Decoder",
+     "definition": "A neural network architecture consisting of two RNNs: one that reads an input sequence into a fixed-length summary vector, and another that unrolls the vector into an output sequence."
+    },
+    {
+     "term": "Reset Gate",
+     "definition": "A gating mechanism in the GRU that determines whether the hidden state should ignore the previous hidden state and rely only on the current input."
+    },
+    {
+     "term": "Update Gate",
+     "definition": "A gating mechanism in the GRU that controls how much information from the previous hidden state carries over into the current hidden state."
+    },
+    {
+     "term": "Phrase-based SMT",
+     "definition": "A statistical machine translation approach that translates sentences by dividing them into sub-sequences of words evaluated via a log-linear model."
+    },
+    {
+     "term": "CSLM",
+     "definition": "Continuous Space Language Model, a neural network-based language model trained to estimate word sequence probabilities in a continuous vector space."
+    },
+    {
+     "term": "BLEU",
+     "definition": "Bilingual Evaluation Understudy, an automated metric measuring the n-gram overlap between machine-generated translations and human reference translations."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What two gates comprise the new recurrent hidden unit introduced in this paper?",
+     "options": [
+      "Input gate and output gate",
+      "Reset gate and update gate",
+      "Forget gate and cell gate",
+      "Read gate and write gate"
+     ],
+     "answer": 1,
+     "explain": "The paper proposed a simplified alternative to the LSTM unit containing only two gates: a reset gate and an update gate."
+    },
+    {
+     "q": "How was the trained RNN Encoder-Decoder evaluated in the main machine translation experiment?",
+     "options": [
+      "As an end-to-end standalone translator replacing the entire pipeline",
+      "As a speech-to-text acoustic decoder",
+      "By scoring phrase pairs in an existing phrase table as an additional feature in a log-linear model",
+      "Exclusively as a target-side language model without reading source phrases"
+     ],
+     "answer": 2,
+     "explain": "Due to the computational expense of generating target phrases from scratch, the authors added conditional phrase-pair probabilities computed by the model as an extra feature in a standard Moses SMT system."
+    },
+    {
+     "q": "Why were phrase frequencies ignored when training the RNN Encoder-Decoder on phrase pairs?",
+     "options": [
+      "To prevent the model from merely memorizing phrase counts instead of learning linguistic regularities",
+      "Because frequency data was missing from the WMT corpora",
+      "Because the GPU implementation did not support integer counts",
+      "To intentionally reduce BLEU score variance"
+     ],
+     "answer": 0,
+     "explain": "The authors ignored frequencies to ensure the model used its capacity to distinguish plausible from implausible translations rather than fitting raw occurrence frequencies."
+    }
+   ],
+   "cover_seed": "learning-phrase-representations-using-rnn-encoder-decoder-fo",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-15",
+   "importance_score": 0.9,
+   "path": "papers/learning-phrase-representations-using-rnn-encoder-decoder-fo.md",
+   "hash": "fa5830db3fef",
+   "word_count": 1873,
+   "excerpt": "Translating a sentence from English to French is not a word-by-word swap. Word orders swap, single words blossom into three, and entire idioms collapse into single phrases. How can a machine take five words, understand their meaning, and emit seven completely different words in another language? In…"
+  },
+  {
    "id": "paper-vae",
    "kind": "paper",
    "slug": "vae",
@@ -3055,6 +3155,102 @@
    "hash": "a2818e9009dd",
    "word_count": 1421,
    "excerpt": "In August 2022, something unusual happened in AI. A model that could turn a sentence like \"an astronaut riding a horse, oil painting\" into a detailed picture was released with its weights free for anyone to download. It ran on an ordinary gaming graphics card. Within weeks, millions of people were…"
+  },
+  {
+   "id": "paper-taming-transformers-for-high-resolution-image-synthesis",
+   "kind": "paper",
+   "slug": "taming-transformers-for-high-resolution-image-synthesis",
+   "title": "Taming Transformers for Megapixel Images",
+   "subtitle": "How visual codebooks let attention scale from tiny patches to high resolution",
+   "track": "generative",
+   "track_order": 5,
+   "prerequisites": [
+    "paper-attention-is-all-you-need",
+    "paper-gan",
+    "paper-vae"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 10,
+   "topics": [
+    "generative-models",
+    "vqgan",
+    "transformers",
+    "image-synthesis"
+   ],
+   "paper_title": "Taming Transformers for High-Resolution Image Synthesis",
+   "authors": [
+    "Patrick Esser",
+    "Robin Rombach",
+    "Björn Ommer"
+   ],
+   "year": 2020,
+   "venue": "Computer Vision and Pattern Recognition",
+   "paper_url": "https://arxiv.org/abs/2012.09841",
+   "glossary": [
+    {
+     "term": "VQGAN",
+     "definition": "A generative neural network that combines vector quantization with perceptual and patch-based adversarial losses to compress images into crisp discrete codes."
+    },
+    {
+     "term": "Vector Quantization",
+     "definition": "Replacing a continuous feature vector with the closest matching entry from a learned visual dictionary or codebook."
+    },
+    {
+     "term": "Perceptual Loss",
+     "definition": "A loss measuring structural and feature differences in a deep neural network rather than simple pixel-by-pixel color differences."
+    },
+    {
+     "term": "Patch-based Discriminator",
+     "definition": "A discriminator network that critiques small image patches separately to judge local realism instead of rating the entire canvas all at once."
+    },
+    {
+     "term": "Sliding Attention Window",
+     "definition": "An inference approach where a transformer restricts attention to a local neighborhood of tokens, allowing it to generate images of arbitrary dimensions."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why did standard VQ-VAEs struggle with high compression factors before this paper?",
+     "options": [
+      "Their decoders required too much memory",
+      "Pixel-wise L2 reconstruction loss forced them to average out textures, resulting in blurry images",
+      "Transformers could not process discrete tokens",
+      "They lacked a straight-through gradient estimator"
+     ],
+     "answer": 1,
+     "explain": "Relying on standard L2 pixel loss forces the network to hedge its bets on fine details, creating blurry reconstructions when spatial downsampling is aggressive."
+    },
+    {
+     "q": "How does VQGAN allow a transformer to model high-resolution images efficiently?",
+     "options": [
+      "It increases the sequence length by splitting pixels into color channels",
+      "It eliminates the self-attention mechanism completely",
+      "It compresses images into a compact 2D grid of discrete codebook indices",
+      "It trains the transformer using pure feedforward convolutions"
+     ],
+     "answer": 2,
+     "explain": "By shrinking an image into a compact grid of discrete indices, the transformer only needs to attend over a few hundred tokens instead of millions of individual pixels."
+    },
+    {
+     "q": "Which token traversal ordering achieved the best negative log-likelihood in the paper's ablations?",
+     "options": [
+      "Spiral out from the center",
+      "Row-major raster scan",
+      "Morton Z-curve",
+      "Subsampling hierarchy"
+     ],
+     "answer": 1,
+     "explain": "The standard row-major raster scan order achieved the lowest negative log-likelihood (4.767), outperforming spiral and space-filling curve variants."
+    }
+   ],
+   "cover_seed": "taming-transformers-for-high-resolution-image-synthesis",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-15",
+   "importance_score": 0.75,
+   "path": "papers/taming-transformers-for-high-resolution-image-synthesis.md",
+   "hash": "d75b03f5282e",
+   "word_count": 2211,
+   "excerpt": "If you ask a transformer to write a story, it juggles a few thousand words without breaking a sweat. But ask that same model to draw a standard smartphone photo, and its attention mechanism collapses under the weight of several million pixels. For years, researchers assumed transformers were simply…"
   },
   {
    "id": "paper-dqn",
