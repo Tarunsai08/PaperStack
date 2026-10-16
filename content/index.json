@@ -1,7 +1,7 @@
 {
- "content_version": "c4eed2db03fb0f9b",
- "generated_at": "2026-10-15",
- "count": 56,
+ "content_version": "2b1452436d1fd475",
+ "generated_at": "2026-10-16",
+ "count": 57,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -1468,6 +1468,106 @@
    "hash": "6c08762106a9",
    "word_count": 1435,
    "excerpt": "Every craft has two kinds of knowledge. There is what the textbook says, and there is what the old hands know: the tricks, the traps, the \"never do this on a Friday\" rules that nobody writes down because everybody learned them the hard way. In 2012, Pedro Domingos wrote down machine learning's…"
+  },
+  {
+   "id": "paper-thumbs-up-sentiment-classification-using-machine-learning-te",
+   "kind": "paper",
+   "slug": "thumbs-up-sentiment-classification-using-machine-learning-te",
+   "title": "Thumbs Up? How Machines Learned to Read Reviews",
+   "subtitle": "Why human word lists failed and simple statistics conquered sentiment analysis",
+   "track": "foundations",
+   "track_order": 7,
+   "prerequisites": [
+    "primer-classification",
+    "paper-support-vector-networks",
+    "primer-data-features-labels"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 8,
+   "topics": [
+    "sentiment analysis",
+    "natural language processing",
+    "text classification",
+    "support vector machines"
+   ],
+   "paper_title": "Thumbs up? Sentiment Classification using Machine Learning Techniques",
+   "authors": [
+    "B. Pang",
+    "Lillian Lee",
+    "S. Vaithyanathan"
+   ],
+   "year": 2002,
+   "venue": "Conference on Empirical Methods in Natural Language Processing",
+   "paper_url": "https://arxiv.org/abs/cs/0205070",
+   "glossary": [
+    {
+     "term": "Sentiment Classification",
+     "definition": "The task of identifying whether an opinionated text expresses an overall positive or negative attitude."
+    },
+    {
+     "term": "Bag-of-Features",
+     "definition": "A document representation that counts or notes the presence of individual tokens while ignoring sentence structure and word order."
+    },
+    {
+     "term": "Maximum Entropy (MaxEnt)",
+     "definition": "A probabilistic classifier that chooses feature weights to maximize uncertainty while satisfying observed data averages."
+    },
+    {
+     "term": "Support Vector Machine (SVM)",
+     "definition": "A classifier that finds a boundary line or plane maximizing the margin between two opposing classes."
+    },
+    {
+     "term": "Negation Tagging",
+     "definition": "A simple text modification adding a marker to every word between a negative word like not and the next punctuation mark."
+    },
+    {
+     "term": "Thwarted Expectations",
+     "definition": "A rhetorical setup where an author lists praise or background details before delivering an opposite verdict."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What counterintuitive finding did the authors discover about feature representation in sentiment classification?",
+     "options": [
+      "Raw word frequencies decisively beat binary presence indicators.",
+      "Binary feature presence outperformed raw word frequencies across models.",
+      "Using bigrams alone beat using unigrams by a wide margin.",
+      "Restricting vocabularies to adjectives produced peak accuracy."
+     ],
+     "answer": 1,
+     "explain": "Simply marking whether a word appeared at least once worked better than counting how many times it was repeated."
+    },
+    {
+     "q": "How did machine learning models compare against human-selected word lists on movie reviews?",
+     "options": [
+      "Human intuition crushed machine learning models because humans grasp sarcasm.",
+      "Human word lists tied with Naive Bayes but lost to Support Vector Machines.",
+      "Machine learning algorithms decisively outperformed the human-crafted word lists.",
+      "All methods failed to beat the random guessing baseline of 50 percent."
+     ],
+     "answer": 2,
+     "explain": "Human lists only scored between 58% and 64% accuracy with massive tie rates, while ML models crossed 80%."
+    },
+    {
+     "q": "Why do thwarted expectations pose a major hurdle for bag-of-words classifiers?",
+     "options": [
+      "They make the vocabulary matrix too wide for computers to invert.",
+      "Positive words in background exposition can outnumber the actual negative verdict.",
+      "They cause the Maximum Entropy training loop to produce infinite weights.",
+      "They force the tokenizer to delete punctuation marks like question marks."
+     ],
+     "answer": 1,
+     "explain": "A reviewer praising the cast or premise before concluding the movie is terrible supplies too many opposing words for simple counts."
+    }
+   ],
+   "cover_seed": "thumbs-up-sentiment-classification-using-machine-learning-te",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-16",
+   "importance_score": 0.76,
+   "path": "papers/thumbs-up-sentiment-classification-using-machine-learning-te.md",
+   "hash": "73b25093b082",
+   "word_count": 1759,
+   "excerpt": "If you want a computer to know whether an article is about sports or politics, you just look for words like \"touchdown\" or \"senator\". Topic classification is easy because the subject dictates the vocabulary. But what happens when you ask an algorithm whether a movie review is a glowing…"
   },
   {
    "id": "paper-lenet",
