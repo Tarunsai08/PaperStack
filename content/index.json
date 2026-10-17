@@ -1,7 +1,7 @@
 {
- "content_version": "2b1452436d1fd475",
- "generated_at": "2026-10-16",
- "count": 57,
+ "content_version": "83b2f440e71e764b",
+ "generated_at": "2026-10-17",
+ "count": 59,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -5296,6 +5296,204 @@
    "hash": "cf30cce70cfe",
    "word_count": 1402,
    "excerpt": "In February 2023, the most capable language models were locked away. You could talk to them through a company's website or API, but you could not download them, inspect them or run them yourself. Studying how they worked was a privilege of a few labs. Then Meta released LLaMA: a family of models…"
+  },
+  {
+   "id": "paper-nnu-net-a-self-configuring-method-for-deep-learning-based-bi",
+   "kind": "paper",
+   "slug": "nnu-net-a-self-configuring-method-for-deep-learning-based-bi",
+   "title": "No New Net: Why Hyperparameters Beat Novel Architectures",
+   "subtitle": "How automating the boring parts of deep learning shattered medical imaging leaderboards",
+   "track": "useful-llms",
+   "track_order": 7,
+   "prerequisites": [
+    "paper-unet",
+    "primer-loss-functions",
+    "primer-overfitting"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 9,
+   "topics": [
+    "biomedical imaging",
+    "semantic segmentation",
+    "u-net",
+    "hyperparameter tuning",
+    "automl"
+   ],
+   "paper_title": "nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation",
+   "authors": [
+    "F. Isensee",
+    "P. Jaeger",
+    "S. Kohl",
+    "et al."
+   ],
+   "year": 2020,
+   "venue": "Nature Methods",
+   "paper_url": "https://arxiv.org/pdf/1904.08128",
+   "glossary": [
+    {
+     "term": "Dataset Fingerprint",
+     "definition": "A concise summary of key properties of an image collection, including resolution, voxel spacing, image modalities, and class balance."
+    },
+    {
+     "term": "Pipeline Fingerprint",
+     "definition": "The complete set of design choices and hyperparameters required to preprocess, train, evaluate, and post-process a segmentation pipeline."
+    },
+    {
+     "term": "Blueprint Parameters",
+     "definition": "Fixed architectural and training defaults kept identical across all datasets, such as the basic U-Net shape, loss function, and learning rate schedule."
+    },
+    {
+     "term": "Inferred Parameters",
+     "definition": "Dataset-specific settings derived deterministically from the dataset fingerprint using rule-based heuristics, such as input patch size and downsampling steps."
+    },
+    {
+     "term": "Empirical Parameters",
+     "definition": "Decisions selected automatically based on cross-validation performance, such as ensemble choices and post-processing filters."
+    },
+    {
+     "term": "Non-largest Component Suppression",
+     "definition": "A post-processing rule that discards all disconnected prediction clusters except the largest one if doing so improves validation accuracy."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What does the 'nn' in nnU-Net stand for?",
+     "options": [
+      "Neural Network",
+      "No New Net",
+      "Nearest Neighbor",
+      "Non-linear Network"
+     ],
+     "answer": 1,
+     "explain": "The authors chose 'no new net' to make the point that their framework introduces no novel neural network blocks, relying instead on a plain U-Net."
+    },
+    {
+     "q": "How does nnU-Net choose task-specific hyperparameters like patch size and downsampling steps?",
+     "options": [
+      "By running thousands of hours of neural architecture search",
+      "By applying domain-derived heuristic rules to the dataset fingerprint",
+      "By using a reinforcement learning policy trained on synthetic scans",
+      "By running an exhaustive grid search over all combinations"
+     ],
+     "answer": 1,
+     "explain": "nnU-Net translates domain expertise into explicit, rule-based heuristics that calculate configuration parameters directly from image metadata without iterative trial runs."
+    },
+    {
+     "q": "What did the authors observe when analyzing the KiTS 2019 kidney segmentation leaderboard?",
+     "options": [
+      "Teams using attention gates beat teams using standard convolutions",
+      "Residual connections were strictly required to place in the top five",
+      "Transformers replaced convolutional backbones on all top entries",
+      "Teams using nearly identical U-Net architectures finished with vastly different scores"
+     ],
+     "answer": 3,
+     "explain": "All top-15 teams used variants of the 3D U-Net, but their final scores varied across the board, showing that pipeline details and hyperparameters matter far more than small architectural tweaks."
+    }
+   ],
+   "cover_seed": "nnu-net-a-self-configuring-method-for-deep-learning-based-bi",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-17",
+   "importance_score": 0.81,
+   "path": "papers/nnu-net-a-self-configuring-method-for-deep-learning-based-bi.md",
+   "hash": "0ce287081ec0",
+   "word_count": 2012,
+   "excerpt": "In 2019, hundreds of researchers entered an international competition to spot kidney tumors in 3D scans. Nearly every team used the same core model: the famous U-Net. Yet their scores were scattered from the top of the leaderboard all the way to the bottom. If everyone used the same model family,…"
+  },
+  {
+   "id": "paper-unet-redesigning-skip-connections-to-exploit-multiscale-feat",
+   "kind": "paper",
+   "slug": "unet-redesigning-skip-connections-to-exploit-multiscale-feat",
+   "title": "Fixing U-Net's Empty Middle",
+   "subtitle": "How nested skip pathways and deep supervision made medical segmentation sharper and faster",
+   "track": "useful-llms",
+   "track_order": 8,
+   "prerequisites": [
+    "paper-unet",
+    "paper-resnet"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 10,
+   "topics": [
+    "image-segmentation",
+    "medical-imaging",
+    "u-net",
+    "deep-supervision"
+   ],
+   "paper_title": "UNet++: Redesigning Skip Connections to Exploit Multiscale Features in Image Segmentation",
+   "authors": [
+    "Zong-Wei Zhou",
+    "M. R. Siddiquee",
+    "Nima Tajbakhsh",
+    "et al."
+   ],
+   "year": 2019,
+   "venue": "IEEE Transactions on Medical Imaging",
+   "paper_url": "https://arxiv.org/abs/1912.05074",
+   "glossary": [
+    {
+     "term": "Skip Connection",
+     "definition": "A shortcut pathway that routes feature maps directly from early encoder layers to later decoder layers to preserve high-resolution spatial details."
+    },
+    {
+     "term": "Semantic Gap",
+     "definition": "The mismatch in abstraction level between shallow encoder features (edges, corners) and deep decoder features (complex organ structures)."
+    },
+    {
+     "term": "Deep Supervision",
+     "definition": "A training method that attaches loss functions to intermediate layers, forcing multiple depths of a network to predict the target mask directly."
+    },
+    {
+     "term": "Model Pruning",
+     "definition": "Cutting away unused parts of a neural network during inference to make it run faster and consume less memory."
+    },
+    {
+     "term": "Dense Convolutional Block",
+     "definition": "A cluster of convolutional layers where each layer receives inputs from all preceding layers at the same resolution level."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is the primary motivation for introducing intermediate convolution nodes along skip pathways in UNet++?",
+     "options": [
+      "To eliminate downsampling and pooling operations completely",
+      "To bridge the semantic gap between encoder and decoder feature maps through gradual aggregation",
+      "To convert 2D convolutions into 3D volumetric convolutions",
+      "To cut the network parameter count in half compared to standard U-Net"
+     ],
+     "answer": 1,
+     "explain": "In standard U-Net, shallow encoder features and deep decoder features are semantically dissimilar. Intermediate nodes gradually refine representations across scales to bridge this gap."
+    },
+    {
+     "q": "How does deep supervision enable model pruning in UNet++ at inference time?",
+     "options": [
+      "It zeroes out all convolutional weights that fall below an absolute threshold",
+      "It quantizes 32-bit floating-point weights into 8-bit integers",
+      "Because segmentation heads produce valid outputs at multiple sub-depths, inference can halt early and discard deeper layers",
+      "It automatically stops backpropagation whenever the batch loss plateaus"
+     ],
+     "answer": 2,
+     "explain": "Because heads at multiple depths are supervised to output full segmentation masks, you can take predictions from an early head and completely skip executing deeper encoder and decoder blocks."
+    },
+    {
+     "q": "What did the authors discover when comparing embedded training to isolated training of shallower UNet++ subnets?",
+     "options": [
+      "Isolated training achieved higher accuracy because it focused on fewer parameters",
+      "Embedded training performed significantly better because gradients from deeper layers regularized and enriched shallow representations",
+      "Both training methods produced identical results across every dataset",
+      "Embedded training suffered from catastrophic gradient explosion"
+     ],
+     "answer": 1,
+     "explain": "Training the full nested network transfers rich supervision signals into the shallow sub-networks, allowing pruned subnets to far outperform identical subnets trained in isolation."
+    }
+   ],
+   "cover_seed": "unet-redesigning-skip-connections-to-exploit-multiscale-feat",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-17",
+   "importance_score": 0.7,
+   "path": "papers/unet-redesigning-skip-connections-to-exploit-multiscale-feat.md",
+   "hash": "3dac0be74736",
+   "word_count": 2132,
+   "excerpt": "Imagine handing a raw blueprint sketch drawn by an apprentice directly to a master builder who is putting the final gold leaf on a cathedral dome. The builder knows where the altar goes, but your sketch shows where individual bricks sit on the ground floor. If you force the builder to stitch those…"
   },
   {
    "id": "paper-megatron-lm",
