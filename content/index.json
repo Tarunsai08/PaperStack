@@ -1,7 +1,7 @@
 {
- "content_version": "83b2f440e71e764b",
- "generated_at": "2026-10-17",
- "count": 59,
+ "content_version": "22271688bf96ac75",
+ "generated_at": "2026-10-18",
+ "count": 61,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -2359,6 +2359,99 @@
    "hash": "e3e3a576afc8",
    "word_count": 1472,
    "excerpt": "A biologist stares at a microscope image packed with hundreds of cells, all touching, all slightly different shapes. Her task: trace the exact boundary of every single cell. It takes hours per image, and she has thousands of images. In 2015, a small team at the University of Freiburg in Germany…"
+  },
+  {
+   "id": "paper-aggregated-residual-transformations-for-deep-neural-networks",
+   "kind": "paper",
+   "slug": "aggregated-residual-transformations-for-deep-neural-networks",
+   "title": "ResNeXt: Beyond Depth and Width",
+   "subtitle": "How parallel identical pathways revealed a third dimension in deep networks",
+   "track": "deep-learning",
+   "track_order": 9,
+   "prerequisites": [
+    "paper-alexnet",
+    "paper-batch-normalization",
+    "paper-resnet"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 10,
+   "topics": [
+    "computer vision",
+    "convolutional networks",
+    "neural network architecture",
+    "residual connections"
+   ],
+   "paper_title": "Aggregated Residual Transformations for Deep Neural Networks",
+   "authors": [
+    "Saining Xie",
+    "Ross B. Girshick",
+    "Piotr Dollár",
+    "et al."
+   ],
+   "year": 2016,
+   "venue": "Computer Vision and Pattern Recognition",
+   "paper_url": "https://arxiv.org/abs/1611.05431",
+   "glossary": [
+    {
+     "term": "Cardinality",
+     "definition": "The number of parallel transformation branches aggregated within a single building block."
+    },
+    {
+     "term": "Grouped Convolution",
+     "definition": "A convolution operation where input and output channels are partitioned into distinct groups, with filters operating independently inside each group."
+    },
+    {
+     "term": "Split-Transform-Merge",
+     "definition": "A design paradigm where input features are sliced into low-dimensional embeddings, independently transformed, and subsequently combined."
+    },
+    {
+     "term": "Bottleneck Block",
+     "definition": "A residual module that compresses channels using a 1x1 convolution, executes spatial convolutions in the reduced dimension, and restores channel width with a final 1x1 convolution."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is 'cardinality' in the context of ResNeXt?",
+     "options": [
+      "The total number of sequential convolutional layers in the network",
+      "The number of parallel, identically structured transformation paths inside a block",
+      "The spatial dimensions of the receptive field in each residual module",
+      "The ratio of training examples to model parameters"
+     ],
+     "answer": 1,
+     "explain": "Cardinality is explicitly defined in the paper as the size of the set of transformations to be aggregated (the number of parallel branches C)."
+    },
+    {
+     "q": "How does ResNeXt implement its homogeneous multi-branch aggregation cleanly in code?",
+     "options": [
+      "Using recursive neural network calls",
+      "Using depthwise separable dilated convolutions",
+      "Using grouped convolutions where group count equals cardinality",
+      "Using attention mechanisms across spatial channels"
+     ],
+     "answer": 2,
+     "explain": "The paper demonstrates that aggregating C homogeneous branches is mathematically equivalent to a single wide layer using grouped convolutions with C groups."
+    },
+    {
+     "q": "What happens to ResNeXt's accuracy when increasing cardinality while holding FLOPs and parameter count constant?",
+     "options": [
+      "Classification accuracy improves compared to the standard ResNet baseline",
+      "Accuracy drops precipitously due to vanishing gradients",
+      "FLOPs must increase exponentially to maintain accuracy",
+      "The model severely overfits the training set"
+     ],
+     "answer": 0,
+     "explain": "A key finding is that increasing cardinality while adjusting bottleneck width to maintain constant FLOPs and parameters consistently lowers classification error."
+    }
+   ],
+   "cover_seed": "aggregated-residual-transformations-for-deep-neural-networks",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-18",
+   "importance_score": 0.82,
+   "path": "papers/aggregated-residual-transformations-for-deep-neural-networks.md",
+   "hash": "345516614576",
+   "word_count": 2279,
+   "excerpt": "If you want to make an image-recognition network more accurate, what knob do you turn? For years, the deep learning playbook had only two obvious answers: go deeper by stacking more layers, or go wider by packing more channels into each layer. Both strategies helped, but both soon ran into walls of…"
   },
   {
    "id": "paper-lstm",
@@ -5494,6 +5587,107 @@
    "hash": "3dac0be74736",
    "word_count": 2132,
    "excerpt": "Imagine handing a raw blueprint sketch drawn by an apprentice directly to a master builder who is putting the final gold leaf on a cathedral dome. The builder knows where the altar goes, but your sketch shows where individual bricks sit on the ground floor. If you force the builder to stitch those…"
+  },
+  {
+   "id": "paper-the-llama-3-herd-of-models",
+   "kind": "paper",
+   "slug": "the-llama-3-herd-of-models",
+   "title": "The Engineering Playbook of Llama 3",
+   "subtitle": "How 16,000 GPUs and meticulous post-training built an open frontier model",
+   "track": "useful-llms",
+   "track_order": 9,
+   "prerequisites": [
+    "paper-llama",
+    "paper-scaling-laws",
+    "paper-dpo"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 8,
+   "topics": [
+    "llm",
+    "scaling-laws",
+    "distributed-training",
+    "dpo"
+   ],
+   "paper_title": "The Llama 3 Herd of Models",
+   "authors": [
+    "Aaron Grattafiori",
+    "Abhimanyu Dubey",
+    "Abhinav Jauhri",
+    "et al."
+   ],
+   "year": 2024,
+   "venue": "arXiv",
+   "paper_url": "https://arxiv.org/abs/2407.21783",
+   "glossary": [
+    {
+     "term": "4D Parallelism",
+     "definition": "A distributed training setup combining Tensor Parallelism, Context Parallelism, Pipeline Parallelism, and Data Parallelism to fit massive models across thousands of GPUs."
+    },
+    {
+     "term": "Grouped-Query Attention (GQA)",
+     "definition": "An attention variant where several query heads share one key-value head, drastically shrinking memory bandwidth during decoding."
+    },
+    {
+     "term": "Model FLOPs Utilization (MFU)",
+     "definition": "The percentage of a GPU hardware theoretical peak arithmetic speed actually spent calculating model operations."
+    },
+    {
+     "term": "Context Parallelism (CP)",
+     "definition": "A method that slices long token sequences across separate GPUs to process extended contexts without running out of memory."
+    },
+    {
+     "term": "Direct Preference Optimization (DPO)",
+     "definition": "An alignment technique that trains language models directly on human preference pairs without using a complex reinforcement learning loop."
+    },
+    {
+     "term": "Rejection Sampling",
+     "definition": "Generating multiple answer candidates from a model and using a reward scorer to pick the best one for further training."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why did the authors use an all-gather approach for Context Parallelism instead of a ring communication pattern?",
+     "options": [
+      "Ring communication is mathematically incompatible with standard attention.",
+      "Grouped-Query Attention makes key and value tensors small enough that all-gather overhead is negligible.",
+      "All-gather eliminates the need for network cables between servers.",
+      "Ring patterns cause catastrophic loss spikes during AdamW optimization."
+     ],
+     "answer": 1,
+     "explain": "Because Grouped-Query Attention shares key and value heads, K and V tensors are tiny compared to queries. The simple all-gather step adds negligible overhead while easily supporting custom document masking."
+    },
+    {
+     "q": "What modification did the authors add to Direct Preference Optimization to keep training stable?",
+     "options": [
+      "They raised the learning rate to 1.0 and removed the reward model.",
+      "They masked special formatting tokens and added a negative log-likelihood penalty on preferred responses.",
+      "They alternated between DPO and PPO on every training batch.",
+      "They switched from half precision to single precision for all weights."
+     ],
+     "answer": 1,
+     "explain": "Masking special control tokens prevented conflicting update gradients, while the negative log-likelihood penalty on chosen answers prevented the model from losing probability mass on correct styles."
+    },
+    {
+     "q": "What was the single largest cause of unexpected training interruptions across the 16,000 GPU cluster?",
+     "options": [
+      "Data center power outages",
+      "Failing hard disk drives",
+      "GPU hardware and memory faults",
+      "Scheduler software crashes"
+     ],
+     "answer": 2,
+     "explain": "GPU faults accounted for 58.7% of all unexpected interruptions, showing that individual silicon failures dominate operational headaches at 16K scale."
+    }
+   ],
+   "cover_seed": "the-llama-3-herd-of-models",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-18",
+   "importance_score": 0.92,
+   "path": "papers/the-llama-3-herd-of-models.md",
+   "hash": "79f94eef6fba",
+   "word_count": 1695,
+   "excerpt": "What happens when you hook 16,000 cutting-edge graphics processors together in a single room and feed them electricity equivalent to a small city? Every single day, something breaks. Silicon processors fail, optical transceivers burn out, and power fluctuations can cause tens of megawatts of…"
   },
   {
    "id": "paper-megatron-lm",
