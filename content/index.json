@@ -1,7 +1,7 @@
 {
- "content_version": "22271688bf96ac75",
- "generated_at": "2026-10-18",
- "count": 61,
+ "content_version": "a2e06a04bb3e6504",
+ "generated_at": "2026-10-19",
+ "count": 63,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -5688,6 +5688,199 @@
    "hash": "79f94eef6fba",
    "word_count": 1695,
    "excerpt": "What happens when you hook 16,000 cutting-edge graphics processors together in a single room and feed them electricity equivalent to a small city? Every single day, something breaks. Silicon processors fail, optical transceivers burn out, and power fluctuations can cause tens of megawatts of…"
+  },
+  {
+   "id": "paper-distributed-representations-of-words-and-phrases-and-their-c",
+   "kind": "paper",
+   "slug": "distributed-representations-of-words-and-phrases-and-their-c",
+   "title": "How Word2Vec Skipped the Softmax Bottleneck",
+   "subtitle": "Negative sampling, phrase learning, and the surprising math of word addition",
+   "track": "useful-llms",
+   "track_order": 10,
+   "prerequisites": [
+    "paper-word2vec"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 10,
+   "topics": [
+    "word2vec",
+    "embeddings",
+    "negative-sampling",
+    "nlp"
+   ],
+   "paper_title": "Distributed Representations of Words and Phrases and their Compositionality",
+   "authors": [
+    "Tomas Mikolov",
+    "I. Sutskever",
+    "Kai Chen",
+    "et al."
+   ],
+   "year": 2013,
+   "venue": "Neural Information Processing Systems",
+   "paper_url": "https://arxiv.org/abs/1310.4546",
+   "glossary": [
+    {
+     "term": "Negative Sampling",
+     "definition": "A simplified training method that casts word prediction as binary logistic regression, contrasting the real target word against a few randomly drawn noise words."
+    },
+    {
+     "term": "Hierarchical Softmax",
+     "definition": "An efficient tree-based approximation of softmax that calculates word probabilities in logarithmic time using paths through a binary tree."
+    },
+    {
+     "term": "Noise Contrastive Estimation",
+     "definition": "A statistical technique that estimates model parameters by training a classifier to separate true data points from an artificial noise distribution."
+    },
+    {
+     "term": "Subsampling",
+     "definition": "The technique of randomly dropping ultra-frequent words during training to prevent them from dominating gradients and to speed up learning."
+    },
+    {
+     "term": "Additive Compositionality",
+     "definition": "The property where adding two or more word vectors produces a new vector whose meaning reflects the combined concept of the inputs."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why is the standard softmax objective impractical when training Skip-gram on large vocabularies?",
+     "options": [
+      "The denominator requires summing exponentiated scores over hundreds of thousands or millions of words for every training step",
+      "The softmax function cannot be differentiated by backpropagation",
+      "The softmax scores always collapse to zero on long sentences",
+      "The softmax loss only works if words are ordered alphabetically"
+     ],
+     "answer": 0,
+     "explain": "Computing the full softmax denominator requires summing across every token in the vocabulary. Doing that for millions of words at every single step makes training computationally intractable."
+    },
+    {
+     "q": "What noise distribution exponent produced the strongest empirical results for negative sampling?",
+     "options": [
+      "The unigram distribution raised to the 1st power",
+      "The uniform distribution over all vocabulary items",
+      "The unigram distribution raised to the 3/4 power",
+      "The square of the unigram distribution"
+     ],
+     "answer": 2,
+     "explain": "Raising the unigram frequencies to the power of 3/4 gave rare words a slight boost while tempering giant stopwords, outperforming both the raw unigram distribution and uniform sampling."
+    },
+    {
+     "q": "How did the paper enable Word2Vec to represent non-compositional phrases like 'Air Canada'?",
+     "options": [
+      "It ran a multi-layer recursive neural network over the parse trees of every sentence",
+      "It used a statistical bigram score to identify co-occurring words and glued them into single tokens beforehand",
+      "It multiplied the word embeddings together instead of adding them",
+      "It trained separate left-to-right and right-to-left recurrent networks"
+     ],
+     "answer": 1,
+     "explain": "The authors calculated a simple ratio comparing how often pairs appeared together versus apart, replacing high-scoring bigrams with glued tokens like 'Air_Canada' across multiple passes."
+    }
+   ],
+   "cover_seed": "distributed-representations-of-words-and-phrases-and-their-c",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-19",
+   "importance_score": 0.92,
+   "path": "papers/distributed-representations-of-words-and-phrases-and-their-c.md",
+   "hash": "10681470ddda",
+   "word_count": 2262,
+   "excerpt": "What happens when you type vec(\"Russia\") + vec(\"river\") into a computer? If your word vectors only memorize isolated dictionary entries, you get numerical static. But in late 2013, researchers watched a neural model add those two lists of numbers together and land squarely on vec(\"Volga River\").…"
+  },
+  {
+   "id": "paper-enriching-word-vectors-with-subword-information",
+   "kind": "paper",
+   "slug": "enriching-word-vectors-with-subword-information",
+   "title": "Inside Words: How FastText Mastered Morphology",
+   "subtitle": "How breaking words into character pieces gave machines a cure for vocabulary blindness",
+   "track": "useful-llms",
+   "track_order": 11,
+   "prerequisites": [
+    "paper-word2vec",
+    "paper-distributed-representations-of-words-and-phrases-and-their-c",
+    "primer-embeddings"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 10,
+   "topics": [
+    "embeddings",
+    "subwords",
+    "nlp",
+    "word2vec",
+    "morphology"
+   ],
+   "paper_title": "Enriching Word Vectors with Subword Information",
+   "authors": [
+    "P. Bojanowski",
+    "E. Grave",
+    "A. Joulin",
+    "et al."
+   ],
+   "year": 2016,
+   "venue": "Transactions of the Association for Computational Linguistics",
+   "paper_url": "https://arxiv.org/abs/1607.04606",
+   "glossary": [
+    {
+     "term": "Subword Information",
+     "definition": "Linguistic signals derived from units smaller than an entire word, such as prefixes, suffixes, roots, or character n-grams."
+    },
+    {
+     "term": "Character n-gram",
+     "definition": "A contiguous sequence of n characters cut directly out of a written word string."
+    },
+    {
+     "term": "Out-of-Vocabulary (OOV)",
+     "definition": "Words that never appeared in the training corpus and therefore have no dedicated entry in a model lookup table."
+    },
+    {
+     "term": "FNV-1a Hashing",
+     "definition": "A fast non-cryptographic hash function used to map arbitrary text strings into a bounded table of vector buckets."
+    },
+    {
+     "term": "Morphology",
+     "definition": "The branch of linguistics that studies how smaller units of meaning combine to form complex words."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How does this model build a vector representation for an out-of-vocabulary word?",
+     "options": [
+      "It returns a vector of zeros",
+      "It sums the vector representations of all character n-grams found in the word",
+      "It copies the vector of the most frequent word in the training set",
+      "It runs a nearest-neighbor string search to copy the closest word"
+     ],
+     "answer": 1,
+     "explain": "Because the model learns vectors for subword character n-grams, it can represent any unseen word simply by breaking it into pieces and adding up those subword vectors."
+    },
+    {
+     "q": "Why does the model place boundary brackets '<' and '>' around words before extracting n-grams?",
+     "options": [
+      "To satisfy the format required by the FNV-1a hash algorithm",
+      "To distinguish affixes like prefixes and suffixes from identical character patterns inside words",
+      "To ensure all words have identical lengths in memory",
+      "To tell the network whether the word is lowercase or capitalized"
+     ],
+     "answer": 1,
+     "explain": "Brackets let the model distinguish word boundaries from internal text. For example, the standalone pronoun '<her>' gets a different set of n-grams than the internal sequence 'her' inside the word '<where>'."
+    },
+    {
+     "q": "On which task did adding subword n-grams produce the largest performance improvement over standard Skip-gram?",
+     "options": [
+      "English semantic analogies on common nouns",
+      "Syntactic analogies in morphologically rich languages like Czech",
+      "Filtering out stop words from high-frequency text",
+      "Measuring cosine distance between frequent English words in WordSim-353"
+     ],
+     "answer": 1,
+     "explain": "Subwords capture prefixes, suffixes, and conjugations directly. This led to massive leaps on syntactic benchmarks, such as Czech syntactic analogies jumping from 52.8% to 77.8% accuracy."
+    }
+   ],
+   "cover_seed": "enriching-word-vectors-with-subword-information",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-19",
+   "importance_score": 0.81,
+   "path": "papers/enriching-word-vectors-with-subword-information.md",
+   "hash": "3920c6f67579",
+   "word_count": 2103,
+   "excerpt": "If you teach a standard word embedding model the word \"teach\", \"teacher\", and \"teaching\", it treats them as three completely unrelated symbols. To the algorithm, the connection between \"teach\" and \"teacher\" is just as opaque as the connection between \"teach\" and \"submarine\". If the model then runs…"
   },
   {
    "id": "paper-megatron-lm",
