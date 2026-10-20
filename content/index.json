@@ -1,7 +1,7 @@
 {
- "content_version": "a2e06a04bb3e6504",
- "generated_at": "2026-10-19",
- "count": 63,
+ "content_version": "b3a5a4382f41298e",
+ "generated_at": "2026-10-20",
+ "count": 65,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -1568,6 +1568,104 @@
    "hash": "73b25093b082",
    "word_count": 1759,
    "excerpt": "If you want a computer to know whether an article is about sports or politics, you just look for words like \"touchdown\" or \"senator\". Topic classification is easy because the subject dictates the vocabulary. But what happens when you ask an algorithm whether a movie review is a glowing…"
+  },
+  {
+   "id": "paper-stop-explaining-black-box-machine-learning-models-for-high-s",
+   "kind": "paper",
+   "slug": "stop-explaining-black-box-machine-learning-models-for-high-s",
+   "title": "Why Explaining Black Boxes Fails",
+   "subtitle": "How inherently transparent models beat opaque algorithms at high stakes",
+   "track": "foundations",
+   "track_order": 8,
+   "prerequisites": [
+    "primer-classification",
+    "primer-data-features-labels",
+    "paper-random-forests"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 10,
+   "topics": [
+    "interpretable machine learning",
+    "explainable ai",
+    "algorithmic fairness",
+    "optimization"
+   ],
+   "paper_title": "Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead",
+   "authors": [
+    "C. Rudin"
+   ],
+   "year": 2018,
+   "venue": "Nature Machine Intelligence",
+   "paper_url": "https://arxiv.org/pdf/1811.10154",
+   "glossary": [
+    {
+     "term": "Black Box Model",
+     "definition": "A predictive model that is either too mathematically complex for human comprehension or proprietary and hidden from public view."
+    },
+    {
+     "term": "Inherently Interpretable Model",
+     "definition": "A predictive model whose internal structure is simple and transparent by design, so its computations are directly verifiable by humans."
+    },
+    {
+     "term": "Post-hoc Explanation",
+     "definition": "A secondary method that attempts to approximate or summarize how a trained black-box model makes its decisions after the fact."
+    },
+    {
+     "term": "Rashomon Set",
+     "definition": "The set of diverse predictive models that achieve approximately equal, near-optimal predictive performance on the same dataset."
+    },
+    {
+     "term": "CORELS",
+     "definition": "Certifiably Optimal Rule Lists; a discrete optimization algorithm that uses custom bit-vector operations and branch-and-bound pruning to find provably optimal rule lists."
+    },
+    {
+     "term": "RiskSLIM",
+     "definition": "Risk-Supersparse-Linear-Integer-Models; a mixed-integer nonlinear programming framework that finds sparse scoring systems with small integer weights."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does Cynthia Rudin argue that post-hoc explanations cannot be completely trusted for high-stakes decisions?",
+     "options": [
+      "They take too much GPU compute to generate at runtime.",
+      "They are approximations that are necessarily unfaithful to what the black box actually calculated.",
+      "They can only be created for simple linear regression models.",
+      "They require proprietary source code that is rarely open-source."
+     ],
+     "answer": 1,
+     "explain": "If a post-hoc explanation were 100% faithful to the original model, it would compute the exact same function, making the black box redundant. Any approximation is wrong in some parts of the input space."
+    },
+    {
+     "q": "What does the paper conclude about the widely assumed trade-off between accuracy and interpretability on structured tabular data?",
+     "options": [
+      "Deep learning models are always at least 15% more accurate than simple models.",
+      "The trade-off is unavoidable because simple models lack capacity to fit any noise.",
+      "The trade-off is largely a myth on clean tabular data with meaningful features.",
+      "Interpretability is only possible if you sacrifice at least half of your model accuracy."
+     ],
+     "answer": 2,
+     "explain": "On structured tabular data with engineered features, inherently interpretable models routinely match the accuracy of random forests and deep neural networks."
+    },
+    {
+     "q": "According to the Rashomon set argument, why do accurate and interpretable models often exist?",
+     "options": [
+      "Because datasets often admit a large collection of diverse, nearly optimal models, making it very likely that at least one of them is simple.",
+      "Because gradient descent always finds the sparsest global minimum first.",
+      "Because deep neural networks automatically compress their weights into tiny decision trees.",
+      "Because nature only follows linear mathematical laws."
+     ],
+     "answer": 0,
+     "explain": "Finite data often admits a large set of models with nearly identical top-tier accuracy (the Rashomon set). When this set is large and diverse, it typically contains simple, interpretable models."
+    }
+   ],
+   "cover_seed": "stop-explaining-black-box-machine-learning-models-for-high-s",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-20",
+   "importance_score": 0.79,
+   "path": "papers/stop-explaining-black-box-machine-learning-models-for-high-s.md",
+   "hash": "738a2275c715",
+   "word_count": 2226,
+   "excerpt": "A judge decides whether a prisoner receives bail based on a proprietary risk score. A doctor chooses whether to send an intensive care patient home based on a neural network output. A city sends emergency crews into an unfolding crisis guided by a machine learning forecast. When these decisions…"
   },
   {
    "id": "paper-lenet",
@@ -5881,6 +5979,103 @@
    "hash": "3920c6f67579",
    "word_count": 2103,
    "excerpt": "If you teach a standard word embedding model the word \"teach\", \"teacher\", and \"teaching\", it treats them as three completely unrelated symbols. To the algorithm, the connection between \"teach\" and \"teacher\" is just as opaque as the connection between \"teach\" and \"submarine\". If the model then runs…"
+  },
+  {
+   "id": "paper-blip-bootstrapping-language-image-pre-training-for-unified-v",
+   "kind": "paper",
+   "slug": "blip-bootstrapping-language-image-pre-training-for-unified-v",
+   "title": "Teaching One Model to See, Read, and Write",
+   "subtitle": "How bootstrapping synthetic captions fixed the web's messy vision data",
+   "track": "useful-llms",
+   "track_order": 12,
+   "prerequisites": [
+    "paper-vit",
+    "paper-clip",
+    "paper-bert"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 10,
+   "topics": [
+    "multimodal",
+    "vision-language",
+    "image-captioning",
+    "data-centric-ai"
+   ],
+   "paper_title": "BLIP: Bootstrapping Language-Image Pre-training for Unified Vision-Language Understanding and Generation",
+   "authors": [
+    "Junnan Li",
+    "Dongxu Li",
+    "Cai-Ming Xiong",
+    "et al."
+   ],
+   "year": 2022,
+   "venue": "International Conference on Machine Learning",
+   "paper_url": "https://arxiv.org/abs/2201.12086",
+   "glossary": [
+    {
+     "term": "MED",
+     "definition": "Multimodal mixture of Encoder-Decoder, a unified architecture that operates as a unimodal text encoder, an image-grounded text encoder, or an image-grounded text decoder."
+    },
+    {
+     "term": "CapFilt",
+     "definition": "Captioning and Filtering, a bootstrapping pipeline where a fine-tuned decoder writes synthetic captions and a fine-tuned classifier discards mismatched web and synthetic texts."
+    },
+    {
+     "term": "ITC",
+     "definition": "Image-Text Contrastive loss, an objective that aligns visual and linguistic feature spaces by pulling matching image-text pairs together and pushing non-matching pairs apart."
+    },
+    {
+     "term": "ITM",
+     "definition": "Image-Text Matching loss, a binary classification objective using cross-attention to predict whether a specific image and sentence truly match."
+    },
+    {
+     "term": "Nucleus Sampling",
+     "definition": "A text decoding technique that samples tokens from the smallest subset whose cumulative probability exceeds a probability threshold p."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why did BLIP share all text transformer parameters except the self-attention layers?",
+     "options": [
+      "Cross-attention cannot mathematically work with causal masks.",
+      "Encoders need bidirectional self-attention to read context, while decoders need causal self-attention to generate tokens.",
+      "Sharing self-attention causes out-of-memory errors on GPU clusters.",
+      "Feed-forward networks are task-specific and cannot be shared across modes."
+     ],
+     "answer": 1,
+     "explain": "The fundamental difference between encoding a full sentence and generating new words lies in self-attention: encoders look everywhere at once, whereas decoders must only look backward at past tokens."
+    },
+    {
+     "q": "Why did nucleus sampling generate better synthetic training data than beam search in CapFilt?",
+     "options": [
+      "Nucleus sampling is deterministic and eliminated all noise.",
+      "Nucleus sampling generated more diverse, surprising descriptions that introduced richer learning signals.",
+      "Beam search produced too many grammatical syntax errors.",
+      "Nucleus sampling trained the captioner with fewer parameters."
+     ],
+     "answer": 1,
+     "explain": "Beam search generated safe, generic, repetitive captions that added little new knowledge. Even though nucleus sampling had a slightly higher noise ratio, its variety taught the model far more."
+    },
+    {
+     "q": "What went wrong when the Captioner and Filter shared neural network weights during CapFilt?",
+     "options": [
+      "The model suffered from confirmation bias, causing the filter to accept faulty captions written by its own shared weights.",
+      "The filter rejected every synthetic caption produced by the captioner.",
+      "The model failed to converge during the Image-Text Contrastive training phase.",
+      "Training time doubled due to gradient conflicts."
+     ],
+     "answer": 0,
+     "explain": "Sharing parameters caused confirmation bias: because the filter shared the captioner's worldview, it rarely flagged the captioner's errors, allowing bad synthetic text into the final training dataset."
+    }
+   ],
+   "cover_seed": "blip-bootstrapping-language-image-pre-training-for-unified-v",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-20",
+   "importance_score": 0.79,
+   "path": "papers/blip-bootstrapping-language-image-pre-training-for-unified-v.md",
+   "hash": "b503b011180c",
+   "word_count": 2148,
+   "excerpt": "Scrape ten million photos from the open web, and you will notice a frustrating pattern in the image descriptions. A gorgeous photo of a chocolate fudge cake will have the caption \"sunset park bakery order 4029\". A crisp snapshot of a red fox in the snow will read \"IMG2041edited.jpg\" or \"buy prints…"
   },
   {
    "id": "paper-megatron-lm",
