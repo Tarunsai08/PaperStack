@@ -1,7 +1,7 @@
 {
- "content_version": "b3a5a4382f41298e",
- "generated_at": "2026-10-20",
- "count": 65,
+ "content_version": "dc1ffe97c84b3ddb",
+ "generated_at": "2026-10-21",
+ "count": 67,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -6076,6 +6076,201 @@
    "hash": "b503b011180c",
    "word_count": 2148,
    "excerpt": "Scrape ten million photos from the open web, and you will notice a frustrating pattern in the image descriptions. A gorgeous photo of a chocolate fudge cake will have the caption \"sunset park bakery order 4029\". A crisp snapshot of a red fox in the snow will read \"IMG2041edited.jpg\" or \"buy prints…"
+  },
+  {
+   "id": "paper-going-deeper-with-convolutions",
+   "kind": "paper",
+   "slug": "going-deeper-with-convolutions",
+   "title": "We Need to Go Deeper",
+   "subtitle": "How GoogLeNet squeezed 22 layers into a modest computing budget",
+   "track": "useful-llms",
+   "track_order": 13,
+   "prerequisites": [
+    "paper-alexnet",
+    "paper-lenet",
+    "paper-dropout"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 10,
+   "topics": [
+    "computer vision",
+    "convolutional neural networks",
+    "googlenet",
+    "inception",
+    "image classification"
+   ],
+   "paper_title": "Going deeper with convolutions",
+   "authors": [
+    "C. Szegedy",
+    "Wei Liu",
+    "Yang-Qing Jia",
+    "et al."
+   ],
+   "year": 2014,
+   "venue": "Computer Vision and Pattern Recognition",
+   "paper_url": "https://arxiv.org/abs/1409.4842",
+   "glossary": [
+    {
+     "term": "Inception Module",
+     "definition": "A sub-network block that computes parallel convolutions of different patch sizes alongside pooling and stacks their outputs together."
+    },
+    {
+     "term": "1x1 Convolution",
+     "definition": "A convolution operating across channels with a single-pixel spatial window, used to compress feature depth without changing spatial height or width."
+    },
+    {
+     "term": "Global Average Pooling",
+     "definition": "An operation that averages each 2D feature map into a single scalar value, drastically cutting down trainable parameters before classification."
+    },
+    {
+     "term": "Auxiliary Classifier",
+     "definition": "A small secondary prediction head attached to intermediate layers during training to inject fresh gradients into lower layers."
+    },
+    {
+     "term": "Hebbian Principle",
+     "definition": "The classic neuroscience rule that neurons firing together wire together, used as inspiration to group correlated visual filters together."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is the primary computational benefit of placing a 1x1 convolution before a 5x5 convolution in an Inception module?",
+     "options": [
+      "It downsamples the spatial width and height of the image",
+      "It compresses the channel depth so the 5x5 convolution operates on fewer input channels",
+      "It turns the linear activations into recurrent memory cells",
+      "It eliminates the need for backpropagation through that branch"
+     ],
+     "answer": 1,
+     "explain": "A 1x1 convolution acts as a bottleneck. By reducing 192 or 256 channels down to 16 or 32 channels before running the expensive 5x5 filter, it saves millions of arithmetic operations."
+    },
+    {
+     "q": "Why did the authors attach auxiliary classifiers halfway up the 22-layer network during training?",
+     "options": [
+      "To output predictions for different image datasets simultaneously",
+      "To ensemble multiple model predictions during final production inference",
+      "To pump fresh gradient signals directly into intermediate layers and prevent vanishing gradients",
+      "To calculate bounding boxes for object localization without classification"
+     ],
+     "answer": 2,
+     "explain": "Auxiliary classifiers combat vanishing gradients in deep networks by computing intermediate loss signals during training. They are discarded at test time."
+    },
+    {
+     "q": "How did GoogLeNet's parameter count compare to AlexNet?",
+     "options": [
+      "GoogLeNet had about 12 times fewer parameters than AlexNet",
+      "GoogLeNet had 10 times more parameters because it was nearly three times deeper",
+      "Both networks had almost the exact same parameter count",
+      "GoogLeNet eliminated all weights by relying purely on pooling operations"
+     ],
+     "answer": 0,
+     "explain": "Despite expanding depth from 8 layers to 22 layers, GoogLeNet used roughly 12 times fewer parameters than AlexNet, mostly thanks to 1x1 bottlenecks and global average pooling."
+    }
+   ],
+   "cover_seed": "going-deeper-with-convolutions",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-21",
+   "importance_score": 0.94,
+   "path": "papers/going-deeper-with-convolutions.md",
+   "hash": "2478b0cd57e3",
+   "word_count": 2107,
+   "excerpt": "In 2014, computer vision researchers faced a wall. If you wanted a neural network to recognize images more accurately, the recipe seemed simple: stack more convolutional layers and make each layer wider. There was just one catch. Stacking layers caused models to balloon to tens of millions of…"
+  },
+  {
+   "id": "paper-inception-v4-inception-resnet-and-the-impact-of-residual-con",
+   "kind": "paper",
+   "slug": "inception-v4-inception-resnet-and-the-impact-of-residual-con",
+   "title": "Do Deep Networks Actually Need Shortcuts?",
+   "subtitle": "How combining Inception modules and skip connections settled a fierce debate about depth",
+   "track": "useful-llms",
+   "track_order": 14,
+   "prerequisites": [
+    "paper-going-deeper-with-convolutions",
+    "paper-resnet",
+    "paper-batch-normalization"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 8,
+   "topics": [
+    "computer-vision",
+    "convolutional-networks",
+    "residual-learning",
+    "deep-learning-architectures"
+   ],
+   "paper_title": "Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning",
+   "authors": [
+    "C. Szegedy",
+    "S. Ioffe",
+    "Vincent Vanhoucke",
+    "et al."
+   ],
+   "year": 2016,
+   "venue": "AAAI Conference on Artificial Intelligence",
+   "paper_url": "https://arxiv.org/abs/1602.07261",
+   "glossary": [
+    {
+     "term": "Inception Module",
+     "definition": "A multi-branch convolutional block that applies filters of different sizes in parallel and concatenates their outputs."
+    },
+    {
+     "term": "Residual Connection",
+     "definition": "A shortcut connection that adds the input tensor directly to the output of a processing block."
+    },
+    {
+     "term": "Filter-expansion Layer",
+     "definition": "A 1x1 convolution without activation used to project channel depth back up to match the shortcut dimensions before addition."
+    },
+    {
+     "term": "Activation Scaling",
+     "definition": "Multiplying residual branch outputs by a constant factor between 0.1 and 0.3 before addition to prevent network collapse."
+    },
+    {
+     "term": "Stem",
+     "definition": "The initial sequence of convolutional and pooling layers at the start of a network that reduces spatial resolution."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What primary benefit did residual connections provide to Inception networks in the paper?",
+     "options": [
+      "They cut total model parameters in half.",
+      "They dramatically accelerated training convergence.",
+      "They eliminated the need for 1x1 convolutions entirely.",
+      "They replaced the need for batch normalization everywhere."
+     ],
+     "answer": 1,
+     "explain": "Residual shortcuts did not dramatically improve final accuracy over a well-designed pure Inception network, but they made the model train much faster."
+    },
+    {
+     "q": "What catastrophic failure occurred when residual Inception models exceeded 1000 filters, and how did the authors fix it?",
+     "options": [
+      "Gradients exploded to infinity, fixed by switching to vanilla SGD.",
+      "The training diverged due to out-of-memory errors, fixed by quantizing weights.",
+      "The network died early and output only zeros, fixed by scaling residual activations by 0.1 to 0.3.",
+      "Severe overfitting occurred, fixed by raising dropout to 0.8."
+     ],
+     "answer": 2,
+     "explain": "When layers grew very wide, the activations died and turned to zero; multiplying the branch outputs by 0.1 to 0.3 before addition kept training stable."
+    },
+    {
+     "q": "Why did the authors omit batch normalization right after residual additions in Inception-ResNet?",
+     "options": [
+      "To save memory so an entire model replica could fit onto a single GPU.",
+      "Because batch normalization is mathematically incompatible with addition.",
+      "Because it lowered validation accuracy on ImageNet.",
+      "Because TensorFlow did not support batch normalization on add layers."
+     ],
+     "answer": 0,
+     "explain": "Tensors at the addition points had large spatial footprints; skipping batch normalization there freed enough memory to stack deeper blocks on one GPU."
+    }
+   ],
+   "cover_seed": "inception-v4-inception-resnet-and-the-impact-of-residual-con",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-21",
+   "importance_score": 0.84,
+   "path": "papers/inception-v4-inception-resnet-and-the-impact-of-residual-con.md",
+   "hash": "6cdb385792f5",
+   "word_count": 1716,
+   "excerpt": "In late 2015, the deep learning world rallied behind a new dogma: if you want a network with over a hundred layers, skip connections are mandatory. Microsoft had just shattered ImageNet records with ResNet by adding bypass lines around layers, and many researchers concluded that plain feedforward…"
   },
   {
    "id": "paper-megatron-lm",
