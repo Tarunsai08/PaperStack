@@ -1,7 +1,7 @@
 {
- "content_version": "dc1ffe97c84b3ddb",
- "generated_at": "2026-10-21",
- "count": 67,
+ "content_version": "7a7de1eed1144513",
+ "generated_at": "2026-10-22",
+ "count": 68,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -6271,6 +6271,103 @@
    "hash": "6cdb385792f5",
    "word_count": 1716,
    "excerpt": "In late 2015, the deep learning world rallied behind a new dogma: if you want a network with over a hundred layers, skip connections are mandatory. Microsoft had just shattered ImageNet records with ResNet by adding bypass lines around layers, and many researchers concluded that plain feedforward…"
+  },
+  {
+   "id": "paper-opt-open-pre-trained-transformer-language-models",
+   "kind": "paper",
+   "slug": "opt-open-pre-trained-transformer-language-models",
+   "title": "The Engineering Diary of Training OPT-175B",
+   "subtitle": "How Meta cloned GPT-3, released its weights, and documented every crash",
+   "track": "useful-llms",
+   "track_order": 15,
+   "prerequisites": [
+    "paper-gpt-3",
+    "paper-megatron-lm",
+    "paper-scaling-laws"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 9,
+   "topics": [
+    "large language models",
+    "open science",
+    "distributed training",
+    "pre-training"
+   ],
+   "paper_title": "OPT: Open Pre-trained Transformer Language Models",
+   "authors": [
+    "Susan Zhang",
+    "Stephen Roller",
+    "Naman Goyal",
+    "et al."
+   ],
+   "year": 2022,
+   "venue": "arXiv.org",
+   "paper_url": "https://arxiv.org/abs/2205.01068",
+   "glossary": [
+    {
+     "term": "Fully Sharded Data Parallel (FSDP)",
+     "definition": "A distributed training technique that splits model parameters, gradients, and optimizer states across GPUs rather than replicating them on every device."
+    },
+    {
+     "term": "Dynamic Loss Scaling",
+     "definition": "A technique in mixed-precision training that multiplies loss by a changing factor to keep tiny gradient values from vanishing to zero."
+    },
+    {
+     "term": "metaseq",
+     "definition": "An open-source training codebase developed by Meta AI to train large-scale language models efficiently across GPU clusters."
+    },
+    {
+     "term": "CrowS-Pairs",
+     "definition": "A benchmark measuring stereotypical bias across social groups by comparing sentence pairs that differ only in demographic terms."
+    },
+    {
+     "term": "Nucleus Sampling",
+     "definition": "A text generation method that samples only from the smallest pool of tokens whose cumulative probability exceeds a cutoff threshold p."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why was OPT-175B able to match GPT-3 with roughly one-seventh of the estimated carbon footprint?",
+     "options": [
+      "It trained on far fewer total tokens using an early-exit architecture",
+      "It used newer A100 GPUs and high compute utilization via FSDP and Megatron tensor parallelism",
+      "It switched from dense attention to sparse Mixture-of-Experts routing",
+      "It bypassed backpropagation in the first 32 layers of the network"
+     ],
+     "answer": 1,
+     "explain": "OPT-175B ran on NVIDIA A100 GPUs using efficient distributed training, reaching 147 TFLOP/s per GPU and consuming an estimated 75 tons of CO2eq compared to 500 tons for GPT-3."
+    },
+    {
+     "q": "What early warning sign reliably warned the authors that training loss was about to explode?",
+     "options": [
+      "GPU memory usage dropped suddenly to zero across all worker nodes",
+      "The dynamic loss scale collapsed toward zero while final-layer activation norms surged upward",
+      "The vocabulary size doubled automatically after encountering unnormalized text",
+      "The weight decay parameter in the optimizer turned negative"
+     ],
+     "answer": 1,
+     "explain": "Loss spikes were preceded by a collapse in the dynamic loss scalar and an uncontrolled rise in the L2-norm of the final layer activations."
+    },
+    {
+     "q": "How did base OPT-175B respond when researchers fed it direct declarative instructions?",
+     "options": [
+      "It executed them with step-by-step reasoning",
+      "It crashed due to a sequence length overflow",
+      "It roleplayed a conversational dialogue starting with the command rather than carrying it out",
+      "It returned empty strings because it lacked a chat token"
+     ],
+     "answer": 2,
+     "explain": "As an unaligned base model, OPT-175B treated direct instructions as the opening line of a dialogue between two characters rather than a command to execute."
+    }
+   ],
+   "cover_seed": "opt-open-pre-trained-transformer-language-models",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-22",
+   "importance_score": 0.75,
+   "path": "papers/opt-open-pre-trained-transformer-language-models.md",
+   "hash": "83e59d2f6c7e",
+   "word_count": 1918,
+   "excerpt": "In May 2020, OpenAI revealed GPT-3. It showed the world that a 175-billion-parameter Transformer could write prose, translate code, and solve puzzles from just a few examples. Then came the lockdown. OpenAI did not release the model weights. They did not release the training code. They offered a…"
   },
   {
    "id": "paper-megatron-lm",
