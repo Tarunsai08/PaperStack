@@ -1,7 +1,7 @@
 {
- "content_version": "7a7de1eed1144513",
- "generated_at": "2026-10-22",
- "count": 68,
+ "content_version": "faa07b974ee5cbfb",
+ "generated_at": "2026-10-23",
+ "count": 70,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -6368,6 +6368,200 @@
    "hash": "83e59d2f6c7e",
    "word_count": 1918,
    "excerpt": "In May 2020, OpenAI revealed GPT-3. It showed the world that a 175-billion-parameter Transformer could write prose, translate code, and solve puzzles from just a few examples. Then came the lockdown. OpenAI did not release the model weights. They did not release the training code. They offered a…"
+  },
+  {
+   "id": "paper-large-language-models-encode-clinical-knowledge",
+   "kind": "paper",
+   "slug": "large-language-models-encode-clinical-knowledge",
+   "title": "Can Language Models Safely Practice Medicine?",
+   "subtitle": "How clinician-guided prompt tuning turned raw LLM scale into clinical reliability",
+   "track": "useful-llms",
+   "track_order": 16,
+   "prerequisites": [
+    "paper-chain-of-thought",
+    "paper-instructgpt"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 8,
+   "topics": [
+    "medical ai",
+    "prompt tuning",
+    "safety alignment",
+    "clinical evaluation"
+   ],
+   "paper_title": "Large language models encode clinical knowledge",
+   "authors": [
+    "K. Singhal",
+    "Shekoofeh Azizi",
+    "Tao Tu",
+    "et al."
+   ],
+   "year": 2022,
+   "venue": "Nature",
+   "paper_url": "https://arxiv.org/abs/2212.13138",
+   "glossary": [
+    {
+     "term": "MultiMedQA",
+     "definition": "A benchmark combining six existing medical QA datasets and a newly curated consumer query dataset to test clinical knowledge."
+    },
+    {
+     "term": "Instruction Prompt Tuning",
+     "definition": "An alignment method that learns soft prompt vectors prepended to human-written task instructions and exemplars."
+    },
+    {
+     "term": "Self-Consistency Prompting",
+     "definition": "A decoding technique that generates multiple reasoning chains and chooses the final answer by majority vote."
+    },
+    {
+     "term": "Selective Prediction",
+     "definition": "A framework where a model refuses to answer when its internal confidence or decoding agreement falls below a safe threshold."
+    },
+    {
+     "term": "Soft Prompt",
+     "definition": "A set of continuous, learnable vectors prepended to the input sequence while model weights remain frozen."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What primary benchmark result did Flan-PaLM 540B achieve on the MedQA USMLE four-choice dataset?",
+     "options": [
+      "50.3% accuracy, matching specialized biomedical models",
+      "67.6% accuracy, beating the prior state-of-the-art by over 17%",
+      "92.9% accuracy, matching human expert clinicians",
+      "79.0% accuracy, matching the PubMedQA single-rater ceiling"
+     ],
+     "answer": 1,
+     "explain": "Flan-PaLM 540B achieved 67.6% on MedQA four-choice questions, beating the prior best result of 50.3% by more than 17 percentage points."
+    },
+    {
+     "q": "How does instruction prompt tuning differ from standard soft prompt tuning?",
+     "options": [
+      "It updates every parameter in the 540B model using reinforcement learning",
+      "It replaces text prompts entirely with random discrete tokens",
+      "It prepends learned soft prompt vectors to human instructions and clinical exemplars",
+      "It is applied exclusively during pretraining on PubMed abstracts"
+     ],
+     "answer": 2,
+     "explain": "Instruction prompt tuning learns soft prompt vector prefixes that precede human-crafted instructions and few-shot exemplars, creating a hybrid prompt."
+    },
+    {
+     "q": "On which metric did Med-PaLM unexpectedly perform worse than Flan-PaLM during clinician review?",
+     "options": [
+      "Alignment with scientific consensus",
+      "Reduction of potential harm likelihood",
+      "Presence of inappropriate or incorrect content",
+      "Omission of clinically important information"
+     ],
+     "answer": 2,
+     "explain": "Med-PaLM gave longer, more thorough answers, which cut down omitted information but raised the rate of incorrect or inappropriate content from 16.1% to 18.7%."
+    }
+   ],
+   "cover_seed": "large-language-models-encode-clinical-knowledge",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-23",
+   "importance_score": 0.74,
+   "path": "papers/large-language-models-encode-clinical-knowledge.md",
+   "hash": "3d69a4e841f0",
+   "word_count": 1766,
+   "excerpt": "If an artificial intelligence model passes a US medical licensing examination, would you trust it to tell a worried parent whether their newborn baby's jaundice needs emergency care? In late 2022, giant language models proved they could ace multiple-choice questions designed for graduating doctors.…"
+  },
+  {
+   "id": "paper-a-survey-of-large-language-models",
+   "kind": "paper",
+   "slug": "a-survey-of-large-language-models",
+   "title": "The Four Pillars of the LLM Revolution",
+   "subtitle": "How researchers mapped the hidden mechanics of modern language models",
+   "track": "useful-llms",
+   "track_order": 17,
+   "prerequisites": [
+    "paper-scaling-laws",
+    "paper-gpt-3",
+    "paper-instructgpt"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 9,
+   "topics": [
+    "large language models",
+    "scaling laws",
+    "instruction tuning",
+    "alignment",
+    "in-context learning"
+   ],
+   "paper_title": "A Survey of Large Language Models",
+   "authors": [
+    "W. Zhao",
+    "Kun Zhou",
+    "Junyi Li",
+    "et al."
+   ],
+   "year": 2023,
+   "venue": "Frontiers Comput. Sci.",
+   "paper_url": "https://arxiv.org/abs/2303.18223",
+   "glossary": [
+    {
+     "term": "Emergent Abilities",
+     "definition": "Capabilities that do not appear in smaller models but surface abruptly once model size, training compute, or data reach a critical threshold."
+    },
+    {
+     "term": "In-Context Learning (ICL)",
+     "definition": "The ability of a language model to complete novel tasks simply from natural language instructions and input demonstrations provided in the prompt, without updating its weights."
+    },
+    {
+     "term": "Instruction Tuning",
+     "definition": "Fine-tuning a pre-trained model on diverse tasks formatted as explicit natural language instructions to enable zero-shot generalization on unseen tasks."
+    },
+    {
+     "term": "RLHF",
+     "definition": "Reinforcement Learning from Human Feedback; a method that aligns model behavior with human intent by training a reward model on comparison data and optimizing the policy with reinforcement learning."
+    },
+    {
+     "term": "Chain-of-Thought (CoT)",
+     "definition": "A prompting technique where a model generates intermediate reasoning steps before delivering the final answer to a complex problem."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "According to the Chinchilla scaling law analyzed in the survey, how should compute budget be allocated when scaling up?",
+     "options": [
+      "Model parameters should grow much faster than data tokens",
+      "Data token count and model parameter count should grow in roughly equal proportions",
+      "Token count should stay fixed while model depth quadruples",
+      "Compute budget should be spent exclusively on reinforcement learning"
+     ],
+     "answer": 1,
+     "explain": "Hoffmann et al. showed that under compute-optimal scaling, model parameter count and training token count should be scaled in approximately equal proportions."
+    },
+    {
+     "q": "What distinguishes an emergent ability from ordinary scaling behavior?",
+     "options": [
+      "It appears smoothly and predictably at every single model size",
+      "It requires training without subword tokenization",
+      "It is absent in smaller models and rises sharply above random chance only after crossing a size threshold",
+      "It only occurs when fine-tuning on proprietary data"
+     ],
+     "answer": 2,
+     "explain": "Emergent abilities are defined by their sudden appearance: small models fail entirely, but once scale passes a specific threshold, task accuracy leaps dramatically."
+    },
+    {
+     "q": "Why is dataset deduplication so strictly emphasized before pre-training?",
+     "options": [
+      "It converts all natural language into executable Python scripts",
+      "It prevents benchmark contamination and improves training efficiency",
+      "It eliminates the need for positional embeddings in Transformers",
+      "It guarantees that the model will never hallucinate"
+     ],
+     "answer": 1,
+     "explain": "Deduplication stops models from memorizing repeated web spam and prevents pre-training data from accidentally leaking test sets into the model weights."
+    }
+   ],
+   "cover_seed": "a-survey-of-large-language-models",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-23",
+   "importance_score": 0.74,
+   "path": "papers/a-survey-of-large-language-models.md",
+   "hash": "71f272fcc8ba",
+   "word_count": 2044,
+   "excerpt": "In late 2022, artificial intelligence experienced an intellectual land rush. Following the arrival of ChatGPT, the rate of research papers published per day on large language models shot up by more than twenty-fold, surging from less than one paper every two days to nearly nine every single day.…"
   },
   {
    "id": "paper-megatron-lm",
