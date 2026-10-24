@@ -1,7 +1,7 @@
 {
- "content_version": "faa07b974ee5cbfb",
- "generated_at": "2026-10-23",
- "count": 70,
+ "content_version": "e49254f002d1f45f",
+ "generated_at": "2026-10-24",
+ "count": 72,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -6562,6 +6562,203 @@
    "hash": "71f272fcc8ba",
    "word_count": 2044,
    "excerpt": "In late 2022, artificial intelligence experienced an intellectual land rush. Following the arrival of ChatGPT, the rate of research papers published per day on large language models shot up by more than twenty-fold, surging from less than one paper every two days to nearly nine every single day.…"
+  },
+  {
+   "id": "paper-denoising-diffusion-implicit-models",
+   "kind": "paper",
+   "slug": "denoising-diffusion-implicit-models",
+   "title": "Skipping Steps: How DDIM Accelerated Diffusion",
+   "subtitle": "How one clever derivation turned a slow 1,000-step random walk into a fast, deterministic slide",
+   "track": "useful-llms",
+   "track_order": 18,
+   "prerequisites": [
+    "paper-ddpm",
+    "paper-gan",
+    "paper-vae"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 10,
+   "topics": [
+    "diffusion models",
+    "fast sampling",
+    "image generation",
+    "neural odes"
+   ],
+   "paper_title": "Denoising Diffusion Implicit Models",
+   "authors": [
+    "Jiaming Song",
+    "Chenlin Meng",
+    "Stefano Ermon"
+   ],
+   "year": 2020,
+   "venue": "International Conference on Learning Representations",
+   "paper_url": "https://arxiv.org/abs/2010.02502",
+   "glossary": [
+    {
+     "term": "DDPM",
+     "definition": "Denoising Diffusion Probabilistic Model; a generative model that creates data by iteratively removing noise across many stochastic steps."
+    },
+    {
+     "term": "DDIM",
+     "definition": "Denoising Diffusion Implicit Model; a deterministic generative model sharing DDPM's training objective but using a non-Markovian process to enable rapid step-skipping."
+    },
+    {
+     "term": "Non-Markovian Process",
+     "definition": "A stochastic process where the transition probability depends not just on the immediate previous state, but also on earlier history such as the original clean data point."
+    },
+    {
+     "term": "Implicit Probabilistic Model",
+     "definition": "A generative model that maps a latent random variable deterministically to an output sample, without evaluating an explicit probability density function."
+    },
+    {
+     "term": "Sampling Trajectory",
+     "definition": "A chosen sub-sequence of timesteps used during reverse generation to create an image in far fewer steps than the full training sequence."
+    },
+    {
+     "term": "Probability Flow ODE",
+     "definition": "A deterministic ordinary differential equation whose trajectories share the exact same marginal probability densities as a stochastic diffusion process."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why can DDIM use weights from a pretrained DDPM model without retraining?",
+     "options": [
+      "DDIM distills the DDPM weights using a separate adversarial discriminator.",
+      "DDIM's non-Markovian variational objective simplifies to the exact same surrogate loss as DDPM.",
+      "DDIM rounds the weights of the DDPM U-Net to reduce precision and increase speed.",
+      "DDIM only alters the spatial resolution of the generated image during inference."
+     ],
+     "answer": 1,
+     "explain": "Theorem 1 proves that DDIM's variational objective J_sigma equals DDPM's weighted loss L_gamma up to a constant, meaning both processes share the same optimal noise-prediction network."
+    },
+    {
+     "q": "What happens in the DDIM sampling equation when the stochasticity parameter sigma_t (or eta) is set to 0?",
+     "options": [
+      "The model collapses into an autoencoder with severe blurriness.",
+      "The generative process becomes completely deterministic given the starting noise vector.",
+      "The forward noise schedule reverses direction and adds blur instead of Gaussian noise.",
+      "The network requires twice as many steps to converge to an image."
+     ],
+     "answer": 1,
+     "explain": "Setting sigma_t = 0 zeroes out the random Gaussian noise injection at every reverse step, turning generation into a deterministic mapping from the initial latent noise to the clean image."
+    },
+    {
+     "q": "Which capability becomes possible with DDIM that standard DDPM could not reliably perform?",
+     "options": [
+      "Generating images directly from text captions without a text encoder.",
+      "Deterministic latent inversion and smooth semantic interpolation between images.",
+      "Eliminating the need for convolutional layers or U-Nets entirely.",
+      "Training high-resolution diffusion models without any noisy data."
+     ],
+     "answer": 1,
+     "explain": "Because DDIM's sampling path is an invertible deterministic ODE, you can reverse the process to encode an existing image into its unique latent noise vector and interpolate smoothly between vectors."
+    }
+   ],
+   "cover_seed": "denoising-diffusion-implicit-models",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-24",
+   "importance_score": 0.85,
+   "path": "papers/denoising-diffusion-implicit-models.md",
+   "hash": "a01f4c32e6df",
+   "word_count": 2227,
+   "excerpt": "Imagine generating a batch of images and having to wait 20 hours for your GPU to finish. In 2020, DDPM shocked the world by generating images with quality that rivaled GANs, but it was cripplingly slow. To turn random static into a single crisp picture, DDPM forced you to run 1,000 sequential…"
+  },
+  {
+   "id": "paper-training-data-efficient-image-transformers-distillation-thro",
+   "kind": "paper",
+   "slug": "training-data-efficient-image-transformers-distillation-thro",
+   "title": "Teaching Vision Transformers With Less Data",
+   "subtitle": "How a distillation token and smart augmentations freed ViT from massive datasets",
+   "track": "useful-llms",
+   "track_order": 19,
+   "prerequisites": [
+    "paper-vit",
+    "paper-attention-is-all-you-need",
+    "paper-resnet"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 9,
+   "topics": [
+    "vision transformers",
+    "knowledge distillation",
+    "image classification",
+    "data efficiency"
+   ],
+   "paper_title": "Training data-efficient image transformers & distillation through attention",
+   "authors": [
+    "Hugo Touvron",
+    "M. Cord",
+    "Matthijs Douze",
+    "et al."
+   ],
+   "year": 2020,
+   "venue": "International Conference on Machine Learning",
+   "paper_url": "https://arxiv.org/abs/2012.12877",
+   "glossary": [
+    {
+     "term": "Distillation Token",
+     "definition": "A learnable vector appended alongside image patch tokens and the class token, trained specifically to reproduce the predictions of a teacher model through self-attention."
+    },
+    {
+     "term": "Hard Distillation",
+     "definition": "A distillation variant where the student learns from the single highest-scoring class chosen by the teacher rather than a smoothed probability distribution over all classes."
+    },
+    {
+     "term": "Repeated Augmentation",
+     "definition": "A data sampling strategy that feeds multiple differently augmented views of the same original image within a single training mini-batch."
+    },
+    {
+     "term": "Inductive Bias",
+     "definition": "Assumptions built directly into a model's architecture, such as spatial locality in convolutions, that guide learning without requiring billions of examples."
+    },
+    {
+     "term": "Late Fusion",
+     "definition": "Combining separate prediction heads at inference time, such as adding the class token logits to the distillation token logits, to make a final decision."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does using a convolutional network as a teacher yield better DeiT students than using another transformer?",
+     "options": [
+      "Convnets output higher-precision floating point numbers than transformers.",
+      "The convnet transfers spatial inductive biases like locality that the transformer student lacks.",
+      "Convnets have drastically more parameters than transformers, providing richer representations.",
+      "Transformers cannot compute cross-entropy loss against other transformers."
+     ],
+     "answer": 1,
+     "explain": "Transformers lack built-in spatial assumptions like locality and translation invariance. Distilling from a convolutional teacher injects these beneficial priors into the transformer student."
+    },
+    {
+     "q": "What distinguishes the distillation token from simply adding a second class token?",
+     "options": [
+      "The distillation token bypasses all self-attention layers and connects directly to the final MLP.",
+      "The distillation token is fixed and non-trainable during backpropagation.",
+      "The distillation token is supervised by the teacher model's predictions, preventing it from collapsing into the class token.",
+      "The distillation token only attends to patch tokens, ignoring the class token."
+     ],
+     "answer": 2,
+     "explain": "Two class tokens trained on the same true labels quickly collapse to nearly identical vectors. Supervising the distillation token with the teacher's prediction forces it to learn complementary visual cues."
+    },
+    {
+     "q": "Which data regularization method was intentionally excluded from DeiT's default training recipe?",
+     "options": [
+      "CutMix",
+      "Rand-Augment",
+      "Dropout",
+      "Stochastic Depth"
+     ],
+     "answer": 2,
+     "explain": "The authors found that strong augmentations like Mixup and Rand-Augment were vital, but dropout degraded accuracy and was removed."
+    }
+   ],
+   "cover_seed": "training-data-efficient-image-transformers-distillation-thro",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-24",
+   "importance_score": 0.82,
+   "path": "papers/training-data-efficient-image-transformers-distillation-thro.md",
+   "hash": "ecca55b56d9f",
+   "word_count": 2010,
+   "excerpt": "In late 2020, Google dropped a bombshell called the Vision Transformer. It proved that pure self-attention could beat deep convolutional networks at image classification, but it came with an infuriating catch: to match a standard ResNet, you had to pre-train it on 300 million private images using…"
   },
   {
    "id": "paper-megatron-lm",
