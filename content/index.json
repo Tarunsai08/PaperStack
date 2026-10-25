@@ -1,7 +1,7 @@
 {
- "content_version": "e49254f002d1f45f",
- "generated_at": "2026-10-24",
- "count": 72,
+ "content_version": "9db16a88cf301020",
+ "generated_at": "2026-10-25",
+ "count": 74,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -6759,6 +6759,193 @@
    "hash": "ecca55b56d9f",
    "word_count": 2010,
    "excerpt": "In late 2020, Google dropped a bombshell called the Vision Transformer. It proved that pure self-attention could beat deep convolutional networks at image classification, but it came with an infuriating catch: to match a standard ResNet, you had to pre-train it on 300 million private images using…"
+  },
+  {
+   "id": "paper-improved-denoising-diffusion-probabilistic-models",
+   "kind": "paper",
+   "slug": "improved-denoising-diffusion-probabilistic-models",
+   "title": "Teaching Diffusion Models to Walk in Big Strides",
+   "subtitle": "How learning variance and smoothing noise cut sampling time by ten",
+   "track": "useful-llms",
+   "track_order": 20,
+   "prerequisites": [
+    "paper-ddpm",
+    "paper-vae",
+    "paper-denoising-diffusion-implicit-models"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 10,
+   "topics": [
+    "diffusion models",
+    "generative models",
+    "likelihood estimation",
+    "image synthesis"
+   ],
+   "paper_title": "Improved Denoising Diffusion Probabilistic Models",
+   "authors": [
+    "Alex Nichol",
+    "Prafulla Dhariwal"
+   ],
+   "year": 2021,
+   "venue": "International Conference on Machine Learning",
+   "paper_url": "https://arxiv.org/abs/2102.09672",
+   "glossary": [
+    {
+     "term": "Variational Lower Bound (VLB)",
+     "definition": "A mathematically tractable lower bound on the true log-likelihood of data under a latent variable model, maximized to train the model to cover all modes."
+    },
+    {
+     "term": "Cosine Schedule",
+     "definition": "A noise schedule where the cumulative signal factor drops following a squared cosine curve, preventing abrupt information destruction at the boundaries."
+    },
+    {
+     "term": "Learned Variance Parameterization",
+     "definition": "Formulating the reverse step variance as an interpolation between upper and lower theoretical variance bounds in log space, predicted via an unbounded network scalar."
+    },
+    {
+     "term": "Precision and Recall for Generative Models",
+     "definition": "Evaluation metrics where precision measures sample fidelity (how realistic generated samples look) and recall measures mode coverage (what fraction of the real data distribution is generated)."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why did earlier DDPM setups fix the reverse step variance instead of learning it?",
+     "options": [
+      "Learning the variance made no mathematical sense in the diffusion derivation.",
+      "Predicting variance directly caused training instabilities because the valid variance range between bounds is tiny.",
+      "Fixing the variance guaranteed higher log-likelihood than learning it.",
+      "The neural network was too small to output two tensors at the same time."
+     ],
+     "answer": 1,
+     "explain": "The gap between the upper and lower theoretical bounds is extremely narrow for most steps. Predicting the raw variance directly made gradients explode or collapse, so earlier work simply locked it to a constant."
+    },
+    {
+     "q": "What trade-off occurred when training purely on the resampled variational lower bound rather than the hybrid loss?",
+     "options": [
+      "Training collapsed immediately and produced NaN gradients.",
+      "Negative log-likelihood improved, but sample visual quality degraded significantly.",
+      "Sample visual quality improved drastically, but negative log-likelihood became worse than random guessing.",
+      "Sampling required forty thousand steps instead of four thousand."
+     ],
+     "answer": 1,
+     "explain": "Directly optimizing the variational lower bound pushed log-likelihood to its best values, but visual quality collapsed (FID jumped from 19.2 to 40.1 on ImageNet 64x64)."
+    },
+    {
+     "q": "How does the cosine schedule differ from the original linear noise schedule?",
+     "options": [
+      "It destroys image details within the first five percent of diffusion steps.",
+      "It retains a nearly constant noise level throughout the entire diffusion process.",
+      "It preserves information longer and avoids sudden noise jumps near the start and end.",
+      "It completely eliminates Gaussian noise in favor of uniform noise."
+     ],
+     "answer": 2,
+     "explain": "The linear schedule dropped signal too fast in the middle and wasted the final quarter of steps on pure static. The cosine schedule decays smoothly, keeping useful signal alive across a broader range of steps."
+    }
+   ],
+   "cover_seed": "improved-denoising-diffusion-probabilistic-models",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-25",
+   "importance_score": 0.76,
+   "path": "papers/improved-denoising-diffusion-probabilistic-models.md",
+   "hash": "68b347dcd84a",
+   "word_count": 2211,
+   "excerpt": "In late 2020, denoising diffusion models looked like an astonishing party trick that was far too slow to use. They could generate photorealistic faces, but creating a single picture took several minutes on a high-end graphics card because the model had to take four thousand tiny, nervous steps.…"
+  },
+  {
+   "id": "paper-tree-of-thoughts-deliberate-problem-solving-with-large-langu",
+   "kind": "paper",
+   "slug": "tree-of-thoughts-deliberate-problem-solving-with-large-langu",
+   "title": "Giving Language Models the Power to Backtrack",
+   "subtitle": "How searching a tree of intermediate thoughts solved problems that broke linear prompting",
+   "track": "useful-llms",
+   "track_order": 21,
+   "prerequisites": [
+    "paper-chain-of-thought",
+    "paper-gpt-3"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 9,
+   "topics": [
+    "prompting",
+    "reasoning",
+    "tree search",
+    "planning"
+   ],
+   "paper_title": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+   "authors": [
+    "Shunyu Yao",
+    "Dian Yu",
+    "Jeffrey Zhao",
+    "et al."
+   ],
+   "year": 2023,
+   "venue": "Neural Information Processing Systems",
+   "paper_url": "https://arxiv.org/abs/2305.10601",
+   "glossary": [
+    {
+     "term": "Thought",
+     "definition": "A coherent intermediate text sequence (such as a single arithmetic equation or an outline step) that bridges the problem input to the solution."
+    },
+    {
+     "term": "Thought Generator",
+     "definition": "A prompting mechanism that instructs an LM to propose candidate next thoughts from the current state."
+    },
+    {
+     "term": "State Evaluator",
+     "definition": "A prompt-based heuristic where the LM judges the promise of intermediate partial states through scoring or comparative voting."
+    },
+    {
+     "term": "Breadth-First Search (BFS)",
+     "definition": "A search algorithm that explores level by level, keeping only the top-b most promising states at each depth and pruning the rest."
+    },
+    {
+     "term": "Depth-First Search (DFS)",
+     "definition": "A search algorithm that follows a single line of thought deeply, pruning impossible paths and backtracking to parent states when hitting a dead end."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is the primary structural difference between Chain of Thought (CoT) and Tree of Thoughts (ToT)?",
+     "options": [
+      "CoT generates text sequentially without exploring alternatives, while ToT maintains a tree of intermediate thoughts allowing branching and backtracking.",
+      "CoT requires fine-tuning on labeled reasoning paths, whereas ToT works purely zero-shot.",
+      "CoT uses code interpreters for math, whereas ToT relies exclusively on token probabilities.",
+      "CoT operates on token embeddings directly, whereas ToT uses symbolic rule engines."
+     ],
+     "answer": 0,
+     "explain": "CoT samples a single linear sequence from left to right, whereas ToT structures thoughts into a tree where branches can be explored, evaluated, and backtracked."
+    },
+    {
+     "q": "How does the State Evaluator determine which branches to explore in ToT?",
+     "options": [
+      "By calculating exact cross-entropy loss against a ground-truth dataset.",
+      "By querying an external reinforcement learning value model like AlphaGo.",
+      "By prompting the language model itself to deliberate, value (such as sure/maybe/impossible), or vote among states.",
+      "By measuring the length and vocabulary diversity of each generated thought."
+     ],
+     "answer": 2,
+     "explain": "ToT prompts the language model itself to serve as a deliberate heuristic, evaluating states via qualitative labels (like sure/maybe/impossible) or comparative voting."
+    },
+    {
+     "q": "In the Game of 24 experiment, what did error analysis reveal about why standard Chain of Thought failed?",
+     "options": [
+      "The model made mistakes only at the final step when computing the remaining arithmetic operation.",
+      "Around 60% of CoT runs had already failed the task right after generating the first step.",
+      "The model frequently hallucinated numbers that were not present in the original input.",
+      "The model refused to answer because the prompt was too complex."
+     ],
+     "answer": 1,
+     "explain": "Around 60% of CoT samples failed after generating the first step (the first three words), showing that early errors permanently doom linear decoding."
+    }
+   ],
+   "cover_seed": "tree-of-thoughts-deliberate-problem-solving-with-large-langu",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-25",
+   "importance_score": 0.75,
+   "path": "papers/tree-of-thoughts-deliberate-problem-solving-with-large-langu.md",
+   "hash": "adc01ee7f6ba",
+   "word_count": 1899,
+   "excerpt": "Give GPT-4 four numbers: 4, 9, 10, and 13. Ask it to use basic arithmetic to make 24. Even with the famous \"let's think step by step\" prompt, one of the most capable models in the world succeeds only 4% of the time. Why does a model that passed the bar exam fail at a math puzzle designed for…"
   },
   {
    "id": "paper-megatron-lm",
