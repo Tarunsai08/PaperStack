@@ -1,7 +1,7 @@
 {
- "content_version": "a149a0e3fef70567",
- "generated_at": "2026-10-26",
- "count": 75,
+ "content_version": "761c308622f04c5a",
+ "generated_at": "2026-10-28",
+ "count": 77,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -3542,6 +3542,107 @@
    "hash": "d75b03f5282e",
    "word_count": 2211,
    "excerpt": "If you ask a transformer to write a story, it juggles a few thousand words without breaking a sweat. But ask that same model to draw a standard smartphone photo, and its attention mechanism collapses under the weight of several million pixels. For years, researchers assumed transformers were simply…"
+  },
+  {
+   "id": "paper-elucidating-the-design-space-of-diffusion-based-generative-m",
+   "kind": "paper",
+   "slug": "elucidating-the-design-space-of-diffusion-based-generative-m",
+   "title": "Unbolting Diffusion: How EDM Tamed the Noise Equation",
+   "subtitle": "Turning monolithic diffusion equations into clean, modular building blocks",
+   "track": "generative",
+   "track_order": 6,
+   "prerequisites": [
+    "paper-ddpm",
+    "paper-denoising-diffusion-implicit-models",
+    "paper-improved-denoising-diffusion-probabilistic-models"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 9,
+   "topics": [
+    "diffusion models",
+    "ode solvers",
+    "image generation",
+    "score-based models"
+   ],
+   "paper_title": "Elucidating the Design Space of Diffusion-Based Generative Models",
+   "authors": [
+    "Tero Karras",
+    "M. Aittala",
+    "T. Aila",
+    "et al."
+   ],
+   "year": 2022,
+   "venue": "Neural Information Processing Systems",
+   "paper_url": "https://arxiv.org/abs/2206.00364",
+   "glossary": [
+    {
+     "term": "Probability Flow ODE",
+     "definition": "A deterministic ordinary differential equation whose trajectories share the same marginal probability densities as a stochastic diffusion process."
+    },
+    {
+     "term": "Denoising Score Matching",
+     "definition": "An objective that trains a network to estimate the score by learning to denoise samples corrupted with known Gaussian noise."
+    },
+    {
+     "term": "Heun's 2nd-Order Method",
+     "definition": "A numerical integration technique that uses a predictor Euler step followed by a trapezoidal corrector step to cut down error."
+    },
+    {
+     "term": "NFE (Number of Function Evaluations)",
+     "definition": "The count of forward passes through the score network needed to generate an image, measuring computational cost directly."
+    },
+    {
+     "term": "Network Preconditioning",
+     "definition": "Scaling network inputs, targets, and skip connections so that training targets keep unit variance across all noise levels."
+    },
+    {
+     "term": "Stochastic Churn",
+     "definition": "Temporarily adding new noise during an ODE step and removing it to correct accumulated discretization errors."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does setting the schedule to σ(t) = t and s(t) = 1 straighten the ODE solution trajectories?",
+     "options": [
+      "It cancels all non-linear activation functions inside the denoiser network.",
+      "A single Euler step toward t = 0 directly points to the denoiser output, which changes slowly across noise levels.",
+      "It eliminates Gaussian noise from the initial state completely.",
+      "It guarantees that the neural network only needs to predict pure white noise."
+     ],
+     "answer": 1,
+     "explain": "When σ(t) = t and s(t) = 1, the ODE derivative points straight at the denoised estimate D(x; t). Because that estimate changes slowly across noise levels, the trajectories become nearly linear."
+    },
+    {
+     "q": "What is the primary benefit of preconditioning the raw network with σ-dependent skip connections?",
+     "options": [
+      "It keeps the network training target at unit variance instead of amplifying errors by multiplying by noise at high noise levels.",
+      "It eliminates the need to calculate backpropagation gradients for convolutional layers.",
+      "It ensures sampling can be executed in exactly one Euler step.",
+      "It replaces the need for score matching with adversarial training."
+     ],
+     "answer": 0,
+     "explain": "Without skip-connection scaling, predicting raw noise forces the network to cancel out huge noise values at large σ, where tiny errors blow up. Preconditioning keeps targets scaled to unit variance across all noise scales."
+    },
+    {
+     "q": "What happened to stochastic sampling on CIFAR-10 once training preconditioning and loss weighting were fixed?",
+     "options": [
+      "Stochastic sampling became strictly mandatory to avoid mode collapse.",
+      "Stochastic sampling was beneficial only when the step count exceeded 10,000 NFE.",
+      "Stochastic sampling became unnecessary and even detrimental compared to deterministic sampling.",
+      "Stochastic sampling had zero effect on FID regardless of noise level."
+     ],
+     "answer": 2,
+     "explain": "Once the model was properly trained with the right preconditioning and noise distribution, deterministic sampling achieved the best FID on CIFAR-10; adding stochastic noise churn actively degraded image quality."
+    }
+   ],
+   "cover_seed": "elucidating-the-design-space-of-diffusion-based-generative-m",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-28",
+   "importance_score": 0.75,
+   "path": "papers/elucidating-the-design-space-of-diffusion-based-generative-m.md",
+   "hash": "1b83b8d69a3e",
+   "word_count": 1991,
+   "excerpt": "In 2022, diffusion models were generating gorgeous images, but their mathematics felt like a tangled thicket. Every research lab seemed to ship its own bespoke mathematical dialect: variance preserving equations, variance exploding formulations, score functions, and discrete Markov steps. If you…"
   },
   {
    "id": "paper-dqn",
@@ -7354,6 +7455,103 @@
    "hash": "aa188c03d375",
    "word_count": 1425,
    "excerpt": "Running a chatbot for millions of people is ruinously expensive. Each GPU costs a fortune, and the number of conversations it can handle at once decides how many GPUs you need. In 2023, researchers at UC Berkeley looked at how existing systems used GPU memory while generating text, and found…"
+  },
+  {
+   "id": "paper-quantization-and-training-of-neural-networks-for-efficient-i",
+   "kind": "paper",
+   "slug": "quantization-and-training-of-neural-networks-for-efficient-i",
+   "title": "Ditching Floats: The Secret to Fast Mobile AI",
+   "subtitle": "How 8-bit integer arithmetic brought real-time vision to smartphones",
+   "track": "ai-systems",
+   "track_order": 4,
+   "prerequisites": [
+    "paper-batch-normalization",
+    "paper-backpropagation",
+    "primer-neural-networks"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 9,
+   "topics": [
+    "quantization",
+    "inference optimization",
+    "edge ai",
+    "qat"
+   ],
+   "paper_title": "Quantization and Training of Neural Networks for Efficient Integer-Arithmetic-Only Inference",
+   "authors": [
+    "Benoit Jacob",
+    "S. Kligys",
+    "Bo Chen",
+    "et al."
+   ],
+   "year": 2017,
+   "venue": "2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+   "paper_url": "https://arxiv.org/abs/1712.05877",
+   "glossary": [
+    {
+     "term": "Zero-point (Z)",
+     "definition": "The integer value in the quantized domain that corresponds exactly to real-world value 0.0, ensuring zero-padding operations introduce no numerical bias."
+    },
+    {
+     "term": "Scale (S)",
+     "definition": "A positive floating-point factor that represents the step size between adjacent quantized integer values."
+    },
+    {
+     "term": "Fake Quantization",
+     "definition": "An operation during model training that clamps and rounds floating-point values to discrete levels, simulating quantization noise during the forward pass while preserving continuous gradients."
+    },
+    {
+     "term": "Batch Normalization Folding",
+     "definition": "Algebraically absorbing the scaling and shift parameters of batch normalization directly into preceding convolutional weights and biases prior to quantization."
+    },
+    {
+     "term": "GEMM",
+     "definition": "General Matrix Multiply, the primary computational kernel underpinning fully connected and convolutional operations in neural networks."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why are bias vectors quantized as 32-bit integers rather than 8-bit integers?",
+     "options": [
+      "Biases account for most model parameters, so precision is critical.",
+      "Bias quantization error acts as a nonzero-mean offset across many outputs, degrading accuracy.",
+      "8-bit hardware does not support addition operations.",
+      "Hardware accumulators cannot add different bit widths together."
+     ],
+     "answer": 1,
+     "explain": "Each bias entry is added to many output activations; any quantization error introduces a systematic nonzero-mean shift, degrading end-to-end model accuracy."
+    },
+    {
+     "q": "How is floating-point scaling applied during integer-only inference when converting accumulators back to 8 bits?",
+     "options": [
+      "Using a floating-point multiplier coprocessor.",
+      "Via floating-point lookup tables stored in ROM.",
+      "By normalizing the scale multiplier into M = 2^(-n) * M0 and executing fixed-point integer multiplication with a bit-shift.",
+      "By ignoring the scale factors and rounding integers directly."
+     ],
+     "answer": 2,
+     "explain": "The multiplier M is factored into an integer fixed-point multiplier M0 (in [0.5, 1)) and a power-of-two shift 2^(-n), allowing pure integer hardware to apply the scale."
+    },
+    {
+     "q": "Why is batch normalization 'folded' into weights before quantization?",
+     "options": [
+      "Batch normalization layers cannot be computed on mobile CPUs.",
+      "To accurately simulate during training the weights that will actually appear in inference.",
+      "Folding eliminates all activation functions in the network.",
+      "To increase the bit-depth of weights from 8 bits to 16 bits."
+     ],
+     "answer": 1,
+     "explain": "Inference engines fold batch normalization parameters directly into convolutional weights for speed; simulating this folding during training ensures the quantized weights match inference."
+    }
+   ],
+   "cover_seed": "quantization-and-training-of-neural-networks-for-efficient-i",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-28",
+   "importance_score": 0.73,
+   "path": "papers/quantization-and-training-of-neural-networks-for-efficient-i.md",
+   "hash": "111f6ffaae96",
+   "word_count": 2044,
+   "excerpt": "Your smartphone camera needs to detect faces at thirty frames per second without melting through the battery or scorching your palm. In 2017, that was an impossible task. State-of-the-art vision models performed billions of 32-bit floating-point multiplications for every single video frame,…"
   }
  ]
 }
