@@ -1,7 +1,7 @@
 {
- "content_version": "761c308622f04c5a",
- "generated_at": "2026-10-28",
- "count": 77,
+ "content_version": "4ba3821d17e0f935",
+ "generated_at": "2026-10-30",
+ "count": 79,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -3047,6 +3047,99 @@
    "hash": "fa5830db3fef",
    "word_count": 1873,
    "excerpt": "Translating a sentence from English to French is not a word-by-word swap. Word orders swap, single words blossom into three, and entire idioms collapse into single phrases. How can a machine take five words, understand their meaning, and emit seven completely different words in another language? In…"
+  },
+  {
+   "id": "paper-bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro",
+   "kind": "paper",
+   "slug": "bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro",
+   "title": "The End of Bag-of-Words Topic Modeling",
+   "subtitle": "How BERTopic united deep transformers with classical statistics",
+   "track": "sequences-language",
+   "track_order": 6,
+   "prerequisites": [
+    "paper-bert",
+    "primer-embeddings"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 10,
+   "topics": [
+    "topic modeling",
+    "bert",
+    "clustering",
+    "nlp"
+   ],
+   "paper_title": "BERTopic: Neural topic modeling with a class-based TF-IDF procedure",
+   "authors": [
+    "M. Grootendorst"
+   ],
+   "year": 2022,
+   "venue": "arXiv.org",
+   "paper_url": "https://arxiv.org/abs/2203.05794",
+   "glossary": [
+    {
+     "term": "c-TF-IDF",
+     "definition": "Class-based Term Frequency-Inverse Document Frequency, an adaptation that calculates term importance across document clusters treated as single concatenated classes."
+    },
+    {
+     "term": "UMAP",
+     "definition": "Uniform Manifold Approximation and Projection, a non-linear dimensionality reduction algorithm that preserves both local and global data structure."
+    },
+    {
+     "term": "HDBSCAN",
+     "definition": "Hierarchical Density-Based Spatial Clustering of Applications with Noise, a clustering algorithm that identifies clusters of varying densities and separates outliers as noise."
+    },
+    {
+     "term": "Topic Coherence (NPMI)",
+     "definition": "Normalized Pointwise Mutual Information, an automated evaluation metric measuring how frequently the top words of a topic co-occur in documents."
+    },
+    {
+     "term": "Topic Diversity",
+     "definition": "The proportion of unique words among the top terms across all discovered topics, measuring redundancy between topics."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How does BERTopic extract the top descriptive words for a discovered topic?",
+     "options": [
+      "By taking the words whose embeddings are closest to the cluster centroid",
+      "By concatenating documents in a cluster and computing class-based TF-IDF (c-TF-IDF)",
+      "By prompting an autoregressive language model to summarize the cluster",
+      "By running Latent Dirichlet Allocation within each individual cluster"
+     ],
+     "answer": 1,
+     "explain": "BERTopic concatenates all documents in a cluster into a single class document and applies c-TF-IDF to find words that are frequent in that cluster but rare across other clusters."
+    },
+    {
+     "q": "Why does BERTopic use UMAP before clustering with HDBSCAN?",
+     "options": [
+      "To convert discrete words into continuous dense embeddings",
+      "To mitigate the curse of dimensionality where high-dimensional distance measures become ill-defined",
+      "To ensure that all document clusters form perfect spheres",
+      "To remove punctuation and stopwords from the text vectors"
+     ],
+     "answer": 1,
+     "explain": "In high-dimensional space, distances between data points become nearly uniform (the curse of dimensionality). UMAP projects embeddings to a lower-dimensional space while preserving local and global structures."
+    },
+    {
+     "q": "Which of the following is identified by the author as a primary limitation of BERTopic?",
+     "options": [
+      "It can only run with Doc2Vec embeddings and fails with modern transformers",
+      "It strictly assumes each document is assigned to a single topic rather than a mixture of topics",
+      "It cannot handle dynamic or time-evolving text datasets",
+      "It requires supervised topic category labels during training"
+     ],
+     "answer": 1,
+     "explain": "BERTopic assumes that each document belongs to a single cluster/topic, which does not naturally represent documents that span multiple themes."
+    }
+   ],
+   "cover_seed": "bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-30",
+   "importance_score": 0.72,
+   "path": "papers/bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro.md",
+   "hash": "e8ebabb9998e",
+   "word_count": 2273,
+   "excerpt": "Suppose you are handed forty thousand raw customer reviews, support tickets, or political tweets. Your boss asks a simple question: what are people actually talking about? For twenty years, the standard answer was Latent Dirichlet Allocation (LDA). You treated every document as an unordered bag of…"
   },
   {
    "id": "paper-vae",
@@ -7552,6 +7645,99 @@
    "hash": "111f6ffaae96",
    "word_count": 2044,
    "excerpt": "Your smartphone camera needs to detect faces at thirty frames per second without melting through the battery or scorching your palm. In 2017, that was an impossible task. State-of-the-art vision models performed billions of 32-bit floating-point multiplications for every single video frame,…"
+  },
+  {
+   "id": "paper-efficient-streaming-language-models-with-attention-sinks",
+   "kind": "paper",
+   "slug": "efficient-streaming-language-models-with-attention-sinks",
+   "title": "Why Transformers Crash Without Their First Words",
+   "subtitle": "How four pinned tokens unlocked infinite streaming for large language models",
+   "track": "ai-systems",
+   "track_order": 5,
+   "prerequisites": [
+    "paper-attention-is-all-you-need",
+    "paper-llama",
+    "paper-vllm"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 10,
+   "topics": [
+    "attention sinks",
+    "kv cache",
+    "streaming inference",
+    "long context"
+   ],
+   "paper_title": "Efficient Streaming Language Models with Attention Sinks",
+   "authors": [
+    "Guang-Xuan Xiao",
+    "Yuandong Tian",
+    "Beidi Chen",
+    "et al."
+   ],
+   "year": 2023,
+   "venue": "International Conference on Learning Representations",
+   "paper_url": "https://arxiv.org/abs/2309.17453",
+   "glossary": [
+    {
+     "term": "Attention Sink",
+     "definition": "Initial tokens in autoregressive models that accumulate disproportionately high attention scores because the softmax function requires scores to sum to one, serving as an offloading repository for surplus attention."
+    },
+    {
+     "term": "KV Cache",
+     "definition": "The stored Key and Value tensor representations from previously processed tokens in a Transformer, reused during autoregressive decoding to avoid recomputing past token representations."
+    },
+    {
+     "term": "Window Attention",
+     "definition": "An inference strategy where only the most recent fixed number of tokens are retained in the attention cache, discarding older history."
+    },
+    {
+     "term": "SoftMax-off-by-One",
+     "definition": "A variant of softmax that adds a constant 1 to the denominator sum, allowing attention weights across contextual tokens to sum to less than one when no token is relevant."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why do autoregressive language models dump excessive attention onto initial tokens?",
+     "options": [
+      "Initial tokens always carry the most important semantic information of the document.",
+      "Softmax forces attention weights to sum to one, and initial tokens are visible to every subsequent token in causal masking.",
+      "Positional embeddings penalize tokens that are placed further along in the sequence.",
+      "The model optimizer zeroes out gradients for all tokens except the initial tokens."
+     ],
+     "answer": 1,
+     "explain": "Because causal attention allows all subsequent tokens to see the first few tokens, and softmax demands that attention weights sum to 1.0 even when no past context is relevant, the model naturally learns to dump unneeded attention into those initial tokens."
+    },
+    {
+     "q": "How does StreamingLLM modify token position assignments when applying relative positional encodings?",
+     "options": [
+      "It uses the token original position index in the raw infinite text stream.",
+      "It sets all token positions to zero to disable position bias.",
+      "It assigns positions based on the token order within the active cache rather than the raw text.",
+      "It randomly samples position indices from the pre-training window."
+     ],
+     "answer": 2,
+     "explain": "StreamingLLM assigns contiguous positional indices according to each token's order inside the cache (such as 0 through 7) rather than its absolute position in the input document."
+    },
+    {
+     "q": "What happens when the first 4 tokens are replaced with newline characters in StreamingLLM?",
+     "options": [
+      "Perplexity collapses completely because semantic context is destroyed.",
+      "Perplexity is restored similarly to keeping the original initial tokens, showing sink behavior is driven by position rather than semantics.",
+      "The model enters an infinite loop repeating newline characters.",
+      "Decoding latency doubles due to vocabulary lookup misses."
+     ],
+     "answer": 1,
+     "explain": "The paper showed that replacing initial tokens with newlines restored perplexity to 5.60 (compared to 5.40 with original tokens and 5158.07 without them), proving that attention sinks are an artifact of absolute position and visibility rather than semantic content."
+    }
+   ],
+   "cover_seed": "efficient-streaming-language-models-with-attention-sinks",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-10-30",
+   "importance_score": 0.7,
+   "path": "papers/efficient-streaming-language-models-with-attention-sinks.md",
+   "hash": "72981fcbee7e",
+   "word_count": 2294,
+   "excerpt": "Imagine you are having an all-day conversation with an AI assistant. After a few hours of steady chatting, you ask a simple question, and the model suddenly begins emitting random punctuation and gibberish. Under the hood, the server ran out of memory, tried to drop the very first sentence you…"
   }
  ]
 }
