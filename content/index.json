@@ -1,7 +1,7 @@
 {
- "content_version": "6cc18183fc9f287c",
- "generated_at": "2026-10-31",
- "count": 81,
+ "content_version": "663e22207a3adb49",
+ "generated_at": "2026-11-01",
+ "count": 83,
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
@@ -2552,6 +2552,102 @@
    "excerpt": "If you want to make an image-recognition network more accurate, what knob do you turn? For years, the deep learning playbook had only two obvious answers: go deeper by stacking more layers, or go wider by packing more channels into each layer. Both strategies helped, but both soon ran into walls of…"
   },
   {
+   "id": "paper-real-time-single-image-and-video-super-resolution-using-an-e",
+   "kind": "paper",
+   "slug": "real-time-single-image-and-video-super-resolution-using-an-e",
+   "title": "Pixel Shuffle: Upscaling Images at the Very End",
+   "subtitle": "How shifting magnification to the final layer unlocked real-time AI video super-resolution",
+   "track": "deep-learning",
+   "track_order": 10,
+   "prerequisites": [
+    "primer-neural-networks",
+    "paper-alexnet"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 9,
+   "topics": [
+    "super-resolution",
+    "computer vision",
+    "convolutional networks",
+    "real-time inference"
+   ],
+   "paper_title": "Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network",
+   "authors": [
+    "Wenzhe Shi",
+    "J. Caballero",
+    "F. Huszár",
+    "et al."
+   ],
+   "year": 2016,
+   "venue": "Computer Vision and Pattern Recognition",
+   "paper_url": "https://arxiv.org/abs/1609.05158",
+   "glossary": [
+    {
+     "term": "Single Image Super-Resolution (SISR)",
+     "definition": "The task of reconstructing a sharp, high-resolution image from a single low-resolution observation."
+    },
+    {
+     "term": "Sub-Pixel Convolution",
+     "definition": "A technique that performs convolutions in low-resolution space to generate r^2 channels, then rearranges those channels into high-resolution spatial pixels."
+    },
+    {
+     "term": "Periodic Shuffling (PS)",
+     "definition": "The deterministic reshaping operation that maps an H x W x (C * r^2) tensor into an (r * H) x (r * W) x C tensor."
+    },
+    {
+     "term": "Bicubic Interpolation",
+     "definition": "A traditional mathematical algorithm using 16 neighboring pixels to estimate new pixel values when resizing images."
+    },
+    {
+     "term": "PSNR (Peak Signal-to-Noise Ratio)",
+     "definition": "An objective metric measuring the ratio between the maximum possible power of a signal and corrupting noise, expressed in decibels (dB)."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why is performing convolutions in high-resolution space computationally inefficient?",
+     "options": [
+      "It multiplies computational cost by a factor of r^2 because all filter convolutions happen over expanded dimensions without adding new information",
+      "It causes gradient vanishing because HR images require deeper networks",
+      "It forces the model to use non-differentiable pooling operations",
+      "It requires using recurrent neural network connections"
+     ],
+     "answer": 0,
+     "explain": "When upsampling before convolution by a factor of r, the number of pixels grows by r^2. Performing convolutions on this larger grid multiplies computational complexity by r^2 while initial bicubic interpolation adds zero new information."
+    },
+    {
+     "q": "How does the sub-pixel convolution layer reconstruct an image with scale factor r?",
+     "options": [
+      "It runs an iterative nearest-neighbor interpolation step",
+      "It generates r^2 feature channels in low resolution and rearranges them into an r x r pixel block per location",
+      "It performs a 2D Fourier transform followed by inverse high-pass filtering",
+      "It applies a softmax across channels to classify each sub-pixel"
+     ],
+     "answer": 1,
+     "explain": "The periodic shuffling operator PS takes a tensor of shape H x W x (C * r^2) and rearranges the channel depth into spatial height and width, forming an rH x rW x C image."
+    },
+    {
+     "q": "What practical speedup did ESPCN demonstrate for 1080p video upscaling at scale factor 4 compared to SRCNN?",
+     "options": [
+      "From 0.434 seconds down to 0.029 seconds per frame, enabling real-time video processing",
+      "From 10 seconds down to 1 second per frame",
+      "From 60 FPS down to 30 FPS",
+      "No speedup; it only improved reconstruction accuracy"
+     ],
+     "answer": 0,
+     "explain": "At upscale factor 4, SRCNN required 0.434 seconds per frame, whereas ESPCN finished in 0.029 seconds per frame (~34 FPS), crossing the threshold into real-time high-definition playback."
+    }
+   ],
+   "cover_seed": "real-time-single-image-and-video-super-resolution-using-an-e",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-11-01",
+   "importance_score": 0.74,
+   "path": "papers/real-time-single-image-and-video-super-resolution-using-an-e.md",
+   "hash": "956b7be7021b",
+   "word_count": 2087,
+   "excerpt": "In old spy movies, an investigator points at a blurry security photo and tells the technician to \"zoom in and enhance.\" For decades, computer scientists laughed at that trope because throwing away pixel data is irreversible. Once an image is shrunk, the sharp edges are gone forever. When deep…"
+  },
+  {
    "id": "paper-lstm",
    "kind": "paper",
    "slug": "lstm",
@@ -3736,6 +3832,99 @@
    "hash": "1b83b8d69a3e",
    "word_count": 1991,
    "excerpt": "In 2022, diffusion models were generating gorgeous images, but their mathematics felt like a tangled thicket. Every research lab seemed to ship its own bespoke mathematical dialect: variance preserving equations, variance exploding formulations, score functions, and discrete Markov steps. If you…"
+  },
+  {
+   "id": "paper-high-resolution-image-synthesis-and-semantic-manipulation-wi",
+   "kind": "paper",
+   "slug": "high-resolution-image-synthesis-and-semantic-manipulation-wi",
+   "title": "Megapixel Realism: How Pix2PixHD Scaled Conditional GANs",
+   "subtitle": "Turning rough label maps into crisp, editable 2K photographs",
+   "track": "generative",
+   "track_order": 7,
+   "prerequisites": [
+    "paper-gan",
+    "paper-resnet",
+    "paper-unet"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 9,
+   "topics": [
+    "conditional gans",
+    "image-to-image translation",
+    "high-resolution synthesis",
+    "semantic editing"
+   ],
+   "paper_title": "High-Resolution Image Synthesis and Semantic Manipulation with Conditional GANs",
+   "authors": [
+    "Ting-Chun Wang",
+    "Ming-Yu Liu",
+    "Jun-Yan Zhu",
+    "et al."
+   ],
+   "year": 2017,
+   "venue": "2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+   "paper_url": "https://arxiv.org/abs/1711.11585",
+   "glossary": [
+    {
+     "term": "Coarse-to-fine generator",
+     "definition": "A generator decomposed into cascaded networks where lower-resolution representations provide global context to subsequent networks that synthesize higher-resolution local detail."
+    },
+    {
+     "term": "Multi-scale discriminators",
+     "definition": "Multiple discriminator networks of identical architecture applied to downsampled versions of an image pyramid to simultaneously capture global consistency and fine texture details."
+    },
+    {
+     "term": "Feature matching loss",
+     "definition": "A training loss computed by taking the L1 distance between intermediate layer activations of the discriminator for real versus generated images."
+    },
+    {
+     "term": "Instance boundary map",
+     "definition": "A binary edge map identifying the pixel borders between distinct individual object instances of the same semantic class."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does the framework use three discriminators operating at different scales rather than one large discriminator?",
+     "options": [
+      "A single discriminator would require an impractically deep network or huge receptive field, increasing memory and risking overfitting.",
+      "A single discriminator cannot compute gradient backpropagation on GPUs.",
+      "Using multiple discriminators is required to calculate the cross-entropy loss between multiple labels.",
+      "Three discriminators are necessary to process red, green, and blue color channels independently."
+     ],
+     "answer": 0,
+     "explain": "A discriminator needs a vast receptive field to evaluate 2048x1024 images globally. Increasing kernel size or depth blows up parameter count and GPU memory, whereas an image pyramid lets small discriminators inspect both global context and fine local details."
+    },
+    {
+     "q": "How does pix2pixHD prevent adjacent objects of the same class (like parked cars) from merging into a single blob?",
+     "options": [
+      "By enforcing a contrastive loss between different color clusters.",
+      "By computing an instance boundary map and appending it to the semantic segmentation channels.",
+      "By increasing the learning rate of the local enhancer network.",
+      "By downsampling the semantic mask by 4x before feeding it to the generator."
+     ],
+     "answer": 1,
+     "explain": "Because pure semantic label maps assign the same class ID to neighboring cars, the authors extract 1-pixel instance boundary maps from instance IDs and concatenate them with the label input."
+    },
+    {
+     "q": "In the discriminator feature matching loss, what role does the discriminator play regarding the feature matching term?",
+     "options": [
+      "The discriminator maximizes the feature matching loss to increase divergence.",
+      "The discriminator updates its weights to make real and fake features as far apart as possible.",
+      "The discriminator acts solely as a static feature extractor; only the generator minimizes this loss.",
+      "The discriminator discards all convolutional layers and uses fully connected projections."
+     ],
+     "answer": 2,
+     "explain": "The paper explicitly notes that for the feature matching loss LFM, the discriminator Dk only serves as a feature extractor and does not maximize LFM; only the generator G minimizes it to match natural statistics."
+    }
+   ],
+   "cover_seed": "high-resolution-image-synthesis-and-semantic-manipulation-wi",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-11-01",
+   "importance_score": 0.73,
+   "path": "papers/high-resolution-image-synthesis-and-semantic-manipulation-wi.md",
+   "hash": "0f7779b819e8",
+   "word_count": 1980,
+   "excerpt": "Imagine drawing a rough digital sketch where you color a block blue for \"sky\", gray for \"road\", and red for \"car\". You tap a button, and the cartoonish silhouette turns into a crisp, photorealistic 2048 \\times 1024 street scene: raindrops glinting on car windshields, distinct leaves on roadside…"
   },
   {
    "id": "paper-dqn",
