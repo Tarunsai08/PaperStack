@@ -1,7 +1,7 @@
 {
- "content_version": "a92c675a72eba9ba",
+ "content_version": "20d6bd6e7da0fc30",
  "generated_at": "2026-11-02",
- "count": 309,
+ "count": 312,
  "subjects": [
   {
    "id": "ml",
@@ -18975,6 +18975,354 @@
    "hash": "27fccf4dc840",
    "word_count": 1667,
    "excerpt": "A chef works a single stove with a stack of orders. Each pan, once used, must cool before it can go back on the flame, or the next dish in it burns. The chef cannot sit idle while a pan cools if another dish is ready, but sometimes every remaining pan is still hot and there is nothing to do except…"
+  },
+  {
+   "id": "dsa-huffman-coding",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "huffman-coding",
+   "title": "Morse Code Tuned to Your Own Text",
+   "subtitle": "Huffman coding: repeatedly merge the two rarest symbols with a min-heap to build the shortest prefix-free code, why the greedy is optimal, and how it differs from LZ compression",
+   "track": "dsa-heaps-greedy",
+   "track_order": 8,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-heap-basics",
+    "dsa-greedy-exchange"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "greedy",
+    "heap",
+    "compression",
+    "trees"
+   ],
+   "complexity": {
+    "time": "O(k log k) to build the code for k distinct symbols",
+    "space": "O(k)"
+   },
+   "practice_problems": [
+    {
+     "name": "Last Stone Weight",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/last-stone-weight/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Minimum Operations to Halve Array Sum",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/minimum-operations-to-halve-array-sum/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Minimum Cost to Merge Stones",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/minimum-cost-to-merge-stones/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Prefix-free code",
+     "definition": "A set of codewords in which no codeword is the beginning of another, so a bit stream can be decoded left to right without separators."
+    },
+    {
+     "term": "Code tree",
+     "definition": "A binary tree whose leaves are symbols; the path from the root, 0 for left and 1 for right, spells each symbol's codeword."
+    },
+    {
+     "term": "Weighted path length",
+     "definition": "The sum over symbols of frequency times codeword length, which equals the total number of bits in the encoded text."
+    },
+    {
+     "term": "Merge cost",
+     "definition": "The weight of a new internal node, equal to the sum of the two nodes it joins; the merge costs add up to the weighted path length."
+    },
+    {
+     "term": "Entropy",
+     "definition": "A lower bound, in bits per symbol, on the average codeword length of any prefix-free code for given symbol frequencies."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why can't the code {a: 0, b: 01, c: 1} be decoded reliably?",
+     "options": [
+      "It uses too many bits",
+      "It is not prefix-free: a's code 0 is the start of b's code 01, so 01 could be b or a then c",
+      "Codes must all be the same length",
+      "It is decodable"
+     ],
+     "answer": 1,
+     "explain": "When a codeword is a prefix of another, the decoder cannot tell where one symbol ends. Codes built from the leaves of a binary tree never have this problem."
+    },
+    {
+     "q": "What does Huffman's algorithm do at every step?",
+     "options": [
+      "Split the symbols into two halves of equal weight",
+      "Remove the two lowest-weight nodes from a min-heap and push back one node with their combined weight",
+      "Give the most frequent symbol code 0 and recurse",
+      "Sort the symbols and assign codes of increasing length"
+     ],
+     "answer": 1,
+     "explain": "Merging the two rarest nodes makes them siblings at the deepest level, which is where an optimal tree wants the rarest symbols."
+    },
+    {
+     "q": "For 'abracadabra', the merges have weights 2, 4, 6 and 11. How many bits does the encoded text use?",
+     "options": [
+      "11",
+      "23, the sum of the merge weights",
+      "33",
+      "44"
+     ],
+     "answer": 1,
+     "explain": "Each merge adds one bit to every occurrence of every symbol under it, so the merge weights sum to the total number of bits: 2 + 4 + 6 + 11 = 23."
+    }
+   ],
+   "cover_seed": "huffman-coding",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.6,
+   "path": "dsa/huffman-coding.md",
+   "hash": "09457244211e",
+   "word_count": 1510,
+   "excerpt": "Telegraph operators sent the letter E as a single dot, while rarer letters took longer runs of dots and dashes. Common letters cost little, rare ones cost more, and the whole message got shorter. Morse code was tuned by hand for English in general. What if you could tune a code to one specific…"
+  },
+  {
+   "id": "dsa-meeting-rooms",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "meeting-rooms",
+   "title": "A Hotel Manager Freeing Rooms at Checkout",
+   "subtitle": "How many rooms do overlapping meetings need? A min-heap of end times and a sweep of plus-one, minus-one events give the same answer, the maximum overlap, and the heap also tells you which room each meeting gets",
+   "track": "dsa-heaps-greedy",
+   "track_order": 9,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-intervals-sweep",
+    "dsa-heap-basics"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "heap",
+    "intervals",
+    "sweep line",
+    "greedy"
+   ],
+   "complexity": {
+    "time": "O(n log n)",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Divide Intervals Into Minimum Number of Groups",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/divide-intervals-into-minimum-number-of-groups/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Car Pooling",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/car-pooling/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Restaurant Customers",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1619",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Room Allocation",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1164",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Meeting Rooms III",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/meeting-rooms-iii/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Maximum overlap",
+     "definition": "The largest number of intervals that contain one common moment; it is the fewest rooms any schedule can use."
+    },
+    {
+     "term": "End-time heap",
+     "definition": "A min-heap holding the end time of the meeting in each occupied room, so the earliest room to free up is always on top."
+    },
+    {
+     "term": "Event sweep",
+     "definition": "Turning each interval into a +1 event at its start and a -1 event at its end, sorting the events, and tracking a running count."
+    },
+    {
+     "term": "Free-id heap",
+     "definition": "A min-heap of room numbers that are currently empty, so each new meeting can be given the smallest free room number."
+    },
+    {
+     "term": "Half-open interval",
+     "definition": "An interval [start, end) that includes its start but not its end, so a meeting ending at 5 and one starting at 5 do not clash."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Meetings [1, 4], [2, 6] and [3, 5] all run at time 3.5. What does that prove about the number of rooms?",
+     "options": [
+      "Nothing",
+      "At least 3 rooms are needed, because three meetings are in progress at once",
+      "Exactly 2 rooms are enough",
+      "At most 3 meetings can be scheduled"
+     ],
+     "answer": 1,
+     "explain": "Three meetings in progress at one moment need three different rooms. The maximum overlap is a lower bound, and the heap method shows it is always achievable."
+    },
+    {
+     "q": "In the sweep, an end event and a start event share time 5, and meetings are half-open. Which should be processed first?",
+     "options": [
+      "The start",
+      "The end, so the room freed at 5 is counted as free for the meeting starting at 5",
+      "It never matters",
+      "Neither; skip both"
+     ],
+     "answer": 1,
+     "explain": "With half-open meetings, [3, 5] and [5, 9] can share a room. Processing the -1 before the +1 at equal times avoids counting a false overlap."
+    },
+    {
+     "q": "Why sort meetings by start time for the heap method, rather than by end time?",
+     "options": [
+      "It is faster",
+      "Meetings must be placed in the order they begin, so that when one starts, every room freed before it is already known",
+      "Sorting by end time also works with no changes",
+      "The heap sorts them anyway"
+     ],
+     "answer": 1,
+     "explain": "The heap answers 'is any room free at this start time?'. That question only makes sense if meetings are placed in order of start."
+    }
+   ],
+   "cover_seed": "meeting-rooms",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.82,
+   "path": "dsa/meeting-rooms.md",
+   "hash": "a5e547e91f46",
+   "word_count": 1605,
+   "excerpt": "A hotel manager has a list of tonight's bookings: when each guest arrives and when they leave. Rooms cost money to prepare, so the manager wants to know the fewest rooms that will hold everyone. Guests do not care which room they get, only that nobody else is in it while they are. This is one of…"
+  },
+  {
+   "id": "dsa-jump-game",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "jump-game",
+   "title": "Hopping Stones Across a River",
+   "subtitle": "Jump Game in one pass by tracking the farthest reachable stone, Jump Game II as breadth-first levels without a queue, and Video Stitching as the same problem in disguise",
+   "track": "dsa-heaps-greedy",
+   "track_order": 10,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-greedy-exchange"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "greedy",
+    "arrays",
+    "BFS levels"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(1)"
+   },
+   "practice_problems": [
+    {
+     "name": "Jump Game",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/jump-game/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Jump Game II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/jump-game-ii/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Video Stitching",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/video-stitching/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Minimum Number of Taps to Open to Water a Garden",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/minimum-number-of-taps-to-open-to-water-a-garden/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Farthest reach",
+     "definition": "The largest index you can land on using the stones seen so far, the maximum of i + nums[i] over every reachable i."
+    },
+    {
+     "term": "Reachable prefix",
+     "definition": "The fact that the stones you can reach always form one unbroken block from the start, so one number, the farthest reach, describes them all."
+    },
+    {
+     "term": "Jump level",
+     "definition": "The block of stones reachable with exactly k jumps but not fewer, like one layer of a breadth-first search."
+    },
+    {
+     "term": "Level boundary",
+     "definition": "The last index of the current jump level; reaching it means the next stone needs one more jump."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "nums = [1, 2, 0, 1, 0, 3]. Can you reach the last index?",
+     "options": [
+      "Yes",
+      "No: after index 4 the farthest reach is 4, so index 5 can never be reached",
+      "Only with two jumps",
+      "Only if you start at index 1"
+     ],
+     "answer": 1,
+     "explain": "The farthest reach grows to 1, 3, 3, 4, 4. At index 5 the loop finds i greater than the farthest reach, so the walk is stuck at the zero on index 4."
+    },
+    {
+     "q": "Why does one number, the farthest reach, tell you every reachable index?",
+     "options": [
+      "It does not",
+      "If you can reach index r, you can reach every index before r, because the jump that passed over them could have stopped earlier",
+      "Because nums is sorted",
+      "Because jumps are always of length 1"
+     ],
+     "answer": 1,
+     "explain": "A jump of up to nums[i] can land anywhere in between, so reachable indices form one block from 0 to the farthest reach. That is what lets a single pass replace an O(n²) DP."
+    },
+    {
+     "q": "In Jump Game II, when exactly do you add a jump?",
+     "options": [
+      "Every time the farthest reach grows",
+      "When i reaches the end of the current level, and only for i before the last index",
+      "At every index",
+      "When nums[i] is zero"
+     ],
+     "answer": 1,
+     "explain": "All indices up to the current level end are reachable with the current number of jumps. Passing that end forces one more jump, whose landing zone extends to the farthest reach found inside the level."
+    }
+   ],
+   "cover_seed": "jump-game",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.8,
+   "path": "dsa/jump-game.md",
+   "hash": "8f12668432b9",
+   "word_count": 1472,
+   "excerpt": "A river is crossed by a line of stepping stones. Each stone has a number painted on it: the longest hop you can make from there. Some stones are slippery and say 0. Can you reach the far bank, and if so, in how few hops? The tempting first answer is to explore every path, which explodes. The real…"
   },
   {
    "id": "dsa-graph-representation",

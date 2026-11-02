@@ -16,6 +16,7 @@ complexity: { time: "O(k log k) to build the code for k distinct symbols", space
 practice_problems:
   - { name: "Last Stone Weight", platform: "LeetCode", url: "https://leetcode.com/problems/last-stone-weight/", difficulty: "Easy" }
   - { name: "Minimum Operations to Halve Array Sum", platform: "LeetCode", url: "https://leetcode.com/problems/minimum-operations-to-halve-array-sum/", difficulty: "Medium" }
+  - { name: "Minimum Cost to Merge Stones", platform: "LeetCode", url: "https://leetcode.com/problems/minimum-cost-to-merge-stones/", difficulty: "Hard" }
 glossary:
   - term: "Prefix-free code"
     definition: "A set of codewords in which no codeword is the beginning of another, so a bit stream can be decoded left to right without separators."
@@ -243,7 +244,7 @@ Leaves are created in sorted symbol order, and the heap breaks equal weights by 
 
 ## Practice problems
 
-*Minimum Cost to Connect Sticks* on LeetCode is exactly Huffman's merge-cost sum, but it is a premium problem; the free practice here builds the same muscle. *Last Stone Weight* repeatedly pops two extremes from a heap and pushes back one result, the same loop shape with a different combine rule. *Minimum Operations to Halve Array Sum* repeatedly takes the largest value from a heap, the greedy-with-a-heap habit Huffman relies on. For the most direct practice, implement the class above and check that encode followed by decode returns your input. The heap operations are explained in [The Triage Nurse Who Always Knows Who Is Next](article:dsa-heap-basics).
+*Minimum Cost to Connect Sticks* on LeetCode is exactly Huffman's merge-cost sum, but it is a premium problem; the free practice here builds the same muscle. *Last Stone Weight* repeatedly pops two extremes from a heap and pushes back one result, the same loop shape with a different combine rule. *Minimum Operations to Halve Array Sum* repeatedly takes the largest value from a heap, the greedy-with-a-heap habit Huffman relies on. *Minimum Cost to Merge Stones* is the instructive contrast: merges are only allowed between neighbouring piles, so the two smallest may not be mergeable and the greedy breaks; it needs interval dynamic programming instead. For the most direct practice, implement the class above and check that encode followed by decode returns your input. The heap operations are explained in [The Triage Nurse Who Always Knows Who Is Next](article:dsa-heap-basics).
 
 ## Key takeaways
 
