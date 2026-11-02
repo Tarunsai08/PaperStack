@@ -120,16 +120,18 @@ export const KINDS = Object.keys(SECTIONS) as Kind[];
 export const SUBJECT_IDS = ['ml', 'dsa', 'cp', 'famous-algos', 'system-design', 'cs-core'] as const;
 export const PRIORITIES = ['P0', 'P1', 'P2'] as const;
 
-export const WORD_LIMITS: Record<Kind, readonly [number, number]> = {
-  paper: [1400, 2200],
-  primer: [1000, 1600],
+// Minimum prose words per kind (a depth floor). There is deliberately no maximum:
+// an article is as long as complete understanding of the topic needs.
+export const WORD_MIN: Record<Kind, number> = {
+  paper: 1400,
+  primer: 1000,
   // Code fences are not counted, so code-bearing kinds start a little lower.
-  pattern: [900, 2000],
-  'problem-walkthrough': [900, 2000],
-  concept: [900, 2000],
-  'deep-dive': [1100, 2200],
-  'case-study': [1100, 2200],
-  lld: [900, 2000],
+  pattern: 900,
+  'problem-walkthrough': 900,
+  concept: 900,
+  'deep-dive': 1100,
+  'case-study': 1100,
+  lld: 900,
 };
 
 const NEEDS_CODE = new Set<string>(['pattern', 'problem-walkthrough', 'concept', 'lld']);
@@ -380,9 +382,8 @@ export function validateArticle(
       err('code_missing', `${kind} articles need a \`\`\`pseudo or \`\`\`cpp block in The code.`);
     }
     const words = wordCount(body);
-    const [lo, hi] = WORD_LIMITS[kind as Kind];
-    if (words < lo) warn('length_short', `Body is ${words} words; aim for ${lo}-${hi}.`);
-    if (words > hi) warn('length_long', `Body is ${words} words; aim for ${lo}-${hi}.`);
+    const lo = WORD_MIN[kind as Kind];
+    if (words < lo) warn('length_short', `Body is ${words} words; aim for at least ${lo}.`);
   }
 
   for (const name of directiveNames(body)) {

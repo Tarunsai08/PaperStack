@@ -75,4 +75,12 @@ describe('helpers', () => {
     expect(res.ok).toBe(true);
     expect(res.warnings.map((w) => w.code)).toContain('length_short');
   });
+
+  it('never warns that an article is too long', () => {
+    const raw = readFileSync(join(FIXTURES, 'valid-paper.md'), 'utf8');
+    const padded = raw.replace('## Key takeaways', `${'Every idea gets the room it needs. '.repeat(1500)}\n\n## Key takeaways`);
+    const res = parseAndValidate(padded, { trackIds: cases.tracks, articleIds: cases.articleIds });
+    expect(res.ok).toBe(true);
+    expect(res.warnings).toEqual([]);
+  });
 });

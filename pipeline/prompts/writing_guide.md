@@ -22,7 +22,7 @@ The reader is a smart computer-science student who has never studied AI or machi
 - **Key takeaways:** 3-5 bullets, each one a full sentence that states a complete idea.
 
 ## Length and pacing
-- Paper articles: 1,400-2,200 words. Primers: 1,000-1,600 words.
+- No maximum length: write until the idea is fully understood, never pad. Minimums: paper articles 1,400 words, primers 1,000 words.
 - Paragraphs of 1-4 sentences. Put a visual element (diagram, callout, worked example or list) at least every ~300 words.
 - No walls of text.
 

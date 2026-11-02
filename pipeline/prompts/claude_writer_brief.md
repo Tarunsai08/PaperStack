@@ -33,7 +33,7 @@ You write PaperStack seed articles for students preparing for top product and in
 - **Glossary:** 3-8 terms, each used in the body as `[[term]]`.
 - **Quiz:** exactly 3 questions.
 - **Takeaways:** 3-5, full sentences.
-- **Length:** the target is 1300-1700 words of prose (1500-2000 for deep-dive and case-study). Cover the interview follow-ups, variants and pitfalls a candidate needs.
+- **Length:** no maximum. Write as much as the reader needs to understand the topic completely, and never pad. The validator only enforces a floor (900 prose words for code kinds, 1,100 for deep-dive and case-study). Cover the interview follow-ups, variants, edge cases and pitfalls a candidate needs, and use any presentation that helps: tables, diagrams, traced states, extra examples.
 - **Practice problems:** only real, free problems whose exact URL you are certain of. No LeetCode premium. Never copy problem statements.
 - **Cross-links:** `[Exact Title](article:<id>)`, and only to articles that exist. Grep `^title` to get the exact title.
 - **Facts:** never invent facts, dates, names, numbers or URLs. If unsure, stay qualitative or leave it out. For system design, use only labelled estimates of your own, never company traffic numbers, and never ByteByteGo text.

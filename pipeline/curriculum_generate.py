@@ -167,11 +167,11 @@ def entry_header(e: dict, written: dict[str, dict], today: str) -> str:
         fixed.pop("priority")
     if e["kind"] == "paper":
         fixed["paper_url"] = e.get("paper_url")
-    target = bi.WORD_LIMITS.get(e["kind"], (1000, 2000))
+    target = bi.WORD_MIN.get(e["kind"], 1000)
     return f"""## The entry to write
 Working title (improve it: curiosity-driven, under 10 words): {e['title_working']}
 Kind: {e['kind']}. Required sections, in order: {' | '.join(bi.SECTIONS[e['kind']])}
-Target length: {target[0]}-{target[1]} words of prose (code blocks are not counted).
+Length: at least {target} words of prose (code blocks are not counted). There is no maximum: write as much as complete understanding needs, without padding.
 Use these exact frontmatter values:
 {json.dumps(fixed, indent=1, ensure_ascii=False)}
 
