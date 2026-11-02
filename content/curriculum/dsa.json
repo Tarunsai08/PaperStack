@@ -1293,8 +1293,8 @@
    "prerequisites": [
     "dsa-heap-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Keep a min-heap of size k",
@@ -1324,8 +1324,8 @@
    "prerequisites": [
     "dsa-heap-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Max-heap for the lower half, min-heap for the upper",

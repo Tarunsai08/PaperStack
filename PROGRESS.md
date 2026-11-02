@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 101 | 0 | 51 | 152 | 61/72 |
+| dsa | 103 | 0 | 49 | 152 | 62/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **303** | **0** | **370** | **673** | |
+| **All** | **305** | **0** | **368** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -25,16 +25,16 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### dsa
 
-- [ ] `dsa-top-k-pattern` (P0, pattern, dsa-heaps-greedy): Top K: The Heap of Size K Trick
 - [ ] `dsa-greedy-exchange` (P0, pattern, dsa-heaps-greedy): Greedy Algorithms and the Exchange Argument
 - [ ] `dsa-meeting-rooms` (P0, problem-walkthrough, dsa-heaps-greedy): How Many Meeting Rooms Do You Need?
 - [ ] `dsa-topological-sort` (P0, pattern, dsa-graphs): Topological Sort: Ordering Tasks With Dependencies
 - [ ] `dsa-dijkstra` (P0, pattern, dsa-graphs): Dijkstra: Shortest Paths With Weights
 - [ ] `dsa-word-ladder` (P0, problem-walkthrough, dsa-graphs): Word Ladder: BFS on Implicit Graphs
 - [ ] `dsa-islands-variants` (P0, problem-walkthrough, dsa-graphs): Number of Islands and Its Many Variants
-- [ ] `dsa-two-heaps` (P1, pattern, dsa-heaps-greedy): Two Heaps: The Running Median
 - [ ] `dsa-k-way-merge` (P1, pattern, dsa-heaps-greedy): Merging K Sorted Lists
 - [ ] `dsa-mst` (P1, pattern, dsa-graphs): Minimum Spanning Trees: Kruskal and Prim
+- [ ] `dsa-bipartite` (P1, pattern, dsa-graphs): Bipartite Graphs and Two-Colouring
+- [ ] `dsa-grid-graph-tricks` (P1, pattern, dsa-graphs): Grid Problems as Graphs
 
 ### cp
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 101 written</summary>
+<details><summary>dsa: 103 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -131,6 +131,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-tree-paths` Path Problems on Trees
 - [x] `dsa-balanced-trees-intuition` Why Balanced Trees Matter: AVL and Red-Black in Plain Words
 - [x] `dsa-heap-basics` Heaps: Always Know the Smallest
+- [x] `dsa-top-k-pattern` Top K: The Heap of Size K Trick
+- [x] `dsa-two-heaps` Two Heaps: The Running Median
 - [x] `dsa-graph-representation` Graphs: Modelling Problems as Nodes and Edges
 - [x] `dsa-bfs` Breadth-First Search: Exploring in Rings
 - [x] `dsa-dfs` Depth-First Search: Going Deep, Then Backing Up

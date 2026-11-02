@@ -1,7 +1,7 @@
 {
- "content_version": "b7836df747b1f09d",
+ "content_version": "5eda78c9cd8d2f76",
  "generated_at": "2026-11-02",
- "count": 303,
+ "count": 305,
  "subjects": [
   {
    "id": "ml",
@@ -16413,8 +16413,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.92,
    "path": "dsa/tree-traversals.md",
-   "hash": "55631aec3bd5",
-   "word_count": 1289,
+   "hash": "00af4aca4fc6",
+   "word_count": 1346,
    "excerpt": "Almost every tree problem in an interview, from \"maximum depth\" to \"serialize a tree\" to \"lowest common ancestor\", is a traversal with a small twist. The twist is usually when you do the work at each node: before visiting the children, between them, after them, or level by level. Get the four…"
   },
   {
@@ -18270,6 +18270,240 @@
    "hash": "b7ce553ca188",
    "word_count": 1833,
    "excerpt": "A hospital emergency room on a busy night. Patients arrive in any order: a sprained ankle, then a chest pain, then a cut finger, then a child with a high fever. Nobody is seen in arrival order. The triage nurse always knows who is most urgent right now, and when that patient goes in, she knows who…"
+  },
+  {
+   "id": "dsa-top-k-pattern",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "top-k-pattern",
+   "title": "A Talent Show That Keeps Only the Best K",
+   "subtitle": "The heap of size k: keep the k best so far in a min-heap whose root is the bar to beat, for O(n log k) top-k queries, streams and the k smallest pair sums",
+   "track": "dsa-heaps-greedy",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-heap-basics"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "heap",
+    "priority queue",
+    "top k",
+    "streaming"
+   ],
+   "complexity": {
+    "time": "O(n log k)",
+    "space": "O(k)"
+   },
+   "practice_problems": [
+    {
+     "name": "Kth Largest Element in a Stream",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/kth-largest-element-in-a-stream/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Kth Largest Element in an Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/kth-largest-element-in-an-array/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Top K Frequent Elements",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/top-k-frequent-elements/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "K Closest Points to Origin",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/k-closest-points-to-origin/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Find K Pairs with Smallest Sums",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-k-pairs-with-smallest-sums/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Min-heap",
+     "definition": "A heap whose root is its smallest element, with O(log k) push and pop for k elements."
+    },
+    {
+     "term": "Bounded heap",
+     "definition": "A heap that never holds more than k elements; when it is full, a new element either replaces the root or is discarded."
+    },
+    {
+     "term": "Threshold",
+     "definition": "In the top-k pattern, the root of the min-heap: the weakest of the current top k, which any newcomer must beat."
+    },
+    {
+     "term": "Streaming",
+     "definition": "Processing elements one at a time as they arrive, without storing all of them."
+    },
+    {
+     "term": "Frontier",
+     "definition": "In Find K Pairs with Smallest Sums, the set of candidate pairs that could be the next smallest, kept in a heap and expanded one neighbour at a time."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "To keep the k largest elements, why use a min-heap rather than a max-heap?",
+     "options": [
+      "Min-heaps are faster",
+      "The root is then the smallest of the current top k, the one to evict when a bigger element arrives",
+      "Max-heaps cannot hold k elements",
+      "It does not matter"
+     ],
+     "answer": 1,
+     "explain": "A newcomer only needs to beat the weakest member of the top k. A min-heap keeps exactly that element at the root."
+    },
+    {
+     "q": "What is the time to find the top k of n elements with a bounded heap?",
+     "options": [
+      "O(n log n)",
+      "O(n log k)",
+      "O(k log n)",
+      "O(n k)"
+     ],
+     "answer": 1,
+     "explain": "Each of the n elements causes at most one push or replace on a heap of size k, each costing O(log k)."
+    },
+    {
+     "q": "In Find K Pairs with Smallest Sums, why start the heap with only (i, 0) pairs?",
+     "options": [
+      "To save memory and because (i, j + 1) can only be next after (i, j) has been taken",
+      "Because j must be 0",
+      "To sort the arrays",
+      "It is arbitrary"
+     ],
+     "answer": 0,
+     "explain": "With sorted arrays, pair (i, j + 1) is never smaller than (i, j), so it only needs to enter the heap after (i, j) leaves. The heap stays at most k entries."
+    }
+   ],
+   "cover_seed": "top-k-pattern",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "dsa/top-k-pattern.md",
+   "hash": "fd117740b9f8",
+   "word_count": 1429,
+   "excerpt": "A music app wants the ten most played songs out of a hundred million plays streaming in all day. Sorting every song by play count works once, but it is O(n log n), and the counts keep changing. Keeping only a small leaderboard of the current top ten, and asking each new song \"do you beat the…"
+  },
+  {
+   "id": "dsa-two-heaps",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "two-heaps",
+   "title": "Two Teams Kept Level on a Seesaw",
+   "subtitle": "The two-heap pattern: a max-heap for the smaller half and a min-heap for the larger half give a running median in O(log n), plus lazy deletion for windows and the two-heap greedy behind IPO",
+   "track": "dsa-heaps-greedy",
+   "track_order": 3,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-heap-basics"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "heap",
+    "median",
+    "two heaps",
+    "greedy"
+   ],
+   "complexity": {
+    "time": "O(log n) per insertion, O(1) per median query",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Find Median from Data Stream",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-median-from-data-stream/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Sliding Window Median",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sliding-window-median/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "IPO",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/ipo/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Lower half heap",
+     "definition": "A max-heap holding the smaller half of the numbers, so its root is the largest of the small ones."
+    },
+    {
+     "term": "Upper half heap",
+     "definition": "A min-heap holding the larger half, so its root is the smallest of the large ones."
+    },
+    {
+     "term": "Size invariant",
+     "definition": "The rule that the lower half holds the same number of elements as the upper half, or exactly one more."
+    },
+    {
+     "term": "Lazy deletion",
+     "definition": "Marking an element as removed in a side table and discarding it only when it reaches a heap's root, because heaps cannot delete arbitrary elements quickly."
+    },
+    {
+     "term": "Two-heap greedy",
+     "definition": "A pattern where one heap releases items as they become available and a second heap picks the best available item, as in IPO."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "With the lower half in a max-heap and the upper half in a min-heap, where is the median of an odd number of elements?",
+     "options": [
+      "The root of the upper half",
+      "The root of the lower half, which holds the extra element",
+      "The average of both roots",
+      "The bottom of either heap"
+     ],
+     "answer": 1,
+     "explain": "With the size invariant, the lower half has one more element, so its root, the largest of the smaller half, is the middle value."
+    },
+    {
+     "q": "Why push a new number into the lower half and then move the lower half's root to the upper half?",
+     "options": [
+      "To sort the heaps",
+      "It guarantees every element of the lower half is at most every element of the upper half, whatever the new number is",
+      "To save memory",
+      "It is not needed"
+     ],
+     "answer": 1,
+     "explain": "Moving the lower half's maximum across keeps the order between the halves. One more move back, if the upper half became bigger, restores the sizes."
+    },
+    {
+     "q": "Heaps cannot delete an arbitrary element. How does Sliding Window Median remove the element leaving the window?",
+     "options": [
+      "Rebuild both heaps every step",
+      "Lazy deletion: record it as pending and discard it when it reaches a root, adjusting the size counts immediately",
+      "Use a stack",
+      "It cannot be done with heaps"
+     ],
+     "answer": 1,
+     "explain": "The element stays in the heap but is counted as gone. When it surfaces at a root during later operations, it is popped and thrown away."
+    }
+   ],
+   "cover_seed": "two-heaps",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "dsa/two-heaps.md",
+   "hash": "51ef85d237e1",
+   "word_count": 1346,
+   "excerpt": "Numbers arrive one at a time: response times, prices, sensor readings. After each one, you must report the median so far. Sorting after every arrival is O(n log n) each time. Inserting into a sorted array is O(n). For a million readings, both are far too slow. Two heaps, set back to back, answer…"
   },
   {
    "id": "dsa-graph-representation",
