@@ -1,7 +1,7 @@
 {
- "content_version": "bcd3f8e6368b3686",
+ "content_version": "6301cfc86d017362",
  "generated_at": "2026-11-02",
- "count": 328,
+ "count": 332,
  "subjects": [
   {
    "id": "ml",
@@ -21828,6 +21828,453 @@
    "hash": "a41c99ab97ed",
    "word_count": 1546,
    "excerpt": "A city council plans roadworks and wants to know which roads it must never close at the same time as anything else, because closing even one of them on its own would cut part of the city off. Most roads are safe: there is always a way around. A few are the only link to a neighbourhood. Checking…"
+  },
+  {
+   "id": "dsa-scc-for-interviews",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "scc-for-interviews",
+   "title": "One-Way Streets and the Loops Between Them",
+   "subtitle": "Strongly connected components with Kosaraju's two DFS passes, why the reversed graph traps each search inside one component, and the condensation DAG where cycles become single vertices",
+   "track": "dsa-graphs",
+   "track_order": 18,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-topological-sort"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "graphs",
+    "strongly connected components",
+    "DFS",
+    "DAG"
+   ],
+   "complexity": {
+    "time": "O(V + E)",
+    "space": "O(V + E)"
+   },
+   "practice_problems": [
+    {
+     "name": "Planets and Kingdoms",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1683",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Flight Routes Check",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1682",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Coin Collector",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1686",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Strongly connected component",
+     "definition": "A largest group of vertices in a directed graph in which every vertex can reach every other; often shortened to SCC."
+    },
+    {
+     "term": "Condensation",
+     "definition": "The graph formed by shrinking each strongly connected component to a single vertex; it is always a DAG."
+    },
+    {
+     "term": "Transpose graph",
+     "definition": "The same vertices with every edge reversed; it has exactly the same strongly connected components."
+    },
+    {
+     "term": "Kosaraju's algorithm",
+     "definition": "Find SCCs with two DFS passes: one on the graph to record finish order, one on the transpose in decreasing finish order, where each search tree is one SCC."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does the condensation of any directed graph have no cycles?",
+     "options": [
+      "Because the original graph has none",
+      "If two components were on a cycle, every vertex in both could reach every other, so they would be one component",
+      "Because DFS removes cycles",
+      "It can have cycles"
+     ],
+     "answer": 1,
+     "explain": "A cycle between components would make them mutually reachable, contradicting that each component is as large as possible. So the condensation is a DAG."
+    },
+    {
+     "q": "In Kosaraju's second pass, why run DFS on the reversed graph?",
+     "options": [
+      "To save time",
+      "The vertex that finished last lies in a source component; in the reversed graph that component is a sink, so the search cannot leak into other components",
+      "Because the first pass was wrong",
+      "Reversing is optional"
+     ],
+     "answer": 1,
+     "explain": "Edges out of a source component point to other components. Reversed, they point into it, so a DFS started there stays inside its own component and collects exactly that SCC."
+    },
+    {
+     "q": "CSES Coin Collector asks for the most coins on any path when rooms can be revisited. What is the plan?",
+     "options": [
+      "Run Dijkstra",
+      "Shrink SCCs, since every coin in a component can be collected once you enter it, then take the best path through the condensation DAG with DP",
+      "BFS from every room",
+      "Sort rooms by coins"
+     ],
+     "answer": 1,
+     "explain": "Inside a component you can walk around and pick up everything. Between components, the condensation is a DAG, so a longest-path DP in topological order finishes the job."
+    }
+   ],
+   "cover_seed": "scc-for-interviews",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.6,
+   "path": "dsa/scc-for-interviews.md",
+   "hash": "fe7dc0ec3a6d",
+   "word_count": 1369,
+   "excerpt": "A city has only one-way streets. In some neighbourhoods, you can drive around in loops and get from any corner to any other. Between neighbourhoods, the streets may run only one way: you can leave the old town for the docks, but never drive back. Asking \"which neighbourhoods are like that?\" splits…"
+  },
+  {
+   "id": "dsa-snakes-ladders-bfs",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "snakes-ladders-bfs",
+   "title": "Rolling Dice in Layers of Possibility",
+   "subtitle": "Snakes and Ladders as BFS with the zigzag board decoded, then the same breadth-first search over puzzle states: keys as a bitmask, and a sliding puzzle stored as a string",
+   "track": "dsa-graphs",
+   "track_order": 19,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-bfs"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 8,
+   "topics": [
+    "graphs",
+    "BFS",
+    "state space",
+    "bitmask"
+   ],
+   "complexity": {
+    "time": "O(states × moves per state)",
+    "space": "O(states)"
+   },
+   "practice_problems": [
+    {
+     "name": "Snakes and Ladders",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/snakes-and-ladders/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Shortest Path to Get All Keys",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/shortest-path-to-get-all-keys/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Sliding Puzzle",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sliding-puzzle/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Open the Lock",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/open-the-lock/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Boustrophedon numbering",
+     "definition": "Numbering board cells in rows that alternate direction, left to right then right to left, as on a Snakes and Ladders board."
+    },
+    {
+     "term": "State graph",
+     "definition": "A graph whose vertices are complete descriptions of a puzzle position and whose edges are single legal moves."
+    },
+    {
+     "term": "Key bitmask",
+     "definition": "An integer whose bit i is 1 when key i has been collected, so the set of keys held fits in one number."
+    },
+    {
+     "term": "Parity invariant",
+     "definition": "A quantity, such as the parity of the number of inversions, that no legal move can change, which proves some positions unreachable."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "On a 6 × 6 Snakes and Ladders board, which row and column of the input array holds square 8?",
+     "options": [
+      "Row 1, column 1 from the top",
+      "Row 4 from the top, column 4, because the second row from the bottom runs right to left",
+      "Row 0, column 7",
+      "Row 5, column 1"
+     ],
+     "answer": 1,
+     "explain": "Squares 1 to 6 fill the bottom row left to right. Squares 7 to 12 fill the next row up, right to left, so 7 is at column 5 and 8 is at column 4, in row 6 - 1 - 1 = 4."
+    },
+    {
+     "q": "In Shortest Path to Get All Keys, why must the state include the keys held?",
+     "options": [
+      "For printing",
+      "The same cell with different keys allows different moves, since locks open only with their key",
+      "To count steps",
+      "It must not"
+     ],
+     "answer": 1,
+     "explain": "Standing on a cell with key a is a different situation from standing there without it. The state is (row, column, key bitmask), and visited must cover all three."
+    },
+    {
+     "q": "Why can Sliding Puzzle use plain BFS over strings like \"123450\"?",
+     "options": [
+      "Because strings are short",
+      "There are only 6! = 720 arrangements of the 2 × 3 board, so BFS over all of them is instant",
+      "Because the answer is always small",
+      "It needs Dijkstra"
+     ],
+     "answer": 1,
+     "explain": "Every move costs one, so BFS is right, and the state space is tiny. Storing each state as a string makes it easy to hash and compare."
+    }
+   ],
+   "cover_seed": "snakes-ladders-bfs",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.68,
+   "path": "dsa/snakes-ladders-bfs.md",
+   "hash": "edf92b06c3b2",
+   "word_count": 1659,
+   "excerpt": "A child plays Snakes and Ladders and wonders: if I could choose every roll, how few turns would it take to win? Each roll leads to up to six squares, ladders throw you forward, snakes drag you back. After one roll you are on one of six squares; after two rolls, on one of a few dozen. Those growing…"
+  },
+  {
+   "id": "dsa-shortest-path-dag",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "shortest-path-dag",
+   "title": "Water Running Downhill",
+   "subtitle": "Shortest paths, longest paths and path counts on a DAG in O(V + E) by relaxing edges in topological order, negative weights included, plus the memoised DFS behind Longest Increasing Path in a Matrix",
+   "track": "dsa-graphs",
+   "track_order": 20,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-topological-sort"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "graphs",
+    "DAG",
+    "shortest paths",
+    "dynamic programming",
+    "topological sort"
+   ],
+   "complexity": {
+    "time": "O(V + E)",
+    "space": "O(V + E)"
+   },
+   "practice_problems": [
+    {
+     "name": "Longest Flight Route",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1680",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Game Routes",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1681",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Longest Increasing Path in a Matrix",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/longest-increasing-path-in-a-matrix/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Parallel Courses III",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/parallel-courses-iii/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "DAG relaxation",
+     "definition": "Processing vertices in topological order and relaxing every outgoing edge of each, which finalises every distance in one pass."
+    },
+    {
+     "term": "Longest path",
+     "definition": "The path with the largest total weight; hard on general graphs, but a simple DP on a DAG."
+    },
+    {
+     "term": "Path counting",
+     "definition": "Computing how many distinct paths reach each vertex by adding the counts of its predecessors, in topological order."
+    },
+    {
+     "term": "Memoised DFS",
+     "definition": "A recursive search that stores each vertex's answer the first time it is computed, which on a DAG visits every vertex and edge once."
+    },
+    {
+     "term": "Implicit DAG",
+     "definition": "A DAG defined by a rule, such as 'move only to a strictly larger neighbour', which can never produce a cycle."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why can a DAG handle negative edge weights without Bellman-Ford?",
+     "options": [
+      "Negative weights are ignored",
+      "In topological order, every predecessor of a vertex is finished before the vertex is processed, so its distance is already final whatever the signs",
+      "Because DAGs have no edges",
+      "It cannot"
+     ],
+     "answer": 1,
+     "explain": "A vertex's best distance depends only on its predecessors' final distances. Topological order guarantees those are done, so nothing can improve later, and negative weights cause no trouble."
+    },
+    {
+     "q": "Why is longest path easy on a DAG but hard on general graphs?",
+     "options": [
+      "It is hard on both",
+      "Without cycles, a path can never revisit a vertex, so the DP over topological order is exact; with cycles, the 'no repeated vertex' rule makes it a much harder problem",
+      "DAGs are smaller",
+      "Longest path uses Dijkstra"
+     ],
+     "answer": 1,
+     "explain": "On a DAG every path is automatically simple, so taking the max over predecessors is safe. On a general graph, forbidding repeated vertices is the hard part."
+    },
+    {
+     "q": "In Longest Increasing Path in a Matrix, why is no visited array needed for cycle detection?",
+     "options": [
+      "The matrix is small",
+      "Moving only to strictly larger values can never return to a cell, so the moves form a DAG",
+      "Because memoisation detects cycles",
+      "Because of BFS"
+     ],
+     "answer": 1,
+     "explain": "Values strictly increase along every path, so no path can come back to its start. The memo table alone makes each cell's answer computed once."
+    }
+   ],
+   "cover_seed": "shortest-path-dag",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "dsa/shortest-path-dag.md",
+   "hash": "1e6b564d395a",
+   "word_count": 1503,
+   "excerpt": "Rain falls on a hillside crossed by channels. Water only flows downhill, so it can never come back to a spot it has left. To know the cheapest way for water to reach the valley floor, you could simply work from the top of the hill down, one level at a time, and at each spot you would already know…"
+  },
+  {
+   "id": "dsa-graph-clone-and-copy",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "graph-clone-and-copy",
+   "title": "Photocopying a City Map, Roads and All",
+   "subtitle": "Clone Graph with an old-to-new map that also serves as the visited set, Accounts Merge by union-find over emails, and Evaluate Division as path products on a weighted graph",
+   "track": "dsa-graphs",
+   "track_order": 21,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-bfs",
+    "dsa-union-find"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "graphs",
+    "BFS",
+    "hash maps",
+    "union-find",
+    "weighted graphs"
+   ],
+   "complexity": {
+    "time": "O(V + E) to clone; near-linear for Accounts Merge plus sorting",
+    "space": "O(V + E)"
+   },
+   "practice_problems": [
+    {
+     "name": "Clone Graph",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/clone-graph/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Accounts Merge",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/accounts-merge/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Evaluate Division",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/evaluate-division/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Deep copy",
+     "definition": "A copy in which every node is new and every edge points to new nodes, so changing the copy never touches the original."
+    },
+    {
+     "term": "Old-to-new map",
+     "definition": "A hash map from each original node to its clone; it both prevents duplicate clones and marks nodes as visited."
+    },
+    {
+     "term": "Grouping by representative",
+     "definition": "After unions, collecting items by their union-find root, so each root's list is one merged group."
+    },
+    {
+     "term": "Ratio graph",
+     "definition": "A weighted graph where an edge a → b with weight k means a / b = k, with the reverse edge b → a of weight 1 / k."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In Clone Graph, when should a node's clone be created and stored in the map?",
+     "options": [
+      "When the node is popped from the queue",
+      "The moment the node is first discovered, before it is queued, so any later edge to it finds the existing clone",
+      "After all edges are copied",
+      "Only for nodes with neighbours"
+     ],
+     "answer": 1,
+     "explain": "Creating the clone at discovery means the map doubles as the visited set. Waiting until the pop lets two neighbours discover the same node and create two different clones."
+    },
+    {
+     "q": "In Accounts Merge, why union emails rather than account names?",
+     "options": [
+      "Names are longer",
+      "Different people can share a name, while a shared email proves two accounts belong to the same person",
+      "Emails are sorted",
+      "Union-find only works on strings with @"
+     ],
+     "answer": 1,
+     "explain": "The problem says only a common email links accounts. Two accounts both named Asha with no shared email must stay separate."
+    },
+    {
+     "q": "Given a / b = 2 and b / c = 3, how does the ratio graph answer c / a?",
+     "options": [
+      "It cannot",
+      "Follow c → b with weight 1/3 and b → a with weight 1/2, multiplying to 1/6",
+      "Add the weights to get 5",
+      "Return -1"
+     ],
+     "answer": 1,
+     "explain": "Every equation adds an edge and its reciprocal. A path from the numerator to the denominator multiplies the ratios along the way."
+    }
+   ],
+   "cover_seed": "graph-clone-and-copy",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "dsa/graph-clone-and-copy.md",
+   "hash": "a9d621ee1807",
+   "word_count": 1538,
+   "excerpt": "You are asked to photocopy a city map, but the map is not on paper. It is a set of cards, one per intersection, each listing the intersections it connects to. You must produce a brand-new set of cards where every card points only to new cards, with exactly the same roads, and you are handed only…"
   },
   {
    "id": "dsa-dp-intro",
