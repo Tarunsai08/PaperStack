@@ -1,7 +1,7 @@
 {
- "content_version": "44a2be83221d70c7",
+ "content_version": "88ffdfe699b72110",
  "generated_at": "2026-11-02",
- "count": 347,
+ "count": 350,
  "subjects": [
   {
    "id": "ml",
@@ -25396,6 +25396,346 @@
    "hash": "ab7b769caae7",
    "word_count": 1502,
    "excerpt": "A hotel corridor has a panel of light switches. A cleaner walks through and flips switches for every room they visit, and one guest visits twice, flipping the same switch back. At the end, only the rooms visited an odd number of times are lit. Nobody counted anything; the panel itself did the…"
+  },
+  {
+   "id": "dsa-string-matching-basics",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "string-matching-basics",
+   "title": "Sliding a Stencil Across a Page",
+   "subtitle": "Pattern matching from the O(n × m) brute force to Rabin-Karp: a rolling hash updated in O(1) per shift, why every hash match must be checked, exact bit encodings for DNA, and binary search plus hashing for the longest repeated substring",
+   "track": "dsa-advanced",
+   "track_order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-string-patterns",
+    "dsa-hashing-patterns"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "strings",
+    "hashing",
+    "Rabin-Karp",
+    "rolling hash",
+    "binary search"
+   ],
+   "complexity": {
+    "time": "O(n + m) expected for Rabin-Karp",
+    "space": "O(1) extra for one pattern"
+   },
+   "practice_problems": [
+    {
+     "name": "Find the Index of the First Occurrence in a String",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Repeated DNA Sequences",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/repeated-dna-sequences/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Longest Duplicate Substring",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/longest-duplicate-substring/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Polynomial hash",
+     "definition": "h(s) = (s[0] × B^(m-1) + s[1] × B^(m-2) + ... + s[m-1]) mod M, treating the string as a number in base B."
+    },
+    {
+     "term": "Rolling hash",
+     "definition": "A hash of a sliding window updated in O(1) when the window moves: remove the leaving character's term, shift by B, add the entering character."
+    },
+    {
+     "term": "Hash collision",
+     "definition": "Two different strings with the same hash value; possible whenever M is smaller than the number of strings, so equal hashes must be confirmed."
+    },
+    {
+     "term": "Rabin-Karp",
+     "definition": "String matching that compares the pattern's hash with each window's rolling hash and checks characters only when the hashes agree."
+    },
+    {
+     "term": "Exact encoding",
+     "definition": "Mapping a short string to an integer with no collisions at all, such as 2 bits per DNA letter for a 10-letter window."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why is the naive matcher O(n × m) in the worst case?",
+     "options": [
+      "It sorts the text",
+      "At each of about n starting positions it may compare up to m characters, as with text 'aaaa...a' and pattern 'aa...ab'",
+      "Because of hashing",
+      "It is always O(n)"
+     ],
+     "answer": 1,
+     "explain": "Each shift can match m - 1 characters before failing on the last one. With n shifts that is n × m comparisons."
+    },
+    {
+     "q": "When a window's rolling hash equals the pattern's hash, what must Rabin-Karp do?",
+     "options": [
+      "Report a match immediately",
+      "Compare the characters to confirm, because two different strings can share a hash",
+      "Rehash with a new base",
+      "Skip the window"
+     ],
+     "answer": 1,
+     "explain": "Hashes are fingerprints, not proofs. A collision makes different strings look equal, so confirming with a direct comparison keeps the answer correct."
+    },
+    {
+     "q": "Why can Repeated DNA Sequences use an exact 20-bit code instead of a hash?",
+     "options": [
+      "Because DNA is short",
+      "There are only 4 letters, so 2 bits each, and a 10-letter window fits in 20 bits with a different code for every window",
+      "Because the answer is small",
+      "It cannot"
+     ],
+     "answer": 1,
+     "explain": "4¹⁰ = 2²⁰ windows, each with its own 20-bit number. No two different windows share a code, so no collision checks are needed."
+    }
+   ],
+   "cover_seed": "string-matching-basics",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.74,
+   "path": "dsa/string-matching-basics.md",
+   "hash": "d920824b5654",
+   "word_count": 1433,
+   "excerpt": "A proofreader looks for a word on a page by sliding a paper stencil with the word cut out of it along each line. At every position they peer through all the letters to check. Most positions fail on the first letter, but a nasty page full of near-misses can make them check almost every letter at…"
+  },
+  {
+   "id": "dsa-design-data-structures",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "design-data-structures",
+   "title": "A Custom Toolbox for One Job",
+   "subtitle": "How to design a data structure in an interview: list the operations and their target costs first, give each operation the structure it needs, keep the pieces in sync, and use amortised analysis honestly, through RandomizedSet, a hit counter, a time-based store and a snapshot array",
+   "track": "dsa-advanced",
+   "track_order": 6,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-lru-cache",
+    "dsa-heap-basics"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "design",
+    "hash maps",
+    "binary search",
+    "queues",
+    "amortised analysis"
+   ],
+   "complexity": {
+    "time": "O(1) or O(log n) per operation, depending on the design",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Insert Delete GetRandom O(1)",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/insert-delete-getrandom-o1/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Number of Recent Calls",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/number-of-recent-calls/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Time Based Key-Value Store",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/time-based-key-value-store/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Snapshot Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/snapshot-array/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Operation contract",
+     "definition": "The list of operations a design must support together with the time each must take, written down before choosing any structure."
+    },
+    {
+     "term": "Composite structure",
+     "definition": "Two or more simple structures, such as an array and a hash map, kept in sync so that each operation can use whichever is fastest for it."
+    },
+    {
+     "term": "Swap-with-last deletion",
+     "definition": "Removing an element from the middle of an array in O(1) by moving the last element into its slot and shrinking the array."
+    },
+    {
+     "term": "Amortised cost",
+     "definition": "The average cost per operation over any long sequence, which can be O(1) even when a single operation is occasionally expensive."
+    },
+    {
+     "term": "Version list",
+     "definition": "For each key or index, a list of (time or version, value) pairs in increasing order, searched with binary search to read the value at any moment."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does Insert Delete GetRandom O(1) need both an array and a hash map?",
+     "options": [
+      "For redundancy",
+      "getRandom needs an array to pick a random index in O(1), and remove needs a map from value to index to find the element in O(1)",
+      "Because hash maps cannot store integers",
+      "One is enough"
+     ],
+     "answer": 1,
+     "explain": "A hash set alone cannot pick a uniformly random element in O(1); an array alone cannot find a value in O(1). Together, with indices kept in sync, every operation is O(1)."
+    },
+    {
+     "q": "How does the time-based store answer get(key, t)?",
+     "options": [
+      "Scan all timestamps",
+      "Binary search the key's list of (timestamp, value), which is appended in increasing time order, for the last timestamp ≤ t",
+      "Use a heap",
+      "Return the newest value"
+     ],
+     "answer": 1,
+     "explain": "Timestamps for set calls increase, so each key's list is already sorted. upper_bound on t, then step back one, finds the latest value at or before t in O(log n)."
+    },
+    {
+     "q": "A hit counter pops old hits from a queue on each call. Why is it O(1) amortised even though one call can pop many hits?",
+     "options": [
+      "It is not",
+      "Each hit is pushed once and popped at most once, so the total pops over all calls never exceed the total pushes",
+      "Because queues are fast",
+      "Because timestamps are small"
+     ],
+     "answer": 1,
+     "explain": "Expensive calls only pay for hits that earlier cheap calls pushed. Summed over the whole sequence, work is proportional to the number of hits."
+    }
+   ],
+   "cover_seed": "design-data-structures",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.8,
+   "path": "dsa/design-data-structures.md",
+   "hash": "530d45c39def",
+   "word_count": 1574,
+   "excerpt": "A plumber arrives at a job with a bag of standard tools: a wrench, a pipe cutter, a torch. None of them fits this particular awkward pipe behind the boiler on its own. So the plumber clamps two together, a mirror on a stick plus a short wrench, and suddenly the job takes a minute. \"Design a data…"
+  },
+  {
+   "id": "dsa-monotonic-queue-dp",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "monotonic-queue-dp",
+   "title": "A Shortlist That Drops the Hopeless",
+   "subtitle": "Speeding up DP whose transition takes the best of the last k states: a monotonic deque turns O(n × k) into O(n), traced on Jump Game VI and Constrained Subsequence Sum, plus prefix sums with a deque for Shortest Subarray with Sum at Least K",
+   "track": "dsa-advanced",
+   "track_order": 7,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-queue-deque",
+    "dsa-dp-1d"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "dynamic programming",
+    "deque",
+    "sliding window maximum",
+    "prefix sums"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(k) for the deque, O(n) for the DP"
+   },
+   "practice_problems": [
+    {
+     "name": "Jump Game VI",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/jump-game-vi/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Constrained Subsequence Sum",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/constrained-subsequence-sum/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Shortest Subarray with Sum at Least K",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Window transition",
+     "definition": "A DP recurrence of the form dp[i] = value[i] + best of dp[j] for j in the last k positions, which costs O(k) per state if done directly."
+    },
+    {
+     "term": "Monotonic deque",
+     "definition": "A double-ended queue of indices whose DP values are kept in decreasing (or increasing) order, so the best candidate is always at the front."
+    },
+    {
+     "term": "Dominated candidate",
+     "definition": "An earlier index whose value is no better than a later one; the later index will stay in the window longer, so the earlier one can never be chosen again."
+    },
+    {
+     "term": "Stale index",
+     "definition": "An index at the front of the deque that has fallen out of the allowed window and must be popped before reading the best value."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "When a new dp[i] is pushed, why pop every back index with dp value ≤ dp[i]?",
+     "options": [
+      "To save memory only",
+      "Those indices are older and no better, so i will outlive them in every future window and they can never be the maximum again",
+      "Because the deque must be sorted by index",
+      "It is not needed"
+     ],
+     "answer": 1,
+     "explain": "A dominated candidate leaves the window sooner and is never larger, so keeping it is useless. Removing it keeps the deque decreasing, with the best at the front."
+    },
+    {
+     "q": "Why is the deque version O(n) even though one push can pop many elements?",
+     "options": [
+      "It is O(n × k)",
+      "Each index is pushed once and popped at most once, from either end, so total deque work is O(n)",
+      "Because k is small",
+      "Because the array is sorted"
+     ],
+     "answer": 1,
+     "explain": "Amortised over all steps, pops never exceed pushes. Each step also does O(1) other work, so the total is linear."
+    },
+    {
+     "q": "In Shortest Subarray with Sum at Least K, why is a sliding window with two pointers not enough?",
+     "options": [
+      "It is enough",
+      "Negative numbers mean the sum does not grow monotonically as the window widens, so shrinking from the left can skip valid answers; a deque over prefix sums handles it",
+      "Because K can be zero",
+      "Because the array is too long"
+     ],
+     "answer": 1,
+     "explain": "With negatives, extending the window can lower the sum. Keeping prefix sums in an increasing deque lets you pop starting points that can no longer give a shorter answer."
+    }
+   ],
+   "cover_seed": "monotonic-queue-dp",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.66,
+   "path": "dsa/monotonic-queue-dp.md",
+   "hash": "50eb16239daf",
+   "word_count": 1609,
+   "excerpt": "A recruiter keeps a shortlist of candidates who applied in the last month and always wants to know the strongest one still eligible. When a new, stronger applicant arrives, every older, weaker candidate on the list is hopeless: they will expire sooner and never beat the newcomer. So the recruiter…"
   },
   {
    "id": "dsa-interview-dsa-revision",
