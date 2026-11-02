@@ -689,7 +689,7 @@
    "order": 2,
    "priority": "P0",
    "prerequisites": [
-    "dsa-segment-tree-basics"
+    "dsa-prefix-sums"
    ],
    "status": "planned",
    "written_by": null,
@@ -1713,7 +1713,7 @@
    "order": 3,
    "priority": "P0",
    "prerequisites": [
-    "dsa-string-matching-basics",
+    "dsa-string-patterns",
     "cp-modular-arithmetic"
    ],
    "status": "planned",
@@ -2266,8 +2266,7 @@
    "order": 10,
    "priority": "P0",
    "prerequisites": [
-    "cp-rating-ladder",
-    "dsa-greedy-exchange"
+    "cp-rating-ladder"
    ],
    "status": "planned",
    "written_by": null,

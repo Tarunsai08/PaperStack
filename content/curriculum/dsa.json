@@ -1546,8 +1546,7 @@
    "order": 2,
    "priority": "P0",
    "prerequisites": [
-    "dsa-graph-representation",
-    "dsa-queue-deque"
+    "dsa-graph-representation"
    ],
    "status": "planned",
    "written_by": null,
