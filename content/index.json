@@ -1,5 +1,5 @@
 {
- "content_version": "8f71cd1d4a5fc267",
+ "content_version": "87b60f6e398eb091",
  "generated_at": "2026-11-02",
  "count": 256,
  "subjects": [
@@ -9107,8 +9107,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.93,
    "path": "dsa/two-pointers.md",
-   "hash": "d4bfa57e27c8",
-   "word_count": 1636,
+   "hash": "f7f46b8e0ebf",
+   "word_count": 1621,
    "excerpt": "Two friends are looking for a pair of books on a long, sorted shelf whose prices add up to exactly 500 rupees. One starts at the cheap end, the other at the expensive end. Each time they compare, one of them takes a step inward. Within one walk along the shelf, they either find the pair or prove it…"
   },
   {
@@ -9889,8 +9889,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.9,
    "path": "dsa/intervals-sweep.md",
-   "hash": "f21029e86793",
-   "word_count": 1451,
+   "hash": "234041aba38c",
+   "word_count": 1456,
    "excerpt": "A calendar app must show your busy blocks, merging back-to-back and overlapping meetings into single stretches. A restaurant wants to know the most customers it ever had at once. A booking system must check whether a new reservation clashes with existing ones. These sound like different problems.…"
   },
   {
@@ -10036,7 +10036,7 @@
     "dsa-prefix-sums"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 4,
+   "read_minutes": 6,
    "topics": [
     "arrays",
     "prefix products",
@@ -10088,6 +10088,10 @@
     {
      "term": "Output array",
      "definition": "The array you must return. Problems often say it does not count as extra space, which allows reusing it as a workspace."
+    },
+    {
+     "term": "Identity element",
+     "definition": "The value that leaves anything unchanged when combined with it: 1 for products, 0 for sums and GCD, minus infinity for max."
     }
    ],
    "quiz": [
@@ -10130,8 +10134,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.86,
    "path": "dsa/product-except-self.md",
-   "hash": "428da0b0065c",
-   "word_count": 929,
+   "hash": "286ea00375e6",
+   "word_count": 1311,
    "excerpt": "\"For each position, return the product of every other number in the array. No division. O(n) time.\" It is one of the most asked medium questions at large tech companies, and it is a perfect test of one idea: splitting \"everything except me\" into \"everything before me\" and \"everything after me\".…"
   },
   {
@@ -10501,7 +10505,7 @@
     "dsa-hashing-patterns"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 4,
+   "read_minutes": 7,
    "topics": [
     "prefix sums",
     "hashing",
@@ -10541,6 +10545,12 @@
      "name": "Contiguous Array",
      "platform": "LeetCode",
      "url": "https://leetcode.com/problems/contiguous-array/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Count Number of Nice Subarrays",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/count-number-of-nice-subarrays/",
      "difficulty": "Medium"
     }
    ],
@@ -10602,8 +10612,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "dsa/subarray-sum-k.md",
-   "hash": "d775f7207d60",
-   "word_count": 906,
+   "hash": "4126465a5696",
+   "word_count": 1467,
    "excerpt": "\"Count the subarrays whose sum equals k.\" With only positive numbers, a sliding window solves it in one pass. Add a single negative number, and the window falls apart: growing it might shrink the sum, so you no longer know which end to move. The fix combines two tools you already have, prefix sums…"
   },
   {
