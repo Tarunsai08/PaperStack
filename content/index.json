@@ -1,7 +1,7 @@
 {
- "content_version": "247bead3fcd7cab6",
+ "content_version": "528d4213b8d2878a",
  "generated_at": "2026-11-02",
- "count": 95,
+ "count": 99,
  "subjects": [
   {
    "id": "ml",
@@ -8774,6 +8774,130 @@
    "excerpt": "Two friends are looking for a pair of books on a long, sorted shelf whose prices add up to exactly 500 rupees. One starts at the cheap end, the other at the expensive end. Each time they compare, one of them takes a step inward. Within one walk along the shelf, they either find the pair or prove it…"
   },
   {
+   "id": "dsa-sliding-window",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "sliding-window",
+   "title": "The Caterpillar That Reads Arrays in One Pass",
+   "subtitle": "Sliding windows: grow the right edge, shrink the left, and never look back",
+   "track": "dsa-arrays",
+   "track_order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-two-pointers",
+    "dsa-hashing-patterns"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 4,
+   "topics": [
+    "arrays",
+    "strings",
+    "sliding window",
+    "two pointers"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(k) for the window's counts"
+   },
+   "practice_problems": [
+    {
+     "name": "Maximum Average Subarray I",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/maximum-average-subarray-i/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Longest Substring Without Repeating Characters",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Max Consecutive Ones III",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/max-consecutive-ones-iii/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Permutation in String",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/permutation-in-string/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Minimum Window Substring",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/minimum-window-substring/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Window",
+     "definition": "A contiguous stretch of an array or string, described by a left and a right index."
+    },
+    {
+     "term": "Fixed-size window",
+     "definition": "A window that always contains exactly k elements and slides one step at a time."
+    },
+    {
+     "term": "Variable-size window",
+     "definition": "A window whose right edge grows and whose left edge shrinks according to a validity rule."
+    },
+    {
+     "term": "Window state",
+     "definition": "The summary you keep about the current window, such as its sum or a count of each character, updated as elements enter and leave."
+    },
+    {
+     "term": "Amortised",
+     "definition": "Averaged over the whole run. Each element enters and leaves the window once, so the total work is linear even if one step does a lot."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In a variable-size window, why must the shrinking step be a while loop and not an if?",
+     "options": [
+      "While loops are faster",
+      "Adding one element can make the window invalid by more than one step, so you may need to remove several elements",
+      "If statements cannot change indices",
+      "It does not matter"
+     ],
+     "answer": 1,
+     "explain": "One new element can break the rule badly, for example a long run of repeats. You keep removing from the left until the window is valid again."
+    },
+    {
+     "q": "Why can a plain sliding window fail for 'shortest subarray with sum at least k' when negative numbers exist?",
+     "options": [
+      "Negative numbers cannot be summed",
+      "Shrinking the window may increase its sum, so 'shrink while too big' no longer moves toward the answer",
+      "The window becomes fixed-size",
+      "Hash maps do not support negatives"
+     ],
+     "answer": 1,
+     "explain": "The window logic assumes growing makes the sum bigger and shrinking makes it smaller. Negatives break that, so prefix sums with a monotonic deque are used instead."
+    },
+    {
+     "q": "What is the total time of a sliding window over n elements?",
+     "options": [
+      "O(n squared) because of the nested while loop",
+      "O(n log n)",
+      "O(n), because each element enters once and leaves at most once",
+      "O(k)"
+     ],
+     "answer": 2,
+     "explain": "The inner while loop looks nested, but the left pointer only moves forward, so across the whole run it moves at most n times."
+    }
+   ],
+   "cover_seed": "sliding-window",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.93,
+   "path": "dsa/sliding-window.md",
+   "hash": "3bf98cc3daaa",
+   "word_count": 961,
+   "excerpt": "\"Find the longest substring without repeating characters.\" A brute force checks every substring: about n²/2 of them, each checked for repeats. On a string of 100,000 characters, that is billions of steps. There is a way to read the string once, left to right, keeping only a small summary of what is…"
+  },
+  {
    "id": "dsa-hashing-patterns",
    "kind": "pattern",
    "subject": "dsa",
@@ -9001,7 +9125,7 @@
     "dsa-cpp-stl-toolkit"
    ],
    "difficulty": "beginner",
-   "read_minutes": 4,
+   "read_minutes": 5,
    "topics": [
     "competitive programming",
     "c++",
@@ -9070,9 +9194,95 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.8,
    "path": "cp/fast-io-template.md",
-   "hash": "206871376bc9",
-   "word_count": 970,
+   "hash": "149751eb378c",
+   "word_count": 1009,
    "excerpt": "You found the right idea in five minutes. The algorithm is O(n log n). You submit, and the judge says Time Limit Exceeded. You change nothing in the algorithm, swap endl for '\\n', and resubmit. Accepted. Some verdicts have nothing to do with how smart your idea is. A good contest template removes…"
+  },
+  {
+   "id": "cp-reading-problems-fast",
+   "kind": "primer",
+   "subject": "cp",
+   "slug": "reading-problems-fast",
+   "title": "The Two-Minute Read That Saves Twenty",
+   "subtitle": "How to read a contest problem: constraints first, small cases by hand, and spotting the hidden pattern",
+   "track": "cp-start",
+   "track_order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-how-contests-work"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "competitive programming",
+    "problem reading",
+    "constraints"
+   ],
+   "glossary": [
+    {
+     "term": "Constraints",
+     "definition": "The limits printed under the input format, such as 1 ≤ n ≤ 2·10⁵, which reveal the required complexity."
+    },
+    {
+     "term": "Sum of n guarantee",
+     "definition": "A promise that the total size of all test cases together is bounded, so per-test work can be linear even with many tests."
+    },
+    {
+     "term": "Sample tests",
+     "definition": "The small example inputs and outputs in the statement. They show the format but rarely the hard cases."
+    },
+    {
+     "term": "Story text",
+     "definition": "The narrative wrapper around a problem, like a tale about cows or shops, which usually hides a standard task."
+    },
+    {
+     "term": "Small-case exploration",
+     "definition": "Solving tiny inputs by hand, sometimes all of them, to discover the pattern behind the answer."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A problem has t up to 10^4 test cases and each n up to 2·10^5, with the sum of n over all tests at most 2·10^5. What per-test complexity is safe?",
+     "options": [
+      "O(n^2) per test",
+      "O(n log n) per test",
+      "O(2^n) per test",
+      "O(n) per test is impossible"
+     ],
+     "answer": 1,
+     "explain": "Because the total n across tests is bounded by 2·10^5, an O(n log n) solution per test sums to roughly the same as one big test, which is fast."
+    },
+    {
+     "q": "What should you read first in a new problem?",
+     "options": [
+      "The story",
+      "The constraints and output format",
+      "The comments section",
+      "The tags"
+     ],
+     "answer": 1,
+     "explain": "Constraints tell you which complexities are allowed and the output format tells you exactly what to produce. The story can be skimmed afterwards."
+    },
+    {
+     "q": "Your formula passes all samples. What should you still do before submitting?",
+     "options": [
+      "Nothing, samples prove correctness",
+      "Try a few tiny or extreme cases by hand, like n = 1 or all values equal",
+      "Submit twice",
+      "Rename variables"
+     ],
+     "answer": 1,
+     "explain": "Samples are chosen to explain the format, not to catch bugs. Edge cases you check yourself catch the Wrong Answers that samples miss."
+    }
+   ],
+   "cover_seed": "reading-problems-fast",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.8,
+   "path": "cp/reading-problems-fast.md",
+   "hash": "70c84d2c4934",
+   "word_count": 1004,
+   "excerpt": "Contest problems love stories. Farmer John's cows walk along a fence. A shopkeeper rearranges her shelves. A wizard casts spells on a row of potions. Read every word carefully and five minutes have gone before you know what is being asked. Strong contestants read differently. In two minutes they…"
   },
   {
    "id": "famous-algos-bloom-filter",
@@ -9159,6 +9369,93 @@
    "hash": "baf5ecbda7a5",
    "word_count": 1047,
    "excerpt": "Your database holds a billion keys spread across hundreds of files on disk. A request arrives for a key that does not exist. Without help, the database might open file after file, paying for a slow disk read each time, only to answer \"not found\". Now imagine a little helper sitting in memory that…"
+  },
+  {
+   "id": "famous-algos-count-min-sketch",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "count-min-sketch",
+   "title": "Counting a Billion Things on a Postcard",
+   "subtitle": "Count-Min Sketch: approximate counts for huge streams, in a fixed few kilobytes",
+   "track": "fa-sketches",
+   "track_order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-bloom-filter"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "probabilistic data structures",
+    "streaming",
+    "hashing",
+    "heavy hitters"
+   ],
+   "glossary": [
+    {
+     "term": "Sketch",
+     "definition": "A small summary of a huge data stream that answers certain questions approximately, using far less memory than storing the data."
+    },
+    {
+     "term": "Stream",
+     "definition": "Data that arrives one item at a time, too fast or too large to store in full, like clicks, searches or network packets."
+    },
+    {
+     "term": "Heavy hitter",
+     "definition": "An item that appears very often in a stream, such as a trending hashtag or an IP address sending a flood of traffic."
+    },
+    {
+     "term": "Overestimate",
+     "definition": "A reported count that is higher than the true count. A Count-Min Sketch can overestimate but never underestimate."
+    },
+    {
+     "term": "Collision",
+     "definition": "When two different items hash to the same counter and their counts get mixed together."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does Count-Min Sketch take the minimum across rows?",
+     "options": [
+      "To save memory",
+      "Every counter is the true count plus noise from collisions, so the smallest one has the least noise",
+      "Because the maximum is always zero",
+      "To make the sketch sorted"
+     ],
+     "answer": 1,
+     "explain": "Collisions only ever add to a counter. Each row's counter is at least the true count, so the minimum is the closest to the truth."
+    },
+    {
+     "q": "Can a Count-Min Sketch report a count lower than the true count (with only additions)?",
+     "options": [
+      "Yes, often",
+      "Yes, when rows collide",
+      "No, it can only overestimate",
+      "Only for rare items"
+     ],
+     "answer": 2,
+     "explain": "Every time an item is added, all of its counters go up. Other items can only add more, so no counter is ever below the true count."
+    },
+    {
+     "q": "Which question is a Count-Min Sketch NOT good at answering on its own?",
+     "options": [
+      "Roughly how many times was this hashtag used?",
+      "Is this IP address sending a lot of traffic?",
+      "List every distinct item that appeared",
+      "Roughly how popular is this search query?"
+     ],
+     "answer": 2,
+     "explain": "The sketch stores counters, not items, so it cannot list what it has seen. Systems keep a small heap of candidate heavy hitters alongside it."
+    }
+   ],
+   "cover_seed": "count-min-sketch",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.86,
+   "path": "famous-algos/count-min-sketch.md",
+   "hash": "10cc9c0588f4",
+   "word_count": 1050,
+   "excerpt": "Every second, a busy network router sees hundreds of thousands of packets from countless IP addresses. Somewhere in that flood, one address is sending far more than its share: maybe a misconfigured server, maybe an attack. The router has a few megabytes of fast memory and no time to keep a full…"
   },
   {
    "id": "famous-algos-consistent-hashing",
@@ -9422,6 +9719,93 @@
    "hash": "6d17813ddc6a",
    "word_count": 1011,
    "excerpt": "A caterer planning a wedding for 500 guests does not weigh every grain of rice. They think: about 150 grams per guest, so roughly 75 kilograms, round up to 80 for safety. Two seconds of arithmetic, and they know whether to rent one pot or ten. System design works the same way. Before you draw a…"
+  },
+  {
+   "id": "system-design-latency-numbers",
+   "kind": "primer",
+   "subject": "system-design",
+   "slug": "latency-numbers",
+   "title": "If a CPU Cycle Took One Second",
+   "subtitle": "The latency numbers every engineer should feel, and why they decide where data lives",
+   "track": "sd-fundamentals",
+   "track_order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-back-of-envelope"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "latency",
+    "performance",
+    "caching"
+   ],
+   "glossary": [
+    {
+     "term": "Latency",
+     "definition": "How long one operation takes from start to finish, such as one memory read or one network round trip."
+    },
+    {
+     "term": "Throughput",
+     "definition": "How many operations a system completes per second. A system can have high throughput and still high latency."
+    },
+    {
+     "term": "Round trip",
+     "definition": "The time for a message to travel to another machine and for the reply to come back."
+    },
+    {
+     "term": "Locality",
+     "definition": "Keeping data close to where it is used, in the same cache, the same machine, the same data centre or the same region."
+    },
+    {
+     "term": "Tail latency",
+     "definition": "The latency of the slowest requests, such as the 99th percentile, which users notice even when the average is fast."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Roughly how does a main memory read compare with a round trip within the same data centre?",
+     "options": [
+      "They are about the same",
+      "Memory is roughly a thousand times faster",
+      "The network round trip is faster",
+      "Memory is about ten times faster"
+     ],
+     "answer": 1,
+     "explain": "A memory read is on the order of 100 nanoseconds; a round trip inside a data centre is on the order of half a millisecond, thousands of times longer."
+    },
+    {
+     "q": "A page needs 20 sequential calls to a service in another continent. Why is that a problem?",
+     "options": [
+      "It uses too much memory",
+      "Each cross-continent round trip is on the order of 100 milliseconds, so 20 in a row add up to seconds",
+      "Cross-continent calls are free",
+      "Services cannot be called more than once"
+     ],
+     "answer": 1,
+     "explain": "Latencies add up when calls are sequential. Twenty round trips of about 100 ms each is about 2 seconds of waiting."
+    },
+    {
+     "q": "Why do latency tables say 'approximate' and use orders of magnitude?",
+     "options": [
+      "The numbers are secret",
+      "Exact values change with hardware and setup, but the ratios between levels stay roughly stable",
+      "Engineers dislike precise numbers",
+      "They are measured in different units each year"
+     ],
+     "answer": 1,
+     "explain": "Specific numbers vary across machines and years. What stays useful is the gap between levels: caches, memory, SSDs, networks and continents differ by factors of tens to thousands."
+    }
+   ],
+   "cover_seed": "latency-numbers",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "system-design/latency-numbers.md",
+   "hash": "12615e71311b",
+   "word_count": 990,
+   "excerpt": "Nanoseconds, microseconds, milliseconds: the words blur together, and so do the numbers. That blur hides the most important fact in system design. A trip to another continent is not \"a bit slower\" than reading memory. It is roughly a million times slower. Scale the numbers to human time and the…"
   }
  ]
 }
