@@ -27,6 +27,8 @@ glossary:
     definition: "A contiguous stretch of the array known to contain only one kind of element, such as all 0s."
   - term: "Unclassified zone"
     definition: "The part of the array not yet examined, between the mid and high pointers."
+  - term: "Stable"
+    definition: "A rearrangement that keeps equal or same-group elements in their original relative order."
 quiz:
   - q: "When a[mid] is 2 and you swap it with a[high], why does mid NOT move forward?"
     options: ["It always moves", "The value swapped in from high has not been examined yet and could be 0, 1 or 2", "Because 2 is the largest", "To save time"]
@@ -117,6 +119,34 @@ mid > high, so the unclassified zone is empty and the array is sorted. Notice st
 Trace `[1, 2, 0]`. (Step 1: 1, mid → 1. Step 2: 2, swap with high: [1, 0, 2], high → 1. Step 3: 0, swap with low: [0, 1, 2], low → 1, mid → 2. Now mid > high. Sorted.)
 :::
 
+### Why mid may advance after a 0 but not after a 2
+
+The two swaps look symmetric, but they are not.
+
+When you swap `a[mid]` with `a[low]`, the value that comes back from `low` sits in the region `[low, mid)`, which by the invariant holds only 1s, or is empty when low equals mid. Either way you already know what it is, so mid can move on. When you swap with `a[high]`, the value that comes back is from the unexamined zone. Nobody has looked at it. In the ball-sorting picture: a ball you pass back from the white zone is a known white, but a ball you pull in from the unchecked right side could be any colour.
+
+### The general version: three-way partition around a pivot
+
+Replace "0, 1, 2" with "less than p, equal to p, greater than p" and the same loop is a three-way [[partition]] of any array around a value. For `[3, 5, 2, 3, 8, 3, 1]` with p = 3:
+
+| Step | a[mid] | Case | Array after | low, mid, high |
+|---|---|---|---|---|
+| 1 | 3 | equal, advance mid | 3 5 2 3 8 3 1 | 0, 1, 6 |
+| 2 | 5 | greater, swap with high | 3 1 2 3 8 3 5 | 0, 1, 5 |
+| 3 | 1 | less, swap with low | 1 3 2 3 8 3 5 | 1, 2, 5 |
+| 4 | 2 | less, swap with low | 1 2 3 3 8 3 5 | 2, 3, 5 |
+| 5 | 3 | equal, advance mid | 1 2 3 3 8 3 5 | 2, 4, 5 |
+| 6 | 8 | greater, swap with high | 1 2 3 3 3 8 5 | 2, 4, 4 |
+| 7 | 3 | equal, advance mid | 1 2 3 3 3 8 5 | 2, 5, 4 |
+
+The result has [1, 2] below the pivot, [3, 3, 3] equal to it and [8, 5] above it. The two outer groups are not sorted, only separated, which is exactly what a partition step needs.
+
+This is why three-way partitioning matters in quicksort. A plain two-way partition on an array full of equal values keeps splitting it badly and can degrade to O(n²). The three-way version puts all copies of the pivot in the middle in one pass, so they never take part in a recursive call again. The same partition also drives quickselect, which finds the k-th smallest element in expected O(n) time.
+
+### When order must be preserved
+
+The pointer swaps move elements past each other, so the method is not [[stable]]. *Partition Array According to Given Pivot* on LeetCode requires the elements on each side to keep their original order. There, make three passes or three lists, one per group, and concatenate. It is O(n) time with O(n) extra space, the price of stability.
+
 ## The code
 
 ```pseudo
@@ -141,11 +171,40 @@ void sortColors(vector<int>& a) {
     }
 }
 
+// Same loop around any pivot: < p, == p, > p. Returns the bounds of the middle group.
+pair<int, int> partition3(vector<int>& a, int p) {
+    int low = 0, mid = 0, high = (int)a.size() - 1;
+    while (mid <= high) {
+        if (a[mid] < p) swap(a[low++], a[mid++]);
+        else if (a[mid] == p) mid++;
+        else swap(a[mid], a[high--]);
+    }
+    return {low, high};                                  // a[low..high] all equal p
+}
+
+// Stable version: keep the original order inside each group, using extra space.
+vector<int> stablePartition(const vector<int>& a, int p) {
+    vector<int> out;
+    for (int x : a) if (x < p) out.push_back(x);
+    for (int x : a) if (x == p) out.push_back(x);
+    for (int x : a) if (x > p) out.push_back(x);
+    return out;
+}
+
+void print(const vector<int>& v) {
+    for (int x : v) cout << x << ' ';
+    cout << '\n';
+}
+
 int main() {
     vector<int> a = {2, 0, 2, 1, 1, 0};
     sortColors(a);
-    for (int x : a) cout << x << ' ';  // 0 0 1 1 2 2
-    cout << '\n';
+    print(a);                                            // 0 0 1 1 2 2
+    vector<int> b = {3, 5, 2, 3, 8, 3, 1};
+    auto [l, h] = partition3(b, 3);
+    print(b);                                            // 1 2 3 3 3 8 5
+    cout << l << ' ' << h << '\n';                       // 2 4
+    print(stablePartition({9, 12, 5, 10, 14, 3, 10}, 10));   // 9 5 3 10 10 12 14
 }
 ```
 
@@ -162,7 +221,8 @@ Common misconception: "after swapping a 2 to the end, move mid forward like in t
 
 - **Loop condition `mid < high`** instead of `mid <= high`, which leaves the last unexamined element unchecked.
 - **Using unsigned indices** in C++: `high` can become −1 when the array is all 2s; use signed integers.
-- **Forgetting that it is not stable**: equal elements may change their relative order, which matters if you are moving records rather than plain numbers.
+- **Forgetting that it is not stable**: equal elements may change their relative order, which matters if you are moving records rather than plain numbers, and it fails problems that require the original order inside each group.
+- **Expecting sorted outer groups** from a pivot partition. Only the three groups are separated; sorting them needs recursion.
 
 ## Practice problems
 
@@ -174,4 +234,4 @@ Common misconception: "after swapping a 2 to the end, move mid forward like in t
 - The invariant splits the array into 0s, 1s, an unexamined zone and 2s, and every step keeps it true.
 - On 0, swap with low and advance both; on 1, advance mid; on 2, swap with high and shrink high without advancing mid.
 - Each step shrinks the unexamined zone, so it runs in O(n) time with O(1) extra space.
-- The same three-way partition is used in quicksort with many duplicates and in any "group into three kinds" problem.
+- The same loop partitions any array into less than, equal to and greater than a pivot, which keeps quicksort fast on arrays with many duplicates.

@@ -1,5 +1,5 @@
 {
- "content_version": "87b60f6e398eb091",
+ "content_version": "ea2ff3b3291248f6",
  "generated_at": "2026-11-02",
  "count": 256,
  "subjects": [
@@ -10570,6 +10570,10 @@
     {
      "term": "Complement",
      "definition": "Here, the earlier prefix sum you need, P minus k, so that the subarray between them sums to k."
+    },
+    {
+     "term": "First-occurrence map",
+     "definition": "A hash map that stores only the first index where each key appeared, used when the earliest start gives the longest answer."
     }
    ],
    "quiz": [
@@ -10612,8 +10616,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "dsa/subarray-sum-k.md",
-   "hash": "4126465a5696",
-   "word_count": 1467,
+   "hash": "9fe0b21f309c",
+   "word_count": 1471,
    "excerpt": "\"Count the subarrays whose sum equals k.\" With only positive numbers, a sliding window solves it in one pass. Add a single negative number, and the window falls apart: growing it might shrink the sum, so you no longer know which end to move. The fix combines two tools you already have, prefix sums…"
   },
   {
@@ -10630,7 +10634,7 @@
     "dsa-two-pointers"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 4,
+   "read_minutes": 6,
    "topics": [
     "arrays",
     "two pointers",
@@ -10683,6 +10687,10 @@
     {
      "term": "Unclassified zone",
      "definition": "The part of the array not yet examined, between the mid and high pointers."
+    },
+    {
+     "term": "Stable",
+     "definition": "A rearrangement that keeps equal or same-group elements in their original relative order."
     }
    ],
    "quiz": [
@@ -10725,8 +10733,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.84,
    "path": "dsa/dutch-national-flag.md",
-   "hash": "fca3c8343084",
-   "word_count": 917,
+   "hash": "c75bc4c238c7",
+   "word_count": 1411,
    "excerpt": "An array holds only 0s, 1s and 2s, like red, white and blue balls in a jumbled row. Sort it. You could call sort in O(n log n), or count the three colours and rewrite the array in two passes. The interview follow-up is always the same: \"Can you do it in one pass, in place?\" Edsger Dijkstra posed…"
   },
   {
