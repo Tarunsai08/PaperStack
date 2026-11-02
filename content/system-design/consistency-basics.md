@@ -88,6 +88,10 @@ Between the two ends sit smaller promises that fix the most visible problems che
 Most users do not need the whole world to be perfectly up to date. They need their own actions to stick and their view never to jump backwards. Those targeted guarantees give most of the user-visible benefit of strong consistency at a fraction of the cost.
 :::
 
+### How read-your-writes is built in practice
+
+A common technique uses version tokens. When a write succeeds, the leader returns the position of that write in its replication log, say version 1,042. The client keeps this token, often in a cookie or in the app's memory. On its next read, it sends the token along, and the system routes the read to any replica that has applied at least version 1,042, or to the leader if none has. Other users, who carry no token, read from any replica. The author sees their change immediately, and everyone else still gets fast local reads.
+
 ### Choosing per piece of data
 
 Consistency is not one switch for a whole system. A good design labels each piece of data:

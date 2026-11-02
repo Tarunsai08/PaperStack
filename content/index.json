@@ -1,5 +1,5 @@
 {
- "content_version": "0ed30e90d68b1150",
+ "content_version": "4e7f51a24c591ecd",
  "generated_at": "2026-11-02",
  "count": 115,
  "subjects": [
@@ -11303,7 +11303,7 @@
     "system-design-api-design"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 4,
+   "read_minutes": 5,
    "topics": [
     "system design",
     "consistency",
@@ -11376,8 +11376,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "system-design/consistency-basics.md",
-   "hash": "1e7f95dfd797",
-   "word_count": 988,
+   "hash": "280b64999a89",
+   "word_count": 1091,
    "excerpt": "You like a friend's photo. The heart turns red. You refresh, and the like count drops by one. You refresh again, and it is back. Nothing is broken. You just watched two copies of the same data disagree for a moment. Every large system keeps several copies of its data, and copies take time to agree.…"
   }
  ]
