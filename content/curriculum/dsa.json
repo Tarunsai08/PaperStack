@@ -3028,8 +3028,8 @@
    "prerequisites": [
     "dsa-tree-traversals"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Column and row coordinates",
@@ -4113,8 +4113,8 @@
     "dsa-tree-traversals",
     "dsa-vertical-order"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Level order for left and right views",

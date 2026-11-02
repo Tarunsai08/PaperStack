@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 94 | 0 | 58 | 152 | 59/72 |
+| dsa | 96 | 0 | 56 | 152 | 60/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **296** | **0** | **377** | **673** | |
+| **All** | **298** | **0** | **375** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 94 written</summary>
+<details><summary>dsa: 96 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -161,6 +161,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-combination-sum` Combination Sum and Avoiding Duplicate Combinations
 - [x] `dsa-serialize-tree` Serialising and Deserialising a Binary Tree
 - [x] `dsa-max-path-sum` Binary Tree Maximum Path Sum
+- [x] `dsa-vertical-order` Vertical Order Traversal
 - [x] `dsa-coin-change` Coin Change: Minimum Coins and Number of Ways
 - [x] `dsa-word-break` Word Break: DP Over Prefixes
 - [x] `dsa-house-robber-variants` House Robber and Its Variants
@@ -184,6 +185,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-m-coloring` Graph Colouring by Backtracking
 - [x] `dsa-tower-of-hanoi` Tower of Hanoi: Trusting Recursion Completely
 - [x] `dsa-recursion-on-strings` Recursion on Strings: Partitions and Expressions
+- [x] `dsa-tree-views-boundary` Tree Views: Left, Right, Top, Bottom and Boundary
 - [x] `dsa-subset-sum-count` Counting Subsets: Target Sum and Partitions
 - [x] `dsa-interview-dsa-revision` The Night-Before Revision Sheet
 

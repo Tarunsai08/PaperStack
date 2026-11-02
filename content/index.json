@@ -1,7 +1,7 @@
 {
- "content_version": "8993782ee3a5a23a",
+ "content_version": "100df9f90f1c9f82",
  "generated_at": "2026-11-02",
- "count": 296,
+ "count": 298,
  "subjects": [
   {
    "id": "ml",
@@ -17340,6 +17340,229 @@
    "hash": "557653a22958",
    "word_count": 1242,
    "excerpt": "A hiker looks at a mountain range drawn as a tree of ridges, each point marked with how pleasant it is to walk past, some negative where the ridge is rocky. She wants the single best walk: start anywhere, end anywhere, never retrace a step. The best walk might climb up one ridge to a peak and come…"
+  },
+  {
+   "id": "dsa-vertical-order",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "vertical-order",
+   "title": "Looking Down on a Tree Through a Grid",
+   "subtitle": "Vertical order traversal: give every node a row and column, group by column, and get the tie-break rules exactly right, with DFS plus sorting or BFS plus a column map",
+   "track": "dsa-trees",
+   "track_order": 10,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-tree-traversals"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "binary tree",
+    "bfs",
+    "coordinates",
+    "sorting"
+   ],
+   "complexity": {
+    "time": "O(n log n)",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Binary Tree Level Order Traversal",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Binary Tree Right Side View",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/binary-tree-right-side-view/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Vertical Order Traversal of a Binary Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Column",
+     "definition": "A horizontal coordinate for each node: the root is 0, a left child is one less than its parent and a right child one more."
+    },
+    {
+     "term": "Row",
+     "definition": "The depth of a node: the root is row 0 and each child is one row below its parent."
+    },
+    {
+     "term": "Tie-break rule",
+     "definition": "The rule that orders nodes sharing a column, and sometimes sharing both row and column, which differs between problem statements."
+    },
+    {
+     "term": "Column map",
+     "definition": "An ordered map from column number to the list of nodes in that column, so columns come out left to right."
+    },
+    {
+     "term": "Sort key",
+     "definition": "The tuple compared when sorting, here (column, row, value), whose order of fields decides every tie."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "The root is at column 0. Where is the root's left child's right child?",
+     "options": [
+      "Column −2",
+      "Column −1",
+      "Column 0",
+      "Column 1"
+     ],
+     "answer": 2,
+     "explain": "Left subtracts 1 and right adds 1, so −1 + 1 = 0: directly below the root."
+    },
+    {
+     "q": "Two nodes share the same row and column. In Vertical Order Traversal of a Binary Tree, which comes first?",
+     "options": [
+      "The one visited first by BFS",
+      "The one with the smaller value",
+      "The left one",
+      "Either"
+     ],
+     "answer": 1,
+     "explain": "That problem sorts by column, then row, then value. Other versions of the question use BFS order instead, so read the statement."
+    },
+    {
+     "q": "Why does BFS naturally give top-to-bottom order within a column?",
+     "options": [
+      "It sorts values",
+      "BFS visits nodes level by level, so a node in a higher row is always visited before one in a lower row",
+      "It uses a stack",
+      "It does not"
+     ],
+     "answer": 1,
+     "explain": "Appending nodes to their column's list in BFS order puts them in row order, and within a row in left-to-right order."
+    }
+   ],
+   "cover_seed": "vertical-order",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.6,
+   "path": "dsa/vertical-order.md",
+   "hash": "c0bd3fb7acd4",
+   "word_count": 1216,
+   "excerpt": "Lay a sheet of graph paper over a drawing of a binary tree and look straight down. Each node sits in some column of the grid, and some columns hold several nodes stacked at different depths. Reading the tree column by column, left to right, is a different view from any of the usual traversals.…"
+  },
+  {
+   "id": "dsa-tree-views-boundary",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "tree-views-boundary",
+   "title": "Photographing a Tree From Four Sides",
+   "subtitle": "Left and right views from levels, top and bottom views from columns, and the boundary walk of left edge, leaves and reversed right edge without counting a leaf twice",
+   "track": "dsa-trees",
+   "track_order": 11,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-tree-traversals",
+    "dsa-vertical-order"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "binary tree",
+    "bfs",
+    "tree views",
+    "boundary traversal"
+   ],
+   "complexity": {
+    "time": "O(n), or O(n log n) with an ordered column map",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Binary Tree Right Side View",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/binary-tree-right-side-view/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Find Largest Value in Each Tree Row",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-largest-value-in-each-tree-row/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Vertical Order Traversal of a Binary Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Left view",
+     "definition": "The first node of each level, read from the top: what you see standing to the left of the tree."
+    },
+    {
+     "term": "Right view",
+     "definition": "The last node of each level: what you see from the right."
+    },
+    {
+     "term": "Top view",
+     "definition": "For each column from left to right, the node closest to the root: what you see from above."
+    },
+    {
+     "term": "Bottom view",
+     "definition": "For each column, the deepest node, taking the later one in BFS order when two share the deepest row."
+    },
+    {
+     "term": "Boundary traversal",
+     "definition": "The root, then the left edge without leaves, then all leaves from left to right, then the right edge without leaves from bottom to top."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Using BFS level by level, how do you get the right view?",
+     "options": [
+      "The first node of each level",
+      "The last node of each level",
+      "The leaves",
+      "Every other node"
+     ],
+     "answer": 1,
+     "explain": "From the right, the rightmost node of each level hides the others. In BFS order that is the last node of the level."
+    },
+    {
+     "q": "For the top view, why must you take the first node of each column in BFS order, not DFS order?",
+     "options": [
+      "DFS is slower",
+      "DFS can reach a deep node in a column before a shallower one, and the top view needs the shallowest",
+      "BFS sorts columns",
+      "They give the same result"
+     ],
+     "answer": 1,
+     "explain": "BFS visits nodes in increasing depth, so the first node it meets in each column is the highest one."
+    },
+    {
+     "q": "In a boundary traversal, why exclude leaves from the left and right edges?",
+     "options": [
+      "Leaves are not on the boundary",
+      "Leaves are added once in the leaf pass; including them in an edge too would list them twice",
+      "To save time",
+      "Edges have no leaves"
+     ],
+     "answer": 1,
+     "explain": "The bottom-left and bottom-right nodes are leaves and lie on an edge. Listing edges without leaves and then all leaves once avoids duplicates."
+    }
+   ],
+   "cover_seed": "tree-views-boundary",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.82,
+   "path": "dsa/tree-views-boundary.md",
+   "hash": "0d4433e58483",
+   "word_count": 1247,
+   "excerpt": "A photographer walks around a tree in a park and takes four pictures: from the left, from the right, from directly above and from below. Each photo shows only some of the branches; the rest are hidden behind the ones in front. Then she traces the outline of the tree with her finger, down the left…"
   },
   {
    "id": "dsa-heap-basics",
