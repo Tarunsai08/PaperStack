@@ -4020,8 +4020,8 @@
     "dsa-backtracking-template",
     "dsa-graph-representation"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Assign colours one vertex at a time",
@@ -4050,8 +4050,8 @@
    "prerequisites": [
     "dsa-recursion-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Move n-1, move one, move n-1 again",
@@ -4081,8 +4081,8 @@
    "prerequisites": [
     "dsa-backtracking-template"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Palindrome partitioning",

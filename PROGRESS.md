@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 83 | 0 | 69 | 152 | 55/72 |
+| dsa | 86 | 0 | 66 | 152 | 55/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **285** | **0** | **388** | **673** | |
+| **All** | **288** | **0** | **385** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -33,8 +33,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-dijkstra` (P0, pattern, dsa-graphs): Dijkstra: Shortest Paths With Weights
 - [ ] `dsa-word-ladder` (P0, problem-walkthrough, dsa-graphs): Word Ladder: BFS on Implicit Graphs
 - [ ] `dsa-islands-variants` (P0, problem-walkthrough, dsa-graphs): Number of Islands and Its Many Variants
-- [ ] `dsa-recursion-on-strings` (P1, problem-walkthrough, dsa-recursion): Recursion on Strings: Partitions and Expressions
 - [ ] `dsa-tree-construction` (P1, pattern, dsa-trees): Building Trees From Traversals and Serialising Them
+- [ ] `dsa-tree-width-and-structure` (P1, problem-walkthrough, dsa-trees): Maximum Width, Symmetry and Identical Trees
 
 ### cp
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 83 written</summary>
+<details><summary>dsa: 86 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -173,6 +173,9 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-queue-via-stacks` Building Queues From Stacks and Stacks From Queues
 - [x] `dsa-stack-simulations` Stack Simulations: Asteroids, Stock Span and Removing Digits
 - [x] `dsa-rat-in-maze` Rat in a Maze and Path Enumeration
+- [x] `dsa-m-coloring` Graph Colouring by Backtracking
+- [x] `dsa-tower-of-hanoi` Tower of Hanoi: Trusting Recursion Completely
+- [x] `dsa-recursion-on-strings` Recursion on Strings: Partitions and Expressions
 - [x] `dsa-subset-sum-count` Counting Subsets: Target Sum and Partitions
 - [x] `dsa-interview-dsa-revision` The Night-Before Revision Sheet
 
