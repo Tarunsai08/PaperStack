@@ -5,7 +5,7 @@ subject: "ml"
 slug: efficient-streaming-language-models-with-attention-sinks
 title: Why Transformers Crash Without Their First Words
 subtitle: How four pinned tokens unlocked infinite streaming for large language models
-track: ai-systems
+track: "ai-systems"
 track_order: 5
 prerequisites:
 - paper-attention-is-all-you-need
@@ -24,8 +24,8 @@ authors:
 - Yuandong Tian
 - Beidi Chen
 - et al.
-year: 2023
-venue: International Conference on Learning Representations
+year: 2024
+venue: "ICLR"
 paper_url: https://arxiv.org/abs/2309.17453
 glossary:
 - term: Attention Sink

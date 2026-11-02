@@ -5,8 +5,8 @@ subject: "ml"
 slug: large-language-models-encode-clinical-knowledge
 title: Can Language Models Safely Practice Medicine?
 subtitle: How clinician-guided prompt tuning turned raw LLM scale into clinical reliability
-track: useful-llms
-track_order: 16
+track: "useful-llms"
+track_order: 8
 prerequisites:
 - paper-chain-of-thought
 - paper-instructgpt

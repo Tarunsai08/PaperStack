@@ -5,8 +5,8 @@ subject: "ml"
 slug: elucidating-the-design-space-of-diffusion-based-generative-m
 title: 'Unbolting Diffusion: How EDM Tamed the Noise Equation'
 subtitle: Turning monolithic diffusion equations into clean, modular building blocks
-track: generative
-track_order: 6
+track: "generative"
+track_order: 9
 prerequisites:
 - paper-ddpm
 - paper-denoising-diffusion-implicit-models

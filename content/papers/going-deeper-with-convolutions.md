@@ -5,8 +5,8 @@ subject: "ml"
 slug: going-deeper-with-convolutions
 title: We Need to Go Deeper
 subtitle: How GoogLeNet squeezed 22 layers into a modest computing budget
-track: useful-llms
-track_order: 13
+track: "deep-learning"
+track_order: 9
 prerequisites:
 - paper-alexnet
 - paper-lenet

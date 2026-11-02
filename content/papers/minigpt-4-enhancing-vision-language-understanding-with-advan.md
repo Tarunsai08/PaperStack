@@ -5,8 +5,8 @@ subject: "ml"
 slug: minigpt-4-enhancing-vision-language-understanding-with-advan
 title: Bridging Sight and Speech with One Linear Layer
 subtitle: How freezing a giant language model unlocked multimodal AI in ten hours
-track: useful-llms
-track_order: 22
+track: "transformers-llms"
+track_order: 15
 prerequisites:
 - paper-blip-2-bootstrapping-language-image-pre-training-with-frozen
 - paper-llama

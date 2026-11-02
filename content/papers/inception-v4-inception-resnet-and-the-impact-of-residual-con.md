@@ -5,8 +5,8 @@ subject: "ml"
 slug: inception-v4-inception-resnet-and-the-impact-of-residual-con
 title: Do Deep Networks Actually Need Shortcuts?
 subtitle: How combining Inception modules and skip connections settled a fierce debate about depth
-track: useful-llms
-track_order: 14
+track: "deep-learning"
+track_order: 10
 prerequisites:
 - paper-going-deeper-with-convolutions
 - paper-resnet

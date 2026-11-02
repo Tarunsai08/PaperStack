@@ -5,8 +5,8 @@ subject: "ml"
 slug: distributed-representations-of-words-and-phrases-and-their-c
 title: How Word2Vec Skipped the Softmax Bottleneck
 subtitle: Negative sampling, phrase learning, and the surprising math of word addition
-track: useful-llms
-track_order: 10
+track: "sequences-language"
+track_order: 5
 prerequisites:
 - paper-word2vec
 difficulty: intermediate
@@ -23,7 +23,7 @@ authors:
 - Kai Chen
 - et al.
 year: 2013
-venue: Neural Information Processing Systems
+venue: "NeurIPS"
 paper_url: https://arxiv.org/abs/1310.4546
 glossary:
 - term: Negative Sampling

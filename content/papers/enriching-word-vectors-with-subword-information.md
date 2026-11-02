@@ -5,8 +5,8 @@ subject: "ml"
 slug: enriching-word-vectors-with-subword-information
 title: 'Inside Words: How FastText Mastered Morphology'
 subtitle: How breaking words into character pieces gave machines a cure for vocabulary blindness
-track: useful-llms
-track_order: 11
+track: "sequences-language"
+track_order: 7
 prerequisites:
 - paper-word2vec
 - paper-distributed-representations-of-words-and-phrases-and-their-c

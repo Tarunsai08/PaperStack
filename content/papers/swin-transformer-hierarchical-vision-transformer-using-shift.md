@@ -5,8 +5,8 @@ subject: "ml"
 slug: swin-transformer-hierarchical-vision-transformer-using-shift
 title: Shift the Window, Scale the Vision
 subtitle: How hierarchical shifted windows let Transformers conquer high-resolution images
-track: transformers-llms
-track_order: 9
+track: "transformers-llms"
+track_order: 10
 prerequisites:
 - paper-attention-is-all-you-need
 - paper-resnet

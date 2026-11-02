@@ -4,2766 +4,6 @@
  "version": 1,
  "entries": [
   {
-   "id": "primer-ai-ml-dl-map",
-   "slug": "ai-ml-dl-map",
-   "title_working": "AI, ML, and Deep Learning: The Map You Wish You Had",
-   "subject": "ml",
-   "kind": "primer",
-   "track": "start-here",
-   "order": 1,
-   "priority": "P1",
-   "prerequisites": [],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Three buzzwords, one simple picture, and why the difference actually matters"
-    ]
-   }
-  },
-  {
-   "id": "primer-data-features-labels",
-   "slug": "data-features-labels",
-   "title_working": "What Machines Actually Learn From",
-   "subject": "ml",
-   "kind": "primer",
-   "track": "start-here",
-   "order": 2,
-   "priority": "P1",
-   "prerequisites": [
-    "primer-ai-ml-dl-map"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Data, features and labels: the raw ingredients behind every AI system you will ever meet"
-    ]
-   }
-  },
-  {
-   "id": "primer-loss-functions",
-   "slug": "loss-functions",
-   "title_working": "How Wrong Is the Model?",
-   "subject": "ml",
-   "kind": "primer",
-   "track": "start-here",
-   "order": 3,
-   "priority": "P1",
-   "prerequisites": [
-    "primer-data-features-labels"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "The single number every AI system is secretly trying to shrink"
-    ]
-   }
-  },
-  {
-   "id": "primer-gradient-descent",
-   "slug": "gradient-descent",
-   "title_working": "Finding the Bottom of a Valley Blindfolded",
-   "subject": "ml",
-   "kind": "primer",
-   "track": "start-here",
-   "order": 4,
-   "priority": "P1",
-   "prerequisites": [
-    "primer-loss-functions"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Gradient descent: the humble walking algorithm that trains almost every AI model"
-    ]
-   }
-  },
-  {
-   "id": "primer-classification",
-   "slug": "classification",
-   "title_working": "Yes or No? How Machines Make Decisions",
-   "subject": "ml",
-   "kind": "primer",
-   "track": "start-here",
-   "order": 5,
-   "priority": "P1",
-   "prerequisites": [
-    "primer-gradient-descent"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Logistic regression: a weighted vote, a smooth squash, and the first real classifier you can build by hand"
-    ]
-   }
-  },
-  {
-   "id": "primer-overfitting",
-   "slug": "overfitting",
-   "title_working": "Memorizing vs Learning",
-   "subject": "ml",
-   "kind": "primer",
-   "track": "start-here",
-   "order": 6,
-   "priority": "P1",
-   "prerequisites": [
-    "primer-classification"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Overfitting, underfitting and test sets: how to tell if a model actually understands anything"
-    ]
-   }
-  },
-  {
-   "id": "primer-neural-networks",
-   "slug": "neural-networks",
-   "title_working": "Neural Networks from One Neuron Up",
-   "subject": "ml",
-   "kind": "primer",
-   "track": "start-here",
-   "order": 7,
-   "priority": "P1",
-   "prerequisites": [
-    "primer-classification"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "How stacking thousands of tiny calculators produces something that can see, read and talk"
-    ]
-   }
-  },
-  {
-   "id": "primer-backprop-intuition",
-   "slug": "backprop-intuition",
-   "title_working": "Backpropagation Without the Scary Math",
-   "subject": "ml",
-   "kind": "primer",
-   "track": "start-here",
-   "order": 8,
-   "priority": "P1",
-   "prerequisites": [
-    "primer-neural-networks",
-    "primer-gradient-descent"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "How a network figures out which of its million knobs to blame for a mistake"
-    ]
-   }
-  },
-  {
-   "id": "primer-embeddings",
-   "slug": "embeddings",
-   "title_working": "How Words Become Numbers With Meaning",
-   "subject": "ml",
-   "kind": "primer",
-   "track": "start-here",
-   "order": 9,
-   "priority": "P1",
-   "prerequisites": [
-    "primer-neural-networks"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Embeddings: the map of meaning hiding inside every search engine, recommender and chatbot"
-    ]
-   }
-  },
-  {
-   "id": "primer-how-to-read-papers",
-   "slug": "how-to-read-papers",
-   "title_working": "How to Read a Research Paper Without Falling Asleep",
-   "subject": "ml",
-   "kind": "primer",
-   "track": "start-here",
-   "order": 10,
-   "priority": "P2",
-   "prerequisites": [
-    "primer-ai-ml-dl-map"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "The three-pass method researchers actually use, and the five questions that unlock any paper"
-    ]
-   }
-  },
-  {
-   "id": "paper-turing-test",
-   "slug": "turing-test",
-   "title_working": "Can Machines Think? Turing's Brilliant Dodge",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "foundations",
-   "order": 1,
-   "priority": "P2",
-   "prerequisites": [
-    "primer-ai-ml-dl-map"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "How a 1950 thought experiment replaced an unanswerable question with a game, and predicted learning machines"
-    ]
-   },
-   "paper_url": "https://doi.org/10.1093/mind/LIX.236.433"
-  },
-  {
-   "id": "paper-perceptron",
-   "slug": "perceptron",
-   "title_working": "The Machine That Learned From Its Mistakes",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "foundations",
-   "order": 2,
-   "priority": "P2",
-   "prerequisites": [
-    "primer-classification",
-    "primer-neural-networks"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Rosenblatt's perceptron: the 1958 invention that started neural networks, and the hype that nearly ended them"
-    ]
-   },
-   "paper_url": "https://doi.org/10.1037/h0042519"
-  },
-  {
-   "id": "paper-backpropagation",
-   "slug": "backpropagation",
-   "title_working": "Four Pages That Woke Up Neural Networks",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "foundations",
-   "order": 3,
-   "priority": "P1",
-   "prerequisites": [
-    "primer-backprop-intuition",
-    "paper-perceptron"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "How backpropagation taught hidden layers to invent their own features, and ended the perceptron's long winter"
-    ]
-   },
-   "paper_url": "https://doi.org/10.1038/323533a0"
-  },
-  {
-   "id": "paper-support-vector-networks",
-   "slug": "support-vector-networks",
-   "title_working": "Draw the Widest Road Between Two Crowds",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "foundations",
-   "order": 4,
-   "priority": "P2",
-   "prerequisites": [
-    "primer-classification",
-    "primer-overfitting"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Support vector machines: the margin idea that dominated machine learning before deep learning took over"
-    ]
-   },
-   "paper_url": "https://doi.org/10.1007/BF00994018"
-  },
-  {
-   "id": "paper-random-forests",
-   "slug": "random-forests",
-   "title_working": "Why a Crowd of Bad Guessers Beats an Expert",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "foundations",
-   "order": 5,
-   "priority": "P1",
-   "prerequisites": [
-    "primer-overfitting"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Breiman's random forests: deliberately weakened decision trees that vote their way to excellent predictions"
-    ]
-   },
-   "paper_url": "https://doi.org/10.1023/A:1010933404324"
-  },
-  {
-   "id": "paper-few-useful-things",
-   "slug": "few-useful-things",
-   "title_working": "The Folk Wisdom Textbooks Forgot to Teach",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "foundations",
-   "order": 6,
-   "priority": "P2",
-   "prerequisites": [
-    "primer-overfitting"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Pedro Domingos' twelve hard-won lessons about what actually makes machine learning work"
-    ]
-   },
-   "paper_url": "https://doi.org/10.1145/2347736.2347755"
-  },
-  {
-   "id": "paper-thumbs-up-sentiment-classification-using-machine-learning-te",
-   "slug": "thumbs-up-sentiment-classification-using-machine-learning-te",
-   "title_working": "Thumbs Up? How Machines Learned to Read Reviews",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "foundations",
-   "order": 7,
-   "priority": "P2",
-   "prerequisites": [
-    "primer-classification",
-    "paper-support-vector-networks",
-    "primer-data-features-labels"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "Why human word lists failed and simple statistics conquered sentiment analysis"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/cs/0205070"
-  },
-  {
-   "id": "paper-stop-explaining-black-box-machine-learning-models-for-high-s",
-   "slug": "stop-explaining-black-box-machine-learning-models-for-high-s",
-   "title_working": "Why Explaining Black Boxes Fails",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "foundations",
-   "order": 8,
-   "priority": "P2",
-   "prerequisites": [
-    "primer-classification",
-    "primer-data-features-labels",
-    "paper-random-forests"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How inherently transparent models beat opaque algorithms at high stakes"
-    ]
-   },
-   "paper_url": "https://arxiv.org/pdf/1811.10154"
-  },
-  {
-   "id": "paper-lenet",
-   "slug": "lenet",
-   "title_working": "The Network That Read Your Cheques",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "deep-learning",
-   "order": 1,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-backpropagation"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "LeNet and convolutions: how giving networks the right structure let them see, and quietly read millions of bank cheques"
-    ]
-   },
-   "paper_url": "https://doi.org/10.1109/5.726791"
-  },
-  {
-   "id": "paper-deep-autoencoders",
-   "slug": "deep-autoencoders",
-   "title_working": "How to Squeeze a Picture Into Thirty Numbers",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "deep-learning",
-   "order": 2,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-backpropagation"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Hinton and Salakhutdinov's deep autoencoders: the 2006 trick that made deep networks trainable again"
-    ]
-   },
-   "paper_url": "https://doi.org/10.1126/science.1127647"
-  },
-  {
-   "id": "paper-alexnet",
-   "slug": "alexnet",
-   "title_working": "The Night Deep Learning Won",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "deep-learning",
-   "order": 3,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-lenet"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "AlexNet: two gaming GPUs, a million labeled photos, and the 2012 result that changed AI forever"
-    ]
-   },
-   "paper_url": "https://papers.nips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html"
-  },
-  {
-   "id": "paper-dropout",
-   "slug": "dropout",
-   "title_working": "Make Your Network Forget, On Purpose",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "deep-learning",
-   "order": 4,
-   "priority": "P1",
-   "prerequisites": [
-    "paper-alexnet",
-    "primer-overfitting"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Dropout: randomly switching off neurons turns one network into a crowd and stops it from memorizing"
-    ]
-   },
-   "paper_url": "https://jmlr.org/papers/v15/srivastava14a.html"
-  },
-  {
-   "id": "paper-adam",
-   "slug": "adam",
-   "title_working": "The Optimizer Almost Everyone Uses",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "deep-learning",
-   "order": 5,
-   "priority": "P1",
-   "prerequisites": [
-    "primer-gradient-descent"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Adam gives every parameter its own smart step size, and became deep learning's default way to walk downhill"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/1412.6980",
-   "arxiv_id": "1412.6980"
-  },
-  {
-   "id": "paper-batch-normalization",
-   "slug": "batch-normalization",
-   "title_working": "The Simple Fix That Made Deep Networks Train Fast",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "deep-learning",
-   "order": 6,
-   "priority": "P1",
-   "prerequisites": [
-    "paper-alexnet"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Batch normalization: keep every layer's inputs well-behaved, and training suddenly gets fourteen times quicker"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/1502.03167",
-   "arxiv_id": "1502.03167"
-  },
-  {
-   "id": "paper-resnet",
-   "slug": "resnet",
-   "title_working": "Why Deeper Got Worse, and the Shortcut That Fixed It",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "deep-learning",
-   "order": 7,
-   "priority": "P1",
-   "prerequisites": [
-    "paper-batch-normalization"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "ResNet: a one-line change that let networks grow past 100 layers and became the most cited paper of the century"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/1512.03385",
-   "arxiv_id": "1512.03385"
-  },
-  {
-   "id": "paper-unet",
-   "slug": "unet",
-   "title_working": "The U-Shaped Network That Learned From Thirty Images",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "deep-learning",
-   "order": 8,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-lenet"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "U-Net: how a clever shape let a network outline every cell in a microscope image, and later paint pictures"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/1505.04597",
-   "arxiv_id": "1505.04597"
-  },
-  {
-   "id": "paper-aggregated-residual-transformations-for-deep-neural-networks",
-   "slug": "aggregated-residual-transformations-for-deep-neural-networks",
-   "title_working": "ResNeXt: Beyond Depth and Width",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "deep-learning",
-   "order": 9,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-alexnet",
-    "paper-batch-normalization",
-    "paper-resnet"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How parallel identical pathways revealed a third dimension in deep networks"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/1611.05431",
-   "arxiv_id": "1611.05431"
-  },
-  {
-   "id": "paper-real-time-single-image-and-video-super-resolution-using-an-e",
-   "slug": "real-time-single-image-and-video-super-resolution-using-an-e",
-   "title_working": "Pixel Shuffle: Upscaling Images at the Very End",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "deep-learning",
-   "order": 10,
-   "priority": "P2",
-   "prerequisites": [
-    "primer-neural-networks",
-    "paper-alexnet"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How shifting magnification to the final layer unlocked real-time AI video super-resolution"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/1609.05158",
-   "arxiv_id": "1609.05158"
-  },
-  {
-   "id": "paper-layer-normalization",
-   "slug": "layer-normalization",
-   "title_working": "Layer Normalization",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "deep-learning",
-   "order": 11,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-batch-normalization"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/1607.06450",
-   "arxiv_id": "1607.06450",
-   "brief": {
-    "key_points": [
-     "Normalize across features of one example, not across the batch",
-     "Why it suits RNNs and transformers where batch statistics are awkward",
-     "Gain and bias parameters restore expressiveness"
-    ],
-    "analogy": "Grading each student against their own average instead of the class average",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Do not claim it was invented for transformers; it predates them"
-    ],
-    "exact_facts": [
-     "Ba, Kiros, Hinton, 2016"
-    ]
-   }
-  },
-  {
-   "id": "paper-knowledge-distillation",
-   "slug": "knowledge-distillation",
-   "title_working": "Distilling the Knowledge in a Neural Network",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "deep-learning",
-   "order": 12,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-dropout"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/1503.02531",
-   "arxiv_id": "1503.02531",
-   "brief": {
-    "key_points": [
-     "Soft targets carry dark knowledge about class similarity",
-     "Temperature in the softmax softens probabilities",
-     "Small student trained to match a large teacher"
-    ],
-    "analogy": "An apprentice learning from a master's hesitations, not just final answers",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Do not invent compression ratios"
-    ],
-    "exact_facts": [
-     "Hinton, Vinyals, Dean, 2015"
-    ]
-   }
-  },
-  {
-   "id": "paper-vgg",
-   "slug": "vgg",
-   "title_working": "Very Deep Convolutional Networks for Large-Scale Image Recognition",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "deep-learning",
-   "order": 13,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-alexnet"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/1409.1556",
-   "arxiv_id": "1409.1556",
-   "brief": {
-    "key_points": [
-     "Stacks of small 3x3 convolutions",
-     "Depth matters",
-     "Simple uniform design used as a backbone for years"
-    ],
-    "analogy": "Building a tall tower from identical small bricks",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Do not invent error rates"
-    ],
-    "exact_facts": [
-     "Simonyan, Zisserman, 2014"
-    ]
-   }
-  },
-  {
-   "id": "paper-faster-r-cnn",
-   "slug": "faster-r-cnn",
-   "title_working": "Faster R-CNN: Towards Real-Time Object Detection",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "deep-learning",
-   "order": 14,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-alexnet"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/1506.01497",
-   "arxiv_id": "1506.01497",
-   "brief": {
-    "key_points": [
-     "Region proposal network shares features with the detector",
-     "Anchors at multiple scales",
-     "Two-stage detection"
-    ],
-    "analogy": "A scout marking spots worth checking before the expert looks closely",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Keep speed claims qualitative unless sure"
-    ],
-    "exact_facts": [
-     "Ren, He, Girshick, Sun, 2015"
-    ]
-   }
-  },
-  {
-   "id": "paper-yolo",
-   "slug": "yolo",
-   "title_working": "You Only Look Once: Unified, Real-Time Object Detection",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "deep-learning",
-   "order": 15,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-alexnet"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/1506.02640",
-   "arxiv_id": "1506.02640",
-   "brief": {
-    "key_points": [
-     "Detection as a single regression over a grid",
-     "Real-time speed",
-     "Trade-offs with small objects"
-    ],
-    "analogy": "Glancing at a room once and naming everything in it",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Do not mix later YOLO versions into this paper"
-    ],
-    "exact_facts": [
-     "Redmon et al., 2015 (CVPR 2016)"
-    ]
-   }
-  },
-  {
-   "id": "paper-segment-anything",
-   "slug": "segment-anything",
-   "title_working": "Segment Anything",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "deep-learning",
-   "order": 16,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-vit"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/2304.02643",
-   "arxiv_id": "2304.02643",
-   "brief": {
-    "key_points": [
-     "Promptable segmentation with points, boxes, text",
-     "Huge dataset built with a data engine",
-     "Image encoder plus light mask decoder"
-    ],
-    "analogy": "A magic scissors that cuts out whatever you point at",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Do not overstate text prompting"
-    ],
-    "exact_facts": [
-     "Kirillov et al., 2023"
-    ]
-   }
-  },
-  {
-   "id": "paper-lstm",
-   "slug": "lstm",
-   "title_working": "Teaching Networks to Remember for a Long Time",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "sequences-language",
-   "order": 1,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-backpropagation"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "LSTM: gates, a protected memory lane, and the 1997 design that powered speech recognition and translation for two decades"
-    ]
-   },
-   "paper_url": "https://doi.org/10.1162/neco.1997.9.8.1735"
-  },
-  {
-   "id": "paper-word2vec",
-   "slug": "word2vec",
-   "title_working": "King Minus Man Plus Woman Equals Queen",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "sequences-language",
-   "order": 2,
-   "priority": "P1",
-   "prerequisites": [
-    "primer-embeddings"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "word2vec: a deliberately simple model, a billion words of news, and word vectors that captured meaning as geometry"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/1301.3781",
-   "arxiv_id": "1301.3781"
-  },
-  {
-   "id": "paper-seq2seq",
-   "slug": "seq2seq",
-   "title_working": "Read the Whole Sentence, Then Write the Translation",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "sequences-language",
-   "order": 3,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-lstm",
-    "paper-word2vec"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Sequence to sequence learning: two LSTMs, one thought vector, and the first neural translator to beat the old guard"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/1409.3215",
-   "arxiv_id": "1409.3215"
-  },
-  {
-   "id": "paper-bahdanau-attention",
-   "slug": "bahdanau-attention",
-   "title_working": "The First Time a Network Learned Where to Look",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "sequences-language",
-   "order": 4,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-seq2seq"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Bahdanau attention: letting a translator glance back at the source sentence, and the birth of the most important idea in modern AI"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/1409.0473",
-   "arxiv_id": "1409.0473"
-  },
-  {
-   "id": "paper-learning-phrase-representations-using-rnn-encoder-decoder-fo",
-   "slug": "learning-phrase-representations-using-rnn-encoder-decoder-fo",
-   "title_working": "Compress, Then Translate: The First Encoder-Decoder",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "sequences-language",
-   "order": 5,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-lstm",
-    "paper-word2vec"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How two recurrent networks teamed up to rewrite machine translation"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/1406.1078",
-   "arxiv_id": "1406.1078"
-  },
-  {
-   "id": "paper-bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro",
-   "slug": "bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro",
-   "title_working": "The End of Bag-of-Words Topic Modeling",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "sequences-language",
-   "order": 6,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-bert",
-    "primer-embeddings"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How BERTopic united deep transformers with classical statistics"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2203.05794",
-   "arxiv_id": "2203.05794"
-  },
-  {
-   "id": "paper-vae",
-   "slug": "vae",
-   "title_working": "Teaching an Autoencoder to Dream",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "generative",
-   "order": 1,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-deep-autoencoders"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Variational autoencoders: fuzzy codes, a smooth map of possibilities, and one clever trick that made it trainable"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/1312.6114",
-   "arxiv_id": "1312.6114"
-  },
-  {
-   "id": "paper-gan",
-   "slug": "gan",
-   "title_working": "The Counterfeiter and the Detective",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "generative",
-   "order": 2,
-   "priority": "P2",
-   "prerequisites": [
-    "primer-neural-networks"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Generative adversarial nets: two networks locked in a game, and an idea sketched in a Montreal bar that learned to fake reality"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/1406.2661",
-   "arxiv_id": "1406.2661"
-  },
-  {
-   "id": "paper-ddpm",
-   "slug": "ddpm",
-   "title_working": "Creating Images by Removing Noise",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "generative",
-   "order": 3,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-vae"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Denoising diffusion: destroy a picture with static, step by step, then train a network to run the film backwards"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2006.11239",
-   "arxiv_id": "2006.11239"
-  },
-  {
-   "id": "paper-latent-diffusion",
-   "slug": "latent-diffusion",
-   "title_working": "Diffusion in a Smaller World",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "generative",
-   "order": 4,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-ddpm",
-    "paper-unet"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Latent diffusion: compress the image first, dream in the compressed space, and suddenly anyone can generate art on a gaming PC"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2112.10752",
-   "arxiv_id": "2112.10752"
-  },
-  {
-   "id": "paper-taming-transformers-for-high-resolution-image-synthesis",
-   "slug": "taming-transformers-for-high-resolution-image-synthesis",
-   "title_working": "Taming Transformers for Megapixel Images",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "generative",
-   "order": 5,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-attention-is-all-you-need",
-    "paper-gan",
-    "paper-vae"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How visual codebooks let attention scale from tiny patches to high resolution"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2012.09841",
-   "arxiv_id": "2012.09841"
-  },
-  {
-   "id": "paper-elucidating-the-design-space-of-diffusion-based-generative-m",
-   "slug": "elucidating-the-design-space-of-diffusion-based-generative-m",
-   "title_working": "Unbolting Diffusion: How EDM Tamed the Noise Equation",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "generative",
-   "order": 6,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-ddpm",
-    "paper-denoising-diffusion-implicit-models",
-    "paper-improved-denoising-diffusion-probabilistic-models"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "Turning monolithic diffusion equations into clean, modular building blocks"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2206.00364",
-   "arxiv_id": "2206.00364"
-  },
-  {
-   "id": "paper-high-resolution-image-synthesis-and-semantic-manipulation-wi",
-   "slug": "high-resolution-image-synthesis-and-semantic-manipulation-wi",
-   "title_working": "Megapixel Realism: How Pix2PixHD Scaled Conditional GANs",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "generative",
-   "order": 7,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-gan",
-    "paper-resnet",
-    "paper-unet"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "Turning rough label maps into crisp, editable 2K photographs"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/1711.11585",
-   "arxiv_id": "1711.11585"
-  },
-  {
-   "id": "paper-classifier-free-guidance",
-   "slug": "classifier-free-guidance",
-   "title_working": "Classifier-Free Diffusion Guidance",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "generative",
-   "order": 8,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-ddpm"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/2207.12598",
-   "arxiv_id": "2207.12598",
-   "brief": {
-    "key_points": [
-     "Train one model with and without the condition by dropping it at random",
-     "At sampling, push away from unconditional toward conditional prediction",
-     "Guidance scale trades diversity for fidelity"
-    ],
-    "analogy": "Turning up the contrast between what you asked for and what you would get anyway",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Do not say it needs a separate classifier"
-    ],
-    "exact_facts": [
-     "Ho, Salimans, 2022"
-    ]
-   }
-  },
-  {
-   "id": "paper-dcgan",
-   "slug": "dcgan",
-   "title_working": "Unsupervised Representation Learning with Deep Convolutional GANs",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "generative",
-   "order": 9,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-gan"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/1511.06434",
-   "arxiv_id": "1511.06434",
-   "brief": {
-    "key_points": [
-     "Architecture guidelines that made GANs train stably",
-     "Strided convolutions, batch norm, no pooling",
-     "Latent space arithmetic"
-    ],
-    "analogy": "A recipe card that finally made the temperamental dish reliable",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Do not overstate stability"
-    ],
-    "exact_facts": [
-     "Radford, Metz, Chintala, 2015"
-    ]
-   }
-  },
-  {
-   "id": "paper-cyclegan",
-   "slug": "cyclegan",
-   "title_working": "Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "generative",
-   "order": 10,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-gan"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/1703.10593",
-   "arxiv_id": "1703.10593",
-   "brief": {
-    "key_points": [
-     "Translate between domains without paired examples",
-     "Cycle consistency loss",
-     "Horses to zebras, summer to winter"
-    ],
-    "analogy": "Translating to French and back should give your original sentence",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Explain failure cases honestly"
-    ],
-    "exact_facts": [
-     "Zhu, Park, Isola, Efros, 2017"
-    ]
-   }
-  },
-  {
-   "id": "paper-stylegan",
-   "slug": "stylegan",
-   "title_working": "A Style-Based Generator Architecture for GANs",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "generative",
-   "order": 11,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-gan",
-    "paper-dcgan"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/1812.04948",
-   "arxiv_id": "1812.04948",
-   "brief": {
-    "key_points": [
-     "Mapping network to an intermediate latent space",
-     "Style injected at each resolution",
-     "Fine control over coarse and fine features"
-    ],
-    "analogy": "A mixing desk with separate sliders for pose, face and freckles",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Do not claim it is a diffusion model"
-    ],
-    "exact_facts": [
-     "Karras, Laine, Aila, 2018"
-    ]
-   }
-  },
-  {
-   "id": "paper-wavenet",
-   "slug": "wavenet",
-   "title_working": "WaveNet: A Generative Model for Raw Audio",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "generative",
-   "order": 12,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-lstm"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/1609.03499",
-   "arxiv_id": "1609.03499",
-   "brief": {
-    "key_points": [
-     "Generate audio one sample at a time",
-     "Dilated causal convolutions",
-     "Big jump in speech naturalness"
-    ],
-    "analogy": "A drummer who listens to an ever wider window of the past",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Do not invent listening-test scores"
-    ],
-    "exact_facts": [
-     "van den Oord et al., 2016"
-    ]
-   }
-  },
-  {
-   "id": "paper-dqn",
-   "slug": "dqn",
-   "title_working": "One Program, Forty-Nine Atari Games",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "reinforcement",
-   "order": 1,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-alexnet"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Deep Q-networks: how an agent learned to play from raw pixels and a score, with no rules and no human tips"
-    ]
-   },
-   "paper_url": "https://doi.org/10.1038/nature14236"
-  },
-  {
-   "id": "paper-alphago",
-   "slug": "alphago",
-   "title_working": "The Machine That Mastered Go a Decade Early",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "reinforcement",
-   "order": 2,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-dqn"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "AlphaGo: neural intuition plus careful search cracked the game experts thought computers could not win"
-    ]
-   },
-   "paper_url": "https://doi.org/10.1038/nature16961"
-  },
-  {
-   "id": "paper-ppo",
-   "slug": "ppo",
-   "title_working": "Learn Fast, But Not Too Fast",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "reinforcement",
-   "order": 3,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-dqn"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Proximal Policy Optimization: the simple, sturdy algorithm behind game-playing bots, robot hands and ChatGPT's fine-tuning"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/1707.06347",
-   "arxiv_id": "1707.06347"
-  },
-  {
-   "id": "paper-alphazero",
-   "slug": "alphazero",
-   "title_working": "Mastering Chess and Shogi by Self-Play with a General RL Algorithm",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "reinforcement",
-   "order": 4,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-alphago"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/1712.01815",
-   "arxiv_id": "1712.01815",
-   "brief": {
-    "key_points": [
-     "No human games, only self-play",
-     "One algorithm for chess, shogi and Go",
-     "Network plus Monte Carlo tree search"
-    ],
-    "analogy": "A player who learns only by playing themselves, millions of times",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Avoid disputed match conditions"
-    ],
-    "exact_facts": [
-     "Silver et al., 2017"
-    ]
-   }
-  },
-  {
-   "id": "paper-muzero",
-   "slug": "muzero",
-   "title_working": "Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "reinforcement",
-   "order": 5,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-alphazero",
-    "paper-dqn"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/1911.08265",
-   "arxiv_id": "1911.08265",
-   "brief": {
-    "key_points": [
-     "Learns its own model of the environment",
-     "Plans in a learned latent space",
-     "Works without knowing the rules"
-    ],
-    "analogy": "Planning moves in a game whose rulebook you had to guess",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Explain what the learned model predicts"
-    ],
-    "exact_facts": [
-     "Schrittwieser et al., 2019"
-    ]
-   }
-  },
-  {
-   "id": "paper-attention-is-all-you-need",
-   "slug": "attention-is-all-you-need",
-   "title_working": "The Paper That Taught Machines Where to Look",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "transformers-llms",
-   "order": 1,
-   "priority": "P1",
-   "prerequisites": [
-    "primer-embeddings",
-    "paper-bahdanau-attention"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "How one simple idea replaced decades of sequence models and gave us ChatGPT"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/1706.03762",
-   "arxiv_id": "1706.03762"
-  },
-  {
-   "id": "paper-gpt-1",
-   "slug": "gpt-1",
-   "title_working": "Read Seven Thousand Books, Then Take Any Test",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "transformers-llms",
-   "order": 2,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-attention-is-all-you-need"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "GPT-1: the quiet 2018 report that introduced generative pre-training, the recipe behind every chatbot since"
-    ]
-   },
-   "paper_url": "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf"
-  },
-  {
-   "id": "paper-bert",
-   "slug": "bert",
-   "title_working": "Fill in the Blanks, Understand Everything",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "transformers-llms",
-   "order": 3,
-   "priority": "P1",
-   "prerequisites": [
-    "paper-attention-is-all-you-need"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "BERT: reading in both directions with a fill-in-the-blank game, and the model that changed Google Search"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/1810.04805",
-   "arxiv_id": "1810.04805"
-  },
-  {
-   "id": "paper-gpt-3",
-   "slug": "gpt-3",
-   "title_working": "Just Show It a Few Examples",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "transformers-llms",
-   "order": 4,
-   "priority": "P1",
-   "prerequisites": [
-    "paper-gpt-1"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "GPT-3: 175 billion parameters, no fine-tuning, and the surprise that a model could learn new tasks from its prompt"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2005.14165",
-   "arxiv_id": "2005.14165"
-  },
-  {
-   "id": "paper-scaling-laws",
-   "slug": "scaling-laws",
-   "title_working": "The Straight Lines That Launched a Race",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "transformers-llms",
-   "order": 5,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-gpt-3"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Scaling laws: how language model quality improves predictably with size, data and compute, and why that changed AI strategy"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2001.08361",
-   "arxiv_id": "2001.08361"
-  },
-  {
-   "id": "paper-chinchilla",
-   "slug": "chinchilla",
-   "title_working": "The Giant Models Were Underfed",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "transformers-llms",
-   "order": 6,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-scaling-laws"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Chinchilla: a smaller model trained on four times more data beat models up to seven times its size"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2203.15556",
-   "arxiv_id": "2203.15556"
-  },
-  {
-   "id": "paper-vit",
-   "slug": "vit",
-   "title_working": "What If an Image Is Just a Sentence of Patches?",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "transformers-llms",
-   "order": 7,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-attention-is-all-you-need",
-    "paper-resnet"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "The Vision Transformer: chop a picture into squares, read them like words, and match the best convolutional networks"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2010.11929",
-   "arxiv_id": "2010.11929"
-  },
-  {
-   "id": "paper-clip",
-   "slug": "clip",
-   "title_working": "Teaching Vision With the Internet's Captions",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "transformers-llms",
-   "order": 8,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-vit",
-    "paper-word2vec"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "CLIP: 400 million image-text pairs, one shared space for pictures and words, and classifiers you create by typing"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2103.00020",
-   "arxiv_id": "2103.00020"
-  },
-  {
-   "id": "paper-swin-transformer-hierarchical-vision-transformer-using-shift",
-   "slug": "swin-transformer-hierarchical-vision-transformer-using-shift",
-   "title_working": "Shift the Window, Scale the Vision",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "transformers-llms",
-   "order": 9,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-attention-is-all-you-need",
-    "paper-resnet",
-    "paper-vit"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How hierarchical shifted windows let Transformers conquer high-resolution images"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2103.14030",
-   "arxiv_id": "2103.14030"
-  },
-  {
-   "id": "paper-blip-2-bootstrapping-language-image-pre-training-with-frozen",
-   "slug": "blip-2-bootstrapping-language-image-pre-training-with-frozen",
-   "title_working": "Teaching Blind LLMs to See Without Retraining Them",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "transformers-llms",
-   "order": 10,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-clip",
-    "paper-vit",
-    "paper-bert"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How 32 queries bridged vision and language on a shoestring compute budget"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2301.12597",
-   "arxiv_id": "2301.12597"
-  },
-  {
-   "id": "paper-t5",
-   "slug": "t5",
-   "title_working": "T5: Exploring the Limits of Transfer Learning",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "transformers-llms",
-   "order": 11,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-bert"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/1910.10683",
-   "arxiv_id": "1910.10683",
-   "brief": {
-    "key_points": [
-     "Every NLP task as text-to-text",
-     "Large systematic study of pretraining choices",
-     "C4 dataset and span corruption objective"
-    ],
-    "analogy": "A universal adapter: every plug becomes the same shape",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Do not invent benchmark numbers"
-    ],
-    "exact_facts": [
-     "Raffel et al., 2019 (JMLR 2020)"
-    ]
-   }
-  },
-  {
-   "id": "paper-roberta",
-   "slug": "roberta",
-   "title_working": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "transformers-llms",
-   "order": 12,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-bert"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/1907.11692",
-   "arxiv_id": "1907.11692",
-   "brief": {
-    "key_points": [
-     "BERT was undertrained",
-     "More data, longer training, bigger batches, dynamic masking",
-     "Dropped next sentence prediction"
-    ],
-    "analogy": "Same recipe, cooked properly",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "It is a training study, not a new architecture"
-    ],
-    "exact_facts": [
-     "Liu et al., 2019"
-    ]
-   }
-  },
-  {
-   "id": "paper-mixture-of-experts",
-   "slug": "mixture-of-experts",
-   "title_working": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "transformers-llms",
-   "order": 13,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-lstm"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/1701.06538",
-   "arxiv_id": "1701.06538",
-   "brief": {
-    "key_points": [
-     "A gate routes each input to a few experts",
-     "Parameters grow without compute growing as much",
-     "Load balancing loss keeps experts busy"
-    ],
-    "analogy": "A hospital triage desk sending each patient to two specialists",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Do not claim modern LLM details for this 2017 paper"
-    ],
-    "exact_facts": [
-     "Shazeer et al., 2017"
-    ]
-   }
-  },
-  {
-   "id": "paper-switch-transformers",
-   "slug": "switch-transformers",
-   "title_working": "Switch Transformers",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "transformers-llms",
-   "order": 14,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-mixture-of-experts",
-    "paper-attention-is-all-you-need"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/2101.03961",
-   "arxiv_id": "2101.03961",
-   "brief": {
-    "key_points": [
-     "Route each token to exactly one expert",
-     "Simpler and more stable than top-2 routing",
-     "Capacity factor and token dropping"
-    ],
-    "analogy": "One specialist per patient instead of a committee",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Do not overstate stability claims"
-    ],
-    "exact_facts": [
-     "Fedus, Zoph, Shazeer, 2021"
-    ]
-   }
-  },
-  {
-   "id": "paper-mamba",
-   "slug": "mamba",
-   "title_working": "Mamba: Linear-Time Sequence Modeling with Selective State Spaces",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "transformers-llms",
-   "order": 15,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-attention-is-all-you-need",
-    "paper-lstm"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/2312.00752",
-   "arxiv_id": "2312.00752",
-   "brief": {
-    "key_points": [
-     "State space models with input-dependent (selective) parameters",
-     "Linear time in sequence length",
-     "Hardware-aware parallel scan"
-    ],
-    "analogy": "A notebook that decides what to write down based on what it reads",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Do not claim it replaced transformers"
-    ],
-    "exact_facts": [
-     "Gu, Dao, 2023"
-    ]
-   }
-  },
-  {
-   "id": "paper-transformer-xl",
-   "slug": "transformer-xl",
-   "title_working": "Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "transformers-llms",
-   "order": 16,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-attention-is-all-you-need"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/1901.02860",
-   "arxiv_id": "1901.02860",
-   "brief": {
-    "key_points": [
-     "Segment-level recurrence reuses past hidden states",
-     "Relative positional encodings",
-     "Longer effective context"
-    ],
-    "analogy": "Keeping the last chapter's notes open while reading the next",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Do not confuse with XLNet"
-    ],
-    "exact_facts": [
-     "Dai et al., 2019"
-    ]
-   }
-  },
-  {
-   "id": "paper-longformer",
-   "slug": "longformer",
-   "title_working": "Longformer: The Long-Document Transformer",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "transformers-llms",
-   "order": 17,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-attention-is-all-you-need",
-    "paper-bert"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/2004.05150",
-   "arxiv_id": "2004.05150",
-   "brief": {
-    "key_points": [
-     "Sliding window plus global attention",
-     "Linear scaling with length",
-     "Long document tasks"
-    ],
-    "analogy": "Reading with a ruler under the line plus a few bookmarked key pages",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Keep complexity claims exact"
-    ],
-    "exact_facts": [
-     "Beltagy, Peters, Cohan, 2020"
-    ]
-   }
-  },
-  {
-   "id": "paper-flamingo",
-   "slug": "flamingo",
-   "title_working": "Flamingo: a Visual Language Model for Few-Shot Learning",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "transformers-llms",
-   "order": 18,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-clip",
-    "paper-gpt-3"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/2204.14198",
-   "arxiv_id": "2204.14198",
-   "brief": {
-    "key_points": [
-     "Frozen vision encoder and frozen language model bridged by new layers",
-     "Interleaved images and text",
-     "Few-shot multimodal prompting"
-    ],
-    "analogy": "Adding a translator between two experts who never learned each other's language",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Do not invent scores"
-    ],
-    "exact_facts": [
-     "Alayrac et al., 2022"
-    ]
-   }
-  },
-  {
-   "id": "paper-whisper",
-   "slug": "whisper",
-   "title_working": "Robust Speech Recognition via Large-Scale Weak Supervision",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "transformers-llms",
-   "order": 19,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-attention-is-all-you-need"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/2212.04356",
-   "arxiv_id": "2212.04356",
-   "brief": {
-    "key_points": [
-     "Encoder-decoder trained on a large amount of weakly labelled audio",
-     "Multitask: transcription, translation, language ID",
-     "Robust zero-shot transfer"
-    ],
-    "analogy": "Learning a language from thousands of subtitled films rather than a textbook",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Quote hours of audio only if certain"
-    ],
-    "exact_facts": [
-     "Radford et al., 2022"
-    ]
-   }
-  },
-  {
-   "id": "paper-instructgpt",
-   "slug": "instructgpt",
-   "title_working": "How a Text Predictor Learned to Be Helpful",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 1,
-   "priority": "P1",
-   "prerequisites": [
-    "paper-gpt-3",
-    "paper-ppo"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "InstructGPT: human demonstrations, human rankings and reinforcement learning, the recipe that became ChatGPT"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2203.02155",
-   "arxiv_id": "2203.02155"
-  },
-  {
-   "id": "paper-chain-of-thought",
-   "slug": "chain-of-thought",
-   "title_working": "Show Your Working: The Prompt That Unlocked Reasoning",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 2,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-gpt-3"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Chain-of-thought prompting: a few worked examples with steps made giant language models dramatically better at maths and logic"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2201.11903",
-   "arxiv_id": "2201.11903"
-  },
-  {
-   "id": "paper-rag",
-   "slug": "rag",
-   "title_working": "Let the Model Look Things Up",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 3,
-   "priority": "P1",
-   "prerequisites": [
-    "paper-bert",
-    "paper-seq2seq"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Retrieval-augmented generation: pairing a language model with a searchable library so it can cite facts instead of guessing"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2005.11401",
-   "arxiv_id": "2005.11401"
-  },
-  {
-   "id": "paper-lora",
-   "slug": "lora",
-   "title_working": "Fine-Tune a Giant by Training a Tiny Add-On",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 4,
-   "priority": "P1",
-   "prerequisites": [
-    "paper-gpt-3"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "LoRA: freeze the huge model, learn two skinny matrices, and cut trainable parameters by up to ten thousand times"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2106.09685",
-   "arxiv_id": "2106.09685"
-  },
-  {
-   "id": "paper-dpo",
-   "slug": "dpo",
-   "title_working": "Your Language Model Was the Reward Model All Along",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 5,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-instructgpt"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "Direct Preference Optimization: aligning models with human preferences using one simple loss, no reinforcement learning required"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2305.18290",
-   "arxiv_id": "2305.18290"
-  },
-  {
-   "id": "paper-llama",
-   "slug": "llama",
-   "title_working": "Small Enough to Share, Strong Enough to Matter",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 6,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-chinchilla"
-   ],
-   "status": "written",
-   "written_by": "claude-seed",
-   "brief": {
-    "key_points": [
-     "LLaMA: open models trained on public data that rivalled giants, and set off an explosion of open-source AI"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2302.13971",
-   "arxiv_id": "2302.13971"
-  },
-  {
-   "id": "paper-nnu-net-a-self-configuring-method-for-deep-learning-based-bi",
-   "slug": "nnu-net-a-self-configuring-method-for-deep-learning-based-bi",
-   "title_working": "No New Net: Why Hyperparameters Beat Novel Architectures",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 7,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-unet",
-    "primer-loss-functions",
-    "primer-overfitting"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How automating the boring parts of deep learning shattered medical imaging leaderboards"
-    ]
-   },
-   "paper_url": "https://arxiv.org/pdf/1904.08128"
-  },
-  {
-   "id": "paper-unet-redesigning-skip-connections-to-exploit-multiscale-feat",
-   "slug": "unet-redesigning-skip-connections-to-exploit-multiscale-feat",
-   "title_working": "Fixing U-Net's Empty Middle",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 8,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-unet",
-    "paper-resnet"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How nested skip pathways and deep supervision made medical segmentation sharper and faster"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/1912.05074",
-   "arxiv_id": "1912.05074"
-  },
-  {
-   "id": "paper-the-llama-3-herd-of-models",
-   "slug": "the-llama-3-herd-of-models",
-   "title_working": "The Engineering Playbook of Llama 3",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 9,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-llama",
-    "paper-scaling-laws",
-    "paper-dpo"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How 16,000 GPUs and meticulous post-training built an open frontier model"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2407.21783",
-   "arxiv_id": "2407.21783"
-  },
-  {
-   "id": "paper-distributed-representations-of-words-and-phrases-and-their-c",
-   "slug": "distributed-representations-of-words-and-phrases-and-their-c",
-   "title_working": "How Word2Vec Skipped the Softmax Bottleneck",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 10,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-word2vec"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "Negative sampling, phrase learning, and the surprising math of word addition"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/1310.4546",
-   "arxiv_id": "1310.4546"
-  },
-  {
-   "id": "paper-enriching-word-vectors-with-subword-information",
-   "slug": "enriching-word-vectors-with-subword-information",
-   "title_working": "Inside Words: How FastText Mastered Morphology",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 11,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-word2vec",
-    "paper-distributed-representations-of-words-and-phrases-and-their-c",
-    "primer-embeddings"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How breaking words into character pieces gave machines a cure for vocabulary blindness"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/1607.04606",
-   "arxiv_id": "1607.04606"
-  },
-  {
-   "id": "paper-blip-bootstrapping-language-image-pre-training-for-unified-v",
-   "slug": "blip-bootstrapping-language-image-pre-training-for-unified-v",
-   "title_working": "Teaching One Model to See, Read, and Write",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 12,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-vit",
-    "paper-clip",
-    "paper-bert"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How bootstrapping synthetic captions fixed the web's messy vision data"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2201.12086",
-   "arxiv_id": "2201.12086"
-  },
-  {
-   "id": "paper-going-deeper-with-convolutions",
-   "slug": "going-deeper-with-convolutions",
-   "title_working": "We Need to Go Deeper",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 13,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-alexnet",
-    "paper-lenet",
-    "paper-dropout"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How GoogLeNet squeezed 22 layers into a modest computing budget"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/1409.4842",
-   "arxiv_id": "1409.4842"
-  },
-  {
-   "id": "paper-inception-v4-inception-resnet-and-the-impact-of-residual-con",
-   "slug": "inception-v4-inception-resnet-and-the-impact-of-residual-con",
-   "title_working": "Do Deep Networks Actually Need Shortcuts?",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 14,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-going-deeper-with-convolutions",
-    "paper-resnet",
-    "paper-batch-normalization"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How combining Inception modules and skip connections settled a fierce debate about depth"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/1602.07261",
-   "arxiv_id": "1602.07261"
-  },
-  {
-   "id": "paper-opt-open-pre-trained-transformer-language-models",
-   "slug": "opt-open-pre-trained-transformer-language-models",
-   "title_working": "The Engineering Diary of Training OPT-175B",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 15,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-gpt-3",
-    "paper-megatron-lm",
-    "paper-scaling-laws"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How Meta cloned GPT-3, released its weights, and documented every crash"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2205.01068",
-   "arxiv_id": "2205.01068"
-  },
-  {
-   "id": "paper-large-language-models-encode-clinical-knowledge",
-   "slug": "large-language-models-encode-clinical-knowledge",
-   "title_working": "Can Language Models Safely Practice Medicine?",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 16,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-chain-of-thought",
-    "paper-instructgpt"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How clinician-guided prompt tuning turned raw LLM scale into clinical reliability"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2212.13138",
-   "arxiv_id": "2212.13138"
-  },
-  {
-   "id": "paper-a-survey-of-large-language-models",
-   "slug": "a-survey-of-large-language-models",
-   "title_working": "The Four Pillars of the LLM Revolution",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 17,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-scaling-laws",
-    "paper-gpt-3",
-    "paper-instructgpt"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How researchers mapped the hidden mechanics of modern language models"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2303.18223",
-   "arxiv_id": "2303.18223"
-  },
-  {
-   "id": "paper-denoising-diffusion-implicit-models",
-   "slug": "denoising-diffusion-implicit-models",
-   "title_working": "Skipping Steps: How DDIM Accelerated Diffusion",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 18,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-ddpm",
-    "paper-gan",
-    "paper-vae"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How one clever derivation turned a slow 1,000-step random walk into a fast, deterministic slide"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2010.02502",
-   "arxiv_id": "2010.02502"
-  },
-  {
-   "id": "paper-training-data-efficient-image-transformers-distillation-thro",
-   "slug": "training-data-efficient-image-transformers-distillation-thro",
-   "title_working": "Teaching Vision Transformers With Less Data",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 19,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-vit",
-    "paper-attention-is-all-you-need",
-    "paper-resnet"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How a distillation token and smart augmentations freed ViT from massive datasets"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2012.12877",
-   "arxiv_id": "2012.12877"
-  },
-  {
-   "id": "paper-improved-denoising-diffusion-probabilistic-models",
-   "slug": "improved-denoising-diffusion-probabilistic-models",
-   "title_working": "Teaching Diffusion Models to Walk in Big Strides",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 20,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-ddpm",
-    "paper-vae",
-    "paper-denoising-diffusion-implicit-models"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How learning variance and smoothing noise cut sampling time by ten"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2102.09672",
-   "arxiv_id": "2102.09672"
-  },
-  {
-   "id": "paper-tree-of-thoughts-deliberate-problem-solving-with-large-langu",
-   "slug": "tree-of-thoughts-deliberate-problem-solving-with-large-langu",
-   "title_working": "Giving Language Models the Power to Backtrack",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 21,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-chain-of-thought",
-    "paper-gpt-3"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How searching a tree of intermediate thoughts solved problems that broke linear prompting"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2305.10601",
-   "arxiv_id": "2305.10601"
-  },
-  {
-   "id": "paper-minigpt-4-enhancing-vision-language-understanding-with-advan",
-   "slug": "minigpt-4-enhancing-vision-language-understanding-with-advan",
-   "title_working": "Bridging Sight and Speech with One Linear Layer",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 22,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-blip-2-bootstrapping-language-image-pre-training-with-frozen",
-    "paper-llama",
-    "paper-clip"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How freezing a giant language model unlocked multimodal AI in ten hours"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2304.10592",
-   "arxiv_id": "2304.10592"
-  },
-  {
-   "id": "paper-self-consistency-improves-chain-of-thought-reasoning-in-lang",
-   "slug": "self-consistency-improves-chain-of-thought-reasoning-in-lang",
-   "title_working": "Why Multiple Reasoning Paths Beat One Greedy Guess",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 23,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-chain-of-thought",
-    "paper-gpt-3"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How language models learn to solve complex problems by taking a vote"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2203.11171",
-   "arxiv_id": "2203.11171"
-  },
-  {
-   "id": "paper-large-language-models-are-zero-shot-reasoners",
-   "slug": "large-language-models-are-zero-shot-reasoners",
-   "title_working": "The Magic Words for Machine Logic",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 24,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-gpt-3",
-    "paper-instructgpt",
-    "paper-chain-of-thought"
-   ],
-   "status": "written",
-   "written_by": "gemini-gemini-flash-latest",
-   "brief": {
-    "key_points": [
-     "How four words unlocked multi-step reasoning without a single example"
-    ]
-   },
-   "paper_url": "https://arxiv.org/abs/2205.11916",
-   "arxiv_id": "2205.11916"
-  },
-  {
-   "id": "paper-rl-from-human-preferences",
-   "slug": "rl-from-human-preferences",
-   "title_working": "Deep Reinforcement Learning from Human Preferences",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 25,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-ppo"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/1706.03741",
-   "arxiv_id": "1706.03741",
-   "brief": {
-    "key_points": [
-     "Humans compare pairs of clips instead of writing reward functions",
-     "A reward model is learned from comparisons",
-     "Policy optimised against the learned reward; root of RLHF"
-    ],
-    "analogy": "An eye test: 'better or worse?' instead of reading a number",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Separate this from InstructGPT which applied it to language"
-    ],
-    "exact_facts": [
-     "Christiano et al., 2017"
-    ]
-   }
-  },
-  {
-   "id": "paper-react",
-   "slug": "react",
-   "title_working": "ReAct: Synergizing Reasoning and Acting in Language Models",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 26,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-chain-of-thought"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/2210.03629",
-   "arxiv_id": "2210.03629",
-   "brief": {
-    "key_points": [
-     "Interleave thoughts with actions like search",
-     "Observations feed back into reasoning",
-     "Foundation of tool-using agents"
-    ],
-    "analogy": "A detective who thinks aloud and checks the evidence between thoughts",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Not a training method; it is a prompting pattern"
-    ],
-    "exact_facts": [
-     "Yao et al., 2022"
-    ]
-   }
-  },
-  {
-   "id": "paper-toolformer",
-   "slug": "toolformer",
-   "title_working": "Toolformer: Language Models Can Teach Themselves to Use Tools",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 27,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-gpt-3"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/2302.04761",
-   "arxiv_id": "2302.04761",
-   "brief": {
-    "key_points": [
-     "Model inserts API calls into text",
-     "Keeps calls that reduce loss on following tokens",
-     "Self-supervised tool use"
-    ],
-    "analogy": "A student who learns when a calculator actually helps",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Do not overstate the size of models used"
-    ],
-    "exact_facts": [
-     "Schick et al., 2023"
-    ]
-   }
-  },
-  {
-   "id": "paper-constitutional-ai",
-   "slug": "constitutional-ai",
-   "title_working": "Constitutional AI: Harmlessness from AI Feedback",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 28,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-instructgpt"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/2212.08073",
-   "arxiv_id": "2212.08073",
-   "brief": {
-    "key_points": [
-     "A written set of principles guides critiques and revisions",
-     "AI feedback replaces some human labels (RLAIF)",
-     "Supervised then RL stages"
-    ],
-    "analogy": "A style guide an editor follows when redlining drafts",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Do not quote the constitution text"
-    ],
-    "exact_facts": [
-     "Bai et al., 2022 (Anthropic)"
-    ]
-   }
-  },
-  {
-   "id": "paper-qlora",
-   "slug": "qlora",
-   "title_working": "QLoRA: Efficient Finetuning of Quantized LLMs",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 29,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-lora"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/2305.14314",
-   "arxiv_id": "2305.14314",
-   "brief": {
-    "key_points": [
-     "Freeze a 4-bit quantized base model, train LoRA adapters",
-     "NF4 data type, double quantization, paged optimizers",
-     "Fine-tune large models on one GPU"
-    ],
-    "analogy": "Studying from a compressed textbook while writing notes in full detail",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Be careful with exact memory figures"
-    ],
-    "exact_facts": [
-     "Dettmers et al., 2023"
-    ]
-   }
-  },
-  {
-   "id": "paper-llama-2",
-   "slug": "llama-2",
-   "title_working": "Llama 2: Open Foundation and Fine-Tuned Chat Models",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 30,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-llama",
-    "paper-instructgpt"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/2307.09288",
-   "arxiv_id": "2307.09288",
-   "brief": {
-    "key_points": [
-     "Pretrained and chat-tuned open models",
-     "Safety tuning and RLHF details",
-     "Released with a permissive licence for most uses"
-    ],
-    "analogy": "Publishing the full recipe, not just the cake",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Do not invent benchmark scores"
-    ],
-    "exact_facts": [
-     "Touvron et al., 2023"
-    ]
-   }
-  },
-  {
-   "id": "paper-mistral-7b",
-   "slug": "mistral-7b",
-   "title_working": "Mistral 7B",
-   "subject": "ml",
-   "kind": "paper",
-   "track": "useful-llms",
-   "order": 31,
-   "priority": "P2",
-   "prerequisites": [
-    "paper-llama"
-   ],
-   "status": "planned",
-   "written_by": null,
-   "paper_url": "https://arxiv.org/abs/2310.06825",
-   "arxiv_id": "2310.06825",
-   "brief": {
-    "key_points": [
-     "Grouped-query attention for faster inference",
-     "Sliding window attention",
-     "Small model punching above its size"
-    ],
-    "analogy": "A compact car tuned to beat bigger engines",
-    "include": [
-     "One mermaid diagram of the method",
-     "A tiny worked example with numbers"
-    ],
-    "traps": [
-     "Check claims carefully against the paper"
-    ],
-    "exact_facts": [
-     "Jiang et al., 2023"
-    ]
-   }
-  },
-  {
    "id": "paper-megatron-lm",
    "slug": "megatron-lm",
    "title_working": "When One GPU Is Not Enough",
@@ -3120,6 +360,2766 @@
     ],
     "exact_facts": [
      "Leviathan, Kalman, Matias, 2022"
+    ]
+   }
+  },
+  {
+   "id": "paper-lenet",
+   "slug": "lenet",
+   "title_working": "The Network That Read Your Cheques",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "deep-learning",
+   "order": 1,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-backpropagation"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "LeNet and convolutions: how giving networks the right structure let them see, and quietly read millions of bank cheques"
+    ]
+   },
+   "paper_url": "https://doi.org/10.1109/5.726791"
+  },
+  {
+   "id": "paper-deep-autoencoders",
+   "slug": "deep-autoencoders",
+   "title_working": "How to Squeeze a Picture Into Thirty Numbers",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "deep-learning",
+   "order": 2,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-backpropagation"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Hinton and Salakhutdinov's deep autoencoders: the 2006 trick that made deep networks trainable again"
+    ]
+   },
+   "paper_url": "https://doi.org/10.1126/science.1127647"
+  },
+  {
+   "id": "paper-alexnet",
+   "slug": "alexnet",
+   "title_working": "The Night Deep Learning Won",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "deep-learning",
+   "order": 3,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-lenet"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "AlexNet: two gaming GPUs, a million labeled photos, and the 2012 result that changed AI forever"
+    ]
+   },
+   "paper_url": "https://papers.nips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html"
+  },
+  {
+   "id": "paper-dropout",
+   "slug": "dropout",
+   "title_working": "Make Your Network Forget, On Purpose",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "deep-learning",
+   "order": 4,
+   "priority": "P1",
+   "prerequisites": [
+    "paper-alexnet",
+    "primer-overfitting"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Dropout: randomly switching off neurons turns one network into a crowd and stops it from memorizing"
+    ]
+   },
+   "paper_url": "https://jmlr.org/papers/v15/srivastava14a.html"
+  },
+  {
+   "id": "paper-adam",
+   "slug": "adam",
+   "title_working": "The Optimizer Almost Everyone Uses",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "deep-learning",
+   "order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "primer-gradient-descent"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Adam gives every parameter its own smart step size, and became deep learning's default way to walk downhill"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/1412.6980",
+   "arxiv_id": "1412.6980"
+  },
+  {
+   "id": "paper-batch-normalization",
+   "slug": "batch-normalization",
+   "title_working": "The Simple Fix That Made Deep Networks Train Fast",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "deep-learning",
+   "order": 6,
+   "priority": "P1",
+   "prerequisites": [
+    "paper-alexnet"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Batch normalization: keep every layer's inputs well-behaved, and training suddenly gets fourteen times quicker"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/1502.03167",
+   "arxiv_id": "1502.03167"
+  },
+  {
+   "id": "paper-resnet",
+   "slug": "resnet",
+   "title_working": "Why Deeper Got Worse, and the Shortcut That Fixed It",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "deep-learning",
+   "order": 7,
+   "priority": "P1",
+   "prerequisites": [
+    "paper-batch-normalization"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "ResNet: a one-line change that let networks grow past 100 layers and became the most cited paper of the century"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/1512.03385",
+   "arxiv_id": "1512.03385"
+  },
+  {
+   "id": "paper-unet",
+   "slug": "unet",
+   "title_working": "The U-Shaped Network That Learned From Thirty Images",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "deep-learning",
+   "order": 8,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-lenet"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "U-Net: how a clever shape let a network outline every cell in a microscope image, and later paint pictures"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/1505.04597",
+   "arxiv_id": "1505.04597"
+  },
+  {
+   "id": "paper-going-deeper-with-convolutions",
+   "slug": "going-deeper-with-convolutions",
+   "title_working": "We Need to Go Deeper",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "deep-learning",
+   "order": 9,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-alexnet",
+    "paper-lenet",
+    "paper-dropout"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How GoogLeNet squeezed 22 layers into a modest computing budget"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/1409.4842",
+   "arxiv_id": "1409.4842"
+  },
+  {
+   "id": "paper-aggregated-residual-transformations-for-deep-neural-networks",
+   "slug": "aggregated-residual-transformations-for-deep-neural-networks",
+   "title_working": "ResNeXt: Beyond Depth and Width",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "deep-learning",
+   "order": 12,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-alexnet",
+    "paper-batch-normalization",
+    "paper-resnet"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How parallel identical pathways revealed a third dimension in deep networks"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/1611.05431",
+   "arxiv_id": "1611.05431"
+  },
+  {
+   "id": "paper-inception-v4-inception-resnet-and-the-impact-of-residual-con",
+   "slug": "inception-v4-inception-resnet-and-the-impact-of-residual-con",
+   "title_working": "Do Deep Networks Actually Need Shortcuts?",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "deep-learning",
+   "order": 10,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-going-deeper-with-convolutions",
+    "paper-resnet",
+    "paper-batch-normalization"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How combining Inception modules and skip connections settled a fierce debate about depth"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/1602.07261",
+   "arxiv_id": "1602.07261"
+  },
+  {
+   "id": "paper-real-time-single-image-and-video-super-resolution-using-an-e",
+   "slug": "real-time-single-image-and-video-super-resolution-using-an-e",
+   "title_working": "Pixel Shuffle: Upscaling Images at the Very End",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "deep-learning",
+   "order": 11,
+   "priority": "P2",
+   "prerequisites": [
+    "primer-neural-networks",
+    "paper-alexnet"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How shifting magnification to the final layer unlocked real-time AI video super-resolution"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/1609.05158",
+   "arxiv_id": "1609.05158"
+  },
+  {
+   "id": "paper-unet-redesigning-skip-connections-to-exploit-multiscale-feat",
+   "slug": "unet-redesigning-skip-connections-to-exploit-multiscale-feat",
+   "title_working": "Fixing U-Net's Empty Middle",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "deep-learning",
+   "order": 13,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-unet",
+    "paper-resnet"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How nested skip pathways and deep supervision made medical segmentation sharper and faster"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/1912.05074",
+   "arxiv_id": "1912.05074"
+  },
+  {
+   "id": "paper-layer-normalization",
+   "slug": "layer-normalization",
+   "title_working": "Layer Normalization",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "deep-learning",
+   "order": 15,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-batch-normalization"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/1607.06450",
+   "arxiv_id": "1607.06450",
+   "brief": {
+    "key_points": [
+     "Normalize across features of one example, not across the batch",
+     "Why it suits RNNs and transformers where batch statistics are awkward",
+     "Gain and bias parameters restore expressiveness"
+    ],
+    "analogy": "Grading each student against their own average instead of the class average",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Do not claim it was invented for transformers; it predates them"
+    ],
+    "exact_facts": [
+     "Ba, Kiros, Hinton, 2016"
+    ]
+   }
+  },
+  {
+   "id": "paper-knowledge-distillation",
+   "slug": "knowledge-distillation",
+   "title_working": "Distilling the Knowledge in a Neural Network",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "deep-learning",
+   "order": 16,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-dropout"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/1503.02531",
+   "arxiv_id": "1503.02531",
+   "brief": {
+    "key_points": [
+     "Soft targets carry dark knowledge about class similarity",
+     "Temperature in the softmax softens probabilities",
+     "Small student trained to match a large teacher"
+    ],
+    "analogy": "An apprentice learning from a master's hesitations, not just final answers",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Do not invent compression ratios"
+    ],
+    "exact_facts": [
+     "Hinton, Vinyals, Dean, 2015"
+    ]
+   }
+  },
+  {
+   "id": "paper-vgg",
+   "slug": "vgg",
+   "title_working": "Very Deep Convolutional Networks for Large-Scale Image Recognition",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "deep-learning",
+   "order": 17,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-alexnet"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/1409.1556",
+   "arxiv_id": "1409.1556",
+   "brief": {
+    "key_points": [
+     "Stacks of small 3x3 convolutions",
+     "Depth matters",
+     "Simple uniform design used as a backbone for years"
+    ],
+    "analogy": "Building a tall tower from identical small bricks",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Do not invent error rates"
+    ],
+    "exact_facts": [
+     "Simonyan, Zisserman, 2014"
+    ]
+   }
+  },
+  {
+   "id": "paper-faster-r-cnn",
+   "slug": "faster-r-cnn",
+   "title_working": "Faster R-CNN: Towards Real-Time Object Detection",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "deep-learning",
+   "order": 18,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-alexnet"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/1506.01497",
+   "arxiv_id": "1506.01497",
+   "brief": {
+    "key_points": [
+     "Region proposal network shares features with the detector",
+     "Anchors at multiple scales",
+     "Two-stage detection"
+    ],
+    "analogy": "A scout marking spots worth checking before the expert looks closely",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Keep speed claims qualitative unless sure"
+    ],
+    "exact_facts": [
+     "Ren, He, Girshick, Sun, 2015"
+    ]
+   }
+  },
+  {
+   "id": "paper-yolo",
+   "slug": "yolo",
+   "title_working": "You Only Look Once: Unified, Real-Time Object Detection",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "deep-learning",
+   "order": 19,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-alexnet"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/1506.02640",
+   "arxiv_id": "1506.02640",
+   "brief": {
+    "key_points": [
+     "Detection as a single regression over a grid",
+     "Real-time speed",
+     "Trade-offs with small objects"
+    ],
+    "analogy": "Glancing at a room once and naming everything in it",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Do not mix later YOLO versions into this paper"
+    ],
+    "exact_facts": [
+     "Redmon et al., 2015 (CVPR 2016)"
+    ]
+   }
+  },
+  {
+   "id": "paper-segment-anything",
+   "slug": "segment-anything",
+   "title_working": "Segment Anything",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "deep-learning",
+   "order": 20,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-vit"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/2304.02643",
+   "arxiv_id": "2304.02643",
+   "brief": {
+    "key_points": [
+     "Promptable segmentation with points, boxes, text",
+     "Huge dataset built with a data engine",
+     "Image encoder plus light mask decoder"
+    ],
+    "analogy": "A magic scissors that cuts out whatever you point at",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Do not overstate text prompting"
+    ],
+    "exact_facts": [
+     "Kirillov et al., 2023"
+    ]
+   }
+  },
+  {
+   "id": "paper-turing-test",
+   "slug": "turing-test",
+   "title_working": "Can Machines Think? Turing's Brilliant Dodge",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "foundations",
+   "order": 1,
+   "priority": "P2",
+   "prerequisites": [
+    "primer-ai-ml-dl-map"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "How a 1950 thought experiment replaced an unanswerable question with a game, and predicted learning machines"
+    ]
+   },
+   "paper_url": "https://doi.org/10.1093/mind/LIX.236.433"
+  },
+  {
+   "id": "paper-perceptron",
+   "slug": "perceptron",
+   "title_working": "The Machine That Learned From Its Mistakes",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "foundations",
+   "order": 2,
+   "priority": "P2",
+   "prerequisites": [
+    "primer-classification",
+    "primer-neural-networks"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Rosenblatt's perceptron: the 1958 invention that started neural networks, and the hype that nearly ended them"
+    ]
+   },
+   "paper_url": "https://doi.org/10.1037/h0042519"
+  },
+  {
+   "id": "paper-backpropagation",
+   "slug": "backpropagation",
+   "title_working": "Four Pages That Woke Up Neural Networks",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "foundations",
+   "order": 3,
+   "priority": "P1",
+   "prerequisites": [
+    "primer-backprop-intuition",
+    "paper-perceptron"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "How backpropagation taught hidden layers to invent their own features, and ended the perceptron's long winter"
+    ]
+   },
+   "paper_url": "https://doi.org/10.1038/323533a0"
+  },
+  {
+   "id": "paper-support-vector-networks",
+   "slug": "support-vector-networks",
+   "title_working": "Draw the Widest Road Between Two Crowds",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "foundations",
+   "order": 4,
+   "priority": "P2",
+   "prerequisites": [
+    "primer-classification",
+    "primer-overfitting"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Support vector machines: the margin idea that dominated machine learning before deep learning took over"
+    ]
+   },
+   "paper_url": "https://doi.org/10.1007/BF00994018"
+  },
+  {
+   "id": "paper-random-forests",
+   "slug": "random-forests",
+   "title_working": "Why a Crowd of Bad Guessers Beats an Expert",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "foundations",
+   "order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "primer-overfitting"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Breiman's random forests: deliberately weakened decision trees that vote their way to excellent predictions"
+    ]
+   },
+   "paper_url": "https://doi.org/10.1023/A:1010933404324"
+  },
+  {
+   "id": "paper-few-useful-things",
+   "slug": "few-useful-things",
+   "title_working": "The Folk Wisdom Textbooks Forgot to Teach",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "foundations",
+   "order": 6,
+   "priority": "P2",
+   "prerequisites": [
+    "primer-overfitting"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Pedro Domingos' twelve hard-won lessons about what actually makes machine learning work"
+    ]
+   },
+   "paper_url": "https://doi.org/10.1145/2347736.2347755"
+  },
+  {
+   "id": "paper-thumbs-up-sentiment-classification-using-machine-learning-te",
+   "slug": "thumbs-up-sentiment-classification-using-machine-learning-te",
+   "title_working": "Thumbs Up? How Machines Learned to Read Reviews",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "foundations",
+   "order": 7,
+   "priority": "P2",
+   "prerequisites": [
+    "primer-classification",
+    "paper-support-vector-networks",
+    "primer-data-features-labels"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "Why human word lists failed and simple statistics conquered sentiment analysis"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/cs/0205070"
+  },
+  {
+   "id": "paper-stop-explaining-black-box-machine-learning-models-for-high-s",
+   "slug": "stop-explaining-black-box-machine-learning-models-for-high-s",
+   "title_working": "Why Explaining Black Boxes Fails",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "foundations",
+   "order": 8,
+   "priority": "P2",
+   "prerequisites": [
+    "primer-classification",
+    "primer-data-features-labels",
+    "paper-random-forests"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How inherently transparent models beat opaque algorithms at high stakes"
+    ]
+   },
+   "paper_url": "https://arxiv.org/pdf/1811.10154"
+  },
+  {
+   "id": "paper-vae",
+   "slug": "vae",
+   "title_working": "Teaching an Autoencoder to Dream",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "generative",
+   "order": 1,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-deep-autoencoders"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Variational autoencoders: fuzzy codes, a smooth map of possibilities, and one clever trick that made it trainable"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/1312.6114",
+   "arxiv_id": "1312.6114"
+  },
+  {
+   "id": "paper-gan",
+   "slug": "gan",
+   "title_working": "The Counterfeiter and the Detective",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "generative",
+   "order": 2,
+   "priority": "P2",
+   "prerequisites": [
+    "primer-neural-networks"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Generative adversarial nets: two networks locked in a game, and an idea sketched in a Montreal bar that learned to fake reality"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/1406.2661",
+   "arxiv_id": "1406.2661"
+  },
+  {
+   "id": "paper-ddpm",
+   "slug": "ddpm",
+   "title_working": "Creating Images by Removing Noise",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "generative",
+   "order": 3,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-vae"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Denoising diffusion: destroy a picture with static, step by step, then train a network to run the film backwards"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2006.11239",
+   "arxiv_id": "2006.11239"
+  },
+  {
+   "id": "paper-latent-diffusion",
+   "slug": "latent-diffusion",
+   "title_working": "Diffusion in a Smaller World",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "generative",
+   "order": 4,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-ddpm",
+    "paper-unet"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Latent diffusion: compress the image first, dream in the compressed space, and suddenly anyone can generate art on a gaming PC"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2112.10752",
+   "arxiv_id": "2112.10752"
+  },
+  {
+   "id": "paper-high-resolution-image-synthesis-and-semantic-manipulation-wi",
+   "slug": "high-resolution-image-synthesis-and-semantic-manipulation-wi",
+   "title_working": "Megapixel Realism: How Pix2PixHD Scaled Conditional GANs",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "generative",
+   "order": 5,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-gan",
+    "paper-resnet",
+    "paper-unet"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "Turning rough label maps into crisp, editable 2K photographs"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/1711.11585",
+   "arxiv_id": "1711.11585"
+  },
+  {
+   "id": "paper-denoising-diffusion-implicit-models",
+   "slug": "denoising-diffusion-implicit-models",
+   "title_working": "Skipping Steps: How DDIM Accelerated Diffusion",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "generative",
+   "order": 6,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-ddpm",
+    "paper-gan",
+    "paper-vae"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How one clever derivation turned a slow 1,000-step random walk into a fast, deterministic slide"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2010.02502",
+   "arxiv_id": "2010.02502"
+  },
+  {
+   "id": "paper-taming-transformers-for-high-resolution-image-synthesis",
+   "slug": "taming-transformers-for-high-resolution-image-synthesis",
+   "title_working": "Taming Transformers for Megapixel Images",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "generative",
+   "order": 7,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-attention-is-all-you-need",
+    "paper-gan",
+    "paper-vae"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How visual codebooks let attention scale from tiny patches to high resolution"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2012.09841",
+   "arxiv_id": "2012.09841"
+  },
+  {
+   "id": "paper-improved-denoising-diffusion-probabilistic-models",
+   "slug": "improved-denoising-diffusion-probabilistic-models",
+   "title_working": "Teaching Diffusion Models to Walk in Big Strides",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "generative",
+   "order": 8,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-ddpm",
+    "paper-vae",
+    "paper-denoising-diffusion-implicit-models"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How learning variance and smoothing noise cut sampling time by ten"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2102.09672",
+   "arxiv_id": "2102.09672"
+  },
+  {
+   "id": "paper-elucidating-the-design-space-of-diffusion-based-generative-m",
+   "slug": "elucidating-the-design-space-of-diffusion-based-generative-m",
+   "title_working": "Unbolting Diffusion: How EDM Tamed the Noise Equation",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "generative",
+   "order": 9,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-ddpm",
+    "paper-denoising-diffusion-implicit-models",
+    "paper-improved-denoising-diffusion-probabilistic-models"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "Turning monolithic diffusion equations into clean, modular building blocks"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2206.00364",
+   "arxiv_id": "2206.00364"
+  },
+  {
+   "id": "paper-classifier-free-guidance",
+   "slug": "classifier-free-guidance",
+   "title_working": "Classifier-Free Diffusion Guidance",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "generative",
+   "order": 10,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-ddpm"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/2207.12598",
+   "arxiv_id": "2207.12598",
+   "brief": {
+    "key_points": [
+     "Train one model with and without the condition by dropping it at random",
+     "At sampling, push away from unconditional toward conditional prediction",
+     "Guidance scale trades diversity for fidelity"
+    ],
+    "analogy": "Turning up the contrast between what you asked for and what you would get anyway",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Do not say it needs a separate classifier"
+    ],
+    "exact_facts": [
+     "Ho, Salimans, 2022"
+    ]
+   }
+  },
+  {
+   "id": "paper-dcgan",
+   "slug": "dcgan",
+   "title_working": "Unsupervised Representation Learning with Deep Convolutional GANs",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "generative",
+   "order": 11,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-gan"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/1511.06434",
+   "arxiv_id": "1511.06434",
+   "brief": {
+    "key_points": [
+     "Architecture guidelines that made GANs train stably",
+     "Strided convolutions, batch norm, no pooling",
+     "Latent space arithmetic"
+    ],
+    "analogy": "A recipe card that finally made the temperamental dish reliable",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Do not overstate stability"
+    ],
+    "exact_facts": [
+     "Radford, Metz, Chintala, 2015"
+    ]
+   }
+  },
+  {
+   "id": "paper-cyclegan",
+   "slug": "cyclegan",
+   "title_working": "Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "generative",
+   "order": 12,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-gan"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/1703.10593",
+   "arxiv_id": "1703.10593",
+   "brief": {
+    "key_points": [
+     "Translate between domains without paired examples",
+     "Cycle consistency loss",
+     "Horses to zebras, summer to winter"
+    ],
+    "analogy": "Translating to French and back should give your original sentence",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Explain failure cases honestly"
+    ],
+    "exact_facts": [
+     "Zhu, Park, Isola, Efros, 2017"
+    ]
+   }
+  },
+  {
+   "id": "paper-stylegan",
+   "slug": "stylegan",
+   "title_working": "A Style-Based Generator Architecture for GANs",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "generative",
+   "order": 13,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-gan",
+    "paper-dcgan"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/1812.04948",
+   "arxiv_id": "1812.04948",
+   "brief": {
+    "key_points": [
+     "Mapping network to an intermediate latent space",
+     "Style injected at each resolution",
+     "Fine control over coarse and fine features"
+    ],
+    "analogy": "A mixing desk with separate sliders for pose, face and freckles",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Do not claim it is a diffusion model"
+    ],
+    "exact_facts": [
+     "Karras, Laine, Aila, 2018"
+    ]
+   }
+  },
+  {
+   "id": "paper-wavenet",
+   "slug": "wavenet",
+   "title_working": "WaveNet: A Generative Model for Raw Audio",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "generative",
+   "order": 14,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-lstm"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/1609.03499",
+   "arxiv_id": "1609.03499",
+   "brief": {
+    "key_points": [
+     "Generate audio one sample at a time",
+     "Dilated causal convolutions",
+     "Big jump in speech naturalness"
+    ],
+    "analogy": "A drummer who listens to an ever wider window of the past",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Do not invent listening-test scores"
+    ],
+    "exact_facts": [
+     "van den Oord et al., 2016"
+    ]
+   }
+  },
+  {
+   "id": "paper-dqn",
+   "slug": "dqn",
+   "title_working": "One Program, Forty-Nine Atari Games",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "reinforcement",
+   "order": 1,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-alexnet"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Deep Q-networks: how an agent learned to play from raw pixels and a score, with no rules and no human tips"
+    ]
+   },
+   "paper_url": "https://doi.org/10.1038/nature14236"
+  },
+  {
+   "id": "paper-alphago",
+   "slug": "alphago",
+   "title_working": "The Machine That Mastered Go a Decade Early",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "reinforcement",
+   "order": 2,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-dqn"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "AlphaGo: neural intuition plus careful search cracked the game experts thought computers could not win"
+    ]
+   },
+   "paper_url": "https://doi.org/10.1038/nature16961"
+  },
+  {
+   "id": "paper-ppo",
+   "slug": "ppo",
+   "title_working": "Learn Fast, But Not Too Fast",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "reinforcement",
+   "order": 3,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-dqn"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Proximal Policy Optimization: the simple, sturdy algorithm behind game-playing bots, robot hands and ChatGPT's fine-tuning"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/1707.06347",
+   "arxiv_id": "1707.06347"
+  },
+  {
+   "id": "paper-alphazero",
+   "slug": "alphazero",
+   "title_working": "Mastering Chess and Shogi by Self-Play with a General RL Algorithm",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "reinforcement",
+   "order": 4,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-alphago"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/1712.01815",
+   "arxiv_id": "1712.01815",
+   "brief": {
+    "key_points": [
+     "No human games, only self-play",
+     "One algorithm for chess, shogi and Go",
+     "Network plus Monte Carlo tree search"
+    ],
+    "analogy": "A player who learns only by playing themselves, millions of times",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Avoid disputed match conditions"
+    ],
+    "exact_facts": [
+     "Silver et al., 2017"
+    ]
+   }
+  },
+  {
+   "id": "paper-muzero",
+   "slug": "muzero",
+   "title_working": "Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "reinforcement",
+   "order": 5,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-alphazero",
+    "paper-dqn"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/1911.08265",
+   "arxiv_id": "1911.08265",
+   "brief": {
+    "key_points": [
+     "Learns its own model of the environment",
+     "Plans in a learned latent space",
+     "Works without knowing the rules"
+    ],
+    "analogy": "Planning moves in a game whose rulebook you had to guess",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Explain what the learned model predicts"
+    ],
+    "exact_facts": [
+     "Schrittwieser et al., 2019"
+    ]
+   }
+  },
+  {
+   "id": "paper-lstm",
+   "slug": "lstm",
+   "title_working": "Teaching Networks to Remember for a Long Time",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "sequences-language",
+   "order": 1,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-backpropagation"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "LSTM: gates, a protected memory lane, and the 1997 design that powered speech recognition and translation for two decades"
+    ]
+   },
+   "paper_url": "https://doi.org/10.1162/neco.1997.9.8.1735"
+  },
+  {
+   "id": "paper-word2vec",
+   "slug": "word2vec",
+   "title_working": "King Minus Man Plus Woman Equals Queen",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "sequences-language",
+   "order": 2,
+   "priority": "P1",
+   "prerequisites": [
+    "primer-embeddings"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "word2vec: a deliberately simple model, a billion words of news, and word vectors that captured meaning as geometry"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/1301.3781",
+   "arxiv_id": "1301.3781"
+  },
+  {
+   "id": "paper-seq2seq",
+   "slug": "seq2seq",
+   "title_working": "Read the Whole Sentence, Then Write the Translation",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "sequences-language",
+   "order": 3,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-lstm",
+    "paper-word2vec"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Sequence to sequence learning: two LSTMs, one thought vector, and the first neural translator to beat the old guard"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/1409.3215",
+   "arxiv_id": "1409.3215"
+  },
+  {
+   "id": "paper-bahdanau-attention",
+   "slug": "bahdanau-attention",
+   "title_working": "The First Time a Network Learned Where to Look",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "sequences-language",
+   "order": 4,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-seq2seq"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Bahdanau attention: letting a translator glance back at the source sentence, and the birth of the most important idea in modern AI"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/1409.0473",
+   "arxiv_id": "1409.0473"
+  },
+  {
+   "id": "paper-distributed-representations-of-words-and-phrases-and-their-c",
+   "slug": "distributed-representations-of-words-and-phrases-and-their-c",
+   "title_working": "How Word2Vec Skipped the Softmax Bottleneck",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "sequences-language",
+   "order": 5,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-word2vec"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "Negative sampling, phrase learning, and the surprising math of word addition"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/1310.4546",
+   "arxiv_id": "1310.4546"
+  },
+  {
+   "id": "paper-learning-phrase-representations-using-rnn-encoder-decoder-fo",
+   "slug": "learning-phrase-representations-using-rnn-encoder-decoder-fo",
+   "title_working": "Compress, Then Translate: The First Encoder-Decoder",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "sequences-language",
+   "order": 6,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-lstm",
+    "paper-word2vec"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How two recurrent networks teamed up to rewrite machine translation"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/1406.1078",
+   "arxiv_id": "1406.1078"
+  },
+  {
+   "id": "paper-enriching-word-vectors-with-subword-information",
+   "slug": "enriching-word-vectors-with-subword-information",
+   "title_working": "Inside Words: How FastText Mastered Morphology",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "sequences-language",
+   "order": 7,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-word2vec",
+    "paper-distributed-representations-of-words-and-phrases-and-their-c",
+    "primer-embeddings"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How breaking words into character pieces gave machines a cure for vocabulary blindness"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/1607.04606",
+   "arxiv_id": "1607.04606"
+  },
+  {
+   "id": "paper-bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro",
+   "slug": "bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro",
+   "title_working": "The End of Bag-of-Words Topic Modeling",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "sequences-language",
+   "order": 8,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-bert",
+    "primer-embeddings"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How BERTopic united deep transformers with classical statistics"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2203.05794",
+   "arxiv_id": "2203.05794"
+  },
+  {
+   "id": "primer-ai-ml-dl-map",
+   "slug": "ai-ml-dl-map",
+   "title_working": "AI, ML, and Deep Learning: The Map You Wish You Had",
+   "subject": "ml",
+   "kind": "primer",
+   "track": "start-here",
+   "order": 1,
+   "priority": "P1",
+   "prerequisites": [],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Three buzzwords, one simple picture, and why the difference actually matters"
+    ]
+   }
+  },
+  {
+   "id": "primer-data-features-labels",
+   "slug": "data-features-labels",
+   "title_working": "What Machines Actually Learn From",
+   "subject": "ml",
+   "kind": "primer",
+   "track": "start-here",
+   "order": 2,
+   "priority": "P1",
+   "prerequisites": [
+    "primer-ai-ml-dl-map"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Data, features and labels: the raw ingredients behind every AI system you will ever meet"
+    ]
+   }
+  },
+  {
+   "id": "primer-loss-functions",
+   "slug": "loss-functions",
+   "title_working": "How Wrong Is the Model?",
+   "subject": "ml",
+   "kind": "primer",
+   "track": "start-here",
+   "order": 3,
+   "priority": "P1",
+   "prerequisites": [
+    "primer-data-features-labels"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "The single number every AI system is secretly trying to shrink"
+    ]
+   }
+  },
+  {
+   "id": "primer-gradient-descent",
+   "slug": "gradient-descent",
+   "title_working": "Finding the Bottom of a Valley Blindfolded",
+   "subject": "ml",
+   "kind": "primer",
+   "track": "start-here",
+   "order": 4,
+   "priority": "P1",
+   "prerequisites": [
+    "primer-loss-functions"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Gradient descent: the humble walking algorithm that trains almost every AI model"
+    ]
+   }
+  },
+  {
+   "id": "primer-classification",
+   "slug": "classification",
+   "title_working": "Yes or No? How Machines Make Decisions",
+   "subject": "ml",
+   "kind": "primer",
+   "track": "start-here",
+   "order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "primer-gradient-descent"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Logistic regression: a weighted vote, a smooth squash, and the first real classifier you can build by hand"
+    ]
+   }
+  },
+  {
+   "id": "primer-overfitting",
+   "slug": "overfitting",
+   "title_working": "Memorizing vs Learning",
+   "subject": "ml",
+   "kind": "primer",
+   "track": "start-here",
+   "order": 6,
+   "priority": "P1",
+   "prerequisites": [
+    "primer-classification"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Overfitting, underfitting and test sets: how to tell if a model actually understands anything"
+    ]
+   }
+  },
+  {
+   "id": "primer-neural-networks",
+   "slug": "neural-networks",
+   "title_working": "Neural Networks from One Neuron Up",
+   "subject": "ml",
+   "kind": "primer",
+   "track": "start-here",
+   "order": 7,
+   "priority": "P1",
+   "prerequisites": [
+    "primer-classification"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "How stacking thousands of tiny calculators produces something that can see, read and talk"
+    ]
+   }
+  },
+  {
+   "id": "primer-backprop-intuition",
+   "slug": "backprop-intuition",
+   "title_working": "Backpropagation Without the Scary Math",
+   "subject": "ml",
+   "kind": "primer",
+   "track": "start-here",
+   "order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "primer-neural-networks",
+    "primer-gradient-descent"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "How a network figures out which of its million knobs to blame for a mistake"
+    ]
+   }
+  },
+  {
+   "id": "primer-embeddings",
+   "slug": "embeddings",
+   "title_working": "How Words Become Numbers With Meaning",
+   "subject": "ml",
+   "kind": "primer",
+   "track": "start-here",
+   "order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "primer-neural-networks"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Embeddings: the map of meaning hiding inside every search engine, recommender and chatbot"
+    ]
+   }
+  },
+  {
+   "id": "primer-how-to-read-papers",
+   "slug": "how-to-read-papers",
+   "title_working": "How to Read a Research Paper Without Falling Asleep",
+   "subject": "ml",
+   "kind": "primer",
+   "track": "start-here",
+   "order": 10,
+   "priority": "P2",
+   "prerequisites": [
+    "primer-ai-ml-dl-map"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "The three-pass method researchers actually use, and the five questions that unlock any paper"
+    ]
+   }
+  },
+  {
+   "id": "paper-attention-is-all-you-need",
+   "slug": "attention-is-all-you-need",
+   "title_working": "The Paper That Taught Machines Where to Look",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 1,
+   "priority": "P1",
+   "prerequisites": [
+    "primer-embeddings",
+    "paper-bahdanau-attention"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "How one simple idea replaced decades of sequence models and gave us ChatGPT"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/1706.03762",
+   "arxiv_id": "1706.03762"
+  },
+  {
+   "id": "paper-gpt-1",
+   "slug": "gpt-1",
+   "title_working": "Read Seven Thousand Books, Then Take Any Test",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 2,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-attention-is-all-you-need"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "GPT-1: the quiet 2018 report that introduced generative pre-training, the recipe behind every chatbot since"
+    ]
+   },
+   "paper_url": "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf"
+  },
+  {
+   "id": "paper-bert",
+   "slug": "bert",
+   "title_working": "Fill in the Blanks, Understand Everything",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 3,
+   "priority": "P1",
+   "prerequisites": [
+    "paper-attention-is-all-you-need"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "BERT: reading in both directions with a fill-in-the-blank game, and the model that changed Google Search"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/1810.04805",
+   "arxiv_id": "1810.04805"
+  },
+  {
+   "id": "paper-gpt-3",
+   "slug": "gpt-3",
+   "title_working": "Just Show It a Few Examples",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 4,
+   "priority": "P1",
+   "prerequisites": [
+    "paper-gpt-1"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "GPT-3: 175 billion parameters, no fine-tuning, and the surprise that a model could learn new tasks from its prompt"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2005.14165",
+   "arxiv_id": "2005.14165"
+  },
+  {
+   "id": "paper-scaling-laws",
+   "slug": "scaling-laws",
+   "title_working": "The Straight Lines That Launched a Race",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 5,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-gpt-3"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Scaling laws: how language model quality improves predictably with size, data and compute, and why that changed AI strategy"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2001.08361",
+   "arxiv_id": "2001.08361"
+  },
+  {
+   "id": "paper-chinchilla",
+   "slug": "chinchilla",
+   "title_working": "The Giant Models Were Underfed",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 6,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-scaling-laws"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Chinchilla: a smaller model trained on four times more data beat models up to seven times its size"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2203.15556",
+   "arxiv_id": "2203.15556"
+  },
+  {
+   "id": "paper-vit",
+   "slug": "vit",
+   "title_working": "What If an Image Is Just a Sentence of Patches?",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 7,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-attention-is-all-you-need",
+    "paper-resnet"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "The Vision Transformer: chop a picture into squares, read them like words, and match the best convolutional networks"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2010.11929",
+   "arxiv_id": "2010.11929"
+  },
+  {
+   "id": "paper-clip",
+   "slug": "clip",
+   "title_working": "Teaching Vision With the Internet's Captions",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 8,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-vit",
+    "paper-word2vec"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "CLIP: 400 million image-text pairs, one shared space for pictures and words, and classifiers you create by typing"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2103.00020",
+   "arxiv_id": "2103.00020"
+  },
+  {
+   "id": "paper-training-data-efficient-image-transformers-distillation-thro",
+   "slug": "training-data-efficient-image-transformers-distillation-thro",
+   "title_working": "Teaching Vision Transformers With Less Data",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 9,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-vit",
+    "paper-attention-is-all-you-need",
+    "paper-resnet"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How a distillation token and smart augmentations freed ViT from massive datasets"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2012.12877",
+   "arxiv_id": "2012.12877"
+  },
+  {
+   "id": "paper-swin-transformer-hierarchical-vision-transformer-using-shift",
+   "slug": "swin-transformer-hierarchical-vision-transformer-using-shift",
+   "title_working": "Shift the Window, Scale the Vision",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 10,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-attention-is-all-you-need",
+    "paper-resnet",
+    "paper-vit"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How hierarchical shifted windows let Transformers conquer high-resolution images"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2103.14030",
+   "arxiv_id": "2103.14030"
+  },
+  {
+   "id": "paper-blip-bootstrapping-language-image-pre-training-for-unified-v",
+   "slug": "blip-bootstrapping-language-image-pre-training-for-unified-v",
+   "title_working": "Teaching One Model to See, Read, and Write",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 11,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-vit",
+    "paper-clip",
+    "paper-bert"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How bootstrapping synthetic captions fixed the web's messy vision data"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2201.12086",
+   "arxiv_id": "2201.12086"
+  },
+  {
+   "id": "paper-opt-open-pre-trained-transformer-language-models",
+   "slug": "opt-open-pre-trained-transformer-language-models",
+   "title_working": "The Engineering Diary of Training OPT-175B",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 12,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-gpt-3",
+    "paper-megatron-lm",
+    "paper-scaling-laws"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How Meta cloned GPT-3, released its weights, and documented every crash"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2205.01068",
+   "arxiv_id": "2205.01068"
+  },
+  {
+   "id": "paper-a-survey-of-large-language-models",
+   "slug": "a-survey-of-large-language-models",
+   "title_working": "The Four Pillars of the LLM Revolution",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 13,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-scaling-laws",
+    "paper-gpt-3",
+    "paper-instructgpt"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How researchers mapped the hidden mechanics of modern language models"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2303.18223",
+   "arxiv_id": "2303.18223"
+  },
+  {
+   "id": "paper-blip-2-bootstrapping-language-image-pre-training-with-frozen",
+   "slug": "blip-2-bootstrapping-language-image-pre-training-with-frozen",
+   "title_working": "Teaching Blind LLMs to See Without Retraining Them",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 14,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-clip",
+    "paper-vit",
+    "paper-bert"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How 32 queries bridged vision and language on a shoestring compute budget"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2301.12597",
+   "arxiv_id": "2301.12597"
+  },
+  {
+   "id": "paper-minigpt-4-enhancing-vision-language-understanding-with-advan",
+   "slug": "minigpt-4-enhancing-vision-language-understanding-with-advan",
+   "title_working": "Bridging Sight and Speech with One Linear Layer",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 15,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-blip-2-bootstrapping-language-image-pre-training-with-frozen",
+    "paper-llama",
+    "paper-clip"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How freezing a giant language model unlocked multimodal AI in ten hours"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2304.10592",
+   "arxiv_id": "2304.10592"
+  },
+  {
+   "id": "paper-t5",
+   "slug": "t5",
+   "title_working": "T5: Exploring the Limits of Transfer Learning",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 16,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-bert"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/1910.10683",
+   "arxiv_id": "1910.10683",
+   "brief": {
+    "key_points": [
+     "Every NLP task as text-to-text",
+     "Large systematic study of pretraining choices",
+     "C4 dataset and span corruption objective"
+    ],
+    "analogy": "A universal adapter: every plug becomes the same shape",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Do not invent benchmark numbers"
+    ],
+    "exact_facts": [
+     "Raffel et al., 2019 (JMLR 2020)"
+    ]
+   }
+  },
+  {
+   "id": "paper-roberta",
+   "slug": "roberta",
+   "title_working": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 17,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-bert"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/1907.11692",
+   "arxiv_id": "1907.11692",
+   "brief": {
+    "key_points": [
+     "BERT was undertrained",
+     "More data, longer training, bigger batches, dynamic masking",
+     "Dropped next sentence prediction"
+    ],
+    "analogy": "Same recipe, cooked properly",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "It is a training study, not a new architecture"
+    ],
+    "exact_facts": [
+     "Liu et al., 2019"
+    ]
+   }
+  },
+  {
+   "id": "paper-mixture-of-experts",
+   "slug": "mixture-of-experts",
+   "title_working": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 18,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-lstm"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/1701.06538",
+   "arxiv_id": "1701.06538",
+   "brief": {
+    "key_points": [
+     "A gate routes each input to a few experts",
+     "Parameters grow without compute growing as much",
+     "Load balancing loss keeps experts busy"
+    ],
+    "analogy": "A hospital triage desk sending each patient to two specialists",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Do not claim modern LLM details for this 2017 paper"
+    ],
+    "exact_facts": [
+     "Shazeer et al., 2017"
+    ]
+   }
+  },
+  {
+   "id": "paper-switch-transformers",
+   "slug": "switch-transformers",
+   "title_working": "Switch Transformers",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 19,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-mixture-of-experts",
+    "paper-attention-is-all-you-need"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/2101.03961",
+   "arxiv_id": "2101.03961",
+   "brief": {
+    "key_points": [
+     "Route each token to exactly one expert",
+     "Simpler and more stable than top-2 routing",
+     "Capacity factor and token dropping"
+    ],
+    "analogy": "One specialist per patient instead of a committee",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Do not overstate stability claims"
+    ],
+    "exact_facts": [
+     "Fedus, Zoph, Shazeer, 2021"
+    ]
+   }
+  },
+  {
+   "id": "paper-mamba",
+   "slug": "mamba",
+   "title_working": "Mamba: Linear-Time Sequence Modeling with Selective State Spaces",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 20,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-attention-is-all-you-need",
+    "paper-lstm"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/2312.00752",
+   "arxiv_id": "2312.00752",
+   "brief": {
+    "key_points": [
+     "State space models with input-dependent (selective) parameters",
+     "Linear time in sequence length",
+     "Hardware-aware parallel scan"
+    ],
+    "analogy": "A notebook that decides what to write down based on what it reads",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Do not claim it replaced transformers"
+    ],
+    "exact_facts": [
+     "Gu, Dao, 2023"
+    ]
+   }
+  },
+  {
+   "id": "paper-transformer-xl",
+   "slug": "transformer-xl",
+   "title_working": "Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 21,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-attention-is-all-you-need"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/1901.02860",
+   "arxiv_id": "1901.02860",
+   "brief": {
+    "key_points": [
+     "Segment-level recurrence reuses past hidden states",
+     "Relative positional encodings",
+     "Longer effective context"
+    ],
+    "analogy": "Keeping the last chapter's notes open while reading the next",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Do not confuse with XLNet"
+    ],
+    "exact_facts": [
+     "Dai et al., 2019"
+    ]
+   }
+  },
+  {
+   "id": "paper-longformer",
+   "slug": "longformer",
+   "title_working": "Longformer: The Long-Document Transformer",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 22,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-attention-is-all-you-need",
+    "paper-bert"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/2004.05150",
+   "arxiv_id": "2004.05150",
+   "brief": {
+    "key_points": [
+     "Sliding window plus global attention",
+     "Linear scaling with length",
+     "Long document tasks"
+    ],
+    "analogy": "Reading with a ruler under the line plus a few bookmarked key pages",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Keep complexity claims exact"
+    ],
+    "exact_facts": [
+     "Beltagy, Peters, Cohan, 2020"
+    ]
+   }
+  },
+  {
+   "id": "paper-flamingo",
+   "slug": "flamingo",
+   "title_working": "Flamingo: a Visual Language Model for Few-Shot Learning",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 23,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-clip",
+    "paper-gpt-3"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/2204.14198",
+   "arxiv_id": "2204.14198",
+   "brief": {
+    "key_points": [
+     "Frozen vision encoder and frozen language model bridged by new layers",
+     "Interleaved images and text",
+     "Few-shot multimodal prompting"
+    ],
+    "analogy": "Adding a translator between two experts who never learned each other's language",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Do not invent scores"
+    ],
+    "exact_facts": [
+     "Alayrac et al., 2022"
+    ]
+   }
+  },
+  {
+   "id": "paper-whisper",
+   "slug": "whisper",
+   "title_working": "Robust Speech Recognition via Large-Scale Weak Supervision",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "transformers-llms",
+   "order": 24,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-attention-is-all-you-need"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/2212.04356",
+   "arxiv_id": "2212.04356",
+   "brief": {
+    "key_points": [
+     "Encoder-decoder trained on a large amount of weakly labelled audio",
+     "Multitask: transcription, translation, language ID",
+     "Robust zero-shot transfer"
+    ],
+    "analogy": "Learning a language from thousands of subtitled films rather than a textbook",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Quote hours of audio only if certain"
+    ],
+    "exact_facts": [
+     "Radford et al., 2022"
+    ]
+   }
+  },
+  {
+   "id": "paper-instructgpt",
+   "slug": "instructgpt",
+   "title_working": "How a Text Predictor Learned to Be Helpful",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "useful-llms",
+   "order": 1,
+   "priority": "P1",
+   "prerequisites": [
+    "paper-gpt-3",
+    "paper-ppo"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "InstructGPT: human demonstrations, human rankings and reinforcement learning, the recipe that became ChatGPT"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2203.02155",
+   "arxiv_id": "2203.02155"
+  },
+  {
+   "id": "paper-chain-of-thought",
+   "slug": "chain-of-thought",
+   "title_working": "Show Your Working: The Prompt That Unlocked Reasoning",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "useful-llms",
+   "order": 2,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-gpt-3"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Chain-of-thought prompting: a few worked examples with steps made giant language models dramatically better at maths and logic"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2201.11903",
+   "arxiv_id": "2201.11903"
+  },
+  {
+   "id": "paper-rag",
+   "slug": "rag",
+   "title_working": "Let the Model Look Things Up",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "useful-llms",
+   "order": 3,
+   "priority": "P1",
+   "prerequisites": [
+    "paper-bert",
+    "paper-seq2seq"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Retrieval-augmented generation: pairing a language model with a searchable library so it can cite facts instead of guessing"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2005.11401",
+   "arxiv_id": "2005.11401"
+  },
+  {
+   "id": "paper-lora",
+   "slug": "lora",
+   "title_working": "Fine-Tune a Giant by Training a Tiny Add-On",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "useful-llms",
+   "order": 4,
+   "priority": "P1",
+   "prerequisites": [
+    "paper-gpt-3"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "LoRA: freeze the huge model, learn two skinny matrices, and cut trainable parameters by up to ten thousand times"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2106.09685",
+   "arxiv_id": "2106.09685"
+  },
+  {
+   "id": "paper-dpo",
+   "slug": "dpo",
+   "title_working": "Your Language Model Was the Reward Model All Along",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "useful-llms",
+   "order": 5,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-instructgpt"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Direct Preference Optimization: aligning models with human preferences using one simple loss, no reinforcement learning required"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2305.18290",
+   "arxiv_id": "2305.18290"
+  },
+  {
+   "id": "paper-llama",
+   "slug": "llama",
+   "title_working": "Small Enough to Share, Strong Enough to Matter",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "useful-llms",
+   "order": 6,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-chinchilla"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "LLaMA: open models trained on public data that rivalled giants, and set off an explosion of open-source AI"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2302.13971",
+   "arxiv_id": "2302.13971"
+  },
+  {
+   "id": "paper-nnu-net-a-self-configuring-method-for-deep-learning-based-bi",
+   "slug": "nnu-net-a-self-configuring-method-for-deep-learning-based-bi",
+   "title_working": "No New Net: Why Hyperparameters Beat Novel Architectures",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "deep-learning",
+   "order": 14,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-unet",
+    "primer-loss-functions",
+    "primer-overfitting"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How automating the boring parts of deep learning shattered medical imaging leaderboards"
+    ]
+   },
+   "paper_url": "https://arxiv.org/pdf/1904.08128"
+  },
+  {
+   "id": "paper-large-language-models-are-zero-shot-reasoners",
+   "slug": "large-language-models-are-zero-shot-reasoners",
+   "title_working": "The Magic Words for Machine Logic",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "useful-llms",
+   "order": 7,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-gpt-3",
+    "paper-instructgpt",
+    "paper-chain-of-thought"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How four words unlocked multi-step reasoning without a single example"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2205.11916",
+   "arxiv_id": "2205.11916"
+  },
+  {
+   "id": "paper-large-language-models-encode-clinical-knowledge",
+   "slug": "large-language-models-encode-clinical-knowledge",
+   "title_working": "Can Language Models Safely Practice Medicine?",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "useful-llms",
+   "order": 8,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-chain-of-thought",
+    "paper-instructgpt"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How clinician-guided prompt tuning turned raw LLM scale into clinical reliability"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2212.13138",
+   "arxiv_id": "2212.13138"
+  },
+  {
+   "id": "paper-self-consistency-improves-chain-of-thought-reasoning-in-lang",
+   "slug": "self-consistency-improves-chain-of-thought-reasoning-in-lang",
+   "title_working": "Why Multiple Reasoning Paths Beat One Greedy Guess",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "useful-llms",
+   "order": 9,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-chain-of-thought",
+    "paper-gpt-3"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How language models learn to solve complex problems by taking a vote"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2203.11171",
+   "arxiv_id": "2203.11171"
+  },
+  {
+   "id": "paper-tree-of-thoughts-deliberate-problem-solving-with-large-langu",
+   "slug": "tree-of-thoughts-deliberate-problem-solving-with-large-langu",
+   "title_working": "Giving Language Models the Power to Backtrack",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "useful-llms",
+   "order": 10,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-chain-of-thought",
+    "paper-gpt-3"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How searching a tree of intermediate thoughts solved problems that broke linear prompting"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2305.10601",
+   "arxiv_id": "2305.10601"
+  },
+  {
+   "id": "paper-the-llama-3-herd-of-models",
+   "slug": "the-llama-3-herd-of-models",
+   "title_working": "The Engineering Playbook of Llama 3",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "useful-llms",
+   "order": 11,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-llama",
+    "paper-scaling-laws",
+    "paper-dpo"
+   ],
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
+   "brief": {
+    "key_points": [
+     "How 16,000 GPUs and meticulous post-training built an open frontier model"
+    ]
+   },
+   "paper_url": "https://arxiv.org/abs/2407.21783",
+   "arxiv_id": "2407.21783"
+  },
+  {
+   "id": "paper-rl-from-human-preferences",
+   "slug": "rl-from-human-preferences",
+   "title_working": "Deep Reinforcement Learning from Human Preferences",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "useful-llms",
+   "order": 12,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-ppo"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/1706.03741",
+   "arxiv_id": "1706.03741",
+   "brief": {
+    "key_points": [
+     "Humans compare pairs of clips instead of writing reward functions",
+     "A reward model is learned from comparisons",
+     "Policy optimised against the learned reward; root of RLHF"
+    ],
+    "analogy": "An eye test: 'better or worse?' instead of reading a number",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Separate this from InstructGPT which applied it to language"
+    ],
+    "exact_facts": [
+     "Christiano et al., 2017"
+    ]
+   }
+  },
+  {
+   "id": "paper-react",
+   "slug": "react",
+   "title_working": "ReAct: Synergizing Reasoning and Acting in Language Models",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "useful-llms",
+   "order": 13,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-chain-of-thought"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/2210.03629",
+   "arxiv_id": "2210.03629",
+   "brief": {
+    "key_points": [
+     "Interleave thoughts with actions like search",
+     "Observations feed back into reasoning",
+     "Foundation of tool-using agents"
+    ],
+    "analogy": "A detective who thinks aloud and checks the evidence between thoughts",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Not a training method; it is a prompting pattern"
+    ],
+    "exact_facts": [
+     "Yao et al., 2022"
+    ]
+   }
+  },
+  {
+   "id": "paper-toolformer",
+   "slug": "toolformer",
+   "title_working": "Toolformer: Language Models Can Teach Themselves to Use Tools",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "useful-llms",
+   "order": 14,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-gpt-3"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/2302.04761",
+   "arxiv_id": "2302.04761",
+   "brief": {
+    "key_points": [
+     "Model inserts API calls into text",
+     "Keeps calls that reduce loss on following tokens",
+     "Self-supervised tool use"
+    ],
+    "analogy": "A student who learns when a calculator actually helps",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Do not overstate the size of models used"
+    ],
+    "exact_facts": [
+     "Schick et al., 2023"
+    ]
+   }
+  },
+  {
+   "id": "paper-constitutional-ai",
+   "slug": "constitutional-ai",
+   "title_working": "Constitutional AI: Harmlessness from AI Feedback",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "useful-llms",
+   "order": 15,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-instructgpt"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/2212.08073",
+   "arxiv_id": "2212.08073",
+   "brief": {
+    "key_points": [
+     "A written set of principles guides critiques and revisions",
+     "AI feedback replaces some human labels (RLAIF)",
+     "Supervised then RL stages"
+    ],
+    "analogy": "A style guide an editor follows when redlining drafts",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Do not quote the constitution text"
+    ],
+    "exact_facts": [
+     "Bai et al., 2022 (Anthropic)"
+    ]
+   }
+  },
+  {
+   "id": "paper-qlora",
+   "slug": "qlora",
+   "title_working": "QLoRA: Efficient Finetuning of Quantized LLMs",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "useful-llms",
+   "order": 16,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-lora"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/2305.14314",
+   "arxiv_id": "2305.14314",
+   "brief": {
+    "key_points": [
+     "Freeze a 4-bit quantized base model, train LoRA adapters",
+     "NF4 data type, double quantization, paged optimizers",
+     "Fine-tune large models on one GPU"
+    ],
+    "analogy": "Studying from a compressed textbook while writing notes in full detail",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Be careful with exact memory figures"
+    ],
+    "exact_facts": [
+     "Dettmers et al., 2023"
+    ]
+   }
+  },
+  {
+   "id": "paper-llama-2",
+   "slug": "llama-2",
+   "title_working": "Llama 2: Open Foundation and Fine-Tuned Chat Models",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "useful-llms",
+   "order": 17,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-llama",
+    "paper-instructgpt"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/2307.09288",
+   "arxiv_id": "2307.09288",
+   "brief": {
+    "key_points": [
+     "Pretrained and chat-tuned open models",
+     "Safety tuning and RLHF details",
+     "Released with a permissive licence for most uses"
+    ],
+    "analogy": "Publishing the full recipe, not just the cake",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Do not invent benchmark scores"
+    ],
+    "exact_facts": [
+     "Touvron et al., 2023"
+    ]
+   }
+  },
+  {
+   "id": "paper-mistral-7b",
+   "slug": "mistral-7b",
+   "title_working": "Mistral 7B",
+   "subject": "ml",
+   "kind": "paper",
+   "track": "useful-llms",
+   "order": 18,
+   "priority": "P2",
+   "prerequisites": [
+    "paper-llama"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "paper_url": "https://arxiv.org/abs/2310.06825",
+   "arxiv_id": "2310.06825",
+   "brief": {
+    "key_points": [
+     "Grouped-query attention for faster inference",
+     "Sliding window attention",
+     "Small model punching above its size"
+    ],
+    "analogy": "A compact car tuned to beat bigger engines",
+    "include": [
+     "One mermaid diagram of the method",
+     "A tiny worked example with numbers"
+    ],
+    "traps": [
+     "Check claims carefully against the paper"
+    ],
+    "exact_facts": [
+     "Jiang et al., 2023"
     ]
    }
   }

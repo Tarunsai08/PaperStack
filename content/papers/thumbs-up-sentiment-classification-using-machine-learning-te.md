@@ -5,7 +5,7 @@ subject: "ml"
 slug: thumbs-up-sentiment-classification-using-machine-learning-te
 title: Thumbs Up? How Machines Learned to Read Reviews
 subtitle: Why human word lists failed and simple statistics conquered sentiment analysis
-track: foundations
+track: "foundations"
 track_order: 7
 prerequisites:
 - primer-classification

@@ -5,7 +5,7 @@ subject: "ml"
 slug: stop-explaining-black-box-machine-learning-models-for-high-s
 title: Why Explaining Black Boxes Fails
 subtitle: How inherently transparent models beat opaque algorithms at high stakes
-track: foundations
+track: "foundations"
 track_order: 8
 prerequisites:
 - primer-classification
@@ -21,8 +21,8 @@ topics:
 paper_title: Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead
 authors:
 - C. Rudin
-year: 2018
-venue: Nature Machine Intelligence
+year: 2019
+venue: "Nature Machine Intelligence"
 paper_url: https://arxiv.org/pdf/1811.10154
 glossary:
 - term: Black Box Model

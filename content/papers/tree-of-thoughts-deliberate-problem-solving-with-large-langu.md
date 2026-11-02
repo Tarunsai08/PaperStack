@@ -5,8 +5,8 @@ subject: "ml"
 slug: tree-of-thoughts-deliberate-problem-solving-with-large-langu
 title: Giving Language Models the Power to Backtrack
 subtitle: How searching a tree of intermediate thoughts solved problems that broke linear prompting
-track: useful-llms
-track_order: 21
+track: "useful-llms"
+track_order: 10
 prerequisites:
 - paper-chain-of-thought
 - paper-gpt-3

@@ -5,8 +5,8 @@ subject: "ml"
 slug: improved-denoising-diffusion-probabilistic-models
 title: Teaching Diffusion Models to Walk in Big Strides
 subtitle: How learning variance and smoothing noise cut sampling time by ten
-track: useful-llms
-track_order: 20
+track: "generative"
+track_order: 8
 prerequisites:
 - paper-ddpm
 - paper-vae
@@ -23,7 +23,7 @@ authors:
 - Alex Nichol
 - Prafulla Dhariwal
 year: 2021
-venue: International Conference on Machine Learning
+venue: "ICML"
 paper_url: https://arxiv.org/abs/2102.09672
 glossary:
 - term: Variational Lower Bound (VLB)

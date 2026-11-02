@@ -5,8 +5,8 @@ subject: "ml"
 slug: taming-transformers-for-high-resolution-image-synthesis
 title: Taming Transformers for Megapixel Images
 subtitle: How visual codebooks let attention scale from tiny patches to high resolution
-track: generative
-track_order: 5
+track: "generative"
+track_order: 7
 prerequisites:
 - paper-attention-is-all-you-need
 - paper-gan
@@ -23,8 +23,8 @@ authors:
 - Patrick Esser
 - Robin Rombach
 - Björn Ommer
-year: 2020
-venue: Computer Vision and Pattern Recognition
+year: 2021
+venue: "CVPR"
 paper_url: https://arxiv.org/abs/2012.09841
 glossary:
 - term: VQGAN

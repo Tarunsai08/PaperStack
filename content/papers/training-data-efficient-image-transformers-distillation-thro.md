@@ -5,8 +5,8 @@ subject: "ml"
 slug: training-data-efficient-image-transformers-distillation-thro
 title: Teaching Vision Transformers With Less Data
 subtitle: How a distillation token and smart augmentations freed ViT from massive datasets
-track: useful-llms
-track_order: 19
+track: "transformers-llms"
+track_order: 9
 prerequisites:
 - paper-vit
 - paper-attention-is-all-you-need

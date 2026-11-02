@@ -5,8 +5,8 @@ subject: "ml"
 slug: nnu-net-a-self-configuring-method-for-deep-learning-based-bi
 title: 'No New Net: Why Hyperparameters Beat Novel Architectures'
 subtitle: How automating the boring parts of deep learning shattered medical imaging leaderboards
-track: useful-llms
-track_order: 7
+track: "deep-learning"
+track_order: 14
 prerequisites:
 - paper-unet
 - primer-loss-functions

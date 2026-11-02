@@ -5,8 +5,8 @@ subject: "ml"
 slug: high-resolution-image-synthesis-and-semantic-manipulation-wi
 title: 'Megapixel Realism: How Pix2PixHD Scaled Conditional GANs'
 subtitle: Turning rough label maps into crisp, editable 2K photographs
-track: generative
-track_order: 7
+track: "generative"
+track_order: 5
 prerequisites:
 - paper-gan
 - paper-resnet

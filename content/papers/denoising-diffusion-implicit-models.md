@@ -5,8 +5,8 @@ subject: "ml"
 slug: denoising-diffusion-implicit-models
 title: 'Skipping Steps: How DDIM Accelerated Diffusion'
 subtitle: How one clever derivation turned a slow 1,000-step random walk into a fast, deterministic slide
-track: useful-llms
-track_order: 18
+track: "generative"
+track_order: 6
 prerequisites:
 - paper-ddpm
 - paper-gan
@@ -23,8 +23,8 @@ authors:
 - Jiaming Song
 - Chenlin Meng
 - Stefano Ermon
-year: 2020
-venue: International Conference on Learning Representations
+year: 2021
+venue: "ICLR"
 paper_url: https://arxiv.org/abs/2010.02502
 glossary:
 - term: DDPM

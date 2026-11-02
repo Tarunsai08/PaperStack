@@ -5,8 +5,8 @@ subject: "ml"
 slug: real-time-single-image-and-video-super-resolution-using-an-e
 title: 'Pixel Shuffle: Upscaling Images at the Very End'
 subtitle: How shifting magnification to the final layer unlocked real-time AI video super-resolution
-track: deep-learning
-track_order: 10
+track: "deep-learning"
+track_order: 11
 prerequisites:
 - primer-neural-networks
 - paper-alexnet

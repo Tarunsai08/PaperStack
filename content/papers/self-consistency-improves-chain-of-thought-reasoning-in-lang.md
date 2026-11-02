@@ -5,8 +5,8 @@ subject: "ml"
 slug: self-consistency-improves-chain-of-thought-reasoning-in-lang
 title: Why Multiple Reasoning Paths Beat One Greedy Guess
 subtitle: How language models learn to solve complex problems by taking a vote
-track: useful-llms
-track_order: 23
+track: "useful-llms"
+track_order: 9
 prerequisites:
 - paper-chain-of-thought
 - paper-gpt-3

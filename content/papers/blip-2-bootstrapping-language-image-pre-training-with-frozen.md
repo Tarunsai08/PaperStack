@@ -5,8 +5,8 @@ subject: "ml"
 slug: blip-2-bootstrapping-language-image-pre-training-with-frozen
 title: Teaching Blind LLMs to See Without Retraining Them
 subtitle: How 32 queries bridged vision and language on a shoestring compute budget
-track: transformers-llms
-track_order: 10
+track: "transformers-llms"
+track_order: 14
 prerequisites:
 - paper-clip
 - paper-vit

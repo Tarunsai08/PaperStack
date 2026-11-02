@@ -5,8 +5,8 @@ subject: "ml"
 slug: aggregated-residual-transformations-for-deep-neural-networks
 title: 'ResNeXt: Beyond Depth and Width'
 subtitle: How parallel identical pathways revealed a third dimension in deep networks
-track: deep-learning
-track_order: 9
+track: "deep-learning"
+track_order: 12
 prerequisites:
 - paper-alexnet
 - paper-batch-normalization
@@ -24,8 +24,8 @@ authors:
 - Ross B. Girshick
 - Piotr Dollár
 - et al.
-year: 2016
-venue: Computer Vision and Pattern Recognition
+year: 2017
+venue: "CVPR"
 paper_url: https://arxiv.org/abs/1611.05431
 glossary:
 - term: Cardinality

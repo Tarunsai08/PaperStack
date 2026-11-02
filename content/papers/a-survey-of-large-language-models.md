@@ -5,8 +5,8 @@ subject: "ml"
 slug: a-survey-of-large-language-models
 title: The Four Pillars of the LLM Revolution
 subtitle: How researchers mapped the hidden mechanics of modern language models
-track: useful-llms
-track_order: 17
+track: "transformers-llms"
+track_order: 13
 prerequisites:
 - paper-scaling-laws
 - paper-gpt-3

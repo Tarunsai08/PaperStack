@@ -5,8 +5,8 @@ subject: "ml"
 slug: bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro
 title: The End of Bag-of-Words Topic Modeling
 subtitle: How BERTopic united deep transformers with classical statistics
-track: sequences-language
-track_order: 6
+track: "sequences-language"
+track_order: 8
 prerequisites:
 - paper-bert
 - primer-embeddings
@@ -21,7 +21,7 @@ paper_title: 'BERTopic: Neural topic modeling with a class-based TF-IDF procedur
 authors:
 - M. Grootendorst
 year: 2022
-venue: arXiv.org
+venue: "arXiv"
 paper_url: https://arxiv.org/abs/2203.05794
 glossary:
 - term: c-TF-IDF
