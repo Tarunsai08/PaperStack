@@ -1,7 +1,7 @@
 {
- "content_version": "0c0656fc7b16fbb1",
+ "content_version": "285d7d31812c2831",
  "generated_at": "2026-11-02",
- "count": 267,
+ "count": 270,
  "subjects": [
   {
    "id": "ml",
@@ -13594,6 +13594,130 @@
    "excerpt": "You have a list of daily temperatures, and for each day you want to know how many days you must wait for a warmer one. The obvious method scans forward from every day, which is O(n²): fine for 100 days, hopeless for 100,000. A surprising number of interview problems have this shape: for each…"
   },
   {
+   "id": "dsa-queue-deque",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "queue-deque",
+   "title": "The Queue Where Taller Latecomers Push In",
+   "subtitle": "Queues for processing order, circular buffers, and the monotonic deque that gives every sliding window maximum in O(n), plus its DP and prefix-sum uses",
+   "track": "dsa-linear",
+   "track_order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-monotonic-stack",
+    "dsa-sliding-window"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 8,
+   "topics": [
+    "queue",
+    "deque",
+    "monotonic deque",
+    "sliding window"
+   ],
+   "complexity": {
+    "time": "O(n) for the whole window scan",
+    "space": "O(k) for the deque"
+   },
+   "practice_problems": [
+    {
+     "name": "Number of Recent Calls",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/number-of-recent-calls/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Design Circular Queue",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/design-circular-queue/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Sliding Window Maximum",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sliding-window-maximum/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Jump Game VI",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/jump-game-vi/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Shortest Subarray with Sum at Least K",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Queue",
+     "definition": "A first-in, first-out container: items leave in the order they arrived. Push at the back, pop from the front."
+    },
+    {
+     "term": "Deque",
+     "definition": "A double-ended queue that allows pushing and popping at both the front and the back in O(1)."
+    },
+    {
+     "term": "Circular buffer",
+     "definition": "A fixed-size array used as a queue, where the front and back indices wrap around to the start with modulo arithmetic."
+    },
+    {
+     "term": "Monotonic deque",
+     "definition": "A deque of indices whose values are kept in decreasing (or increasing) order by popping from the back before each push."
+    },
+    {
+     "term": "Candidate",
+     "definition": "An element that could still be the window's answer in some future window. Elements that can never win are removed for good."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In the sliding window maximum deque, why pop smaller values from the back when a new value arrives?",
+     "options": [
+      "To keep the deque short for memory",
+      "A smaller value that arrived earlier will leave the window sooner and can never be the maximum while the new value is in the window",
+      "Because the deque must be sorted ascending",
+      "To find the minimum"
+     ],
+     "answer": 1,
+     "explain": "The newcomer is larger and stays in the window longer, so the older smaller values are useless candidates from now on."
+    },
+    {
+     "q": "Why does the deque store indices rather than values?",
+     "options": [
+      "Indices are smaller",
+      "You must know when the front element has left the window, which needs its position",
+      "Values may be negative",
+      "To allow sorting"
+     ],
+     "answer": 1,
+     "explain": "The front is removed once its index is at or before i − k. With only values, you cannot tell whether the front has expired, especially with duplicates."
+    },
+    {
+     "q": "What is the total cost of the sliding window maximum algorithm on n elements?",
+     "options": [
+      "O(n k)",
+      "O(n log k)",
+      "O(n), because each index is pushed once and popped at most once",
+      "O(k)"
+     ],
+     "answer": 2,
+     "explain": "Across the whole scan there are n pushes and at most n pops, so the nested while loops add up to O(n)."
+    }
+   ],
+   "cover_seed": "queue-deque",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.85,
+   "path": "dsa/queue-deque.md",
+   "hash": "10bb7d298991",
+   "word_count": 1679,
+   "excerpt": "A window of size k slides across an array, and after every step you must report the largest value inside it. A multiset does it in O(n log k). Rescanning the window does it in O(n · k). Yet the classic answer is O(n), with nothing more than a double-ended queue and one rule about who gets thrown…"
+  },
+  {
    "id": "dsa-lru-cache",
    "kind": "problem-walkthrough",
    "subject": "dsa",
@@ -13710,6 +13834,235 @@
    "hash": "1fa8a6a599a0",
    "word_count": 1052,
    "excerpt": "\"Design an LRU cache\" is one of the most frequently asked interview questions at product companies, and for good reason. It is short to state, it has a clean optimal answer, and getting there tests whether you can combine two data structures so that each covers the other's weakness. It is also real…"
+  },
+  {
+   "id": "dsa-reverse-k-group",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "reverse-k-group",
+   "title": "Flipping Pancakes k at a Time",
+   "subtitle": "Reversing a linked list, a segment of it, and every group of k nodes, with a dummy head and a careful plan for the four pointers that change",
+   "track": "dsa-linear",
+   "track_order": 7,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-linked-list-basics"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "linked list",
+    "pointer manipulation",
+    "reversal",
+    "dummy node"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(1)"
+   },
+   "practice_problems": [
+    {
+     "name": "Reverse Linked List",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/reverse-linked-list/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Swap Nodes in Pairs",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/swap-nodes-in-pairs/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Reverse Linked List II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/reverse-linked-list-ii/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Reverse Nodes in k-Group",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/reverse-nodes-in-k-group/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "In-place reversal",
+     "definition": "Reversing a linked list by redirecting each node's next pointer to its previous node, using O(1) extra memory."
+    },
+    {
+     "term": "Dummy head",
+     "definition": "An extra node placed before the real head so that the first group can be handled exactly like every other group."
+    },
+    {
+     "term": "Group boundary",
+     "definition": "The node just before a group (groupPrev) and the node just after it (groupNext), which must be reconnected after the group is reversed."
+    },
+    {
+     "term": "Lookahead",
+     "definition": "Walking k nodes ahead before changing anything, to check that a full group exists."
+    },
+    {
+     "term": "Three-pointer loop",
+     "definition": "The reversal loop that keeps prev, cur and a saved next, moving one node at a time and pointing each node backwards."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In iterative reversal, why save cur.next before setting cur.next = prev?",
+     "options": [
+      "For speed",
+      "Because the assignment overwrites the only link to the rest of the list",
+      "To count the nodes",
+      "It is not needed"
+     ],
+     "answer": 1,
+     "explain": "Once cur.next points backwards, nothing points to the next node any more. Save it in a variable first, or the rest of the list is lost."
+    },
+    {
+     "q": "Reverse Nodes in k-Group on 1 2 3 4 5 with k = 3 gives what?",
+     "options": [
+      "3 2 1 5 4",
+      "3 2 1 4 5",
+      "5 4 3 2 1",
+      "1 2 3 4 5"
+     ],
+     "answer": 1,
+     "explain": "The first three nodes form a full group and are reversed. Only two nodes remain, fewer than k, so they stay in their original order."
+    },
+    {
+     "q": "What is the dummy head for?",
+     "options": [
+      "To store k",
+      "So the first group has a node before it, like every other group, and the new head is simply dummy.next",
+      "To mark the end of the list",
+      "To make the list circular"
+     ],
+     "answer": 1,
+     "explain": "Every group is reconnected through the node before it. The dummy gives the first group such a node, removing a special case."
+    }
+   ],
+   "cover_seed": "reverse-k-group",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.75,
+   "path": "dsa/reverse-k-group.md",
+   "hash": "fccbd74ac438",
+   "word_count": 1398,
+   "excerpt": "A cook stacks pancakes on a plate in a line, and every few minutes she flips the next three over as a block with her spatula, then moves on. Any leftover pancakes at the end, fewer than three, stay as they are. Doing that with a linked list, where you can only follow arrows and every flip must…"
+  },
+  {
+   "id": "dsa-copy-random-list",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "copy-random-list",
+   "title": "Photocopying a Treasure Map Full of Cross-References",
+   "subtitle": "Deep-copying a linked list whose nodes point anywhere: a map from old nodes to new ones, the interleaving trick with O(1) extra space, and cloning graphs",
+   "track": "dsa-linear",
+   "track_order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-linked-list-basics",
+    "dsa-hashing-patterns"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "linked list",
+    "deep copy",
+    "hash map",
+    "graph cloning"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(n) with a map, O(1) extra with interleaving"
+   },
+   "practice_problems": [
+    {
+     "name": "Intersection of Two Linked Lists",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/intersection-of-two-linked-lists/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Copy List with Random Pointer",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/copy-list-with-random-pointer/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Clone Graph",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/clone-graph/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Deep copy",
+     "definition": "A copy that creates new nodes for everything, so that no pointer in the copy refers to any node of the original."
+    },
+    {
+     "term": "Shallow copy",
+     "definition": "A copy that duplicates only the top-level object and keeps pointing at the original's nodes."
+    },
+    {
+     "term": "Random pointer",
+     "definition": "An extra pointer in each node that may point to any node in the list, or to null."
+    },
+    {
+     "term": "Old-to-new map",
+     "definition": "A hash map from each original node to its copy, used to translate every original pointer into the matching copy pointer."
+    },
+    {
+     "term": "Interleaving",
+     "definition": "Temporarily inserting each copy right after its original, so a node's copy can be found as original.next without a map."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does a single pass that copies next and random pointers not work?",
+     "options": [
+      "It does, if the list is short",
+      "A node's random pointer may point to a node that has not been copied yet",
+      "Random pointers are always null",
+      "Hash maps cannot store pointers"
+     ],
+     "answer": 1,
+     "explain": "The target of a random pointer can lie later in the list. You need its copy to exist first, which is why the map is built in one pass and the pointers are set in a second, or created on demand."
+    },
+    {
+     "q": "After interleaving A → A' → B → B' → ..., how do you set A'.random?",
+     "options": [
+      "A'.random = A.random",
+      "A'.random = A.random.next, or null if A.random is null",
+      "A'.random = A.next",
+      "It cannot be done without a map"
+     ],
+     "answer": 1,
+     "explain": "The copy of any node X sits right after X, so the copy of A.random is A.random.next."
+    },
+    {
+     "q": "What must the interleaving method do before returning?",
+     "options": [
+      "Nothing",
+      "Separate the two lists and restore the original's next pointers",
+      "Sort the copy",
+      "Delete the original"
+     ],
+     "answer": 1,
+     "explain": "The original list was modified by the insertions. A correct solution leaves the input exactly as it was."
+    }
+   ],
+   "cover_seed": "copy-random-list",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "dsa/copy-random-list.md",
+   "hash": "dc19bc31d35c",
+   "word_count": 1320,
+   "excerpt": "Copying a normal linked list is easy: walk it and create a new node for each old one. Now give every node a second pointer that can point anywhere: forwards, backwards, to itself or to nothing. Copy that list, and the copy's extra pointers must point into the copy, never back into the original.…"
   },
   {
    "id": "dsa-subsets-permutations",

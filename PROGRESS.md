@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 65 | 0 | 87 | 152 | 48/72 |
+| dsa | 68 | 0 | 84 | 152 | 49/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **267** | **0** | **406** | **673** | |
+| **All** | **270** | **0** | **403** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -25,9 +25,9 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### dsa
 
-- [ ] `dsa-queue-deque` (P0, pattern, dsa-linear): Queues and Deques: Sliding Window Maximum
 - [ ] `dsa-largest-rectangle` (P0, problem-walkthrough, dsa-linear): Largest Rectangle in a Histogram
 - [ ] `dsa-linked-list-classics` (P0, problem-walkthrough, dsa-linear): Linked List Classics: Intersection, Palindrome and Add Two Numbers
+- [ ] `dsa-queue-via-stacks` (P0, problem-walkthrough, dsa-linear): Building Queues From Stacks and Stacks From Queues
 - [ ] `dsa-backtracking-template` (P0, pattern, dsa-recursion): Backtracking: Explore, Undo, Repeat
 - [ ] `dsa-tree-recursion` (P0, pattern, dsa-trees): Thinking Recursively About Trees
 - [ ] `dsa-top-k-pattern` (P0, pattern, dsa-heaps-greedy): Top K: The Heap of Size K Trick
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 65 written</summary>
+<details><summary>dsa: 68 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -116,6 +116,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-fast-slow-pointers` Fast and Slow Pointers: The Tortoise and the Hare
 - [x] `dsa-stack-patterns` Stacks: Matching, Undo and Expression Parsing
 - [x] `dsa-monotonic-stack` Monotonic Stacks: Next Greater Element and Friends
+- [x] `dsa-queue-deque` Queues and Deques: Sliding Window Maximum
 - [x] `dsa-lru-cache` Designing an LRU Cache
 - [x] `dsa-subsets-permutations` Generating Subsets and Permutations
 - [x] `dsa-tree-traversals` Tree Traversals: Pre, In, Post and Level Order
@@ -141,6 +142,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-rotated-array-search` Searching a Rotated Sorted Array
 - [x] `dsa-median-two-arrays` Median of Two Sorted Arrays
 - [x] `dsa-peak-element` Finding a Peak With Binary Search
+- [x] `dsa-reverse-k-group` Reversing Nodes in k-Groups
+- [x] `dsa-copy-random-list` Copying a List With Random Pointers
 - [x] `dsa-coin-change` Coin Change: Minimum Coins and Number of Ways
 - [x] `dsa-word-break` Word Break: DP Over Prefixes
 - [x] `dsa-house-robber-variants` House Robber and Its Variants
