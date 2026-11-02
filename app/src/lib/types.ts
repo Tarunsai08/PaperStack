@@ -1,4 +1,4 @@
-export type Kind = 'paper' | 'primer' | 'pattern' | 'problem-walkthrough' | 'concept' | 'deep-dive' | 'case-study';
+export type Kind = 'paper' | 'primer' | 'pattern' | 'problem-walkthrough' | 'concept' | 'deep-dive' | 'case-study' | 'lld';
 export type SubjectId = 'ml' | 'dsa' | 'cp' | 'famous-algos' | 'system-design' | 'cs-core';
 export type Priority = 'P0' | 'P1' | 'P2';
 

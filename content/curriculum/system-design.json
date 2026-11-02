@@ -1,0 +1,3645 @@
+{
+ "subject": "system-design",
+ "version": 1,
+ "entries": [
+  {
+   "id": "system-design-interview-framework",
+   "slug": "interview-framework",
+   "title_working": "How to Answer Any System Design Question",
+   "subject": "system-design",
+   "kind": "primer",
+   "track": "sd-fundamentals",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-problem-solving-framework"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Clarify requirements",
+     "Estimate scale",
+     "API and data model",
+     "High-level design",
+     "Deep dives",
+     "Trade-offs",
+     "Time budgeting in 45 minutes"
+    ],
+    "analogy": "An architect sketching before laying bricks",
+    "include": [
+     "Step checklist with timings"
+    ],
+    "traps": [
+     "Jumping to components before requirements"
+    ]
+   }
+  },
+  {
+   "id": "system-design-back-of-envelope",
+   "slug": "back-of-envelope",
+   "title_working": "Back-of-Envelope Estimates in Five Minutes",
+   "subject": "system-design",
+   "kind": "primer",
+   "track": "sd-fundamentals",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-interview-framework"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "QPS from DAU",
+     "Storage per year",
+     "Bandwidth",
+     "Peak vs average",
+     "Powers of two"
+    ],
+    "analogy": "Estimating how much rice a wedding needs",
+    "include": [
+     "Worked estimate for a photo app, clearly marked as estimates"
+    ],
+    "traps": [
+     "False precision",
+     "Forgetting replication factor"
+    ]
+   }
+  },
+  {
+   "id": "system-design-latency-numbers",
+   "slug": "latency-numbers",
+   "title_working": "Latency Numbers Every Engineer Should Feel",
+   "subject": "system-design",
+   "kind": "primer",
+   "track": "sd-fundamentals",
+   "order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-back-of-envelope"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Memory vs SSD vs network vs cross-continent",
+     "Orders of magnitude only",
+     "Why caching and locality matter"
+    ],
+    "analogy": "Distances on a map scaled to human time",
+    "include": [
+     "Order-of-magnitude table labelled approximate"
+    ],
+    "traps": [
+     "Quoting exact nanoseconds as facts"
+    ],
+    "exact_facts": [
+     "Popularised by Jeff Dean and Peter Norvig",
+     "values are approximate and hardware-dependent"
+    ]
+   }
+  },
+  {
+   "id": "system-design-client-server-http",
+   "slug": "client-server-http",
+   "title_working": "What Happens When You Type a URL",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-fundamentals",
+   "order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-latency-numbers"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "DNS, TCP, TLS, HTTP request and response",
+     "Keep-alive",
+     "HTTP/1.1 vs 2 vs 3"
+    ],
+    "analogy": "Ordering food: find the restaurant, call, confirm, receive",
+    "include": [
+     "Sequence diagram"
+    ],
+    "traps": [
+     "Skipping DNS and TLS costs"
+    ]
+   }
+  },
+  {
+   "id": "system-design-dns-deep-dive",
+   "slug": "dns-deep-dive",
+   "title_working": "DNS: The Internet's Phone Book",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-fundamentals",
+   "order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-client-server-http"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Recursive resolvers",
+     "Root, TLD, authoritative",
+     "TTL and caching",
+     "DNS-based load balancing"
+    ],
+    "analogy": "Asking a librarian who asks other librarians",
+    "include": [
+     "Resolution diagram"
+    ],
+    "traps": [
+     "Instant propagation myths"
+    ]
+   }
+  },
+  {
+   "id": "system-design-api-design",
+   "slug": "api-design",
+   "title_working": "API Design: REST, gRPC and GraphQL",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-fundamentals",
+   "order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-client-server-http"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Resources and verbs",
+     "Pagination (cursor vs offset)",
+     "Versioning",
+     "Errors",
+     "When to use each style"
+    ],
+    "analogy": "A restaurant menu as a contract with the kitchen",
+    "include": [
+     "Example endpoints for a todo app"
+    ],
+    "traps": [
+     "Offset pagination on huge tables",
+     "Chatty APIs"
+    ]
+   }
+  },
+  {
+   "id": "system-design-realtime-communication",
+   "slug": "realtime-communication",
+   "title_working": "Real-Time Updates: Polling, Long Polling, SSE and WebSockets",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-fundamentals",
+   "order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-api-design"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Trade-offs of each",
+     "Connection state",
+     "Scaling persistent connections"
+    ],
+    "analogy": "Checking the mailbox vs a doorbell",
+    "include": [
+     "Comparison table",
+     "Sequence diagrams"
+    ],
+    "traps": [
+     "WebSockets everywhere by default"
+    ]
+   }
+  },
+  {
+   "id": "system-design-cap-pacelc",
+   "slug": "cap-pacelc",
+   "title_working": "CAP and PACELC Without the Myths",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-fundamentals",
+   "order": 8,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-consistency-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Partitions force a choice",
+     "Latency vs consistency when healthy",
+     "CP vs AP examples"
+    ],
+    "analogy": "Two bank branches that lose their phone line",
+    "include": [
+     "Partition scenario walkthrough"
+    ],
+    "traps": [
+     "Saying pick two of three freely"
+    ],
+    "exact_facts": [
+     "Brewer 2000",
+     "Gilbert and Lynch 2002",
+     "PACELC: Abadi 2012"
+    ]
+   }
+  },
+  {
+   "id": "system-design-consistency-basics",
+   "slug": "consistency-basics",
+   "title_working": "Strong vs Eventual Consistency, Plainly",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-fundamentals",
+   "order": 9,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-api-design"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "What a read sees after a write",
+     "Read-your-writes",
+     "Monotonic reads",
+     "User-visible effects"
+    ],
+    "analogy": "A shared notice board vs gossip spreading news",
+    "include": [
+     "Timeline examples"
+    ],
+    "traps": [
+     "Calling eventual consistency broken"
+    ]
+   }
+  },
+  {
+   "id": "system-design-availability-slos",
+   "slug": "availability-slos",
+   "title_working": "Availability, Nines and SLOs",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-fundamentals",
+   "order": 10,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-back-of-envelope"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Nines to downtime per year",
+     "SLI, SLO, SLA",
+     "Error budgets",
+     "Series vs parallel availability"
+    ],
+    "analogy": "A chain is only as strong as its weakest link",
+    "include": [
+     "Downtime table computed from formulas"
+    ],
+    "traps": [
+     "Multiplying availabilities wrongly"
+    ]
+   }
+  },
+  {
+   "id": "system-design-stateless-idempotency",
+   "slug": "stateless-idempotency",
+   "title_working": "Stateless Services and Idempotent APIs",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-fundamentals",
+   "order": 11,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-api-design"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Keep state out of servers",
+     "Idempotency keys",
+     "Safe retries"
+    ],
+    "analogy": "A vending machine that refunds if you press twice",
+    "include": [
+     "Payment retry sequence diagram"
+    ],
+    "traps": [
+     "Retries without idempotency double charge"
+    ]
+   }
+  },
+  {
+   "id": "system-design-networking-essentials",
+   "slug": "networking-essentials",
+   "title_working": "TCP, UDP and QUIC for System Designers",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-fundamentals",
+   "order": 12,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-client-server-http"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Reliability vs latency",
+     "Head-of-line blocking",
+     "When to use UDP"
+    ],
+    "analogy": "Registered post vs shouting across the street",
+    "include": [
+     "Comparison table"
+    ],
+    "traps": [
+     "Assuming UDP is always faster in practice"
+    ]
+   }
+  },
+  {
+   "id": "system-design-proxies",
+   "slug": "proxies",
+   "title_working": "Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-fundamentals",
+   "order": 13,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-client-server-http"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "What each hides",
+     "TLS termination",
+     "Compression and caching at the edge"
+    ],
+    "analogy": "A receptionist who forwards calls",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Proxy as single point of failure"
+    ]
+   }
+  },
+  {
+   "id": "system-design-auth-basics",
+   "slug": "auth-basics",
+   "title_working": "Authentication and Authorisation: Sessions, JWT and OAuth",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-fundamentals",
+   "order": 14,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-stateless-idempotency"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Sessions vs tokens",
+     "JWT structure and pitfalls",
+     "OAuth 2.0 flows",
+     "RBAC"
+    ],
+    "analogy": "A hotel key card vs checking ID at the front desk",
+    "include": [
+     "OAuth authorisation code flow diagram"
+    ],
+    "traps": [
+     "Storing secrets in JWT payloads",
+     "No revocation plan"
+    ]
+   }
+  },
+  {
+   "id": "system-design-load-balancers",
+   "slug": "load-balancers",
+   "title_working": "Load Balancers: L4, L7 and the Algorithms Inside",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-blocks",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-proxies"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Round robin, least connections, consistent hashing",
+     "Health checks",
+     "Sticky sessions",
+     "L4 vs L7"
+    ],
+    "analogy": "A host seating guests across waiters",
+    "include": [
+     "Diagram",
+     "Algorithm comparison"
+    ],
+    "traps": [
+     "Load balancer as single point of failure"
+    ]
+   }
+  },
+  {
+   "id": "system-design-caching",
+   "slug": "caching",
+   "title_working": "Caching: Cache-Aside, Write-Through and Friends",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-blocks",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-latency-numbers"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Cache-aside, read-through, write-through, write-back",
+     "Eviction LRU and LFU",
+     "TTLs",
+     "Hit ratio maths"
+    ],
+    "analogy": "Keeping your most-used spices on the counter",
+    "include": [
+     "Strategy comparison table",
+     "Read path diagram"
+    ],
+    "traps": [
+     "Stale data and invalidation"
+    ]
+   }
+  },
+  {
+   "id": "system-design-cdn",
+   "slug": "cdn",
+   "title_working": "CDNs: Moving Content Closer to Users",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-blocks",
+   "order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-caching",
+    "system-design-dns-deep-dive"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Edge locations",
+     "Push vs pull",
+     "Cache keys and invalidation",
+     "Dynamic content acceleration"
+    ],
+    "analogy": "Local warehouses instead of one central depot",
+    "include": [
+     "Request path diagram"
+    ],
+    "traps": [
+     "Caching personalised content by mistake"
+    ]
+   }
+  },
+  {
+   "id": "system-design-sql-vs-nosql",
+   "slug": "sql-vs-nosql",
+   "title_working": "SQL vs NoSQL: Choosing a Database Honestly",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-blocks",
+   "order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-consistency-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Relational, key-value, document, wide-column, graph",
+     "Query patterns drive choice",
+     "Transactions"
+    ],
+    "analogy": "Filing cabinet vs labelled boxes vs a giant spreadsheet",
+    "include": [
+     "Decision table"
+    ],
+    "traps": [
+     "Picking NoSQL for scale without need"
+    ]
+   }
+  },
+  {
+   "id": "system-design-database-indexing",
+   "slug": "database-indexing",
+   "title_working": "Database Indexes: Why Some Queries Are Instant",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-blocks",
+   "order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-sql-vs-nosql"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "B+ tree index",
+     "Composite indexes and column order",
+     "Covering indexes",
+     "Write cost"
+    ],
+    "analogy": "A book's index vs reading every page",
+    "include": [
+     "Query plan example"
+    ],
+    "traps": [
+     "Indexing every column"
+    ]
+   }
+  },
+  {
+   "id": "system-design-message-queues",
+   "slug": "message-queues",
+   "title_working": "Message Queues and Pub-Sub: Decoupling With Kafka and Friends",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-blocks",
+   "order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-stateless-idempotency"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Queue vs log",
+     "Consumer groups",
+     "Ordering per partition",
+     "Delivery semantics",
+     "Dead letter queues"
+    ],
+    "analogy": "A restaurant ticket rail between waiters and cooks",
+    "include": [
+     "Producer-consumer diagram"
+    ],
+    "traps": [
+     "Assuming global ordering"
+    ]
+   }
+  },
+  {
+   "id": "system-design-blob-storage",
+   "slug": "blob-storage",
+   "title_working": "Blob Storage: How S3-Style Systems Store Files",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-blocks",
+   "order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-sql-vs-nosql"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Objects, buckets, metadata",
+     "Durability via replication or erasure coding",
+     "Pre-signed URLs",
+     "Multipart upload"
+    ],
+    "analogy": "A cloakroom that hands back exactly what you left",
+    "include": [
+     "Upload flow diagram"
+    ],
+    "traps": [
+     "Storing large files in the database"
+    ]
+   }
+  },
+  {
+   "id": "system-design-distributed-cache",
+   "slug": "distributed-cache",
+   "title_working": "Redis and Distributed Caches",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-blocks",
+   "order": 8,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-caching"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "In-memory data structures",
+     "Persistence options",
+     "Sharding and replication",
+     "Common uses: sessions, counters, leaderboards"
+    ],
+    "analogy": "A shared whiteboard the whole office can read quickly",
+    "include": [
+     "Use-case table"
+    ],
+    "traps": [
+     "Treating Redis as a durable primary store by default"
+    ]
+   }
+  },
+  {
+   "id": "system-design-search-systems",
+   "slug": "search-systems",
+   "title_working": "Search Systems: Elasticsearch and Inverted Indexes",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-blocks",
+   "order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-database-indexing",
+    "famous-algos-inverted-index"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Inverted index",
+     "Shards and replicas",
+     "Relevance scoring",
+     "Near-real-time indexing"
+    ],
+    "analogy": "A library catalogue for every word",
+    "include": [
+     "Indexing pipeline diagram"
+    ],
+    "traps": [
+     "Using search as the source of truth"
+    ]
+   }
+  },
+  {
+   "id": "system-design-api-gateway",
+   "slug": "api-gateway",
+   "title_working": "API Gateways and Service Discovery",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-blocks",
+   "order": 10,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-load-balancers"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Routing, auth, rate limiting at the edge",
+     "Registry",
+     "Client vs server side discovery"
+    ],
+    "analogy": "A mall directory and security desk in one",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Gateway doing business logic"
+    ]
+   }
+  },
+  {
+   "id": "system-design-storage-types",
+   "slug": "storage-types",
+   "title_working": "Block, File and Object Storage",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-blocks",
+   "order": 11,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-blob-storage"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Access patterns",
+     "Latency and cost",
+     "Typical uses"
+    ],
+    "analogy": "A hard drive, a shared folder and a parcel locker",
+    "include": [
+     "Comparison table"
+    ],
+    "traps": [
+     "Mounting object storage as a filesystem blindly"
+    ]
+   }
+  },
+  {
+   "id": "system-design-olap-warehouses",
+   "slug": "olap-warehouses",
+   "title_working": "Columnar Storage and Data Warehouses",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-blocks",
+   "order": 12,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-sql-vs-nosql"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Row vs column layout",
+     "Compression",
+     "OLTP vs OLAP",
+     "Star schemas"
+    ],
+    "analogy": "Reading one column of a spreadsheet instead of every row",
+    "include": [
+     "Layout diagram"
+    ],
+    "traps": [
+     "Running analytics on the production OLTP database"
+    ]
+   }
+  },
+  {
+   "id": "system-design-batch-processing",
+   "slug": "batch-processing",
+   "title_working": "Batch Processing: MapReduce and Spark",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-blocks",
+   "order": 13,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-olap-warehouses"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Map, shuffle, reduce",
+     "Data locality",
+     "Spark in-memory",
+     "Fault tolerance by recomputation"
+    ],
+    "analogy": "Counting votes in many booths then adding the totals",
+    "include": [
+     "Word count dataflow"
+    ],
+    "traps": [
+     "Small data on big-data tools"
+    ],
+    "exact_facts": [
+     "MapReduce: Dean and Ghemawat, 2004"
+    ]
+   }
+  },
+  {
+   "id": "system-design-stream-processing",
+   "slug": "stream-processing",
+   "title_working": "Stream Processing: Windows, Watermarks and Late Data",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-blocks",
+   "order": 14,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-message-queues",
+    "system-design-batch-processing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Event time vs processing time",
+     "Windows",
+     "Watermarks",
+     "State and checkpoints"
+    ],
+    "analogy": "Counting cars per minute when some report late",
+    "include": [
+     "Windowing diagram"
+    ],
+    "traps": [
+     "Assuming events arrive in order"
+    ]
+   }
+  },
+  {
+   "id": "system-design-time-series-db",
+   "slug": "time-series-db",
+   "title_working": "Time-Series Databases for Metrics",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-blocks",
+   "order": 15,
+   "priority": "P2",
+   "prerequisites": [
+    "system-design-olap-warehouses"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Append-heavy writes",
+     "Downsampling and retention",
+     "Compression of timestamps"
+    ],
+    "analogy": "A diary where only new entries are written",
+    "include": [
+     "Data layout example"
+    ],
+    "traps": [
+     "Unbounded label cardinality"
+    ]
+   }
+  },
+  {
+   "id": "system-design-scaling-journey",
+   "slug": "scaling-journey",
+   "title_working": "From One Server to a Million Users",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-scaling",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-load-balancers",
+    "system-design-caching",
+    "system-design-sql-vs-nosql"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Separate DB",
+     "Add cache",
+     "Load balance stateless web tier",
+     "Replicas",
+     "CDN",
+     "Sharding",
+     "Queues"
+    ],
+    "analogy": "A food stall growing into a restaurant chain",
+    "include": [
+     "Stage-by-stage architecture diagrams"
+    ],
+    "traps": [
+     "Premature sharding"
+    ]
+   }
+  },
+  {
+   "id": "system-design-vertical-horizontal",
+   "slug": "vertical-horizontal",
+   "title_working": "Vertical vs Horizontal Scaling",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-scaling",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-scaling-journey"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Bigger box vs more boxes",
+     "Limits and costs",
+     "Stateless requirement"
+    ],
+    "analogy": "One stronger horse vs a team of horses",
+    "include": [
+     "Comparison table"
+    ],
+    "traps": [
+     "Ignoring coordination costs"
+    ]
+   }
+  },
+  {
+   "id": "system-design-read-replicas",
+   "slug": "read-replicas",
+   "title_working": "Read Replicas and Replication Lag",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-scaling",
+   "order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-vertical-horizontal"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Primary handles writes",
+     "Replicas serve reads",
+     "Lag and read-your-writes tricks"
+    ],
+    "analogy": "Photocopies of a notice that arrive a little late",
+    "include": [
+     "Lag scenario walkthrough"
+    ],
+    "traps": [
+     "Reading your own write from a lagging replica"
+    ]
+   }
+  },
+  {
+   "id": "system-design-cache-problems",
+   "slug": "cache-problems",
+   "title_working": "When Caches Hurt: Stampedes, Hot Keys and Invalidation",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-scaling",
+   "order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-caching"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Thundering herd and request coalescing",
+     "Hot key replication",
+     "Invalidation strategies",
+     "Negative caching"
+    ],
+    "analogy": "Everyone rushing to the bakery when it reopens",
+    "include": [
+     "Failure timeline"
+    ],
+    "traps": [
+     "There are only two hard things jokes without solutions"
+    ]
+   }
+  },
+  {
+   "id": "system-design-async-processing",
+   "slug": "async-processing",
+   "title_working": "Doing Work Later: Queues, Workers and Background Jobs",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-scaling",
+   "order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-message-queues"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Accept fast, process async",
+     "Retries and DLQs",
+     "Status polling or callbacks"
+    ],
+    "analogy": "A dry cleaner who gives you a ticket",
+    "include": [
+     "Worker pool diagram"
+    ],
+    "traps": [
+     "Losing jobs without durable queues"
+    ]
+   }
+  },
+  {
+   "id": "system-design-microservices",
+   "slug": "microservices",
+   "title_working": "Microservices vs Monoliths: Honest Trade-offs",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-scaling",
+   "order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-api-gateway"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Team autonomy vs operational cost",
+     "Service boundaries",
+     "Data ownership",
+     "Modular monolith"
+    ],
+    "analogy": "One big kitchen vs a food court",
+    "include": [
+     "Boundary diagram"
+    ],
+    "traps": [
+     "Distributed monolith anti-pattern"
+    ]
+   }
+  },
+  {
+   "id": "system-design-resilience-patterns",
+   "slug": "resilience-patterns",
+   "title_working": "Timeouts, Retries and Circuit Breakers",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-scaling",
+   "order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-stateless-idempotency",
+    "system-design-microservices"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Timeouts everywhere",
+     "Retry budgets with backoff and jitter",
+     "Circuit breaker states",
+     "Bulkheads"
+    ],
+    "analogy": "A fuse box that cuts power before the house burns",
+    "include": [
+     "Circuit breaker state diagram"
+    ],
+    "traps": [
+     "Retry storms"
+    ]
+   }
+  },
+  {
+   "id": "system-design-backpressure-load-shedding",
+   "slug": "backpressure-load-shedding",
+   "title_working": "Backpressure and Load Shedding",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-scaling",
+   "order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-resilience-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Bounded queues",
+     "Reject early",
+     "Prioritise important traffic",
+     "Graceful degradation"
+    ],
+    "analogy": "A restaurant turning away walk-ins when the kitchen is full",
+    "include": [
+     "Queue growth illustration"
+    ],
+    "traps": [
+     "Unbounded queues hide overload"
+    ]
+   }
+  },
+  {
+   "id": "system-design-observability",
+   "slug": "observability",
+   "title_working": "Observability: Logs, Metrics and Traces",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-scaling",
+   "order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-microservices"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Three pillars",
+     "RED and USE methods",
+     "Distributed tracing with spans",
+     "Alerting on symptoms"
+    ],
+    "analogy": "A car dashboard, a trip log and a GPS trace",
+    "include": [
+     "Trace diagram"
+    ],
+    "traps": [
+     "Alerting on every metric"
+    ]
+   }
+  },
+  {
+   "id": "system-design-deployments",
+   "slug": "deployments",
+   "title_working": "Shipping Safely: Blue-Green, Canary and Feature Flags",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-scaling",
+   "order": 10,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-observability"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Deployment strategies",
+     "Rollbacks",
+     "Schema migrations without downtime"
+    ],
+    "analogy": "Opening a new restaurant branch to a few diners first",
+    "include": [
+     "Canary rollout diagram"
+    ],
+    "traps": [
+     "Breaking migrations that are not backward compatible"
+    ]
+   }
+  },
+  {
+   "id": "system-design-multi-region",
+   "slug": "multi-region",
+   "title_working": "Multi-Region Architectures and Disaster Recovery",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-scaling",
+   "order": 11,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-read-replicas"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Active-passive vs active-active",
+     "RPO and RTO",
+     "Data residency",
+     "Failover"
+    ],
+    "analogy": "Backup generators in another city",
+    "include": [
+     "Region diagram"
+    ],
+    "traps": [
+     "Untested failover"
+    ]
+   }
+  },
+  {
+   "id": "system-design-autoscaling",
+   "slug": "autoscaling",
+   "title_working": "Autoscaling: Matching Capacity to Demand",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-scaling",
+   "order": 12,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-vertical-horizontal",
+    "system-design-observability"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Metrics-driven scaling",
+     "Cooldowns",
+     "Predictive scaling",
+     "Cold starts"
+    ],
+    "analogy": "Opening more checkout counters when queues grow",
+    "include": [
+     "Scaling timeline"
+    ],
+    "traps": [
+     "Scaling on the wrong metric"
+    ]
+   }
+  },
+  {
+   "id": "system-design-data-modeling-scale",
+   "slug": "data-modeling-scale",
+   "title_working": "Data Modelling for Scale: Denormalisation and Access Patterns",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-scaling",
+   "order": 13,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-database-indexing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Design for queries",
+     "Denormalise to avoid joins",
+     "Fan-out on write vs read"
+    ],
+    "analogy": "Keeping copies of a phone number in every address book",
+    "include": [
+     "Before and after schema"
+    ],
+    "traps": [
+     "Update anomalies"
+    ]
+   }
+  },
+  {
+   "id": "system-design-security-at-scale",
+   "slug": "security-at-scale",
+   "title_working": "Security at Scale: DDoS, WAFs and Secrets",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-scaling",
+   "order": 14,
+   "priority": "P2",
+   "prerequisites": [
+    "system-design-api-gateway"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Rate limits and edge filtering",
+     "Least privilege",
+     "Secret management",
+     "Encryption at rest and in transit"
+    ],
+    "analogy": "Castle walls, gates and guards",
+    "include": [
+     "Defence-in-depth diagram"
+    ],
+    "traps": [
+     "Secrets in code"
+    ]
+   }
+  },
+  {
+   "id": "system-design-url-shortener",
+   "slug": "url-shortener",
+   "title_working": "Design a URL Shortener",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-back-of-envelope",
+    "system-design-caching"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Base62 encoding vs hashing",
+     "Key generation service",
+     "Redirect 301 vs 302",
+     "Read-heavy caching",
+     "Analytics"
+    ],
+    "analogy": "A cloakroom ticket for a long coat",
+    "include": [
+     "Estimates marked as estimates",
+     "Architecture diagram"
+    ],
+    "traps": [
+     "Collisions with truncated hashes"
+    ]
+   }
+  },
+  {
+   "id": "system-design-rate-limiter",
+   "slug": "rate-limiter",
+   "title_working": "Design a Rate Limiter",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-token-bucket",
+    "system-design-distributed-cache"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Algorithm choice",
+     "Where to place it",
+     "Distributed counters in Redis",
+     "Race conditions",
+     "Headers"
+    ],
+    "analogy": "A turnstile that lets through so many people per minute",
+    "include": [
+     "Architecture diagram",
+     "Lua script idea"
+    ],
+    "traps": [
+     "Per-node limits that sum incorrectly"
+    ]
+   }
+  },
+  {
+   "id": "system-design-unique-id-generator",
+   "slug": "unique-id-generator",
+   "title_working": "Design a Unique ID Generator",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-back-of-envelope"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "UUIDs vs DB sequences vs Snowflake",
+     "Time-ordered IDs",
+     "Clock skew"
+    ],
+    "analogy": "Ticket numbers combining date, counter and machine",
+    "include": [
+     "Bit layout diagram"
+    ],
+    "traps": [
+     "Clock going backwards"
+    ],
+    "exact_facts": [
+     "Snowflake: Twitter, 2010"
+    ]
+   }
+  },
+  {
+   "id": "system-design-key-value-store",
+   "slug": "key-value-store",
+   "title_working": "Design a Distributed Key-Value Store",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-consistent-hashing-sd",
+    "system-design-quorums"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Partitioning with consistent hashing",
+     "Replication",
+     "Quorums",
+     "Vector clocks",
+     "Hinted handoff",
+     "Merkle repair"
+    ],
+    "analogy": "A coat check spread across many counters",
+    "include": [
+     "Architecture diagram"
+    ],
+    "traps": [
+     "Ignoring conflict resolution"
+    ],
+    "exact_facts": [
+     "Inspired by Amazon's Dynamo paper, 2007"
+    ]
+   }
+  },
+  {
+   "id": "system-design-chat-system",
+   "slug": "chat-system",
+   "title_working": "Design a Chat System Like WhatsApp",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-realtime-communication",
+    "system-design-message-queues"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "WebSocket gateways",
+     "Message storage",
+     "Delivery and read receipts",
+     "Group fan-out",
+     "Presence",
+     "Offline delivery"
+    ],
+    "analogy": "A post office that holds letters until you come home",
+    "include": [
+     "Estimates",
+     "Message flow diagram"
+    ],
+    "traps": [
+     "Ordering across devices",
+     "Huge groups"
+    ]
+   }
+  },
+  {
+   "id": "system-design-news-feed",
+   "slug": "news-feed",
+   "title_working": "Design a News Feed",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-caching",
+    "system-design-async-processing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Fan-out on write vs read",
+     "Celebrity problem",
+     "Ranking",
+     "Pagination with cursors"
+    ],
+    "analogy": "A newspaper printed per reader vs assembled on request",
+    "include": [
+     "Hybrid fan-out diagram"
+    ],
+    "traps": [
+     "Fan-out to millions of followers"
+    ]
+   }
+  },
+  {
+   "id": "system-design-notification-system",
+   "slug": "notification-system",
+   "title_working": "Design a Notification System",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-message-queues"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Channels: push, SMS, email",
+     "Templates and preferences",
+     "Retries and dedup",
+     "Rate limits per user"
+    ],
+    "analogy": "A post room sorting letters, parcels and telegrams",
+    "include": [
+     "Pipeline diagram"
+    ],
+    "traps": [
+     "Duplicate notifications"
+    ]
+   }
+  },
+  {
+   "id": "system-design-typeahead",
+   "slug": "typeahead",
+   "title_working": "Design Search Autocomplete",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 8,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-tries",
+    "system-design-caching"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Trie with top-k at nodes",
+     "Offline aggregation",
+     "Caching prefixes",
+     "Updating popularity"
+    ],
+    "analogy": "A shopkeeper finishing your sentence",
+    "include": [
+     "Data flow diagram"
+    ],
+    "traps": [
+     "Rebuilding tries on every query"
+    ]
+   }
+  },
+  {
+   "id": "system-design-video-streaming",
+   "slug": "video-streaming",
+   "title_working": "Design a Video Streaming Platform Like YouTube",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 9,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-cdn",
+    "system-design-blob-storage"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Upload and transcoding pipeline",
+     "Adaptive bitrate",
+     "CDN delivery",
+     "Metadata and views counting"
+    ],
+    "analogy": "A film studio distributing reels to local cinemas",
+    "include": [
+     "Upload and playback diagrams"
+    ],
+    "traps": [
+     "Serving video from the app servers"
+    ]
+   }
+  },
+  {
+   "id": "system-design-ride-sharing",
+   "slug": "ride-sharing",
+   "title_working": "Design a Ride-Sharing App Like Uber",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 10,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-geohash",
+    "system-design-realtime-communication"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Driver location updates",
+     "Geospatial index",
+     "Matching",
+     "Trip state machine",
+     "Surge"
+    ],
+    "analogy": "A taxi dispatcher with a live map",
+    "include": [
+     "Location update estimates",
+     "Matching flow"
+    ],
+    "traps": [
+     "Hot cells in busy areas"
+    ]
+   }
+  },
+  {
+   "id": "system-design-payments",
+   "slug": "payments",
+   "title_working": "Design a Payment System",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 11,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-stateless-idempotency",
+    "system-design-sagas"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Idempotency keys",
+     "Double-entry ledger",
+     "Payment service provider integration",
+     "Reconciliation",
+     "Exactly-once illusion"
+    ],
+    "analogy": "A bank ledger where every debit has a matching credit",
+    "include": [
+     "Payment flow diagram"
+    ],
+    "traps": [
+     "Retries that double charge"
+    ]
+   }
+  },
+  {
+   "id": "system-design-ticket-booking",
+   "slug": "ticket-booking",
+   "title_working": "Design a Ticket Booking System Like BookMyShow",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 12,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-distributed-locks-sd",
+    "system-design-payments"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Seat hold with expiry",
+     "Concurrency control",
+     "Payment timeouts",
+     "Flash sale traffic"
+    ],
+    "analogy": "Putting a reserved sign on a seat for ten minutes",
+    "include": [
+     "Booking flow diagram"
+    ],
+    "traps": [
+     "Double booking under races"
+    ]
+   }
+  },
+  {
+   "id": "system-design-web-crawler",
+   "slug": "web-crawler",
+   "title_working": "Design a Web Crawler",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 13,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-message-queues",
+    "famous-algos-bloom-filter"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "URL frontier with politeness",
+     "Dedup with hashing",
+     "robots.txt",
+     "Distributed workers"
+    ],
+    "analogy": "An army of librarians cataloguing the world's books",
+    "include": [
+     "Crawler pipeline diagram"
+    ],
+    "traps": [
+     "Crawler traps"
+    ]
+   }
+  },
+  {
+   "id": "system-design-file-sync",
+   "slug": "file-sync",
+   "title_working": "Design Google Drive or Dropbox",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 14,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-blob-storage",
+    "famous-algos-rsync-rolling-checksum"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Chunking and dedup",
+     "Metadata service",
+     "Sync conflicts",
+     "Notifications"
+    ],
+    "analogy": "Shipping only changed pages of a binder",
+    "include": [
+     "Upload and sync diagrams"
+    ],
+    "traps": [
+     "Re-uploading whole files"
+    ]
+   }
+  },
+  {
+   "id": "system-design-leaderboard",
+   "slug": "leaderboard",
+   "title_working": "Design a Real-Time Leaderboard",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 15,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-distributed-cache"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Redis sorted sets",
+     "Sharded leaderboards",
+     "Rank queries"
+    ],
+    "analogy": "A scoreboard that reorders as points come in",
+    "include": [
+     "Data flow diagram"
+    ],
+    "traps": [
+     "Global rank with sharding"
+    ]
+   }
+  },
+  {
+   "id": "system-design-job-scheduler",
+   "slug": "job-scheduler",
+   "title_working": "Design a Distributed Job Scheduler",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 16,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-message-queues",
+    "system-design-distributed-locks-sd"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Time-based triggers",
+     "Exactly-once execution illusion",
+     "Leader election",
+     "Retries"
+    ],
+    "analogy": "An alarm clock that wakes the right worker",
+    "include": [
+     "Architecture diagram"
+    ],
+    "traps": [
+     "Duplicate execution after failover"
+    ]
+   }
+  },
+  {
+   "id": "system-design-search-engine",
+   "slug": "search-engine",
+   "title_working": "Design a Web Search Engine",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 17,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-search-systems",
+    "system-design-web-crawler"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Crawl, index, rank, serve",
+     "Sharded indexes",
+     "Query fan-out and merge"
+    ],
+    "analogy": "A library with a catalogue for every word in every book",
+    "include": [
+     "Pipeline diagram"
+    ],
+    "traps": [
+     "Ignoring tail latency of fan-out"
+    ]
+   }
+  },
+  {
+   "id": "system-design-photo-sharing",
+   "slug": "photo-sharing",
+   "title_working": "Design Instagram",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 18,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-blob-storage",
+    "system-design-news-feed"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Upload pipeline",
+     "Thumbnails",
+     "Feed",
+     "Likes and counters at scale"
+    ],
+    "analogy": "A photo lab with a gallery wall per follower",
+    "include": [
+     "Estimates",
+     "Diagram"
+    ],
+    "traps": [
+     "Counter contention"
+    ]
+   }
+  },
+  {
+   "id": "system-design-proximity-service",
+   "slug": "proximity-service",
+   "title_working": "Design a Nearby Places Service Like Yelp",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 19,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-geohash",
+    "system-design-database-indexing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Geohash or quadtree",
+     "Read-heavy",
+     "Caching by cell"
+    ],
+    "analogy": "Looking for restaurants within walking distance on a gridded map",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Boundary misses"
+    ]
+   }
+  },
+  {
+   "id": "system-design-hotel-reservation",
+   "slug": "hotel-reservation",
+   "title_working": "Design a Hotel Reservation System",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 20,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-ticket-booking"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Inventory per date",
+     "Overbooking",
+     "Concurrency with constraints"
+    ],
+    "analogy": "A hotel register with a row per room per night",
+    "include": [
+     "Data model",
+     "Flow diagram"
+    ],
+    "traps": [
+     "Race conditions on last room"
+    ]
+   }
+  },
+  {
+   "id": "system-design-ecommerce-checkout",
+   "slug": "ecommerce-checkout",
+   "title_working": "Design an E-Commerce Checkout",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 21,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-payments",
+    "system-design-sagas"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Cart, inventory reservation, order, payment",
+     "Saga orchestration",
+     "Flash sales"
+    ],
+    "analogy": "A supermarket checkout with holds on items",
+    "include": [
+     "Saga diagram"
+    ],
+    "traps": [
+     "Overselling stock"
+    ]
+   }
+  },
+  {
+   "id": "system-design-food-delivery",
+   "slug": "food-delivery",
+   "title_working": "Design a Food Delivery App Like Swiggy or Zomato",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 22,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-ride-sharing",
+    "system-design-notification-system"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Restaurant search",
+     "Order state machine",
+     "Delivery partner assignment",
+     "ETAs"
+    ],
+    "analogy": "A relay race from kitchen to doorstep",
+    "include": [
+     "State diagram"
+    ],
+    "traps": [
+     "Inconsistent order states"
+    ]
+   }
+  },
+  {
+   "id": "system-design-distributed-message-queue",
+   "slug": "distributed-message-queue",
+   "title_working": "Design a Distributed Message Queue Like Kafka",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 23,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-message-queues",
+    "system-design-replication"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Partitioned append-only logs",
+     "Offsets",
+     "Replication and ISR",
+     "Retention"
+    ],
+    "analogy": "A row of numbered notebooks many readers can follow at their own pace",
+    "include": [
+     "Broker diagram"
+    ],
+    "traps": [
+     "Unbounded retention cost"
+    ],
+    "exact_facts": [
+     "Kafka: originally LinkedIn, 2011"
+    ]
+   }
+  },
+  {
+   "id": "system-design-metrics-monitoring",
+   "slug": "metrics-monitoring",
+   "title_working": "Design a Metrics and Alerting System",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 24,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-time-series-db",
+    "system-design-stream-processing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Collection agents",
+     "Ingestion",
+     "Time-series storage",
+     "Query",
+     "Alert rules"
+    ],
+    "analogy": "A hospital monitor for every server",
+    "include": [
+     "Pipeline diagram"
+    ],
+    "traps": [
+     "Cardinality explosion"
+    ]
+   }
+  },
+  {
+   "id": "system-design-distributed-cache-design",
+   "slug": "distributed-cache-design",
+   "title_working": "Design a Distributed Cache",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 25,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-distributed-cache",
+    "system-design-consistent-hashing-sd"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Sharding",
+     "Replication",
+     "Eviction",
+     "Hot keys",
+     "Client libraries"
+    ],
+    "analogy": "Many small fridges instead of one giant one",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Thundering herd on node loss"
+    ]
+   }
+  },
+  {
+   "id": "system-design-collaborative-editor",
+   "slug": "collaborative-editor",
+   "title_working": "Design Google Docs",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 26,
+   "priority": "P2",
+   "prerequisites": [
+    "system-design-realtime-communication",
+    "famous-algos-operational-transform"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "OT vs CRDT",
+     "Document sessions",
+     "Presence",
+     "Version history"
+    ],
+    "analogy": "Several people writing on one whiteboard",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Lost edits on reconnect"
+    ]
+   }
+  },
+  {
+   "id": "system-design-stock-exchange",
+   "slug": "stock-exchange",
+   "title_working": "Design a Stock Exchange",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 27,
+   "priority": "P2",
+   "prerequisites": [
+    "system-design-message-queues"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Order book",
+     "Matching engine",
+     "Sequencer",
+     "Low latency",
+     "Market data fan-out"
+    ],
+    "analogy": "An auctioneer matching bids and asks",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Fairness and ordering"
+    ]
+   }
+  },
+  {
+   "id": "system-design-ad-click-aggregation",
+   "slug": "ad-click-aggregation",
+   "title_working": "Design an Ad Click Aggregator",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 28,
+   "priority": "P2",
+   "prerequisites": [
+    "system-design-stream-processing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Exactly-once counting",
+     "Windows",
+     "Reconciliation with batch"
+    ],
+    "analogy": "Counting turnstile clicks per minute across many gates",
+    "include": [
+     "Lambda vs kappa diagram"
+    ],
+    "traps": [
+     "Double counting on retries"
+    ]
+   }
+  },
+  {
+   "id": "system-design-pastebin",
+   "slug": "pastebin",
+   "title_working": "Design Pastebin",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 29,
+   "priority": "P2",
+   "prerequisites": [
+    "system-design-url-shortener",
+    "system-design-blob-storage"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Text in blob storage",
+     "Expiry",
+     "Access control"
+    ],
+    "analogy": "A shared clipboard with an expiry date",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Hot pastes"
+    ]
+   }
+  },
+  {
+   "id": "system-design-online-judge",
+   "slug": "online-judge",
+   "title_working": "Design an Online Judge Like LeetCode",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 30,
+   "priority": "P2",
+   "prerequisites": [
+    "system-design-async-processing",
+    "system-design-security-at-scale"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Sandboxed execution",
+     "Queues of submissions",
+     "Fair scheduling",
+     "Contest spikes"
+    ],
+    "analogy": "An exam hall with invigilated cubicles",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Running untrusted code unsafely"
+    ]
+   }
+  },
+  {
+   "id": "system-design-email-service",
+   "slug": "email-service",
+   "title_working": "Design an Email Service",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 31,
+   "priority": "P2",
+   "prerequisites": [
+    "system-design-blob-storage",
+    "system-design-search-systems"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "SMTP ingestion",
+     "Mailbox storage",
+     "Search",
+     "Spam filtering"
+    ],
+    "analogy": "A post office with a filing room for every person",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Attachment storage cost"
+    ]
+   }
+  },
+  {
+   "id": "system-design-maps-navigation",
+   "slug": "maps-navigation",
+   "title_working": "Design Google Maps Navigation",
+   "subject": "system-design",
+   "kind": "case-study",
+   "track": "sd-cases",
+   "order": 32,
+   "priority": "P2",
+   "prerequisites": [
+    "famous-algos-a-star",
+    "famous-algos-geohash"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Map tiles",
+     "Routing with hierarchies",
+     "Traffic ETAs",
+     "Rerouting"
+    ],
+    "analogy": "A road atlas that updates with traffic reports",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Global shortest path on the full graph"
+    ]
+   }
+  },
+  {
+   "id": "system-design-oop-solid",
+   "slug": "oop-solid",
+   "title_working": "Object-Oriented Design and SOLID Principles",
+   "subject": "system-design",
+   "kind": "lld",
+   "track": "sd-lld",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-interview-framework"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Encapsulation, abstraction, inheritance, polymorphism",
+     "Five SOLID principles with examples",
+     "Composition over inheritance"
+    ],
+    "analogy": "Lego bricks with standard studs",
+    "include": [
+     "Before and after class sketches in pseudocode"
+    ],
+    "traps": [
+     "Inheritance for code reuse only"
+    ],
+    "exact_facts": [
+     "Robert C. Martin popularised SOLID"
+    ]
+   }
+  },
+  {
+   "id": "system-design-creational-patterns",
+   "slug": "creational-patterns",
+   "title_working": "Creational Patterns: Factory, Builder and Singleton",
+   "subject": "system-design",
+   "kind": "lld",
+   "track": "sd-lld",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-oop-solid"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "When each helps",
+     "Thread-safe singleton",
+     "Builder for many optional fields"
+    ],
+    "analogy": "A car factory vs a custom car configurator",
+    "include": [
+     "Class sketches"
+    ],
+    "traps": [
+     "Singleton as global state everywhere"
+    ],
+    "exact_facts": [
+     "Gang of Four, 1994"
+    ]
+   }
+  },
+  {
+   "id": "system-design-structural-patterns",
+   "slug": "structural-patterns",
+   "title_working": "Structural Patterns: Adapter, Decorator, Facade, Proxy",
+   "subject": "system-design",
+   "kind": "lld",
+   "track": "sd-lld",
+   "order": 3,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-creational-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Wrapping and adapting",
+     "Adding behaviour without subclass explosion"
+    ],
+    "analogy": "Travel plug adapters and phone cases",
+    "include": [
+     "Class sketches"
+    ],
+    "traps": [
+     "Decorator vs inheritance confusion"
+    ]
+   }
+  },
+  {
+   "id": "system-design-behavioural-patterns",
+   "slug": "behavioural-patterns",
+   "title_working": "Behavioural Patterns: Strategy, Observer, State and Command",
+   "subject": "system-design",
+   "kind": "lld",
+   "track": "sd-lld",
+   "order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-creational-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Swap algorithms",
+     "Event subscriptions",
+     "State machines",
+     "Undo with commands"
+    ],
+    "analogy": "A remote control whose buttons can be reprogrammed",
+    "include": [
+     "Class sketches"
+    ],
+    "traps": [
+     "Observer memory leaks"
+    ]
+   }
+  },
+  {
+   "id": "system-design-machine-coding-approach",
+   "slug": "machine-coding-approach",
+   "title_working": "How to Ace a Machine Coding Round",
+   "subject": "system-design",
+   "kind": "lld",
+   "track": "sd-lld",
+   "order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-oop-solid",
+    "system-design-behavioural-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Clarify scope",
+     "Entities first",
+     "Interfaces",
+     "Working code before polish",
+     "Extensibility and tests"
+    ],
+    "analogy": "Building a model house room by room",
+    "include": [
+     "90-minute plan"
+    ],
+    "traps": [
+     "Over-engineering early"
+    ]
+   }
+  },
+  {
+   "id": "system-design-parking-lot",
+   "slug": "parking-lot",
+   "title_working": "Design a Parking Lot",
+   "subject": "system-design",
+   "kind": "lld",
+   "track": "sd-lld",
+   "order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-machine-coding-approach"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Levels, spots, vehicles, tickets, payments",
+     "Spot assignment strategy",
+     "Concurrency on spot allocation"
+    ],
+    "analogy": "A car park attendant with a clipboard",
+    "include": [
+     "Class diagram",
+     "Park and unpark flows"
+    ],
+    "traps": [
+     "God classes"
+    ]
+   }
+  },
+  {
+   "id": "system-design-elevator-system",
+   "slug": "elevator-system",
+   "title_working": "Design an Elevator System",
+   "subject": "system-design",
+   "kind": "lld",
+   "track": "sd-lld",
+   "order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-machine-coding-approach",
+    "system-design-behavioural-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Elevator state machine",
+     "Request scheduling",
+     "Multiple cars dispatcher"
+    ],
+    "analogy": "A building concierge directing lifts",
+    "include": [
+     "State diagram"
+    ],
+    "traps": [
+     "Starvation of far floors"
+    ]
+   }
+  },
+  {
+   "id": "system-design-vending-machine",
+   "slug": "vending-machine",
+   "title_working": "Design a Vending Machine With the State Pattern",
+   "subject": "system-design",
+   "kind": "lld",
+   "track": "sd-lld",
+   "order": 8,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-behavioural-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "States: idle, has money, dispensing",
+     "Transitions",
+     "Change return"
+    ],
+    "analogy": "A machine whose buttons do different things depending on its mood",
+    "include": [
+     "State diagram"
+    ],
+    "traps": [
+     "Giant if-else chains"
+    ]
+   }
+  },
+  {
+   "id": "system-design-splitwise",
+   "slug": "splitwise",
+   "title_working": "Design Splitwise",
+   "subject": "system-design",
+   "kind": "lld",
+   "track": "sd-lld",
+   "order": 9,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-machine-coding-approach"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Users, groups, expenses, split strategies",
+     "Balance simplification"
+    ],
+    "analogy": "A shared notebook of who owes whom",
+    "include": [
+     "Class diagram",
+     "Simplify debts idea"
+    ],
+    "traps": [
+     "Floating point money"
+    ]
+   }
+  },
+  {
+   "id": "system-design-bookmyshow-lld",
+   "slug": "bookmyshow-lld",
+   "title_working": "Design BookMyShow (Low-Level)",
+   "subject": "system-design",
+   "kind": "lld",
+   "track": "sd-lld",
+   "order": 10,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-parking-lot"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Movies, shows, screens, seats",
+     "Seat locking",
+     "Booking flow"
+    ],
+    "analogy": "A theatre box office with a seat chart",
+    "include": [
+     "Class diagram"
+    ],
+    "traps": [
+     "Seat lock leaks"
+    ]
+   }
+  },
+  {
+   "id": "system-design-library-management",
+   "slug": "library-management",
+   "title_working": "Design a Library Management System",
+   "subject": "system-design",
+   "kind": "lld",
+   "track": "sd-lld",
+   "order": 11,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-machine-coding-approach"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Books vs copies",
+     "Members",
+     "Loans and fines",
+     "Search"
+    ],
+    "analogy": "A librarian's card catalogue",
+    "include": [
+     "Class diagram"
+    ],
+    "traps": [
+     "Mixing book and copy"
+    ]
+   }
+  },
+  {
+   "id": "system-design-snake-ladder-tictactoe",
+   "slug": "snake-ladder-tictactoe",
+   "title_working": "Design Board Games: Snake and Ladder, Tic-Tac-Toe",
+   "subject": "system-design",
+   "kind": "lld",
+   "track": "sd-lld",
+   "order": 12,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-machine-coding-approach"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Board, players, dice, rules",
+     "Win checks",
+     "Extensible rules"
+    ],
+    "analogy": "A board game rulebook as code",
+    "include": [
+     "Class diagram"
+    ],
+    "traps": [
+     "Hardcoding board size"
+    ]
+   }
+  },
+  {
+   "id": "system-design-chess-lld",
+   "slug": "chess-lld",
+   "title_working": "Design Chess",
+   "subject": "system-design",
+   "kind": "lld",
+   "track": "sd-lld",
+   "order": 13,
+   "priority": "P2",
+   "prerequisites": [
+    "system-design-snake-ladder-tictactoe"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Pieces with polymorphic moves",
+     "Board validation",
+     "Check and checkmate"
+    ],
+    "analogy": "Each piece knowing its own dance steps",
+    "include": [
+     "Class diagram"
+    ],
+    "traps": [
+     "Move validation in one big function"
+    ]
+   }
+  },
+  {
+   "id": "system-design-atm-lld",
+   "slug": "atm-lld",
+   "title_working": "Design an ATM",
+   "subject": "system-design",
+   "kind": "lld",
+   "track": "sd-lld",
+   "order": 14,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-vending-machine"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "States",
+     "Cash dispenser with denominations",
+     "Bank interface"
+    ],
+    "analogy": "A cashier who follows a strict script",
+    "include": [
+     "State diagram"
+    ],
+    "traps": [
+     "Partial dispense failures"
+    ]
+   }
+  },
+  {
+   "id": "system-design-logger-lld",
+   "slug": "logger-lld",
+   "title_working": "Design a Logging Framework",
+   "subject": "system-design",
+   "kind": "lld",
+   "track": "sd-lld",
+   "order": 15,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-behavioural-patterns",
+    "system-design-structural-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Levels",
+     "Appenders",
+     "Chain of responsibility",
+     "Async logging"
+    ],
+    "analogy": "A mail room routing letters by priority",
+    "include": [
+     "Class diagram"
+    ],
+    "traps": [
+     "Blocking the caller"
+    ]
+   }
+  },
+  {
+   "id": "system-design-cache-lld",
+   "slug": "cache-lld",
+   "title_working": "Design an In-Memory Cache With Eviction Policies",
+   "subject": "system-design",
+   "kind": "lld",
+   "track": "sd-lld",
+   "order": 16,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-lru-cache",
+    "system-design-behavioural-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Strategy for eviction",
+     "Thread safety",
+     "TTL"
+    ],
+    "analogy": "A fridge with a house rule for what gets thrown out",
+    "include": [
+     "Class diagram"
+    ],
+    "traps": [
+     "Coupling cache and policy"
+    ]
+   }
+  },
+  {
+   "id": "system-design-rate-limiter-lld",
+   "slug": "rate-limiter-lld",
+   "title_working": "Design a Rate Limiter (Low-Level)",
+   "subject": "system-design",
+   "kind": "lld",
+   "track": "sd-lld",
+   "order": 17,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-rate-limiter",
+    "system-design-behavioural-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Strategy per algorithm",
+     "Per-user buckets",
+     "Thread safety"
+    ],
+    "analogy": "A ticket punch per customer",
+    "include": [
+     "Class diagram"
+    ],
+    "traps": [
+     "Global locks"
+    ]
+   }
+  },
+  {
+   "id": "system-design-pub-sub-lld",
+   "slug": "pub-sub-lld",
+   "title_working": "Design a Pub-Sub Message Broker (Low-Level)",
+   "subject": "system-design",
+   "kind": "lld",
+   "track": "sd-lld",
+   "order": 18,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-behavioural-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Topics, publishers, subscribers",
+     "Offsets",
+     "Concurrency"
+    ],
+    "analogy": "A newsletter service with subscriber lists",
+    "include": [
+     "Class diagram"
+    ],
+    "traps": [
+     "Slow consumers blocking others"
+    ]
+   }
+  },
+  {
+   "id": "system-design-shopping-cart-lld",
+   "slug": "shopping-cart-lld",
+   "title_working": "Design a Shopping Cart and Inventory",
+   "subject": "system-design",
+   "kind": "lld",
+   "track": "sd-lld",
+   "order": 19,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-machine-coding-approach"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Products, cart, pricing rules, discounts strategy",
+     "Inventory reservation"
+    ],
+    "analogy": "A supermarket trolley with a smart price scanner",
+    "include": [
+     "Class diagram"
+    ],
+    "traps": [
+     "Discount logic spread everywhere"
+    ]
+   }
+  },
+  {
+   "id": "system-design-concurrency-lld",
+   "slug": "concurrency-lld",
+   "title_working": "Concurrency in Machine Coding: Locks, Atomics and Thread Pools",
+   "subject": "system-design",
+   "kind": "lld",
+   "track": "sd-lld",
+   "order": 20,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-machine-coding-approach"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Race conditions",
+     "Mutexes and condition variables",
+     "Producer-consumer",
+     "Thread-safe collections"
+    ],
+    "analogy": "Two cooks sharing one knife",
+    "include": [
+     "Pseudocode producer-consumer"
+    ],
+    "traps": [
+     "Deadlocks from lock ordering"
+    ]
+   }
+  },
+  {
+   "id": "system-design-cab-booking-lld",
+   "slug": "cab-booking-lld",
+   "title_working": "Design a Cab Booking Service (Low-Level)",
+   "subject": "system-design",
+   "kind": "lld",
+   "track": "sd-lld",
+   "order": 21,
+   "priority": "P2",
+   "prerequisites": [
+    "system-design-parking-lot"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Riders, drivers, trips",
+     "Matching strategy",
+     "Pricing strategy"
+    ],
+    "analogy": "A dispatcher's board of drivers and requests",
+    "include": [
+     "Class diagram"
+    ],
+    "traps": [
+     "Tight coupling to pricing"
+    ]
+   }
+  },
+  {
+   "id": "system-design-replication",
+   "slug": "replication",
+   "title_working": "Replication: Leaders, Followers and Lag",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-distributed",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-read-replicas"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Leader-follower",
+     "Sync vs async",
+     "Failover",
+     "Replication logs"
+    ],
+    "analogy": "A teacher dictating notes that students copy",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Data loss on async failover"
+    ]
+   }
+  },
+  {
+   "id": "system-design-multi-leader-leaderless",
+   "slug": "multi-leader-leaderless",
+   "title_working": "Multi-Leader and Leaderless Replication",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-distributed",
+   "order": 2,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-replication"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Write conflicts",
+     "Last-write-wins dangers",
+     "Dynamo-style leaderless"
+    ],
+    "analogy": "Two branch managers both editing the price list",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "LWW silently dropping writes"
+    ]
+   }
+  },
+  {
+   "id": "system-design-quorums",
+   "slug": "quorums",
+   "title_working": "Quorums: Why R + W > N Works",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-distributed",
+   "order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-multi-leader-leaderless"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Overlap of read and write sets",
+     "Sloppy quorums",
+     "Tuning for latency"
+    ],
+    "analogy": "Asking enough people that at least one heard the latest news",
+    "include": [
+     "Overlap illustration"
+    ],
+    "traps": [
+     "Quorums are not linearizable by themselves"
+    ]
+   }
+  },
+  {
+   "id": "system-design-partitioning",
+   "slug": "partitioning",
+   "title_working": "Partitioning: Splitting Data Across Machines",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-distributed",
+   "order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-vertical-horizontal"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Range vs hash",
+     "Hot partitions",
+     "Rebalancing",
+     "Secondary indexes local vs global"
+    ],
+    "analogy": "Splitting a phone book by surname letter",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Celebrity keys"
+    ]
+   }
+  },
+  {
+   "id": "system-design-consistent-hashing-sd",
+   "slug": "consistent-hashing-sd",
+   "title_working": "Consistent Hashing in System Design Interviews",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-distributed",
+   "order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-partitioning",
+    "famous-algos-consistent-hashing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Ring with virtual nodes",
+     "Where it is used",
+     "Rebalancing traffic"
+    ],
+    "analogy": "Seats around a round table",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Explaining it without virtual nodes"
+    ]
+   }
+  },
+  {
+   "id": "system-design-consistency-models",
+   "slug": "consistency-models",
+   "title_working": "Consistency Models: Linearizable to Eventual",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-distributed",
+   "order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-cap-pacelc"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Linearizability",
+     "Sequential",
+     "Causal",
+     "Read-your-writes",
+     "Eventual"
+    ],
+    "analogy": "Different promises a messenger can make",
+    "include": [
+     "Timeline examples"
+    ],
+    "traps": [
+     "Mixing isolation and consistency"
+    ]
+   }
+  },
+  {
+   "id": "system-design-isolation-levels",
+   "slug": "isolation-levels",
+   "title_working": "Transaction Isolation Levels and Anomalies",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-distributed",
+   "order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-consistency-models"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Dirty read, non-repeatable read, phantom, write skew",
+     "Read committed, snapshot, serializable"
+    ],
+    "analogy": "Several cashiers updating one ledger",
+    "include": [
+     "Anomaly examples"
+    ],
+    "traps": [
+     "Assuming default isolation is serializable"
+    ]
+   }
+  },
+  {
+   "id": "system-design-two-phase-commit",
+   "slug": "two-phase-commit",
+   "title_working": "Two-Phase Commit and Its Weak Spot",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-distributed",
+   "order": 8,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-isolation-levels"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Prepare and commit",
+     "Coordinator failure blocks",
+     "When to use"
+    ],
+    "analogy": "A wedding where everyone must say I do before anyone is married",
+    "include": [
+     "Sequence diagram"
+    ],
+    "traps": [
+     "Thinking 2PC scales across services"
+    ]
+   }
+  },
+  {
+   "id": "system-design-sagas",
+   "slug": "sagas",
+   "title_working": "Sagas: Long Transactions Without Locks",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-distributed",
+   "order": 9,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-two-phase-commit"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Local transactions plus compensations",
+     "Choreography vs orchestration",
+     "Idempotency"
+    ],
+    "analogy": "Booking a trip and cancelling the hotel if the flight fails",
+    "include": [
+     "Saga diagram"
+    ],
+    "traps": [
+     "Compensations that can fail"
+    ],
+    "exact_facts": [
+     "Garcia-Molina and Salem, 1987"
+    ]
+   }
+  },
+  {
+   "id": "system-design-outbox-cdc",
+   "slug": "outbox-cdc",
+   "title_working": "The Outbox Pattern and Change Data Capture",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-distributed",
+   "order": 10,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-sagas",
+    "system-design-message-queues"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Dual-write problem",
+     "Outbox table",
+     "CDC from the log"
+    ],
+    "analogy": "Writing the letter and the envelope in one go",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Publishing events outside the DB transaction"
+    ]
+   }
+  },
+  {
+   "id": "system-design-exactly-once",
+   "slug": "exactly-once",
+   "title_working": "Exactly-Once Delivery Is a Myth; Exactly-Once Processing Is Not",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-distributed",
+   "order": 11,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-outbox-cdc"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "At-most, at-least, exactly once",
+     "Dedup and idempotent consumers",
+     "Transactions in Kafka"
+    ],
+    "analogy": "A cheque with a serial number the bank only cashes once",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Claiming networks deliver exactly once"
+    ]
+   }
+  },
+  {
+   "id": "system-design-consensus-overview",
+   "slug": "consensus-overview",
+   "title_working": "Consensus in Practice: Raft, Paxos, etcd and ZooKeeper",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-distributed",
+   "order": 12,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-replication",
+    "famous-algos-raft"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "What consensus gives",
+     "Majority quorums",
+     "Uses: config, leader election, locks"
+    ],
+    "analogy": "A committee that only acts on majority votes",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Using consensus for every write"
+    ]
+   }
+  },
+  {
+   "id": "system-design-distributed-locks-sd",
+   "slug": "distributed-locks-sd",
+   "title_working": "Distributed Locks and Leader Election",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-distributed",
+   "order": 13,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-consensus-overview"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Lease-based locks",
+     "Fencing tokens",
+     "Redis lock pitfalls"
+    ],
+    "analogy": "A single key to a shared room with a numbered tag",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Locks without fencing"
+    ]
+   }
+  },
+  {
+   "id": "system-design-time-ordering",
+   "slug": "time-ordering",
+   "title_working": "Time and Ordering in Distributed Systems",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-distributed",
+   "order": 14,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-lamport-clocks"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Clock skew",
+     "Logical clocks",
+     "TrueTime idea"
+    ],
+    "analogy": "Watches that never quite agree",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Ordering by wall clock"
+    ]
+   }
+  },
+  {
+   "id": "system-design-failure-detection",
+   "slug": "failure-detection",
+   "title_working": "Failures, Partitions and Split Brain",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-distributed",
+   "order": 15,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-consensus-overview"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Timeouts are guesses",
+     "Split brain",
+     "Quorum to avoid it",
+     "STONITH"
+    ],
+    "analogy": "Two captains each thinking they command the ship",
+    "include": [
+     "Partition diagram"
+    ],
+    "traps": [
+     "Assuming silence means death"
+    ]
+   }
+  },
+  {
+   "id": "system-design-anti-entropy",
+   "slug": "anti-entropy",
+   "title_working": "Read Repair, Hinted Handoff and Anti-Entropy",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-distributed",
+   "order": 16,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-quorums",
+    "famous-algos-merkle-trees"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Repair on read",
+     "Store hints for down nodes",
+     "Background Merkle comparison"
+    ],
+    "analogy": "Neighbours comparing notes to fix gossip errors",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Unbounded hints"
+    ]
+   }
+  },
+  {
+   "id": "system-design-event-sourcing-cqrs",
+   "slug": "event-sourcing-cqrs",
+   "title_working": "Event Sourcing and CQRS",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-distributed",
+   "order": 17,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-outbox-cdc"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Store events not state",
+     "Rebuild projections",
+     "Separate read and write models"
+    ],
+    "analogy": "A bank statement instead of just a balance",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Event schema evolution"
+    ]
+   }
+  },
+  {
+   "id": "system-design-spanner-truetime",
+   "slug": "spanner-truetime",
+   "title_working": "Spanner: Global Transactions With TrueTime",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-distributed",
+   "order": 18,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-time-ordering",
+    "system-design-two-phase-commit"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Uncertainty intervals",
+     "Commit wait",
+     "Paxos groups"
+    ],
+    "analogy": "Waiting out the uncertainty before announcing a result",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Assuming perfect clocks"
+    ],
+    "exact_facts": [
+     "Corbett et al., 2012"
+    ]
+   }
+  },
+  {
+   "id": "system-design-dynamo-paper",
+   "slug": "dynamo-paper",
+   "title_working": "Dynamo: The Paper Behind Modern Key-Value Stores",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-distributed",
+   "order": 19,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-quorums",
+    "system-design-consistent-hashing-sd"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Always-writable design",
+     "Vector clocks",
+     "Sloppy quorums",
+     "Merkle repair"
+    ],
+    "analogy": "A shop that never refuses an order and sorts out mix-ups later",
+    "include": [
+     "Architecture diagram"
+    ],
+    "traps": [
+     "Overgeneralising to DynamoDB internals"
+    ],
+    "exact_facts": [
+     "DeCandia et al., 2007"
+    ]
+   }
+  },
+  {
+   "id": "system-design-gfs-hdfs",
+   "slug": "gfs-hdfs",
+   "title_working": "GFS and HDFS: Files Bigger Than Any Disk",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-distributed",
+   "order": 20,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-blob-storage",
+    "system-design-replication"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Master plus chunkservers",
+     "Large chunks",
+     "Replication",
+     "Append-heavy design"
+    ],
+    "analogy": "A librarian who knows which shelf holds each chapter",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Single master bottleneck"
+    ],
+    "exact_facts": [
+     "Ghemawat, Gobioff, Leung, 2003"
+    ]
+   }
+  },
+  {
+   "id": "system-design-kafka-internals",
+   "slug": "kafka-internals",
+   "title_working": "Inside Kafka: Logs, Partitions and ISR",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-distributed",
+   "order": 21,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-distributed-message-queue",
+    "system-design-replication"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Segment files",
+     "In-sync replicas",
+     "Acks levels",
+     "Consumer offsets"
+    ],
+    "analogy": "Numbered notebooks copied by trusted clerks",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "acks=1 durability assumption"
+    ]
+   }
+  },
+  {
+   "id": "system-design-bigtable",
+   "slug": "bigtable",
+   "title_working": "Bigtable: The Sorted Map Behind Many Google Services",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-distributed",
+   "order": 22,
+   "priority": "P2",
+   "prerequisites": [
+    "system-design-gfs-hdfs",
+    "famous-algos-lsm-trees"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Sorted rows",
+     "Tablets",
+     "SSTables and memtables"
+    ],
+    "analogy": "A giant sorted spreadsheet cut into pages",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Row key design mistakes"
+    ],
+    "exact_facts": [
+     "Chang et al., 2006"
+    ]
+   }
+  },
+  {
+   "id": "system-design-flp-impossibility",
+   "slug": "flp-impossibility",
+   "title_working": "FLP: Why Perfect Consensus Is Impossible",
+   "subject": "system-design",
+   "kind": "deep-dive",
+   "track": "sd-distributed",
+   "order": 23,
+   "priority": "P2",
+   "prerequisites": [
+    "system-design-consensus-overview"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Asynchronous model",
+     "One faulty process",
+     "How real systems cope with timeouts"
+    ],
+    "analogy": "Waiting forever for a friend who might just be slow",
+    "include": [
+     "Diagram"
+    ],
+    "traps": [
+     "Concluding consensus is useless"
+    ],
+    "exact_facts": [
+     "Fischer, Lynch, Paterson, 1985"
+    ]
+   }
+  }
+ ]
+}

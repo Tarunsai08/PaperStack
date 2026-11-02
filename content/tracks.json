@@ -108,11 +108,20 @@
     "subject": "dsa"
   },
   {
+    "id": "dsa-math",
+    "title": "Maths for Interviews",
+    "subtitle": "GCD, primes, fast powers, counting and randomness",
+    "description": "The small set of maths that keeps appearing in online assessments and interviews: divisibility, primes, modular arithmetic, combinations, and random sampling.",
+    "order": 3,
+    "accent": "#0284C7",
+    "subject": "dsa"
+  },
+  {
     "id": "dsa-linear",
     "title": "Linked Lists, Stacks and Queues",
     "subtitle": "Pointer tricks and monotonic structures",
     "description": "Fast and slow pointers, reversal, monotonic stacks and deques: small structures with surprisingly deep patterns.",
-    "order": 3,
+    "order": 4,
     "accent": "#6366F1",
     "subject": "dsa"
   },
@@ -121,7 +130,7 @@
     "title": "Recursion and Backtracking",
     "subtitle": "Trust the recursion, then prune",
     "description": "How to think recursively, generate subsets and permutations, and prune search trees so backtracking finishes in time.",
-    "order": 4,
+    "order": 5,
     "accent": "#8B5CF6",
     "subject": "dsa"
   },
@@ -130,7 +139,7 @@
     "title": "Trees",
     "subtitle": "Traversals, BSTs and tree recursion",
     "description": "Binary trees, BSTs, traversal orders, lowest common ancestors and the post-order trick that solves most tree problems.",
-    "order": 5,
+    "order": 6,
     "accent": "#14B8A6",
     "subject": "dsa"
   },
@@ -139,7 +148,7 @@
     "title": "Heaps, Intervals and Greedy",
     "subtitle": "Top-k, scheduling and exchange arguments",
     "description": "Priority queues, interval problems and greedy algorithms, with the exchange argument that proves greedy is safe.",
-    "order": 6,
+    "order": 7,
     "accent": "#F59E0B",
     "subject": "dsa"
   },
@@ -148,7 +157,7 @@
     "title": "Graphs",
     "subtitle": "BFS, DFS, topological sort, union-find, shortest paths",
     "description": "Model problems as graphs, then pick the right traversal: BFS for levels, DFS for structure, Dijkstra for weights, union-find for groups.",
-    "order": 7,
+    "order": 8,
     "accent": "#10B981",
     "subject": "dsa"
   },
@@ -157,7 +166,7 @@
     "title": "Dynamic Programming",
     "subtitle": "States, transitions and the classic DP families",
     "description": "DP explained as careful recursion plus memory. Knapsack, sequences, grids, intervals, trees and bitmasks, built up pattern by pattern.",
-    "order": 8,
+    "order": 9,
     "accent": "#EF4444",
     "subject": "dsa"
   },
@@ -166,7 +175,7 @@
     "title": "Advanced Structures",
     "subtitle": "Tries, Fenwick trees, segment trees, bit tricks",
     "description": "The structures that separate a good interview from a great one: tries, binary indexed trees, segment tree basics and bit manipulation.",
-    "order": 9,
+    "order": 10,
     "accent": "#64748B",
     "subject": "dsa"
   },
@@ -252,11 +261,20 @@
     "subject": "famous-algos"
   },
   {
+    "id": "fa-networking",
+    "title": "Algorithms of the Internet",
+    "subtitle": "Congestion control, rate limiting, backoff, load balancing",
+    "description": "The quiet algorithms that keep the internet from collapsing: TCP congestion control, token buckets, exponential backoff with jitter, and load balancers that pick wisely.",
+    "order": 2,
+    "accent": "#0E9F6E",
+    "subject": "famous-algos"
+  },
+  {
     "id": "fa-storage",
     "title": "Storage and Indexing",
     "subtitle": "How databases and editors really store data",
     "description": "LSM trees, write-ahead logs, B+ tree pages, bitmaps, geohashes, ropes and piece tables: the clever layouts under every app.",
-    "order": 2,
+    "order": 3,
     "accent": "#059669",
     "subject": "famous-algos"
   },
@@ -265,7 +283,7 @@
     "title": "Compression and Error Correction",
     "subtitle": "Squeezing data and surviving noise",
     "description": "Lempel-Ziv, Burrows-Wheeler, arithmetic coding, CRC, Hamming and Reed-Solomon codes: why ZIP files, QR codes and Wi-Fi work.",
-    "order": 3,
+    "order": 4,
     "accent": "#16A34A",
     "subject": "famous-algos"
   },
@@ -274,7 +292,7 @@
     "title": "Cryptography",
     "subtitle": "The maths that keeps secrets on the internet",
     "description": "Diffie-Hellman, RSA, hashing, HMAC, elliptic curves and secret sharing, explained from intuition up.",
-    "order": 4,
+    "order": 5,
     "accent": "#047857",
     "subject": "famous-algos"
   },
@@ -283,7 +301,7 @@
     "title": "Search, Ranking and Diffing",
     "subtitle": "PageRank, BM25, diff and sync",
     "description": "How search engines rank pages, how Git computes diffs, and how rsync copies only what changed.",
-    "order": 5,
+    "order": 6,
     "accent": "#15803D",
     "subject": "famous-algos"
   },
@@ -292,7 +310,7 @@
     "title": "Signals, Paths and Estimation",
     "subtitle": "FFT, Kalman, Viterbi, A* and more",
     "description": "The algorithms inside your phone's GPS, your music player and your games: FFT, Kalman filters, Viterbi, A* and simulated annealing.",
-    "order": 6,
+    "order": 7,
     "accent": "#0F766E",
     "subject": "famous-algos"
   },
@@ -333,11 +351,20 @@
     "subject": "system-design"
   },
   {
+    "id": "sd-lld",
+    "title": "Low-Level Design",
+    "subtitle": "Object-oriented design for machine coding rounds",
+    "description": "SOLID principles, the design patterns that matter, and step-by-step designs of parking lots, elevators, Splitwise and more, the way machine coding rounds expect.",
+    "order": 4,
+    "accent": "#A16207",
+    "subject": "system-design"
+  },
+  {
     "id": "sd-distributed",
     "title": "Distributed Systems",
     "subtitle": "Replication, consensus, consistency and time",
     "description": "The theory under real systems: consistency models, quorums, consensus, distributed transactions, clocks and failure handling.",
-    "order": 4,
+    "order": 5,
     "accent": "#B45309",
     "subject": "system-design"
   }

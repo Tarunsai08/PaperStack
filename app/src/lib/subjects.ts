@@ -8,6 +8,7 @@ const KIND_LABEL: Record<Kind, string> = {
   concept: 'Algorithm',
   'deep-dive': 'Deep dive',
   'case-study': 'Case study',
+  lld: 'Low-level design',
 };
 
 export const kindLabel = (k: Kind): string => KIND_LABEL[k] ?? k;

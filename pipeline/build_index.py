@@ -100,6 +100,16 @@ CASE_STUDY_SECTIONS = [
     "Further reading",
     "Key takeaways",
 ]
+LLD_SECTIONS = [
+    "The hook",
+    "Requirements",
+    "Core objects",
+    "Class design",
+    "Key flows",
+    "Patterns used",
+    "Extensions",
+    "Key takeaways",
+]
 SECTIONS = {
     "paper": PAPER_SECTIONS,
     "primer": PRIMER_SECTIONS,
@@ -108,6 +118,7 @@ SECTIONS = {
     "concept": CONCEPT_SECTIONS,
     "deep-dive": DEEP_DIVE_SECTIONS,
     "case-study": CASE_STUDY_SECTIONS,
+    "lld": LLD_SECTIONS,
 }
 DIRECTIVES = ["insight", "analogy", "history", "warning", "try-this"]
 DIFFICULTIES = ["beginner", "intermediate", "advanced"]
@@ -122,10 +133,11 @@ WORD_LIMITS = {
     "concept": (1000, 2000),
     "deep-dive": (1100, 2200),
     "case-study": (1100, 2200),
+    "lld": (1000, 2000),
 }
 # Kinds that must show code (pseudocode or C++), a diagram, or practice problems.
-NEEDS_CODE = {"pattern", "problem-walkthrough", "concept"}
-NEEDS_MERMAID = {"paper", "deep-dive", "case-study"}
+NEEDS_CODE = {"pattern", "problem-walkthrough", "concept", "lld"}
+NEEDS_MERMAID = {"paper", "deep-dive", "case-study", "lld"}
 NEEDS_PROBLEMS = {"pattern", "problem-walkthrough"}
 # ML keeps its original folders and id prefixes so saved progress survives.
 ML_FOLDERS = {"paper": "papers", "primer": "primers"}

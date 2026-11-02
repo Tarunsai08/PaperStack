@@ -1,0 +1,2090 @@
+{
+ "subject": "cs-core",
+ "version": 1,
+ "entries": [
+  {
+   "id": "cs-core-what-an-os-does",
+   "slug": "what-an-os-does",
+   "title_working": "What an Operating System Actually Does",
+   "subject": "cs-core",
+   "kind": "primer",
+   "track": "cs-os",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Resource manager and abstraction layer",
+     "Kernel vs user space",
+     "System calls"
+    ],
+    "analogy": "A hotel manager sharing rooms among guests",
+    "include": [
+     "Layer diagram"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-processes-threads",
+   "slug": "processes-threads",
+   "title_working": "Processes vs Threads",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-os",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-what-an-os-does"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Address spaces",
+     "PCB",
+     "Threads share memory",
+     "Costs of each"
+    ],
+    "analogy": "Separate houses vs roommates in one house",
+    "include": [
+     "Memory layout diagram"
+    ],
+    "traps": [
+     "Threads are not always faster"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-process-states",
+   "slug": "process-states",
+   "title_working": "Process States and Context Switching",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-os",
+   "order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-processes-threads"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "New, ready, running, waiting, terminated",
+     "What a context switch saves",
+     "Its cost"
+    ],
+    "analogy": "An actor stepping off stage between scenes",
+    "include": [
+     "State diagram"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-system-calls",
+   "slug": "system-calls",
+   "title_working": "System Calls, User Mode and Kernel Mode",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-os",
+   "order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-what-an-os-does"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Traps",
+     "Mode switch",
+     "fork, exec, wait",
+     "Why syscalls are expensive"
+    ],
+    "analogy": "Asking a bank teller to fetch money from the vault",
+    "include": [
+     "fork-exec sequence"
+    ],
+    "traps": [
+     "fork copies lazily (copy-on-write)"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-cpu-scheduling",
+   "slug": "cpu-scheduling",
+   "title_working": "CPU Scheduling: FCFS, SJF, Round Robin, Priority, MLFQ",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-os",
+   "order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-process-states"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Metrics: turnaround, waiting, response",
+     "Gantt chart calculations",
+     "Starvation and aging"
+    ],
+    "analogy": "A doctor's clinic deciding who goes next",
+    "include": [
+     "Gantt chart worked example"
+    ],
+    "traps": [
+     "Preemptive vs non-preemptive SJF confusion"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-ipc",
+   "slug": "ipc",
+   "title_working": "Inter-Process Communication: Pipes, Shared Memory, Messages",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-os",
+   "order": 6,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-processes-threads"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Pipes and FIFOs",
+     "Shared memory with synchronisation",
+     "Message queues",
+     "Sockets"
+    ],
+    "analogy": "Passing notes vs sharing a whiteboard",
+    "include": [
+     "Comparison table"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-race-conditions",
+   "slug": "race-conditions",
+   "title_working": "Race Conditions and the Critical Section Problem",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-os",
+   "order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-processes-threads"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Interleavings",
+     "Mutual exclusion, progress, bounded waiting",
+     "Peterson's solution"
+    ],
+    "analogy": "Two people editing one spreadsheet cell",
+    "include": [
+     "Interleaving trace"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-mutex-semaphore",
+   "slug": "mutex-semaphore",
+   "title_working": "Mutexes, Semaphores and Spinlocks",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-os",
+   "order": 8,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-race-conditions"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Binary vs counting semaphores",
+     "Ownership",
+     "Busy waiting trade-offs"
+    ],
+    "analogy": "A key to a single room vs a bowl of tokens for a car park",
+    "include": [
+     "Pseudocode"
+    ],
+    "traps": [
+     "Mutex is not a binary semaphore in ownership terms"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-monitors-condition-variables",
+   "slug": "monitors-condition-variables",
+   "title_working": "Monitors and Condition Variables",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-os",
+   "order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-mutex-semaphore"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Wait and signal",
+     "Spurious wakeups",
+     "While-loop rule"
+    ],
+    "analogy": "A waiting room with a bell",
+    "include": [
+     "Pseudocode"
+    ],
+    "traps": [
+     "Using if instead of while"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-classic-sync-problems",
+   "slug": "classic-sync-problems",
+   "title_working": "Producer-Consumer, Readers-Writers and Dining Philosophers",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-os",
+   "order": 10,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-mutex-semaphore"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Bounded buffer with semaphores",
+     "Reader preference vs writer preference",
+     "Deadlock-free philosophers"
+    ],
+    "analogy": "A bakery shelf, a library reading room and a dinner table",
+    "include": [
+     "Pseudocode for each"
+    ],
+    "traps": [
+     "Starvation of writers"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-deadlocks",
+   "slug": "deadlocks",
+   "title_working": "Deadlocks: Conditions, Prevention, Avoidance, Detection",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-os",
+   "order": 11,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-classic-sync-problems"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Coffman conditions",
+     "Resource allocation graphs",
+     "Banker's algorithm",
+     "Recovery"
+    ],
+    "analogy": "Four cars at a four-way stop each waiting on the next",
+    "include": [
+     "Banker's algorithm worked example"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-memory-basics",
+   "slug": "memory-basics",
+   "title_working": "Memory Management: Allocation and Fragmentation",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-os",
+   "order": 12,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-what-an-os-does"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Contiguous allocation",
+     "First, best, worst fit",
+     "Internal vs external fragmentation",
+     "Compaction"
+    ],
+    "analogy": "Parking cars of different lengths along a kerb",
+    "include": [
+     "Worked allocation example"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-paging-tlb",
+   "slug": "paging-tlb",
+   "title_working": "Paging, Page Tables and the TLB",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-os",
+   "order": 13,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-memory-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Pages and frames",
+     "Address translation",
+     "Multi-level page tables",
+     "TLB hit ratio calculation"
+    ],
+    "analogy": "A book index that maps chapter numbers to shelf positions",
+    "include": [
+     "Address translation diagram",
+     "Effective access time example"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-segmentation",
+   "slug": "segmentation",
+   "title_working": "Segmentation and Segmented Paging",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-os",
+   "order": 14,
+   "priority": "P2",
+   "prerequisites": [
+    "cs-core-paging-tlb"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Logical segments",
+     "Segment table",
+     "Combining with paging"
+    ],
+    "analogy": "Chapters of different lengths in a binder",
+    "include": [
+     "Diagram"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-virtual-memory",
+   "slug": "virtual-memory",
+   "title_working": "Virtual Memory and Demand Paging",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-os",
+   "order": 15,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-paging-tlb"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Page faults",
+     "Swap space",
+     "Effective access time with faults"
+    ],
+    "analogy": "A desk that holds only the books you are using right now",
+    "include": [
+     "Page fault flow diagram"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-page-replacement",
+   "slug": "page-replacement",
+   "title_working": "Page Replacement: FIFO, LRU, Optimal and CLOCK",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-os",
+   "order": 16,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-virtual-memory"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Fault counting on reference strings",
+     "Belady's anomaly",
+     "CLOCK approximation of LRU"
+    ],
+    "analogy": "Deciding which book to put back on the shelf",
+    "include": [
+     "Reference string worked example"
+    ],
+    "traps": [
+     "Belady's anomaly only affects FIFO-like algorithms"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-thrashing",
+   "slug": "thrashing",
+   "title_working": "Thrashing and the Working Set",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-os",
+   "order": 17,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-page-replacement"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Too many processes, too few frames",
+     "Working set model",
+     "Page fault frequency"
+    ],
+    "analogy": "A juggler with too many balls dropping all of them",
+    "include": [
+     "Diagram"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-file-systems",
+   "slug": "file-systems",
+   "title_working": "File Systems: Inodes, Directories and Allocation",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-os",
+   "order": 18,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-what-an-os-does"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Contiguous, linked, indexed allocation",
+     "Inodes",
+     "Hard vs soft links",
+     "Journaling"
+    ],
+    "analogy": "A library catalogue pointing to shelves",
+    "include": [
+     "Inode diagram"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-disk-scheduling",
+   "slug": "disk-scheduling",
+   "title_working": "Disk Scheduling: FCFS, SSTF, SCAN, C-SCAN, LOOK",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-os",
+   "order": 19,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-file-systems"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Seek time",
+     "Head movement calculations",
+     "Starvation"
+    ],
+    "analogy": "A lift picking up passengers floor by floor",
+    "include": [
+     "Worked head-movement example"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-raid",
+   "slug": "raid",
+   "title_working": "RAID Levels Explained",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-os",
+   "order": 20,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-disk-scheduling"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "RAID 0, 1, 5, 6, 10",
+     "Parity",
+     "Capacity vs redundancy"
+    ],
+    "analogy": "Spreading a book across several shelves with backup pages",
+    "include": [
+     "Comparison table"
+    ],
+    "traps": [
+     "RAID is not a backup"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-io-interrupts-dma",
+   "slug": "io-interrupts-dma",
+   "title_working": "I/O: Polling, Interrupts and DMA",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-os",
+   "order": 21,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-system-calls"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Interrupt handling",
+     "DMA offload",
+     "Device drivers"
+    ],
+    "analogy": "A doorbell vs checking the door every minute",
+    "include": [
+     "Diagram"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-threading-models",
+   "slug": "threading-models",
+   "title_working": "User Threads, Kernel Threads and Thread Pools",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-os",
+   "order": 22,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-processes-threads"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Many-to-one, one-to-one, many-to-many",
+     "Green threads",
+     "Pools"
+    ],
+    "analogy": "Workers hired by a contractor vs directly by the company",
+    "include": [
+     "Diagram"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-booting",
+   "slug": "booting",
+   "title_working": "What Happens When a Computer Boots",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-os",
+   "order": 23,
+   "priority": "P2",
+   "prerequisites": [
+    "cs-core-what-an-os-does"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Firmware",
+     "Bootloader",
+     "Kernel init",
+     "init or systemd"
+    ],
+    "analogy": "Opening a shop in the morning step by step",
+    "include": [
+     "Sequence diagram"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-linux-essentials",
+   "slug": "linux-essentials",
+   "title_working": "Linux Essentials for Interviews",
+   "subject": "cs-core",
+   "kind": "primer",
+   "track": "cs-os",
+   "order": 24,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-system-calls",
+    "cs-core-file-systems"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Processes and signals",
+     "Permissions",
+     "Pipes and redirection",
+     "Useful commands"
+    ],
+    "analogy": "A workshop where every tool has a label",
+    "include": [
+     "Command table"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-dbms-intro",
+   "slug": "dbms-intro",
+   "title_working": "Why Databases Exist",
+   "subject": "cs-core",
+   "kind": "primer",
+   "track": "cs-dbms",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "File system problems",
+     "DBMS responsibilities",
+     "Data independence",
+     "Three-schema architecture"
+    ],
+    "analogy": "A librarian vs a pile of books",
+    "include": [
+     "Diagram"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-er-model",
+   "slug": "er-model",
+   "title_working": "ER Modelling: Entities, Relationships and Cardinality",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-dbms",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-dbms-intro"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Entities, attributes, relationships",
+     "Cardinality and participation",
+     "Weak entities",
+     "ER to tables"
+    ],
+    "analogy": "Drawing a family tree before writing addresses",
+    "include": [
+     "ER diagram example"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-relational-keys",
+   "slug": "relational-keys",
+   "title_working": "The Relational Model and Keys",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-dbms",
+   "order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-er-model"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Super, candidate, primary, foreign, composite keys",
+     "Integrity constraints"
+    ],
+    "analogy": "ID cards that uniquely identify people",
+    "include": [
+     "Examples"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-relational-algebra",
+   "slug": "relational-algebra",
+   "title_working": "Relational Algebra in Plain Words",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-dbms",
+   "order": 4,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-relational-keys"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Select, project, join, union, difference, division"
+    ],
+    "analogy": "Recipes for combining tables",
+    "include": [
+     "Worked examples"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-sql-basics",
+   "slug": "sql-basics",
+   "title_working": "SQL Essentials: SELECT to GROUP BY",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-dbms",
+   "order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-relational-keys"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Filtering",
+     "Aggregates",
+     "GROUP BY and HAVING",
+     "ORDER BY and LIMIT"
+    ],
+    "analogy": "Asking a well-organised spreadsheet questions",
+    "include": [
+     "Query examples"
+    ],
+    "traps": [
+     "WHERE vs HAVING"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-sql-joins",
+   "slug": "sql-joins",
+   "title_working": "SQL Joins Without Confusion",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-dbms",
+   "order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-sql-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Inner, left, right, full, cross, self joins",
+     "Join conditions",
+     "Anti and semi joins"
+    ],
+    "analogy": "Matching guest lists from two parties",
+    "include": [
+     "Venn-free explanation with tables"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-sql-advanced",
+   "slug": "sql-advanced",
+   "title_working": "Subqueries, CTEs and Window Functions",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-dbms",
+   "order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-sql-joins"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Correlated subqueries",
+     "CTEs",
+     "ROW_NUMBER, RANK, LAG",
+     "Running totals"
+    ],
+    "analogy": "A leaderboard computed inside the query",
+    "include": [
+     "Examples"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-sql-interview-queries",
+   "slug": "sql-interview-queries",
+   "title_working": "The SQL Queries Interviewers Always Ask",
+   "subject": "cs-core",
+   "kind": "problem-walkthrough",
+   "track": "cs-dbms",
+   "order": 8,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-sql-advanced"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Nth highest salary",
+     "Duplicates",
+     "Department-wise top earners",
+     "Consecutive days"
+    ],
+    "analogy": "A quiz night of classic questions",
+    "include": [
+     "Worked queries"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-functional-dependencies",
+   "slug": "functional-dependencies",
+   "title_working": "Functional Dependencies and Closures",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-dbms",
+   "order": 9,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-relational-keys"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "FD notation",
+     "Attribute closure",
+     "Finding candidate keys",
+     "Armstrong's axioms"
+    ],
+    "analogy": "If you know the roll number, you know the name",
+    "include": [
+     "Worked closure example"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-normalization",
+   "slug": "normalization",
+   "title_working": "Normalisation: 1NF to BCNF",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-dbms",
+   "order": 10,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-functional-dependencies"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Anomalies",
+     "1NF, 2NF, 3NF, BCNF",
+     "Lossless and dependency-preserving decomposition"
+    ],
+    "analogy": "Splitting a messy notebook into tidy ledgers",
+    "include": [
+     "Worked decomposition"
+    ],
+    "traps": [
+     "Over-normalising for read-heavy apps"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-transactions-acid",
+   "slug": "transactions-acid",
+   "title_working": "Transactions and ACID",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-dbms",
+   "order": 11,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-dbms-intro"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Atomicity, consistency, isolation, durability",
+     "Transaction states",
+     "Schedules"
+    ],
+    "analogy": "A bank transfer that must fully happen or not at all",
+    "include": [
+     "State diagram"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-serializability",
+   "slug": "serializability",
+   "title_working": "Schedules and Serializability",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-dbms",
+   "order": 12,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-transactions-acid"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Conflict serializability",
+     "Precedence graphs",
+     "Recoverable and cascadeless schedules"
+    ],
+    "analogy": "Checking whether interleaved cooks still made the right dish",
+    "include": [
+     "Precedence graph example"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-concurrency-control",
+   "slug": "concurrency-control",
+   "title_working": "Concurrency Control: Locks, 2PL and Timestamps",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-dbms",
+   "order": 13,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-serializability"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Shared and exclusive locks",
+     "Two-phase locking",
+     "Strict 2PL",
+     "Timestamp ordering",
+     "MVCC link"
+    ],
+    "analogy": "Booking library rooms with sign-up sheets",
+    "include": [
+     "Examples"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-db-recovery",
+   "slug": "db-recovery",
+   "title_working": "Crash Recovery: Logs, Checkpoints and ARIES",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-dbms",
+   "order": 14,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-transactions-acid"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Undo and redo logging",
+     "Checkpoints",
+     "ARIES idea"
+    ],
+    "analogy": "A ship's log used to rebuild events after a storm",
+    "include": [
+     "Recovery walkthrough"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-db-indexing-cs",
+   "slug": "db-indexing-cs",
+   "title_working": "Indexing: B+ Trees and Hash Indexes",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-dbms",
+   "order": 15,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-sql-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Dense vs sparse",
+     "Clustered vs non-clustered",
+     "B+ tree structure",
+     "Hash index limits"
+    ],
+    "analogy": "A book index vs a phone directory",
+    "include": [
+     "B+ tree diagram"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-query-optimization",
+   "slug": "query-optimization",
+   "title_working": "How a Query Runs: Parsing, Planning, Executing",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-dbms",
+   "order": 16,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-db-indexing-cs"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Query plans",
+     "Join algorithms",
+     "Cost-based optimisation",
+     "EXPLAIN"
+    ],
+    "analogy": "A sat-nav choosing the fastest route",
+    "include": [
+     "Plan example"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-views-triggers-procedures",
+   "slug": "views-triggers-procedures",
+   "title_working": "Views, Stored Procedures and Triggers",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-dbms",
+   "order": 17,
+   "priority": "P2",
+   "prerequisites": [
+    "cs-core-sql-advanced"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Virtual tables",
+     "Encapsulated logic",
+     "Trigger pitfalls"
+    ],
+    "analogy": "Saved searches and automatic alarms",
+    "include": [
+     "Examples"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-nosql-overview",
+   "slug": "nosql-overview",
+   "title_working": "NoSQL Families for DBMS Interviews",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-dbms",
+   "order": 18,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-normalization"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Key-value, document, column-family, graph",
+     "BASE vs ACID"
+    ],
+    "analogy": "Different shapes of storage boxes",
+    "include": [
+     "Comparison table"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-osi-tcpip",
+   "slug": "osi-tcpip",
+   "title_working": "The OSI and TCP/IP Models",
+   "subject": "cs-core",
+   "kind": "primer",
+   "track": "cs-networks",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Seven vs four layers",
+     "What each layer does",
+     "Encapsulation"
+    ],
+    "analogy": "Sending a parcel through layers of packaging",
+    "include": [
+     "Layer diagram"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-data-link",
+   "slug": "data-link",
+   "title_working": "The Data Link Layer: MAC, Switches and ARP",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-networks",
+   "order": 2,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-osi-tcpip"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Frames",
+     "MAC addresses",
+     "Switch learning",
+     "ARP resolution"
+    ],
+    "analogy": "A building's internal mail room",
+    "include": [
+     "ARP sequence"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-ip-addressing",
+   "slug": "ip-addressing",
+   "title_working": "IP Addressing and Subnetting",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-networks",
+   "order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-osi-tcpip"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "IPv4 classes vs CIDR",
+     "Subnet masks",
+     "Calculating hosts",
+     "Private ranges",
+     "IPv6 intro"
+    ],
+    "analogy": "Street addresses with postcodes",
+    "include": [
+     "Worked subnetting example"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-routing-algorithms",
+   "slug": "routing-algorithms",
+   "title_working": "Routing: Distance Vector and Link State",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-networks",
+   "order": 4,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-ip-addressing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "RIP and OSPF ideas",
+     "Count to infinity",
+     "BGP link"
+    ],
+    "analogy": "Road signs vs a full city map",
+    "include": [
+     "Diagram"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-nat-dhcp",
+   "slug": "nat-dhcp",
+   "title_working": "NAT and DHCP",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-networks",
+   "order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-ip-addressing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Private to public translation",
+     "Port mapping",
+     "DHCP lease flow"
+    ],
+    "analogy": "An office receptionist forwarding calls to extensions",
+    "include": [
+     "DORA sequence"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-tcp-deep-dive",
+   "slug": "tcp-deep-dive",
+   "title_working": "TCP: Handshakes, Reliability and Flow Control",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-networks",
+   "order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-osi-tcpip"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Three-way handshake",
+     "Sequence numbers and ACKs",
+     "Sliding window flow control",
+     "Four-way close",
+     "TIME_WAIT"
+    ],
+    "analogy": "A phone call where both sides confirm they can hear",
+    "include": [
+     "Handshake diagram"
+    ],
+    "traps": [
+     "Flow control vs congestion control"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-udp",
+   "slug": "udp",
+   "title_working": "UDP and When Unreliable Is Better",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-networks",
+   "order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-tcp-deep-dive"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "No connection",
+     "Datagram boundaries",
+     "Uses: DNS, video, games"
+    ],
+    "analogy": "Postcards vs registered letters",
+    "include": [
+     "Comparison table"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-ports-sockets",
+   "slug": "ports-sockets",
+   "title_working": "Ports, Sockets and Socket Programming",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-networks",
+   "order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-tcp-deep-dive"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "5-tuple",
+     "Listening and accepting",
+     "Blocking vs non-blocking",
+     "select, poll, epoll"
+    ],
+    "analogy": "Apartment numbers in a building",
+    "include": [
+     "Server pseudocode"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-http-https",
+   "slug": "http-https",
+   "title_working": "HTTP and HTTPS for Interviews",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-networks",
+   "order": 9,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-tcp-deep-dive"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Methods and status codes",
+     "Headers",
+     "Cookies",
+     "HTTP/1.1, 2, 3",
+     "HTTPS with TLS"
+    ],
+    "analogy": "Ordering at a counter with a standard form",
+    "include": [
+     "Request and response example"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-dns-cs",
+   "slug": "dns-cs",
+   "title_working": "DNS for CS Interviews",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-networks",
+   "order": 10,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-osi-tcpip"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Record types",
+     "Resolution steps",
+     "Caching",
+     "UDP vs TCP use"
+    ],
+    "analogy": "A phone book with local copies",
+    "include": [
+     "Diagram"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-icmp-tools",
+   "slug": "icmp-tools",
+   "title_working": "ICMP, ping and traceroute",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-networks",
+   "order": 11,
+   "priority": "P2",
+   "prerequisites": [
+    "cs-core-ip-addressing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Echo requests",
+     "TTL expiry trick in traceroute"
+    ],
+    "analogy": "Shouting and timing the echo",
+    "include": [
+     "Diagram"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-network-security",
+   "slug": "network-security",
+   "title_working": "Network Security Basics: Firewalls, VPNs and Common Attacks",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-networks",
+   "order": 12,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-http-https"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Firewalls",
+     "VPN tunnels",
+     "DDoS, MITM, spoofing",
+     "TLS link"
+    ],
+    "analogy": "Locks, guards and private corridors",
+    "include": [
+     "Diagram"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-url-to-page",
+   "slug": "url-to-page",
+   "title_working": "What Happens When You Type a URL (Networks Edition)",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-networks",
+   "order": 13,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-http-https",
+    "cs-core-dns-cs"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "DNS, ARP, TCP, TLS, HTTP, rendering"
+    ],
+    "analogy": "A letter's journey across the world",
+    "include": [
+     "End-to-end sequence diagram"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-email-protocols",
+   "slug": "email-protocols",
+   "title_working": "Email Protocols: SMTP, IMAP and POP3",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-networks",
+   "order": 14,
+   "priority": "P2",
+   "prerequisites": [
+    "cs-core-http-https"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Sending vs retrieving",
+     "Store and forward"
+    ],
+    "analogy": "Postal sorting offices",
+    "include": [
+     "Diagram"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-classes-objects",
+   "slug": "classes-objects",
+   "title_working": "Classes and Objects in C++",
+   "subject": "cs-core",
+   "kind": "primer",
+   "track": "cs-oop",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Blueprint vs instance",
+     "Members",
+     "this pointer"
+    ],
+    "analogy": "A cookie cutter and its cookies",
+    "include": [
+     "Code example"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-encapsulation-access",
+   "slug": "encapsulation-access",
+   "title_working": "Encapsulation and Access Specifiers",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-oop",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-classes-objects"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "private, protected, public",
+     "Getters and setters",
+     "Invariants"
+    ],
+    "analogy": "A capsule that protects the medicine inside",
+    "include": [
+     "Code example"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-constructors-raii",
+   "slug": "constructors-raii",
+   "title_working": "Constructors, Destructors and RAII",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-oop",
+   "order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-classes-objects"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Default, parameterised, copy constructors",
+     "Initialiser lists",
+     "Destructors",
+     "RAII for resources"
+    ],
+    "analogy": "A hotel room cleaned when you check out automatically",
+    "include": [
+     "Code example"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-inheritance",
+   "slug": "inheritance",
+   "title_working": "Inheritance in C++",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-oop",
+   "order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-encapsulation-access"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Single, multiple, multilevel, hierarchical",
+     "Access in inheritance",
+     "Constructor order"
+    ],
+    "analogy": "Children inheriting family traits",
+    "include": [
+     "Code example"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-polymorphism",
+   "slug": "polymorphism",
+   "title_working": "Polymorphism: Overloading and Overriding",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-oop",
+   "order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-inheritance"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Compile-time vs runtime",
+     "Function and operator overloading",
+     "Overriding"
+    ],
+    "analogy": "One remote controlling different TVs",
+    "include": [
+     "Code example"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-virtual-functions-vtable",
+   "slug": "virtual-functions-vtable",
+   "title_working": "Virtual Functions and the vtable",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-oop",
+   "order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-polymorphism"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Dynamic dispatch",
+     "vtable and vptr",
+     "Virtual destructors",
+     "Pure virtual functions"
+    ],
+    "analogy": "A switchboard that routes calls by caller type",
+    "include": [
+     "vtable diagram"
+    ],
+    "traps": [
+     "Missing virtual destructor"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-abstract-interfaces",
+   "slug": "abstract-interfaces",
+   "title_working": "Abstract Classes and Interfaces",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-oop",
+   "order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-virtual-functions-vtable"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Pure virtual",
+     "Interfaces as contracts",
+     "Design benefits"
+    ],
+    "analogy": "A job description vs the person hired",
+    "include": [
+     "Code example"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-diamond-problem",
+   "slug": "diamond-problem",
+   "title_working": "The Diamond Problem and Virtual Inheritance",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-oop",
+   "order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-inheritance"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Ambiguity",
+     "Virtual base classes"
+    ],
+    "analogy": "Two parents inheriting from the same grandparent",
+    "include": [
+     "Diagram"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-copy-move-semantics",
+   "slug": "copy-move-semantics",
+   "title_working": "Copy vs Move Semantics and the Rule of Five",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-oop",
+   "order": 9,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-constructors-raii"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Deep vs shallow copy",
+     "Rvalue references",
+     "Move constructors",
+     "Rule of three and five"
+    ],
+    "analogy": "Photocopying a file vs handing over the original",
+    "include": [
+     "Code example"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-smart-pointers",
+   "slug": "smart-pointers",
+   "title_working": "Smart Pointers: unique_ptr, shared_ptr, weak_ptr",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-oop",
+   "order": 10,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-copy-move-semantics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Ownership models",
+     "Reference counting",
+     "Cycles and weak_ptr"
+    ],
+    "analogy": "A library book with one borrower vs a shared document",
+    "include": [
+     "Code example"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-static-friend",
+   "slug": "static-friend",
+   "title_working": "static Members, friend Functions and const Correctness",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-oop",
+   "order": 11,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-encapsulation-access"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Class-level data",
+     "Friends breaking encapsulation safely",
+     "const member functions"
+    ],
+    "analogy": "A shared office noticeboard",
+    "include": [
+     "Code example"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-templates-basics",
+   "slug": "templates-basics",
+   "title_working": "Templates and Generic Programming",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-oop",
+   "order": 12,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-polymorphism"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Function and class templates",
+     "Specialisation",
+     "STL as templates"
+    ],
+    "analogy": "A recipe that works for any fruit",
+    "include": [
+     "Code example"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-exceptions",
+   "slug": "exceptions",
+   "title_working": "Exception Handling in C++",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-oop",
+   "order": 13,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-constructors-raii"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "try, catch, throw",
+     "Stack unwinding",
+     "noexcept",
+     "Exception safety guarantees"
+    ],
+    "analogy": "A fire alarm that walks everyone out in order",
+    "include": [
+     "Code example"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-memory-model-cpp",
+   "slug": "memory-model-cpp",
+   "title_working": "Stack vs Heap and Object Lifetimes",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-oop",
+   "order": 14,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-constructors-raii"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Automatic vs dynamic storage",
+     "new and delete",
+     "Memory leaks and dangling pointers"
+    ],
+    "analogy": "A desk you clear daily vs a storage unit you must empty yourself",
+    "include": [
+     "Diagram"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-stl-internals",
+   "slug": "stl-internals",
+   "title_working": "STL Internals Interviewers Ask About",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-oop",
+   "order": 15,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-templates-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "vector growth and iterator invalidation",
+     "map as red-black tree",
+     "unordered_map buckets"
+    ],
+    "analogy": "Knowing how your car engine works before a long trip",
+    "include": [
+     "Table"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-oop-interview-questions",
+   "slug": "oop-interview-questions",
+   "title_working": "OOP Interview Questions, Answered Simply",
+   "subject": "cs-core",
+   "kind": "primer",
+   "track": "cs-oop",
+   "order": 16,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-virtual-functions-vtable",
+    "cs-core-smart-pointers"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Common questions with crisp answers",
+     "Pitfalls"
+    ],
+    "analogy": "A rapid-fire quiz round",
+    "include": [
+     "Q and A list"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-memory-hierarchy",
+   "slug": "memory-hierarchy",
+   "title_working": "The Memory Hierarchy and CPU Caches",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-architecture",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Registers, caches, RAM, disk",
+     "Locality",
+     "Cache lines",
+     "Hit ratio and AMAT calculation"
+    ],
+    "analogy": "Keeping tools on your belt, bench and in the shed",
+    "include": [
+     "AMAT worked example"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-number-representation",
+   "slug": "number-representation",
+   "title_working": "Numbers in Hardware: Two's Complement, Floating Point, Endianness",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-architecture",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-memory-hierarchy"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Two's complement",
+     "IEEE 754 basics",
+     "Why 0.1 + 0.2 is not 0.3",
+     "Big vs little endian"
+    ],
+    "analogy": "Writing numbers on a fixed number of tiles",
+    "include": [
+     "Worked examples"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-compile-link-load",
+   "slug": "compile-link-load",
+   "title_working": "From Source to Running Program: Compile, Link, Load",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-architecture",
+   "order": 3,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-number-representation"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Preprocessing, compilation, assembly, linking",
+     "Static vs dynamic libraries",
+     "Loader"
+    ],
+    "analogy": "Writing a book, binding it, and shelving it",
+    "include": [
+     "Pipeline diagram"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-pipelining",
+   "slug": "pipelining",
+   "title_working": "Instruction Pipelining and Hazards",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-architecture",
+   "order": 4,
+   "priority": "P2",
+   "prerequisites": [
+    "cs-core-memory-hierarchy"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Stages",
+     "Data, control, structural hazards",
+     "Forwarding"
+    ],
+    "analogy": "An assembly line for instructions",
+    "include": [
+     "Pipeline diagram"
+    ]
+   }
+  },
+  {
+   "id": "cs-core-cache-coherence",
+   "slug": "cache-coherence",
+   "title_working": "Cache Coherence and False Sharing",
+   "subject": "cs-core",
+   "kind": "deep-dive",
+   "track": "cs-architecture",
+   "order": 5,
+   "priority": "P2",
+   "prerequisites": [
+    "cs-core-memory-hierarchy"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "MESI idea",
+     "False sharing in multithreaded code"
+    ],
+    "analogy": "Several people keeping copies of one notebook in sync",
+    "include": [
+     "Diagram"
+    ]
+   }
+  }
+ ],
+ "status": "planned",
+ "tracks": [
+  {
+   "id": "cs-os",
+   "title": "Operating Systems",
+   "order": 0
+  },
+  {
+   "id": "cs-dbms",
+   "title": "Database Management Systems",
+   "order": 1
+  },
+  {
+   "id": "cs-networks",
+   "title": "Computer Networks",
+   "order": 2
+  },
+  {
+   "id": "cs-oop",
+   "title": "Object-Oriented Programming in C++",
+   "order": 3
+  },
+  {
+   "id": "cs-architecture",
+   "title": "Computer Architecture Essentials",
+   "order": 4
+  }
+ ]
+}

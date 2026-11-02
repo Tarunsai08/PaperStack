@@ -92,6 +92,17 @@ export const CASE_STUDY_SECTIONS = [
   'Key takeaways',
 ] as const;
 
+export const LLD_SECTIONS = [
+  'The hook',
+  'Requirements',
+  'Core objects',
+  'Class design',
+  'Key flows',
+  'Patterns used',
+  'Extensions',
+  'Key takeaways',
+] as const;
+
 export const SECTIONS: Record<Kind, readonly string[]> = {
   paper: PAPER_SECTIONS,
   primer: PRIMER_SECTIONS,
@@ -100,6 +111,7 @@ export const SECTIONS: Record<Kind, readonly string[]> = {
   concept: CONCEPT_SECTIONS,
   'deep-dive': DEEP_DIVE_SECTIONS,
   'case-study': CASE_STUDY_SECTIONS,
+  lld: LLD_SECTIONS,
 };
 
 export const DIRECTIVES = ['insight', 'analogy', 'history', 'warning', 'try-this'] as const;
@@ -116,10 +128,11 @@ export const WORD_LIMITS: Record<Kind, readonly [number, number]> = {
   concept: [1000, 2000],
   'deep-dive': [1100, 2200],
   'case-study': [1100, 2200],
+  lld: [1000, 2000],
 };
 
-const NEEDS_CODE = new Set<string>(['pattern', 'problem-walkthrough', 'concept']);
-const NEEDS_MERMAID = new Set<string>(['paper', 'deep-dive', 'case-study']);
+const NEEDS_CODE = new Set<string>(['pattern', 'problem-walkthrough', 'concept', 'lld']);
+const NEEDS_MERMAID = new Set<string>(['paper', 'deep-dive', 'case-study', 'lld']);
 const NEEDS_PROBLEMS = new Set<string>(['pattern', 'problem-walkthrough']);
 
 

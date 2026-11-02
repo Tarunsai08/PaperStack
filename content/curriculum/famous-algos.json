@@ -1,0 +1,2907 @@
+{
+ "subject": "famous-algos",
+ "version": 1,
+ "entries": [
+  {
+   "id": "famous-algos-bloom-filter",
+   "slug": "bloom-filter",
+   "title_working": "Bloom Filters: Saying No Without Looking",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-sketches",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-hashing-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Bit array plus k hashes",
+     "No false negatives, some false positives",
+     "Sizing formula intuition",
+     "Used to skip disk reads"
+    ],
+    "analogy": "A bouncer with a list of initials who never wrongly turns away a guest",
+    "include": [
+     "Pseudocode for add and query",
+     "Worked false-positive estimate",
+     "Where: databases, CDNs, browsers"
+    ],
+    "traps": [
+     "Claiming you can delete from a plain Bloom filter"
+    ],
+    "exact_facts": [
+     "Burton Bloom, 1970"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-counting-bloom-cuckoo",
+   "slug": "counting-bloom-cuckoo",
+   "title_working": "Deletable Filters: Counting Bloom and Cuckoo Filters",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-sketches",
+   "order": 2,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-bloom-filter"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Counters instead of bits",
+     "Cuckoo filter stores fingerprints with two candidate buckets",
+     "Trade-offs"
+    ],
+    "analogy": "A coat check that can hand coats back",
+    "include": [
+     "Pseudocode for cuckoo insert with eviction"
+    ],
+    "traps": [
+     "Counter overflow",
+     "Cuckoo insert failure at high load"
+    ],
+    "exact_facts": [
+     "Cuckoo filter: Fan et al., 2014"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-count-min-sketch",
+   "slug": "count-min-sketch",
+   "title_working": "Count-Min Sketch: Counting Billions of Things in Kilobytes",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-sketches",
+   "order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-bloom-filter"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "d rows of w counters",
+     "Take the minimum",
+     "Overestimates only",
+     "Heavy hitters"
+    ],
+    "analogy": "Several tally sheets where you trust the least exaggerated one",
+    "include": [
+     "Worked example with collisions",
+     "Where: trending topics, network monitoring"
+    ],
+    "traps": [
+     "Using it for exact counts"
+    ],
+    "exact_facts": [
+     "Cormode and Muthukrishnan, 2005"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-hyperloglog",
+   "slug": "hyperloglog",
+   "title_working": "HyperLogLog: Counting Unique Visitors With Almost No Memory",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-sketches",
+   "order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-count-min-sketch"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Leading zeros in hashes hint at cardinality",
+     "Many registers plus harmonic mean",
+     "Mergeable"
+    ],
+    "analogy": "Guessing how many coins were flipped from the longest run of heads",
+    "include": [
+     "Pseudocode for add and estimate",
+     "Where: Redis PFCOUNT, analytics"
+    ],
+    "traps": [
+     "Exact error numbers must match the paper",
+     "Small-range correction exists"
+    ],
+    "exact_facts": [
+     "Flajolet et al., 2007"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-heavy-hitters",
+   "slug": "heavy-hitters",
+   "title_working": "Finding Heavy Hitters in a Stream: Misra-Gries and Space-Saving",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-sketches",
+   "order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-count-min-sketch"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "k counters",
+     "Decrement all when full",
+     "Guarantees for frequent items"
+    ],
+    "analogy": "A small notice board that only keeps the most-mentioned names",
+    "include": [
+     "Pseudocode",
+     "Worked stream example"
+    ],
+    "traps": [
+     "Assuming exact counts"
+    ],
+    "exact_facts": [
+     "Misra and Gries, 1982"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-minhash",
+   "slug": "minhash",
+   "title_working": "MinHash: Estimating Similarity Without Comparing Everything",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-sketches",
+   "order": 6,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-hashing-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Jaccard similarity",
+     "Probability two min-hashes match equals Jaccard",
+     "Signatures"
+    ],
+    "analogy": "Two people drawing the first card from a shuffled deck of shared items",
+    "include": [
+     "Worked example with small sets",
+     "Where: near-duplicate web pages"
+    ],
+    "traps": [
+     "Confusing with cryptographic hashing"
+    ],
+    "exact_facts": [
+     "Broder, 1997"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-lsh",
+   "slug": "lsh",
+   "title_working": "Locality-Sensitive Hashing: Finding Near Neighbours Fast",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-sketches",
+   "order": 7,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-minhash"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Hash so similar items collide",
+     "Bands and rows",
+     "Tuning the S-curve"
+    ],
+    "analogy": "Sorting photos into buckets by rough colour so look-alikes land together",
+    "include": [
+     "Banding pseudocode",
+     "Where: recommendation, dedup"
+    ],
+    "traps": [
+     "Expecting exact nearest neighbours"
+    ],
+    "exact_facts": [
+     "Indyk and Motwani, 1998"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-quantile-sketches",
+   "slug": "quantile-sketches",
+   "title_working": "Quantile Sketches: p99 Latency Without Storing Every Request",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-sketches",
+   "order": 8,
+   "priority": "P2",
+   "prerequisites": [
+    "famous-algos-count-min-sketch"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Why percentiles need sketches",
+     "t-digest clusters",
+     "Mergeable summaries"
+    ],
+    "analogy": "Summarising a crowd's heights with a few labelled groups",
+    "include": [
+     "Where: monitoring dashboards"
+    ],
+    "traps": [
+     "Averaging percentiles across servers"
+    ],
+    "exact_facts": [
+     "t-digest: Dunning"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-consistent-hashing",
+   "slug": "consistent-hashing",
+   "title_working": "Consistent Hashing: Adding Servers Without Moving Everything",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-distributed",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-hashing-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Hash ring",
+     "Keys go clockwise to next node",
+     "Virtual nodes for balance",
+     "Only K/n keys move"
+    ],
+    "analogy": "Seats around a round table where a new guest only displaces a neighbour",
+    "include": [
+     "Ring diagram",
+     "Pseudocode with a sorted map",
+     "Where: Dynamo-style stores, CDNs"
+    ],
+    "traps": [
+     "Plain mod n reshuffles almost everything"
+    ],
+    "exact_facts": [
+     "Karger et al., 1997"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-rendezvous-hashing",
+   "slug": "rendezvous-hashing",
+   "title_working": "Rendezvous Hashing: Highest Random Weight",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-distributed",
+   "order": 2,
+   "priority": "P2",
+   "prerequisites": [
+    "famous-algos-consistent-hashing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Score every server per key",
+     "Pick the highest",
+     "No ring needed"
+    ],
+    "analogy": "Every applicant ranking all companies the same way per job",
+    "include": [
+     "Pseudocode",
+     "Comparison with ring"
+    ],
+    "traps": [
+     "O(n) per lookup"
+    ],
+    "exact_facts": [
+     "Thaler and Ravishankar, 1996"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-jump-hash",
+   "slug": "jump-hash",
+   "title_working": "Jump Consistent Hash in Five Lines",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-distributed",
+   "order": 3,
+   "priority": "P2",
+   "prerequisites": [
+    "famous-algos-consistent-hashing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Deterministic jumps",
+     "No memory",
+     "Only for numbered buckets"
+    ],
+    "analogy": "A frog hopping forward by a seeded random rule",
+    "include": [
+     "The short pseudocode from the paper"
+    ],
+    "traps": [
+     "Cannot remove arbitrary nodes"
+    ],
+    "exact_facts": [
+     "Lamping and Veach, 2014 (Google)"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-lamport-clocks",
+   "slug": "lamport-clocks",
+   "title_working": "Lamport Clocks: Ordering Events Without a Shared Clock",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-distributed",
+   "order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-consistent-hashing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Happened-before relation",
+     "Counter rules on send and receive",
+     "Total order with tie-breaks"
+    ],
+    "analogy": "Numbering letters between pen pals so replies always carry higher numbers",
+    "include": [
+     "Message diagram",
+     "Worked trace"
+    ],
+    "traps": [
+     "Lamport order does not imply causality in reverse"
+    ],
+    "exact_facts": [
+     "Leslie Lamport, 1978"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-vector-clocks",
+   "slug": "vector-clocks",
+   "title_working": "Vector Clocks: Detecting Concurrent Updates",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-distributed",
+   "order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-lamport-clocks"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "One counter per node",
+     "Compare vectors",
+     "Concurrent versions surface as siblings"
+    ],
+    "analogy": "Each pen pal keeping a tally of how many letters they have seen from everyone",
+    "include": [
+     "Worked three-node trace",
+     "Where: Dynamo-style conflict detection"
+    ],
+    "traps": [
+     "Vector size growing with nodes"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-hybrid-logical-clocks",
+   "slug": "hybrid-logical-clocks",
+   "title_working": "Hybrid Logical Clocks: Physical Time That Respects Causality",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-distributed",
+   "order": 6,
+   "priority": "P2",
+   "prerequisites": [
+    "famous-algos-vector-clocks"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Physical time plus logical counter",
+     "Bounded drift",
+     "Used in databases"
+    ],
+    "analogy": "A wall clock with a tie-breaker counter taped to it",
+    "include": [
+     "Pseudocode"
+    ],
+    "traps": [
+     "Assuming clocks are synchronised"
+    ],
+    "exact_facts": [
+     "Kulkarni et al., 2014"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-gossip-protocols",
+   "slug": "gossip-protocols",
+   "title_working": "Gossip Protocols: How Rumours Keep Clusters in Sync",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-distributed",
+   "order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-consistent-hashing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Random peer exchange",
+     "Logarithmic spread",
+     "Anti-entropy",
+     "Robust to failures"
+    ],
+    "analogy": "Office gossip that reaches everyone in a few coffee breaks",
+    "include": [
+     "Simulation table of rounds",
+     "Where: Cassandra membership"
+    ],
+    "traps": [
+     "Not a way to get strong consistency"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-swim-failure-detection",
+   "slug": "swim-failure-detection",
+   "title_working": "SWIM: Detecting Dead Machines Politely",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-distributed",
+   "order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-gossip-protocols"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Ping, indirect ping via k peers",
+     "Suspicion before declaring death",
+     "Piggybacked membership"
+    ],
+    "analogy": "Asking two friends to check on someone who will not answer your call",
+    "include": [
+     "Message flow diagram"
+    ],
+    "traps": [
+     "False positives under network partitions"
+    ],
+    "exact_facts": [
+     "Das, Gupta, Motivala, 2002"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-merkle-trees",
+   "slug": "merkle-trees",
+   "title_working": "Merkle Trees: Proving Data Is Intact With One Hash",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-distributed",
+   "order": 9,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-tree-traversals"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Hash leaves, then pairs up to a root",
+     "Compare roots to find differences in log n",
+     "Proofs of inclusion"
+    ],
+    "analogy": "A pyramid of receipts where any change shows at the top",
+    "include": [
+     "Building a tree on 4 blocks",
+     "Where: Git, Bitcoin, Cassandra repair"
+    ],
+    "traps": [
+     "Hashing alone does not prove who wrote the data"
+    ],
+    "exact_facts": [
+     "Ralph Merkle, 1979"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-raft",
+   "slug": "raft",
+   "title_working": "Raft: Consensus You Can Actually Understand",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-distributed",
+   "order": 10,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-lamport-clocks"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Leader election with terms",
+     "Log replication",
+     "Majority commit",
+     "Safety rules"
+    ],
+    "analogy": "A class electing a monitor who keeps the official notebook",
+    "include": [
+     "State diagram of follower, candidate, leader",
+     "Pseudocode sketch of append entries"
+    ],
+    "traps": [
+     "Saying Raft tolerates Byzantine faults"
+    ],
+    "exact_facts": [
+     "Ongaro and Ousterhout, 2014"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-paxos",
+   "slug": "paxos",
+   "title_working": "Paxos: The Original Consensus Algorithm",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-distributed",
+   "order": 11,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-raft"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Proposers, acceptors, learners",
+     "Prepare and accept phases",
+     "Why majorities overlap"
+    ],
+    "analogy": "A group of friends agreeing on a restaurant by sealed promises",
+    "include": [
+     "Two-phase message diagram"
+    ],
+    "traps": [
+     "Overclaiming liveness guarantees (FLP)"
+    ],
+    "exact_facts": [
+     "Leslie Lamport, The Part-Time Parliament, 1998"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-crdts",
+   "slug": "crdts",
+   "title_working": "CRDTs: Data Types That Merge Themselves",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-distributed",
+   "order": 12,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-vector-clocks"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Commutative, associative, idempotent merges",
+     "G-counter, PN-counter, OR-set",
+     "Strong eventual consistency"
+    ],
+    "analogy": "Two shopping lists merged without asking who was right",
+    "include": [
+     "G-counter pseudocode",
+     "Where: collaborative apps, Redis Enterprise, Riak"
+    ],
+    "traps": [
+     "Treating CRDTs as free: metadata grows"
+    ],
+    "exact_facts": [
+     "Shapiro et al., 2011"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-chandy-lamport-snapshots",
+   "slug": "chandy-lamport-snapshots",
+   "title_working": "Chandy-Lamport: Taking a Snapshot of a Running System",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-distributed",
+   "order": 13,
+   "priority": "P2",
+   "prerequisites": [
+    "famous-algos-lamport-clocks"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Markers on channels",
+     "Recording in-flight messages",
+     "Consistent cuts"
+    ],
+    "analogy": "Photographing a busy post office including letters in transit",
+    "include": [
+     "Marker diagram",
+     "Where: stream processing checkpoints"
+    ],
+    "traps": [
+     "Requires FIFO channels"
+    ],
+    "exact_facts": [
+     "Chandy and Lamport, 1985"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-pbft",
+   "slug": "pbft",
+   "title_working": "Byzantine Fault Tolerance: Agreeing When Some Nodes Lie",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-distributed",
+   "order": 14,
+   "priority": "P2",
+   "prerequisites": [
+    "famous-algos-paxos"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "3f+1 nodes for f traitors",
+     "Pre-prepare, prepare, commit",
+     "Why more replicas"
+    ],
+    "analogy": "Generals agreeing to attack when some messengers are traitors",
+    "include": [
+     "Phase diagram"
+    ],
+    "traps": [
+     "Confusing crash faults with Byzantine faults"
+    ],
+    "exact_facts": [
+     "Castro and Liskov, 1999"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-leader-election-leases",
+   "slug": "leader-election-leases",
+   "title_working": "Leases and Fencing Tokens: Safe Leadership",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-distributed",
+   "order": 15,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-raft"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Time-bound locks",
+     "Clock drift risks",
+     "Fencing tokens stop zombie leaders"
+    ],
+    "analogy": "A library book with a due date and a numbered receipt",
+    "include": [
+     "Fencing sequence diagram"
+    ],
+    "traps": [
+     "Trusting a lease after a long GC pause"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-tcp-congestion-control",
+   "slug": "tcp-congestion-control",
+   "title_working": "TCP Congestion Control: How the Internet Avoids Gridlock",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-networking",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-gossip-protocols"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Slow start",
+     "Additive increase, multiplicative decrease",
+     "Packet loss as signal",
+     "Fairness"
+    ],
+    "analogy": "Merging onto a highway by speeding up gently and braking hard when you see brake lights",
+    "include": [
+     "Window size trace table",
+     "Sawtooth diagram"
+    ],
+    "traps": [
+     "Mixing flow control with congestion control"
+    ],
+    "exact_facts": [
+     "Van Jacobson, 1988"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-token-bucket",
+   "slug": "token-bucket",
+   "title_working": "Token Bucket: Rate Limiting With Room for Bursts",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-networking",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-queue-deque"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Tokens refill at a rate",
+     "Requests spend tokens",
+     "Burst capacity",
+     "Leaky bucket comparison"
+    ],
+    "analogy": "A coffee punch card that refills one stamp per minute",
+    "include": [
+     "Pseudocode with lazy refill",
+     "Where: API gateways, network shaping"
+    ],
+    "traps": [
+     "Storing a timer per user unnecessarily"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-sliding-window-limits",
+   "slug": "sliding-window-limits",
+   "title_working": "Sliding Window Rate Limiting: Logs and Counters",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-networking",
+   "order": 3,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-token-bucket"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Fixed window boundary problem",
+     "Sliding log",
+     "Sliding window counter approximation"
+    ],
+    "analogy": "Counting cars in the last minute rather than since the clock struck",
+    "include": [
+     "Worked boundary example"
+    ],
+    "traps": [
+     "Memory of storing every timestamp"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-exponential-backoff",
+   "slug": "exponential-backoff",
+   "title_working": "Exponential Backoff With Jitter: Retrying Without a Stampede",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-networking",
+   "order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-token-bucket"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Double the wait",
+     "Add randomness",
+     "Cap the delay",
+     "Thundering herd"
+    ],
+    "analogy": "Everyone redialling a busy number at slightly random times",
+    "include": [
+     "Pseudocode",
+     "Comparison of jitter strategies"
+    ],
+    "traps": [
+     "Retrying non-idempotent operations blindly"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-power-of-two-choices",
+   "slug": "power-of-two-choices",
+   "title_working": "The Power of Two Choices: Smarter Load Balancing",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-networking",
+   "order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-consistent-hashing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Pick two servers at random, choose the less loaded",
+     "Exponential improvement over one choice",
+     "Least connections"
+    ],
+    "analogy": "Choosing the shorter of two random checkout lines",
+    "include": [
+     "Simulation table",
+     "Where: Nginx, Envoy, schedulers"
+    ],
+    "traps": [
+     "Assuming load information is fresh"
+    ],
+    "exact_facts": [
+     "Mitzenmacher, 2001 thesis",
+     "Azar et al., 1994"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-maglev-hashing",
+   "slug": "maglev-hashing",
+   "title_working": "Maglev Hashing: Google's Load Balancer Table",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-networking",
+   "order": 6,
+   "priority": "P2",
+   "prerequisites": [
+    "famous-algos-consistent-hashing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Permutation per backend",
+     "Lookup table fill",
+     "Minimal disruption"
+    ],
+    "analogy": "Every backend taking turns claiming seats in a theatre",
+    "include": [
+     "Table-filling pseudocode"
+    ],
+    "traps": [
+     "Assuming zero disruption"
+    ],
+    "exact_facts": [
+     "Eisenbud et al., 2016"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-nagle-and-delayed-ack",
+   "slug": "nagle-and-delayed-ack",
+   "title_working": "Nagle's Algorithm: Why Small Messages Wait",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-networking",
+   "order": 7,
+   "priority": "P2",
+   "prerequisites": [
+    "famous-algos-tcp-congestion-control"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Batch small writes",
+     "Interaction with delayed ACK",
+     "TCP_NODELAY"
+    ],
+    "analogy": "Waiting to fill a lift before sending it up",
+    "include": [
+     "Timeline diagram"
+    ],
+    "traps": [
+     "Blaming the network for added latency"
+    ],
+    "exact_facts": [
+     "John Nagle, 1984"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-bgp-path-vector",
+   "slug": "bgp-path-vector",
+   "title_working": "BGP: How the Internet Chooses Routes Between Networks",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-networking",
+   "order": 8,
+   "priority": "P2",
+   "prerequisites": [
+    "famous-algos-tcp-congestion-control"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Path vector announcements",
+     "Policy over shortest path",
+     "Route leaks"
+    ],
+    "analogy": "Airlines advertising which cities they can reach and through whom",
+    "include": [
+     "Announcement diagram"
+    ],
+    "traps": [
+     "Calling it shortest path routing"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-lsm-trees",
+   "slug": "lsm-trees",
+   "title_working": "LSM Trees: Why Modern Databases Write So Fast",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-storage",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-bloom-filter",
+    "dsa-sorting-as-tool"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Memtable, immutable sorted runs",
+     "Compaction",
+     "Read path with Bloom filters",
+     "Write amplification"
+    ],
+    "analogy": "Writing notes in a pocket diary and periodically tidying them into a filed binder",
+    "include": [
+     "Read and write path diagram",
+     "Where: RocksDB, Cassandra, LevelDB"
+    ],
+    "traps": [
+     "Assuming reads are always slower",
+     "compaction trade-offs"
+    ],
+    "exact_facts": [
+     "O'Neil et al., 1996"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-write-ahead-log",
+   "slug": "write-ahead-log",
+   "title_working": "Write-Ahead Logging: Never Lose a Committed Write",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-storage",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-lsm-trees"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Append the intent before changing data",
+     "Replay after a crash",
+     "Checkpoints",
+     "fsync cost"
+    ],
+    "analogy": "A bank teller writing in the ledger before handing out cash",
+    "include": [
+     "Crash and replay walkthrough"
+    ],
+    "traps": [
+     "Buffered writes are not durable"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-skip-lists-practice",
+   "slug": "skip-lists-practice",
+   "title_working": "Skip Lists in Practice: Redis Sorted Sets",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-storage",
+   "order": 3,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-lsm-trees"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Express lanes over a linked list",
+     "Random levels",
+     "Simpler concurrency than trees"
+    ],
+    "analogy": "Express trains that skip local stations",
+    "include": [
+     "Search pseudocode",
+     "Where: Redis ZSET, memtables"
+    ],
+    "traps": [
+     "Worst cases are probabilistic"
+    ],
+    "exact_facts": [
+     "William Pugh, 1990"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-mvcc",
+   "slug": "mvcc",
+   "title_working": "MVCC: Readers Never Block Writers",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-storage",
+   "order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-write-ahead-log"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Multiple versions with timestamps",
+     "Snapshot reads",
+     "Garbage collection of old versions"
+    ],
+    "analogy": "A wiki where everyone reads a stable revision while edits continue",
+    "include": [
+     "Version chain example",
+     "Where: PostgreSQL, MySQL InnoDB"
+    ],
+    "traps": [
+     "Write skew still possible under snapshot isolation"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-swiss-tables",
+   "slug": "swiss-tables",
+   "title_working": "The Hash Table You Use Every Day: Open Addressing and Swiss Tables",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-storage",
+   "order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-hashing-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Chaining vs open addressing",
+     "Linear probing and cache lines",
+     "SIMD metadata scans",
+     "Robin Hood hashing"
+    ],
+    "analogy": "A car park where you take the next free spot",
+    "include": [
+     "Probe sequence example"
+    ],
+    "traps": [
+     "Tombstones degrading performance"
+    ],
+    "exact_facts": [
+     "Swiss tables: Google Abseil, 2017"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-roaring-bitmaps",
+   "slug": "roaring-bitmaps",
+   "title_working": "Roaring Bitmaps: Compressed Sets That Stay Fast",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-storage",
+   "order": 6,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-swiss-tables"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Split into 64K chunks",
+     "Array, bitmap or run containers",
+     "Fast intersections"
+    ],
+    "analogy": "Choosing between a guest list and a seating chart depending on how full the room is",
+    "include": [
+     "Container choice example",
+     "Where: Lucene, Druid, Pinot"
+    ],
+    "traps": [
+     "One container type fits all"
+    ],
+    "exact_facts": [
+     "Chambi, Lemire et al., 2016"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-geohash",
+   "slug": "geohash",
+   "title_working": "Geohash: Turning a Map Into a String",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-storage",
+   "order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-binary-search"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Interleave latitude and longitude bits",
+     "Prefixes are nearby cells",
+     "Edge cases at boundaries"
+    ],
+    "analogy": "Zooming into a map by repeatedly picking a quadrant",
+    "include": [
+     "Encoding walkthrough",
+     "Where: ride sharing, nearby search"
+    ],
+    "traps": [
+     "Neighbours across cell boundaries"
+    ],
+    "exact_facts": [
+     "Gustavo Niemeyer, 2008"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-quadtrees-rtrees",
+   "slug": "quadtrees-rtrees",
+   "title_working": "Quadtrees and R-Trees: Spatial Indexes",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-storage",
+   "order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-geohash"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Recursive splitting",
+     "Bounding boxes",
+     "Range and nearest queries"
+    ],
+    "analogy": "Dividing a city into districts that split when they get crowded",
+    "include": [
+     "Insertion example"
+    ],
+    "traps": [
+     "Unbalanced trees with clustered data"
+    ],
+    "exact_facts": [
+     "R-tree: Guttman, 1984"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-h3-s2",
+   "slug": "h3-s2",
+   "title_working": "Hexagons and Spheres: Uber H3 and Google S2",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-storage",
+   "order": 9,
+   "priority": "P2",
+   "prerequisites": [
+    "famous-algos-geohash"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Hexagonal cells have uniform neighbours",
+     "Hierarchies",
+     "Projection onto cube faces"
+    ],
+    "analogy": "Tiling a football with hexagons",
+    "include": [
+     "Comparison table"
+    ],
+    "traps": [
+     "Exact cell sizes must match docs"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-rope-piece-table",
+   "slug": "rope-piece-table",
+   "title_working": "How Text Editors Store Your File: Ropes, Gap Buffers and Piece Tables",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-storage",
+   "order": 10,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-tree-traversals"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Gap buffer around the cursor",
+     "Piece table of original plus add buffer",
+     "Ropes as balanced trees"
+    ],
+    "analogy": "A tailor who never cuts the original cloth, only notes where to stitch patches",
+    "include": [
+     "Piece table edit walkthrough",
+     "Where: VS Code, Emacs"
+    ],
+    "traps": [
+     "Undo complexity"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-copy-on-write",
+   "slug": "copy-on-write",
+   "title_working": "Copy-on-Write: Sharing Until Someone Changes Something",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-storage",
+   "order": 11,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-mvcc"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Share pages",
+     "Copy on first write",
+     "fork, snapshots, persistent structures"
+    ],
+    "analogy": "Photocopying a page only when someone wants to scribble on it",
+    "include": [
+     "fork example"
+    ],
+    "traps": [
+     "Hidden latency on first write"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-compaction-strategies",
+   "slug": "compaction-strategies",
+   "title_working": "Compaction Strategies: Leveled vs Size-Tiered",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-storage",
+   "order": 12,
+   "priority": "P2",
+   "prerequisites": [
+    "famous-algos-lsm-trees"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Read, write and space amplification triangle",
+     "When to choose each"
+    ],
+    "analogy": "Tidying a desk by size piles vs by drawers",
+    "include": [
+     "Comparison table"
+    ],
+    "traps": [
+     "Claiming one strategy is always best"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-lz77",
+   "slug": "lz77",
+   "title_working": "Lempel-Ziv: How ZIP Files Shrink Your Data",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-coding",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-sliding-window"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Back-references to earlier text",
+     "Sliding window dictionary",
+     "Length-distance pairs"
+    ],
+    "analogy": "Writing ditto marks instead of repeating a phrase",
+    "include": [
+     "Encoding walkthrough",
+     "Where: gzip, PNG, zip"
+    ],
+    "traps": [
+     "Random data does not compress"
+    ],
+    "exact_facts": [
+     "Ziv and Lempel, 1977"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-deflate",
+   "slug": "deflate",
+   "title_working": "DEFLATE: LZ77 Plus Entropy Coding",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-coding",
+   "order": 2,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-lz77"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Two stages",
+     "Literal and length codes",
+     "Why gzip is everywhere"
+    ],
+    "analogy": "Shorthand notes, then abbreviating the most common words even more",
+    "include": [
+     "Pipeline diagram"
+    ],
+    "traps": [
+     "Assuming one stage does everything"
+    ],
+    "exact_facts": [
+     "Phil Katz",
+     "RFC 1951"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-burrows-wheeler",
+   "slug": "burrows-wheeler",
+   "title_working": "Burrows-Wheeler Transform: Shuffling Text So It Compresses",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-coding",
+   "order": 3,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-lz77"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Sort all rotations",
+     "Last column clusters letters",
+     "Reversible",
+     "Move-to-front"
+    ],
+    "analogy": "Sorting a dictionary so similar endings line up",
+    "include": [
+     "Worked transform of banana"
+    ],
+    "traps": [
+     "Thinking it compresses by itself"
+    ],
+    "exact_facts": [
+     "Burrows and Wheeler, 1994"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-arithmetic-coding-ans",
+   "slug": "arithmetic-coding-ans",
+   "title_working": "Arithmetic Coding and ANS: Fractions of a Bit",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-coding",
+   "order": 4,
+   "priority": "P2",
+   "prerequisites": [
+    "famous-algos-deflate"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Encode a whole message as one number in an interval",
+     "ANS as a fast modern variant",
+     "Used in zstd"
+    ],
+    "analogy": "Zooming into a ruler by each symbol's probability",
+    "include": [
+     "Interval narrowing example"
+    ],
+    "traps": [
+     "Precision handling"
+    ],
+    "exact_facts": [
+     "ANS: Jarek Duda, 2009"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-varints-delta",
+   "slug": "varints-delta",
+   "title_working": "Varints and Delta Encoding: Small Numbers, Small Bytes",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-coding",
+   "order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-bit-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "7 bits per byte with continuation",
+     "Zigzag for negatives",
+     "Delta of sorted lists"
+    ],
+    "analogy": "Writing only the change in a running score",
+    "include": [
+     "Encoding 300 walkthrough",
+     "Where: Protocol Buffers, search indexes"
+    ],
+    "traps": [
+     "Large numbers can grow"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-crc",
+   "slug": "crc",
+   "title_working": "CRC: Catching Corrupted Data",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-coding",
+   "order": 6,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-bit-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Polynomial division over bits",
+     "Detects burst errors",
+     "Not cryptographic"
+    ],
+    "analogy": "A checksum that notices smudged digits on a cheque",
+    "include": [
+     "Small long-division example",
+     "Where: Ethernet, ZIP, PNG"
+    ],
+    "traps": [
+     "Using CRC for security"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-hamming-codes",
+   "slug": "hamming-codes",
+   "title_working": "Hamming Codes: Fixing a Flipped Bit",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-coding",
+   "order": 7,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-crc"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Parity bits at powers of two",
+     "Syndrome points to the error",
+     "ECC memory"
+    ],
+    "analogy": "A grid of parity checks that pinpoints one wrong cell",
+    "include": [
+     "Worked 7-4 example"
+    ],
+    "traps": [
+     "Detect vs correct counts"
+    ],
+    "exact_facts": [
+     "Richard Hamming, 1950"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-reed-solomon",
+   "slug": "reed-solomon",
+   "title_working": "Reed-Solomon: Why QR Codes Survive Coffee Stains",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-coding",
+   "order": 8,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-hamming-codes"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Data as polynomial values",
+     "Extra evaluations recover missing ones",
+     "Erasure coding in storage"
+    ],
+    "analogy": "Any two points define a line, so a third is a spare",
+    "include": [
+     "Polynomial intuition example",
+     "Where: QR codes, CDs, cloud storage"
+    ],
+    "traps": [
+     "Exact recovery limits depend on parameters"
+    ],
+    "exact_facts": [
+     "Reed and Solomon, 1960"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-jpeg-dct",
+   "slug": "jpeg-dct",
+   "title_working": "JPEG: Throwing Away What Your Eyes Ignore",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-coding",
+   "order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-varints-delta"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Colour space change",
+     "Discrete cosine transform per 8x8 block",
+     "Quantisation",
+     "Entropy coding"
+    ],
+    "analogy": "Describing a painting by broad strokes and dropping the tiniest brush marks",
+    "include": [
+     "Pipeline diagram"
+    ],
+    "traps": [
+     "Calling JPEG lossless"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-cryptographic-hashing",
+   "slug": "cryptographic-hashing",
+   "title_working": "Cryptographic Hashes: Fingerprints You Cannot Fake",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-crypto",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-hashing-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Preimage and collision resistance",
+     "Avalanche effect",
+     "Merkle-Damgard idea",
+     "SHA-256 uses"
+    ],
+    "analogy": "A fingerprint that changes completely if one hair moves",
+    "include": [
+     "Avalanche example",
+     "Where: Git, downloads, blockchains"
+    ],
+    "traps": [
+     "Using MD5 or SHA-1 for security today"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-password-hashing",
+   "slug": "password-hashing",
+   "title_working": "Storing Passwords Safely: Salts, bcrypt and Argon2",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-crypto",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-cryptographic-hashing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Why fast hashes are bad for passwords",
+     "Salt per user",
+     "Work factors",
+     "Memory hardness"
+    ],
+    "analogy": "A lock that takes a second to turn, so burglars cannot try millions of keys",
+    "include": [
+     "Login flow pseudocode"
+    ],
+    "traps": [
+     "Encrypting passwords instead of hashing"
+    ],
+    "exact_facts": [
+     "bcrypt 1999",
+     "Argon2 won the Password Hashing Competition in 2015"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-hmac",
+   "slug": "hmac",
+   "title_working": "HMAC: Proving a Message Came From Someone With the Key",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-crypto",
+   "order": 3,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-cryptographic-hashing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Keyed hashing",
+     "Why hash(key + message) is unsafe",
+     "API signatures and webhooks"
+    ],
+    "analogy": "A wax seal only the sender's ring can make",
+    "include": [
+     "Signing a webhook payload"
+    ],
+    "traps": [
+     "Length extension attacks"
+    ],
+    "exact_facts": [
+     "Bellare, Canetti, Krawczyk, 1996"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-diffie-hellman",
+   "slug": "diffie-hellman",
+   "title_working": "Diffie-Hellman: Agreeing on a Secret in Public",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-crypto",
+   "order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-binary-exponentiation"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Mixing paint analogy",
+     "Modular exponentiation",
+     "Discrete log hardness",
+     "Man-in-the-middle"
+    ],
+    "analogy": "Mixing paints: easy to mix, hard to unmix",
+    "include": [
+     "Toy numbers example"
+    ],
+    "traps": [
+     "Unauthenticated DH is vulnerable"
+    ],
+    "exact_facts": [
+     "Diffie and Hellman, 1976"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-rsa",
+   "slug": "rsa",
+   "title_working": "RSA: Locks Anyone Can Close but Only You Can Open",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-crypto",
+   "order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-diffie-hellman"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Two primes, public and private exponents",
+     "Encryption and signatures",
+     "Why factoring is hard"
+    ],
+    "analogy": "A padlock you hand out freely while keeping the only key",
+    "include": [
+     "Toy example with small primes"
+    ],
+    "traps": [
+     "Textbook RSA without padding is insecure"
+    ],
+    "exact_facts": [
+     "Rivest, Shamir, Adleman, 1977"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-elliptic-curves",
+   "slug": "elliptic-curves",
+   "title_working": "Elliptic Curve Cryptography: Smaller Keys, Same Security",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-crypto",
+   "order": 6,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-diffie-hellman"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Point addition on a curve",
+     "Scalar multiplication",
+     "ECDH and ECDSA"
+    ],
+    "analogy": "Bouncing a ball on a curved table a secret number of times",
+    "include": [
+     "Point addition intuition"
+    ],
+    "traps": [
+     "Exact key-size equivalences must be sourced"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-aes-symmetric",
+   "slug": "aes-symmetric",
+   "title_working": "AES and Symmetric Encryption: The Workhorse",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-crypto",
+   "order": 7,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-cryptographic-hashing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Block cipher rounds",
+     "Modes like GCM",
+     "Why ECB leaks patterns"
+    ],
+    "analogy": "A shared lockbox both parties hold keys to",
+    "include": [
+     "ECB penguin explanation",
+     "Where: disk encryption, HTTPS"
+    ],
+    "traps": [
+     "Reusing nonces in GCM"
+    ],
+    "exact_facts": [
+     "Rijndael selected as AES in 2001"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-digital-signatures",
+   "slug": "digital-signatures",
+   "title_working": "Digital Signatures and Certificates: Trust on the Internet",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-crypto",
+   "order": 8,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-rsa"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Sign with private key, verify with public",
+     "Certificate chains",
+     "Certificate authorities"
+    ],
+    "analogy": "A notarised document with a chain of notaries",
+    "include": [
+     "Chain of trust diagram"
+    ],
+    "traps": [
+     "Signature does not mean encryption"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-tls-handshake",
+   "slug": "tls-handshake",
+   "title_working": "The TLS Handshake: What Happens Before the Padlock Appears",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-crypto",
+   "order": 9,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-digital-signatures",
+    "famous-algos-elliptic-curves"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Key exchange plus authentication",
+     "Session keys",
+     "TLS 1.3 one round trip",
+     "Forward secrecy"
+    ],
+    "analogy": "Two strangers proving identities, then whispering a shared code",
+    "include": [
+     "Message sequence diagram"
+    ],
+    "traps": [
+     "Confusing TLS with the HTTP layer"
+    ],
+    "exact_facts": [
+     "TLS 1.3: RFC 8446, 2018"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-totp",
+   "slug": "totp",
+   "title_working": "One-Time Passwords: How Authenticator Apps Work",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-crypto",
+   "order": 10,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-hmac"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Shared secret",
+     "HMAC of the time step",
+     "Truncation to 6 digits",
+     "Clock drift windows"
+    ],
+    "analogy": "A pair of synchronised watches that agree on a changing code",
+    "include": [
+     "Pseudocode of TOTP"
+    ],
+    "traps": [
+     "Thinking the server sends the code"
+    ],
+    "exact_facts": [
+     "RFC 6238"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-shamir-secret-sharing",
+   "slug": "shamir-secret-sharing",
+   "title_working": "Shamir's Secret Sharing: Splitting a Key Among Friends",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-crypto",
+   "order": 11,
+   "priority": "P2",
+   "prerequisites": [
+    "famous-algos-reed-solomon"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Polynomial with the secret as intercept",
+     "Any k points rebuild it",
+     "Fewer reveal nothing"
+    ],
+    "analogy": "A treasure map torn into pieces where any three pieces show the X",
+    "include": [
+     "Toy example"
+    ],
+    "traps": [
+     "Using floating point instead of a finite field"
+    ],
+    "exact_facts": [
+     "Adi Shamir, 1979"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-signal-double-ratchet",
+   "slug": "signal-double-ratchet",
+   "title_working": "End-to-End Encryption: The Double Ratchet",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-crypto",
+   "order": 12,
+   "priority": "P2",
+   "prerequisites": [
+    "famous-algos-diffie-hellman",
+    "famous-algos-hmac"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "New keys every message",
+     "Forward secrecy and healing",
+     "Used by Signal and WhatsApp"
+    ],
+    "analogy": "A lock that changes combination after every letter",
+    "include": [
+     "Ratchet diagram"
+    ],
+    "traps": [
+     "Claiming metadata is hidden"
+    ],
+    "exact_facts": [
+     "Perrin and Marlinspike, 2016"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-zero-knowledge",
+   "slug": "zero-knowledge",
+   "title_working": "Zero-Knowledge Proofs: Proving Without Revealing",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-crypto",
+   "order": 13,
+   "priority": "P2",
+   "prerequisites": [
+    "famous-algos-rsa"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Interactive proofs",
+     "Completeness, soundness, zero knowledge",
+     "Cave example"
+    ],
+    "analogy": "Proving you know a door's password without saying it",
+    "include": [
+     "Ali Baba cave walkthrough"
+    ],
+    "traps": [
+     "Overclaiming practical uses"
+    ],
+    "exact_facts": [
+     "Goldwasser, Micali, Rackoff, 1985"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-inverted-index",
+   "slug": "inverted-index",
+   "title_working": "Inverted Indexes: How Search Finds Pages in Milliseconds",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-search",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-hashing-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Term to posting list",
+     "Intersection of sorted lists",
+     "Compression of postings"
+    ],
+    "analogy": "The index at the back of a textbook",
+    "include": [
+     "Building an index on three documents"
+    ],
+    "traps": [
+     "Stop words and stemming trade-offs"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-tf-idf-bm25",
+   "slug": "tf-idf-bm25",
+   "title_working": "TF-IDF and BM25: Ranking by Relevance",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-search",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-inverted-index"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Term frequency",
+     "Inverse document frequency",
+     "Saturation and length normalisation in BM25"
+    ],
+    "analogy": "A word that appears everywhere tells you nothing",
+    "include": [
+     "Scoring two documents by hand"
+    ],
+    "traps": [
+     "Exact BM25 constants are tunable"
+    ],
+    "exact_facts": [
+     "BM25: Robertson et al., 1990s"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-pagerank",
+   "slug": "pagerank",
+   "title_working": "PageRank: Votes From Important Pages Count More",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-search",
+   "order": 3,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-graph-representation"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Random surfer",
+     "Damping factor",
+     "Power iteration",
+     "Dangling pages"
+    ],
+    "analogy": "A city where a recommendation from a celebrity counts more",
+    "include": [
+     "Three-page iteration by hand"
+    ],
+    "traps": [
+     "PageRank is not the whole of modern ranking"
+    ],
+    "exact_facts": [
+     "Page, Brin, Motwani, Winograd, 1998"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-hnsw-vector-search",
+   "slug": "hnsw-vector-search",
+   "title_working": "HNSW: Searching a Billion Vectors",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-search",
+   "order": 4,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-skip-lists-practice"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Approximate nearest neighbours",
+     "Layered small-world graphs",
+     "Greedy descent"
+    ],
+    "analogy": "Asking for directions from a few well-connected locals, then walking",
+    "include": [
+     "Search walkthrough diagram",
+     "Where: vector databases, RAG"
+    ],
+    "traps": [
+     "Exact vs approximate recall"
+    ],
+    "exact_facts": [
+     "Malkov and Yashunin, 2016"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-product-quantization",
+   "slug": "product-quantization",
+   "title_working": "Product Quantization: Compressing Vectors for Search",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-search",
+   "order": 5,
+   "priority": "P2",
+   "prerequisites": [
+    "famous-algos-hnsw-vector-search"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Split vectors into chunks",
+     "Codebooks",
+     "Distance lookup tables"
+    ],
+    "analogy": "Describing a face by choosing the closest eyes, nose and mouth from catalogues",
+    "include": [
+     "Encoding example"
+    ],
+    "traps": [
+     "Recall loss"
+    ],
+    "exact_facts": [
+     "Jegou, Douze, Schmid, 2011"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-collaborative-filtering",
+   "slug": "collaborative-filtering",
+   "title_working": "Collaborative Filtering: People Like You Also Liked",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-search",
+   "order": 6,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-hashing-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "User-item matrix",
+     "Similarity",
+     "Matrix factorisation idea",
+     "Cold start"
+    ],
+    "analogy": "A friend with similar taste recommending films",
+    "include": [
+     "Small ratings example"
+    ],
+    "traps": [
+     "Popularity bias"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-myers-diff",
+   "slug": "myers-diff",
+   "title_working": "Myers' Diff: How Git Shows What Changed",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-search",
+   "order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-lcs-edit-distance"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Shortest edit script",
+     "Edit graph",
+     "Greedy diagonals",
+     "Why diffs look natural"
+    ],
+    "analogy": "Walking a city grid preferring free diagonal shortcuts",
+    "include": [
+     "Small diff walkthrough"
+    ],
+    "traps": [
+     "Assuming diff is LCS DP"
+    ],
+    "exact_facts": [
+     "Eugene Myers, 1986"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-three-way-merge",
+   "slug": "three-way-merge",
+   "title_working": "Three-Way Merge: How Git Combines Branches",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-search",
+   "order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-myers-diff"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Base, ours, theirs",
+     "Clean changes vs conflicts",
+     "Merge base via common ancestor"
+    ],
+    "analogy": "Two editors revising copies of the same draft",
+    "include": [
+     "Merge example with a conflict"
+    ],
+    "traps": [
+     "Two-way merge cannot decide"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-rsync-rolling-checksum",
+   "slug": "rsync-rolling-checksum",
+   "title_working": "rsync: Copying Only What Changed",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-search",
+   "order": 9,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-cryptographic-hashing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Weak rolling checksum plus strong hash",
+     "Block matching at any offset"
+    ],
+    "analogy": "Comparing two books by checking paragraph fingerprints",
+    "include": [
+     "Rolling checksum example"
+    ],
+    "traps": [
+     "Fixed-offset blocks fail on insertions"
+    ],
+    "exact_facts": [
+     "Tridgell and Mackerras, 1996"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-simhash",
+   "slug": "simhash",
+   "title_working": "SimHash: Near-Duplicate Detection at Web Scale",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-search",
+   "order": 10,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-minhash"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Weighted feature hashes",
+     "Bitwise votes",
+     "Hamming distance as similarity"
+    ],
+    "analogy": "A crowd voting yes or no on each bit of a fingerprint",
+    "include": [
+     "Small worked example"
+    ],
+    "traps": [
+     "Exact thresholds are tuned"
+    ],
+    "exact_facts": [
+     "Charikar, 2002"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-operational-transform",
+   "slug": "operational-transform",
+   "title_working": "Operational Transform: How Google Docs Merges Typing",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-search",
+   "order": 11,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-three-way-merge"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Transform concurrent operations",
+     "Server ordering",
+     "Comparison with CRDTs"
+    ],
+    "analogy": "Two people editing a sentence and adjusting each other's cursor positions",
+    "include": [
+     "Insert-insert example"
+    ],
+    "traps": [
+     "Hard to get right for many operation types"
+    ],
+    "exact_facts": [
+     "Ellis and Gibbs, 1989"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-bk-trees-spellcheck",
+   "slug": "bk-trees-spellcheck",
+   "title_working": "Spell Checkers: BK-Trees and SymSpell",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-search",
+   "order": 12,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-lcs-edit-distance"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Metric trees with edit distance",
+     "Triangle inequality pruning",
+     "Deletion-only dictionaries"
+    ],
+    "analogy": "Sorting words by how many typos away they are",
+    "include": [
+     "Lookup example"
+    ],
+    "traps": [
+     "Edit distance cost at scale"
+    ],
+    "exact_facts": [
+     "Burkhard and Keller, 1973"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-fft",
+   "slug": "fft",
+   "title_working": "The Fast Fourier Transform: Hearing the Notes in a Chord",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-signals",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-divide-and-conquer"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Signals as sums of waves",
+     "Divide into even and odd",
+     "n log n",
+     "Uses in audio and multiplication"
+    ],
+    "analogy": "A prism splitting light into colours",
+    "include": [
+     "Small worked intuition",
+     "Where: audio, images, Wi-Fi"
+    ],
+    "traps": [
+     "Assuming you must follow complex-number algebra fully"
+    ],
+    "exact_facts": [
+     "Cooley and Tukey, 1965"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-audio-fingerprinting",
+   "slug": "audio-fingerprinting",
+   "title_working": "How Shazam Recognises a Song in a Noisy Café",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-signals",
+   "order": 2,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-fft"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Spectrogram peaks",
+     "Constellation maps",
+     "Hashing peak pairs"
+    ],
+    "analogy": "Recognising a constellation even when clouds hide some stars",
+    "include": [
+     "Pipeline diagram"
+    ],
+    "traps": [
+     "Exact database sizes"
+    ],
+    "exact_facts": [
+     "Avery Wang, 2003"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-kalman-filter",
+   "slug": "kalman-filter",
+   "title_working": "The Kalman Filter: Blending Guesses With Noisy Measurements",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-signals",
+   "order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Predict, then update",
+     "Weighted by uncertainty",
+     "Gain",
+     "Uses in GPS and robotics"
+    ],
+    "analogy": "Combining a ship's dead reckoning with a foggy lighthouse sighting",
+    "include": [
+     "1D worked example with numbers"
+    ],
+    "traps": [
+     "Assumes roughly Gaussian noise"
+    ],
+    "exact_facts": [
+     "Rudolf Kalman, 1960"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-gps-trilateration",
+   "slug": "gps-trilateration",
+   "title_working": "How GPS Finds You: Trilateration and Clock Error",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-signals",
+   "order": 4,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-kalman-filter"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Distances from signal travel time",
+     "Spheres intersecting",
+     "Fourth satellite for clock bias"
+    ],
+    "analogy": "Finding your spot from three friends who each know how far away you are",
+    "include": [
+     "2D worked example"
+    ],
+    "traps": [
+     "Satellites do not track you"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-viterbi",
+   "slug": "viterbi",
+   "title_working": "The Viterbi Algorithm: The Most Likely Hidden Story",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-signals",
+   "order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-dp-intro"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Hidden Markov models",
+     "Best path through a trellis",
+     "Uses in speech, phones and DNA"
+    ],
+    "analogy": "Guessing a friend's mood from their weather texts",
+    "include": [
+     "Small trellis walk-through"
+    ],
+    "traps": [
+     "Confusing with forward algorithm"
+    ],
+    "exact_facts": [
+     "Andrew Viterbi, 1967"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-a-star",
+   "slug": "a-star",
+   "title_working": "A* Search: Dijkstra With a Sense of Direction",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-signals",
+   "order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-dijkstra"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "f = g + h",
+     "Admissible heuristics",
+     "Uses in maps and games"
+    ],
+    "analogy": "A hiker using a compass toward the summit while counting steps",
+    "include": [
+     "Grid example",
+     "Pseudocode"
+    ],
+    "traps": [
+     "Inadmissible heuristics lose optimality"
+    ],
+    "exact_facts": [
+     "Hart, Nilsson, Raphael, 1968"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-simulated-annealing",
+   "slug": "simulated-annealing",
+   "title_working": "Simulated Annealing: Escaping Bad Local Answers",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-signals",
+   "order": 7,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-greedy-exchange"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Accept worse moves with decreasing probability",
+     "Temperature schedule"
+    ],
+    "analogy": "Shaking a jar of sand less and less until it settles flat",
+    "include": [
+     "Pseudocode",
+     "Travelling salesman flavour"
+    ],
+    "traps": [
+     "No optimality guarantee in practice"
+    ],
+    "exact_facts": [
+     "Kirkpatrick, Gelatt, Vecchi, 1983"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-mcts",
+   "slug": "mcts",
+   "title_working": "Monte Carlo Tree Search: Thinking by Playing Out Futures",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-signals",
+   "order": 8,
+   "priority": "P2",
+   "prerequisites": [
+    "famous-algos-simulated-annealing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Select, expand, simulate, backpropagate",
+     "UCB balance"
+    ],
+    "analogy": "Trying many quick imaginary games before choosing a move",
+    "include": [
+     "Iteration diagram"
+    ],
+    "traps": [
+     "Random playouts can mislead"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-pid-controller",
+   "slug": "pid-controller",
+   "title_working": "PID Controllers: The Algorithm in Your Thermostat and Drone",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-signals",
+   "order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-kalman-filter"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Proportional, integral, derivative terms",
+     "Tuning",
+     "Windup"
+    ],
+    "analogy": "Steering a car by how far off you are, how long you have been off, and how fast you are drifting",
+    "include": [
+     "Discrete pseudocode"
+    ],
+    "traps": [
+     "Integral windup"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-bresenham",
+   "slug": "bresenham",
+   "title_working": "Bresenham's Line: Drawing on a Pixel Grid",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-signals",
+   "order": 10,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Integer error accumulation",
+     "No floating point"
+    ],
+    "analogy": "Laying tiles along a slanted line one step at a time",
+    "include": [
+     "Worked example"
+    ],
+    "traps": [
+     "Steep slopes need axis swap"
+    ],
+    "exact_facts": [
+     "Jack Bresenham, 1962"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-bezier-curves",
+   "slug": "bezier-curves",
+   "title_working": "Bezier Curves: How Fonts and Logos Stay Smooth",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-signals",
+   "order": 11,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-bresenham"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Control points",
+     "De Casteljau repeated interpolation",
+     "Uses in fonts and CSS easing"
+    ],
+    "analogy": "Pulling a string with magnets",
+    "include": [
+     "De Casteljau walkthrough"
+    ],
+    "traps": [
+     "Curves do not pass through control points"
+    ],
+    "exact_facts": [
+     "Pierre Bezier",
+     "Paul de Casteljau, around 1960"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-perlin-noise",
+   "slug": "perlin-noise",
+   "title_working": "Perlin Noise: Natural-Looking Randomness",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-signals",
+   "order": 12,
+   "priority": "P2",
+   "prerequisites": [
+    "famous-algos-bezier-curves"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Gradient lattice",
+     "Smooth interpolation",
+     "Octaves"
+    ],
+    "analogy": "Rolling hills made from gently tilted planks",
+    "include": [
+     "1D example"
+    ],
+    "traps": [
+     "Plain random numbers look like static"
+    ],
+    "exact_facts": [
+     "Ken Perlin, 1983"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-seam-carving",
+   "slug": "seam-carving",
+   "title_working": "Seam Carving: Resizing Images Without Squashing Faces",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-signals",
+   "order": 13,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-grid-dp"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Energy map",
+     "Lowest-energy seam by DP",
+     "Remove seams"
+    ],
+    "analogy": "Removing the least interesting thread from a carpet",
+    "include": [
+     "DP walkthrough"
+    ],
+    "traps": [
+     "Destroys structure when too many seams removed"
+    ],
+    "exact_facts": [
+     "Avidan and Shamir, 2007"
+    ]
+   }
+  },
+  {
+   "id": "famous-algos-dithering",
+   "slug": "dithering",
+   "title_working": "Floyd-Steinberg Dithering: Shades From Two Colours",
+   "subject": "famous-algos",
+   "kind": "concept",
+   "track": "fa-signals",
+   "order": 14,
+   "priority": "P2",
+   "prerequisites": [
+    "famous-algos-bresenham"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Error diffusion to neighbours",
+     "Fixed weights"
+    ],
+    "analogy": "Passing your rounding error on to the next person in line",
+    "include": [
+     "Small grid example"
+    ],
+    "traps": [
+     "Order of processing matters"
+    ],
+    "exact_facts": [
+     "Floyd and Steinberg, 1976"
+    ]
+   }
+  }
+ ]
+}
