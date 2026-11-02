@@ -2105,8 +2105,8 @@
    "prerequisites": [
     "dsa-lcs-edit-distance"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "dp[l][r] over subarrays",
@@ -2138,8 +2138,8 @@
     "dsa-tree-recursion",
     "dsa-dp-1d"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Each node returns a small state",
@@ -2169,8 +2169,8 @@
    "prerequisites": [
     "dsa-dp-1d"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "States like holding or not holding",

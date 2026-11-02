@@ -1,7 +1,7 @@
 {
- "content_version": "9bbb3bd561e58a6f",
+ "content_version": "10214b4befc3166c",
  "generated_at": "2026-11-02",
- "count": 332,
+ "count": 335,
  "subjects": [
   {
    "id": "ml",
@@ -23110,6 +23110,358 @@
    "hash": "f2c6a516866a",
    "word_count": 1237,
    "excerpt": "A warehouse robot starts in the top-left corner of a floor laid out as a grid and must reach the bottom-right corner. It can only move right or down. How many different routes are there? Which route picks up the least dust? What if some cells are blocked by shelves? Grid problems like these are…"
+  },
+  {
+   "id": "dsa-interval-dp",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "interval-dp",
+   "title": "Choosing Which Balloon to Pop Last",
+   "subtitle": "Interval DP: answers for every contiguous range dp[l][r], built from shorter ranges by trying each split point, filled by increasing length, with palindromes, the Removal Game and Burst Balloons traced in full",
+   "track": "dsa-dp",
+   "track_order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-lcs-edit-distance"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 8,
+   "topics": [
+    "dynamic programming",
+    "interval DP",
+    "game theory",
+    "strings"
+   ],
+   "complexity": {
+    "time": "O(n²) without a split, O(n³) with a split point",
+    "space": "O(n²)"
+   },
+   "practice_problems": [
+    {
+     "name": "Palindromic Substrings",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/palindromic-substrings/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Removal Game",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1097",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Burst Balloons",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/burst-balloons/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Minimum Cost Tree From Leaf Values",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/minimum-cost-tree-from-leaf-values/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Interval DP",
+     "definition": "Dynamic programming whose states are contiguous ranges [l, r] of a sequence, each solved from strictly shorter ranges inside it."
+    },
+    {
+     "term": "Split point",
+     "definition": "An index k inside [l, r] where the range is divided into two independent subranges, such as [l, k] and [k + 1, r]."
+    },
+    {
+     "term": "Fill order",
+     "definition": "The order in which dp cells are computed; for interval DP, by increasing length so every shorter range is ready."
+    },
+    {
+     "term": "Last-action trick",
+     "definition": "Choosing which element is handled last in a range, rather than first, so that the two sides stay independent."
+    },
+    {
+     "term": "Score difference",
+     "definition": "In a two-player game, the current player's total minus the opponent's total from a position, under best play by both."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why must interval DP fill dp[l][r] by increasing length r - l?",
+     "options": [
+      "For readability",
+      "dp[l][r] uses ranges strictly inside [l, r], which are all shorter, so they must already be computed",
+      "Because l must be smaller than r",
+      "Any order works"
+     ],
+     "answer": 1,
+     "explain": "Every transition looks at a shorter subrange. Filling by length guarantees those values exist. Filling row by row with l increasing would read cells not yet computed."
+    },
+    {
+     "q": "In Burst Balloons, why choose the balloon burst last in (l, r) rather than first?",
+     "options": [
+      "It is faster to code",
+      "If k is burst last, its neighbours at that moment are exactly l and r, and the two sides are independent; if k is burst first, the sides become neighbours and depend on each other",
+      "Because the first choice is always the largest",
+      "Either works with the same recurrence"
+     ],
+     "answer": 1,
+     "explain": "Bursting k first glues its two sides together, so their costs interact. Bursting k last keeps l and r as fixed walls, so dp[l][k] and dp[k][r] can be solved separately."
+    },
+    {
+     "q": "In the Removal Game, dp[l][r] is the score difference for the player to move. What is the recurrence?",
+     "options": [
+      "dp[l][r] = a[l] + a[r]",
+      "dp[l][r] = max(a[l] - dp[l+1][r], a[r] - dp[l][r-1])",
+      "dp[l][r] = dp[l+1][r] + dp[l][r-1]",
+      "dp[l][r] = max(a[l], a[r])"
+     ],
+     "answer": 1,
+     "explain": "Taking a[l] gains a[l], and then the opponent moves on [l+1, r], gaining a difference dp[l+1][r] against you. The same for the right end. Choose the better of the two."
+    }
+   ],
+   "cover_seed": "interval-dp",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.76,
+   "path": "dsa/interval-dp.md",
+   "hash": "5d12b772ab20",
+   "word_count": 1701,
+   "excerpt": "A row of balloons floats in front of you, each with a number. Popping a balloon earns the product of its number and its two current neighbours, and then the gap closes. Pop them all, in any order, for the highest total. Try the obvious greedy, popping the smallest first or the largest last, and you…"
+  },
+  {
+   "id": "dsa-dp-on-trees",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "dp-on-trees",
+   "title": "A Party Where Nobody Comes With Their Boss",
+   "subtitle": "DP on trees: each node returns a small state to its parent, take-or-skip for the best guest list, matched-or-free for Tree Matching, three states for Binary Tree Cameras, and rerooting to get every node's answer in two passes",
+   "track": "dsa-dp",
+   "track_order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-tree-recursion",
+    "dsa-dp-1d"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "dynamic programming",
+    "trees",
+    "DFS",
+    "rerooting"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Tree Matching",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1130",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Binary Tree Cameras",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/binary-tree-cameras/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Sum of Distances in Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sum-of-distances-in-tree/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Tree Distances II",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1133",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Tree DP",
+     "definition": "Dynamic programming where each node's values are computed from its children's values in a post-order DFS."
+    },
+    {
+     "term": "Node state",
+     "definition": "A small fixed set of situations a node can be in, such as taken or skipped, with one DP value per situation."
+    },
+    {
+     "term": "Independent set",
+     "definition": "A set of vertices with no edge between any two of them; on a company tree, a guest list with no employee and their direct boss together."
+    },
+    {
+     "term": "Matching",
+     "definition": "A set of edges with no shared endpoint, so each vertex is in at most one chosen edge."
+    },
+    {
+     "term": "Rerooting",
+     "definition": "Computing an answer for every node as root by first solving for one root, then moving the root across each edge and adjusting the answer in O(1)."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In the party problem, a node returns (take, skip). What is skip for a node u?",
+     "options": [
+      "0",
+      "The sum over children of max(take[child], skip[child]), because with u absent each child may come or not",
+      "The sum of skip[child]",
+      "The value of u"
+     ],
+     "answer": 1,
+     "explain": "If u stays home, no rule restricts its children, so each child independently picks its better option. If u comes, every child must be skipped."
+    },
+    {
+     "q": "Why does Binary Tree Cameras need three states instead of two?",
+     "options": [
+      "Because the tree is binary",
+      "A node can hold a camera, be covered by a child's camera, or be uncovered and waiting for its parent; covered and waiting behave differently for the parent",
+      "To count cameras",
+      "Two would suffice"
+     ],
+     "answer": 1,
+     "explain": "An uncovered child forces its parent to take a camera, while a covered child does not. Merging those two situations loses the information the parent needs."
+    },
+    {
+     "q": "In Sum of Distances in Tree, moving the root from u to its child v changes the answer how?",
+     "options": [
+      "It stays the same",
+      "ans[v] = ans[u] - size[v] + (n - size[v]): the size[v] nodes in v's subtree get one step closer, the other n - size[v] get one step farther",
+      "ans[v] = ans[u] + 1",
+      "ans[v] = size[v]"
+     ],
+     "answer": 1,
+     "explain": "Crossing one edge shortens every path into v's side by one and lengthens every path to the other side by one. That O(1) update is the rerooting step."
+    }
+   ],
+   "cover_seed": "dp-on-trees",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.78,
+   "path": "dsa/dp-on-trees.md",
+   "hash": "b2f74b058e6a",
+   "word_count": 1582,
+   "excerpt": "A company is planning a party. Every employee has a \"fun\" score, and the organiser wants the most fun possible. There is one rule: nobody attends if their direct boss attends, because nobody relaxes with their manager in the room. The company chart is a tree, from the chief executive down. Trying…"
+  },
+  {
+   "id": "dsa-state-machine-dp",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "state-machine-dp",
+   "title": "A Switch With a Cooling-Down Position",
+   "subtitle": "State machine DP for the stock-trading family: holding or not holding, a cooldown state, a fee on each sale, and at most k transactions, all as a few numbers updated once per day",
+   "track": "dsa-dp",
+   "track_order": 10,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-dp-1d"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "dynamic programming",
+    "state machine",
+    "arrays",
+    "stocks"
+   ],
+   "complexity": {
+    "time": "O(n) per state, O(n × k) with k transactions",
+    "space": "O(1) or O(k)"
+   },
+   "practice_problems": [
+    {
+     "name": "Best Time to Buy and Sell Stock with Cooldown",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Best Time to Buy and Sell Stock with Transaction Fee",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Best Time to Buy and Sell Stock III",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Best Time to Buy and Sell Stock IV",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "State machine DP",
+     "definition": "DP where each day you can be in one of a few named states, and each state's best value is updated from the states that can move into it."
+    },
+    {
+     "term": "Holding state",
+     "definition": "Owning one share at the end of the day; its value is the best profit so far minus what is tied up in the share."
+    },
+    {
+     "term": "Cooldown state",
+     "definition": "The day right after a sale, when buying is not allowed."
+    },
+    {
+     "term": "Transition",
+     "definition": "One allowed move between states in a day, such as buy (not holding to holding) or sell (holding to just sold)."
+    },
+    {
+     "term": "Transaction count state",
+     "definition": "An extra index j recording how many buys have been made so far, needed when the number of transactions is limited."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "With a cooldown, which states does a day end in?",
+     "options": [
+      "Only holding and not holding",
+      "Holding, just sold (cooldown next day), and resting (free to buy)",
+      "Buy and sell",
+      "One state per price"
+     ],
+     "answer": 1,
+     "explain": "After a sale you cannot buy the next day, so 'not holding' splits into 'just sold' and 'resting'. Only resting can move to holding."
+    },
+    {
+     "q": "Where should the transaction fee be charged so that the DP stays simple?",
+     "options": [
+      "Twice per transaction",
+      "Once per transaction, at either the buy or the sell, consistently",
+      "Only on the last day",
+      "Never"
+     ],
+     "answer": 1,
+     "explain": "Each completed transaction pays the fee once. Subtracting it on every sale is the usual choice; subtracting it on every buy gives the same answer."
+    },
+    {
+     "q": "Prices [3, 1, 4, 2, 6, 3, 5]. What is the best profit with at most 2 transactions?",
+     "options": [
+      "5",
+      "7: buy at 1 sell at 4, then buy at 2 sell at 6",
+      "9",
+      "6"
+     ],
+     "answer": 1,
+     "explain": "One transaction gives at most 5 (1 to 6). Two transactions split it as 3 + 4 = 7. Three transactions add 3 to 5 for 9, which equals the unlimited answer."
+    }
+   ],
+   "cover_seed": "state-machine-dp",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.78,
+   "path": "dsa/state-machine-dp.md",
+   "hash": "97929db8b864",
+   "word_count": 1374,
+   "excerpt": "A trader looks back over a week of prices and asks the classic question: what is the most I could have made? With one trade, it is the biggest rise from a low to a later high. With unlimited trades, it is every upward step. Then the rules get fiddly: a fee per trade, a forced day of rest after each…"
   },
   {
    "id": "dsa-coin-change",

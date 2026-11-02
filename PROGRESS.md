@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 130 | 0 | 22 | 152 | 71/72 |
+| dsa | 133 | 0 | 19 | 152 | 71/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **332** | **0** | **341** | **673** | |
+| **All** | **335** | **0** | **338** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -25,9 +25,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### dsa
 
-- [ ] `dsa-interval-dp` (P1, pattern, dsa-dp): Interval DP: Solving From the Inside Out
-- [ ] `dsa-dp-on-trees` (P1, pattern, dsa-dp): DP on Trees
-- [ ] `dsa-state-machine-dp` (P1, pattern, dsa-dp): State Machine DP: Stock Trading Problems
+- [ ] `dsa-matrix-chain` (P0, problem-walkthrough, dsa-dp): Matrix Chain Multiplication: The Partition DP Template
+- [ ] `dsa-longest-palindromic-subsequence` (P1, problem-walkthrough, dsa-dp): Longest Palindromic Subsequence
 - [ ] `dsa-regex-matching` (P1, problem-walkthrough, dsa-dp): Regular Expression and Wildcard Matching
 - [ ] `dsa-egg-drop` (P1, problem-walkthrough, dsa-dp): Egg Drop: Thinking About the Worst Case
 - [ ] `dsa-rod-cutting` (P1, problem-walkthrough, dsa-dp): Rod Cutting and Integer Break
@@ -35,10 +34,12 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-dp-on-subsequences` (P1, pattern, dsa-dp): Counting Subsequences With DP
 - [ ] `dsa-fenwick-tree` (P1, pattern, dsa-advanced): Fenwick Trees: Prefix Sums That Change
 - [ ] `dsa-bit-manipulation-tricks` (P1, pattern, dsa-advanced): Bit Manipulation Tricks Interviewers Love
+- [ ] `dsa-string-matching-basics` (P1, pattern, dsa-advanced): Pattern Matching: From Brute Force to Rolling Hash
 
 ### cp
 
 - [ ] `cp-lazy-propagation` (P0, pattern, cp-ranges): Lazy Propagation: Range Updates in log n
+- [ ] `cp-dp-on-trees-advanced` (P0, pattern, cp-dp): Tree DP and Rerooting
 - [ ] `cp-scc` (P0, pattern, cp-graphs): Strongly Connected Components
 - [ ] `cp-bridges-articulation` (P0, pattern, cp-graphs): Bridges and Articulation Points
 - [ ] `cp-binary-lifting` (P0, pattern, cp-graphs): Binary Lifting and LCA in log n
@@ -47,7 +48,6 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `cp-segment-tree-descend` (P1, pattern, cp-ranges): Walking Down a Segment Tree
 - [ ] `cp-mos-algorithm` (P1, pattern, cp-ranges): Mo's Algorithm: Offline Range Queries
 - [ ] `cp-range-sum-queries-cses` (P1, problem-walkthrough, cp-ranges): From Static to Dynamic Range Queries
-- [ ] `cp-dp-on-dag` (P1, pattern, cp-dp): DP on DAGs: Longest and Counting Paths
 
 ### famous-algos
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 130 written</summary>
+<details><summary>dsa: 133 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -156,6 +156,9 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-lis` Longest Increasing Subsequence
 - [x] `dsa-lcs-edit-distance` LCS and Edit Distance: Comparing Two Strings
 - [x] `dsa-grid-dp` Grid DP: Counting and Optimising Paths
+- [x] `dsa-interval-dp` Interval DP: Solving From the Inside Out
+- [x] `dsa-dp-on-trees` DP on Trees
+- [x] `dsa-state-machine-dp` State Machine DP: Stock Trading Problems
 - [x] `dsa-tries` Tries: Autocomplete in Your Pocket
 - [x] `dsa-product-except-self` Product of Array Except Self Without Division
 - [x] `dsa-trapping-rain-water` Trapping Rain Water Three Ways
