@@ -33,7 +33,7 @@ quiz:
   - q: "In Kafka-style systems, how do you keep all events for one user in order?"
     options: ["Use one consumer for the whole system", "Use the user id as the message key, so all of that user's events go to the same partition", "Sort them in the consumer", "Order is never possible"]
     answer: 1
-    explain: "Order is guaranteed only within a partition. Keying by user id routes each user's events to one partition."
+    explain: "Order is guaranteed only within a partition. Across partitions, messages may be processed in any relative order, because different consumers handle them at different speeds. Keying by user id routes each user's events to one partition."
   - q: "With at-least-once delivery, what must consumers do?"
     options: ["Nothing", "Handle duplicates, for example by making processing idempotent or tracking processed message ids", "Delete the queue", "Process messages twice on purpose"]
     answer: 1
