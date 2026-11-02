@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 100 | 0 | 52 | 152 | 61/72 |
+| dsa | 101 | 0 | 51 | 152 | 61/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **302** | **0** | **371** | **673** | |
+| **All** | **303** | **0** | **370** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 100 written</summary>
+<details><summary>dsa: 101 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -190,6 +190,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-bst-iterator-two-sum` BST Iterators and Two Sum in a BST
 - [x] `dsa-build-bst` Building Balanced BSTs From Sorted Data
 - [x] `dsa-tree-width-and-structure` Maximum Width, Symmetry and Identical Trees
+- [x] `dsa-morris-traversal` Morris Traversal: Inorder With O(1) Space
 - [x] `dsa-subset-sum-count` Counting Subsets: Target Sum and Partitions
 - [x] `dsa-interview-dsa-revision` The Night-Before Revision Sheet
 

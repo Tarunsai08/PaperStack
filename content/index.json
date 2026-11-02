@@ -1,7 +1,7 @@
 {
- "content_version": "52de0ef2186bab10",
+ "content_version": "305c853fe91e216e",
  "generated_at": "2026-11-02",
- "count": 302,
+ "count": 303,
  "subjects": [
   {
    "id": "ml",
@@ -18022,6 +18022,117 @@
    "hash": "4939ea764111",
    "word_count": 1298,
    "excerpt": "Hold a drawing of a tree up to a mirror. If the reflection looks exactly like the original, the tree is symmetric. Checking that by eye is easy; checking it in code means comparing the right parts of the tree with each other, and most wrong answers compare the wrong pairs. A small family of…"
+  },
+  {
+   "id": "dsa-morris-traversal",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "morris-traversal",
+   "title": "A Temporary Rope Back to Where You Came From",
+   "subtitle": "Morris traversal: inorder in O(1) extra space by threading each node's predecessor back to it, then cutting the thread, and using it to recover a BST with two swapped nodes",
+   "track": "dsa-trees",
+   "track_order": 16,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-tree-traversals"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "binary tree",
+    "inorder",
+    "morris traversal",
+    "constant space"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(1) extra"
+   },
+   "practice_problems": [
+    {
+     "name": "Binary Tree Inorder Traversal",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/binary-tree-inorder-traversal/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Kth Smallest Element in a BST",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Recover Binary Search Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/recover-binary-search-tree/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Inorder predecessor",
+     "definition": "The node visited just before a given node in inorder: for a node with a left subtree, the rightmost node of that subtree."
+    },
+    {
+     "term": "Thread",
+     "definition": "A temporary right pointer from a node's inorder predecessor back to the node, used to return without a stack."
+    },
+    {
+     "term": "Morris traversal",
+     "definition": "An inorder traversal that uses temporary threads instead of a stack or recursion, giving O(1) extra space, and removes every thread before it finishes."
+    },
+    {
+     "term": "Inversion",
+     "definition": "In an inorder sequence, a place where a value is larger than the one after it. A BST's inorder sequence has none."
+    },
+    {
+     "term": "Right spine",
+     "definition": "The chain of nodes reached from a node by following right children until there is none."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "When Morris traversal reaches a node with a left child, what does it look for first?",
+     "options": [
+      "The node's parent",
+      "The rightmost node of the left subtree, its inorder predecessor",
+      "The leftmost leaf",
+      "The root"
+     ],
+     "answer": 1,
+     "explain": "The predecessor is the last node visited before this one. Pointing its right pointer back to this node lets the traversal return here after the left subtree."
+    },
+    {
+     "q": "Arriving at a node, the predecessor's right pointer already points back to it. What does that mean?",
+     "options": [
+      "The tree has a cycle bug",
+      "The left subtree has been fully visited; remove the thread, visit the node and go right",
+      "Go left again",
+      "The traversal is finished"
+     ],
+     "answer": 1,
+     "explain": "The thread was laid on the first visit. Finding it again means we came back up through it, so the left side is done."
+    },
+    {
+     "q": "Two keys of a BST were swapped by mistake. How are they found in one inorder pass?",
+     "options": [
+      "They are the root and a leaf",
+      "The first inversion's larger value and the last inversion's smaller value are the swapped pair",
+      "By sorting the tree",
+      "They cannot be found in one pass"
+     ],
+     "answer": 1,
+     "explain": "A swap of two keys creates one inversion if they are adjacent in inorder, or two otherwise. The wrong nodes are the first of the first inversion and the second of the last."
+    }
+   ],
+   "cover_seed": "morris-traversal",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.6,
+   "path": "dsa/morris-traversal.md",
+   "hash": "7ee370c7b16f",
+   "word_count": 1407,
+   "excerpt": "An inorder traversal normally needs memory: the recursion stack, or an explicit stack, holding the ancestors you still have to come back to. For a tree of height h, that is O(h) extra space, O(n) for a chain. Can a traversal visit every node in order using only a couple of pointers? In 1979 Joseph…"
   },
   {
    "id": "dsa-heap-basics",
