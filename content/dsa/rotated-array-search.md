@@ -27,6 +27,8 @@ glossary:
     definition: "Of the two halves around the middle index, the one that contains no pivot and is therefore in normal increasing order."
   - term: "Search space"
     definition: "The range of indices [lo, hi] that might still contain the answer."
+  - term: "Rotation count"
+    definition: "How many positions a sorted array was rotated by, equal to the index of its minimum element."
 quiz:
   - q: "In a rotated sorted array with distinct values, why is at least one of [lo..mid] or [mid..hi] always sorted?"
     options: ["Because the array is short", "The rotation creates only one break point, and it can lie in at most one of the two halves", "Because mid is always the pivot", "It is not always true"]
@@ -68,10 +70,10 @@ Imagine a clock face where someone moved the 12 to a different position, so the 
 
 That is the whole trick. At every step:
 
-1. Compute mid. At least one of [lo..mid] and [mid..hi] is a [[sorted half]], because the array has only one break point.
-2. Identify it: if a[lo] ≤ a[mid], the left half is sorted; otherwise the right half is.
-3. Check whether the target lies within the sorted half's range, which is easy because its smallest and largest values are its two ends.
-4. If yes, search there. If no, the target can only be in the other half.
+- **Split:** compute mid. At least one of [lo..mid] and [mid..hi] is a [[sorted half]], because the array has only one break point.
+- **Identify it:** if a[lo] ≤ a[mid], the left half is sorted; otherwise the right half is.
+- **Check** whether the target lies within the sorted half's range, which is easy because its smallest and largest values are its two ends.
+- **Decide:** if yes, search there. If no, the target can only be in the other half.
 
 :::insight
 You never need the whole array to be sorted. You need, at each step, one half whose contents you can describe exactly. In a [[rotated sorted array]] one half always qualifies, so every comparison still discards half the candidates.
@@ -114,6 +116,24 @@ Target **18**: first step mid = 3, right half [3..12] is sorted and 18 is not in
 Target **10**: the search moves to the right half, then past 9 to index 6 (value 12), and then lo passes hi: −1.
 
 Minimum: lo = 0, hi = 6, mid = 3, a[3] = 3 ≤ a[6] = 12, so hi = 3. mid = 1, a[1] = 18 > a[3] = 3, so lo = 2. mid = 2, a[2] = 22 > 3, so lo = 3. lo = hi = 3: the minimum is 3 at index 3.
+
+### Another route: find the pivot, then search normally
+
+You can also split the problem in two. First find the index of the minimum, p, with the search above; it is also the [[rotation count]], the number of positions the array was rotated by.
+
+Then the array is two sorted runs, [0, p − 1] and [p, n − 1]. Decide which run can hold the target by comparing it with the last element, and run an ordinary binary search there. For [15, 18, 22, 3, 6, 9, 12], p = 3. Target 6 is at most the last element 12, so search [3, 6] and find it at index 4. Two clean binary searches are often easier to get right under interview pressure than one clever one.
+
+### When values repeat
+
+With duplicates, the comparison a[lo] ≤ a[mid] can be true even when the break is on the left, as the warning below shows. The fix is to notice the one ambiguous case, a[lo] == a[mid] == a[hi], and shrink both ends by one before trying again:
+
+| Array | Target | First step | What happens |
+|---|---|---|---|
+| [2, 5, 6, 0, 0, 1, 2] | 0 | mid = 3, a[mid] = 0 | found at index 3 |
+| [3, 1, 3, 3, 3] | 1 | a[lo] = a[mid] = a[hi] = 3, ambiguous | shrink to [1, 3], then mid = 2, left [1, 3] sorted, 1 in range, find it |
+| [1, 1, 1, 1, 1] | 2 | ambiguous every time | shrinks one step at a time: O(n) |
+
+For the minimum with duplicates, compare a[mid] with a[hi] as before, and when they are equal, drop hi by one: the minimum cannot be lost, because a[mid] holds the same value. On [2, 2, 2, 0, 1], the search finds 0. On the clock face, equal numbers are like several hours painted with the same label: you cannot tell where the 12 moved, so sometimes you have to step around one position at a time.
 
 :::try-this
 Search for 22 in the same array. Which half is sorted at each step? (Step 1: mid = 3, right half sorted, 22 not in [3, 12], so hi = 2. Step 2: mid = 1, a[1] = 18, left half [15, 18] sorted, 22 not in [15, 18), so lo = 2. Step 3: mid = 2, found.)
@@ -164,19 +184,51 @@ int searchRotated(const vector<int>& a, int target) {
     return -1;
 }
 
-int findMin(const vector<int>& a) {
+int findMinIndex(const vector<int>& a) {            // also the rotation count
     int lo = 0, hi = (int)a.size() - 1;
     while (lo < hi) {
         int mid = lo + (hi - lo) / 2;
         if (a[mid] > a[hi]) lo = mid + 1;
         else hi = mid;
     }
+    return lo;
+}
+
+bool searchWithDuplicates(const vector<int>& a, int target) {
+    int lo = 0, hi = (int)a.size() - 1;
+    while (lo <= hi) {
+        int mid = lo + (hi - lo) / 2;
+        if (a[mid] == target) return true;
+        if (a[lo] == a[mid] && a[mid] == a[hi]) { lo++, hi--; continue; }   // cannot tell: shrink
+        if (a[lo] <= a[mid]) {
+            if (a[lo] <= target && target < a[mid]) hi = mid - 1;
+            else lo = mid + 1;
+        } else {
+            if (a[mid] < target && target <= a[hi]) lo = mid + 1;
+            else hi = mid - 1;
+        }
+    }
+    return false;
+}
+
+int findMinWithDuplicates(const vector<int>& a) {
+    int lo = 0, hi = (int)a.size() - 1;
+    while (lo < hi) {
+        int mid = lo + (hi - lo) / 2;
+        if (a[mid] > a[hi]) lo = mid + 1;
+        else if (a[mid] < a[hi]) hi = mid;
+        else hi--;                                   // equal: a[mid] still holds this value
+    }
     return a[lo];
 }
 
 int main() {
     vector<int> a = {15, 18, 22, 3, 6, 9, 12};
-    cout << searchRotated(a, 6) << ' ' << searchRotated(a, 10) << ' ' << findMin(a) << '\n';  // 4 -1 3
+    int p = findMinIndex(a);
+    cout << searchRotated(a, 6) << ' ' << searchRotated(a, 10) << ' ' << a[p] << ' ' << p << '\n';  // 4 -1 3 3
+    cout << searchWithDuplicates({2, 5, 6, 0, 0, 1, 2}, 0) << searchWithDuplicates({3, 1, 3, 3, 3}, 1)
+         << searchWithDuplicates({1, 1, 1, 1, 1}, 2) << '\n';                                  // 110
+    cout << findMinWithDuplicates({2, 2, 2, 0, 1}) << '\n';                                     // 0
 }
 ```
 

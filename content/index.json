@@ -1,5 +1,5 @@
 {
- "content_version": "f34620b4560a65f7",
+ "content_version": "287d1bae31e95690",
  "generated_at": "2026-11-02",
  "count": 261,
  "subjects": [
@@ -12013,7 +12013,7 @@
     "dsa-binary-search"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "binary search",
     "arrays",
@@ -12065,6 +12065,10 @@
     {
      "term": "Search space",
      "definition": "The range of indices [lo, hi] that might still contain the answer."
+    },
+    {
+     "term": "Rotation count",
+     "definition": "How many positions a sorted array was rotated by, equal to the index of its minimum element."
     }
    ],
    "quiz": [
@@ -12107,8 +12111,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.86,
    "path": "dsa/rotated-array-search.md",
-   "hash": "8211dfec958d",
-   "word_count": 1105,
+   "hash": "af0c414cce13",
+   "word_count": 1426,
    "excerpt": "A sorted list of ticket numbers was stored in a circular buffer, and now it starts in the middle: [15, 18, 22, 3, 6, 9, 12]. You need to find 6, and you are told to do it in O(log n), not by scanning. Plain binary search fails here: comparing 6 with the middle value no longer tells you which side…"
   },
   {
