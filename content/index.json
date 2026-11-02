@@ -1,7 +1,7 @@
 {
- "content_version": "528d4213b8d2878a",
+ "content_version": "b2b6e68d2699070c",
  "generated_at": "2026-11-02",
- "count": 99,
+ "count": 103,
  "subjects": [
   {
    "id": "ml",
@@ -9021,6 +9021,119 @@
    "excerpt": "Two Sum is probably the most famous interview question in the world. Given a list of numbers, find two that add up to a target. Most people's first answer checks every pair, and with 100,000 numbers that is about five billion checks. The fix is so small it feels like cheating: keep a notebook of…"
   },
   {
+   "id": "dsa-kadane",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "kadane",
+   "title": "The Gambler Who Knows When to Walk Away",
+   "subtitle": "Kadane's algorithm finds the best subarray in one pass by asking one question at every step",
+   "track": "dsa-arrays",
+   "track_order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-prefix-sums"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 4,
+   "topics": [
+    "arrays",
+    "dynamic programming",
+    "kadane",
+    "subarrays"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(1)"
+   },
+   "practice_problems": [
+    {
+     "name": "Maximum Subarray",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/maximum-subarray/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Maximum Subarray Sum",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1643",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Maximum Product Subarray",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/maximum-product-subarray/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Maximum Sum Circular Subarray",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/maximum-sum-circular-subarray/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Subarray",
+     "definition": "A contiguous, non-empty slice of an array, like elements 3 to 7. Order is kept and nothing is skipped."
+    },
+    {
+     "term": "Best ending here",
+     "definition": "The largest sum of any subarray that ends exactly at the current index. Kadane's algorithm keeps only this one number."
+    },
+    {
+     "term": "Running maximum",
+     "definition": "The best answer seen so far over all positions, updated after each step."
+    },
+    {
+     "term": "Dynamic programming",
+     "definition": "Solving a problem by building answers to small subproblems and reusing them, instead of recomputing."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "At index i, what does Kadane's algorithm decide?",
+     "options": [
+      "Whether to sort the array",
+      "Whether to extend the best subarray ending at i-1 or start fresh at i",
+      "Whether to skip element i",
+      "Whether to restart from index 0"
+     ],
+     "answer": 1,
+     "explain": "The best subarray ending at i either continues the best one ending at i-1, or starts at i alone. Take whichever sum is larger."
+    },
+    {
+     "q": "What does a correct Kadane's implementation return for [-3, -1, -2]?",
+     "options": [
+      "0",
+      "-6",
+      "-1",
+      "-3"
+     ],
+     "answer": 2,
+     "explain": "Subarrays must be non-empty, so the best is the single element -1. Initialising the answer to 0 is a classic bug."
+    },
+    {
+     "q": "Why does Maximum Product Subarray need two running values?",
+     "options": [
+      "Products are slower to compute",
+      "A very negative product can become the largest after multiplying by a negative number",
+      "Because of overflow only",
+      "It does not; one value is enough"
+     ],
+     "answer": 1,
+     "explain": "Multiplying by a negative flips signs, so the smallest product so far can turn into the biggest. Track both the maximum and minimum ending here."
+    }
+   ],
+   "cover_seed": "kadane",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.9,
+   "path": "dsa/kadane.md",
+   "hash": "6bd368b06cd7",
+   "word_count": 902,
+   "excerpt": "A trader looks back at a year of daily profits and losses: up 3, down 7, up 4, up 2, down 1, up 5. What stretch of consecutive days would have made the most money? Checking every start and end day is easy to write and slow to run: about n² stretches. Jon Bentley tells the story of this problem in…"
+  },
+  {
    "id": "cp-how-contests-work",
    "kind": "primer",
    "subject": "cp",
@@ -9285,6 +9398,92 @@
    "excerpt": "Contest problems love stories. Farmer John's cows walk along a fence. A shopkeeper rearranges her shelves. A wizard casts spells on a row of potions. Read every word carefully and five minutes have gone before you know what is being asked. Strong contestants read differently. In two minutes they…"
   },
   {
+   "id": "cp-rating-ladder",
+   "kind": "primer",
+   "subject": "cp",
+   "slug": "rating-ladder",
+   "title": "A Map From Newbie to Expert",
+   "subtitle": "The rating ladder: what to practise at each level, and how to know you are ready to climb",
+   "track": "cp-start",
+   "track_order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-reading-problems-fast"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 4,
+   "topics": [
+    "competitive programming",
+    "practice plan",
+    "codeforces"
+   ],
+   "glossary": [
+    {
+     "term": "Problem rating",
+     "definition": "A difficulty number on Codeforces problems. A problem rated 1400 is one that contestants around 1400 solve about half the time."
+    },
+    {
+     "term": "Comfort zone",
+     "definition": "Problems you can already solve reliably. Practising only these feels productive but builds little new skill."
+    },
+    {
+     "term": "Stretch zone",
+     "definition": "Problems a little above your level, roughly 100 to 300 rating points higher, where most improvement happens."
+    },
+    {
+     "term": "Topic gap",
+     "definition": "A technique you have never learned, which no amount of speed practice will fix."
+    },
+    {
+     "term": "Editorial",
+     "definition": "The official written solution published after a contest, explaining the intended idea."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "You are rated 1300. Which problems give the most improvement per hour?",
+     "options": [
+      "800 rated, to build confidence",
+      "1400 to 1600 rated",
+      "2400 rated, to aim high",
+      "Any random rating"
+     ],
+     "answer": 1,
+     "explain": "The stretch zone, about 100 to 300 points above your rating, is hard enough to teach you something and close enough that you can finish with effort."
+    },
+    {
+     "q": "How long should you usually try a problem before reading the editorial?",
+     "options": [
+      "One minute",
+      "Long enough to have a real attempt, often 30 to 60 minutes, then read and re-implement",
+      "Never read editorials",
+      "Always read the editorial first"
+     ],
+     "answer": 1,
+     "explain": "A genuine attempt makes the editorial's idea stick. After that, re-implementing it yourself without looking turns understanding into skill."
+    },
+    {
+     "q": "Which topics typically start appearing around the 1600 to 1900 range?",
+     "options": [
+      "Only implementation",
+      "Graphs, DP, number theory and binary search on the answer",
+      "Only geometry",
+      "Nothing new appears there"
+     ],
+     "answer": 1,
+     "explain": "Around expert level, problems combine standard techniques like graph traversal, DP and number theory with an observation."
+    }
+   ],
+   "cover_seed": "rating-ladder",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.8,
+   "path": "cp/rating-ladder.md",
+   "hash": "79c00036f9ec",
+   "word_count": 978,
+   "excerpt": "Most people quit competitive programming in the first two months. Not because they lack talent, but because they practise blindly: random problems, some far too easy, some impossibly hard, no sense of progress. The rating graph goes flat, and so does the motivation. Climbers do not walk up a…"
+  },
+  {
    "id": "famous-algos-bloom-filter",
    "kind": "concept",
    "subject": "famous-algos",
@@ -9456,6 +9655,93 @@
    "hash": "10cc9c0588f4",
    "word_count": 1050,
    "excerpt": "Every second, a busy network router sees hundreds of thousands of packets from countless IP addresses. Somewhere in that flood, one address is sending far more than its share: maybe a misconfigured server, maybe an attack. The router has a few megabytes of fast memory and no time to keep a full…"
+  },
+  {
+   "id": "famous-algos-hyperloglog",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "hyperloglog",
+   "title": "Counting a Billion Visitors With Twelve Kilobytes",
+   "subtitle": "HyperLogLog estimates how many distinct things you have seen by looking for unusually lucky hashes",
+   "track": "fa-sketches",
+   "track_order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-count-min-sketch"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "probabilistic data structures",
+    "cardinality",
+    "hashing",
+    "analytics"
+   ],
+   "glossary": [
+    {
+     "term": "Cardinality",
+     "definition": "The number of distinct items in a collection. A list of a million page views might have a cardinality of only 50,000 distinct visitors."
+    },
+    {
+     "term": "Register",
+     "definition": "One small counter inside a HyperLogLog. Each register remembers the longest run of leading zeros it has seen."
+    },
+    {
+     "term": "Leading zeros",
+     "definition": "The zeros at the start of a binary number before the first 1. A random hash starts with k zeros with probability about 1 in 2 to the power k."
+    },
+    {
+     "term": "Harmonic mean",
+     "definition": "A way of averaging that is much less affected by a few huge values than the ordinary average."
+    },
+    {
+     "term": "Mergeable",
+     "definition": "Two summaries can be combined into the summary of the union, without the original data."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does a long run of leading zeros in a hash suggest many distinct items?",
+     "options": [
+      "Zeros are rare in hashes",
+      "Each extra leading zero halves the chance, so seeing a long run usually means you hashed many different items",
+      "Long runs mean the hash function is broken",
+      "Duplicate items create more zeros"
+     ],
+     "answer": 1,
+     "explain": "A random hash starts with k zeros about once in 2^k tries. If the longest run you have seen is 20, you have probably seen around a million distinct items."
+    },
+    {
+     "q": "Why does adding the same item twice not change a HyperLogLog?",
+     "options": [
+      "It deletes duplicates by searching",
+      "The same item always gives the same hash, so it updates the same register to the same value",
+      "It keeps a list of items",
+      "Duplicates are ignored by chance"
+     ],
+     "answer": 1,
+     "explain": "Hashing is deterministic. A repeat produces exactly the same register and the same zero count, so nothing changes. That is why it counts distinct items."
+    },
+    {
+     "q": "How do you combine the HyperLogLogs of two servers to count distinct users across both?",
+     "options": [
+      "Add the registers",
+      "Take the maximum of each register pair",
+      "Average the estimates",
+      "It is impossible"
+     ],
+     "answer": 1,
+     "explain": "Each register stores a maximum. The maximum over both streams is simply the larger of the two registers, so merging is a register-by-register max."
+    }
+   ],
+   "cover_seed": "hyperloglog",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "famous-algos/hyperloglog.md",
+   "hash": "a4027cc89c36",
+   "word_count": 999,
+   "excerpt": "A news site wants to show \"1.2 million people read this today.\" Counting page views is easy: add one per view. Counting distinct readers is not. The obvious way is to keep a set of every reader ID seen today, and for a popular site that set has millions of entries, for every article, every day.…"
   },
   {
    "id": "famous-algos-consistent-hashing",
@@ -9803,9 +10089,101 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "system-design/latency-numbers.md",
-   "hash": "12615e71311b",
-   "word_count": 990,
+   "hash": "653cd8b6ed38",
+   "word_count": 1016,
    "excerpt": "Nanoseconds, microseconds, milliseconds: the words blur together, and so do the numbers. That blur hides the most important fact in system design. A trip to another continent is not \"a bit slower\" than reading memory. It is roughly a million times slower. Scale the numbers to human time and the…"
+  },
+  {
+   "id": "system-design-client-server-http",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "client-server-http",
+   "title": "Everything That Happens Before a Page Appears",
+   "subtitle": "Follow one request from your browser to a server and back: DNS, TCP, TLS, HTTP and what each costs",
+   "track": "sd-fundamentals",
+   "track_order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-latency-numbers"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "http",
+    "networking",
+    "tls",
+    "dns"
+   ],
+   "glossary": [
+    {
+     "term": "DNS",
+     "definition": "The Domain Name System, which turns a name like example.com into the IP address of a server."
+    },
+    {
+     "term": "TCP",
+     "definition": "A protocol that gives two machines a reliable, ordered stream of bytes over an unreliable network."
+    },
+    {
+     "term": "TLS",
+     "definition": "The encryption layer behind HTTPS. It proves the server's identity and agrees on keys so traffic cannot be read or altered."
+    },
+    {
+     "term": "HTTP",
+     "definition": "The request and response protocol of the web: a client sends a method, a path and headers, and the server replies with a status, headers and a body."
+    },
+    {
+     "term": "Keep-alive",
+     "definition": "Reusing one open connection for many HTTP requests, so the setup cost is paid only once."
+    },
+    {
+     "term": "Round trip time",
+     "definition": "How long a message takes to reach the other side and for the reply to come back. Often shortened to RTT."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Before the first byte of HTTP is sent over HTTPS with TCP, which steps must happen?",
+     "options": [
+      "Only TLS",
+      "DNS lookup (unless cached), TCP handshake, then TLS handshake",
+      "Only the TCP handshake",
+      "HTTP first, then DNS"
+     ],
+     "answer": 1,
+     "explain": "The browser needs the IP address, then a TCP connection, then encryption keys. Only then can it send the HTTP request."
+    },
+    {
+     "q": "Why does keep-alive make pages faster?",
+     "options": [
+      "It compresses images",
+      "Later requests reuse an already open connection, skipping new TCP and TLS handshakes",
+      "It caches DNS forever",
+      "It sends requests in random order"
+     ],
+     "answer": 1,
+     "explain": "Handshakes cost round trips. Reusing a warm connection lets later requests go straight to sending HTTP."
+    },
+    {
+     "q": "What does HTTP/3 change compared with HTTP/2?",
+     "options": [
+      "It removes encryption",
+      "It runs over QUIC on UDP, so one lost packet does not stall every stream on the connection",
+      "It uses a new HTML format",
+      "It no longer uses headers"
+     ],
+     "answer": 1,
+     "explain": "HTTP/2 multiplexes streams over one TCP connection, where a lost packet blocks everything behind it. QUIC handles streams independently and also combines transport and encryption setup."
+    }
+   ],
+   "cover_seed": "client-server-http",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "system-design/client-server-http.md",
+   "hash": "ae1162e5373f",
+   "word_count": 1116,
+   "excerpt": "You type a web address and press Enter. Half a second later, a page appears. It feels like one action. It is actually a relay race: at least four separate conversations with machines you never see, each one costing a trip across the network before the next can start. Knowing those legs is not…"
   }
  ]
 }

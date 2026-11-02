@@ -108,8 +108,8 @@
    "prerequisites": [
     "cp-reading-problems-fast"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "800-1200 implementation and greedy",

@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 7 | 0 | 145 | 152 | 7/72 |
-| cp | 3 | 0 | 112 | 115 | 3/29 |
-| famous-algos | 3 | 0 | 88 | 91 | 3/32 |
-| system-design | 3 | 0 | 116 | 119 | 3/60 |
+| dsa | 8 | 0 | 144 | 152 | 8/72 |
+| cp | 4 | 0 | 111 | 115 | 4/29 |
+| famous-algos | 4 | 0 | 87 | 91 | 4/32 |
+| system-design | 4 | 0 | 115 | 119 | 4/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **99** | **0** | **574** | **673** | |
+| **All** | **103** | **0** | **570** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **31**
 
@@ -26,7 +26,6 @@ Planned entries whose prerequisites are already written, by priority then path o
 ### dsa
 
 - [ ] `dsa-recursion-basics` (P0, primer, dsa-start): Recursion: Trusting the Function You Are Writing
-- [ ] `dsa-kadane` (P0, pattern, dsa-arrays): Kadane's Algorithm: The Best Subarray in One Pass
 - [ ] `dsa-string-patterns` (P0, pattern, dsa-arrays): Strings: Palindromes, Anagrams and Counting
 - [ ] `dsa-intervals-sweep` (P0, pattern, dsa-arrays): Intervals: Sort, Then Sweep
 - [ ] `dsa-product-except-self` (P0, problem-walkthrough, dsa-arrays): Product of Array Except Self Without Division
@@ -35,12 +34,13 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-binary-search` (P0, pattern, dsa-search-sort): Binary Search, Done Right Every Time
 - [ ] `dsa-sorting-as-tool` (P0, pattern, dsa-search-sort): Sorting as a Superpower
 - [ ] `dsa-gcd-primes` (P0, pattern, dsa-math): GCD, Primes and Divisors for Interviews
+- [ ] `dsa-linked-list-basics` (P0, pattern, dsa-linear): Linked Lists: Pointer Surgery Made Safe
 
 ### cp
 
-- [ ] `cp-rating-ladder` (P0, primer, cp-start): The Rating Ladder: What to Practise at Each Level
 - [ ] `cp-stress-testing` (P0, pattern, cp-start): Stress Testing: Catch Wrong Answers Yourself
 - [ ] `cp-invariants-observations` (P0, pattern, cp-start): Invariants and Observations: The Heart of Div 2
+- [ ] `cp-upsolving` (P1, primer, cp-start): Upsolving: Where Rating Actually Comes From
 - [ ] `cp-constructive-problems` (P1, pattern, cp-start): Constructive Problems: Build the Answer
 - [ ] `cp-weird-algorithm` (P1, problem-walkthrough, cp-start): Your First CSES Problems: Weird Algorithm to Increasing Array
 - [ ] `cp-implementation-skills` (P1, primer, cp-start): Implementation Problems: Getting the Details Right
@@ -49,7 +49,6 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### famous-algos
 
-- [ ] `famous-algos-hyperloglog` (P0, concept, fa-sketches): HyperLogLog: Counting Unique Visitors With Almost No Memory
 - [ ] `famous-algos-lamport-clocks` (P0, concept, fa-distributed): Lamport Clocks: Ordering Events Without a Shared Clock
 - [ ] `famous-algos-gossip-protocols` (P0, concept, fa-distributed): Gossip Protocols: How Rumours Keep Clusters in Sync
 - [ ] `famous-algos-power-of-two-choices` (P0, concept, fa-networking): The Power of Two Choices: Smarter Load Balancing
@@ -59,14 +58,18 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `famous-algos-kalman-filter` (P0, concept, fa-signals): The Kalman Filter: Blending Guesses With Noisy Measurements
 - [ ] `famous-algos-counting-bloom-cuckoo` (P1, concept, fa-sketches): Deletable Filters: Counting Bloom and Cuckoo Filters
 - [ ] `famous-algos-heavy-hitters` (P1, concept, fa-sketches): Finding Heavy Hitters in a Stream: Misra-Gries and Space-Saving
+- [ ] `famous-algos-minhash` (P1, concept, fa-sketches): MinHash: Estimating Similarity Without Comparing Everything
 
 ### system-design
 
-- [ ] `system-design-client-server-http` (P0, deep-dive, sd-fundamentals): What Happens When You Type a URL
+- [ ] `system-design-dns-deep-dive` (P0, deep-dive, sd-fundamentals): DNS: The Internet's Phone Book
+- [ ] `system-design-api-design` (P0, deep-dive, sd-fundamentals): API Design: REST, gRPC and GraphQL
 - [ ] `system-design-availability-slos` (P0, deep-dive, sd-fundamentals): Availability, Nines and SLOs
 - [ ] `system-design-caching` (P0, deep-dive, sd-blocks): Caching: Cache-Aside, Write-Through and Friends
 - [ ] `system-design-unique-id-generator` (P0, case-study, sd-cases): Design a Unique ID Generator
 - [ ] `system-design-oop-solid` (P0, lld, sd-lld): Object-Oriented Design and SOLID Principles
+- [ ] `system-design-networking-essentials` (P1, deep-dive, sd-fundamentals): TCP, UDP and QUIC for System Designers
+- [ ] `system-design-proxies` (P1, deep-dive, sd-fundamentals): Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere
 
 ### ml
 
@@ -83,7 +86,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 7 written</summary>
+<details><summary>dsa: 8 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -92,30 +95,34 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-two-pointers` Two Pointers: Squeezing Answers From Both Ends
 - [x] `dsa-sliding-window` Sliding Windows: One Pass Instead of Two Loops
 - [x] `dsa-hashing-patterns` Hash Maps: Trading Memory for Speed
+- [x] `dsa-kadane` Kadane's Algorithm: The Best Subarray in One Pass
 
 </details>
 
-<details><summary>cp: 3 written</summary>
+<details><summary>cp: 4 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
 - [x] `cp-reading-problems-fast` Reading a Problem in Two Minutes
+- [x] `cp-rating-ladder` The Rating Ladder: What to Practise at Each Level
 
 </details>
 
-<details><summary>famous-algos: 3 written</summary>
+<details><summary>famous-algos: 4 written</summary>
 
 - [x] `famous-algos-bloom-filter` Bloom Filters: Saying No Without Looking
 - [x] `famous-algos-count-min-sketch` Count-Min Sketch: Counting Billions of Things in Kilobytes
+- [x] `famous-algos-hyperloglog` HyperLogLog: Counting Unique Visitors With Almost No Memory
 - [x] `famous-algos-consistent-hashing` Consistent Hashing: Adding Servers Without Moving Everything
 
 </details>
 
-<details><summary>system-design: 3 written</summary>
+<details><summary>system-design: 4 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
 - [x] `system-design-latency-numbers` Latency Numbers Every Engineer Should Feel
+- [x] `system-design-client-server-http` What Happens When You Type a URL
 
 </details>
 
