@@ -1,7 +1,7 @@
 {
- "content_version": "4bcb1f454b9e8ecd",
+ "content_version": "44ae3fba1d83e9b6",
  "generated_at": "2026-11-02",
- "count": 259,
+ "count": 261,
  "subjects": [
   {
    "id": "ml",
@@ -12098,6 +12098,240 @@
    "hash": "8211dfec958d",
    "word_count": 1105,
    "excerpt": "A sorted list of ticket numbers was stored in a circular buffer, and now it starts in the middle: [15, 18, 22, 3, 6, 9, 12]. You need to find 6, and you are told to do it in O(log n), not by scanning. Plain binary search fails here: comparing 6 with the middle value no longer tells you which side…"
+  },
+  {
+   "id": "dsa-median-two-arrays",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "median-two-arrays",
+   "title": "Cutting Two Decks So the Left Piles Win",
+   "subtitle": "Median of Two Sorted Arrays in O(log min(m, n)): binary search for a cut, not for a value, with sentinels at the edges",
+   "track": "dsa-search-sort",
+   "track_order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-binary-search"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 8,
+   "topics": [
+    "binary search",
+    "partition",
+    "median",
+    "two sorted arrays"
+   ],
+   "complexity": {
+    "time": "O(log min(m, n))",
+    "space": "O(1)"
+   },
+   "practice_problems": [
+    {
+     "name": "Merge Sorted Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/merge-sorted-array/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Median of Two Sorted Arrays",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/median-of-two-sorted-arrays/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Kth Smallest Element in a Sorted Matrix",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Kth Smallest Product of Two Sorted Arrays",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/kth-smallest-product-of-two-sorted-arrays/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Median",
+     "definition": "The middle value of a sorted list: the single middle element for odd length, or the average of the two middle elements for even length."
+    },
+    {
+     "term": "Cut",
+     "definition": "A split of a sorted array into a left part and a right part, described by how many elements go left."
+    },
+    {
+     "term": "Partition condition",
+     "definition": "For cuts in two sorted arrays, every element on the combined left side is at most every element on the combined right side. It reduces to two cross comparisons."
+    },
+    {
+     "term": "Sentinel",
+     "definition": "A stand-in value, minus infinity before the first element or plus infinity after the last, so cuts at the edges need no special cases."
+    },
+    {
+     "term": "Binary search on the answer space",
+     "definition": "Searching over possible answers or positions, such as cut positions, instead of over the stored values themselves."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why binary search over the shorter array?",
+     "options": [
+      "It is required for correctness only when lengths are equal",
+      "The cut in the longer array is then always valid, and the search takes O(log min(m, n))",
+      "Shorter arrays are sorted",
+      "It avoids sentinels"
+     ],
+     "answer": 1,
+     "explain": "With i chosen in the shorter array, j = half − i always lies between 0 and the longer array's length, so the cut in the longer array never goes out of range."
+    },
+    {
+     "q": "The left side's largest values are A[i − 1] = 9 and B[j − 1] = 11, and the right side's smallest are A[i] = 15 and B[j] = 18. Is the cut valid?",
+     "options": [
+      "Yes: 9 ≤ 18 and 11 ≤ 15",
+      "No: 11 > 9",
+      "No: 15 < 18",
+      "Only if the total length is even"
+     ],
+     "answer": 0,
+     "explain": "Only the two cross comparisons matter: A[i − 1] ≤ B[j] and B[j − 1] ≤ A[i]. Within each array the order is already sorted."
+    },
+    {
+     "q": "If A[i − 1] > B[j], which way should the search move?",
+     "options": [
+      "Move i right, taking more of A",
+      "Move i left, taking less of A",
+      "Stop",
+      "Swap the arrays"
+     ],
+     "answer": 1,
+     "explain": "A's left part holds an element that is too big for the left side, so put fewer elements of A on the left by moving the cut left."
+    }
+   ],
+   "cover_seed": "median-two-arrays",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.75,
+   "path": "dsa/median-two-arrays.md",
+   "hash": "25e3e86b1eab",
+   "word_count": 1719,
+   "excerpt": "You have two sorted lists, one with a million numbers and one with a few hundred, and you want the median of everything combined. Merging them first takes about a million steps. The famous version of this problem demands O(log(m + n)), which for these sizes is a few dozen steps. It is one of the…"
+  },
+  {
+   "id": "dsa-peak-element",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "peak-element",
+   "title": "Climbing a Hill in Thick Fog",
+   "subtitle": "Find a peak with binary search on unsorted data: compare with a neighbour, follow the uphill slope, then reuse it for mountain arrays and grids",
+   "track": "dsa-search-sort",
+   "track_order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-binary-search"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "binary search",
+    "peak finding",
+    "mountain array",
+    "invariant"
+   ],
+   "complexity": {
+    "time": "O(log n)",
+    "space": "O(1)"
+   },
+   "practice_problems": [
+    {
+     "name": "Peak Index in a Mountain Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/peak-index-in-a-mountain-array/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Find Peak Element",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-peak-element/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Find in Mountain Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-in-mountain-array/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Find a Peak Element II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-a-peak-element-ii/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Peak",
+     "definition": "An element strictly greater than its neighbours. Positions outside the array count as minus infinity, so an end element only needs to beat its one neighbour."
+    },
+    {
+     "term": "Slope",
+     "definition": "Whether the values rise or fall between position mid and mid + 1. Uphill means a[mid] < a[mid + 1]."
+    },
+    {
+     "term": "Mountain array",
+     "definition": "An array that strictly increases to a single maximum and then strictly decreases."
+    },
+    {
+     "term": "Search invariant",
+     "definition": "A statement kept true by every step of the search, here 'the range [lo, hi] contains a peak'."
+    },
+    {
+     "term": "Bitonic",
+     "definition": "Increasing then decreasing, like a mountain array. Each side is sorted, so ordinary binary search works on each half separately."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "At mid, a[mid] = 3 and a[mid + 1] = 5. What does peak-finding binary search do?",
+     "options": [
+      "Search left, because 3 is smaller",
+      "Search right: from an uphill step, the values to the right must contain a peak",
+      "Return mid",
+      "Scan linearly"
+     ],
+     "answer": 1,
+     "explain": "Walking right from 5, the values either keep rising until the end, where the end is a peak, or they fall at some point, and the top just before the fall is a peak. Either way a peak exists on the right."
+    },
+    {
+     "q": "Why does binary search work here even though the array is not sorted?",
+     "options": [
+      "It does not; the array must be sorted",
+      "Each comparison with a neighbour tells you which half is guaranteed to contain some peak, which is all binary search needs",
+      "Because peaks are rare",
+      "Because the array has no duplicates"
+     ],
+     "answer": 1,
+     "explain": "Binary search needs a test that safely discards half the range. The slope test does that for 'some peak', even though it says nothing about sorted order."
+    },
+    {
+     "q": "In Find in Mountain Array, after finding the peak, how do you search the right side?",
+     "options": [
+      "Ordinary binary search",
+      "Binary search with the comparison reversed, because the right side is decreasing",
+      "Linear scan",
+      "It is not needed"
+     ],
+     "answer": 1,
+     "explain": "The right side is sorted in decreasing order. Search the increasing left side first, since the smallest index is wanted, then the decreasing side with flipped comparisons."
+    }
+   ],
+   "cover_seed": "peak-element",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "dsa/peak-element.md",
+   "hash": "655dfbe53005",
+   "word_count": 1548,
+   "excerpt": "You are standing on a hillside in fog so thick you can see only the ground under your feet. You want to reach a summit, any summit. You cannot see the whole hill, but you can feel whether the ground rises to your left or to your right. Walk uphill, and you are guaranteed to reach a top. That is the…"
   },
   {
    "id": "dsa-linked-list-basics",

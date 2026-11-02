@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 57 | 0 | 95 | 152 | 45/72 |
+| dsa | 59 | 0 | 93 | 152 | 45/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **259** | **0** | **414** | **673** | |
+| **All** | **261** | **0** | **412** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 57 written</summary>
+<details><summary>dsa: 59 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -139,6 +139,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-next-permutation` Next Permutation by Hand
 - [x] `dsa-subarray-sum-k` Counting Subarrays With Sum K
 - [x] `dsa-rotated-array-search` Searching a Rotated Sorted Array
+- [x] `dsa-median-two-arrays` Median of Two Sorted Arrays
+- [x] `dsa-peak-element` Finding a Peak With Binary Search
 - [x] `dsa-coin-change` Coin Change: Minimum Coins and Number of Ways
 - [x] `dsa-word-break` Word Break: DP Over Prefixes
 - [x] `dsa-house-robber-variants` House Robber and Its Variants
