@@ -1,5 +1,5 @@
 {
- "content_version": "44ae3fba1d83e9b6",
+ "content_version": "da7dbc9421b6bbf8",
  "generated_at": "2026-11-02",
  "count": 261,
  "subjects": [
@@ -11255,7 +11255,7 @@
     "dsa-big-o"
    ],
    "difficulty": "beginner",
-   "read_minutes": 4,
+   "read_minutes": 6,
    "topics": [
     "binary search",
     "searching",
@@ -11295,6 +11295,12 @@
      "platform": "LeetCode",
      "url": "https://leetcode.com/problems/search-a-2d-matrix/",
      "difficulty": "Medium"
+    },
+    {
+     "name": "Sqrt(x)",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sqrtx/",
+     "difficulty": "Easy"
     }
    ],
    "glossary": [
@@ -11359,8 +11365,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.94,
    "path": "dsa/binary-search.md",
-   "hash": "e2b2c2b6b9e4",
-   "word_count": 908,
+   "hash": "2ab907ba2470",
+   "word_count": 1376,
    "excerpt": "Donald Knuth noted that although the first binary search was published in 1946, the first version that worked correctly for every input took many more years to appear. Decades later, a bug was found in the binary search inside Java's standard library: computing (low + high) / 2 overflowed on very…"
   },
   {
@@ -11377,7 +11383,7 @@
     "dsa-binary-search"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 4,
+   "read_minutes": 6,
    "topics": [
     "binary search",
     "optimisation",
@@ -11482,8 +11488,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.92,
    "path": "dsa/binary-search-answer.md",
-   "hash": "7246a3f8bb34",
-   "word_count": 946,
+   "hash": "bccd6ff96121",
+   "word_count": 1405,
    "excerpt": "A shipping company must move a row of packages, in order, within 5 days. Every day the ship carries packages from the front of the row until the next one would exceed its capacity. What is the smallest capacity that gets the job done? Computing that capacity directly is awkward. But answering a…"
   },
   {

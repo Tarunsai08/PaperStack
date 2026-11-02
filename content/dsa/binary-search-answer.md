@@ -67,10 +67,10 @@ That is binary search on the answer. Instead of searching an array, you search t
 
 Four steps, every time:
 
-1. **Name the answer** you are minimising or maximising (capacity, speed, distance, time).
-2. **Bound it**: the smallest value that could possibly work and the largest that surely works.
-3. **Write `check(x)`**: usually a [[greedy pass]] that answers "is x enough?" in O(n).
-4. **Binary search** for the first x where `check(x)` is true.
+- **Name the answer** you are minimising or maximising (capacity, speed, distance, time).
+- **Bound it**: the smallest value that could possibly work and the largest that surely works.
+- **Write `check(x)`**: usually a [[greedy pass]] that answers "is x enough?" in O(n).
+- **Binary search** for the first x where `check(x)` is true.
 
 ```mermaid
 flowchart TD
@@ -114,6 +114,46 @@ The smallest capacity is 6. Notice that the check never had to be clever; all th
 Koko eats bananas from piles `[3, 6, 7, 11]` and has 8 hours. At speed k, a pile of size p takes ⌈p / k⌉ hours. Find the minimum k by checking k = 3 and k = 4 by hand. (At k = 3 she needs 1 + 2 + 3 + 4 = 10 hours, too slow. At k = 4 she needs 1 + 2 + 2 + 3 = 8 hours, which works. The answer is 4.)
 :::
 
+### Maximise the minimum: Magnetic Force Between Two Balls
+
+Place 3 balls in baskets at positions [1, 2, 3, 4, 7] so the smallest distance between any two balls is as large as possible. Name the answer: the minimum gap d.
+
+Check: "can 3 balls be placed with every gap at least d?" Greedily put a ball in the first basket and then in every basket at least d past the last ball. If d works, every smaller d works too, so the pattern is yes, yes, yes, then no. Search for the first d that fails and step back one. It is the oven test turned around: instead of the lowest temperature that bakes the cake, you want the highest gap that still fits every ball.
+
+| Guess d | Greedy placement | Balls placed | At least 3? |
+|---|---|---|---|
+| 4 | 1, 7 | 2 | no, so the answer is below 4 |
+| 2 | 1, 3, 7 | 3 | yes |
+| 3 | 1, 4, 7 | 3 | yes |
+
+The first failing d is 4, so the answer is 3. The greedy check is safe for the same reason as shipping: placing each ball as early as allowed leaves the most room for the rest.
+
+### Searching over time: Factory Machines
+
+Machines take 2, 3 and 7 seconds per product. How soon can they make 10 products together? In time T, a machine with speed s finishes T / s products, rounded down, so the check is "do the machines finish at least 10 products by time T?". More time never makes fewer products, so it is monotonic, just as a hotter oven never un-bakes a cake that a cooler one baked. The answer lies between 0 and 2 × 10 = 20, the time the fastest machine needs alone.
+
+| lo | hi | Guess T | Products 2s, 3s, 7s machines | Total | At least 10? |
+|---|---|---|---|---|---|
+| 0 | 20 | 10 | 5, 3, 1 | 9 | no |
+| 11 | 20 | 15 | 7, 5, 2 | 14 | yes |
+| 11 | 15 | 13 | 6, 4, 1 | 11 | yes |
+| 11 | 13 | 12 | 6, 4, 1 | 11 | yes |
+| 11 | 12 | 11 | 5, 3, 1 | 9 | no |
+
+The answer is 12 seconds. Here the upper bound matters: with a billion products and slow machines, `fastest × products` can reach 10¹⁸, so the search and the sum must use 64-bit integers, and the sum should stop early once it passes the target to avoid overflow.
+
+### Recognising the pattern
+
+| Problem | Answer searched | check(x) | Direction |
+|---|---|---|---|
+| Koko Eating Bananas | eating speed | total hours at speed x is at most h | first yes |
+| Capacity To Ship Packages | ship capacity | greedy days at capacity x is at most D | first yes |
+| Split Array Largest Sum | largest part sum | greedy parts with sum at most x is at most k | first yes |
+| Factory Machines | time | products made by time x is at least t | first yes |
+| Magnetic Force | minimum gap | greedy placement with gap x fits m balls | last yes |
+
+In every row, the check is a single linear pass, and the hard part of the problem is noticing that checking one guess is easy.
+
 ## The code
 
 ```pseudo
@@ -139,6 +179,16 @@ min_capacity(w, days):
 #include <bits/stdc++.h>
 using namespace std;
 
+template <class Pred>
+long long firstTrue(long long lo, long long hi, Pred pred) {   // [lo, hi), no..no yes..yes
+    while (lo < hi) {
+        long long mid = lo + (hi - lo) / 2;
+        if (pred(mid)) hi = mid;
+        else lo = mid + 1;
+    }
+    return lo;
+}
+
 bool canShip(const vector<int>& w, int days, long long cap) {
     int used = 1;
     long long load = 0;
@@ -152,16 +202,43 @@ bool canShip(const vector<int>& w, int days, long long cap) {
 long long minCapacity(const vector<int>& w, int days) {
     long long lo = *max_element(w.begin(), w.end());
     long long hi = accumulate(w.begin(), w.end(), 0LL);
-    while (lo < hi) {
-        long long mid = lo + (hi - lo) / 2;
-        if (canShip(w, days, mid)) hi = mid;
-        else lo = mid + 1;
-    }
-    return lo;
+    return firstTrue(lo, hi + 1, [&](long long c) { return canShip(w, days, c); });
+}
+
+long long minEatingSpeed(const vector<int>& piles, long long h) {
+    long long hi = *max_element(piles.begin(), piles.end());
+    return firstTrue(1, hi + 1, [&](long long k) {
+        long long hours = 0;
+        for (int p : piles) hours += (p + k - 1) / k;            // ceil(p / k)
+        return hours <= h;
+    });
+}
+
+long long maxMinGap(vector<int> pos, int balls) {               // maximise the minimum
+    sort(pos.begin(), pos.end());
+    auto fits = [&](long long d) {
+        int placed = 1, last = pos[0];
+        for (int x : pos) if (x - last >= d) placed++, last = x;
+        return placed >= balls;
+    };
+    long long span = pos.back() - pos[0];
+    return firstTrue(1, span + 2, [&](long long d) { return !fits(d); }) - 1;   // last yes
+}
+
+long long factoryTime(const vector<long long>& k, long long target) {
+    long long hi = *min_element(k.begin(), k.end()) * target;
+    return firstTrue(0, hi + 1, [&](long long T) {
+        long long made = 0;
+        for (long long s : k) { made += T / s; if (made >= target) return true; }   // stop before overflow
+        return false;
+    });
 }
 
 int main() {
-    cout << minCapacity({3, 2, 2, 4, 1, 4}, 3) << '\n';  // 6
+    cout << minCapacity({3, 2, 2, 4, 1, 4}, 3) << '\n';          // 6
+    cout << minEatingSpeed({3, 6, 7, 11}, 8) << '\n';            // 4
+    cout << maxMinGap({1, 2, 3, 4, 7}, 3) << '\n';               // 3
+    cout << factoryTime({2, 3, 7}, 10) << '\n';                  // 12
 }
 ```
 

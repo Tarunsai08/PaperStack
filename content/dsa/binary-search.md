@@ -19,6 +19,7 @@ practice_problems:
   - { name: "First Bad Version", platform: "LeetCode", url: "https://leetcode.com/problems/first-bad-version/", difficulty: "Easy" }
   - { name: "Find First and Last Position of Element in Sorted Array", platform: "LeetCode", url: "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/", difficulty: "Medium" }
   - { name: "Search a 2D Matrix", platform: "LeetCode", url: "https://leetcode.com/problems/search-a-2d-matrix/", difficulty: "Medium" }
+  - { name: "Sqrt(x)", platform: "LeetCode", url: "https://leetcode.com/problems/sqrtx/", difficulty: "Easy" }
 glossary:
   - term: "Predicate"
     definition: "A yes-or-no question about an index, like 'is a[i] at least x?'. Binary search needs it to be no for a while, then yes for the rest."
@@ -103,6 +104,41 @@ Stop asking "where is x?" and start asking "where does the answer flip from no t
 
 C++ gives you both as `lower_bound` and `upper_bound`, but writing the template yourself is what lets you binary search on things that are not arrays at all.
 
+### Every common question is a choice of predicate
+
+"Last" questions do not need a second template. The last position where something is true is one before the first position where it becomes false, so flip the predicate and subtract one.
+
+| Question on a sorted array | Predicate for first_true | Answer |
+|---|---|---|
+| first index with a[i] ≥ x | a[i] ≥ x | the result |
+| first index with a[i] > x | a[i] > x | the result |
+| last index with a[i] ≤ x (floor) | a[i] > x | result − 1, or none if 0 |
+| last index with a[i] < x | a[i] ≥ x | result − 1 |
+| how many values lie in [l, r] | a[i] > r, and a[i] ≥ l | difference of the two results |
+| does x exist? | a[i] ≥ x | result < n and a[result] == x |
+| value closest to x | a[i] ≥ x | compare a[result] and a[result − 1] |
+
+### Searching over numbers, not indices
+
+The search space does not have to be array positions. For the integer square root of x, the predicate "m · m > x" is false for small m and true for large m, so the answer is first_true over m in [0, x + 1), minus one. For x = 10:
+
+| lo | hi | mid | mid² | mid² > 10? |
+|---|---|---|---|---|
+| 0 | 11 | 5 | 25 | yes, hi = 5 |
+| 0 | 5 | 2 | 4 | no, lo = 3 |
+| 3 | 5 | 4 | 16 | yes, hi = 4 |
+| 3 | 4 | 3 | 9 | no, lo = 4 |
+
+The first m with m² > 10 is 4, so the integer square root is 3. Compute `mid * mid` in 64-bit, or compare `mid > x / mid`, because the square overflows for large x.
+
+### Real numbers
+
+On real numbers there is no "mid + 1", so run a fixed number of halvings instead of looping until lo meets hi. Each halving gains one bit of precision; 60 iterations on a range of width 2 narrow it below 10⁻¹⁷. Searching for the x with x² = 2 in [0, 2] this way gives 1.414214 to six decimals. A loop like `while (hi - lo > 1e-9)` also works but can spin forever if the precision asked for is finer than floating point can represent.
+
+### A matrix as one long array
+
+*Search a 2D Matrix* has rows that are sorted and each row starting after the previous one ends, so the whole matrix is one sorted sequence in [row-major order](article:dsa-matrix-traversal). Search k over [0, m · n) and read cell (k / n, k % n). Nothing else changes.
+
 ## Walk through an example
 
 Find the first index with value at least 7 in `a = [2, 4, 7, 7, 9, 12]` (n = 6).
@@ -139,29 +175,53 @@ upper_bound(a, x) = first_true(0, n, i -> a[i] > x)
 using namespace std;
 
 template <class Pred>
-int firstTrue(int lo, int hi, Pred pred) {  // [lo, hi)
+long long firstTrue(long long lo, long long hi, Pred pred) {  // [lo, hi)
     while (lo < hi) {
-        int mid = lo + (hi - lo) / 2;
+        long long mid = lo + (hi - lo) / 2;
         if (pred(mid)) hi = mid;
         else lo = mid + 1;
     }
     return lo;
 }
 
+long long intSqrt(long long x) {                        // largest m with m * m <= x
+    return firstTrue(0, x + 1, [&](long long m) { return m > 0 && m > x / m; }) - 1;
+}
+
+double realSqrt(double x) {                             // fixed iterations on reals
+    double lo = 0, hi = max(1.0, x);
+    for (int it = 0; it < 60; it++) {
+        double mid = (lo + hi) / 2;
+        if (mid * mid >= x) hi = mid;
+        else lo = mid;
+    }
+    return hi;
+}
+
+bool searchMatrix(const vector<vector<int>>& g, int target) {   // rows continue each other
+    int m = g.size(), n = g[0].size();
+    long long k = firstTrue(0, (long long)m * n, [&](long long k) { return g[k / n][k % n] >= target; });
+    return k < (long long)m * n && g[k / n][k % n] == target;
+}
+
 int main() {
     vector<int> a = {2, 4, 7, 7, 9, 12};
     int n = a.size();
-    int lo = firstTrue(0, n, [&](int i) { return a[i] >= 7; });
-    int hi = firstTrue(0, n, [&](int i) { return a[i] > 7; });
-    cout << lo << ' ' << hi << ' ' << hi - lo << '\n';  // 2 4 2
-    // Same answers from the standard library:
-    cout << lower_bound(a.begin(), a.end(), 7) - a.begin() << '\n';  // 2
+    long long lo = firstTrue(0, n, [&](long long i) { return a[i] >= 7; });
+    long long hi = firstTrue(0, n, [&](long long i) { return a[i] > 7; });
+    cout << lo << ' ' << hi << ' ' << hi - lo << '\n';                       // 2 4 2
+    long long floor8 = firstTrue(0, n, [&](long long i) { return a[i] > 8; }) - 1;
+    cout << floor8 << ' ' << a[floor8] << '\n';                             // 3 7
+    cout << lower_bound(a.begin(), a.end(), 7) - a.begin() << '\n';         // 2
+    cout << intSqrt(10) << ' ' << intSqrt(16) << ' ' << intSqrt(2147395600) << '\n';   // 3 4 46340
+    printf("%.6f\n", realSqrt(2));                                         // 1.414214
+    cout << searchMatrix({{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}}, 16) << '\n';  // 1
 }
 ```
 
 ## Complexity
 
-- **Time:** O(log n). The range halves every step, so about log₂ n steps: 20 for a million elements, 30 for a billion.
+- **Time:** O(log n). The range halves every step, so about log₂ n steps: 20 for a million elements, 30 for a billion. Searching over a numeric range of size R takes O(log R) checks, and on reals the number of iterations sets the precision.
 - **Space:** O(1).
 
 ## Common mistakes
@@ -174,11 +234,13 @@ Common misconception: "binary search needs a sorted array." It needs a monotonic
 - **Infinite loops.** Writing `lo = mid` instead of `lo = mid + 1` can get stuck when `hi = lo + 1`.
 - **Overflow** in `(lo + hi) / 2` when indices or answer ranges are large; use `lo + (hi - lo) / 2`.
 - **Forgetting "not found".** When the result is `n`, or `a[result] != x`, the value is absent.
+- **Overflow in the predicate,** such as `mid * mid` for square roots near the 32-bit limit; use 64-bit or divide instead.
+- **Looping on a tolerance with doubles** that floating point cannot reach; use a fixed number of iterations.
 - **Non-monotonic predicates**, such as searching an unsorted array, give wrong answers silently, with no crash to warn you.
 
 ## Practice problems
 
-*Binary Search* and *Search Insert Position* are lower bound directly. *First Bad Version* is "first true" with the predicate given to you as a function. *Find First and Last Position* is lower and upper bound together. *Search a 2D Matrix* is the same template over a matrix flattened into one index range. For each one, write the predicate in words before touching code.
+*Binary Search* and *Search Insert Position* are lower bound directly. *First Bad Version* is "first true" with the predicate given to you as a function. *Find First and Last Position* is lower and upper bound together. *Search a 2D Matrix* is the same template over a matrix flattened into one index range, and *Sqrt(x)* searches over numbers instead of indices. For each one, write the predicate in words before touching code.
 
 ## Key takeaways
 
