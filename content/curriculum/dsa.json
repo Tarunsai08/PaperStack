@@ -3248,8 +3248,8 @@
    "prerequisites": [
     "dsa-dijkstra"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Directed weighted graph",
@@ -3280,8 +3280,8 @@
     "dsa-bellman-ford-floyd",
     "dsa-bfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Bellman-Ford limited rounds",
@@ -4399,8 +4399,8 @@
    "prerequisites": [
     "dsa-dfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Discovery time and low-link",

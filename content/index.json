@@ -1,7 +1,7 @@
 {
- "content_version": "42c6ad90a35c0526",
+ "content_version": "bcd3f8e6368b3686",
  "generated_at": "2026-11-02",
- "count": 325,
+ "count": 328,
  "subjects": [
   {
    "id": "ml",
@@ -21500,6 +21500,334 @@
    "hash": "5c46091a7128",
    "word_count": 1679,
    "excerpt": "A cartographer is handed a satellite photo made of tiny squares, land or water, and asked how many islands are in the picture. Squares touching side by side belong to the same island. Diagonal contact does not count. That question is Number of Islands, one of the most asked problems in interviews.…"
+  },
+  {
+   "id": "dsa-network-delay",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "network-delay",
+   "title": "A Message Spreading Through Relay Towers",
+   "subtitle": "Network Delay Time with Dijkstra: why the answer is the largest shortest distance, how to report unreachable towers, and the max-probability variant that multiplies instead of adds",
+   "track": "dsa-graphs",
+   "track_order": 15,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-dijkstra"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "graphs",
+    "shortest paths",
+    "Dijkstra",
+    "heap"
+   ],
+   "complexity": {
+    "time": "O((V + E) log V)",
+    "space": "O(V + E)"
+   },
+   "practice_problems": [
+    {
+     "name": "Network Delay Time",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/network-delay-time/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Path with Maximum Probability",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/path-with-maximum-probability/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Shortest Routes I",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1671",
+     "difficulty": "Easy"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Arrival time",
+     "definition": "The moment the signal first reaches a tower, which equals the shortest distance from the source when every link has a fixed delay."
+    },
+    {
+     "term": "Broadcast time",
+     "definition": "The moment every tower has the signal: the largest arrival time over all towers."
+    },
+    {
+     "term": "Unreachable vertex",
+     "definition": "A vertex with no directed path from the source; its distance stays infinite, and the broadcast never completes."
+    },
+    {
+     "term": "Multiplicative path cost",
+     "definition": "A path value formed by multiplying edge values, such as success probabilities, instead of adding them."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why is the answer the largest shortest distance, rather than the sum of all delays?",
+     "options": [
+      "Because the graph is a tree",
+      "The signal travels along all links at once, so each tower receives it at its own shortest distance, and the network is done when the last tower does",
+      "Because Dijkstra returns a maximum",
+      "Because links are undirected"
+     ],
+     "answer": 1,
+     "explain": "Towers forward the signal in parallel. Each tower's first arrival is its shortest distance; the whole broadcast ends when the slowest of those arrivals happens."
+    },
+    {
+     "q": "After Dijkstra, tower 4's distance is still infinity. What should Network Delay Time return?",
+     "options": [
+      "The largest finite distance",
+      "-1, because tower 4 never receives the signal",
+      "0",
+      "Infinity"
+     ],
+     "answer": 1,
+     "explain": "The question is when all towers have the signal. If one never gets it, that moment never comes, which the problem encodes as -1."
+    },
+    {
+     "q": "Why does Dijkstra still work when path value is a product of probabilities and you want the largest?",
+     "options": [
+      "It does not",
+      "Every probability is at most 1, so extending a path can only keep or lower its value, which is the monotone property Dijkstra needs",
+      "Because products are commutative",
+      "Because the graph is undirected"
+     ],
+     "answer": 1,
+     "explain": "Dijkstra needs path values that never improve as a path grows. With probabilities between 0 and 1, multiplying can only shrink the value, so a max-heap version settles vertices correctly."
+    }
+   ],
+   "cover_seed": "network-delay",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.74,
+   "path": "dsa/network-delay.md",
+   "hash": "4a08be67647d",
+   "word_count": 1353,
+   "excerpt": "A control centre sends an alert to one relay tower. Each tower passes the alert on to the towers it has links to, and every link takes a known number of milliseconds. Towers forward the alert the instant they receive it, along every outgoing link at once. How long until every tower in the network…"
+  },
+  {
+   "id": "dsa-cheapest-flights-k-stops",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "cheapest-flights-k-stops",
+   "title": "Booking Flights With a Layover Limit",
+   "subtitle": "Cheapest Flights Within K Stops: why Dijkstra that settles each city once gives wrong answers, Bellman-Ford with a copy of last round's prices, and adding the stop count or a coupon to the state",
+   "track": "dsa-graphs",
+   "track_order": 16,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-bellman-ford-floyd",
+    "dsa-bfs"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "graphs",
+    "shortest paths",
+    "Bellman-Ford",
+    "state space",
+    "Dijkstra"
+   ],
+   "complexity": {
+    "time": "O(k × E) for Bellman-Ford rounds",
+    "space": "O(V)"
+   },
+   "practice_problems": [
+    {
+     "name": "Cheapest Flights Within K Stops",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/cheapest-flights-within-k-stops/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Flight Discount",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1195",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Minimum Cost to Reach Destination in Time",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/minimum-cost-to-reach-destination-in-time/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Stop",
+     "definition": "An intermediate city on a route; a route with at most k stops uses at most k + 1 flights."
+    },
+    {
+     "term": "Edge-limited shortest path",
+     "definition": "The cheapest path that uses at most a given number of edges, which ordinary shortest-path algorithms do not respect."
+    },
+    {
+     "term": "Round snapshot",
+     "definition": "A copy of the prices at the start of a Bellman-Ford round; relaxing only from the copy makes each round add exactly one more flight."
+    },
+    {
+     "term": "Layered state",
+     "definition": "A vertex extended with extra information, such as (city, flights used) or (city, coupon used), so that each layer is a copy of the graph."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Flights 0 → 1 (10), 1 → 2 (10), 0 → 2 (100), 2 → 3 (10), at most 1 stop. Why does Dijkstra that settles each city once fail?",
+     "options": [
+      "It finds 30",
+      "It settles city 2 at cost 20 using 2 flights, then cannot continue to 3 within the limit, and never revisits 2 at cost 100 with 1 flight",
+      "It finds 110 correctly",
+      "It loops forever"
+     ],
+     "answer": 1,
+     "explain": "Settling a city by cost alone throws away a pricier arrival that used fewer flights. Here that pricier arrival, 0 → 2 for 100, is the only one that can still reach 3 in time."
+    },
+    {
+     "q": "Why copy the price array at the start of each Bellman-Ford round?",
+     "options": [
+      "To save memory",
+      "Without the copy, a price updated earlier in the round can be used again later in the same round, letting one round chain several flights",
+      "C++ requires it",
+      "To sort the flights"
+     ],
+     "answer": 1,
+     "explain": "Round r must mean 'at most r flights'. Relaxing only from last round's prices guarantees each round adds at most one flight to every route."
+    },
+    {
+     "q": "In CSES Flight Discount, you may halve one flight's price. How do you model it?",
+     "options": [
+      "Halve every flight",
+      "Run Dijkstra over states (city, coupon used), with a halved edge from 'unused' to 'used' for every flight",
+      "Run Dijkstra twice and average",
+      "Use BFS"
+     ],
+     "answer": 1,
+     "explain": "Two copies of the graph, before and after using the coupon, joined by the discounted edges. All prices are non-negative, so Dijkstra on the doubled graph is exact."
+    }
+   ],
+   "cover_seed": "cheapest-flights-k-stops",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.76,
+   "path": "dsa/cheapest-flights-k-stops.md",
+   "hash": "cf1b10837f3a",
+   "word_count": 1518,
+   "excerpt": "You are booking a trip, and the cheapest itinerary has four layovers. You refuse to spend a day in airports, so you set a rule: at most one stop. Suddenly the cheapest fare is useless, and the best allowed fare may go through a city that looked like a bad idea. This is the classic example of a…"
+  },
+  {
+   "id": "dsa-critical-connections",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "critical-connections",
+   "title": "The One Road Whose Closure Splits the City",
+   "subtitle": "Bridges with one DFS: discovery times, low-links, the rule low[child] > disc[parent], skipping the parent edge by id, and the small change that finds articulation points",
+   "track": "dsa-graphs",
+   "track_order": 17,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-dfs"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "graphs",
+    "DFS",
+    "bridges",
+    "articulation points",
+    "low-link"
+   ],
+   "complexity": {
+    "time": "O(V + E)",
+    "space": "O(V + E)"
+   },
+   "practice_problems": [
+    {
+     "name": "Critical Connections in a Network",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/critical-connections-in-a-network/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Necessary Roads",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2076",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Necessary Cities",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2077",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Bridge",
+     "definition": "An edge whose removal disconnects the graph, or more precisely increases the number of connected components."
+    },
+    {
+     "term": "Discovery time",
+     "definition": "disc[u], the order in which DFS first reaches vertex u, counting from 0."
+    },
+    {
+     "term": "Low-link",
+     "definition": "low[u], the smallest discovery time reachable from u's DFS subtree using tree edges downward and at most one back edge."
+    },
+    {
+     "term": "Back edge",
+     "definition": "In an undirected DFS, a non-tree edge from a vertex to one of its ancestors; it gives the subtree a second way up."
+    },
+    {
+     "term": "Articulation point",
+     "definition": "A vertex whose removal, together with its edges, disconnects the graph; also called a cut vertex."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Tree edge u → v has low[v] = 3 and disc[u] = 3. Is u–v a bridge?",
+     "options": [
+      "Yes",
+      "No: low[v] = disc[u] means v's subtree can climb back to u by another edge, so removing u–v leaves it connected",
+      "Only if v is a leaf",
+      "It depends on the root"
+     ],
+     "answer": 1,
+     "explain": "A bridge needs low[v] > disc[u]: nothing in v's subtree reaches u or above except through u–v itself. With low[v] = disc[u], a back edge reaches u, so the subtree stays attached."
+    },
+    {
+     "q": "Why skip the parent edge by its id rather than by the parent's vertex number?",
+     "options": [
+      "It is faster",
+      "With two parallel edges between u and its parent, the second one is a genuine back edge, and skipping by vertex would wrongly ignore it",
+      "Vertex numbers can be negative",
+      "It makes no difference"
+     ],
+     "answer": 1,
+     "explain": "A doubled road is never a bridge, because closing one copy leaves the other. Skipping only the exact edge you came down keeps the other copy as a back edge."
+    },
+    {
+     "q": "What changes when looking for articulation points instead of bridges?",
+     "options": [
+      "Nothing",
+      "A non-root u is a cut vertex when some child has low[v] ≥ disc[u], and the root is one when it has two or more DFS children",
+      "Use BFS instead",
+      "Reverse every edge"
+     ],
+     "answer": 1,
+     "explain": "For a vertex, it is enough that the child's subtree cannot get above u, so ≥ replaces >. The root has nothing above it, so it matters only when it splits into separate subtrees."
+    }
+   ],
+   "cover_seed": "critical-connections",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.74,
+   "path": "dsa/critical-connections.md",
+   "hash": "a41c99ab97ed",
+   "word_count": 1546,
+   "excerpt": "A city council plans roadworks and wants to know which roads it must never close at the same time as anything else, because closing even one of them on its own would cut part of the city off. Most roads are safe: there is always a way around. A few are the only link to a neighbourhood. Checking…"
   },
   {
    "id": "dsa-dp-intro",

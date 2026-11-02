@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 123 | 0 | 29 | 152 | 71/72 |
+| dsa | 126 | 0 | 26 | 152 | 71/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **325** | **0** | **348** | **673** | |
+| **All** | **328** | **0** | **345** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -25,9 +25,6 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### dsa
 
-- [ ] `dsa-network-delay` (P1, problem-walkthrough, dsa-graphs): Network Delay Time With Dijkstra
-- [ ] `dsa-cheapest-flights-k-stops` (P1, problem-walkthrough, dsa-graphs): Cheapest Flights With At Most K Stops
-- [ ] `dsa-critical-connections` (P1, problem-walkthrough, dsa-graphs): Critical Connections: Bridges in a Network
 - [ ] `dsa-snakes-ladders-bfs` (P1, problem-walkthrough, dsa-graphs): Snakes and Ladders and Other BFS Puzzles
 - [ ] `dsa-shortest-path-dag` (P1, pattern, dsa-graphs): Shortest and Longest Paths in DAGs
 - [ ] `dsa-graph-clone-and-copy` (P1, problem-walkthrough, dsa-graphs): Clone Graph and Accounts Merge
@@ -35,6 +32,9 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-dp-on-trees` (P1, pattern, dsa-dp): DP on Trees
 - [ ] `dsa-state-machine-dp` (P1, pattern, dsa-dp): State Machine DP: Stock Trading Problems
 - [ ] `dsa-regex-matching` (P1, problem-walkthrough, dsa-dp): Regular Expression and Wildcard Matching
+- [ ] `dsa-egg-drop` (P1, problem-walkthrough, dsa-dp): Egg Drop: Thinking About the Worst Case
+- [ ] `dsa-rod-cutting` (P1, problem-walkthrough, dsa-dp): Rod Cutting and Integer Break
+- [ ] `dsa-longest-common-substring` (P1, problem-walkthrough, dsa-dp): Longest Common Substring vs Subsequence
 
 ### cp
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 123 written</summary>
+<details><summary>dsa: 126 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -181,6 +181,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-word-ladder` Word Ladder: BFS on Implicit Graphs
 - [x] `dsa-course-schedule` Course Schedule: Can You Graduate?
 - [x] `dsa-islands-variants` Number of Islands and Its Many Variants
+- [x] `dsa-network-delay` Network Delay Time With Dijkstra
+- [x] `dsa-cheapest-flights-k-stops` Cheapest Flights With At Most K Stops
 - [x] `dsa-coin-change` Coin Change: Minimum Coins and Number of Ways
 - [x] `dsa-word-break` Word Break: DP Over Prefixes
 - [x] `dsa-house-robber-variants` House Robber and Its Variants
@@ -213,6 +215,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-fractional-knapsack-jobs` Fractional Knapsack and Job Sequencing
 - [x] `dsa-candy-and-two-pass` Two-Pass Greedy: Candy and Friends
 - [x] `dsa-heap-scheduling` Scheduling With Heaps: CPU Tasks and IPO
+- [x] `dsa-critical-connections` Critical Connections: Bridges in a Network
 - [x] `dsa-subset-sum-count` Counting Subsets: Target Sum and Partitions
 - [x] `dsa-interview-dsa-revision` The Night-Before Revision Sheet
 
