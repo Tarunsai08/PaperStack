@@ -1,7 +1,7 @@
 {
- "content_version": "bf981cb6903577cb",
+ "content_version": "52de0ef2186bab10",
  "generated_at": "2026-11-02",
- "count": 300,
+ "count": 302,
  "subjects": [
   {
    "id": "ml",
@@ -17787,6 +17787,241 @@
    "hash": "106adc128518",
    "word_count": 1267,
    "excerpt": "A library shelf holds a million books sorted by number, but the catalogue is a binary search tree. A reader wants to browse the books in order, one at a time, stopping whenever they like. Copying a million numbers into an array first costs a million slots of memory just to show the reader the next…"
+  },
+  {
+   "id": "dsa-build-bst",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "build-bst",
+   "title": "Picking the Middle Book as the Shelf Divider",
+   "subtitle": "Building a height-balanced BST from sorted data: the middle element as root, recursion on both halves, an O(n) version for linked lists, and rebalancing any BST",
+   "track": "dsa-trees",
+   "track_order": 14,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-bst-operations",
+    "dsa-divide-and-conquer"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "binary search tree",
+    "divide and conquer",
+    "balanced tree",
+    "linked list"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(log n) recursion plus the tree"
+   },
+   "practice_problems": [
+    {
+     "name": "Convert Sorted Array to Binary Search Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Convert Sorted List to Binary Search Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Balance a Binary Search Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/balance-a-binary-search-tree/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Height-balanced",
+     "definition": "A binary tree in which, at every node, the heights of the two subtrees differ by at most one."
+    },
+    {
+     "term": "Middle element",
+     "definition": "For a range lo to hi, the element at (lo + hi) / 2, which splits the range into two halves whose sizes differ by at most one."
+    },
+    {
+     "term": "Inorder simulation",
+     "definition": "Building a tree in inorder sequence, creating each node when its turn comes in the sorted input, which suits sources that can only be read forwards, like linked lists."
+    },
+    {
+     "term": "Rebalancing",
+     "definition": "Turning an existing BST into a balanced one, here by listing its keys in inorder and building a new tree from the middle out."
+    },
+    {
+     "term": "Recurrence",
+     "definition": "An equation for the running time in terms of smaller inputs, such as T(n) = 2T(n/2) + O(1)."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "For the sorted array [1, 3, 5, 7, 9, 11], which value becomes the root when mid = (lo + hi) / 2?",
+     "options": [
+      "3",
+      "5",
+      "7",
+      "9"
+     ],
+     "answer": 1,
+     "explain": "lo = 0 and hi = 5 give mid = 2, the value 5. Choosing (lo + hi + 1) / 2 instead would pick 7; both give balanced trees."
+    },
+    {
+     "q": "Why is the tree built this way height-balanced?",
+     "options": [
+      "Because the input is sorted",
+      "Each node splits its range into two halves whose sizes differ by at most one, so subtree heights also differ by at most one",
+      "Because it uses rotations",
+      "It is not always balanced"
+     ],
+     "answer": 1,
+     "explain": "Sizes that differ by at most one at every split lead to heights that differ by at most one, by induction on the range size."
+    },
+    {
+     "q": "How can a sorted linked list be converted in O(n) instead of O(n log n)?",
+     "options": [
+      "Copy it into an array first, which uses O(n) space",
+      "Build in inorder order: recurse on the left half's size first, then take the current list node as the root and advance, then build the right half",
+      "Sort it again",
+      "Both of the first two options work in O(n) time"
+     ],
+     "answer": 3,
+     "explain": "Copying into an array is O(n) time and O(n) space. The inorder simulation is O(n) time and needs only the recursion stack beyond the tree."
+    }
+   ],
+   "cover_seed": "build-bst",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.68,
+   "path": "dsa/build-bst.md",
+   "hash": "5ebe2f145da8",
+   "word_count": 1424,
+   "excerpt": "A librarian has a long row of books sorted by number and wants to label a tree of signposts so anyone can find a book in as few turns as possible. If she puts the first book at the top, every search goes right, right, right: a chain. If she puts the middle book at the top, half the books go left…"
+  },
+  {
+   "id": "dsa-tree-width-and-structure",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "tree-width-and-structure",
+   "title": "Does the Tree's Reflection Match Itself?",
+   "subtitle": "Comparing tree shapes: identical trees, mirror symmetry and subtree search with paired recursion, and maximum width by numbering nodes like a heap without overflowing",
+   "track": "dsa-trees",
+   "track_order": 15,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-tree-traversals"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "binary tree",
+    "recursion",
+    "bfs",
+    "tree comparison"
+   ],
+   "complexity": {
+    "time": "O(n) for same tree, symmetry and width; O(m · n) for the simple subtree check",
+    "space": "O(h) recursion, O(w) for the BFS queue"
+   },
+   "practice_problems": [
+    {
+     "name": "Same Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/same-tree/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Symmetric Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/symmetric-tree/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Invert Binary Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/invert-binary-tree/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Subtree of Another Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/subtree-of-another-tree/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Maximum Width of Binary Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/maximum-width-of-binary-tree/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Paired recursion",
+     "definition": "A recursion that walks two trees, or two parts of one tree, at the same time, comparing the nodes it reaches in step."
+    },
+    {
+     "term": "Mirror image",
+     "definition": "A tree flipped left to right: every node's left and right subtrees are swapped, all the way down."
+    },
+    {
+     "term": "Heap indexing",
+     "definition": "Numbering nodes as in a binary heap: the root is 1, and a node numbered i has children 2i and 2i + 1."
+    },
+    {
+     "term": "Level width",
+     "definition": "The number of positions between the leftmost and rightmost nodes of a level, counting the gaps where missing nodes would be."
+    },
+    {
+     "term": "Index normalisation",
+     "definition": "Subtracting the first index of a level from every index in it, so the numbers stay small instead of doubling at every level."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "To check symmetry, which pairs of nodes does the recursion compare?",
+     "options": [
+      "left with left and right with right",
+      "a.left with b.right and a.right with b.left",
+      "every node with the root",
+      "only the leaves"
+     ],
+     "answer": 1,
+     "explain": "In a mirror image, the outer pair and the inner pair swap sides. So compare the outer children and the inner children of the two subtrees."
+    },
+    {
+     "q": "Using heap indexing, the leftmost node of a level has index 4 and the rightmost has index 7. What is the level width?",
+     "options": [
+      "2",
+      "3",
+      "4",
+      "7"
+     ],
+     "answer": 2,
+     "explain": "Width counts positions, including gaps: 7 − 4 + 1 = 4."
+    },
+    {
+     "q": "Why normalise indices level by level in Maximum Width?",
+     "options": [
+      "To sort the nodes",
+      "Indices double at each level, so a deep, narrow tree overflows 64-bit integers; subtracting the level's first index keeps them small",
+      "To find leaves",
+      "It is only a style choice"
+     ],
+     "answer": 1,
+     "explain": "At depth 64 the raw index would exceed 2⁶⁴. Only differences within a level matter, so subtracting the first index loses nothing."
+    }
+   ],
+   "cover_seed": "tree-width-and-structure",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.68,
+   "path": "dsa/tree-width-and-structure.md",
+   "hash": "4939ea764111",
+   "word_count": 1298,
+   "excerpt": "Hold a drawing of a tree up to a mirror. If the reflection looks exactly like the original, the tree is symmetric. Checking that by eye is easy; checking it in code means comparing the right parts of the tree with each other, and most wrong answers compare the wrong pairs. A small family of…"
   },
   {
    "id": "dsa-heap-basics",
