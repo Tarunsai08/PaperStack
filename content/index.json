@@ -1,5 +1,5 @@
 {
- "content_version": "a1e2381786694629",
+ "content_version": "609731b6d5f0cbfc",
  "generated_at": "2026-11-02",
  "count": 277,
  "subjects": [
@@ -13244,7 +13244,7 @@
     "dsa-linked-list-basics"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "linked lists",
     "two pointers",
@@ -13349,8 +13349,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "dsa/fast-slow-pointers.md",
-   "hash": "9abdc025d3ba",
-   "word_count": 1035,
+   "hash": "ec1ccf0c759d",
+   "word_count": 1306,
    "excerpt": "A linked list might end, or it might loop back on itself forever. How do you tell, without a hash set of visited nodes? Walk it and you will either reach the end or walk in circles forever, and you cannot know which is happening. There is a neat answer that uses no extra memory at all: send two…"
   },
   {
@@ -13478,8 +13478,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "dsa/stack-patterns.md",
-   "hash": "9ed506aa6b78",
-   "word_count": 1126,
+   "hash": "18f936d0ab45",
+   "word_count": 1148,
    "excerpt": "Your code editor knows instantly when a bracket is missing. A calculator app turns \"2 + 3 × 4\" into 14, not 20. The undo button in every editor steps back through your changes in reverse order. Different features, one data structure underneath: the stack. Stacks are simple enough to explain in a…"
   },
   {
@@ -13744,7 +13744,7 @@
     "dsa-hashing-patterns"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "design",
     "hash map",
@@ -13843,8 +13843,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.92,
    "path": "dsa/lru-cache.md",
-   "hash": "1fa8a6a599a0",
-   "word_count": 1052,
+   "hash": "a8324c63823c",
+   "word_count": 1381,
    "excerpt": "\"Design an LRU cache\" is one of the most frequently asked interview questions at product companies, and for good reason. It is short to state, it has a clean optimal answer, and getting there tests whether you can combine two data structures so that each covers the other's weakness. It is also real…"
   },
   {

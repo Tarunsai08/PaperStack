@@ -192,6 +192,74 @@ int main() {
 
 `std::list` is a doubly linked list, and `splice` moves a node to another position without copying it or invalidating iterators, so the iterators stored in the map stay valid.
 
+### Writing the list by hand
+
+Some interviewers ask you not to use a library list. Then you write the two helpers yourself, with sentinel head and tail nodes so every real node always has both neighbours. Moving node X to the front, like pulling a book out of the stack on your desk and putting it back on top, changes exactly six pointers:
+
+| Step | Pointer change | Why |
+|---|---|---|
+| unlink | X.prev.next = X.next | the node before X skips over it |
+| unlink | X.next.prev = X.prev | the node after X points back past it |
+| link | X.next = head.next | X points to the old first node |
+| link | X.prev = head | X points back to the sentinel |
+| link | head.next.prev = X | the old first node points back to X |
+| link | head.next = X | the sentinel points to X |
+
+The order of the last two matters: update `head.next.prev` before overwriting `head.next`, or you lose the old first node.
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+class LRU {
+    struct N { int key, val; N *prev = nullptr, *next = nullptr; };
+    int cap;
+    N head, tail;                                   // sentinels
+    unordered_map<int, N*> where;
+    void unlink(N* x) { x->prev->next = x->next; x->next->prev = x->prev; }
+    void toFront(N* x) {
+        x->next = head.next, x->prev = &head;
+        head.next->prev = x, head.next = x;         // this order keeps the old first node
+    }
+public:
+    LRU(int c) : cap(c) { head.next = &tail, tail.prev = &head; }
+    int get(int k) {
+        auto it = where.find(k);
+        if (it == where.end()) return -1;
+        unlink(it->second), toFront(it->second);    // a read is a use
+        return it->second->val;
+    }
+    void put(int k, int v) {
+        if (where.count(k)) { where[k]->val = v; unlink(where[k]); toFront(where[k]); return; }
+        if ((int)where.size() == cap) {
+            N* lru = tail.prev;                     // least recently used is just before the tail
+            unlink(lru), where.erase(lru->key);
+            delete lru;
+        }
+        N* x = new N{k, v};
+        toFront(x), where[k] = x;
+    }
+};
+
+int main() {
+    LRU c(2);
+    c.put(1, 10), c.put(2, 20);
+    cout << c.get(1) << ' ';                        // 10
+    c.put(3, 30);                                   // evicts 2
+    cout << c.get(2) << ' ';                        // -1
+    c.put(1, 11);                                   // update makes 1 most recent
+    c.put(4, 40);                                   // evicts 3
+    cout << c.get(3) << ' ' << c.get(1) << ' ' << c.get(4) << '\n';   // -1 11 40
+}
+```
+
+### Follow-up questions interviewers ask
+
+- **What about a least frequently used cache?** LFU evicts the key used the fewest times, with ties broken by recency. It needs a map from key to node and a map from each frequency to its own LRU-ordered list, plus the current minimum frequency. *LFU Cache* is the hard follow-up.
+- **What if entries expire after a time limit?** Store an expiry time in each node and treat an expired entry as missing on get; a periodic sweep or a min-heap of expiry times removes them in bulk.
+- **What if many threads use it?** The simplest answer is one lock around get and put. Real caches split the key space into shards, each with its own lock, so threads rarely wait for each other.
+- **Is exact LRU used in practice?** Exact LRU needs a list update on every read, which is costly at very high request rates, so systems often approximate it; the clock algorithm used for page replacement in operating systems is a well-known example.
+
 ## Complexity
 
 - **Time:** O(1) average for get and put: one hash lookup plus a constant number of pointer changes.
