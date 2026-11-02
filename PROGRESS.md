@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 96 | 0 | 56 | 152 | 60/72 |
+| dsa | 98 | 0 | 54 | 152 | 61/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **298** | **0** | **375** | **673** | |
+| **All** | **300** | **0** | **373** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -25,7 +25,6 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### dsa
 
-- [ ] `dsa-nodes-at-distance-k` (P0, problem-walkthrough, dsa-trees): Nodes at Distance K and Burning a Tree
 - [ ] `dsa-top-k-pattern` (P0, pattern, dsa-heaps-greedy): Top K: The Heap of Size K Trick
 - [ ] `dsa-greedy-exchange` (P0, pattern, dsa-heaps-greedy): Greedy Algorithms and the Exchange Argument
 - [ ] `dsa-meeting-rooms` (P0, problem-walkthrough, dsa-heaps-greedy): How Many Meeting Rooms Do You Need?
@@ -33,8 +32,9 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-dijkstra` (P0, pattern, dsa-graphs): Dijkstra: Shortest Paths With Weights
 - [ ] `dsa-word-ladder` (P0, problem-walkthrough, dsa-graphs): Word Ladder: BFS on Implicit Graphs
 - [ ] `dsa-islands-variants` (P0, problem-walkthrough, dsa-graphs): Number of Islands and Its Many Variants
-- [ ] `dsa-bst-iterator-two-sum` (P1, problem-walkthrough, dsa-trees): BST Iterators and Two Sum in a BST
 - [ ] `dsa-build-bst` (P1, problem-walkthrough, dsa-trees): Building Balanced BSTs From Sorted Data
+- [ ] `dsa-tree-width-and-structure` (P1, problem-walkthrough, dsa-trees): Maximum Width, Symmetry and Identical Trees
+- [ ] `dsa-two-heaps` (P1, pattern, dsa-heaps-greedy): Two Heaps: The Running Median
 
 ### cp
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 96 written</summary>
+<details><summary>dsa: 98 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -186,6 +186,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-tower-of-hanoi` Tower of Hanoi: Trusting Recursion Completely
 - [x] `dsa-recursion-on-strings` Recursion on Strings: Partitions and Expressions
 - [x] `dsa-tree-views-boundary` Tree Views: Left, Right, Top, Bottom and Boundary
+- [x] `dsa-nodes-at-distance-k` Nodes at Distance K and Burning a Tree
+- [x] `dsa-bst-iterator-two-sum` BST Iterators and Two Sum in a BST
 - [x] `dsa-subset-sum-count` Counting Subsets: Target Sum and Partitions
 - [x] `dsa-interview-dsa-revision` The Night-Before Revision Sheet
 

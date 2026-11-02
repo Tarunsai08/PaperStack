@@ -1,7 +1,7 @@
 {
- "content_version": "100df9f90f1c9f82",
+ "content_version": "bf981cb6903577cb",
  "generated_at": "2026-11-02",
- "count": 298,
+ "count": 300,
  "subjects": [
   {
    "id": "ml",
@@ -17563,6 +17563,230 @@
    "hash": "0d4433e58483",
    "word_count": 1247,
    "excerpt": "A photographer walks around a tree in a park and takes four pictures: from the left, from the right, from directly above and from below. Each photo shows only some of the branches; the rest are hidden behind the ones in front. Then she traces the outline of the tree with her finger, down the left…"
+  },
+  {
+   "id": "dsa-nodes-at-distance-k",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "nodes-at-distance-k",
+   "title": "Fire Spreading Through a Family Tree",
+   "subtitle": "All nodes at distance K and the time to burn a whole tree: add parent links so the tree becomes an undirected graph, then run a BFS from the start node without walking back",
+   "track": "dsa-trees",
+   "track_order": 12,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-tree-recursion",
+    "dsa-bfs"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "binary tree",
+    "bfs",
+    "parent pointers",
+    "graph"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "All Nodes Distance K in Binary Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Amount of Time for Binary Tree to Be Infected",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Rotting Oranges",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/rotting-oranges/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Parent map",
+     "definition": "A hash map from each node to its parent, built with one traversal, which lets a search move upwards as well as down."
+    },
+    {
+     "term": "Undirected view",
+     "definition": "Treating the tree as a graph where each node is connected to its left child, right child and parent, with movement allowed in every direction."
+    },
+    {
+     "term": "Distance",
+     "definition": "The number of edges on the path between two nodes."
+    },
+    {
+     "term": "Eccentricity",
+     "definition": "The largest distance from a node to any other node; the time for a fire starting there to burn the whole tree."
+    },
+    {
+     "term": "Visited set",
+     "definition": "The nodes already reached by the search, used so that the walk never returns to a node, in particular to the parent it came from."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does All Nodes Distance K need parent links?",
+     "options": [
+      "To sort the answer",
+      "Some nodes at distance K are above the target or in other subtrees, and child pointers alone cannot go upwards",
+      "Because the tree is a BST",
+      "They are not needed"
+     ],
+     "answer": 1,
+     "explain": "From the target you can only go down with child pointers. A node at distance 2 may be the target's grandparent or a sibling's child, which needs one step up first."
+    },
+    {
+     "q": "What goes wrong without a visited set in the BFS?",
+     "options": [
+      "Nothing",
+      "From a child the search would step back to its parent and count nodes again, or loop between them forever",
+      "It becomes slower but correct",
+      "It only fails on BSTs"
+     ],
+     "answer": 1,
+     "explain": "With parent links the tree has edges in both directions. Without marking, the search walks parent to child and back again endlessly."
+    },
+    {
+     "q": "How long does a fire starting at a node take to burn the whole tree?",
+     "options": [
+      "The tree's height",
+      "The largest distance from that node to any other node",
+      "The number of leaves",
+      "Always n − 1"
+     ],
+     "answer": 1,
+     "explain": "The fire spreads one edge per minute in every direction, so the last node to burn is the farthest one, at the node's eccentricity."
+    }
+   ],
+   "cover_seed": "nodes-at-distance-k",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.82,
+   "path": "dsa/nodes-at-distance-k.md",
+   "hash": "adcaf404e98e",
+   "word_count": 1163,
+   "excerpt": "A rumour starts with one cousin in a big family and spreads one generation per day, to parents, children, everyone directly related. Who hears it on day two? How long until the whole family knows? In a tree drawn on paper you would just spread outwards in rings. But in code, a tree node only knows…"
+  },
+  {
+   "id": "dsa-bst-iterator-two-sum",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "bst-iterator-two-sum",
+   "title": "A Bookmark That Walks a Sorted Shelf",
+   "subtitle": "A BST iterator that produces the inorder sequence one key at a time with a stack of height O(h), a reverse iterator, and Two Sum in a BST with two pointers on the tree",
+   "track": "dsa-trees",
+   "track_order": 13,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-bst-operations",
+    "dsa-stack-patterns"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "binary search tree",
+    "iterator",
+    "stack",
+    "two pointers"
+   ],
+   "complexity": {
+    "time": "Amortised O(1) per next, O(n) for a full walk",
+    "space": "O(h)"
+   },
+   "practice_problems": [
+    {
+     "name": "Binary Search Tree Iterator",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/binary-search-tree-iterator/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Kth Smallest Element in a BST",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Two Sum IV - Input is a BST",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/two-sum-iv-input-is-a-bst/",
+     "difficulty": "Easy"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Iterator",
+     "definition": "An object that produces the elements of a collection one at a time, on request, instead of all at once."
+    },
+    {
+     "term": "Left spine",
+     "definition": "The chain of nodes reached by following left children from a node until there is no left child."
+    },
+    {
+     "term": "Controlled inorder",
+     "definition": "An inorder traversal driven by an explicit stack and paused between elements, so it can be resumed later."
+    },
+    {
+     "term": "Reverse iterator",
+     "definition": "An iterator that produces keys from largest to smallest by following right spines instead of left ones."
+    },
+    {
+     "term": "Amortised O(1)",
+     "definition": "Average constant cost per call over a whole sequence of calls, even if a single call occasionally costs more."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "After the iterator returns a node, what does it push onto the stack?",
+     "options": [
+      "The node's parent",
+      "The left spine of the node's right child",
+      "Both children",
+      "Nothing"
+     ],
+     "answer": 1,
+     "explain": "The next larger key after a node is the leftmost node of its right subtree, so push that subtree's left spine; its top is the next answer."
+    },
+    {
+     "q": "Why is next() amortised O(1) when one call can push O(h) nodes?",
+     "options": [
+      "Because h is small",
+      "Every node is pushed once and popped once over the whole walk, so n calls do O(n) total work",
+      "It is O(log n)",
+      "It is not"
+     ],
+     "answer": 1,
+     "explain": "Some calls push a long spine and others push nothing. Summed over all n calls, there are exactly n pushes and n pops."
+    },
+    {
+     "q": "How does Two Sum IV use the BST without copying it into an array?",
+     "options": [
+      "Binary search for each value",
+      "One forward iterator for the smallest keys and one reverse iterator for the largest, moved towards each other like two pointers",
+      "A hash set only",
+      "Sorting the tree"
+     ],
+     "answer": 1,
+     "explain": "The two iterators give the inorder sequence from both ends with O(h) memory each, which is exactly what two pointers on a sorted array need."
+    }
+   ],
+   "cover_seed": "bst-iterator-two-sum",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.7,
+   "path": "dsa/bst-iterator-two-sum.md",
+   "hash": "106adc128518",
+   "word_count": 1267,
+   "excerpt": "A library shelf holds a million books sorted by number, but the catalogue is a binary search tree. A reader wants to browse the books in order, one at a time, stopping whenever they like. Copying a million numbers into an array first costs a million slots of memory just to show the reader the next…"
   },
   {
    "id": "dsa-heap-basics",

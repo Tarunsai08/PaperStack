@@ -4146,8 +4146,8 @@
     "dsa-tree-recursion",
     "dsa-bfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Add parent pointers",
@@ -4179,8 +4179,8 @@
     "dsa-bst-operations",
     "dsa-stack-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Controlled inorder with a stack",
