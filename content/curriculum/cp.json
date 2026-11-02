@@ -197,8 +197,8 @@
    "prerequisites": [
     "cp-rating-ladder"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Solve what you missed after the contest",
@@ -226,8 +226,8 @@
    "prerequisites": [
     "cp-reading-problems-fast"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Small cases reveal structure",

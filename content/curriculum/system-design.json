@@ -297,8 +297,8 @@
    "prerequisites": [
     "system-design-back-of-envelope"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Nines to downtime per year",

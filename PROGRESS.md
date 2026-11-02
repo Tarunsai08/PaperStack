@@ -10,12 +10,12 @@ Read `HANDOFF.md` first if you are picking this project up.
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
 | dsa | 10 | 0 | 142 | 152 | 10/72 |
-| cp | 8 | 0 | 107 | 115 | 7/29 |
-| famous-algos | 8 | 0 | 83 | 91 | 8/32 |
-| system-design | 9 | 0 | 110 | 119 | 9/60 |
+| cp | 10 | 0 | 105 | 115 | 7/29 |
+| famous-algos | 10 | 0 | 81 | 91 | 8/32 |
+| system-design | 10 | 0 | 109 | 119 | 10/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **118** | **0** | **555** | **673** | |
+| **All** | **123** | **0** | **550** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **31**
 
@@ -38,8 +38,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### cp
 
-- [ ] `cp-upsolving` (P1, primer, cp-start): Upsolving: Where Rating Actually Comes From
-- [ ] `cp-constructive-problems` (P1, pattern, cp-start): Constructive Problems: Build the Answer
+- [ ] `cp-practice-plan` (P0, primer, cp-misc): A 12-Week Contest Practice Plan
 - [ ] `cp-weird-algorithm` (P1, problem-walkthrough, cp-start): Your First CSES Problems: Weird Algorithm to Increasing Array
 - [ ] `cp-implementation-skills` (P1, primer, cp-start): Implementation Problems: Getting the Details Right
 - [ ] `cp-sqrt-decomposition` (P1, pattern, cp-ranges): Square Root Decomposition
@@ -58,11 +57,10 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `famous-algos-kalman-filter` (P0, concept, fa-signals): The Kalman Filter: Blending Guesses With Noisy Measurements
 - [ ] `famous-algos-counting-bloom-cuckoo` (P1, concept, fa-sketches): Deletable Filters: Counting Bloom and Cuckoo Filters
 - [ ] `famous-algos-heavy-hitters` (P1, concept, fa-sketches): Finding Heavy Hitters in a Stream: Misra-Gries and Space-Saving
-- [ ] `famous-algos-minhash` (P1, concept, fa-sketches): MinHash: Estimating Similarity Without Comparing Everything
+- [ ] `famous-algos-lsh` (P1, concept, fa-sketches): Locality-Sensitive Hashing: Finding Near Neighbours Fast
 
 ### system-design
 
-- [ ] `system-design-availability-slos` (P0, deep-dive, sd-fundamentals): Availability, Nines and SLOs
 - [ ] `system-design-stateless-idempotency` (P0, deep-dive, sd-fundamentals): Stateless Services and Idempotent APIs
 - [ ] `system-design-caching` (P0, deep-dive, sd-blocks): Caching: Cache-Aside, Write-Through and Friends
 - [ ] `system-design-sql-vs-nosql` (P0, deep-dive, sd-blocks): SQL vs NoSQL: Choosing a Database Honestly
@@ -103,7 +101,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 </details>
 
-<details><summary>cp: 8 written</summary>
+<details><summary>cp: 10 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -111,25 +109,29 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `cp-rating-ladder` The Rating Ladder: What to Practise at Each Level
 - [x] `cp-stress-testing` Stress Testing: Catch Wrong Answers Yourself
 - [x] `cp-debugging-in-contest` Debugging Under Time Pressure
+- [x] `cp-upsolving` Upsolving: Where Rating Actually Comes From
+- [x] `cp-constructive-problems` Constructive Problems: Build the Answer
 - [x] `cp-contest-strategy` Contest Strategy: Order, Time and Nerves
 - [x] `cp-invariants-observations` Invariants and Observations: The Heart of Div 2
 
 </details>
 
-<details><summary>famous-algos: 8 written</summary>
+<details><summary>famous-algos: 10 written</summary>
 
 - [x] `famous-algos-bloom-filter` Bloom Filters: Saying No Without Looking
 - [x] `famous-algos-count-min-sketch` Count-Min Sketch: Counting Billions of Things in Kilobytes
 - [x] `famous-algos-hyperloglog` HyperLogLog: Counting Unique Visitors With Almost No Memory
+- [x] `famous-algos-minhash` MinHash: Estimating Similarity Without Comparing Everything
 - [x] `famous-algos-consistent-hashing` Consistent Hashing: Adding Servers Without Moving Everything
 - [x] `famous-algos-lamport-clocks` Lamport Clocks: Ordering Events Without a Shared Clock
 - [x] `famous-algos-vector-clocks` Vector Clocks: Detecting Concurrent Updates
 - [x] `famous-algos-gossip-protocols` Gossip Protocols: How Rumours Keep Clusters in Sync
+- [x] `famous-algos-swim-failure-detection` SWIM: Detecting Dead Machines Politely
 - [x] `famous-algos-raft` Raft: Consensus You Can Actually Understand
 
 </details>
 
-<details><summary>system-design: 9 written</summary>
+<details><summary>system-design: 10 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -140,6 +142,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `system-design-realtime-communication` Real-Time Updates: Polling, Long Polling, SSE and WebSockets
 - [x] `system-design-cap-pacelc` CAP and PACELC Without the Myths
 - [x] `system-design-consistency-basics` Strong vs Eventual Consistency, Plainly
+- [x] `system-design-availability-slos` Availability, Nines and SLOs
 
 </details>
 
