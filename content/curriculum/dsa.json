@@ -377,8 +377,8 @@
    "prerequisites": [
     "dsa-big-o"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Row and column bounds",
@@ -445,8 +445,8 @@
    "prerequisites": [
     "dsa-big-o"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Numbers in range 1..n",
@@ -2559,8 +2559,8 @@
    "prerequisites": [
     "dsa-hashing-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Cancel pairs of different elements",
@@ -2593,8 +2593,8 @@
    "prerequisites": [
     "dsa-two-pointers"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Find the first descent from the right",

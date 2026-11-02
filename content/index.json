@@ -1,7 +1,7 @@
 {
- "content_version": "6dad2a4ce136cad6",
+ "content_version": "4058ea93cdcd8aa5",
  "generated_at": "2026-11-02",
- "count": 248,
+ "count": 252,
  "subjects": [
   {
    "id": "ml",
@@ -9576,6 +9576,139 @@
    "excerpt": "String questions look endless: anagrams, palindromes, \"longest substring with at most k changes\", \"group words that are rearrangements of each other\". Then you notice something. Almost all of them reduce to two tools you already know: counting letters, and two pointers moving in from the ends or…"
   },
   {
+   "id": "dsa-matrix-traversal",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "matrix-traversal",
+   "title": "Peeling a Grid Like an Onion",
+   "subtitle": "Spiral order, in-place rotation, set-zeroes with O(1) space and the staircase search, all from careful row and column bounds",
+   "track": "dsa-arrays",
+   "track_order": 7,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 9,
+   "topics": [
+    "matrix",
+    "2d arrays",
+    "simulation",
+    "in-place"
+   ],
+   "complexity": {
+    "time": "O(m · n) for traversals, O(m + n) for the staircase search",
+    "space": "O(1) extra"
+   },
+   "practice_problems": [
+    {
+     "name": "Spiral Matrix",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/spiral-matrix/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Spiral Matrix II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/spiral-matrix-ii/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Rotate Image",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/rotate-image/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Set Matrix Zeroes",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/set-matrix-zeroes/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Search a 2D Matrix II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/search-a-2d-matrix-ii/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Game of Life",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/game-of-life/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Row-major order",
+     "definition": "Storing or visiting a grid row by row, left to right, so cell (r, c) of an m by n grid sits at position r · n + c."
+    },
+    {
+     "term": "Layer",
+     "definition": "One ring of a matrix: the outermost rows and columns that remain after the outer rings have been removed."
+    },
+    {
+     "term": "Transpose",
+     "definition": "Flipping a square matrix over its main diagonal, so the value at (i, j) moves to (j, i)."
+    },
+    {
+     "term": "Direction array",
+     "definition": "Two small arrays of row and column offsets, such as up, right, down, left, used to step to neighbours with one loop instead of four copies of code."
+    },
+    {
+     "term": "In-place marker",
+     "definition": "Reusing part of the input itself, such as the first row and column, to store flags, so no extra array is needed."
+    },
+    {
+     "term": "Staircase search",
+     "definition": "Searching a matrix whose rows and columns are both sorted by starting at the top-right corner and stepping left or down, removing one column or row per step."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In spiral order, why must you check top ≤ bottom before walking the bottom row?",
+     "options": [
+      "To avoid an out-of-bounds access in every case",
+      "After the top row is consumed, the bottom row may be the same row, and walking it again repeats values",
+      "To make it run faster",
+      "Because the bottom row is walked left to right"
+     ],
+     "answer": 1,
+     "explain": "On a matrix with an odd number of rows, the last layer is a single row. Once it is consumed as the top row, top passes bottom, and without the check it would be printed a second time backwards."
+    },
+    {
+     "q": "Which pair of in-place steps rotates a square matrix 90 degrees clockwise?",
+     "options": [
+      "Reverse every row, then reverse every column",
+      "Transpose, then reverse every row",
+      "Transpose twice",
+      "Reverse every column, then transpose twice"
+     ],
+     "answer": 1,
+     "explain": "Transposing sends row i to column i; reversing each row then puts the first column on the right. For [[1,2,3],[4,5,6],[7,8,9]] you get [[7,4,1],[8,5,2],[9,6,3]]."
+    },
+    {
+     "q": "In the staircase search starting at the top-right, the current value is larger than the target. What can you discard?",
+     "options": [
+      "The current row",
+      "The current column",
+      "Both",
+      "Nothing"
+     ],
+     "answer": 1,
+     "explain": "Every value below the current one in its column is at least as large, so none can equal the smaller target. Move one column left."
+    }
+   ],
+   "cover_seed": "matrix-traversal",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.75,
+   "path": "dsa/matrix-traversal.md",
+   "hash": "f756c4f2420f",
+   "word_count": 2038,
+   "excerpt": "\"Print this matrix in spiral order\" sounds like a warm-up. Then you write it and the output for a 3 by 4 grid repeats a 6, or a single-row matrix comes out doubled, or the code walks off the edge. Grid problems are rarely about a clever algorithm. They are about keeping four boundaries straight…"
+  },
+  {
    "id": "dsa-intervals-sweep",
    "kind": "pattern",
    "subject": "dsa",
@@ -9698,6 +9831,135 @@
    "hash": "a9027620d00e",
    "word_count": 902,
    "excerpt": "A calendar app must show your busy blocks, merging back-to-back and overlapping meetings into single stretches. A restaurant wants to know the most customers it ever had at once. A booking system must check whether a new reservation clashes with existing ones. These sound like different problems.…"
+  },
+  {
+   "id": "dsa-cyclic-sort",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "cyclic-sort",
+   "title": "Every Number Has a Seat With Its Name on It",
+   "subtitle": "Cyclic sort: when values lie in 1 to n, swap each one to its own index and read missing and duplicate numbers straight off the array",
+   "track": "dsa-arrays",
+   "track_order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 8,
+   "topics": [
+    "arrays",
+    "in-place",
+    "cyclic sort",
+    "missing numbers"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(1) extra"
+   },
+   "practice_problems": [
+    {
+     "name": "Missing Number",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/missing-number/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Find All Numbers Disappeared in an Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Find All Duplicates in an Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-all-duplicates-in-an-array/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Set Mismatch",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/set-mismatch/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "First Missing Positive",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/first-missing-positive/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Find the Duplicate Number",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-the-duplicate-number/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Cyclic sort",
+     "definition": "An in-place method for arrays whose values lie in 1 to n: repeatedly swap the current value into index value − 1 until the current slot holds its own value or a value with no free home."
+    },
+    {
+     "term": "Home index",
+     "definition": "The index a value belongs at, v − 1 for value v when values run from 1 to n."
+    },
+    {
+     "term": "Squatter",
+     "definition": "After cyclic sort, a value sitting at an index that is not its home, because its home is already taken by an equal value or because it has no home in range."
+    },
+    {
+     "term": "Cycle",
+     "definition": "A group of positions whose values point to each other's indices in a loop. Swapping each value home resolves one cycle completely."
+    },
+    {
+     "term": "Index marking",
+     "definition": "A related trick that records 'value v was seen' by changing the sign of the element at index v − 1, instead of moving values."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Cyclic sort runs a while loop that sometimes does not advance i. Why is it still O(n)?",
+     "options": [
+      "The loop runs at most twice per index",
+      "Every swap puts one value permanently into its home, so there are at most n swaps in total, plus n advances of i",
+      "It is actually O(n log n)",
+      "Because the array is small"
+     ],
+     "answer": 1,
+     "explain": "A value placed at its home is never moved again. So the total number of swaps over the whole run is at most n, and i advances n times."
+    },
+    {
+     "q": "Why does the swap condition check a[v − 1] != v rather than i != v − 1?",
+     "options": [
+      "It is faster",
+      "If an equal copy already sits at the home index, swapping would exchange two equal values forever",
+      "To handle negative numbers",
+      "Both checks are equivalent"
+     ],
+     "answer": 1,
+     "explain": "With duplicates, the home may already hold v. Checking i != v − 1 would keep swapping v with v and never advance. Checking the home's content stops the loop."
+    },
+    {
+     "q": "After cyclic sort of [3, 4, −1, 1], the array is [1, −1, 3, 4]. What is the first missing positive?",
+     "options": [
+      "1",
+      "2",
+      "3",
+      "5"
+     ],
+     "answer": 1,
+     "explain": "Scan for the first index i where a[i] != i + 1. Index 1 holds −1 instead of 2, so 2 is missing."
+    }
+   ],
+   "cover_seed": "cyclic-sort",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.75,
+   "path": "dsa/cyclic-sort.md",
+   "hash": "6299c4aecd43",
+   "word_count": 1841,
+   "excerpt": "You are given n numbers, each between 1 and n, and asked which ones are missing. A hash set solves it in O(n) time, but the interviewer adds: \"Now do it with O(1) extra space.\" Sorting takes O(n log n) time. Is there a way to get both? There is, and it rests on one fact that most problems never…"
   },
   {
    "id": "dsa-product-except-self",
@@ -9922,6 +10184,246 @@
    "hash": "0e6f3021bc6c",
    "word_count": 1431,
    "excerpt": "A row of buildings of different heights stands side by side, each one unit wide. It rains hard. How many units of water stay trapped in the gaps between them after the rain stops? Trapping Rain Water is one of the most famous hard interview problems, and for good reason. The brute force is easy,…"
+  },
+  {
+   "id": "dsa-majority-vote",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "majority-vote",
+   "title": "The Election Where Rivals Cancel Out",
+   "subtitle": "Boyer-Moore majority vote: find the element that appears more than half the time in one pass and O(1) space, then extend it to n/3",
+   "track": "dsa-arrays",
+   "track_order": 12,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-hashing-patterns"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 8,
+   "topics": [
+    "arrays",
+    "voting algorithm",
+    "counting",
+    "streaming"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(1)"
+   },
+   "practice_problems": [
+    {
+     "name": "Majority Element",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/majority-element/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Majority Element II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/majority-element-ii/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Minimum Index of a Valid Split",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/minimum-index-of-a-valid-split/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Online Majority Element In Subarray",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/online-majority-element-in-subarray/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Majority element",
+     "definition": "A value that appears strictly more than n / 2 times in an array of length n. There can be at most one."
+    },
+    {
+     "term": "Candidate",
+     "definition": "The value the voting pass ends with. If a majority exists it is the candidate, but the candidate is not guaranteed to be a majority."
+    },
+    {
+     "term": "Pair cancellation",
+     "definition": "Removing two different values from the array together. It never stops a true majority from being a majority of what is left."
+    },
+    {
+     "term": "Verification pass",
+     "definition": "A second scan that counts the candidate to confirm it really appears more than n / 2 (or n / k) times."
+    },
+    {
+     "term": "Heavy hitter",
+     "definition": "In a stream, a value that appears more than n / k times for some chosen k. Majority is the case k = 2."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "After the voting pass on [1, 2, 3, 1, 2], the candidate is 2. Is 2 a majority?",
+     "options": [
+      "Yes, the algorithm always returns the majority",
+      "No, 2 appears twice in five elements, and this array has no majority",
+      "Yes, because its count ended at 1",
+      "The algorithm cannot run on this input"
+     ],
+     "answer": 1,
+     "explain": "A candidate always exists, but a majority may not. Only the verification pass can tell. Here 2 appears 2 times, not more than 2.5."
+    },
+    {
+     "q": "Why can there be at most two elements appearing more than n / 3 times?",
+     "options": [
+      "Because the array is sorted",
+      "Three such elements would need more than n positions in total",
+      "Because the algorithm keeps two counters",
+      "There can be three"
+     ],
+     "answer": 1,
+     "explain": "Each would need more than n / 3 positions, so three of them would need more than n positions, which is impossible."
+    },
+    {
+     "q": "What does the count variable mean during the pass?",
+     "options": [
+      "How many times the candidate has appeared so far",
+      "How many supporters of the candidate are still standing after cancellations",
+      "The index of the candidate",
+      "The number of distinct values"
+     ],
+     "answer": 1,
+     "explain": "Each different value cancels one supporter. The count is the candidate's surplus over the values that cancelled it, not its total frequency."
+    }
+   ],
+   "cover_seed": "majority-vote",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.75,
+   "path": "dsa/majority-vote.md",
+   "hash": "5753c13856d7",
+   "word_count": 1746,
+   "excerpt": "A village holds an election and the ballots arrive one at a time on a long paper roll. You may read the roll once, and you have room to remember only one name and one number. Can you still say which name won more than half the votes? It sounds impossible: surely you need a tally for every name. Yet…"
+  },
+  {
+   "id": "dsa-next-permutation",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "next-permutation",
+   "title": "The Odometer for Permutations",
+   "subtitle": "Next permutation in O(n) and O(1) space: find the pivot, swap with its successor, reverse the tail, plus the k-th permutation by counting",
+   "track": "dsa-arrays",
+   "track_order": 13,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-two-pointers"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 8,
+   "topics": [
+    "arrays",
+    "permutations",
+    "lexicographic order",
+    "two pointers"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(1)"
+   },
+   "practice_problems": [
+    {
+     "name": "Next Permutation",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/next-permutation/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Next Greater Element III",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/next-greater-element-iii/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Permutation Sequence",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/permutation-sequence/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Previous Permutation With One Swap",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/previous-permutation-with-one-swap/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Creating Strings",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1622",
+     "difficulty": "Easy"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Lexicographic order",
+     "definition": "Dictionary order: compare two sequences at the first position where they differ, and the smaller value there decides."
+    },
+    {
+     "term": "Suffix",
+     "definition": "The part of the array from some index to the end."
+    },
+    {
+     "term": "Pivot",
+     "definition": "The rightmost index i with a[i] < a[i + 1]. It is the position that must increase to get the next permutation."
+    },
+    {
+     "term": "Successor",
+     "definition": "The smallest value in the suffix that is larger than the pivot value. Because the suffix is descending, it is the rightmost such value."
+    },
+    {
+     "term": "Factorial number system",
+     "definition": "Writing a number as a sum of digits times factorials, which tells you directly which item comes first, second and so on in the k-th permutation."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is the next permutation of [1, 3, 5, 4, 2]?",
+     "options": [
+      "[1, 3, 5, 2, 4]",
+      "[1, 4, 2, 3, 5]",
+      "[1, 4, 5, 3, 2]",
+      "[1, 5, 4, 3, 2]"
+     ],
+     "answer": 1,
+     "explain": "The pivot is 3 at index 1. Its successor in the suffix [5, 4, 2] is 4. Swap to get [1, 4, 5, 3, 2], then reverse the suffix to [2, 3, 5], giving [1, 4, 2, 3, 5]."
+    },
+    {
+     "q": "Why can the suffix be reversed instead of sorted after the swap?",
+     "options": [
+      "Reversing is always the same as sorting",
+      "The suffix is non-increasing before the swap and stays non-increasing after it, so reversing it makes it non-decreasing",
+      "Because n is small",
+      "It must be sorted; reversing is a bug"
+     ],
+     "answer": 1,
+     "explain": "The swap puts the old pivot value into the spot where the successor was, and that keeps the suffix in descending order. Reversing a descending run sorts it in O(n)."
+    },
+    {
+     "q": "What should next permutation return for [3, 2, 1]?",
+     "options": [
+      "[3, 2, 1] unchanged",
+      "[1, 2, 3], wrapping to the first permutation",
+      "[2, 3, 1]",
+      "An error"
+     ],
+     "answer": 1,
+     "explain": "There is no pivot, because the whole array is descending. The standard convention, used by LeetCode and std::next_permutation, wraps to the smallest arrangement."
+    }
+   ],
+   "cover_seed": "next-permutation",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.75,
+   "path": "dsa/next-permutation.md",
+   "hash": "f857cced7bf9",
+   "word_count": 1716,
+   "excerpt": "Write the permutations of 1, 2, 3 in dictionary order: 123, 132, 213, 231, 312, 321. Now someone hands you 1 3 5 4 2 and asks for the one that comes right after it, without listing the hundred-odd arrangements before it. And they want it in place, using no extra memory. You could generate all…"
   },
   {
    "id": "dsa-subarray-sum-k",
