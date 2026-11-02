@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 62 | 0 | 90 | 152 | 48/72 |
+| dsa | 65 | 0 | 87 | 152 | 48/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **264** | **0** | **409** | **673** | |
+| **All** | **267** | **0** | **406** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 62 written</summary>
+<details><summary>dsa: 65 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -147,6 +147,9 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-gcd-primes` GCD, Primes and Divisors for Interviews
 - [x] `dsa-modular-fast-power` Modular Arithmetic and Fast Power
 - [x] `dsa-combinatorics-basics` Counting Basics: nCr, Pascal and Catalan
+- [x] `dsa-number-tricks` Number Tricks: Digits, Bases and Overflow
+- [x] `dsa-random-sampling` Randomness in Interviews: Shuffles and Reservoir Sampling
+- [x] `dsa-geometry-interview` Geometry That Shows Up in Interviews
 - [x] `dsa-dutch-national-flag` Sort Colors: The Dutch National Flag in One Pass
 - [x] `dsa-majority-and-rearrange` Rearranging Arrays In Place
 - [x] `dsa-ordered-set-windows` Ordered Sets in Sliding Windows

@@ -3568,8 +3568,8 @@
    "prerequisites": [
     "dsa-big-o"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Reverse digits safely",
@@ -3602,8 +3602,8 @@
    "prerequisites": [
     "dsa-big-o"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Fisher-Yates shuffle",
@@ -3638,8 +3638,8 @@
    "prerequisites": [
     "dsa-number-tricks"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Distance, slopes with gcd",

@@ -1,7 +1,7 @@
 {
- "content_version": "44a91cebaaacc61c",
+ "content_version": "0c0656fc7b16fbb1",
  "generated_at": "2026-11-02",
- "count": 264,
+ "count": 267,
  "subjects": [
   {
    "id": "ml",
@@ -12725,6 +12725,381 @@
    "hash": "02f85860dea2",
    "word_count": 1640,
    "excerpt": "A robot sits in the top-left corner of a grid and may only move right or down. How many different routes reach the bottom-right corner? You could write a recursion, or a DP table, or you could notice that every route is just a choice of which moves go down, and write the answer in one line.…"
+  },
+  {
+   "id": "dsa-number-tricks",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "number-tricks",
+   "title": "Reading a Number One Digit at a Time",
+   "subtitle": "Digit loops, reversing without overflow, palindromic numbers, base conversion including Excel's base 26 with no zero, and digital roots",
+   "track": "dsa-math",
+   "track_order": 4,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 7,
+   "topics": [
+    "digits",
+    "base conversion",
+    "overflow",
+    "integers"
+   ],
+   "complexity": {
+    "time": "O(number of digits), that is O(log n)",
+    "space": "O(1)"
+   },
+   "practice_problems": [
+    {
+     "name": "Palindrome Number",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/palindrome-number/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Add Digits",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/add-digits/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Base 7",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/base-7/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Excel Sheet Column Number",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/excel-sheet-column-number/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Excel Sheet Column Title",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/excel-sheet-column-title/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Reverse Integer",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/reverse-integer/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Digit loop",
+     "definition": "Repeatedly taking n % 10 to read the last digit and n / 10 to drop it, until n is 0."
+    },
+    {
+     "term": "Overflow check",
+     "definition": "Testing, before an operation, whether its result would exceed the integer type's range, instead of detecting the damage afterwards."
+    },
+    {
+     "term": "Positional base",
+     "definition": "A way of writing numbers where each digit's value is multiplied by a power of the base, such as base 10 or base 2."
+    },
+    {
+     "term": "Bijective base 26",
+     "definition": "A numbering with digits 1 to 26 and no zero, as in spreadsheet columns A to Z, AA, AB, and so on."
+    },
+    {
+     "term": "Digital root",
+     "definition": "The single digit reached by repeatedly summing a number's digits. For positive n it equals 1 + (n − 1) mod 9."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Reversing the digits of 1534236469 gives 9646324351. What should Reverse Integer return?",
+     "options": [
+      "9646324351",
+      "0, because the result does not fit in a signed 32-bit integer",
+      "-1",
+      "2147483647"
+     ],
+     "answer": 1,
+     "explain": "The signed 32-bit maximum is 2147483647. The reversed value is larger, so the problem asks for 0. Check before multiplying by 10, so the overflow never happens."
+    },
+    {
+     "q": "What is the spreadsheet column title for 28?",
+     "options": [
+      "AB",
+      "BB",
+      "ZB",
+      "AA"
+     ],
+     "answer": 0,
+     "explain": "Subtract 1 before each step: 27 mod 26 = 1 gives B, then 27 / 26 = 1, minus 1 gives 0, which is A. Reading back: AB."
+    },
+    {
+     "q": "Why can Palindrome Number stop after reversing half the digits?",
+     "options": [
+      "To save memory only",
+      "Comparing the first half with the reversed second half is enough, and reversing only half can never overflow",
+      "Because palindromes have even length",
+      "It cannot; it must reverse all digits"
+     ],
+     "answer": 1,
+     "explain": "When the reversed part becomes at least as large as the remaining part, you have reached the middle. Compare them, ignoring the middle digit for odd lengths."
+    }
+   ],
+   "cover_seed": "number-tricks",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.65,
+   "path": "dsa/number-tricks.md",
+   "hash": "391ad9c00c1c",
+   "word_count": 1466,
+   "excerpt": "\"Reverse the digits of a 32-bit integer\" sounds like a warm-up, until the reversed number does not fit. 1534236469 reversed is 9646324351, which is bigger than any signed 32-bit int. Many first attempts compute it anyway, watch it overflow into a negative number and then try to detect the damage…"
+  },
+  {
+   "id": "dsa-random-sampling",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "random-sampling",
+   "title": "Drawing Raffle Tickets From a Bottomless Box",
+   "subtitle": "Randomness in interviews: the Fisher-Yates shuffle and why the naive one is biased, reservoir sampling for streams, and weighted picks with prefix sums",
+   "track": "dsa-math",
+   "track_order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "randomised algorithms",
+    "shuffle",
+    "reservoir sampling",
+    "probability"
+   ],
+   "complexity": {
+    "time": "O(n) shuffle and reservoir pass, O(log n) per weighted pick",
+    "space": "O(1) for reservoir sampling, O(n) prefix array for weights"
+   },
+   "practice_problems": [
+    {
+     "name": "Shuffle an Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/shuffle-an-array/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Linked List Random Node",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/linked-list-random-node/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Random Pick Index",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/random-pick-index/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Random Pick with Weight",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/random-pick-with-weight/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Uniform",
+     "definition": "Every possible outcome has the same probability, such as each of the n! orders of a shuffle having probability 1 / n!."
+    },
+    {
+     "term": "Fisher-Yates shuffle",
+     "definition": "Shuffling by walking from the last position to the first and swapping each position with a uniformly random position from the part not yet fixed."
+    },
+    {
+     "term": "Reservoir sampling",
+     "definition": "Choosing k items uniformly from a stream of unknown length in one pass, keeping the i-th item with probability k / i."
+    },
+    {
+     "term": "Prefix sum of weights",
+     "definition": "Running totals of the weights, which turn a weighted pick into finding where a random number falls among the totals."
+    },
+    {
+     "term": "Bias",
+     "definition": "When some outcomes of a supposedly random process are systematically more likely than others."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why is 'for each i, swap a[i] with a random position in the whole array' a biased shuffle for n = 3?",
+     "options": [
+      "It is not biased",
+      "It has 3³ = 27 equally likely runs, and 27 cannot be split evenly among 3! = 6 orders",
+      "It never moves the first element",
+      "Because 3 is odd"
+     ],
+     "answer": 1,
+     "explain": "Each run picks 3 positions from 3 choices, so 27 equally likely runs. For all 6 orders to be equally likely, 6 would have to divide 27. It does not, so some orders appear 5 times and others 4."
+    },
+    {
+     "q": "In reservoir sampling of one item, with what probability do you replace the current choice when the 5th item arrives?",
+     "options": [
+      "1/2",
+      "1/5",
+      "4/5",
+      "Always"
+     ],
+     "answer": 1,
+     "explain": "The i-th item replaces the choice with probability 1 / i, which makes every item end up chosen with probability 1 / n."
+    },
+    {
+     "q": "Weights [1, 3, 2] give prefix sums [1, 4, 6]. A random r from 1 to 6 is 4. Which index is picked?",
+     "options": [
+      "0",
+      "1",
+      "2",
+      "None"
+     ],
+     "answer": 1,
+     "explain": "The first prefix sum at least r = 4 is 4, at index 1. Index 1 owns r = 2, 3 and 4, which is 3 of the 6 values, matching its weight."
+    }
+   ],
+   "cover_seed": "random-sampling",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.68,
+   "path": "dsa/random-sampling.md",
+   "hash": "8b43bcd9ce0d",
+   "word_count": 1559,
+   "excerpt": "Shuffling a playlist sounds trivial: for each song, swap it with a random song. Run that on three songs sixty thousand times and count how often each order appears. Some orders turn up about 11,100 times and others only about 8,900. The \"obvious\" shuffle is unfair, and an interviewer who asks you…"
+  },
+  {
+   "id": "dsa-geometry-interview",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "geometry-interview",
+   "title": "Do These Two Tables Overlap on the Floor Plan?",
+   "subtitle": "The geometry that shows up in interviews: rectangle overlap, squared distances, cross products for collinearity and exact slopes with gcd instead of floating point",
+   "track": "dsa-math",
+   "track_order": 6,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-number-tricks"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "geometry",
+    "rectangles",
+    "slopes",
+    "cross product"
+   ],
+   "complexity": {
+    "time": "O(1) for rectangle and square checks, O(n²) for Max Points on a Line",
+    "space": "O(n) for the slope map"
+   },
+   "practice_problems": [
+    {
+     "name": "Rectangle Overlap",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/rectangle-overlap/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Check If It Is a Straight Line",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/check-if-it-is-a-straight-line/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Rectangle Area",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/rectangle-area/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Valid Square",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/valid-square/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "K Closest Points to Origin",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/k-closest-points-to-origin/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Max Points on a Line",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/max-points-on-a-line/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Axis-aligned rectangle",
+     "definition": "A rectangle whose sides are parallel to the x and y axes, described by its bottom-left and top-right corners."
+    },
+    {
+     "term": "Interval overlap",
+     "definition": "Two intervals [a1, a2] and [b1, b2] overlap with positive length exactly when max(a1, b1) < min(a2, b2)."
+    },
+    {
+     "term": "Squared distance",
+     "definition": "dx² + dy², which compares distances exactly in integers without taking a square root."
+    },
+    {
+     "term": "Cross product",
+     "definition": "For vectors (x1, y1) and (x2, y2), the value x1 · y2 − y1 · x2. It is zero exactly when the vectors are parallel, so three points are collinear when it is zero."
+    },
+    {
+     "term": "Normalised slope",
+     "definition": "A direction stored as a pair (dx, dy) divided by their gcd, with a fixed sign rule, so equal slopes always produce the same pair."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Rectangles (0, 0, 1, 1) and (1, 0, 2, 1) share an edge. Do they overlap under the usual rule of positive area?",
+     "options": [
+      "Yes",
+      "No, because max(0, 1) = 1 is not less than min(1, 2) = 1 on the x axis",
+      "Only if they are squares",
+      "It depends on the y axis only"
+     ],
+     "answer": 1,
+     "explain": "Touching along an edge gives zero width. The strict comparison max(left) < min(right) correctly says no."
+    },
+    {
+     "q": "Why store slopes as reduced integer pairs instead of dy / dx as a double?",
+     "options": [
+      "Doubles are slower",
+      "Different slopes can round to the same double and equal ones can differ in the last bit, and vertical lines would divide by zero",
+      "Pairs use less memory",
+      "It is required by C++"
+     ],
+     "answer": 1,
+     "explain": "Floating point cannot represent most fractions exactly. Reducing (dx, dy) by their gcd, with a sign rule, gives one exact key per slope, including vertical lines."
+    },
+    {
+     "q": "Four points have pairwise squared distances 1, 1, 1, 1, 2, 2. Do they form a square?",
+     "options": [
+      "Yes: four equal sides and two equal diagonals, with diagonal squared equal to twice the side squared",
+      "No, a square needs six equal distances",
+      "Only if one point is the origin",
+      "There is not enough information"
+     ],
+     "answer": 0,
+     "explain": "A square has 4 equal sides s and 2 equal diagonals d with d² = 2s². Here s² = 1 and d² = 2."
+    }
+   ],
+   "cover_seed": "geometry-interview",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.6,
+   "path": "dsa/geometry-interview.md",
+   "hash": "230d2eac2997",
+   "word_count": 1440,
+   "excerpt": "An office planner is placing tables on a floor plan and the app must warn when two tables overlap. Each table is a rectangle given by two corners. The first idea is to check whether any corner of one table lies inside the other, and it fails: two tables crossing like a plus sign overlap with no…"
   },
   {
    "id": "dsa-linked-list-basics",
