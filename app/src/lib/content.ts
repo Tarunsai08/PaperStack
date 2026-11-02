@@ -8,7 +8,7 @@
  */
 import { excerpt, readMinutes, wordCount } from './markdownText';
 import type { ImportedArticle } from './storage';
-import type { Article, ContentIndex, Frontmatter, IndexEntry, Track } from './types';
+import type { Article, ContentIndex, Frontmatter, IndexEntry, Subject, SubjectId, Track } from './types';
 
 export const BUNDLED_BASE = `${import.meta.env.BASE_URL}content/`;
 
@@ -20,6 +20,23 @@ export const MY_ADDITIONS: Track = {
   order: 99,
   accent: '#7C7C86',
 };
+
+/** Used when an older index.json has no subjects (and for old installs' remote data). */
+export const FALLBACK_SUBJECTS: Subject[] = [
+  {
+    id: 'ml',
+    title: 'Machine Learning',
+    short: 'ML',
+    subtitle: 'From zero to modern AI, one landmark paper at a time',
+    description: 'Primers and story-driven articles on the research papers that built modern AI.',
+    order: 0,
+    accent: '#6C5CE7',
+    motif: 'network',
+    status: 'active',
+  },
+];
+
+export const subjectOfTrack = (t: Track | undefined): SubjectId => t?.subject ?? 'ml';
 
 export async function fetchJson<T>(url: string, init?: RequestInit): Promise<T> {
   const res = await fetch(url, init);
@@ -64,8 +81,8 @@ export function mergeCatalog(
   trackIds: Set<string>,
 ): Article[] {
   const byId = new Map<string, Article>();
-  for (const e of bundled) byId.set(e.id, { ...e, source: 'bundled' });
-  for (const e of remote) byId.set(e.id, { ...e, source: 'remote' });
+  for (const e of bundled) byId.set(e.id, { ...e, subject: e.subject ?? 'ml', source: 'bundled' });
+  for (const e of remote) byId.set(e.id, { ...e, subject: e.subject ?? 'ml', source: 'remote' });
   let extra = 0;
   for (const imp of Object.values(imports)) {
     const fm = imp.frontmatter;
@@ -75,6 +92,7 @@ export function mergeCatalog(
     byId.set(fm.id, {
       ...entryFromArticle(fm, imp.body, `imported/${fm.id}.md`),
       track,
+      subject: fm.subject ?? 'ml',
       // Imported articles go after the official ones in their track.
       track_order: 1000 + (fm.track_order ?? extra),
       source: 'imported',
@@ -83,11 +101,12 @@ export function mergeCatalog(
   return [...byId.values()];
 }
 
-export function sortPath(articles: Article[], tracks: Track[]): Article[] {
-  const order = new Map(tracks.map((t) => [t.id, t.order]));
+export function sortPath(articles: Article[], tracks: Track[], subjects: Subject[] = []): Article[] {
+  const subjectOrder = new Map(subjects.map((s) => [s.id, s.order]));
+  const order = new Map(tracks.map((t) => [t.id, (subjectOrder.get(subjectOfTrack(t)) ?? 0) * 1000 + t.order]));
   return [...articles].sort(
     (a, b) =>
-      (order.get(a.track) ?? 99) - (order.get(b.track) ?? 99) ||
+      (order.get(a.track) ?? 99_999) - (order.get(b.track) ?? 99_999) ||
       a.track_order - b.track_order ||
       a.title.localeCompare(b.title),
   );

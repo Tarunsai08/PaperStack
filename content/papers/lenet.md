@@ -1,6 +1,7 @@
 ---
 id: "paper-lenet"
 kind: "paper"
+subject: "ml"
 slug: "lenet"
 title: "The Network That Read Your Cheques"
 subtitle: "LeNet and convolutions: how giving networks the right structure let them see, and quietly read millions of bank cheques"

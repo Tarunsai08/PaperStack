@@ -1,6 +1,7 @@
 ---
 id: "paper-lora"
 kind: "paper"
+subject: "ml"
 slug: "lora"
 title: "Fine-Tune a Giant by Training a Tiny Add-On"
 subtitle: "LoRA: freeze the huge model, learn two skinny matrices, and cut trainable parameters by up to ten thousand times"

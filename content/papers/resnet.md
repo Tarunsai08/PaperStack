@@ -1,6 +1,7 @@
 ---
 id: "paper-resnet"
 kind: "paper"
+subject: "ml"
 slug: "resnet"
 title: "Why Deeper Got Worse, and the Shortcut That Fixed It"
 subtitle: "ResNet: a one-line change that let networks grow past 100 layers and became the most cited paper of the century"

@@ -1,6 +1,7 @@
 ---
 id: "paper-chinchilla"
 kind: "paper"
+subject: "ml"
 slug: "chinchilla"
 title: "The Giant Models Were Underfed"
 subtitle: "Chinchilla: a smaller model trained on four times more data beat models up to seven times its size"

@@ -1,6 +1,7 @@
 ---
 id: paper-blip-bootstrapping-language-image-pre-training-for-unified-v
 kind: paper
+subject: "ml"
 slug: blip-bootstrapping-language-image-pre-training-for-unified-v
 title: Teaching One Model to See, Read, and Write
 subtitle: How bootstrapping synthetic captions fixed the web's messy vision data

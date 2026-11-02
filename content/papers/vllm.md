@@ -1,6 +1,7 @@
 ---
 id: "paper-vllm"
 kind: "paper"
+subject: "ml"
 slug: "vllm"
 title: "Borrowing an Old OS Trick to Serve Chatbots"
 subtitle: "PagedAttention and vLLM: managing a model's memory like virtual memory pages, and serving several times more users per GPU"

@@ -1,6 +1,7 @@
 ---
 id: "paper-gpt-1"
 kind: "paper"
+subject: "ml"
 slug: "gpt-1"
 title: "Read Seven Thousand Books, Then Take Any Test"
 subtitle: "GPT-1: the quiet 2018 report that introduced generative pre-training, the recipe behind every chatbot since"

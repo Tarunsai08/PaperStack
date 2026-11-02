@@ -1,6 +1,7 @@
 ---
 id: "paper-gan"
 kind: "paper"
+subject: "ml"
 slug: "gan"
 title: "The Counterfeiter and the Detective"
 subtitle: "Generative adversarial nets: two networks locked in a game, and an idea sketched in a Montreal bar that learned to fake reality"

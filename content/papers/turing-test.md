@@ -1,6 +1,7 @@
 ---
 id: "paper-turing-test"
 kind: "paper"
+subject: "ml"
 slug: "turing-test"
 title: "Can Machines Think? Turing's Brilliant Dodge"
 subtitle: "How a 1950 thought experiment replaced an unanswerable question with a game, and predicted learning machines"

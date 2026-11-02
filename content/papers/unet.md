@@ -1,6 +1,7 @@
 ---
 id: "paper-unet"
 kind: "paper"
+subject: "ml"
 slug: "unet"
 title: "The U-Shaped Network That Learned From Thirty Images"
 subtitle: "U-Net: how a clever shape let a network outline every cell in a microscope image, and later paint pictures"

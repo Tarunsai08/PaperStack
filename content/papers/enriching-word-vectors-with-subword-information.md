@@ -1,6 +1,7 @@
 ---
 id: paper-enriching-word-vectors-with-subword-information
 kind: paper
+subject: "ml"
 slug: enriching-word-vectors-with-subword-information
 title: 'Inside Words: How FastText Mastered Morphology'
 subtitle: How breaking words into character pieces gave machines a cure for vocabulary blindness

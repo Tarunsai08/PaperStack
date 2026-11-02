@@ -1,6 +1,7 @@
 ---
 id: "primer-how-to-read-papers"
 kind: "primer"
+subject: "ml"
 slug: "how-to-read-papers"
 title: "How to Read a Research Paper Without Falling Asleep"
 subtitle: "The three-pass method researchers actually use, and the five questions that unlock any paper"

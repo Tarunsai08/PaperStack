@@ -1,6 +1,7 @@
 ---
 id: "primer-data-features-labels"
 kind: "primer"
+subject: "ml"
 slug: "data-features-labels"
 title: "What Machines Actually Learn From"
 subtitle: "Data, features and labels: the raw ingredients behind every AI system you will ever meet"

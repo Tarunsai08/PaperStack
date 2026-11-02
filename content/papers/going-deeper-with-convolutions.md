@@ -1,6 +1,7 @@
 ---
 id: paper-going-deeper-with-convolutions
 kind: paper
+subject: "ml"
 slug: going-deeper-with-convolutions
 title: We Need to Go Deeper
 subtitle: How GoogLeNet squeezed 22 layers into a modest computing budget

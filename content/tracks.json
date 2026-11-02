@@ -5,7 +5,8 @@
     "subtitle": "The ideas you need before reading any paper",
     "description": "Ten short primers that give you the vocabulary and intuition of machine learning. No math anxiety, no prior knowledge needed. Everything later in the path builds on these.",
     "order": 0,
-    "accent": "#6C5CE7"
+    "accent": "#6C5CE7",
+    "subject": "ml"
   },
   {
     "id": "foundations",
@@ -13,7 +14,8 @@
     "subtitle": "Where ML came from and the classic algorithms",
     "description": "From Turing's question about thinking machines to the perceptron, backpropagation, support vector machines and random forests. The ideas every later breakthrough stands on.",
     "order": 1,
-    "accent": "#2E86DE"
+    "accent": "#2E86DE",
+    "subject": "ml"
   },
   {
     "id": "deep-learning",
@@ -21,7 +23,8 @@
     "subtitle": "Neural networks that actually work at scale",
     "description": "How neural networks went from a curiosity to the dominant tool in AI: convolutions, GPUs, dropout, better optimizers, normalization and very deep residual networks.",
     "order": 2,
-    "accent": "#10AC84"
+    "accent": "#10AC84",
+    "subject": "ml"
   },
   {
     "id": "sequences-language",
@@ -29,7 +32,8 @@
     "subtitle": "Sequence models, embeddings, early attention",
     "description": "Language is a sequence, and sequences need memory. Follow the path from LSTMs and word vectors to the first attention mechanism, the direct ancestor of today's chatbots.",
     "order": 3,
-    "accent": "#E17055"
+    "accent": "#E17055",
+    "subject": "ml"
   },
   {
     "id": "generative",
@@ -37,7 +41,8 @@
     "subtitle": "VAEs, GANs, diffusion",
     "description": "How models learned to generate new images instead of just labeling old ones: variational autoencoders, the adversarial game of GANs, and the diffusion models behind modern image generators.",
     "order": 4,
-    "accent": "#D63384"
+    "accent": "#D63384",
+    "subject": "ml"
   },
   {
     "id": "reinforcement",
@@ -45,7 +50,8 @@
     "subtitle": "Reinforcement learning and game-playing AI",
     "description": "Learning from rewards instead of labels. Atari-playing agents, the AlphaGo match, and PPO, the algorithm that later helped align language models.",
     "order": 5,
-    "accent": "#E58E26"
+    "accent": "#E58E26",
+    "subject": "ml"
   },
   {
     "id": "transformers-llms",
@@ -53,7 +59,8 @@
     "subtitle": "The architecture behind modern AI",
     "description": "The Transformer, GPT, BERT, scaling laws and the jump to vision and multimodal models. This is the engine room of modern AI.",
     "order": 6,
-    "accent": "#FF6719"
+    "accent": "#FF6719",
+    "subject": "ml"
   },
   {
     "id": "useful-llms",
@@ -61,7 +68,8 @@
     "subtitle": "Alignment, reasoning, retrieval, fine-tuning",
     "description": "A raw language model is not an assistant. Learn how human feedback, chain-of-thought prompting, retrieval, cheap fine-tuning and open models turned LLMs into tools people use every day.",
     "order": 7,
-    "accent": "#0FB9B1"
+    "accent": "#0FB9B1",
+    "subject": "ml"
   },
   {
     "id": "ai-systems",
@@ -69,6 +77,268 @@
     "subtitle": "How huge models are trained and served efficiently",
     "description": "Models with billions of parameters do not fit on one chip, and serving them to millions of people is its own engineering puzzle. Meet the systems papers that make modern AI practical.",
     "order": 8,
-    "accent": "#5F6CAF"
+    "accent": "#5F6CAF",
+    "subject": "ml"
+  },
+  {
+    "id": "dsa-start",
+    "title": "Start Here",
+    "subtitle": "Complexity, the C++ toolkit, and how to think",
+    "description": "How to read constraints, estimate complexity, use the C++ STL well, and approach a problem you have never seen.",
+    "order": 0,
+    "accent": "#2E86DE",
+    "subject": "dsa"
+  },
+  {
+    "id": "dsa-arrays",
+    "title": "Arrays and Strings",
+    "subtitle": "Two pointers, sliding windows, prefix sums, hashing",
+    "description": "The patterns behind most easy and medium interview problems: scanning arrays cleverly so one pass does the work of two loops.",
+    "order": 1,
+    "accent": "#3B82F6",
+    "subject": "dsa"
+  },
+  {
+    "id": "dsa-search-sort",
+    "title": "Searching and Sorting",
+    "subtitle": "Binary search on answers, sorting as a tool",
+    "description": "Binary search is far more than finding a number in a sorted list. Learn to search over answers and use sorting to unlock greedy solutions.",
+    "order": 2,
+    "accent": "#0EA5E9",
+    "subject": "dsa"
+  },
+  {
+    "id": "dsa-linear",
+    "title": "Linked Lists, Stacks and Queues",
+    "subtitle": "Pointer tricks and monotonic structures",
+    "description": "Fast and slow pointers, reversal, monotonic stacks and deques: small structures with surprisingly deep patterns.",
+    "order": 3,
+    "accent": "#6366F1",
+    "subject": "dsa"
+  },
+  {
+    "id": "dsa-recursion",
+    "title": "Recursion and Backtracking",
+    "subtitle": "Trust the recursion, then prune",
+    "description": "How to think recursively, generate subsets and permutations, and prune search trees so backtracking finishes in time.",
+    "order": 4,
+    "accent": "#8B5CF6",
+    "subject": "dsa"
+  },
+  {
+    "id": "dsa-trees",
+    "title": "Trees",
+    "subtitle": "Traversals, BSTs and tree recursion",
+    "description": "Binary trees, BSTs, traversal orders, lowest common ancestors and the post-order trick that solves most tree problems.",
+    "order": 5,
+    "accent": "#14B8A6",
+    "subject": "dsa"
+  },
+  {
+    "id": "dsa-heaps-greedy",
+    "title": "Heaps, Intervals and Greedy",
+    "subtitle": "Top-k, scheduling and exchange arguments",
+    "description": "Priority queues, interval problems and greedy algorithms, with the exchange argument that proves greedy is safe.",
+    "order": 6,
+    "accent": "#F59E0B",
+    "subject": "dsa"
+  },
+  {
+    "id": "dsa-graphs",
+    "title": "Graphs",
+    "subtitle": "BFS, DFS, topological sort, union-find, shortest paths",
+    "description": "Model problems as graphs, then pick the right traversal: BFS for levels, DFS for structure, Dijkstra for weights, union-find for groups.",
+    "order": 7,
+    "accent": "#10B981",
+    "subject": "dsa"
+  },
+  {
+    "id": "dsa-dp",
+    "title": "Dynamic Programming",
+    "subtitle": "States, transitions and the classic DP families",
+    "description": "DP explained as careful recursion plus memory. Knapsack, sequences, grids, intervals, trees and bitmasks, built up pattern by pattern.",
+    "order": 8,
+    "accent": "#EF4444",
+    "subject": "dsa"
+  },
+  {
+    "id": "dsa-advanced",
+    "title": "Advanced Structures",
+    "subtitle": "Tries, Fenwick trees, segment trees, bit tricks",
+    "description": "The structures that separate a good interview from a great one: tries, binary indexed trees, segment tree basics and bit manipulation.",
+    "order": 9,
+    "accent": "#64748B",
+    "subject": "dsa"
+  },
+  {
+    "id": "cp-start",
+    "title": "Contest Craft",
+    "subtitle": "Templates, fast I/O, strategy and the rating ladder",
+    "description": "How contests work, how to read problems fast, what to put in your template, and a practice ladder from 800 to 2000+ rating.",
+    "order": 0,
+    "accent": "#E5484D",
+    "subject": "cp"
+  },
+  {
+    "id": "cp-math",
+    "title": "Number Theory and Combinatorics",
+    "subtitle": "Primes, modular arithmetic, counting",
+    "description": "Sieves, fast exponentiation, modular inverses, the Chinese remainder theorem, binomial coefficients and inclusion-exclusion.",
+    "order": 1,
+    "accent": "#DC2626",
+    "subject": "cp"
+  },
+  {
+    "id": "cp-ranges",
+    "title": "Range Queries",
+    "subtitle": "Sparse tables, segment trees, lazy propagation",
+    "description": "Answer millions of range queries fast: sparse tables, Fenwick tricks, segment trees, lazy propagation, sqrt decomposition and Mo's algorithm.",
+    "order": 2,
+    "accent": "#F97316",
+    "subject": "cp"
+  },
+  {
+    "id": "cp-dp",
+    "title": "DP Techniques",
+    "subtitle": "Bitmask, digit, tree DP and optimisations",
+    "description": "The DP families that appear in contests but rarely in interviews, plus the optimisations that turn O(n^2) into O(n log n).",
+    "order": 3,
+    "accent": "#DB2777",
+    "subject": "cp"
+  },
+  {
+    "id": "cp-graphs",
+    "title": "Advanced Graphs",
+    "subtitle": "SCCs, bridges, LCA, flows and more",
+    "description": "Strongly connected components, bridges, 2-SAT, binary lifting, heavy-light decomposition, centroid decomposition and maximum flow.",
+    "order": 4,
+    "accent": "#9333EA",
+    "subject": "cp"
+  },
+  {
+    "id": "cp-strings",
+    "title": "String Algorithms",
+    "subtitle": "Prefix function, Z, hashing, suffix arrays",
+    "description": "Linear-time pattern matching, polynomial hashing, suffix arrays, Aho-Corasick and palindromes with Manacher.",
+    "order": 5,
+    "accent": "#0891B2",
+    "subject": "cp"
+  },
+  {
+    "id": "cp-misc",
+    "title": "Games, Geometry and Tricks",
+    "subtitle": "Grundy numbers, geometry basics, randomisation",
+    "description": "Game theory with Sprague-Grundy, computational geometry basics, meet in the middle, randomised techniques and interactive problems.",
+    "order": 6,
+    "accent": "#65A30D",
+    "subject": "cp"
+  },
+  {
+    "id": "fa-sketches",
+    "title": "Probabilistic Data Structures",
+    "subtitle": "Trade a little accuracy for a lot of memory",
+    "description": "Bloom filters, Count-Min Sketch, HyperLogLog, MinHash and friends: how big systems answer questions about billions of items using kilobytes.",
+    "order": 0,
+    "accent": "#10AC84",
+    "subject": "famous-algos"
+  },
+  {
+    "id": "fa-distributed",
+    "title": "Distributed Algorithms",
+    "subtitle": "How many machines agree on anything",
+    "description": "Consistent hashing, logical clocks, gossip, Raft, Paxos, CRDTs and Merkle trees: the algorithms that keep the cloud consistent.",
+    "order": 1,
+    "accent": "#0D9488",
+    "subject": "famous-algos"
+  },
+  {
+    "id": "fa-storage",
+    "title": "Storage and Indexing",
+    "subtitle": "How databases and editors really store data",
+    "description": "LSM trees, write-ahead logs, B+ tree pages, bitmaps, geohashes, ropes and piece tables: the clever layouts under every app.",
+    "order": 2,
+    "accent": "#059669",
+    "subject": "famous-algos"
+  },
+  {
+    "id": "fa-coding",
+    "title": "Compression and Error Correction",
+    "subtitle": "Squeezing data and surviving noise",
+    "description": "Lempel-Ziv, Burrows-Wheeler, arithmetic coding, CRC, Hamming and Reed-Solomon codes: why ZIP files, QR codes and Wi-Fi work.",
+    "order": 3,
+    "accent": "#16A34A",
+    "subject": "famous-algos"
+  },
+  {
+    "id": "fa-crypto",
+    "title": "Cryptography",
+    "subtitle": "The maths that keeps secrets on the internet",
+    "description": "Diffie-Hellman, RSA, hashing, HMAC, elliptic curves and secret sharing, explained from intuition up.",
+    "order": 4,
+    "accent": "#047857",
+    "subject": "famous-algos"
+  },
+  {
+    "id": "fa-search",
+    "title": "Search, Ranking and Diffing",
+    "subtitle": "PageRank, BM25, diff and sync",
+    "description": "How search engines rank pages, how Git computes diffs, and how rsync copies only what changed.",
+    "order": 5,
+    "accent": "#15803D",
+    "subject": "famous-algos"
+  },
+  {
+    "id": "fa-signals",
+    "title": "Signals, Paths and Estimation",
+    "subtitle": "FFT, Kalman, Viterbi, A* and more",
+    "description": "The algorithms inside your phone's GPS, your music player and your games: FFT, Kalman filters, Viterbi, A* and simulated annealing.",
+    "order": 6,
+    "accent": "#0F766E",
+    "subject": "famous-algos"
+  },
+  {
+    "id": "sd-fundamentals",
+    "title": "Fundamentals",
+    "subtitle": "How to approach any design question",
+    "description": "The interview framework, back-of-envelope estimates, latency numbers, networking basics, APIs and the core vocabulary of scale.",
+    "order": 0,
+    "accent": "#E58E26",
+    "subject": "system-design"
+  },
+  {
+    "id": "sd-blocks",
+    "title": "Building Blocks",
+    "subtitle": "Caches, queues, load balancers, databases",
+    "description": "The components every large system is assembled from, what each one is good at, and when not to use it.",
+    "order": 1,
+    "accent": "#D97706",
+    "subject": "system-design"
+  },
+  {
+    "id": "sd-scaling",
+    "title": "Scaling and Reliability",
+    "subtitle": "Sharding, replication, resilience, observability",
+    "description": "How a system grows from one server to millions of users, and how it keeps working when parts of it fail.",
+    "order": 2,
+    "accent": "#EA580C",
+    "subject": "system-design"
+  },
+  {
+    "id": "sd-cases",
+    "title": "Case Studies",
+    "subtitle": "Design real systems end to end",
+    "description": "URL shorteners, chat, news feeds, video streaming, ride sharing, payments and more, each designed step by step with honest trade-offs.",
+    "order": 3,
+    "accent": "#C2410C",
+    "subject": "system-design"
+  },
+  {
+    "id": "sd-distributed",
+    "title": "Distributed Systems",
+    "subtitle": "Replication, consensus, consistency and time",
+    "description": "The theory under real systems: consistency models, quorums, consensus, distributed transactions, clocks and failure handling.",
+    "order": 4,
+    "accent": "#B45309",
+    "subject": "system-design"
   }
 ]

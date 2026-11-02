@@ -8,6 +8,7 @@ import { haptic } from '../lib/native';
 import { applyFilters, buildSearchIndex, search, type SearchFilters } from '../lib/search';
 import { useStore } from '../lib/storage';
 import { useContent } from '../lib/useContent';
+import type { SubjectId } from '../lib/types';
 
 function Chip({ active, onClick, children, dot }: { active: boolean; onClick: () => void; children: string; dot?: string }) {
   return (
@@ -34,7 +35,7 @@ export default function Search() {
   const query = useDeferredValue(q);
   const [f, setF] = useState<SearchFilters>({});
   const index = useMemo(() => buildSearchIndex(content.path), [content.path]);
-  const hasFilters = !!(f.track || f.difficulty || f.kind || f.unreadOnly);
+  const hasFilters = !!(f.subject || f.track || f.difficulty || f.kind || f.unreadOnly);
 
   const results = useMemo(() => {
     const base = query.trim() ? search(index, content.byId, query) : hasFilters ? content.path : [];
@@ -60,7 +61,7 @@ export default function Search() {
             <input
               value={q}
               onChange={(e) => setQ(e.target.value)}
-              placeholder="Papers, ideas, people, terms…"
+              placeholder="Ideas, papers, patterns, problems…"
               className="h-full min-w-0 flex-1 bg-transparent text-[16px] outline-none placeholder:text-muted focus-visible:outline-none"
               aria-label="Search articles"
               enterKeyHint="search"
@@ -77,14 +78,26 @@ export default function Search() {
         </div>
         <div className="no-scrollbar flex gap-2 overflow-x-auto px-5 pb-2">
           <Chip active={!!f.unreadOnly} onClick={() => toggle('unreadOnly', true)}>Unread</Chip>
-          <Chip active={f.kind === 'paper'} onClick={() => toggle('kind', 'paper')}>Papers</Chip>
-          <Chip active={f.kind === 'primer'} onClick={() => toggle('kind', 'primer')}>Primers</Chip>
           <Chip active={f.difficulty === 'beginner'} onClick={() => toggle('difficulty', 'beginner')}>Beginner</Chip>
           <Chip active={f.difficulty === 'intermediate'} onClick={() => toggle('difficulty', 'intermediate')}>Intermediate</Chip>
           <Chip active={f.difficulty === 'advanced'} onClick={() => toggle('difficulty', 'advanced')}>Advanced</Chip>
         </div>
+        <div className="no-scrollbar flex gap-2 overflow-x-auto px-5 pb-2">
+          {content.subjects
+            .filter((sub) => sub.status === 'active')
+            .map((sub) => (
+              <Chip
+                key={sub.id}
+                active={f.subject === sub.id}
+                onClick={() => setF((p) => ({ ...p, subject: p.subject === sub.id ? undefined : sub.id, track: undefined }))}
+                dot={sub.accent}
+              >
+                {sub.short}
+              </Chip>
+            ))}
+        </div>
         <div className="no-scrollbar flex gap-2 overflow-x-auto border-b border-line px-5 pb-3">
-          {content.tracks.map((t) => (
+          {(f.subject ? content.tracksInSubject(f.subject as SubjectId) : content.tracks).map((t) => (
             <Chip key={t.id} active={f.track === t.id} onClick={() => toggle('track', t.id)} dot={t.accent}>
               {t.title}
             </Chip>

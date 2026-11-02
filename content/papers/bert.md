@@ -1,6 +1,7 @@
 ---
 id: "paper-bert"
 kind: "paper"
+subject: "ml"
 slug: "bert"
 title: "Fill in the Blanks, Understand Everything"
 subtitle: "BERT: reading in both directions with a fill-in-the-blank game, and the model that changed Google Search"

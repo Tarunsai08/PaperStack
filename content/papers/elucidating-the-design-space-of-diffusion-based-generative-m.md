@@ -1,6 +1,7 @@
 ---
 id: paper-elucidating-the-design-space-of-diffusion-based-generative-m
 kind: paper
+subject: "ml"
 slug: elucidating-the-design-space-of-diffusion-based-generative-m
 title: 'Unbolting Diffusion: How EDM Tamed the Noise Equation'
 subtitle: Turning monolithic diffusion equations into clean, modular building blocks

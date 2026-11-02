@@ -1,6 +1,7 @@
 ---
 id: "paper-word2vec"
 kind: "paper"
+subject: "ml"
 slug: "word2vec"
 title: "King Minus Man Plus Woman Equals Queen"
 subtitle: "word2vec: a deliberately simple model, a billion words of news, and word vectors that captured meaning as geometry"

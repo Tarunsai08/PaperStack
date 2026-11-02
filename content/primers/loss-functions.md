@@ -1,6 +1,7 @@
 ---
 id: "primer-loss-functions"
 kind: "primer"
+subject: "ml"
 slug: "loss-functions"
 title: "How Wrong Is the Model?"
 subtitle: "The single number every AI system is secretly trying to shrink"

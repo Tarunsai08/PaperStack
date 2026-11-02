@@ -40,7 +40,9 @@ const hsl = (h: number, s: number, l: number, a = 1) =>
   `hsla(${((h % 360) + 360) % 360}, ${Math.max(0, Math.min(100, s))}%, ${Math.max(0, Math.min(100, l))}%, ${a})`;
 
 export const MOTIFS = ['rings', 'dots', 'waves', 'network', 'blocks', 'arcs'] as const;
-export type Motif = (typeof MOTIFS)[number];
+/** Subject motifs: chosen explicitly, never by the random pick, so ML covers stay as they were. */
+export const SUBJECT_MOTIFS = ['tree', 'bars', 'hex', 'servers', 'grid'] as const;
+export type Motif = (typeof MOTIFS)[number] | (typeof SUBJECT_MOTIFS)[number];
 
 const W = 320;
 const H = 180;
@@ -156,6 +158,102 @@ function drawMotif(motif: Motif, rnd: () => number, ink: string): ReactElement[]
       }
       break;
     }
+    case 'tree': {
+      const depth = 4;
+      const cx = W * (0.5 + rnd() * 0.3);
+      const top = H * 0.14;
+      const levelH = H * 0.22;
+      const spread = W * 0.5;
+      const nodes: [number, number, number][] = [];
+      const walk = (x: number, y: number, d: number, w: number) => {
+        nodes.push([x, y, d]);
+        if (d >= depth - 1) return;
+        for (const dir of [-1, 1]) {
+          if (d > 0 && rnd() < 0.18) continue;
+          const nx = x + (dir * w) / 2;
+          const ny = y + levelH;
+          els.push(<line key={`e${x}-${y}-${dir}`} x1={x} y1={y} x2={nx} y2={ny} stroke={ink} strokeWidth={1.6} opacity={0.6} />);
+          walk(nx, ny, d + 1, w / 2);
+        }
+      };
+      walk(cx, top, 0, spread);
+      nodes.forEach(([x, y, d], i) =>
+        els.push(<circle key={`n${i}`} cx={x} cy={y} r={9 - d * 1.5} fill={ink} opacity={0.95 - d * 0.12} />),
+      );
+      break;
+    }
+    case 'bars': {
+      const n = 14;
+      const bw = W / (n * 1.6);
+      let h = 0.2 + rnd() * 0.2;
+      for (let i = 0; i < n; i++) {
+        h = Math.min(0.9, Math.max(0.12, h + (rnd() - 0.38) * 0.22));
+        const x = W * 0.08 + i * bw * 1.6;
+        els.push(
+          <rect key={i} x={x} y={H * (1 - h)} width={bw} height={H * h} rx={3} fill={ink} opacity={0.3 + (i / n) * 0.6} />,
+        );
+      }
+      break;
+    }
+    case 'hex': {
+      const r = 18 + rnd() * 6;
+      const dx = r * Math.sqrt(3);
+      const fx = W * (0.4 + rnd() * 0.5);
+      const fy = H * rnd();
+      let k = 0;
+      for (let row = -1; row * r * 1.5 < H + r; row++) {
+        for (let col = -1; col * dx < W + dx; col++) {
+          const x = col * dx + (row % 2 ? dx / 2 : 0);
+          const y = row * r * 1.5;
+          const d = Math.hypot(x - fx, y - fy) / Math.hypot(W, H);
+          const pts = Array.from({ length: 6 }, (_, j) => {
+            const a = (Math.PI / 3) * j + Math.PI / 6;
+            return `${(x + r * 0.9 * Math.cos(a)).toFixed(1)},${(y + r * 0.9 * Math.sin(a)).toFixed(1)}`;
+          }).join(' ');
+          const filled = rnd() < 0.5 - d;
+          els.push(
+            <polygon
+              key={k++}
+              points={pts}
+              fill={filled ? ink : 'none'}
+              fillOpacity={0.35}
+              stroke={ink}
+              strokeWidth={1.3}
+              opacity={Math.max(0.12, 0.85 - d * 1.2)}
+            />,
+          );
+        }
+      }
+      break;
+    }
+    case 'servers': {
+      const cols = 3;
+      const x0 = W * (0.3 + rnd() * 0.15);
+      for (let c = 0; c < cols; c++) {
+        const units = 3 + Math.floor(rnd() * 2);
+        const x = x0 + c * 66;
+        for (let u = 0; u < units; u++) {
+          const y = H * 0.82 - (u + 1) * 26;
+          els.push(<rect key={`r${c}-${u}`} x={x} y={y} width={56} height={21} rx={5} fill={ink} opacity={0.22 + u * 0.1} stroke={ink} strokeOpacity={0.5} />);
+          els.push(<circle key={`l${c}-${u}`} cx={x + 46} cy={y + 10.5} r={2.6} fill={ink} opacity={rnd() < 0.7 ? 0.95 : 0.3} />);
+        }
+        if (c > 0) {
+          els.push(<path key={`w${c}`} d={`M ${x - 10} ${H * 0.9} H ${x + 28}`} stroke={ink} strokeWidth={1.6} opacity={0.6} />);
+        }
+      }
+      els.push(<line key="bus" x1={x0 + 28} y1={H * 0.9} x2={x0 + 28 + (cols - 1) * 66} y2={H * 0.9} stroke={ink} strokeWidth={1.6} opacity={0.6} />);
+      break;
+    }
+    case 'grid': {
+      const s = 20;
+      for (let x = W * 0.35; x < W; x += s) {
+        for (let y = 6; y < H; y += s) {
+          const on = rnd() < 0.35;
+          els.push(<rect key={`${x}-${y}`} x={x} y={y} width={s - 5} height={s - 5} rx={3} fill={on ? ink : 'none'} stroke={ink} strokeWidth={1} opacity={on ? 0.75 : 0.35} />);
+        }
+      }
+      break;
+    }
   }
   return els;
 }
@@ -166,23 +264,26 @@ export interface CoverArtProps {
   className?: string;
   /** Rounded corners are applied by the parent; this only controls the SVG. */
   title?: string;
+  /** Force a motif (subject covers). Without it, the motif is picked from the seed. */
+  motif?: string;
 }
 
-function CoverArtImpl({ seed, accent, className, title }: CoverArtProps) {
+function CoverArtImpl({ seed, accent, className, title, motif: forced }: CoverArtProps) {
   const uid = useId().replace(/:/g, '');
   const art = useMemo(() => {
     const rnd = seededRandom(seed);
     const [h, s, l] = hexToHsl(accent);
     const shift = (rnd() - 0.5) * 60;
     const angle = Math.floor(rnd() * 360);
-    const motif = MOTIFS[Math.floor(rnd() * MOTIFS.length)];
+    const picked = MOTIFS[Math.floor(rnd() * MOTIFS.length)];
+    const motif = ((SUBJECT_MOTIFS as readonly string[]).includes(forced ?? '') ? forced : picked) as Motif;
     const c1 = hsl(h, s * 0.95, Math.max(18, l - 20));
     const c2 = hsl(h + shift, Math.min(95, s + 5), Math.min(68, l + 6));
     const c3 = hsl(h - shift * 0.6, s * 0.9, Math.max(14, l - 28));
     const glow = { x: 0.2 + rnd() * 0.6, y: 0.1 + rnd() * 0.5 };
     const els = drawMotif(motif, rnd, 'white');
     return { angle, c1, c2, c3, glow, els, motif };
-  }, [seed, accent]);
+  }, [seed, accent, forced]);
 
   return (
     <svg
@@ -218,4 +319,9 @@ function CoverArtImpl({ seed, accent, className, title }: CoverArtProps) {
 }
 
 export const CoverArt = memo(CoverArtImpl);
+
+/** Motif for an article or track cover: ML keeps its seeded mix; other subjects use their own motif. */
+export function subjectMotif(subject: { id: string; motif: string } | undefined): string | undefined {
+  return subject && subject.id !== 'ml' ? subject.motif : undefined;
+}
 export default CoverArt;

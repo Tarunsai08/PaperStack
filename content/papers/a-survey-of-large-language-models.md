@@ -1,6 +1,7 @@
 ---
 id: paper-a-survey-of-large-language-models
 kind: paper
+subject: "ml"
 slug: a-survey-of-large-language-models
 title: The Four Pillars of the LLM Revolution
 subtitle: How researchers mapped the hidden mechanics of modern language models

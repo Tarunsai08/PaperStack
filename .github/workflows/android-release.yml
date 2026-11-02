@@ -31,7 +31,9 @@ jobs:
           cache-dependency-path: pipeline/requirements.txt
       - run: pip install -r pipeline/requirements.txt
       - name: Validate content and build index
-        run: python pipeline/build_index.py
+        run: |
+          python pipeline/build_index.py
+          python tools/check_cpp.py
 
       - uses: actions/setup-node@v4
         with:

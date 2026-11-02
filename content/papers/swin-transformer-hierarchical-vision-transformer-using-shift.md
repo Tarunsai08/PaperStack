@@ -1,6 +1,7 @@
 ---
 id: paper-swin-transformer-hierarchical-vision-transformer-using-shift
 kind: paper
+subject: "ml"
 slug: swin-transformer-hierarchical-vision-transformer-using-shift
 title: Shift the Window, Scale the Vision
 subtitle: How hierarchical shifted windows let Transformers conquer high-resolution images

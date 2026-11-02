@@ -1,6 +1,7 @@
 ---
 id: paper-taming-transformers-for-high-resolution-image-synthesis
 kind: paper
+subject: "ml"
 slug: taming-transformers-for-high-resolution-image-synthesis
 title: Taming Transformers for Megapixel Images
 subtitle: How visual codebooks let attention scale from tiny patches to high resolution

@@ -1,6 +1,7 @@
 ---
 id: "paper-llama"
 kind: "paper"
+subject: "ml"
 slug: "llama"
 title: "Small Enough to Share, Strong Enough to Matter"
 subtitle: "LLaMA: open models trained on public data that rivalled giants, and set off an explosion of open-source AI"

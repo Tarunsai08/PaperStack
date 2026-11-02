@@ -1,11 +1,80 @@
 {
- "content_version": "663e22207a3adb49",
- "generated_at": "2026-11-01",
- "count": 83,
+ "content_version": "ffb2d53fd1b3ac58",
+ "generated_at": "2026-11-02",
+ "count": 85,
+ "subjects": [
+  {
+   "id": "ml",
+   "title": "Machine Learning",
+   "short": "ML",
+   "subtitle": "From zero to modern AI, one landmark paper at a time",
+   "description": "Primers and story-driven articles on the research papers that built modern AI, from the perceptron to transformers and LLM systems.",
+   "order": 0,
+   "accent": "#6C5CE7",
+   "motif": "network",
+   "status": "active"
+  },
+  {
+   "id": "dsa",
+   "title": "Data Structures and Algorithms",
+   "short": "DSA",
+   "subtitle": "Patterns and reasoning for top-tier coding interviews",
+   "description": "Learn to recognise patterns instead of memorising solutions. Every article explains the idea, traces an example by hand, gives clean C++, and ends with practice problems.",
+   "order": 1,
+   "accent": "#2E86DE",
+   "motif": "tree",
+   "status": "active"
+  },
+  {
+   "id": "cp",
+   "title": "Competitive Programming",
+   "short": "CP",
+   "subtitle": "The techniques that go beyond interview DSA",
+   "description": "Number theory, range queries, DP optimisations, advanced graphs, string algorithms and contest strategy, with a rating ladder of practice problems.",
+   "order": 2,
+   "accent": "#E5484D",
+   "motif": "bars",
+   "status": "active"
+  },
+  {
+   "id": "famous-algos",
+   "title": "Famous Algorithms",
+   "short": "Famous",
+   "subtitle": "The clever ideas you use every day but were never taught",
+   "description": "Bloom filters, consistent hashing, Raft, LSM trees, FFT, RSA and more: the algorithms hiding inside databases, browsers and the internet, and why they are clever.",
+   "order": 3,
+   "accent": "#10AC84",
+   "motif": "hex",
+   "status": "active"
+  },
+  {
+   "id": "system-design",
+   "title": "System Design",
+   "short": "Systems",
+   "subtitle": "Design large systems and reason about distributed ones",
+   "description": "Fundamentals, building blocks, scaling, classic case studies and distributed systems deep dives, with original diagrams and honest trade-offs.",
+   "order": 4,
+   "accent": "#E58E26",
+   "motif": "servers",
+   "status": "active"
+  },
+  {
+   "id": "cs-core",
+   "title": "CS Core",
+   "short": "Core",
+   "subtitle": "Operating systems, databases, networks and OOP",
+   "description": "The core CS subjects every interview loop checks. The curriculum is planned; articles are coming soon.",
+   "order": 5,
+   "accent": "#5F6CAF",
+   "motif": "grid",
+   "status": "coming-soon"
+  }
+ ],
  "articles": [
   {
    "id": "primer-ai-ml-dl-map",
    "kind": "primer",
+   "subject": "ml",
    "slug": "ai-ml-dl-map",
    "title": "AI, ML, and Deep Learning: The Map You Wish You Had",
    "subtitle": "Three buzzwords, one simple picture, and why the difference actually matters",
@@ -86,13 +155,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.9,
    "path": "primers/ai-ml-dl-map.md",
-   "hash": "e1ec3a5943c1",
+   "hash": "d8d1ae679fbe",
    "word_count": 1235,
    "excerpt": "Before lunch today, you probably used AI a dozen times without noticing. Your phone unlocked when it saw your face. Your inbox quietly hid three scam emails. Your keyboard guessed the next word before you typed it. Here is the strange part. If you ask three people what \"AI\" means, you will get…"
   },
   {
    "id": "primer-data-features-labels",
    "kind": "primer",
+   "subject": "ml",
    "slug": "data-features-labels",
    "title": "What Machines Actually Learn From",
    "subtitle": "Data, features and labels: the raw ingredients behind every AI system you will ever meet",
@@ -175,13 +245,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.85,
    "path": "primers/data-features-labels.md",
-   "hash": "960520b507d9",
+   "hash": "db954af3dbc6",
    "word_count": 1090,
    "excerpt": "Watch a seasoned fruit seller pick a mango. She presses it gently, sniffs near the stem, glances at the colour, and says \"this one, eat it tomorrow.\" She never studied botany. She has simply seen tens of thousands of mangoes and remembers how each one turned out. That is exactly what machine…"
   },
   {
    "id": "primer-loss-functions",
    "kind": "primer",
+   "subject": "ml",
    "slug": "loss-functions",
    "title": "How Wrong Is the Model?",
    "subtitle": "The single number every AI system is secretly trying to shrink",
@@ -259,13 +330,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.85,
    "path": "primers/loss-functions.md",
-   "hash": "2b6aac266681",
+   "hash": "b99536efa066",
    "word_count": 1053,
    "excerpt": "A weather app says \"90% chance of rain,\" and the day turns out bright and sunny. Another app said \"60% chance of rain.\" Both were wrong. But was one of them more wrong? Most people feel that the 90% app deserves more blame. It was confident and mistaken. That gut feeling, turned into a precise…"
   },
   {
    "id": "primer-gradient-descent",
    "kind": "primer",
+   "subject": "ml",
    "slug": "gradient-descent",
    "title": "Finding the Bottom of a Valley Blindfolded",
    "subtitle": "Gradient descent: the humble walking algorithm that trains almost every AI model",
@@ -347,13 +419,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.88,
    "path": "primers/gradient-descent.md",
-   "hash": "0230cab4cacf",
+   "hash": "9afea47e594d",
    "word_count": 1122,
    "excerpt": "You are standing somewhere on a hillside in thick fog. You cannot see more than a metre. Somewhere below is the valley floor, where there is a warm village and a cup of chai. You have no map. What do you do? You feel the ground under your feet, figure out which way slopes down most steeply, and…"
   },
   {
    "id": "primer-classification",
    "kind": "primer",
+   "subject": "ml",
    "slug": "classification",
    "title": "Yes or No? How Machines Make Decisions",
    "subtitle": "Logistic regression: a weighted vote, a smooth squash, and the first real classifier you can build by hand",
@@ -435,13 +508,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.84,
    "path": "primers/classification.md",
-   "hash": "dc92227be4bc",
+   "hash": "7ef5ace5470a",
    "word_count": 1058,
    "excerpt": "Every day, software makes millions of tiny yes-or-no decisions about you. Is this card payment fraud? Is this email spam? Should this loan be approved? Will this user click this ad? Many of these decisions are made by an idea so simple you can compute it on the back of a bus ticket. It has a…"
   },
   {
    "id": "primer-overfitting",
    "kind": "primer",
+   "subject": "ml",
    "slug": "overfitting",
    "title": "Memorizing vs Learning",
    "subtitle": "Overfitting, underfitting and test sets: how to tell if a model actually understands anything",
@@ -528,13 +602,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.86,
    "path": "primers/overfitting.md",
-   "hash": "55f910f913af",
+   "hash": "05ad3e7d0b3a",
    "word_count": 1059,
    "excerpt": "Two students prepare for the same exam. Riya gets hold of last year's paper and memorizes every answer, word for word. Arjun works through the same paper too, but keeps asking why each answer is right. On exam day, the questions are new. Riya, who scored perfectly on every practice run, freezes.…"
   },
   {
    "id": "primer-neural-networks",
    "kind": "primer",
+   "subject": "ml",
    "slug": "neural-networks",
    "title": "Neural Networks from One Neuron Up",
    "subtitle": "How stacking thousands of tiny calculators produces something that can see, read and talk",
@@ -616,13 +691,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.9,
    "path": "primers/neural-networks.md",
-   "hash": "2ad7aa489e0d",
+   "hash": "cb6e4d01b81e",
    "word_count": 1023,
    "excerpt": "Each artificial neuron in a neural network does something a ten-year-old could do with a pencil: multiply a few numbers, add them up, and decide whether the result is worth passing on. That is all. There is no magic inside. And yet, wire up a few million of these little calculators in the right…"
   },
   {
    "id": "primer-backprop-intuition",
    "kind": "primer",
+   "subject": "ml",
    "slug": "backprop-intuition",
    "title": "Backpropagation Without the Scary Math",
    "subtitle": "How a network figures out which of its million knobs to blame for a mistake",
@@ -706,13 +782,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.88,
    "path": "primers/backprop-intuition.md",
-   "hash": "8322b9c583ba",
+   "hash": "78aa7a848dad",
    "word_count": 1183,
    "excerpt": "A restaurant gets a one-star review: \"The biryani was cold and bland.\" The owner has to fix it. But whose fault was it? The cook who under-salted it? The supplier whose spices were stale? The waiter who left it on the counter for ten minutes? To improve, the owner has to divide the blame fairly,…"
   },
   {
    "id": "primer-embeddings",
    "kind": "primer",
+   "subject": "ml",
    "slug": "embeddings",
    "title": "How Words Become Numbers With Meaning",
    "subtitle": "Embeddings: the map of meaning hiding inside every search engine, recommender and chatbot",
@@ -795,13 +872,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.92,
    "path": "primers/embeddings.md",
-   "hash": "f43928297ef5",
+   "hash": "523eb8b8c008",
    "word_count": 1000,
    "excerpt": "In 2013, a group of researchers led by Tomas Mikolov trained a model on a large pile of text and then tried a strange piece of arithmetic. They took the numbers representing \"king,\" subtracted the numbers for \"man,\" added the numbers for \"woman,\" and looked for the closest word to the result. It…"
   },
   {
    "id": "primer-how-to-read-papers",
    "kind": "primer",
+   "subject": "ml",
    "slug": "how-to-read-papers",
    "title": "How to Read a Research Paper Without Falling Asleep",
    "subtitle": "The three-pass method researchers actually use, and the five questions that unlock any paper",
@@ -887,13 +965,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.8,
    "path": "primers/how-to-read-papers.md",
-   "hash": "da7a6f5354e1",
+   "hash": "7f8b219c631d",
    "word_count": 1059,
    "excerpt": "The first time you open a real machine learning paper, it can feel like walking into the middle of a conversation in a language you half know. Dense paragraphs. Greek letters. Tables of numbers in bold. References to twenty other papers you have never heard of. Here is a secret that might make you…"
   },
   {
    "id": "paper-turing-test",
    "kind": "paper",
+   "subject": "ml",
    "slug": "turing-test",
    "title": "Can Machines Think? Turing's Brilliant Dodge",
    "subtitle": "How a 1950 thought experiment replaced an unanswerable question with a game, and predicted learning machines",
@@ -979,13 +1058,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.9,
    "path": "papers/turing-test.md",
-   "hash": "2afcf052eeb0",
+   "hash": "3b7432431439",
    "word_count": 1457,
    "excerpt": "In 1950, there were only a handful of electronic computers on the planet. They filled rooms, broke down constantly, and were used mostly to crunch numbers for physicists. Their memories could hold a few thousand numbers. That year, a 38-year-old mathematician in Manchester published a paper in a…"
   },
   {
    "id": "paper-perceptron",
    "kind": "paper",
+   "subject": "ml",
    "slug": "perceptron",
    "title": "The Machine That Learned From Its Mistakes",
    "subtitle": "Rosenblatt's perceptron: the 1958 invention that started neural networks, and the hype that nearly ended them",
@@ -1076,13 +1156,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.88,
    "path": "papers/perceptron.md",
-   "hash": "e327093bbbd2",
+   "hash": "4f9cdbfe3fa7",
    "word_count": 1446,
    "excerpt": "In July 1958, the New York Times ran a story about a machine funded by the US Navy. The Navy, it reported, expected the device to eventually \"walk, talk, see, write, reproduce itself and be conscious of its existence.\" The machine in question could, at that point, learn to tell whether a square was…"
   },
   {
    "id": "paper-backpropagation",
    "kind": "paper",
+   "subject": "ml",
    "slug": "backpropagation",
    "title": "Four Pages That Woke Up Neural Networks",
    "subtitle": "How backpropagation taught hidden layers to invent their own features, and ended the perceptron's long winter",
@@ -1175,13 +1256,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.95,
    "path": "papers/backpropagation.md",
-   "hash": "ec5eae8b2e97",
+   "hash": "4fc6c705c023",
    "word_count": 1453,
    "excerpt": "By the early 1980s, neural networks were a career risk. Minsky and Papert's book had shown what single-layer perceptrons could not do, funding had dried up, and serious researchers were advised to work on something else. Then, in October 1986, the journal Nature published a paper just four pages…"
   },
   {
    "id": "paper-support-vector-networks",
    "kind": "paper",
+   "subject": "ml",
    "slug": "support-vector-networks",
    "title": "Draw the Widest Road Between Two Crowds",
    "subtitle": "Support vector machines: the margin idea that dominated machine learning before deep learning took over",
@@ -1273,13 +1355,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.86,
    "path": "papers/support-vector-networks.md",
-   "hash": "35a6f2d9fff6",
+   "hash": "dd79e4f11abe",
    "word_count": 1466,
    "excerpt": "Imagine two crowds of fans after a cricket match, spilling out onto the same open ground. The police want to put up a barrier between them. Many barrier positions would technically separate the groups. But if you put it right next to one crowd, the first person who steps sideways ends up on the…"
   },
   {
    "id": "paper-random-forests",
    "kind": "paper",
+   "subject": "ml",
    "slug": "random-forests",
    "title": "Why a Crowd of Bad Guessers Beats an Expert",
    "subtitle": "Breiman's random forests: deliberately weakened decision trees that vote their way to excellent predictions",
@@ -1369,13 +1452,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.84,
    "path": "papers/random-forests.md",
-   "hash": "16a8615703b2",
+   "hash": "b7976dc2c3f7",
    "word_count": 1437,
    "excerpt": "In 1906, at a country fair in England, around 800 people paid to guess the weight of an ox. Most guesses were off, some wildly. But when the scientist Francis Galton looked at all the guesses together, the middle value was within about one percent of the true weight. The crowd, as a whole, beat the…"
   },
   {
    "id": "paper-few-useful-things",
    "kind": "paper",
+   "subject": "ml",
    "slug": "few-useful-things",
    "title": "The Folk Wisdom Textbooks Forgot to Teach",
    "subtitle": "Pedro Domingos' twelve hard-won lessons about what actually makes machine learning work",
@@ -1465,13 +1549,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.82,
    "path": "papers/few-useful-things.md",
-   "hash": "6c08762106a9",
+   "hash": "1dde95c033f9",
    "word_count": 1435,
    "excerpt": "Every craft has two kinds of knowledge. There is what the textbook says, and there is what the old hands know: the tricks, the traps, the \"never do this on a Friday\" rules that nobody writes down because everybody learned them the hard way. In 2012, Pedro Domingos wrote down machine learning's…"
   },
   {
    "id": "paper-thumbs-up-sentiment-classification-using-machine-learning-te",
    "kind": "paper",
+   "subject": "ml",
    "slug": "thumbs-up-sentiment-classification-using-machine-learning-te",
    "title": "Thumbs Up? How Machines Learned to Read Reviews",
    "subtitle": "Why human word lists failed and simple statistics conquered sentiment analysis",
@@ -1565,13 +1650,14 @@
    "generated_at": "2026-10-16",
    "importance_score": 0.76,
    "path": "papers/thumbs-up-sentiment-classification-using-machine-learning-te.md",
-   "hash": "73b25093b082",
+   "hash": "30a3bf1a4783",
    "word_count": 1759,
    "excerpt": "If you want a computer to know whether an article is about sports or politics, you just look for words like \"touchdown\" or \"senator\". Topic classification is easy because the subject dictates the vocabulary. But what happens when you ask an algorithm whether a movie review is a glowing…"
   },
   {
    "id": "paper-stop-explaining-black-box-machine-learning-models-for-high-s",
    "kind": "paper",
+   "subject": "ml",
    "slug": "stop-explaining-black-box-machine-learning-models-for-high-s",
    "title": "Why Explaining Black Boxes Fails",
    "subtitle": "How inherently transparent models beat opaque algorithms at high stakes",
@@ -1663,13 +1749,14 @@
    "generated_at": "2026-10-20",
    "importance_score": 0.79,
    "path": "papers/stop-explaining-black-box-machine-learning-models-for-high-s.md",
-   "hash": "738a2275c715",
+   "hash": "175976fd1a28",
    "word_count": 2226,
    "excerpt": "A judge decides whether a prisoner receives bail based on a proprietary risk score. A doctor chooses whether to send an intensive care patient home based on a neural network output. A city sends emergency crews into an unfolding crisis guided by a machine learning forecast. When these decisions…"
   },
   {
    "id": "paper-lenet",
    "kind": "paper",
+   "subject": "ml",
    "slug": "lenet",
    "title": "The Network That Read Your Cheques",
    "subtitle": "LeNet and convolutions: how giving networks the right structure let them see, and quietly read millions of bank cheques",
@@ -1762,13 +1849,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.9,
    "path": "papers/lenet.md",
-   "hash": "7bc964e13de4",
+   "hash": "e7b1fbd87d7b",
    "word_count": 1422,
    "excerpt": "In the late 1990s, if you deposited a cheque at certain American banks, there was a fair chance a neural network read the handwritten amount. Not in a research lab. In production, every day, on millions of cheques. This was more than a decade before \"deep learning\" became a buzzword. The network…"
   },
   {
    "id": "paper-deep-autoencoders",
    "kind": "paper",
+   "subject": "ml",
    "slug": "deep-autoencoders",
    "title": "How to Squeeze a Picture Into Thirty Numbers",
    "subtitle": "Hinton and Salakhutdinov's deep autoencoders: the 2006 trick that made deep networks trainable again",
@@ -1863,13 +1951,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.8,
    "path": "papers/deep-autoencoders.md",
-   "hash": "0170817dc257",
+   "hash": "1c4d7b95d29f",
    "word_count": 1415,
    "excerpt": "In 2006, deep neural networks had a reputation problem. Everyone agreed that, in theory, networks with many layers should be powerful. In practice, they refused to learn. Researchers would set them up, press \"train,\" and watch them settle into useless answers. Then Geoffrey Hinton and his student…"
   },
   {
    "id": "paper-alexnet",
    "kind": "paper",
+   "subject": "ml",
    "slug": "alexnet",
    "title": "The Night Deep Learning Won",
    "subtitle": "AlexNet: two gaming GPUs, a million labeled photos, and the 2012 result that changed AI forever",
@@ -1962,13 +2051,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.97,
    "path": "papers/alexnet.md",
-   "hash": "a8dae7d3894a",
+   "hash": "e280ce34bfdb",
    "word_count": 1407,
    "excerpt": "Every year from 2010, the best computer vision teams in the world entered a contest: label a million photos into a thousand categories, from \"golden retriever\" to \"container ship.\" Progress was steady and slow. A good year meant shaving a percentage point or two off the error. In 2012, a team from…"
   },
   {
    "id": "paper-dropout",
    "kind": "paper",
+   "subject": "ml",
    "slug": "dropout",
    "title": "Make Your Network Forget, On Purpose",
    "subtitle": "Dropout: randomly switching off neurons turns one network into a crowd and stops it from memorizing",
@@ -2063,13 +2153,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.86,
    "path": "papers/dropout.md",
-   "hash": "5a81d5e6ce19",
+   "hash": "7ed63469bcb3",
    "word_count": 1456,
    "excerpt": "Here is a strange way to train a team. Every day, before practice, you flip a coin for each player. Heads, they play. Tails, they sit out. Nobody knows in advance who will be on the field, so nobody can rely on a favourite teammate to cover for them. It sounds like a recipe for chaos. Yet when…"
   },
   {
    "id": "paper-adam",
    "kind": "paper",
+   "subject": "ml",
    "slug": "adam",
    "title": "The Optimizer Almost Everyone Uses",
    "subtitle": "Adam gives every parameter its own smart step size, and became deep learning's default way to walk downhill",
@@ -2160,13 +2251,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.88,
    "path": "papers/adam.md",
-   "hash": "e75b4a6ad7b6",
+   "hash": "d317324461bd",
    "word_count": 1447,
    "excerpt": "If you have ever trained a neural network, there is a very good chance you typed one particular line of code without thinking about it: something like optimizer = Adam(model.parameters()). It is the default in countless tutorials, research papers and production systems. That line comes from a paper…"
   },
   {
    "id": "paper-batch-normalization",
    "kind": "paper",
+   "subject": "ml",
    "slug": "batch-normalization",
    "title": "The Simple Fix That Made Deep Networks Train Fast",
    "subtitle": "Batch normalization: keep every layer's inputs well-behaved, and training suddenly gets fourteen times quicker",
@@ -2257,13 +2349,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.86,
    "path": "papers/batch-normalization.md",
-   "hash": "caddf7822c04",
+   "hash": "0c09ca034536",
    "word_count": 1448,
    "excerpt": "In early 2015, two researchers at Google took one of the best image recognition networks in the world, added a few lines of arithmetic between its layers, and retrained it. The modified network reached the same accuracy as the original using fourteen times fewer training steps. Weeks of computer…"
   },
   {
    "id": "paper-resnet",
    "kind": "paper",
+   "subject": "ml",
    "slug": "resnet",
    "title": "Why Deeper Got Worse, and the Shortcut That Fixed It",
    "subtitle": "ResNet: a one-line change that let networks grow past 100 layers and became the most cited paper of the century",
@@ -2356,13 +2449,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.97,
    "path": "papers/resnet.md",
-   "hash": "1b6c28ddb9ed",
+   "hash": "1f8d8b9c5f56",
    "word_count": 1470,
    "excerpt": "Here is a puzzle. Take a neural network with 20 layers that works well. Add 36 more layers on top. In the worst case, the extra layers could simply pass their input through unchanged, so the bigger network should be at least as good as the small one. When researchers at Microsoft Research Asia…"
   },
   {
    "id": "paper-unet",
    "kind": "paper",
+   "subject": "ml",
    "slug": "unet",
    "title": "The U-Shaped Network That Learned From Thirty Images",
    "subtitle": "U-Net: how a clever shape let a network outline every cell in a microscope image, and later paint pictures",
@@ -2454,13 +2548,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.85,
    "path": "papers/unet.md",
-   "hash": "e3e3a576afc8",
+   "hash": "299efb885420",
    "word_count": 1472,
    "excerpt": "A biologist stares at a microscope image packed with hundreds of cells, all touching, all slightly different shapes. Her task: trace the exact boundary of every single cell. It takes hours per image, and she has thousands of images. In 2015, a small team at the University of Freiburg in Germany…"
   },
   {
    "id": "paper-aggregated-residual-transformations-for-deep-neural-networks",
    "kind": "paper",
+   "subject": "ml",
    "slug": "aggregated-residual-transformations-for-deep-neural-networks",
    "title": "ResNeXt: Beyond Depth and Width",
    "subtitle": "How parallel identical pathways revealed a third dimension in deep networks",
@@ -2547,13 +2642,14 @@
    "generated_at": "2026-10-18",
    "importance_score": 0.82,
    "path": "papers/aggregated-residual-transformations-for-deep-neural-networks.md",
-   "hash": "345516614576",
+   "hash": "88daddae8e31",
    "word_count": 2279,
    "excerpt": "If you want to make an image-recognition network more accurate, what knob do you turn? For years, the deep learning playbook had only two obvious answers: go deeper by stacking more layers, or go wider by packing more channels into each layer. Both strategies helped, but both soon ran into walls of…"
   },
   {
    "id": "paper-real-time-single-image-and-video-super-resolution-using-an-e",
    "kind": "paper",
+   "subject": "ml",
    "slug": "real-time-single-image-and-video-super-resolution-using-an-e",
    "title": "Pixel Shuffle: Upscaling Images at the Very End",
    "subtitle": "How shifting magnification to the final layer unlocked real-time AI video super-resolution",
@@ -2643,13 +2739,14 @@
    "generated_at": "2026-11-01",
    "importance_score": 0.74,
    "path": "papers/real-time-single-image-and-video-super-resolution-using-an-e.md",
-   "hash": "956b7be7021b",
+   "hash": "8a26969dcb7d",
    "word_count": 2087,
    "excerpt": "In old spy movies, an investigator points at a blurry security photo and tells the technician to \"zoom in and enhance.\" For decades, computer scientists laughed at that trope because throwing away pixel data is irreversible. Once an image is shrunk, the sharp edges are gone forever. When deep…"
   },
   {
    "id": "paper-lstm",
    "kind": "paper",
+   "subject": "ml",
    "slug": "lstm",
    "title": "Teaching Networks to Remember for a Long Time",
    "subtitle": "LSTM: gates, a protected memory lane, and the 1997 design that powered speech recognition and translation for two decades",
@@ -2740,13 +2837,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.92,
    "path": "papers/lstm.md",
-   "hash": "100e8aea42e2",
+   "hash": "85b3ac115ec1",
    "word_count": 1489,
    "excerpt": "Read this sentence: \"The keys to the cabinet that my grandmother left me after she moved back to her village in Kerala are on the table.\" To pick \"are\" instead of \"is,\" your brain had to remember that the subject was \"keys,\" plural, across seventeen intervening words. For years, neural networks…"
   },
   {
    "id": "paper-word2vec",
    "kind": "paper",
+   "subject": "ml",
    "slug": "word2vec",
    "title": "King Minus Man Plus Woman Equals Queen",
    "subtitle": "word2vec: a deliberately simple model, a billion words of news, and word vectors that captured meaning as geometry",
@@ -2843,13 +2941,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.9,
    "path": "papers/word2vec.md",
-   "hash": "8d3315f377e5",
+   "hash": "938a0741ab16",
    "word_count": 1429,
    "excerpt": "In 2013, a small team at Google released a free piece of software and a short paper. Feed it a large pile of text, wait a few hours, and it would give you back a list of numbers for every word. Nothing about that sounds exciting. Then people started doing arithmetic with the numbers. Paris minus…"
   },
   {
    "id": "paper-seq2seq",
    "kind": "paper",
+   "subject": "ml",
    "slug": "seq2seq",
    "title": "Read the Whole Sentence, Then Write the Translation",
    "subtitle": "Sequence to sequence learning: two LSTMs, one thought vector, and the first neural translator to beat the old guard",
@@ -2942,13 +3041,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.9,
    "path": "papers/seq2seq.md",
-   "hash": "de2693515972",
+   "hash": "9a9ca27f8113",
    "word_count": 1463,
    "excerpt": "For decades, machine translation systems were giant contraptions. Phrase tables with millions of entries, separate models for word alignment, reordering and fluency, each built by specialists and glued together with careful tuning. Google Translate ran on this kind of machine. In 2014, three…"
   },
   {
    "id": "paper-bahdanau-attention",
    "kind": "paper",
+   "subject": "ml",
    "slug": "bahdanau-attention",
    "title": "The First Time a Network Learned Where to Look",
    "subtitle": "Bahdanau attention: letting a translator glance back at the source sentence, and the birth of the most important idea in modern AI",
@@ -3040,13 +3140,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.93,
    "path": "papers/bahdanau-attention.md",
-   "hash": "08533c98f022",
+   "hash": "3ae4b84b2c7d",
    "word_count": 1405,
    "excerpt": "In the summer of 2014, a young researcher visiting Yoshua Bengio's lab in Montreal was frustrated. The new neural translation systems squeezed every sentence, however long, into a single vector before translating it. That felt wrong. No human translator memorizes a whole sentence, closes the book,…"
   },
   {
    "id": "paper-learning-phrase-representations-using-rnn-encoder-decoder-fo",
    "kind": "paper",
+   "subject": "ml",
    "slug": "learning-phrase-representations-using-rnn-encoder-decoder-fo",
    "title": "Compress, Then Translate: The First Encoder-Decoder",
    "subtitle": "How two recurrent networks teamed up to rewrite machine translation",
@@ -3140,13 +3241,14 @@
    "generated_at": "2026-10-15",
    "importance_score": 0.9,
    "path": "papers/learning-phrase-representations-using-rnn-encoder-decoder-fo.md",
-   "hash": "fa5830db3fef",
+   "hash": "d4082c4b80c9",
    "word_count": 1873,
    "excerpt": "Translating a sentence from English to French is not a word-by-word swap. Word orders swap, single words blossom into three, and entire idioms collapse into single phrases. How can a machine take five words, understand their meaning, and emit seven completely different words in another language? In…"
   },
   {
    "id": "paper-bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro",
    "kind": "paper",
+   "subject": "ml",
    "slug": "bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro",
    "title": "The End of Bag-of-Words Topic Modeling",
    "subtitle": "How BERTopic united deep transformers with classical statistics",
@@ -3233,13 +3335,14 @@
    "generated_at": "2026-10-30",
    "importance_score": 0.72,
    "path": "papers/bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro.md",
-   "hash": "e8ebabb9998e",
+   "hash": "3a1441094fab",
    "word_count": 2273,
    "excerpt": "Suppose you are handed forty thousand raw customer reviews, support tickets, or political tweets. Your boss asks a simple question: what are people actually talking about? For twenty years, the standard answer was Latent Dirichlet Allocation (LDA). You treated every document as an unordered bag of…"
   },
   {
    "id": "paper-vae",
    "kind": "paper",
+   "subject": "ml",
    "slug": "vae",
    "title": "Teaching an Autoencoder to Dream",
    "subtitle": "Variational autoencoders: fuzzy codes, a smooth map of possibilities, and one clever trick that made it trainable",
@@ -3330,13 +3433,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.88,
    "path": "papers/vae.md",
-   "hash": "92333c419457",
+   "hash": "1e9f08b3849d",
    "word_count": 1519,
    "excerpt": "A plain autoencoder is a brilliant compressor and a terrible artist. Train one on faces, pick a random point in its code space, decode it, and you usually get a smeared mess, not a new face. The codes it learned are scattered islands in a vast ocean of nonsense. In December 2013, Diederik Kingma…"
   },
   {
    "id": "paper-gan",
    "kind": "paper",
+   "subject": "ml",
    "slug": "gan",
    "title": "The Counterfeiter and the Detective",
    "subtitle": "Generative adversarial nets: two networks locked in a game, and an idea sketched in a Montreal bar that learned to fake reality",
@@ -3433,13 +3537,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.93,
    "path": "papers/gan.md",
-   "hash": "3ad90cc5085b",
+   "hash": "6ae7e324cc14",
    "word_count": 1435,
    "excerpt": "One evening in 2014, a PhD student named Ian Goodfellow was at a bar in Montreal, celebrating a friend's graduation. His friends were describing a plan to build a computer program that could generate realistic photos. Goodfellow thought their approach was too complicated. Then, as he has told the…"
   },
   {
    "id": "paper-ddpm",
    "kind": "paper",
+   "subject": "ml",
    "slug": "ddpm",
    "title": "Creating Images by Removing Noise",
    "subtitle": "Denoising diffusion: destroy a picture with static, step by step, then train a network to run the film backwards",
@@ -3531,13 +3636,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.93,
    "path": "papers/ddpm.md",
-   "hash": "7fd27e717d87",
+   "hash": "2cef6bc92b8d",
    "word_count": 1503,
    "excerpt": "Take a photo of a cat. Add a sprinkle of random static. Then a little more. Keep going for a thousand tiny steps, and eventually the cat is gone: you are left with pure television snow. Now imagine running that film backwards. Start from snow, and at each step remove just a little noise, until a…"
   },
   {
    "id": "paper-latent-diffusion",
    "kind": "paper",
+   "subject": "ml",
    "slug": "latent-diffusion",
    "title": "Diffusion in a Smaller World",
    "subtitle": "Latent diffusion: compress the image first, dream in the compressed space, and suddenly anyone can generate art on a gaming PC",
@@ -3632,13 +3738,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.92,
    "path": "papers/latent-diffusion.md",
-   "hash": "a2818e9009dd",
+   "hash": "e2505b8480ce",
    "word_count": 1421,
    "excerpt": "In August 2022, something unusual happened in AI. A model that could turn a sentence like \"an astronaut riding a horse, oil painting\" into a detailed picture was released with its weights free for anyone to download. It ran on an ordinary gaming graphics card. Within weeks, millions of people were…"
   },
   {
    "id": "paper-taming-transformers-for-high-resolution-image-synthesis",
    "kind": "paper",
+   "subject": "ml",
    "slug": "taming-transformers-for-high-resolution-image-synthesis",
    "title": "Taming Transformers for Megapixel Images",
    "subtitle": "How visual codebooks let attention scale from tiny patches to high resolution",
@@ -3728,13 +3835,14 @@
    "generated_at": "2026-10-15",
    "importance_score": 0.75,
    "path": "papers/taming-transformers-for-high-resolution-image-synthesis.md",
-   "hash": "d75b03f5282e",
+   "hash": "35a2fa390b7b",
    "word_count": 2211,
    "excerpt": "If you ask a transformer to write a story, it juggles a few thousand words without breaking a sweat. But ask that same model to draw a standard smartphone photo, and its attention mechanism collapses under the weight of several million pixels. For years, researchers assumed transformers were simply…"
   },
   {
    "id": "paper-elucidating-the-design-space-of-diffusion-based-generative-m",
    "kind": "paper",
+   "subject": "ml",
    "slug": "elucidating-the-design-space-of-diffusion-based-generative-m",
    "title": "Unbolting Diffusion: How EDM Tamed the Noise Equation",
    "subtitle": "Turning monolithic diffusion equations into clean, modular building blocks",
@@ -3829,13 +3937,14 @@
    "generated_at": "2026-10-28",
    "importance_score": 0.75,
    "path": "papers/elucidating-the-design-space-of-diffusion-based-generative-m.md",
-   "hash": "1b83b8d69a3e",
+   "hash": "288a4c0cfb92",
    "word_count": 1991,
    "excerpt": "In 2022, diffusion models were generating gorgeous images, but their mathematics felt like a tangled thicket. Every research lab seemed to ship its own bespoke mathematical dialect: variance preserving equations, variance exploding formulations, score functions, and discrete Markov steps. If you…"
   },
   {
    "id": "paper-high-resolution-image-synthesis-and-semantic-manipulation-wi",
    "kind": "paper",
+   "subject": "ml",
    "slug": "high-resolution-image-synthesis-and-semantic-manipulation-wi",
    "title": "Megapixel Realism: How Pix2PixHD Scaled Conditional GANs",
    "subtitle": "Turning rough label maps into crisp, editable 2K photographs",
@@ -3922,13 +4031,14 @@
    "generated_at": "2026-11-01",
    "importance_score": 0.73,
    "path": "papers/high-resolution-image-synthesis-and-semantic-manipulation-wi.md",
-   "hash": "0f7779b819e8",
+   "hash": "367139f8ef7f",
    "word_count": 1980,
    "excerpt": "Imagine drawing a rough digital sketch where you color a block blue for \"sky\", gray for \"road\", and red for \"car\". You tap a button, and the cartoonish silhouette turns into a crisp, photorealistic 2048 \\times 1024 street scene: raindrops glinting on car windshields, distinct leaves on roadside…"
   },
   {
    "id": "paper-dqn",
    "kind": "paper",
+   "subject": "ml",
    "slug": "dqn",
    "title": "One Program, Forty-Nine Atari Games",
    "subtitle": "Deep Q-networks: how an agent learned to play from raw pixels and a score, with no rules and no human tips",
@@ -4027,13 +4137,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.9,
    "path": "papers/dqn.md",
-   "hash": "914bec9e54ab",
+   "hash": "650f8ea517d5",
    "word_count": 1416,
    "excerpt": "Imagine handing someone a game controller for a console they have never seen, switched on to a game they have never heard of, with no instructions. They can see the screen and a score. That is all. Within a few hours, they are playing better than most people. In 2015, a London startup that Google…"
   },
   {
    "id": "paper-alphago",
    "kind": "paper",
+   "subject": "ml",
    "slug": "alphago",
    "title": "The Machine That Mastered Go a Decade Early",
    "subtitle": "AlphaGo: neural intuition plus careful search cracked the game experts thought computers could not win",
@@ -4128,13 +4239,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.9,
    "path": "papers/alphago.md",
-   "hash": "c338a43a2f33",
+   "hash": "9f6b80983a20",
    "word_count": 1505,
    "excerpt": "In March 2016, in a hotel in Seoul, a board game was broadcast live to millions of viewers around the world. On one side sat Lee Sedol, one of the greatest Go players of his generation. On the other, a person placing stones on behalf of a program called AlphaGo. In the second game, AlphaGo played…"
   },
   {
    "id": "paper-ppo",
    "kind": "paper",
+   "subject": "ml",
    "slug": "ppo",
    "title": "Learn Fast, But Not Too Fast",
    "subtitle": "Proximal Policy Optimization: the simple, sturdy algorithm behind game-playing bots, robot hands and ChatGPT's fine-tuning",
@@ -4228,13 +4340,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.88,
    "path": "papers/ppo.md",
-   "hash": "a015c9c37ba1",
+   "hash": "2c60ef2508fe",
    "word_count": 1413,
    "excerpt": "Picture a cricket coach working with a promising young bowler. The bowler takes a wicket with a slower ball, and the coach, thrilled, says: \"From now on, bowl only slower balls!\" Next match, the batters read it immediately and the bowler is hammered. A good coach would have said, \"That worked. Use…"
   },
   {
    "id": "paper-attention-is-all-you-need",
    "kind": "paper",
+   "subject": "ml",
    "slug": "attention-is-all-you-need",
    "title": "The Paper That Taught Machines Where to Look",
    "subtitle": "How one simple idea replaced decades of sequence models and gave us ChatGPT",
@@ -4340,13 +4453,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.99,
    "path": "papers/attention-is-all-you-need.md",
-   "hash": "66ea9a24220a",
+   "hash": "9ed31a2c1973",
    "word_count": 1673,
    "excerpt": "In 2017, the best translation systems in the world read sentences the way you read a long receipt: one item at a time, struggling to remember what came at the top. Eight researchers at Google asked a strange question. What if the model could look at every word at once, and simply decide which ones…"
   },
   {
    "id": "paper-gpt-1",
    "kind": "paper",
+   "subject": "ml",
    "slug": "gpt-1",
    "title": "Read Seven Thousand Books, Then Take Any Test",
    "subtitle": "GPT-1: the quiet 2018 report that introduced generative pre-training, the recipe behind every chatbot since",
@@ -4444,13 +4558,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.92,
    "path": "papers/gpt-1.md",
-   "hash": "76e6bc821915",
+   "hash": "2259d89372be",
    "word_count": 1473,
    "excerpt": "In June 2018, OpenAI posted a blog post and a short technical report. It did not appear at a big conference. It had no flashy demo. Its main claim was modest-sounding: a model pre-trained on a pile of books did better on a collection of language understanding tests. But hidden in that report was…"
   },
   {
    "id": "paper-bert",
    "kind": "paper",
+   "subject": "ml",
    "slug": "bert",
    "title": "Fill in the Blanks, Understand Everything",
    "subtitle": "BERT: reading in both directions with a fill-in-the-blank game, and the model that changed Google Search",
@@ -4544,13 +4659,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.94,
    "path": "papers/bert.md",
-   "hash": "84cd179b90d6",
+   "hash": "111994c0714b",
    "word_count": 1475,
    "excerpt": "Try this: \"I went to the to deposit my salary.\" You filled the gap with \"bank\" instantly. But notice how you did it. You used \"went to the\" on the left and \"deposit my salary\" on the right. Without the right side, the blank could be \"market,\" \"gym\" or \"beach.\" In October 2018, a team at Google…"
   },
   {
    "id": "paper-gpt-3",
    "kind": "paper",
+   "subject": "ml",
    "slug": "gpt-3",
    "title": "Just Show It a Few Examples",
    "subtitle": "GPT-3: 175 billion parameters, no fine-tuning, and the surprise that a model could learn new tasks from its prompt",
@@ -4645,13 +4761,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.98,
    "path": "papers/gpt-3.md",
-   "hash": "e4f7ef508772",
+   "hash": "e385670ab545",
    "word_count": 1409,
    "excerpt": "Type this into a text box: English: cheese → French: fromage English: house → French: maison English: book → French: A model completes it with \"livre.\" Nobody trained it to translate. Nobody changed a single one of its weights. It looked at two examples, spotted the pattern, and continued it. In…"
   },
   {
    "id": "paper-scaling-laws",
    "kind": "paper",
+   "subject": "ml",
    "slug": "scaling-laws",
    "title": "The Straight Lines That Launched a Race",
    "subtitle": "Scaling laws: how language model quality improves predictably with size, data and compute, and why that changed AI strategy",
@@ -4750,13 +4867,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.9,
    "path": "papers/scaling-laws.md",
-   "hash": "e693e0ba0774",
+   "hash": "20d522119554",
    "word_count": 1460,
    "excerpt": "Most of machine learning is unpredictable. You change something, run an experiment for days, and find out whether it helped. Nobody can tell you in advance how good your model will be. In January 2020, a team at OpenAI published a set of charts that looked almost too clean to be real. Plot a…"
   },
   {
    "id": "paper-chinchilla",
    "kind": "paper",
+   "subject": "ml",
    "slug": "chinchilla",
    "title": "The Giant Models Were Underfed",
    "subtitle": "Chinchilla: a smaller model trained on four times more data beat models up to seven times its size",
@@ -4851,13 +4969,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.88,
    "path": "papers/chinchilla.md",
-   "hash": "9851988dba04",
+   "hash": "436289a0d1f1",
    "word_count": 1411,
    "excerpt": "By early 2022, the race to build bigger language models was in full swing. GPT-3 had 175 billion parameters. Google, DeepMind and Microsoft with NVIDIA had built models with 280 billion and even 530 billion. The assumption was simple: bigger models, better results. Then a DeepMind team ran an…"
   },
   {
    "id": "paper-vit",
    "kind": "paper",
+   "subject": "ml",
    "slug": "vit",
    "title": "What If an Image Is Just a Sentence of Patches?",
    "subtitle": "The Vision Transformer: chop a picture into squares, read them like words, and match the best convolutional networks",
@@ -4953,13 +5072,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.9,
    "path": "papers/vit.md",
-   "hash": "bab7788fb16e",
+   "hash": "c0692133614a",
    "word_count": 1410,
    "excerpt": "For thirty years, computer vision and convolutional networks were nearly inseparable. From LeNet reading cheques to ResNet winning ImageNet, the idea that images need sliding filters seemed as natural as gravity. In October 2020, a team at Google Research in Zurich posted a paper with a playful…"
   },
   {
    "id": "paper-clip",
    "kind": "paper",
+   "subject": "ml",
    "slug": "clip",
    "title": "Teaching Vision With the Internet's Captions",
    "subtitle": "CLIP: 400 million image-text pairs, one shared space for pictures and words, and classifiers you create by typing",
@@ -5056,13 +5176,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.92,
    "path": "papers/clip.md",
-   "hash": "ca2eaadd4c16",
+   "hash": "7b21ccb28e0f",
    "word_count": 1431,
    "excerpt": "To teach a computer to recognise dogs, cats and 998 other things, ImageNet's creators organised thousands of crowd workers to label over a million photos. Every new kind of object a model needed to know meant more labeling. Meanwhile, the internet was already full of labels nobody had to pay for.…"
   },
   {
    "id": "paper-swin-transformer-hierarchical-vision-transformer-using-shift",
    "kind": "paper",
+   "subject": "ml",
    "slug": "swin-transformer-hierarchical-vision-transformer-using-shift",
    "title": "Shift the Window, Scale the Vision",
    "subtitle": "How hierarchical shifted windows let Transformers conquer high-resolution images",
@@ -5153,13 +5274,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.94,
    "path": "papers/swin-transformer-hierarchical-vision-transformer-using-shift.md",
-   "hash": "f5e3253a39cf",
+   "hash": "365c132dab78",
    "word_count": 2009,
    "excerpt": "When researchers first adapted the Transformer to images, it felt like magic. Instead of stacking dozens of convolutional layers, you chopped an image into square patches, treated those patches like words, and let self-attention do the rest. But try feeding that model a high-resolution photograph…"
   },
   {
    "id": "paper-blip-2-bootstrapping-language-image-pre-training-with-frozen",
    "kind": "paper",
+   "subject": "ml",
    "slug": "blip-2-bootstrapping-language-image-pre-training-with-frozen",
    "title": "Teaching Blind LLMs to See Without Retraining Them",
    "subtitle": "How 32 queries bridged vision and language on a shoestring compute budget",
@@ -5251,13 +5373,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.83,
    "path": "papers/blip-2-bootstrapping-language-image-pre-training-with-frozen.md",
-   "hash": "3204bd111104",
+   "hash": "facb3e1993dc",
    "word_count": 2191,
    "excerpt": "Imagine you have two geniuses in a room. One is a master photographer who inspects pictures with forensic precision but speaks only in coordinate vectors. The other is a brilliant writer who has read every book in human history, knows how to reason through complex logic, but was born completely…"
   },
   {
    "id": "paper-instructgpt",
    "kind": "paper",
+   "subject": "ml",
    "slug": "instructgpt",
    "title": "How a Text Predictor Learned to Be Helpful",
    "subtitle": "InstructGPT: human demonstrations, human rankings and reinforcement learning, the recipe that became ChatGPT",
@@ -5357,13 +5480,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.97,
    "path": "papers/instructgpt.md",
-   "hash": "8f976a6c68b3",
+   "hash": "ecda9037952d",
    "word_count": 1461,
    "excerpt": "Ask the raw GPT-3 to \"Explain the moon landing to a six-year-old,\" and it might reply with a list of similar requests: \"Explain the theory of gravity to a six-year-old. Explain the theory of relativity to a six-year-old.\" Perfectly reasonable, if your only goal is to continue text that looks like…"
   },
   {
    "id": "paper-chain-of-thought",
    "kind": "paper",
+   "subject": "ml",
    "slug": "chain-of-thought",
    "title": "Show Your Working: The Prompt That Unlocked Reasoning",
    "subtitle": "Chain-of-thought prompting: a few worked examples with steps made giant language models dramatically better at maths and logic",
@@ -5458,13 +5582,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.92,
    "path": "papers/chain-of-thought.md",
-   "hash": "2c16d799e669",
+   "hash": "eee6937ddeed",
    "word_count": 1444,
    "excerpt": "Here is a puzzle for a language model: \"The cafeteria had 23 apples. If they used 20 to make lunch and bought 6 more, how many apples do they have?\" In early 2022, Google's 540-billion-parameter language model PaLM, one of the largest in the world, could get questions like this wrong when asked for…"
   },
   {
    "id": "paper-rag",
    "kind": "paper",
+   "subject": "ml",
    "slug": "rag",
    "title": "Let the Model Look Things Up",
    "subtitle": "Retrieval-augmented generation: pairing a language model with a searchable library so it can cite facts instead of guessing",
@@ -5564,13 +5689,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.92,
    "path": "papers/rag.md",
-   "hash": "1e1fe871d0e3",
+   "hash": "ce8a4e6e8008",
    "word_count": 1435,
    "excerpt": "Ask a friend who reads a lot, \"Who won the 2018 Booker Prize?\" They might be sure, they might half remember, or they might confidently get it wrong. Now give that same friend a phone with Wikipedia open. Their answer becomes reliable, up to date, and you can check where it came from. Large language…"
   },
   {
    "id": "paper-lora",
    "kind": "paper",
+   "subject": "ml",
    "slug": "lora",
    "title": "Fine-Tune a Giant by Training a Tiny Add-On",
    "subtitle": "LoRA: freeze the huge model, learn two skinny matrices, and cut trainable parameters by up to ten thousand times",
@@ -5665,13 +5791,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.9,
    "path": "papers/lora.md",
-   "hash": "d38919b42788",
+   "hash": "9ec7b9b4e9e8",
    "word_count": 1418,
    "excerpt": "Suppose you want GPT-3 to write in your company's style, or to answer questions about Indian tax law. The standard approach in 2020 was full fine-tuning: keep training all 175 billion parameters on your data. Then you have a new 175-billion-parameter model, about 350 gigabytes, just for one task.…"
   },
   {
    "id": "paper-dpo",
    "kind": "paper",
+   "subject": "ml",
    "slug": "dpo",
    "title": "Your Language Model Was the Reward Model All Along",
    "subtitle": "Direct Preference Optimization: aligning models with human preferences using one simple loss, no reinforcement learning required",
@@ -5766,13 +5893,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.88,
    "path": "papers/dpo.md",
-   "hash": "3183aea6daf5",
+   "hash": "38a7af1c9e94",
    "word_count": 1483,
    "excerpt": "The recipe that turned GPT-3 into ChatGPT is famously fiddly. Train a reward model on human preferences. Then run reinforcement learning with PPO, juggling four large models at once: the policy, a reference copy, the reward model and a value model. Tune a dozen settings, sample text constantly, and…"
   },
   {
    "id": "paper-llama",
    "kind": "paper",
+   "subject": "ml",
    "slug": "llama",
    "title": "Small Enough to Share, Strong Enough to Matter",
    "subtitle": "LLaMA: open models trained on public data that rivalled giants, and set off an explosion of open-source AI",
@@ -5867,13 +5995,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.9,
    "path": "papers/llama.md",
-   "hash": "cf30cce70cfe",
+   "hash": "32bc8bde2721",
    "word_count": 1402,
    "excerpt": "In February 2023, the most capable language models were locked away. You could talk to them through a company's website or API, but you could not download them, inspect them or run them yourself. Studying how they worked was a privilege of a few labs. Then Meta released LLaMA: a family of models…"
   },
   {
    "id": "paper-nnu-net-a-self-configuring-method-for-deep-learning-based-bi",
    "kind": "paper",
+   "subject": "ml",
    "slug": "nnu-net-a-self-configuring-method-for-deep-learning-based-bi",
    "title": "No New Net: Why Hyperparameters Beat Novel Architectures",
    "subtitle": "How automating the boring parts of deep learning shattered medical imaging leaderboards",
@@ -5969,13 +6098,14 @@
    "generated_at": "2026-10-17",
    "importance_score": 0.81,
    "path": "papers/nnu-net-a-self-configuring-method-for-deep-learning-based-bi.md",
-   "hash": "0ce287081ec0",
+   "hash": "60fb668b8c69",
    "word_count": 2012,
    "excerpt": "In 2019, hundreds of researchers entered an international competition to spot kidney tumors in 3D scans. Nearly every team used the same core model: the famous U-Net. Yet their scores were scattered from the top of the leaderboard all the way to the bottom. If everyone used the same model family,…"
   },
   {
    "id": "paper-unet-redesigning-skip-connections-to-exploit-multiscale-feat",
    "kind": "paper",
+   "subject": "ml",
    "slug": "unet-redesigning-skip-connections-to-exploit-multiscale-feat",
    "title": "Fixing U-Net's Empty Middle",
    "subtitle": "How nested skip pathways and deep supervision made medical segmentation sharper and faster",
@@ -6065,13 +6195,14 @@
    "generated_at": "2026-10-17",
    "importance_score": 0.7,
    "path": "papers/unet-redesigning-skip-connections-to-exploit-multiscale-feat.md",
-   "hash": "3dac0be74736",
+   "hash": "7fa365ae5182",
    "word_count": 2132,
    "excerpt": "Imagine handing a raw blueprint sketch drawn by an apprentice directly to a master builder who is putting the final gold leaf on a cathedral dome. The builder knows where the altar goes, but your sketch shows where individual bricks sit on the ground floor. If you force the builder to stitch those…"
   },
   {
    "id": "paper-the-llama-3-herd-of-models",
    "kind": "paper",
+   "subject": "ml",
    "slug": "the-llama-3-herd-of-models",
    "title": "The Engineering Playbook of Llama 3",
    "subtitle": "How 16,000 GPUs and meticulous post-training built an open frontier model",
@@ -6166,13 +6297,14 @@
    "generated_at": "2026-10-18",
    "importance_score": 0.92,
    "path": "papers/the-llama-3-herd-of-models.md",
-   "hash": "79f94eef6fba",
+   "hash": "92a544846877",
    "word_count": 1695,
    "excerpt": "What happens when you hook 16,000 cutting-edge graphics processors together in a single room and feed them electricity equivalent to a small city? Every single day, something breaks. Silicon processors fail, optical transceivers burn out, and power fluctuations can cause tens of megawatts of…"
   },
   {
    "id": "paper-distributed-representations-of-words-and-phrases-and-their-c",
    "kind": "paper",
+   "subject": "ml",
    "slug": "distributed-representations-of-words-and-phrases-and-their-c",
    "title": "How Word2Vec Skipped the Softmax Bottleneck",
    "subtitle": "Negative sampling, phrase learning, and the surprising math of word addition",
@@ -6261,13 +6393,14 @@
    "generated_at": "2026-10-19",
    "importance_score": 0.92,
    "path": "papers/distributed-representations-of-words-and-phrases-and-their-c.md",
-   "hash": "10681470ddda",
+   "hash": "62723e0af2f8",
    "word_count": 2262,
    "excerpt": "What happens when you type vec(\"Russia\") + vec(\"river\") into a computer? If your word vectors only memorize isolated dictionary entries, you get numerical static. But in late 2013, researchers watched a neural model add those two lists of numbers together and land squarely on vec(\"Volga River\").…"
   },
   {
    "id": "paper-enriching-word-vectors-with-subword-information",
    "kind": "paper",
+   "subject": "ml",
    "slug": "enriching-word-vectors-with-subword-information",
    "title": "Inside Words: How FastText Mastered Morphology",
    "subtitle": "How breaking words into character pieces gave machines a cure for vocabulary blindness",
@@ -6359,13 +6492,14 @@
    "generated_at": "2026-10-19",
    "importance_score": 0.81,
    "path": "papers/enriching-word-vectors-with-subword-information.md",
-   "hash": "3920c6f67579",
+   "hash": "02e018470abe",
    "word_count": 2103,
    "excerpt": "If you teach a standard word embedding model the word \"teach\", \"teacher\", and \"teaching\", it treats them as three completely unrelated symbols. To the algorithm, the connection between \"teach\" and \"teacher\" is just as opaque as the connection between \"teach\" and \"submarine\". If the model then runs…"
   },
   {
    "id": "paper-blip-bootstrapping-language-image-pre-training-for-unified-v",
    "kind": "paper",
+   "subject": "ml",
    "slug": "blip-bootstrapping-language-image-pre-training-for-unified-v",
    "title": "Teaching One Model to See, Read, and Write",
    "subtitle": "How bootstrapping synthetic captions fixed the web's messy vision data",
@@ -6456,13 +6590,14 @@
    "generated_at": "2026-10-20",
    "importance_score": 0.79,
    "path": "papers/blip-bootstrapping-language-image-pre-training-for-unified-v.md",
-   "hash": "b503b011180c",
+   "hash": "ff878ef20ddc",
    "word_count": 2148,
    "excerpt": "Scrape ten million photos from the open web, and you will notice a frustrating pattern in the image descriptions. A gorgeous photo of a chocolate fudge cake will have the caption \"sunset park bakery order 4029\". A crisp snapshot of a red fox in the snow will read \"IMG2041edited.jpg\" or \"buy prints…"
   },
   {
    "id": "paper-going-deeper-with-convolutions",
    "kind": "paper",
+   "subject": "ml",
    "slug": "going-deeper-with-convolutions",
    "title": "We Need to Go Deeper",
    "subtitle": "How GoogLeNet squeezed 22 layers into a modest computing budget",
@@ -6554,13 +6689,14 @@
    "generated_at": "2026-10-21",
    "importance_score": 0.94,
    "path": "papers/going-deeper-with-convolutions.md",
-   "hash": "2478b0cd57e3",
+   "hash": "bb4359062725",
    "word_count": 2107,
    "excerpt": "In 2014, computer vision researchers faced a wall. If you wanted a neural network to recognize images more accurately, the recipe seemed simple: stack more convolutional layers and make each layer wider. There was just one catch. Stacking layers caused models to balloon to tens of millions of…"
   },
   {
    "id": "paper-inception-v4-inception-resnet-and-the-impact-of-residual-con",
    "kind": "paper",
+   "subject": "ml",
    "slug": "inception-v4-inception-resnet-and-the-impact-of-residual-con",
    "title": "Do Deep Networks Actually Need Shortcuts?",
    "subtitle": "How combining Inception modules and skip connections settled a fierce debate about depth",
@@ -6651,13 +6787,14 @@
    "generated_at": "2026-10-21",
    "importance_score": 0.84,
    "path": "papers/inception-v4-inception-resnet-and-the-impact-of-residual-con.md",
-   "hash": "6cdb385792f5",
+   "hash": "2e1e6e6ce897",
    "word_count": 1716,
    "excerpt": "In late 2015, the deep learning world rallied behind a new dogma: if you want a network with over a hundred layers, skip connections are mandatory. Microsoft had just shattered ImageNet records with ResNet by adding bypass lines around layers, and many researchers concluded that plain feedforward…"
   },
   {
    "id": "paper-opt-open-pre-trained-transformer-language-models",
    "kind": "paper",
+   "subject": "ml",
    "slug": "opt-open-pre-trained-transformer-language-models",
    "title": "The Engineering Diary of Training OPT-175B",
    "subtitle": "How Meta cloned GPT-3, released its weights, and documented every crash",
@@ -6748,13 +6885,14 @@
    "generated_at": "2026-10-22",
    "importance_score": 0.75,
    "path": "papers/opt-open-pre-trained-transformer-language-models.md",
-   "hash": "83e59d2f6c7e",
+   "hash": "bebc2b8f4104",
    "word_count": 1918,
    "excerpt": "In May 2020, OpenAI revealed GPT-3. It showed the world that a 175-billion-parameter Transformer could write prose, translate code, and solve puzzles from just a few examples. Then came the lockdown. OpenAI did not release the model weights. They did not release the training code. They offered a…"
   },
   {
    "id": "paper-large-language-models-encode-clinical-knowledge",
    "kind": "paper",
+   "subject": "ml",
    "slug": "large-language-models-encode-clinical-knowledge",
    "title": "Can Language Models Safely Practice Medicine?",
    "subtitle": "How clinician-guided prompt tuning turned raw LLM scale into clinical reliability",
@@ -6844,13 +6982,14 @@
    "generated_at": "2026-10-23",
    "importance_score": 0.74,
    "path": "papers/large-language-models-encode-clinical-knowledge.md",
-   "hash": "3d69a4e841f0",
+   "hash": "51b7b386d585",
    "word_count": 1766,
    "excerpt": "If an artificial intelligence model passes a US medical licensing examination, would you trust it to tell a worried parent whether their newborn baby's jaundice needs emergency care? In late 2022, giant language models proved they could ace multiple-choice questions designed for graduating doctors.…"
   },
   {
    "id": "paper-a-survey-of-large-language-models",
    "kind": "paper",
+   "subject": "ml",
    "slug": "a-survey-of-large-language-models",
    "title": "The Four Pillars of the LLM Revolution",
    "subtitle": "How researchers mapped the hidden mechanics of modern language models",
@@ -6942,13 +7081,14 @@
    "generated_at": "2026-10-23",
    "importance_score": 0.74,
    "path": "papers/a-survey-of-large-language-models.md",
-   "hash": "71f272fcc8ba",
+   "hash": "a758ea9f8079",
    "word_count": 2044,
    "excerpt": "In late 2022, artificial intelligence experienced an intellectual land rush. Following the arrival of ChatGPT, the rate of research papers published per day on large language models shot up by more than twenty-fold, surging from less than one paper every two days to nearly nine every single day.…"
   },
   {
    "id": "paper-denoising-diffusion-implicit-models",
    "kind": "paper",
+   "subject": "ml",
    "slug": "denoising-diffusion-implicit-models",
    "title": "Skipping Steps: How DDIM Accelerated Diffusion",
    "subtitle": "How one clever derivation turned a slow 1,000-step random walk into a fast, deterministic slide",
@@ -7042,13 +7182,14 @@
    "generated_at": "2026-10-24",
    "importance_score": 0.85,
    "path": "papers/denoising-diffusion-implicit-models.md",
-   "hash": "a01f4c32e6df",
+   "hash": "a417e97c3bd5",
    "word_count": 2227,
    "excerpt": "Imagine generating a batch of images and having to wait 20 hours for your GPU to finish. In 2020, DDPM shocked the world by generating images with quality that rivaled GANs, but it was cripplingly slow. To turn random static into a single crisp picture, DDPM forced you to run 1,000 sequential…"
   },
   {
    "id": "paper-training-data-efficient-image-transformers-distillation-thro",
    "kind": "paper",
+   "subject": "ml",
    "slug": "training-data-efficient-image-transformers-distillation-thro",
    "title": "Teaching Vision Transformers With Less Data",
    "subtitle": "How a distillation token and smart augmentations freed ViT from massive datasets",
@@ -7139,13 +7280,14 @@
    "generated_at": "2026-10-24",
    "importance_score": 0.82,
    "path": "papers/training-data-efficient-image-transformers-distillation-thro.md",
-   "hash": "ecca55b56d9f",
+   "hash": "4feae83357db",
    "word_count": 2010,
    "excerpt": "In late 2020, Google dropped a bombshell called the Vision Transformer. It proved that pure self-attention could beat deep convolutional networks at image classification, but it came with an infuriating catch: to match a standard ResNet, you had to pre-train it on 300 million private images using…"
   },
   {
    "id": "paper-improved-denoising-diffusion-probabilistic-models",
    "kind": "paper",
+   "subject": "ml",
    "slug": "improved-denoising-diffusion-probabilistic-models",
    "title": "Teaching Diffusion Models to Walk in Big Strides",
    "subtitle": "How learning variance and smoothing noise cut sampling time by ten",
@@ -7230,13 +7372,14 @@
    "generated_at": "2026-10-25",
    "importance_score": 0.76,
    "path": "papers/improved-denoising-diffusion-probabilistic-models.md",
-   "hash": "68b347dcd84a",
+   "hash": "ed4381ec9504",
    "word_count": 2211,
    "excerpt": "In late 2020, denoising diffusion models looked like an astonishing party trick that was far too slow to use. They could generate photorealistic faces, but creating a single picture took several minutes on a high-end graphics card because the model had to take four thousand tiny, nervous steps.…"
   },
   {
    "id": "paper-tree-of-thoughts-deliberate-problem-solving-with-large-langu",
    "kind": "paper",
+   "subject": "ml",
    "slug": "tree-of-thoughts-deliberate-problem-solving-with-large-langu",
    "title": "Giving Language Models the Power to Backtrack",
    "subtitle": "How searching a tree of intermediate thoughts solved problems that broke linear prompting",
@@ -7326,13 +7469,14 @@
    "generated_at": "2026-10-25",
    "importance_score": 0.75,
    "path": "papers/tree-of-thoughts-deliberate-problem-solving-with-large-langu.md",
-   "hash": "adc01ee7f6ba",
+   "hash": "2b129af12023",
    "word_count": 1899,
    "excerpt": "Give GPT-4 four numbers: 4, 9, 10, and 13. Ask it to use basic arithmetic to make 24. Even with the famous \"let's think step by step\" prompt, one of the most capable models in the world succeeds only 4% of the time. Why does a model that passed the bar exam fail at a math puzzle designed for…"
   },
   {
    "id": "paper-minigpt-4-enhancing-vision-language-understanding-with-advan",
    "kind": "paper",
+   "subject": "ml",
    "slug": "minigpt-4-enhancing-vision-language-understanding-with-advan",
    "title": "Bridging Sight and Speech with One Linear Layer",
    "subtitle": "How freezing a giant language model unlocked multimodal AI in ten hours",
@@ -7423,13 +7567,14 @@
    "generated_at": "2026-10-26",
    "importance_score": 0.72,
    "path": "papers/minigpt-4-enhancing-vision-language-understanding-with-advan.md",
-   "hash": "93d531ee1692",
+   "hash": "ff73bfeaf481",
    "word_count": 2076,
    "excerpt": "In March 2023, OpenAI showed off GPT-4 turning a napkin sketch into working website code and dissecting internet memes frame by frame. The demonstrations looked like science fiction, but OpenAI kept the architecture entirely secret. Most machine learning researchers assumed that replicating those…"
   },
   {
    "id": "paper-self-consistency-improves-chain-of-thought-reasoning-in-lang",
    "kind": "paper",
+   "subject": "ml",
    "slug": "self-consistency-improves-chain-of-thought-reasoning-in-lang",
    "title": "Why Multiple Reasoning Paths Beat One Greedy Guess",
    "subtitle": "How language models learn to solve complex problems by taking a vote",
@@ -7519,13 +7664,14 @@
    "generated_at": "2026-10-31",
    "importance_score": 0.81,
    "path": "papers/self-consistency-improves-chain-of-thought-reasoning-in-lang.md",
-   "hash": "62303fadce26",
+   "hash": "ecd18c3c4931",
    "word_count": 1677,
    "excerpt": "If you hand a tricky math puzzle to five students working on scratch paper, they will not solve it the same way. One might work forward with algebra, another might work backward from the choices, and a third might sketch out arithmetic tallies. But if four of them arrive at 18 and one slips on…"
   },
   {
    "id": "paper-large-language-models-are-zero-shot-reasoners",
    "kind": "paper",
+   "subject": "ml",
    "slug": "large-language-models-are-zero-shot-reasoners",
    "title": "The Magic Words for Machine Logic",
    "subtitle": "How four words unlocked multi-step reasoning without a single example",
@@ -7612,13 +7758,14 @@
    "generated_at": "2026-10-31",
    "importance_score": 0.79,
    "path": "papers/large-language-models-are-zero-shot-reasoners.md",
-   "hash": "598caeae3eb8",
+   "hash": "327a9d6297b5",
    "word_count": 1565,
    "excerpt": "Give a large language model a multi-step arithmetic problem and ask it directly for the answer, and it fails miserably. For months, the AI community believed you had to handcraft careful demonstrations to teach models how to reason. Then a team of researchers appended four words to the prompt:…"
   },
   {
    "id": "paper-megatron-lm",
    "kind": "paper",
+   "subject": "ml",
    "slug": "megatron-lm",
    "title": "When One GPU Is Not Enough",
    "subtitle": "Megatron-LM: slicing each Transformer layer across GPUs, the trick that let language models grow past a single chip",
@@ -7713,13 +7860,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.82,
    "path": "papers/megatron-lm.md",
-   "hash": "25b66a9e8780",
+   "hash": "2be08606d3cf",
    "word_count": 1434,
    "excerpt": "In 2019, one of the best GPUs for AI had 32 gigabytes of memory. That sounds like a lot until you do the arithmetic for a language model with 8 billion parameters. Just storing the weights, the gradients and the optimizer's bookkeeping during training takes well over 100 gigabytes. The model simply…"
   },
   {
    "id": "paper-flashattention",
    "kind": "paper",
+   "subject": "ml",
    "slug": "flashattention",
    "title": "Faster Attention by Doing More Maths",
    "subtitle": "FlashAttention: the GPU's real bottleneck was memory traffic, and fixing it made exact attention several times faster",
@@ -7818,13 +7966,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.88,
    "path": "papers/flashattention.md",
-   "hash": "20c69315948f",
+   "hash": "e9b00a367b16",
    "word_count": 1473,
    "excerpt": "For five years after the Transformer arrived, a small army of researchers tried to make attention faster. Most of their ideas approximated it: only attend to nearby words, or to a random sample, or to a compressed summary. Many of these methods cut the number of calculations dramatically.…"
   },
   {
    "id": "paper-vllm",
    "kind": "paper",
+   "subject": "ml",
    "slug": "vllm",
    "title": "Borrowing an Old OS Trick to Serve Chatbots",
    "subtitle": "PagedAttention and vLLM: managing a model's memory like virtual memory pages, and serving several times more users per GPU",
@@ -7923,13 +8072,14 @@
    "generated_at": "2026-10-14",
    "importance_score": 0.85,
    "path": "papers/vllm.md",
-   "hash": "aa188c03d375",
+   "hash": "12b97184c61b",
    "word_count": 1425,
    "excerpt": "Running a chatbot for millions of people is ruinously expensive. Each GPU costs a fortune, and the number of conversations it can handle at once decides how many GPUs you need. In 2023, researchers at UC Berkeley looked at how existing systems used GPU memory while generating text, and found…"
   },
   {
    "id": "paper-quantization-and-training-of-neural-networks-for-efficient-i",
    "kind": "paper",
+   "subject": "ml",
    "slug": "quantization-and-training-of-neural-networks-for-efficient-i",
    "title": "Ditching Floats: The Secret to Fast Mobile AI",
    "subtitle": "How 8-bit integer arithmetic brought real-time vision to smartphones",
@@ -8020,13 +8170,14 @@
    "generated_at": "2026-10-28",
    "importance_score": 0.73,
    "path": "papers/quantization-and-training-of-neural-networks-for-efficient-i.md",
-   "hash": "111f6ffaae96",
+   "hash": "52091af1d030",
    "word_count": 2044,
    "excerpt": "Your smartphone camera needs to detect faces at thirty frames per second without melting through the battery or scorching your palm. In 2017, that was an impossible task. State-of-the-art vision models performed billions of 32-bit floating-point multiplications for every single video frame,…"
   },
   {
    "id": "paper-efficient-streaming-language-models-with-attention-sinks",
    "kind": "paper",
+   "subject": "ml",
    "slug": "efficient-streaming-language-models-with-attention-sinks",
    "title": "Why Transformers Crash Without Their First Words",
    "subtitle": "How four pinned tokens unlocked infinite streaming for large language models",
@@ -8113,9 +8264,215 @@
    "generated_at": "2026-10-30",
    "importance_score": 0.7,
    "path": "papers/efficient-streaming-language-models-with-attention-sinks.md",
-   "hash": "72981fcbee7e",
+   "hash": "9390e655a2d2",
    "word_count": 2294,
    "excerpt": "Imagine you are having an all-day conversation with an AI assistant. After a few hours of steady chatting, you ask a simple question, and the model suddenly begins emitting random punctuation and gibberish. Under the hood, the server ran out of memory, tried to drop the very first sentence you…"
+  },
+  {
+   "id": "dsa-big-o",
+   "kind": "primer",
+   "subject": "dsa",
+   "slug": "big-o",
+   "title": "Reading Constraints Like a Pro",
+   "subtitle": "Big-O without fear: how to know if your idea is fast enough before you write a line",
+   "track": "dsa-start",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "complexity",
+    "big-o",
+    "interview strategy"
+   ],
+   "glossary": [
+    {
+     "term": "Time complexity",
+     "definition": "How the number of steps an algorithm takes grows as the input gets bigger."
+    },
+    {
+     "term": "Big-O",
+     "definition": "A notation that describes the growth rate of an algorithm's cost, ignoring constant factors and smaller terms."
+    },
+    {
+     "term": "Constraint",
+     "definition": "The limits given in a problem, such as n up to 100,000, which tell you how fast your solution must be."
+    },
+    {
+     "term": "Space complexity",
+     "definition": "How the extra memory an algorithm uses grows as the input gets bigger."
+    },
+    {
+     "term": "Amortised",
+     "definition": "The average cost per operation over a long sequence, even if a few individual operations are expensive."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A problem says n can be up to 200,000. Which complexity is the safest target?",
+     "options": [
+      "O(n^3)",
+      "O(n^2)",
+      "O(n log n)",
+      "O(2^n)"
+     ],
+     "answer": 2,
+     "explain": "n^2 would be about 4 x 10^10 steps, far too many. n log n is roughly 3.6 million steps, comfortably fast."
+    },
+    {
+     "q": "What is the Big-O of a loop over i from 0 to n, with an inner loop over j from 0 to i?",
+     "options": [
+      "O(n)",
+      "O(n log n)",
+      "O(n^2)",
+      "O(2^n)"
+     ],
+     "answer": 2,
+     "explain": "The inner loop runs 0 + 1 + ... + (n-1), about n^2 / 2 times. Dropping the constant 1/2 gives O(n^2)."
+    },
+    {
+     "q": "Why do we drop constants in Big-O?",
+     "options": [
+      "Constants are always zero",
+      "Big-O describes how cost grows, and for large inputs the growth rate dominates the constant",
+      "Compilers remove constants",
+      "Constants only matter for memory"
+     ],
+     "answer": 1,
+     "explain": "Big-O is about shape of growth. An O(n) loop with 3 steps per item still grows linearly, and will eventually beat any O(n^2) loop."
+    }
+   ],
+   "cover_seed": "big-o",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.92,
+   "path": "dsa/big-o.md",
+   "hash": "e9c02dd2a5de",
+   "word_count": 1014,
+   "excerpt": "Two candidates solve the same interview problem. Both programs are correct. One finishes in a fraction of a second; the other is still running when the interviewer moves on. The difference was decided before either of them typed a single line. The fast candidate read one sentence in the problem, \"n…"
+  },
+  {
+   "id": "dsa-prefix-sums",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "prefix-sums",
+   "title": "Answering a Million Range Questions Instantly",
+   "subtitle": "Prefix sums: one pass of preparation that turns every range sum into a single subtraction",
+   "track": "dsa-arrays",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "arrays",
+    "prefix sums",
+    "precomputation"
+   ],
+   "complexity": {
+    "time": "O(n) build, O(1) per query",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Range Sum Query - Immutable",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/range-sum-query-immutable/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Static Range Sum Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1646",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Range Sum Query 2D - Immutable",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/range-sum-query-2d-immutable/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Corporate Flight Bookings",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/corporate-flight-bookings/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Subarray Sum Equals K",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/subarray-sum-equals-k/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Prefix sum",
+     "definition": "The total of all elements from the start of an array up to a given position."
+    },
+    {
+     "term": "Range query",
+     "definition": "A question about a contiguous slice of an array, such as the sum of elements from index l to index r."
+    },
+    {
+     "term": "Precomputation",
+     "definition": "Doing work once, up front, so that many later questions become cheap to answer."
+    },
+    {
+     "term": "Difference array",
+     "definition": "An array that stores how much each element changes compared with the one before it. Its prefix sums rebuild the original array."
+    },
+    {
+     "term": "Sentinel",
+     "definition": "An extra value placed at the edge of a data structure, like a leading zero, so edge cases disappear from the code."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "With P[i] defined as the sum of the first i elements (so P[0] = 0), what is the sum of a[l..r] (0-indexed, inclusive)?",
+     "options": [
+      "P[r] - P[l]",
+      "P[r + 1] - P[l]",
+      "P[r] - P[l - 1]",
+      "P[r + 1] - P[l + 1]"
+     ],
+     "answer": 1,
+     "explain": "P[r + 1] covers a[0..r] and P[l] covers a[0..l-1]. Subtracting removes everything before l."
+    },
+    {
+     "q": "Why does the leading zero in the prefix array help?",
+     "options": [
+      "It makes the array sorted",
+      "It removes the special case for ranges that start at index 0",
+      "It halves the memory",
+      "It prevents integer overflow"
+     ],
+     "answer": 1,
+     "explain": "Without it, a range starting at 0 would need P[-1]. The extra 0 at the front acts as a sentinel, so one formula works for every range."
+    },
+    {
+     "q": "You must add 5 to every element in 100,000 different ranges, then print the final array once. What is the best tool?",
+     "options": [
+      "Update each range element by element",
+      "Rebuild the prefix sum after every update",
+      "A difference array, then one prefix-sum pass at the end",
+      "Sort the ranges first"
+     ],
+     "answer": 2,
+     "explain": "A difference array records each range update in O(1) with two edits. One prefix-sum pass at the end turns it back into the final array."
+    }
+   ],
+   "cover_seed": "prefix-sums",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.9,
+   "path": "dsa/prefix-sums.md",
+   "hash": "701656f12c32",
+   "word_count": 1026,
+   "excerpt": "Your interviewer hands you an array of 100,000 numbers and then asks 100,000 questions: \"What is the sum from index 3,120 to index 88,004?\" If you add up each range from scratch, you could be doing ten billion additions. Your program times out before the third coffee. There is a trick that answers…"
   }
  ]
 }

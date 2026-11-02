@@ -1,6 +1,7 @@
 ---
 id: "paper-dpo"
 kind: "paper"
+subject: "ml"
 slug: "dpo"
 title: "Your Language Model Was the Reward Model All Along"
 subtitle: "Direct Preference Optimization: aligning models with human preferences using one simple loss, no reinforcement learning required"

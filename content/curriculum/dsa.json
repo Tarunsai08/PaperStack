@@ -1,0 +1,3459 @@
+{
+ "subject": "dsa",
+ "version": 1,
+ "entries": [
+  {
+   "id": "dsa-big-o",
+   "slug": "big-o",
+   "title_working": "Big-O Without Fear: Reading Constraints Like a Pro",
+   "subject": "dsa",
+   "kind": "primer",
+   "track": "dsa-start",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Count operations as input grows",
+     "Drop constants and lower terms",
+     "n up to 1e5 means n log n, up to 20 means 2^n",
+     "About 1e8 simple operations per second as a rough guide"
+    ],
+    "analogy": "A restaurant: one chef per guest vs one chef for everyone",
+    "include": [
+     "Constraint-to-complexity table",
+     "Trace counting loops in nested code"
+    ],
+    "traps": [
+     "Treating 1e8 ops/sec as exact",
+     "Forgetting hidden costs like string copies"
+    ]
+   }
+  },
+  {
+   "id": "dsa-cpp-stl-toolkit",
+   "slug": "cpp-stl-toolkit",
+   "title_working": "The C++ STL Toolkit You Will Use Every Day",
+   "subject": "dsa",
+   "kind": "primer",
+   "track": "dsa-start",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "vector, string, pair",
+     "map vs unordered_map trade-offs",
+     "set, multiset, priority_queue",
+     "sort with custom comparators",
+     "lower_bound and upper_bound"
+    ],
+    "analogy": "A well-organised toolbox: right tool, right drawer",
+    "include": [
+     "Table of container operations with complexities",
+     "Small runnable demo"
+    ],
+    "traps": [
+     "unordered_map worst case and anti-hash tests",
+     "Passing vectors by value",
+     "Iterator invalidation"
+    ]
+   }
+  },
+  {
+   "id": "dsa-problem-solving-framework",
+   "slug": "problem-solving-framework",
+   "title_working": "How to Attack a Problem You Have Never Seen",
+   "subject": "dsa",
+   "kind": "primer",
+   "track": "dsa-start",
+   "order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Restate and test with examples",
+     "Brute force first, then find the bottleneck",
+     "Ask what information you recompute",
+     "Pattern-recognition cues list"
+    ],
+    "analogy": "A doctor's diagnosis checklist",
+    "include": [
+     "Cue-to-pattern table",
+     "Interview communication tips"
+    ],
+    "traps": [
+     "Coding before understanding",
+     "Silent thinking in interviews"
+    ]
+   }
+  },
+  {
+   "id": "dsa-recursion-basics",
+   "slug": "recursion-basics",
+   "title_working": "Recursion: Trusting the Function You Are Writing",
+   "subject": "dsa",
+   "kind": "primer",
+   "track": "dsa-start",
+   "order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Base case and smaller subproblem",
+     "Call stack as a pile of plates",
+     "Leap of faith",
+     "Recursion tree for cost"
+    ],
+    "analogy": "Russian dolls",
+    "include": [
+     "Trace factorial and fibonacci call trees"
+    ],
+    "traps": [
+     "Missing base case",
+     "Stack overflow on deep recursion"
+    ]
+   }
+  },
+  {
+   "id": "dsa-bit-basics",
+   "slug": "bit-basics",
+   "title_working": "Bits and Bytes: Thinking in Binary",
+   "subject": "dsa",
+   "kind": "primer",
+   "track": "dsa-start",
+   "order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Binary representation",
+     "AND OR XOR shifts",
+     "Check, set, clear a bit",
+     "Two's complement"
+    ],
+    "analogy": "Light switches on a panel",
+    "include": [
+     "Table of bit operations with examples"
+    ],
+    "traps": [
+     "Shifting into the sign bit",
+     "Operator precedence with &"
+    ]
+   }
+  },
+  {
+   "id": "dsa-prefix-sums",
+   "slug": "prefix-sums",
+   "title_working": "Prefix Sums: Answering Range Questions Instantly",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-arrays",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Precompute running totals",
+     "Range sum as difference of two prefixes",
+     "2D prefix sums",
+     "Difference arrays for range updates"
+    ],
+    "analogy": "An odometer: distance between two stops is a subtraction",
+    "include": [
+     "Trace prefix array on a small example",
+     "Range Sum Query - Immutable",
+     "Subarray Sum Equals K",
+     "Static Range Sum Queries (CSES)"
+    ],
+    "traps": [
+     "Off-by-one with 0 vs 1 indexing",
+     "Overflow, use long long"
+    ]
+   }
+  },
+  {
+   "id": "dsa-two-pointers",
+   "slug": "two-pointers",
+   "title_working": "Two Pointers: Squeezing Answers From Both Ends",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-arrays",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Sorted array, move left or right based on comparison",
+     "Why no pair is missed",
+     "Same-direction vs opposite-direction pointers"
+    ],
+    "analogy": "Two people searching a shelf from both ends",
+    "include": [
+     "Two Sum II",
+     "Container With Most Water",
+     "3Sum",
+     "Remove Duplicates from Sorted Array"
+    ],
+    "traps": [
+     "Forgetting duplicates in 3Sum",
+     "Using it on unsorted data"
+    ]
+   }
+  },
+  {
+   "id": "dsa-sliding-window",
+   "slug": "sliding-window",
+   "title_working": "Sliding Windows: One Pass Instead of Two Loops",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-arrays",
+   "order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-two-pointers"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Fixed vs variable window",
+     "Expand right, shrink left while invalid",
+     "Maintain window state in a map or counter"
+    ],
+    "analogy": "A caterpillar crawling along a branch",
+    "include": [
+     "Longest Substring Without Repeating Characters",
+     "Minimum Window Substring",
+     "Max Consecutive Ones III",
+     "Permutation in String"
+    ],
+    "traps": [
+     "Shrinking with if instead of while",
+     "Negative numbers break sum windows"
+    ]
+   }
+  },
+  {
+   "id": "dsa-hashing-patterns",
+   "slug": "hashing-patterns",
+   "title_working": "Hash Maps: Trading Memory for Speed",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-arrays",
+   "order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-cpp-stl-toolkit"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Remember what you have seen",
+     "Complement lookup",
+     "Frequency counting",
+     "Grouping by a canonical key"
+    ],
+    "analogy": "A coat check counter with numbered tickets",
+    "include": [
+     "Two Sum",
+     "Group Anagrams",
+     "Longest Consecutive Sequence",
+     "Subarray Sum Equals K"
+    ],
+    "traps": [
+     "Iterating unordered_map order",
+     "Hash collision worst cases"
+    ]
+   }
+  },
+  {
+   "id": "dsa-kadane",
+   "slug": "kadane",
+   "title_working": "Kadane's Algorithm: The Best Subarray in One Pass",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-arrays",
+   "order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-prefix-sums"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Best sum ending here",
+     "Restart when running sum hurts",
+     "Circular variant",
+     "Connection to DP"
+    ],
+    "analogy": "A gambler who walks away when the streak turns sour",
+    "include": [
+     "Maximum Subarray",
+     "Maximum Product Subarray",
+     "Maximum Sum Circular Subarray",
+     "Maximum Subarray Sum (CSES)"
+    ],
+    "traps": [
+     "All-negative arrays",
+     "Product needs both min and max"
+    ],
+    "exact_facts": [
+     "Jay Kadane, 1984 (as commonly attributed)"
+    ]
+   }
+  },
+  {
+   "id": "dsa-string-patterns",
+   "slug": "string-patterns",
+   "title_working": "Strings: Palindromes, Anagrams and Counting",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-arrays",
+   "order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-hashing-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Character counts as arrays of 26",
+     "Expand around center for palindromes",
+     "Two-pointer reversal",
+     "String building cost"
+    ],
+    "analogy": "A mirror held at the middle of a word",
+    "include": [
+     "Valid Palindrome",
+     "Longest Palindromic Substring",
+     "Valid Anagram",
+     "Longest Repeating Character Replacement"
+    ],
+    "traps": [
+     "String concatenation in loops is O(n^2)",
+     "Unicode vs ASCII assumptions"
+    ]
+   }
+  },
+  {
+   "id": "dsa-matrix-traversal",
+   "slug": "matrix-traversal",
+   "title_working": "Walking a Grid: Spirals, Rotations and Boundaries",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-arrays",
+   "order": 7,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Row and column bounds",
+     "Layer by layer traversal",
+     "In-place rotation by transpose plus reverse",
+     "Direction arrays"
+    ],
+    "analogy": "Peeling an onion layer by layer",
+    "include": [
+     "Spiral Matrix",
+     "Rotate Image",
+     "Set Matrix Zeroes",
+     "Search a 2D Matrix II"
+    ],
+    "traps": [
+     "Boundary updates in the wrong order",
+     "Single row or column matrices"
+    ]
+   }
+  },
+  {
+   "id": "dsa-intervals-sweep",
+   "slug": "intervals-sweep",
+   "title_working": "Intervals: Sort, Then Sweep",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-arrays",
+   "order": 8,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-two-pointers"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Sort by start",
+     "Merge overlapping",
+     "Sweep line with +1 and -1 events",
+     "Meeting rooms count"
+    ],
+    "analogy": "A receptionist watching guests arrive and leave",
+    "include": [
+     "Merge Intervals",
+     "Insert Interval",
+     "Non-overlapping Intervals",
+     "Meeting Rooms II (premium, mention alternative)",
+     "Restaurant Customers (CSES)"
+    ],
+    "traps": [
+     "Touching endpoints: inclusive or exclusive"
+    ]
+   }
+  },
+  {
+   "id": "dsa-cyclic-sort",
+   "slug": "cyclic-sort",
+   "title_working": "Cyclic Sort: When Values Tell You Their Home",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-arrays",
+   "order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Numbers in range 1..n",
+     "Swap each value to its index",
+     "Find missing and duplicate"
+    ],
+    "analogy": "Students returning to their numbered seats",
+    "include": [
+     "First Missing Positive",
+     "Find All Duplicates in an Array",
+     "Missing Number",
+     "Find the Duplicate Number"
+    ],
+    "traps": [
+     "Infinite loop when swapping duplicates"
+    ]
+   }
+  },
+  {
+   "id": "dsa-binary-search",
+   "slug": "binary-search",
+   "title_working": "Binary Search, Done Right Every Time",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-search-sort",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Invariant-based template",
+     "lo, hi and the loop condition",
+     "lower_bound and upper_bound",
+     "Avoiding infinite loops"
+    ],
+    "analogy": "The number guessing game",
+    "include": [
+     "Binary Search",
+     "Search Insert Position",
+     "First and Last Position",
+     "Search in Rotated Sorted Array"
+    ],
+    "traps": [
+     "mid overflow",
+     "Off-by-one in boundaries",
+     "Using < vs <="
+    ]
+   }
+  },
+  {
+   "id": "dsa-binary-search-answer",
+   "slug": "binary-search-answer",
+   "title_working": "Binary Search on the Answer",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-search-sort",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-binary-search"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Monotonic yes/no predicate over answers",
+     "Minimise the maximum",
+     "Check function design"
+    ],
+    "analogy": "Adjusting an oven temperature until the cake just bakes",
+    "include": [
+     "Koko Eating Bananas",
+     "Capacity To Ship Packages Within D Days",
+     "Split Array Largest Sum",
+     "Factory Machines (CSES)"
+    ],
+    "traps": [
+     "Wrong search bounds",
+     "Predicate not monotonic"
+    ]
+   }
+  },
+  {
+   "id": "dsa-sorting-as-tool",
+   "slug": "sorting-as-tool",
+   "title_working": "Sorting as a Superpower",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-search-sort",
+   "order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-cpp-stl-toolkit"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Sorting reveals structure",
+     "Custom comparators and strict weak ordering",
+     "Stable sort",
+     "Sorting pairs and indices"
+    ],
+    "analogy": "Lining up people by height before picking teams",
+    "include": [
+     "Largest Number",
+     "Sort Colors",
+     "Meeting Rooms",
+     "Car Fleet"
+    ],
+    "traps": [
+     "Comparator returning true for equal elements",
+     "Sorting a copy vs indices"
+    ]
+   }
+  },
+  {
+   "id": "dsa-merge-sort-inversions",
+   "slug": "merge-sort-inversions",
+   "title_working": "Merge Sort and Counting Inversions",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-search-sort",
+   "order": 4,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-sorting-as-tool",
+    "dsa-recursion-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Divide, sort halves, merge",
+     "Counting cross inversions during merge",
+     "Divide and conquer reasoning"
+    ],
+    "analogy": "Merging two sorted piles of exam papers",
+    "include": [
+     "Sort an Array",
+     "Count of Smaller Numbers After Self",
+     "Reverse Pairs"
+    ],
+    "traps": [
+     "Copy cost in merge",
+     "Overflow in counts"
+    ]
+   }
+  },
+  {
+   "id": "dsa-quickselect",
+   "slug": "quickselect",
+   "title_working": "Quickselect: The k-th Element Without Sorting Everything",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-search-sort",
+   "order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-sorting-as-tool"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Partition around a pivot",
+     "Recurse into one side only",
+     "Expected linear time",
+     "nth_element"
+    ],
+    "analogy": "Finding the median height by splitting a crowd",
+    "include": [
+     "Kth Largest Element in an Array",
+     "K Closest Points to Origin",
+     "Top K Frequent Elements"
+    ],
+    "traps": [
+     "Worst case with bad pivots",
+     "Partition boundary bugs"
+    ]
+   }
+  },
+  {
+   "id": "dsa-counting-bucket-sort",
+   "slug": "counting-bucket-sort",
+   "title_working": "Counting and Bucket Sort: Beating n log n",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-search-sort",
+   "order": 6,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-sorting-as-tool"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Small value ranges allow counting",
+     "Buckets for uniform data",
+     "Radix sort idea"
+    ],
+    "analogy": "Sorting mail into pigeonholes",
+    "include": [
+     "Sort Colors",
+     "Maximum Gap",
+     "Top K Frequent Elements"
+    ],
+    "traps": [
+     "Memory blowup with huge ranges"
+    ]
+   }
+  },
+  {
+   "id": "dsa-linked-list-basics",
+   "slug": "linked-list-basics",
+   "title_working": "Linked Lists: Pointer Surgery Made Safe",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-linear",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-cpp-stl-toolkit"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Dummy head node",
+     "Reversal with three pointers",
+     "Merging two lists",
+     "Drawing before coding"
+    ],
+    "analogy": "A treasure hunt where each clue points to the next",
+    "include": [
+     "Reverse Linked List",
+     "Merge Two Sorted Lists",
+     "Remove Nth Node From End",
+     "Reorder List"
+    ],
+    "traps": [
+     "Losing the next pointer",
+     "Null checks"
+    ]
+   }
+  },
+  {
+   "id": "dsa-fast-slow-pointers",
+   "slug": "fast-slow-pointers",
+   "title_working": "Fast and Slow Pointers: The Tortoise and the Hare",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-linear",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-linked-list-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Cycle detection",
+     "Finding the middle",
+     "Cycle start by meeting point math",
+     "Happy number"
+    ],
+    "analogy": "Two runners on a circular track",
+    "include": [
+     "Linked List Cycle",
+     "Linked List Cycle II",
+     "Middle of the Linked List",
+     "Find the Duplicate Number"
+    ],
+    "traps": [
+     "Fast pointer null checks"
+    ],
+    "exact_facts": [
+     "Floyd's cycle detection"
+    ]
+   }
+  },
+  {
+   "id": "dsa-stack-patterns",
+   "slug": "stack-patterns",
+   "title_working": "Stacks: Matching, Undo and Expression Parsing",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-linear",
+   "order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-cpp-stl-toolkit"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Last in first out",
+     "Balanced brackets",
+     "Evaluating expressions",
+     "Min stack"
+    ],
+    "analogy": "A stack of plates",
+    "include": [
+     "Valid Parentheses",
+     "Min Stack",
+     "Evaluate Reverse Polish Notation",
+     "Decode String"
+    ],
+    "traps": [
+     "Popping from empty stack"
+    ]
+   }
+  },
+  {
+   "id": "dsa-monotonic-stack",
+   "slug": "monotonic-stack",
+   "title_working": "Monotonic Stacks: Next Greater Element and Friends",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-linear",
+   "order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-stack-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Keep the stack sorted",
+     "Each element pushed and popped once",
+     "Next greater, previous smaller",
+     "Histogram area"
+    ],
+    "analogy": "People in a queue who can see over shorter ones",
+    "include": [
+     "Daily Temperatures",
+     "Next Greater Element II",
+     "Largest Rectangle in Histogram",
+     "Trapping Rain Water"
+    ],
+    "traps": [
+     "Strict vs non-strict comparisons with duplicates"
+    ]
+   }
+  },
+  {
+   "id": "dsa-queue-deque",
+   "slug": "queue-deque",
+   "title_working": "Queues and Deques: Sliding Window Maximum",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-linear",
+   "order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-monotonic-stack",
+    "dsa-sliding-window"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "FIFO for processing order",
+     "Monotonic deque keeps candidates",
+     "Each index enters and leaves once"
+    ],
+    "analogy": "A nightclub queue where taller latecomers push others out",
+    "include": [
+     "Sliding Window Maximum",
+     "Design Circular Queue",
+     "Shortest Subarray with Sum at Least K"
+    ],
+    "traps": [
+     "Storing values instead of indices"
+    ]
+   }
+  },
+  {
+   "id": "dsa-lru-cache",
+   "slug": "lru-cache",
+   "title_working": "Designing an LRU Cache",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-linear",
+   "order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-linked-list-basics",
+    "dsa-hashing-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Hash map plus doubly linked list",
+     "O(1) get and put",
+     "Move to front on access"
+    ],
+    "analogy": "A stack of recently used books on a desk",
+    "include": [
+     "LRU Cache",
+     "LFU Cache",
+     "Design Twitter"
+    ],
+    "traps": [
+     "Forgetting to update the map on eviction"
+    ]
+   }
+  },
+  {
+   "id": "dsa-subsets-permutations",
+   "slug": "subsets-permutations",
+   "title_working": "Generating Subsets and Permutations",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-recursion",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-recursion-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Choose or skip",
+     "Swap-based permutations",
+     "Handling duplicates by sorting and skipping"
+    ],
+    "analogy": "Packing a bag item by item: take it or leave it",
+    "include": [
+     "Subsets",
+     "Subsets II",
+     "Permutations",
+     "Permutations II"
+    ],
+    "traps": [
+     "Duplicate results",
+     "Copying state wrongly"
+    ]
+   }
+  },
+  {
+   "id": "dsa-backtracking-template",
+   "slug": "backtracking-template",
+   "title_working": "Backtracking: Explore, Undo, Repeat",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-recursion",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-subsets-permutations"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Choose, explore, unchoose",
+     "Pruning invalid branches early",
+     "Search tree size"
+    ],
+    "analogy": "Exploring a maze with chalk marks you erase on the way back",
+    "include": [
+     "Combination Sum",
+     "Word Search",
+     "Palindrome Partitioning",
+     "Letter Combinations of a Phone Number"
+    ],
+    "traps": [
+     "Not undoing changes",
+     "Pruning too late"
+    ]
+   }
+  },
+  {
+   "id": "dsa-n-queens",
+   "slug": "n-queens",
+   "title_working": "N-Queens: Backtracking With Smart Bookkeeping",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-recursion",
+   "order": 3,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-backtracking-template"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Place row by row",
+     "Column and diagonal sets",
+     "Diagonals identified by r+c and r-c"
+    ],
+    "analogy": "Seating rivals at a dinner so no two can see each other",
+    "include": [
+     "N-Queens",
+     "N-Queens II",
+     "Chessboard and Queens (CSES)"
+    ],
+    "traps": [
+     "Recomputing attacks each time"
+    ]
+   }
+  },
+  {
+   "id": "dsa-sudoku-constraints",
+   "slug": "sudoku-constraints",
+   "title_working": "Solving Sudoku With Constraints",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-recursion",
+   "order": 4,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-backtracking-template"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Try candidates in empty cells",
+     "Row, column, box masks",
+     "Most constrained cell first"
+    ],
+    "analogy": "Filling a crossword starting from the clue with fewest options",
+    "include": [
+     "Sudoku Solver",
+     "Valid Sudoku",
+     "Word Search II"
+    ],
+    "traps": [
+     "Not restoring state"
+    ]
+   }
+  },
+  {
+   "id": "dsa-divide-and-conquer",
+   "slug": "divide-and-conquer",
+   "title_working": "Divide and Conquer: Split, Solve, Combine",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-recursion",
+   "order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-recursion-basics",
+    "dsa-merge-sort-inversions"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Split into independent halves",
+     "Combine step is the trick",
+     "Master theorem intuition"
+    ],
+    "analogy": "Splitting a big task among two teams again and again",
+    "include": [
+     "Pow(x, n)",
+     "Majority Element",
+     "Different Ways to Add Parentheses"
+    ],
+    "traps": [
+     "Overlapping subproblems mean DP instead"
+    ]
+   }
+  },
+  {
+   "id": "dsa-tree-traversals",
+   "slug": "tree-traversals",
+   "title_working": "Tree Traversals: Pre, In, Post and Level Order",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-trees",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-recursion-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Visit order changes meaning",
+     "Iterative with a stack",
+     "Level order with a queue"
+    ],
+    "analogy": "Touring a family tree",
+    "include": [
+     "Binary Tree Inorder Traversal",
+     "Binary Tree Level Order Traversal",
+     "Binary Tree Right Side View",
+     "Zigzag Level Order"
+    ],
+    "traps": [
+     "Null children",
+     "Iterative postorder"
+    ]
+   }
+  },
+  {
+   "id": "dsa-tree-recursion",
+   "slug": "tree-recursion",
+   "title_working": "Thinking Recursively About Trees",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-trees",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-tree-traversals"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Return info from children",
+     "Height, diameter, balance",
+     "Global answer vs returned value"
+    ],
+    "analogy": "Managers summarising reports from their teams",
+    "include": [
+     "Maximum Depth",
+     "Diameter of Binary Tree",
+     "Balanced Binary Tree",
+     "Binary Tree Maximum Path Sum"
+    ],
+    "traps": [
+     "Mixing returned value and global best"
+    ]
+   }
+  },
+  {
+   "id": "dsa-bst-operations",
+   "slug": "bst-operations",
+   "title_working": "Binary Search Trees: Order as a Superpower",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-trees",
+   "order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-tree-recursion",
+    "dsa-binary-search"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "BST invariant",
+     "Search, insert, delete",
+     "Inorder is sorted",
+     "Validating with bounds"
+    ],
+    "analogy": "A library where every left shelf has smaller numbers",
+    "include": [
+     "Validate Binary Search Tree",
+     "Kth Smallest Element in a BST",
+     "Delete Node in a BST",
+     "Lowest Common Ancestor of a BST"
+    ],
+    "traps": [
+     "Checking only parent-child, not bounds"
+    ]
+   }
+  },
+  {
+   "id": "dsa-lca",
+   "slug": "lca",
+   "title_working": "Lowest Common Ancestor",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-trees",
+   "order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-tree-recursion"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Recursive LCA in binary trees",
+     "Parent pointers",
+     "Path comparison"
+    ],
+    "analogy": "Finding the closest shared ancestor in a family tree",
+    "include": [
+     "Lowest Common Ancestor of a Binary Tree",
+     "LCA of Deepest Leaves",
+     "Company Queries II (CSES)"
+    ],
+    "traps": [
+     "Assuming both nodes exist"
+    ]
+   }
+  },
+  {
+   "id": "dsa-tree-construction",
+   "slug": "tree-construction",
+   "title_working": "Building Trees From Traversals and Serialising Them",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-trees",
+   "order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-tree-traversals"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Preorder plus inorder reconstruct",
+     "Serialise with null markers",
+     "Index maps for speed"
+    ],
+    "analogy": "Rebuilding a family tree from two different lists",
+    "include": [
+     "Construct Binary Tree from Preorder and Inorder",
+     "Serialize and Deserialize Binary Tree",
+     "Construct BST from Preorder"
+    ],
+    "traps": [
+     "O(n^2) search for root index"
+    ]
+   }
+  },
+  {
+   "id": "dsa-tree-paths",
+   "slug": "tree-paths",
+   "title_working": "Path Problems on Trees",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-trees",
+   "order": 6,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-tree-recursion",
+    "dsa-prefix-sums"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Root-to-leaf paths",
+     "Prefix sums on paths",
+     "Backtracking the path state"
+    ],
+    "analogy": "Following hiking trails from the summit",
+    "include": [
+     "Path Sum II",
+     "Path Sum III",
+     "Sum Root to Leaf Numbers"
+    ],
+    "traps": [
+     "Forgetting to remove prefix count on return"
+    ]
+   }
+  },
+  {
+   "id": "dsa-balanced-trees-intuition",
+   "slug": "balanced-trees-intuition",
+   "title_working": "Why Balanced Trees Matter: AVL and Red-Black in Plain Words",
+   "subject": "dsa",
+   "kind": "primer",
+   "track": "dsa-trees",
+   "order": 7,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-bst-operations"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Skewed BST becomes a list",
+     "Rotations restore balance",
+     "std::map is a red-black tree"
+    ],
+    "analogy": "Rebalancing a mobile hanging from the ceiling",
+    "include": [
+     "Diagram of a rotation"
+    ],
+    "traps": [
+     "Do not ask readers to implement red-black trees"
+    ],
+    "exact_facts": [
+     "std::map is typically a red-black tree in common implementations"
+    ]
+   }
+  },
+  {
+   "id": "dsa-heap-basics",
+   "slug": "heap-basics",
+   "title_working": "Heaps: Always Know the Smallest",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-heaps-greedy",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-cpp-stl-toolkit"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Complete binary tree in an array",
+     "Push and pop in log n",
+     "priority_queue with greater",
+     "Heapify in linear time"
+    ],
+    "analogy": "A hospital triage queue",
+    "include": [
+     "Kth Largest Element in a Stream",
+     "Last Stone Weight",
+     "Sort Characters By Frequency"
+    ],
+    "traps": [
+     "Default priority_queue is a max-heap"
+    ]
+   }
+  },
+  {
+   "id": "dsa-top-k-pattern",
+   "slug": "top-k-pattern",
+   "title_working": "Top K: The Heap of Size K Trick",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-heaps-greedy",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-heap-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Keep a min-heap of size k",
+     "n log k complexity",
+     "Compare with quickselect"
+    ],
+    "analogy": "A talent show keeping only the current best k contestants",
+    "include": [
+     "Top K Frequent Elements",
+     "K Closest Points to Origin",
+     "Find K Pairs with Smallest Sums"
+    ],
+    "traps": [
+     "Using max-heap of size n unnecessarily"
+    ]
+   }
+  },
+  {
+   "id": "dsa-two-heaps",
+   "slug": "two-heaps",
+   "title_working": "Two Heaps: The Running Median",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-heaps-greedy",
+   "order": 3,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-heap-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Max-heap for the lower half, min-heap for the upper",
+     "Rebalancing sizes"
+    ],
+    "analogy": "Two teams kept equal in size at a seesaw",
+    "include": [
+     "Find Median from Data Stream",
+     "Sliding Window Median",
+     "IPO"
+    ],
+    "traps": [
+     "Rebalancing order bugs"
+    ]
+   }
+  },
+  {
+   "id": "dsa-k-way-merge",
+   "slug": "k-way-merge",
+   "title_working": "Merging K Sorted Lists",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-heaps-greedy",
+   "order": 4,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-heap-basics",
+    "dsa-linked-list-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Heap of current heads",
+     "n log k",
+     "Applications in external sorting"
+    ],
+    "analogy": "Several cashiers merging sorted receipts",
+    "include": [
+     "Merge k Sorted Lists",
+     "Kth Smallest Element in a Sorted Matrix",
+     "Smallest Range Covering Elements from K Lists"
+    ],
+    "traps": [
+     "Pushing null nodes"
+    ]
+   }
+  },
+  {
+   "id": "dsa-greedy-exchange",
+   "slug": "greedy-exchange",
+   "title_working": "Greedy Algorithms and the Exchange Argument",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-heaps-greedy",
+   "order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-sorting-as-tool"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Make the locally best choice",
+     "Prove by swapping into an optimal solution",
+     "When greedy fails"
+    ],
+    "analogy": "Packing a bus by always seating the next person in line",
+    "include": [
+     "Jump Game",
+     "Gas Station",
+     "Assign Cookies",
+     "Movie Festival (CSES)"
+    ],
+    "traps": [
+     "Assuming greedy works without proof"
+    ]
+   }
+  },
+  {
+   "id": "dsa-interval-scheduling",
+   "slug": "interval-scheduling",
+   "title_working": "Interval Scheduling: Pick the Earliest Finisher",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-heaps-greedy",
+   "order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-greedy-exchange",
+    "dsa-intervals-sweep"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Sort by end time",
+     "Maximum non-overlapping",
+     "Minimum arrows",
+     "Proof sketch"
+    ],
+    "analogy": "A conference attendee choosing talks",
+    "include": [
+     "Non-overlapping Intervals",
+     "Minimum Number of Arrows to Burst Balloons",
+     "Movie Festival (CSES)"
+    ],
+    "traps": [
+     "Sorting by start instead of end"
+    ]
+   }
+  },
+  {
+   "id": "dsa-task-scheduling",
+   "slug": "task-scheduling",
+   "title_working": "Task Scheduler: Greedy With a Heap",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-heaps-greedy",
+   "order": 7,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-greedy-exchange",
+    "dsa-heap-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Most frequent task first",
+     "Cooldown idle slots",
+     "Counting formula"
+    ],
+    "analogy": "A chef rotating dishes so none burns",
+    "include": [
+     "Task Scheduler",
+     "Reorganize String",
+     "Course Schedule III"
+    ],
+    "traps": [
+     "Off-by-one in idle counting"
+    ]
+   }
+  },
+  {
+   "id": "dsa-huffman-coding",
+   "slug": "huffman-coding",
+   "title_working": "Huffman Coding: Greedy Compression",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-heaps-greedy",
+   "order": 8,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-heap-basics",
+    "dsa-greedy-exchange"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Merge the two rarest symbols",
+     "Prefix-free codes",
+     "Optimal for symbol-by-symbol coding"
+    ],
+    "analogy": "Morse code but tuned to your own text",
+    "include": [
+     "Minimum Cost to Connect Sticks (premium",
+     "mention alternative)",
+     "Last Stone Weight"
+    ],
+    "traps": [
+     "Confusing it with LZ compression"
+    ],
+    "exact_facts": [
+     "David Huffman, 1952"
+    ]
+   }
+  },
+  {
+   "id": "dsa-graph-representation",
+   "slug": "graph-representation",
+   "title_working": "Graphs: Modelling Problems as Nodes and Edges",
+   "subject": "dsa",
+   "kind": "primer",
+   "track": "dsa-graphs",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-cpp-stl-toolkit"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Adjacency list vs matrix",
+     "Directed, weighted",
+     "Grids are graphs",
+     "Implicit graphs"
+    ],
+    "analogy": "A city map of intersections and roads",
+    "include": [
+     "Build adjacency lists from edge lists"
+    ],
+    "traps": [
+     "Using a matrix for sparse graphs"
+    ]
+   }
+  },
+  {
+   "id": "dsa-bfs",
+   "slug": "bfs",
+   "title_working": "Breadth-First Search: Exploring in Rings",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-graphs",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-graph-representation",
+    "dsa-queue-deque"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Queue by distance layers",
+     "Shortest path in unweighted graphs",
+     "Multi-source BFS"
+    ],
+    "analogy": "Ripples spreading on a pond",
+    "include": [
+     "Rotting Oranges",
+     "Shortest Path in Binary Matrix",
+     "Word Ladder",
+     "Message Route (CSES)"
+    ],
+    "traps": [
+     "Marking visited too late"
+    ]
+   }
+  },
+  {
+   "id": "dsa-dfs",
+   "slug": "dfs",
+   "title_working": "Depth-First Search: Going Deep, Then Backing Up",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-graphs",
+   "order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-graph-representation",
+    "dsa-recursion-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Recursive and iterative DFS",
+     "Connected components",
+     "Flood fill",
+     "Entry and exit times"
+    ],
+    "analogy": "Exploring a cave with a ball of string",
+    "include": [
+     "Number of Islands",
+     "Clone Graph",
+     "Pacific Atlantic Water Flow",
+     "Counting Rooms (CSES)"
+    ],
+    "traps": [
+     "Recursion depth on big grids"
+    ]
+   }
+  },
+  {
+   "id": "dsa-cycle-detection",
+   "slug": "cycle-detection",
+   "title_working": "Detecting Cycles in Graphs",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-graphs",
+   "order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-dfs"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Undirected: visited parent check",
+     "Directed: three colours",
+     "Why they differ"
+    ],
+    "analogy": "Detecting when a rumour comes back to its source",
+    "include": [
+     "Course Schedule",
+     "Graph Valid Tree (premium",
+     "mention alternative)",
+     "Round Trip (CSES)"
+    ],
+    "traps": [
+     "Using undirected logic on directed graphs"
+    ]
+   }
+  },
+  {
+   "id": "dsa-topological-sort",
+   "slug": "topological-sort",
+   "title_working": "Topological Sort: Ordering Tasks With Dependencies",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-graphs",
+   "order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-cycle-detection",
+    "dsa-bfs"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Kahn's algorithm with indegrees",
+     "DFS finish order",
+     "Detecting impossible orders"
+    ],
+    "analogy": "Getting dressed: socks before shoes",
+    "include": [
+     "Course Schedule II",
+     "Alien Dictionary (premium",
+     "mention alternative)",
+     "Course Schedule (CSES)",
+     "Parallel Courses III"
+    ],
+    "traps": [
+     "Forgetting nodes with no edges"
+    ]
+   }
+  },
+  {
+   "id": "dsa-union-find",
+   "slug": "union-find",
+   "title_working": "Union-Find: Who Is Connected to Whom",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-graphs",
+   "order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-graph-representation"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Find with path compression",
+     "Union by size or rank",
+     "Near-constant time",
+     "Counting components"
+    ],
+    "analogy": "Friend groups merging at a party",
+    "include": [
+     "Number of Provinces",
+     "Redundant Connection",
+     "Accounts Merge",
+     "Building Roads (CSES)"
+    ],
+    "traps": [
+     "Forgetting to find before union"
+    ]
+   }
+  },
+  {
+   "id": "dsa-dijkstra",
+   "slug": "dijkstra",
+   "title_working": "Dijkstra: Shortest Paths With Weights",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-graphs",
+   "order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-bfs",
+    "dsa-heap-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Greedy settle the closest node",
+     "Priority queue with lazy deletion",
+     "Fails with negative edges"
+    ],
+    "analogy": "Water flooding pipes where wider pipes fill faster",
+    "include": [
+     "Network Delay Time",
+     "Path With Minimum Effort",
+     "Cheapest Flights Within K Stops",
+     "Shortest Routes I (CSES)"
+    ],
+    "traps": [
+     "Not skipping stale heap entries",
+     "Negative weights"
+    ],
+    "exact_facts": [
+     "Edsger Dijkstra, published 1959"
+    ]
+   }
+  },
+  {
+   "id": "dsa-bellman-ford-floyd",
+   "slug": "bellman-ford-floyd",
+   "title_working": "Bellman-Ford and Floyd-Warshall",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-graphs",
+   "order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-dijkstra"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Relax all edges n-1 times",
+     "Negative cycle detection",
+     "All pairs with three loops"
+    ],
+    "analogy": "Rumours spreading round by round",
+    "include": [
+     "Cheapest Flights Within K Stops",
+     "Find the City With the Smallest Number of Neighbors",
+     "Shortest Routes II (CSES)",
+     "High Score (CSES)"
+    ],
+    "traps": [
+     "Loop order in Floyd-Warshall must have k outermost"
+    ]
+   }
+  },
+  {
+   "id": "dsa-mst",
+   "slug": "mst",
+   "title_working": "Minimum Spanning Trees: Kruskal and Prim",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-graphs",
+   "order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-union-find",
+    "dsa-heap-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Cut property",
+     "Kruskal sorts edges plus union-find",
+     "Prim grows from a node"
+    ],
+    "analogy": "Connecting villages with the cheapest roads",
+    "include": [
+     "Min Cost to Connect All Points",
+     "Road Reparation (CSES)",
+     "Connecting Cities With Minimum Cost (premium",
+     "mention alternative)"
+    ],
+    "traps": [
+     "Disconnected graphs"
+    ]
+   }
+  },
+  {
+   "id": "dsa-bipartite",
+   "slug": "bipartite",
+   "title_working": "Bipartite Graphs and Two-Colouring",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-graphs",
+   "order": 10,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-bfs",
+    "dsa-dfs"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Colour with BFS or DFS",
+     "Odd cycles break it",
+     "Applications"
+    ],
+    "analogy": "Splitting a class into two teams with no rivals together",
+    "include": [
+     "Is Graph Bipartite?",
+     "Possible Bipartition",
+     "Building Teams (CSES)"
+    ],
+    "traps": [
+     "Disconnected components not all checked"
+    ]
+   }
+  },
+  {
+   "id": "dsa-grid-graph-tricks",
+   "slug": "grid-graph-tricks",
+   "title_working": "Grid Problems as Graphs",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-graphs",
+   "order": 11,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-bfs",
+    "dsa-dfs"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Direction arrays",
+     "0-1 BFS",
+     "States with extra dimensions like keys"
+    ],
+    "analogy": "A robot vacuum mapping a room",
+    "include": [
+     "Shortest Path in a Grid with Obstacles Elimination",
+     "Swim in Rising Water",
+     "Labyrinth (CSES)"
+    ],
+    "traps": [
+     "State explosion"
+    ]
+   }
+  },
+  {
+   "id": "dsa-dp-intro",
+   "slug": "dp-intro",
+   "title_working": "Dynamic Programming Is Just Careful Recursion",
+   "subject": "dsa",
+   "kind": "primer",
+   "track": "dsa-dp",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-recursion-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Overlapping subproblems",
+     "Memoisation",
+     "Bottom-up tables",
+     "State, transition, base case"
+    ],
+    "analogy": "Writing answers on a whiteboard so you never redo work",
+    "include": [
+     "Fibonacci three ways",
+     "Climbing Stairs"
+    ],
+    "traps": [
+     "Calling DP a magic formula"
+    ]
+   }
+  },
+  {
+   "id": "dsa-dp-1d",
+   "slug": "dp-1d",
+   "title_working": "1D DP: Stairs, Robbers and Decoding",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-dp",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-dp-intro"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Define dp[i]",
+     "Look back a fixed number of steps",
+     "Space optimisation"
+    ],
+    "analogy": "Deciding each day whether to rest or work",
+    "include": [
+     "House Robber",
+     "Decode Ways",
+     "Coin Change",
+     "Dice Combinations (CSES)"
+    ],
+    "traps": [
+     "Wrong base cases"
+    ]
+   }
+  },
+  {
+   "id": "dsa-knapsack-01",
+   "slug": "knapsack-01",
+   "title_working": "0/1 Knapsack: Take It or Leave It",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-dp",
+   "order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-dp-1d"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "dp over items and capacity",
+     "Iterating capacity backwards for 1D",
+     "Subset sum as special case"
+    ],
+    "analogy": "Packing a backpack with a weight limit",
+    "include": [
+     "Partition Equal Subset Sum",
+     "Target Sum",
+     "Last Stone Weight II",
+     "Book Shop (CSES)"
+    ],
+    "traps": [
+     "Forward iteration reuses items"
+    ]
+   }
+  },
+  {
+   "id": "dsa-unbounded-knapsack",
+   "slug": "unbounded-knapsack",
+   "title_working": "Unbounded Knapsack and Coin Change",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-dp",
+   "order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-knapsack-01"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Items reusable, iterate forward",
+     "Counting combinations vs permutations",
+     "Loop order matters"
+    ],
+    "analogy": "A vending machine with unlimited coins",
+    "include": [
+     "Coin Change",
+     "Coin Change II",
+     "Minimizing Coins (CSES)",
+     "Coin Combinations II (CSES)"
+    ],
+    "traps": [
+     "Mixing up loop order for combinations"
+    ]
+   }
+  },
+  {
+   "id": "dsa-lis",
+   "slug": "lis",
+   "title_working": "Longest Increasing Subsequence",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-dp",
+   "order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-dp-1d",
+    "dsa-binary-search"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "O(n^2) DP",
+     "Patience sorting with binary search",
+     "Reconstructing the sequence"
+    ],
+    "analogy": "Building piles of cards in solitaire",
+    "include": [
+     "Longest Increasing Subsequence",
+     "Russian Doll Envelopes",
+     "Increasing Subsequence (CSES)"
+    ],
+    "traps": [
+     "tails array is not the actual LIS"
+    ]
+   }
+  },
+  {
+   "id": "dsa-lcs-edit-distance",
+   "slug": "lcs-edit-distance",
+   "title_working": "LCS and Edit Distance: Comparing Two Strings",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-dp",
+   "order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-dp-intro"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "2D table over prefixes",
+     "Match or skip",
+     "Insert, delete, replace"
+    ],
+    "analogy": "Aligning two DNA strands",
+    "include": [
+     "Longest Common Subsequence",
+     "Edit Distance",
+     "Distinct Subsequences",
+     "Edit Distance (CSES)"
+    ],
+    "traps": [
+     "Index shifts between string and table"
+    ],
+    "exact_facts": [
+     "Levenshtein distance, 1965-66"
+    ]
+   }
+  },
+  {
+   "id": "dsa-grid-dp",
+   "slug": "grid-dp",
+   "title_working": "Grid DP: Counting and Optimising Paths",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-dp",
+   "order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-dp-intro"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "dp[r][c] from top and left",
+     "Obstacles",
+     "Minimum path sum"
+    ],
+    "analogy": "A delivery robot that only moves right or down",
+    "include": [
+     "Unique Paths",
+     "Minimum Path Sum",
+     "Maximal Square",
+     "Grid Paths (CSES)"
+    ],
+    "traps": [
+     "Edge rows and columns"
+    ]
+   }
+  },
+  {
+   "id": "dsa-interval-dp",
+   "slug": "interval-dp",
+   "title_working": "Interval DP: Solving From the Inside Out",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-dp",
+   "order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-lcs-edit-distance"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "dp[l][r] over subarrays",
+     "Try every split point",
+     "Fill by increasing length"
+    ],
+    "analogy": "Deciding the order to pop balloons",
+    "include": [
+     "Burst Balloons",
+     "Palindromic Substrings",
+     "Minimum Cost Tree From Leaf Values",
+     "Removal Game (CSES)"
+    ],
+    "traps": [
+     "Wrong fill order"
+    ]
+   }
+  },
+  {
+   "id": "dsa-dp-on-trees",
+   "slug": "dp-on-trees",
+   "title_working": "DP on Trees",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-dp",
+   "order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-tree-recursion",
+    "dsa-dp-1d"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Each node returns a small state",
+     "Take or skip a node",
+     "Rerooting idea"
+    ],
+    "analogy": "Planning a party where no employee comes with their boss",
+    "include": [
+     "House Robber III",
+     "Binary Tree Cameras",
+     "Tree Matching (CSES)"
+    ],
+    "traps": [
+     "Forgetting the not-taken state"
+    ]
+   }
+  },
+  {
+   "id": "dsa-state-machine-dp",
+   "slug": "state-machine-dp",
+   "title_working": "State Machine DP: Stock Trading Problems",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-dp",
+   "order": 10,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-dp-1d"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "States like holding or not holding",
+     "Transitions per day",
+     "Cooldowns and fees"
+    ],
+    "analogy": "A light switch with on, off and cooling-down states",
+    "include": [
+     "Best Time to Buy and Sell Stock with Cooldown",
+     "with Transaction Fee",
+     "III",
+     "IV"
+    ],
+    "traps": [
+     "Using more states than needed"
+    ]
+   }
+  },
+  {
+   "id": "dsa-bitmask-dp-intro",
+   "slug": "bitmask-dp-intro",
+   "title_working": "Bitmask DP: Subsets as Numbers",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-dp",
+   "order": 11,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-dp-intro",
+    "dsa-bit-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Represent a set with bits",
+     "dp over masks",
+     "Travelling salesman intuition"
+    ],
+    "analogy": "A checklist encoded as a row of lights",
+    "include": [
+     "Partition to K Equal Sum Subsets",
+     "Shortest Path Visiting All Nodes",
+     "Hamiltonian Flights (CSES)"
+    ],
+    "traps": [
+     "Exponential memory"
+    ]
+   }
+  },
+  {
+   "id": "dsa-tries",
+   "slug": "tries",
+   "title_working": "Tries: Autocomplete in Your Pocket",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-advanced",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-hashing-patterns",
+    "dsa-tree-traversals"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Prefix tree nodes",
+     "Insert and search",
+     "Counting prefixes",
+     "Word search with tries"
+    ],
+    "analogy": "A phone book indexed letter by letter",
+    "include": [
+     "Implement Trie",
+     "Design Add and Search Words",
+     "Word Search II",
+     "Replace Words"
+    ],
+    "traps": [
+     "Memory per node"
+    ]
+   }
+  },
+  {
+   "id": "dsa-fenwick-tree",
+   "slug": "fenwick-tree",
+   "title_working": "Fenwick Trees: Prefix Sums That Change",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-advanced",
+   "order": 2,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-prefix-sums",
+    "dsa-bit-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Lowest set bit trick",
+     "Update and query in log n",
+     "Counting inversions"
+    ],
+    "analogy": "A pyramid of savings jars",
+    "include": [
+     "Range Sum Query - Mutable",
+     "Count of Smaller Numbers After Self",
+     "Dynamic Range Sum Queries (CSES)"
+    ],
+    "traps": [
+     "1-indexing"
+    ],
+    "exact_facts": [
+     "Peter Fenwick, 1994"
+    ]
+   }
+  },
+  {
+   "id": "dsa-segment-tree-basics",
+   "slug": "segment-tree-basics",
+   "title_working": "Segment Trees: Range Queries With Updates",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-advanced",
+   "order": 3,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-fenwick-tree",
+    "dsa-divide-and-conquer"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Tree over array halves",
+     "Point update, range query",
+     "Min, max, sum"
+    ],
+    "analogy": "A tournament bracket that reports winners of any range",
+    "include": [
+     "Range Sum Query - Mutable",
+     "Dynamic Range Minimum Queries (CSES)",
+     "Hotel Queries (CSES)"
+    ],
+    "traps": [
+     "Array size 4n"
+    ]
+   }
+  },
+  {
+   "id": "dsa-bit-manipulation-tricks",
+   "slug": "bit-manipulation-tricks",
+   "title_working": "Bit Manipulation Tricks Interviewers Love",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-advanced",
+   "order": 4,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-bit-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "XOR cancels pairs",
+     "Brian Kernighan's trick",
+     "Subsets via masks",
+     "Power of two checks"
+    ],
+    "analogy": "A light panel where flipping twice undoes the flip",
+    "include": [
+     "Single Number",
+     "Counting Bits",
+     "Number of 1 Bits",
+     "Sum of Two Integers"
+    ],
+    "traps": [
+     "Signed shifts"
+    ]
+   }
+  },
+  {
+   "id": "dsa-string-matching-basics",
+   "slug": "string-matching-basics",
+   "title_working": "Pattern Matching: From Brute Force to Rolling Hash",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-advanced",
+   "order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-string-patterns",
+    "dsa-hashing-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Naive O(nm)",
+     "Rabin-Karp rolling hash",
+     "Collision handling"
+    ],
+    "analogy": "Sliding a stencil across a page",
+    "include": [
+     "Find the Index of the First Occurrence in a String",
+     "Repeated DNA Sequences",
+     "Longest Duplicate Substring"
+    ],
+    "traps": [
+     "Hash collisions",
+     "Modular arithmetic overflow"
+    ]
+   }
+  },
+  {
+   "id": "dsa-design-data-structures",
+   "slug": "design-data-structures",
+   "title_working": "Designing Data Structures in Interviews",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-advanced",
+   "order": 6,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-lru-cache",
+    "dsa-heap-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Pick operations first",
+     "Combine structures",
+     "Amortised analysis"
+    ],
+    "analogy": "Building a custom toolbox for one job",
+    "include": [
+     "Insert Delete GetRandom O(1)",
+     "Design Hit Counter (premium",
+     "mention alternative)",
+     "Time Based Key-Value Store",
+     "Snapshot Array"
+    ],
+    "traps": [
+     "Ignoring amortised costs"
+    ]
+   }
+  },
+  {
+   "id": "dsa-monotonic-queue-dp",
+   "slug": "monotonic-queue-dp",
+   "title_working": "Optimising DP With a Monotonic Deque",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-advanced",
+   "order": 7,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-queue-deque",
+    "dsa-dp-1d"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Window max inside a DP transition",
+     "From n*k to n"
+    ],
+    "analogy": "Keeping only useful candidates on a shortlist",
+    "include": [
+     "Jump Game VI",
+     "Constrained Subsequence Sum",
+     "Shortest Subarray with Sum at Least K"
+    ],
+    "traps": [
+     "Deque stores stale indices"
+    ]
+   }
+  },
+  {
+   "id": "dsa-sparse-table-rmq",
+   "slug": "sparse-table-rmq",
+   "title_working": "Sparse Tables: Range Minimum in O(1)",
+   "subject": "dsa",
+   "kind": "pattern",
+   "track": "dsa-advanced",
+   "order": 8,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-segment-tree-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Precompute powers-of-two ranges",
+     "Idempotent operations overlap safely",
+     "No updates"
+    ],
+    "analogy": "Asking two overlapping lookouts and taking the better report",
+    "include": [
+     "Static Range Minimum Queries (CSES)",
+     "Sliding Window Maximum"
+    ],
+    "traps": [
+     "Using it with sums (not idempotent)"
+    ]
+   }
+  },
+  {
+   "id": "dsa-product-except-self",
+   "slug": "product-except-self",
+   "title_working": "Product of Array Except Self Without Division",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-arrays",
+   "order": 10,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-prefix-sums"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Prefix and suffix products",
+     "Two passes",
+     "O(1) extra space trick"
+    ],
+    "analogy": "Asking everyone in a line for the product of all others",
+    "include": [
+     "Product of Array Except Self",
+     "Trapping Rain Water",
+     "Candy"
+    ],
+    "traps": [
+     "Using division and zero cases"
+    ]
+   }
+  },
+  {
+   "id": "dsa-trapping-rain-water",
+   "slug": "trapping-rain-water",
+   "title_working": "Trapping Rain Water Three Ways",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-arrays",
+   "order": 11,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-two-pointers",
+    "dsa-monotonic-stack"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Water level is min of max-left and max-right",
+     "Prefix max arrays",
+     "Two pointers",
+     "Stack version"
+    ],
+    "analogy": "Filling potholes between buildings after rain",
+    "include": [
+     "Trapping Rain Water",
+     "Container With Most Water",
+     "Trapping Rain Water II"
+    ],
+    "traps": [
+     "Confusing with container problem"
+    ]
+   }
+  },
+  {
+   "id": "dsa-majority-vote",
+   "slug": "majority-vote",
+   "title_working": "Boyer-Moore Majority Vote",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-arrays",
+   "order": 12,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-hashing-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Cancel pairs of different elements",
+     "Candidate survives",
+     "Verification pass"
+    ],
+    "analogy": "An election where rival voters cancel each other out",
+    "include": [
+     "Majority Element",
+     "Majority Element II",
+     "Check If a Number Is Majority Element"
+    ],
+    "traps": [
+     "Skipping verification when majority not guaranteed"
+    ],
+    "exact_facts": [
+     "Boyer and Moore, 1981"
+    ]
+   }
+  },
+  {
+   "id": "dsa-next-permutation",
+   "slug": "next-permutation",
+   "title_working": "Next Permutation by Hand",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-arrays",
+   "order": 13,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-two-pointers"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Find the first descent from the right",
+     "Swap with next larger",
+     "Reverse the suffix"
+    ],
+    "analogy": "An odometer rolling to the next reading",
+    "include": [
+     "Next Permutation",
+     "Permutation Sequence",
+     "Next Greater Element III"
+    ],
+    "traps": [
+     "Reversing the wrong range"
+    ]
+   }
+  },
+  {
+   "id": "dsa-subarray-sum-k",
+   "slug": "subarray-sum-k",
+   "title_working": "Counting Subarrays With Sum K",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-arrays",
+   "order": 14,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-prefix-sums",
+    "dsa-hashing-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Prefix sum plus hash map of counts",
+     "Why sliding window fails with negatives"
+    ],
+    "analogy": "An odometer plus a notebook of past readings",
+    "include": [
+     "Subarray Sum Equals K",
+     "Continuous Subarray Sum",
+     "Subarray Sums II (CSES)",
+     "Subarray Divisibility (CSES)"
+    ],
+    "traps": [
+     "Initialising map with 0 -> 1"
+    ]
+   }
+  },
+  {
+   "id": "dsa-rotated-array-search",
+   "slug": "rotated-array-search",
+   "title_working": "Searching a Rotated Sorted Array",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-search-sort",
+   "order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-binary-search"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "One half is always sorted",
+     "Decide which side holds the target",
+     "Finding the minimum"
+    ],
+    "analogy": "A clock face where 12 moved",
+    "include": [
+     "Search in Rotated Sorted Array",
+     "Find Minimum in Rotated Sorted Array",
+     "Search in Rotated Sorted Array II"
+    ],
+    "traps": [
+     "Duplicates break the half-sorted check"
+    ]
+   }
+  },
+  {
+   "id": "dsa-median-two-arrays",
+   "slug": "median-two-arrays",
+   "title_working": "Median of Two Sorted Arrays",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-search-sort",
+   "order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-binary-search"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Binary search a partition",
+     "Left halves vs right halves",
+     "Edge sentinels"
+    ],
+    "analogy": "Cutting two decks so the left piles hold the smaller half",
+    "include": [
+     "Median of Two Sorted Arrays",
+     "Kth Smallest Product of Two Sorted Arrays"
+    ],
+    "traps": [
+     "Searching the longer array",
+     "Infinity sentinels"
+    ]
+   }
+  },
+  {
+   "id": "dsa-peak-element",
+   "slug": "peak-element",
+   "title_working": "Finding a Peak With Binary Search",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-search-sort",
+   "order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-binary-search"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Compare mid with neighbour",
+     "Slope tells direction",
+     "Works without sorted data"
+    ],
+    "analogy": "Climbing in fog by feeling the slope",
+    "include": [
+     "Find Peak Element",
+     "Peak Index in a Mountain Array",
+     "Find in Mountain Array"
+    ],
+    "traps": [
+     "Boundary neighbours"
+    ]
+   }
+  },
+  {
+   "id": "dsa-reverse-k-group",
+   "slug": "reverse-k-group",
+   "title_working": "Reversing Nodes in k-Groups",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-linear",
+   "order": 7,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-linked-list-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Count k nodes ahead",
+     "Reverse a segment",
+     "Reconnect with a dummy"
+    ],
+    "analogy": "Flipping pancakes k at a time",
+    "include": [
+     "Reverse Nodes in k-Group",
+     "Swap Nodes in Pairs",
+     "Reverse Linked List II"
+    ],
+    "traps": [
+     "Losing the tail connection"
+    ]
+   }
+  },
+  {
+   "id": "dsa-copy-random-list",
+   "slug": "copy-random-list",
+   "title_working": "Copying a List With Random Pointers",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-linear",
+   "order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-linked-list-basics",
+    "dsa-hashing-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Hash map old to new",
+     "Interleaving trick without extra space"
+    ],
+    "analogy": "Photocopying a treasure map with cross references",
+    "include": [
+     "Copy List with Random Pointer",
+     "Clone Graph"
+    ],
+    "traps": [
+     "Restoring original list"
+    ]
+   }
+  },
+  {
+   "id": "dsa-largest-rectangle",
+   "slug": "largest-rectangle",
+   "title_working": "Largest Rectangle in a Histogram",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-linear",
+   "order": 9,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-monotonic-stack"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Previous and next smaller",
+     "Stack of increasing heights",
+     "Maximal rectangle in a matrix"
+    ],
+    "analogy": "Pushing a box under a skyline",
+    "include": [
+     "Largest Rectangle in Histogram",
+     "Maximal Rectangle",
+     "Sum of Subarray Minimums"
+    ],
+    "traps": [
+     "Sentinel at the end"
+    ]
+   }
+  },
+  {
+   "id": "dsa-basic-calculator",
+   "slug": "basic-calculator",
+   "title_working": "Building a Calculator With Stacks",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-linear",
+   "order": 10,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-stack-patterns"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Signs and parentheses",
+     "Operator precedence",
+     "Recursion vs stack"
+    ],
+    "analogy": "A waiter tracking nested orders",
+    "include": [
+     "Basic Calculator",
+     "Basic Calculator II",
+     "Decode String"
+    ],
+    "traps": [
+     "Multi-digit numbers",
+     "Unary minus"
+    ]
+   }
+  },
+  {
+   "id": "dsa-word-search",
+   "slug": "word-search",
+   "title_working": "Word Search: Backtracking on a Grid",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-recursion",
+   "order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-backtracking-template",
+    "dsa-dfs"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Mark visited in place",
+     "Restore on return",
+     "Prune by first letter counts"
+    ],
+    "analogy": "Tracing a word in a letter grid with your finger",
+    "include": [
+     "Word Search",
+     "Word Search II",
+     "Path with Maximum Gold"
+    ],
+    "traps": [
+     "Not restoring cells"
+    ]
+   }
+  },
+  {
+   "id": "dsa-generate-parentheses",
+   "slug": "generate-parentheses",
+   "title_working": "Generating Valid Parentheses",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-recursion",
+   "order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-backtracking-template"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Open and close counts",
+     "Never close more than opened",
+     "Catalan count"
+    ],
+    "analogy": "Building balanced mobiles one hook at a time",
+    "include": [
+     "Generate Parentheses",
+     "Remove Invalid Parentheses",
+     "Letter Case Permutation"
+    ],
+    "traps": [
+     "Generating all then filtering"
+    ]
+   }
+  },
+  {
+   "id": "dsa-combination-sum",
+   "slug": "combination-sum",
+   "title_working": "Combination Sum and Avoiding Duplicate Combinations",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-recursion",
+   "order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-subsets-permutations"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Start index prevents reorderings",
+     "Reuse vs no reuse",
+     "Sorting for pruning"
+    ],
+    "analogy": "Choosing coins in order so 1+2 and 2+1 are the same",
+    "include": [
+     "Combination Sum",
+     "Combination Sum II",
+     "Combination Sum III"
+    ],
+    "traps": [
+     "Duplicates from unsorted input"
+    ]
+   }
+  },
+  {
+   "id": "dsa-serialize-tree",
+   "slug": "serialize-tree",
+   "title_working": "Serialising and Deserialising a Binary Tree",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-trees",
+   "order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-tree-construction"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Preorder with null markers",
+     "Queue-based parsing",
+     "Level order alternative"
+    ],
+    "analogy": "Packing a tree into a shipping box and rebuilding it",
+    "include": [
+     "Serialize and Deserialize Binary Tree",
+     "Serialize and Deserialize BST"
+    ],
+    "traps": [
+     "Ambiguous encodings without nulls"
+    ]
+   }
+  },
+  {
+   "id": "dsa-max-path-sum",
+   "slug": "max-path-sum",
+   "title_working": "Binary Tree Maximum Path Sum",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-trees",
+   "order": 9,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-tree-recursion"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Return best downward path",
+     "Update global with both sides",
+     "Ignore negative branches"
+    ],
+    "analogy": "A hiker choosing the best ridge walk through a peak",
+    "include": [
+     "Binary Tree Maximum Path Sum",
+     "Diameter of Binary Tree",
+     "Longest Univalue Path"
+    ],
+    "traps": [
+     "Returning a path that uses both children"
+    ]
+   }
+  },
+  {
+   "id": "dsa-vertical-order",
+   "slug": "vertical-order",
+   "title_working": "Vertical Order Traversal",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-trees",
+   "order": 10,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-tree-traversals"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Column and row coordinates",
+     "Sorting ties",
+     "BFS with columns"
+    ],
+    "analogy": "Looking at a tree from above with a grid overlay",
+    "include": [
+     "Vertical Order Traversal of a Binary Tree",
+     "Binary Tree Right Side View"
+    ],
+    "traps": [
+     "Tie-break rules"
+    ]
+   }
+  },
+  {
+   "id": "dsa-meeting-rooms",
+   "slug": "meeting-rooms",
+   "title_working": "How Many Meeting Rooms Do You Need?",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-heaps-greedy",
+   "order": 9,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-intervals-sweep",
+    "dsa-heap-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Min-heap of end times",
+     "Sweep line alternative",
+     "Same answer, two views"
+    ],
+    "analogy": "A hotel manager freeing rooms as guests check out",
+    "include": [
+     "Meeting Rooms II (premium",
+     "mention alternative)",
+     "Car Pooling",
+     "Restaurant Customers (CSES)"
+    ],
+    "traps": [
+     "Touching intervals"
+    ]
+   }
+  },
+  {
+   "id": "dsa-jump-game",
+   "slug": "jump-game",
+   "title_working": "Jump Game: Greedy Reach",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-heaps-greedy",
+   "order": 10,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-greedy-exchange"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Track farthest reachable",
+     "BFS-like levels for minimum jumps"
+    ],
+    "analogy": "Hopping stones across a river",
+    "include": [
+     "Jump Game",
+     "Jump Game II",
+     "Video Stitching"
+    ],
+    "traps": [
+     "Updating jumps at the wrong time"
+    ]
+   }
+  },
+  {
+   "id": "dsa-gas-station",
+   "slug": "gas-station",
+   "title_working": "Gas Station: A Greedy Proof in One Pass",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-heaps-greedy",
+   "order": 11,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-greedy-exchange"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Total fuel check",
+     "Reset start when tank goes negative",
+     "Why skipped stations cannot work"
+    ],
+    "analogy": "A road trip where running dry rules out every earlier start",
+    "include": [
+     "Gas Station",
+     "Minimum Number of Refueling Stops"
+    ],
+    "traps": [
+     "Proof gap"
+    ]
+   }
+  },
+  {
+   "id": "dsa-word-ladder",
+   "slug": "word-ladder",
+   "title_working": "Word Ladder: BFS on Implicit Graphs",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-graphs",
+   "order": 12,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-bfs"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Words as nodes, one-letter changes as edges",
+     "Wildcard buckets",
+     "Bidirectional BFS"
+    ],
+    "analogy": "Changing one letter at a time to walk between words",
+    "include": [
+     "Word Ladder",
+     "Open the Lock",
+     "Minimum Genetic Mutation"
+    ],
+    "traps": [
+     "Building the full graph up front"
+    ]
+   }
+  },
+  {
+   "id": "dsa-course-schedule",
+   "slug": "course-schedule",
+   "title_working": "Course Schedule: Can You Graduate?",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-graphs",
+   "order": 13,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-topological-sort"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Cycle means impossible",
+     "Kahn's queue order",
+     "Return an order"
+    ],
+    "analogy": "A university prerequisite chart",
+    "include": [
+     "Course Schedule",
+     "Course Schedule II",
+     "Course Schedule (CSES)"
+    ],
+    "traps": [
+     "Edge direction mistakes"
+    ]
+   }
+  },
+  {
+   "id": "dsa-islands-variants",
+   "slug": "islands-variants",
+   "title_working": "Number of Islands and Its Many Variants",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-graphs",
+   "order": 14,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-dfs",
+    "dsa-bfs",
+    "dsa-union-find"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Flood fill",
+     "Counting distinct shapes",
+     "Union-find for online additions"
+    ],
+    "analogy": "Counting islands on a map by colouring each one",
+    "include": [
+     "Number of Islands",
+     "Max Area of Island",
+     "Number of Distinct Islands (premium",
+     "mention alternative)",
+     "Making A Large Island"
+    ],
+    "traps": [
+     "Mutating input when not allowed"
+    ]
+   }
+  },
+  {
+   "id": "dsa-network-delay",
+   "slug": "network-delay",
+   "title_working": "Network Delay Time With Dijkstra",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-graphs",
+   "order": 15,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-dijkstra"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Directed weighted graph",
+     "Max of shortest distances",
+     "Unreachable nodes"
+    ],
+    "analogy": "A message spreading through relay towers",
+    "include": [
+     "Network Delay Time",
+     "Path with Maximum Probability",
+     "Shortest Routes I (CSES)"
+    ],
+    "traps": [
+     "Returning -1 when some node is unreachable"
+    ]
+   }
+  },
+  {
+   "id": "dsa-cheapest-flights-k-stops",
+   "slug": "cheapest-flights-k-stops",
+   "title_working": "Cheapest Flights With At Most K Stops",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-graphs",
+   "order": 16,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-bellman-ford-floyd",
+    "dsa-bfs"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Bellman-Ford limited rounds",
+     "Copy distances each round",
+     "Why plain Dijkstra fails"
+    ],
+    "analogy": "Booking flights with a limit on layovers",
+    "include": [
+     "Cheapest Flights Within K Stops",
+     "Flight Discount (CSES)"
+    ],
+    "traps": [
+     "Updating in place within a round"
+    ]
+   }
+  },
+  {
+   "id": "dsa-coin-change",
+   "slug": "coin-change",
+   "title_working": "Coin Change: Minimum Coins and Number of Ways",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-dp",
+   "order": 12,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-unbounded-knapsack"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Min coins vs count ways",
+     "Infinity initialisation",
+     "Loop order"
+    ],
+    "analogy": "Making change at a shop counter",
+    "include": [
+     "Coin Change",
+     "Coin Change II",
+     "Minimizing Coins (CSES)",
+     "Coin Combinations I (CSES)"
+    ],
+    "traps": [
+     "Greedy fails for some coin systems"
+    ]
+   }
+  },
+  {
+   "id": "dsa-word-break",
+   "slug": "word-break",
+   "title_working": "Word Break: DP Over Prefixes",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-dp",
+   "order": 13,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-dp-1d",
+    "dsa-tries"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "dp[i] true if prefix splits",
+     "Dictionary lookup",
+     "Trie speed-up"
+    ],
+    "analogy": "Cutting a ribbon into labelled pieces",
+    "include": [
+     "Word Break",
+     "Word Break II",
+     "Concatenated Words"
+    ],
+    "traps": [
+     "Substring creation cost"
+    ]
+   }
+  },
+  {
+   "id": "dsa-longest-palindromic-subsequence",
+   "slug": "longest-palindromic-subsequence",
+   "title_working": "Longest Palindromic Subsequence",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-dp",
+   "order": 14,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-interval-dp",
+    "dsa-lcs-edit-distance"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "dp over l and r",
+     "Relation to LCS with reverse"
+    ],
+    "analogy": "Folding a word to make ends meet",
+    "include": [
+     "Longest Palindromic Subsequence",
+     "Minimum Insertion Steps to Make a String Palindrome",
+     "Palindrome Partitioning II"
+    ],
+    "traps": [
+     "Confusing subsequence with substring"
+    ]
+   }
+  },
+  {
+   "id": "dsa-regex-matching",
+   "slug": "regex-matching",
+   "title_working": "Regular Expression and Wildcard Matching",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-dp",
+   "order": 15,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-lcs-edit-distance"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Star means zero or more",
+     "Table over pattern and text",
+     "Base rows"
+    ],
+    "analogy": "A key with flexible teeth fitting a lock",
+    "include": [
+     "Regular Expression Matching",
+     "Wildcard Matching"
+    ],
+    "traps": [
+     "Empty pattern cases"
+    ]
+   }
+  },
+  {
+   "id": "dsa-house-robber-variants",
+   "slug": "house-robber-variants",
+   "title_working": "House Robber and Its Variants",
+   "subject": "dsa",
+   "kind": "problem-walkthrough",
+   "track": "dsa-dp",
+   "order": 16,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-dp-1d"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Linear, circular and tree versions",
+     "Take or skip"
+    ],
+    "analogy": "A thief who never robs two neighbours",
+    "include": [
+     "House Robber",
+     "House Robber II",
+     "House Robber III",
+     "Delete and Earn"
+    ],
+    "traps": [
+     "Circular case double counting"
+    ]
+   }
+  }
+ ]
+}

@@ -1,6 +1,7 @@
 ---
 id: "paper-support-vector-networks"
 kind: "paper"
+subject: "ml"
 slug: "support-vector-networks"
 title: "Draw the Widest Road Between Two Crowds"
 subtitle: "Support vector machines: the margin idea that dominated machine learning before deep learning took over"

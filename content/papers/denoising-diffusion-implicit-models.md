@@ -1,6 +1,7 @@
 ---
 id: paper-denoising-diffusion-implicit-models
 kind: paper
+subject: "ml"
 slug: denoising-diffusion-implicit-models
 title: 'Skipping Steps: How DDIM Accelerated Diffusion'
 subtitle: How one clever derivation turned a slow 1,000-step random walk into a fast, deterministic slide

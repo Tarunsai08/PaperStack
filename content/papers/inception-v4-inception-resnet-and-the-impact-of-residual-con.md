@@ -1,6 +1,7 @@
 ---
 id: paper-inception-v4-inception-resnet-and-the-impact-of-residual-con
 kind: paper
+subject: "ml"
 slug: inception-v4-inception-resnet-and-the-impact-of-residual-con
 title: Do Deep Networks Actually Need Shortcuts?
 subtitle: How combining Inception modules and skip connections settled a fierce debate about depth

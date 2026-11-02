@@ -1,6 +1,7 @@
 ---
 id: paper-aggregated-residual-transformations-for-deep-neural-networks
 kind: paper
+subject: "ml"
 slug: aggregated-residual-transformations-for-deep-neural-networks
 title: 'ResNeXt: Beyond Depth and Width'
 subtitle: How parallel identical pathways revealed a third dimension in deep networks

@@ -1,6 +1,7 @@
 ---
 id: "paper-rag"
 kind: "paper"
+subject: "ml"
 slug: "rag"
 title: "Let the Model Look Things Up"
 subtitle: "Retrieval-augmented generation: pairing a language model with a searchable library so it can cite facts instead of guessing"

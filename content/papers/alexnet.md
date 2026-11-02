@@ -1,6 +1,7 @@
 ---
 id: "paper-alexnet"
 kind: "paper"
+subject: "ml"
 slug: "alexnet"
 title: "The Night Deep Learning Won"
 subtitle: "AlexNet: two gaming GPUs, a million labeled photos, and the 2012 result that changed AI forever"

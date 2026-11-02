@@ -1,6 +1,7 @@
 ---
 id: paper-distributed-representations-of-words-and-phrases-and-their-c
 kind: paper
+subject: "ml"
 slug: distributed-representations-of-words-and-phrases-and-their-c
 title: How Word2Vec Skipped the Softmax Bottleneck
 subtitle: Negative sampling, phrase learning, and the surprising math of word addition

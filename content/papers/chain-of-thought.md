@@ -1,6 +1,7 @@
 ---
 id: "paper-chain-of-thought"
 kind: "paper"
+subject: "ml"
 slug: "chain-of-thought"
 title: "Show Your Working: The Prompt That Unlocked Reasoning"
 subtitle: "Chain-of-thought prompting: a few worked examples with steps made giant language models dramatically better at maths and logic"

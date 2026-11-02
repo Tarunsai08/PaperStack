@@ -1,6 +1,7 @@
 ---
 id: "primer-embeddings"
 kind: "primer"
+subject: "ml"
 slug: "embeddings"
 title: "How Words Become Numbers With Meaning"
 subtitle: "Embeddings: the map of meaning hiding inside every search engine, recommender and chatbot"

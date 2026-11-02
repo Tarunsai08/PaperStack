@@ -1,6 +1,7 @@
 ---
 id: "paper-dqn"
 kind: "paper"
+subject: "ml"
 slug: "dqn"
 title: "One Program, Forty-Nine Atari Games"
 subtitle: "Deep Q-networks: how an agent learned to play from raw pixels and a score, with no rules and no human tips"

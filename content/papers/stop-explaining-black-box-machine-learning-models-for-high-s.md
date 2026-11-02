@@ -1,6 +1,7 @@
 ---
 id: paper-stop-explaining-black-box-machine-learning-models-for-high-s
 kind: paper
+subject: "ml"
 slug: stop-explaining-black-box-machine-learning-models-for-high-s
 title: Why Explaining Black Boxes Fails
 subtitle: How inherently transparent models beat opaque algorithms at high stakes

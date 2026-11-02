@@ -1,6 +1,7 @@
 ---
 id: paper-real-time-single-image-and-video-super-resolution-using-an-e
 kind: paper
+subject: "ml"
 slug: real-time-single-image-and-video-super-resolution-using-an-e
 title: 'Pixel Shuffle: Upscaling Images at the Very End'
 subtitle: How shifting magnification to the final layer unlocked real-time AI video super-resolution

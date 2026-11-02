@@ -1,6 +1,7 @@
 ---
 id: "paper-dropout"
 kind: "paper"
+subject: "ml"
 slug: "dropout"
 title: "Make Your Network Forget, On Purpose"
 subtitle: "Dropout: randomly switching off neurons turns one network into a crowd and stops it from memorizing"

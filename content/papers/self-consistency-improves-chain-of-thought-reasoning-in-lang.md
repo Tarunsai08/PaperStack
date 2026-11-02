@@ -1,6 +1,7 @@
 ---
 id: paper-self-consistency-improves-chain-of-thought-reasoning-in-lang
 kind: paper
+subject: "ml"
 slug: self-consistency-improves-chain-of-thought-reasoning-in-lang
 title: Why Multiple Reasoning Paths Beat One Greedy Guess
 subtitle: How language models learn to solve complex problems by taking a vote

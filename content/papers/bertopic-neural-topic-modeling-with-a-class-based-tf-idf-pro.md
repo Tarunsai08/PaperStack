@@ -1,6 +1,7 @@
 ---
 id: paper-bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro
 kind: paper
+subject: "ml"
 slug: bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro
 title: The End of Bag-of-Words Topic Modeling
 subtitle: How BERTopic united deep transformers with classical statistics

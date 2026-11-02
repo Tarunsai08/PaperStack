@@ -1,6 +1,7 @@
 ---
 id: paper-quantization-and-training-of-neural-networks-for-efficient-i
 kind: paper
+subject: "ml"
 slug: quantization-and-training-of-neural-networks-for-efficient-i
 title: 'Ditching Floats: The Secret to Fast Mobile AI'
 subtitle: How 8-bit integer arithmetic brought real-time vision to smartphones

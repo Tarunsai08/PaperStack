@@ -102,6 +102,7 @@ async function doSync({ force = false }: { force?: boolean; bundledVersion?: str
     contentVersion: remoteIndex.content_version,
     index,
     tracks: remoteTracks,
+    subjects: remoteIndex.subjects,
     articles,
     lastSyncAt: now,
   }));

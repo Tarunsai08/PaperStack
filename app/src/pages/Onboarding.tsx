@@ -2,7 +2,7 @@ import { AnimatePresence, motion, type PanInfo } from 'framer-motion';
 import { BellOff, BookOpenCheck, Brain, Sparkles } from 'lucide-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CoverArt } from '../components/CoverArt';
+import { CoverArt, subjectMotif } from '../components/CoverArt';
 import { haptic } from '../lib/native';
 import { requestNotificationPermission } from '../lib/notifications';
 import { setPrefs } from '../lib/storage';
@@ -21,7 +21,7 @@ export default function Onboarding() {
   const [dir, setDir] = useState(1);
   const [time, setTime] = useState<string | null>('19:30');
   const navigate = useNavigate();
-  const { tracks, path } = useContent();
+  const { subjects, path } = useContent();
 
   const go = (n: number) => {
     if (n < 0 || n > 2) return;
@@ -49,16 +49,16 @@ export default function Onboarding() {
         <Logo size={96} />
       </div>
       <h1 className="mt-10 font-serif text-[32px] font-semibold leading-[1.15] tracking-[-0.015em]">
-        Learn AI from the papers that built it
+        Learn the ideas top engineers rely on
       </h1>
       <p className="mt-4 max-w-[340px] text-[16px] leading-relaxed text-muted">
-        {path.length || 52} short, story-driven articles take you from Turing's 1950 question to the systems behind today's chatbots. No
-        background needed.
+        {path.length || 52} short, story-driven articles on machine learning, data structures and algorithms, competitive programming,
+        famous algorithms and system design. Built for placement prep, never boring.
       </p>
     </div>,
     <div key="1" className="flex flex-col items-center text-center">
       <div className="w-full max-w-[320px] space-y-2.5">
-        {tracks.slice(0, 5).map((t, n) => (
+        {subjects.filter((t) => t.status === 'active').slice(0, 5).map((t, n) => (
           <motion.div
             key={t.id}
             initial={{ opacity: 0, x: 30 }}
@@ -66,15 +66,15 @@ export default function Onboarding() {
             transition={{ delay: 0.08 * n }}
             className="flex items-center gap-3 rounded-2xl border border-line bg-surface p-2.5 text-left shadow-card"
           >
-            <CoverArt seed={`track-${t.id}`} accent={t.accent} className="h-10 w-10 shrink-0 rounded-xl" />
+            <CoverArt seed={`subject-${t.id}`} accent={t.accent} motif={subjectMotif(t)} className="h-10 w-10 shrink-0 rounded-xl" />
             <span className="text-[14.5px] font-semibold">{t.title}</span>
           </motion.div>
         ))}
       </div>
-      <h1 className="mt-10 font-serif text-[30px] font-semibold leading-[1.15] tracking-[-0.015em]">One path, one article at a time</h1>
+      <h1 className="mt-10 font-serif text-[30px] font-semibold leading-[1.15] tracking-[-0.015em]">One subject, one article at a time</h1>
       <div className="mt-5 max-w-[340px] space-y-3 text-left text-[15px] leading-snug text-muted">
         <p className="flex gap-3">
-          <Brain size={20} className="mt-0.5 shrink-0 text-brand" /> Ten primers build your intuition before the first paper.
+          <Brain size={20} className="mt-0.5 shrink-0 text-brand" /> Every subject has its own path, and the Placement Roadmap mixes them into a 6 or 12 month plan.
         </p>
         <p className="flex gap-3">
           <Sparkles size={20} className="mt-0.5 shrink-0 text-brand" /> Tap underlined terms for instant definitions. Long-press to

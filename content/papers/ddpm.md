@@ -1,6 +1,7 @@
 ---
 id: "paper-ddpm"
 kind: "paper"
+subject: "ml"
 slug: "ddpm"
 title: "Creating Images by Removing Noise"
 subtitle: "Denoising diffusion: destroy a picture with static, step by step, then train a network to run the film backwards"

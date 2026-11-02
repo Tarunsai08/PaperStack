@@ -1,6 +1,7 @@
 ---
 id: paper-training-data-efficient-image-transformers-distillation-thro
 kind: paper
+subject: "ml"
 slug: training-data-efficient-image-transformers-distillation-thro
 title: Teaching Vision Transformers With Less Data
 subtitle: How a distillation token and smart augmentations freed ViT from massive datasets

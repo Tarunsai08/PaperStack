@@ -59,3 +59,19 @@ Choices made while building, so nobody has to guess later.
 - **Local providers are opt-in.** Ollama is only used with `--provider ollama` or `PAPERSTACK_USE_LOCAL=1`, so CI never waits on a localhost connection.
 - **Small slips are repaired, not rejected.** Unknown `article:` links become plain text and `[[terms]]` missing from the glossary lose their brackets; structural problems trigger one retry with the validator's exact messages.
 - **The daily workflow starts the web deploy itself** with `gh workflow run`, because pushes made with `GITHUB_TOKEN` do not trigger other workflows.
+
+## v2: multiple subjects
+
+- **Subjects live in `content/subjects.json`** and are copied into `index.json` (`subjects`), so content sync delivers new subjects without a new APK. Tracks gained a `subject` field; old tracks without it are treated as `ml`.
+- **ML ids, slugs and folders did not change.** ML articles only gained `subject: "ml"`. Progress, highlights and quiz scores are keyed by article id, so they survive untouched. New IndexedDB keys (`problems`, `prefs.subject`, `prefs.roadmapMonths`) get defaults through the existing merge-on-load, so no explicit migration step is needed.
+- **Id prefix rule:** ML keeps `paper-` / `primer-`; every other subject uses `<subject>-` (for example `dsa-prefix-sums`). New subjects live in `content/<subject>/`.
+- **New kinds and their exact sections:** `pattern`, `problem-walkthrough`, `concept`, `deep-dive`, `case-study` (see `pipeline/build_index.py` `SECTIONS`). Primers are allowed in any subject. `paper` is ML only.
+- **Pseudocode first, C++ second** (the reader asked for the gist of each idea over code). `pattern`, `problem-walkthrough` and `concept` need a ```pseudo or ```cpp block. DSA and CP articles give pseudocode and a compact C++ version; Famous Algorithms and System Design may use pseudocode only.
+- **C++ compile check:** every ```cpp fence must compile on its own with `g++ -std=c++17 -fsyntax-only -Wall` (`tools/check_cpp.py`, run in every workflow). Fragments are fenced as ```cpp partial and skipped. Syntax-only is enough to catch broken code without needing a `main` in every snippet.
+- **Syntax highlighting** uses highlight.js core + the C++ grammar only, lazy-loaded and bundled (works offline). Colours are theme tokens (`--code-*`) chosen for AA contrast on each theme's code background.
+- **Old installs:** an older APK validates synced articles with its old rules, so articles of new kinds are skipped silently there instead of breaking it. ML articles still validate (unknown frontmatter fields are ignored).
+- **Covers:** ML keeps its seeded random motifs (unchanged covers). Other subjects use a fixed motif (tree, bars, hex, servers, grid) with their track accents.
+- **Placement Roadmap** is computed in the app from `content/roadmap.json`, which `build_index.py` flattens from `content/curriculum/*.json`. 6 months = P0 only; 12 months = P0 + P1; P2 are extras. Order respects prerequisites and interleaves subjects, with DSA running slightly ahead.
+- **Curriculum authoring:** curricula were drafted in a compact line format and converted once to JSON; the JSON is now the only source of truth (`status` = planned / written / needs_review).
+- **ML priority:** placement-relevant ML (primers and a handful of core papers) is P1; the rest is P2, because the target roles are product and infra engineering.
+- **Practice problem links** use LeetCode slugs, CSES task ids and Codeforces problem ids that are well known; they were not all opened live from this sandbox. `tools/check_links.py` (when added) or a manual click-through should confirm them.

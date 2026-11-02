@@ -1,6 +1,7 @@
 ---
 id: "paper-scaling-laws"
 kind: "paper"
+subject: "ml"
 slug: "scaling-laws"
 title: "The Straight Lines That Launched a Race"
 subtitle: "Scaling laws: how language model quality improves predictably with size, data and compute, and why that changed AI strategy"

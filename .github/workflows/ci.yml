@@ -21,6 +21,8 @@ jobs:
         run: python -m pytest -q pipeline/tests
       - name: Validate content
         run: python pipeline/build_index.py --strict
+      - name: Compile C++ snippets
+        run: python tools/check_cpp.py
 
       - uses: actions/setup-node@v4
         with:

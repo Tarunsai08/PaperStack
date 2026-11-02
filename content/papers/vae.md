@@ -1,6 +1,7 @@
 ---
 id: "paper-vae"
 kind: "paper"
+subject: "ml"
 slug: "vae"
 title: "Teaching an Autoencoder to Dream"
 subtitle: "Variational autoencoders: fuzzy codes, a smooth map of possibilities, and one clever trick that made it trainable"

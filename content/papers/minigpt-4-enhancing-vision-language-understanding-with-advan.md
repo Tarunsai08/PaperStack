@@ -1,6 +1,7 @@
 ---
 id: paper-minigpt-4-enhancing-vision-language-understanding-with-advan
 kind: paper
+subject: "ml"
 slug: minigpt-4-enhancing-vision-language-understanding-with-advan
 title: Bridging Sight and Speech with One Linear Layer
 subtitle: How freezing a giant language model unlocked multimodal AI in ten hours

@@ -1,6 +1,7 @@
 ---
 id: paper-the-llama-3-herd-of-models
 kind: paper
+subject: "ml"
 slug: the-llama-3-herd-of-models
 title: The Engineering Playbook of Llama 3
 subtitle: How 16,000 GPUs and meticulous post-training built an open frontier model

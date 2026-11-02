@@ -1,6 +1,7 @@
 ---
 id: paper-improved-denoising-diffusion-probabilistic-models
 kind: paper
+subject: "ml"
 slug: improved-denoising-diffusion-probabilistic-models
 title: Teaching Diffusion Models to Walk in Big Strides
 subtitle: How learning variance and smoothing noise cut sampling time by ten

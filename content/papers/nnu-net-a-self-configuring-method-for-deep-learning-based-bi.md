@@ -1,6 +1,7 @@
 ---
 id: paper-nnu-net-a-self-configuring-method-for-deep-learning-based-bi
 kind: paper
+subject: "ml"
 slug: nnu-net-a-self-configuring-method-for-deep-learning-based-bi
 title: 'No New Net: Why Hyperparameters Beat Novel Architectures'
 subtitle: How automating the boring parts of deep learning shattered medical imaging leaderboards

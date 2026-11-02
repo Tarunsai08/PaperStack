@@ -1,6 +1,7 @@
 ---
 id: paper-efficient-streaming-language-models-with-attention-sinks
 kind: paper
+subject: "ml"
 slug: efficient-streaming-language-models-with-attention-sinks
 title: Why Transformers Crash Without Their First Words
 subtitle: How four pinned tokens unlocked infinite streaming for large language models

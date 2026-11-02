@@ -1,6 +1,7 @@
 ---
 id: paper-large-language-models-are-zero-shot-reasoners
 kind: paper
+subject: "ml"
 slug: large-language-models-are-zero-shot-reasoners
 title: The Magic Words for Machine Logic
 subtitle: How four words unlocked multi-step reasoning without a single example

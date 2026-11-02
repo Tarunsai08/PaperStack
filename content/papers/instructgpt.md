@@ -1,6 +1,7 @@
 ---
 id: "paper-instructgpt"
 kind: "paper"
+subject: "ml"
 slug: "instructgpt"
 title: "How a Text Predictor Learned to Be Helpful"
 subtitle: "InstructGPT: human demonstrations, human rankings and reinforcement learning, the recipe that became ChatGPT"

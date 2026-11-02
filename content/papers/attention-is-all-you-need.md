@@ -1,6 +1,7 @@
 ---
 id: "paper-attention-is-all-you-need"
 kind: "paper"
+subject: "ml"
 slug: "attention-is-all-you-need"
 title: "The Paper That Taught Machines Where to Look"
 subtitle: "How one simple idea replaced decades of sequence models and gave us ChatGPT"
