@@ -1,7 +1,7 @@
 {
- "content_version": "63079a857c915e53",
+ "content_version": "957a5ac1e544df13",
  "generated_at": "2026-11-02",
- "count": 281,
+ "count": 283,
  "subjects": [
   {
    "id": "ml",
@@ -15497,6 +15497,229 @@
    "hash": "269b6910cd4b",
    "word_count": 1403,
    "excerpt": "A manager has a stack of ten thousand forms to check and two assistants. She splits the stack in half, gives each assistant one half and tells them to do the same with their own assistants. When the halves come back checked, she only has to combine the two reports into one. Merge sort, binary…"
+  },
+  {
+   "id": "dsa-word-search",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "word-search",
+   "title": "Tracing a Word Across the Grid With Your Finger",
+   "subtitle": "Word Search with backtracking on a grid: mark cells in place, restore them on the way back, prune early, and search many words at once with a trie",
+   "track": "dsa-recursion",
+   "track_order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-backtracking-template",
+    "dsa-dfs"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "backtracking",
+    "grid dfs",
+    "trie",
+    "pruning"
+   ],
+   "complexity": {
+    "time": "O(R × C × 3^L) for one word of length L",
+    "space": "O(L) recursion"
+   },
+   "practice_problems": [
+    {
+     "name": "Word Search",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/word-search/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Path with Maximum Gold",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/path-with-maximum-gold/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Word Search II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/word-search-ii/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Grid backtracking",
+     "definition": "Depth-first search over grid cells that builds a path one cell at a time and undoes each step when it returns."
+    },
+    {
+     "term": "In-place marking",
+     "definition": "Temporarily overwriting a cell, for example with '#', to mean 'on the current path', then restoring the original letter on return."
+    },
+    {
+     "term": "Simple path",
+     "definition": "A path that never visits the same cell twice."
+    },
+    {
+     "term": "Trie",
+     "definition": "A tree of characters where each path from the root spells a prefix, used to test many words' prefixes at once."
+    },
+    {
+     "term": "Prefix pruning",
+     "definition": "Stopping a search as soon as the letters collected so far are not the start of any word that is still wanted."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why must a cell be restored after the recursive call returns?",
+     "options": [
+      "To save memory",
+      "Another path from a different starting point or direction may need that cell; it is only 'used' for the current path",
+      "Because the board must be printed",
+      "It does not need restoring"
+     ],
+     "answer": 1,
+     "explain": "Marking means 'on this path'. Once the path backs off that cell, other paths must be free to use it, so the original letter goes back."
+    },
+    {
+     "q": "Why is the bound O(R × C × 3^L) rather than 4^L?",
+     "options": [
+      "Grids have only three directions",
+      "After the first step, the path cannot go straight back to the cell it came from, so at most three neighbours remain",
+      "Because L is small",
+      "It is actually 4^L"
+     ],
+     "answer": 1,
+     "explain": "The previous cell is marked, so each step after the first has at most three new options."
+    },
+    {
+     "q": "In Word Search II, what does the trie buy over running Word Search once per word?",
+     "options": [
+      "Nothing",
+      "All words are searched in one pass: a path stops as soon as its letters are not a prefix of any remaining word",
+      "It sorts the words",
+      "It removes the need for marking"
+     ],
+     "answer": 1,
+     "explain": "Words with a shared prefix share one walk through the grid, and paths that match no prefix die immediately."
+    }
+   ],
+   "cover_seed": "word-search",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.8,
+   "path": "dsa/word-search.md",
+   "hash": "622ae3afc193",
+   "word_count": 1433,
+   "excerpt": "A puzzle page shows a grid of letters and a list of words hidden in it. You put your finger on a letter that matches the start of a word, slide it to a neighbouring letter that matches the next one, and keep going. If you hit a dead end, you lift your finger back one square and try another…"
+  },
+  {
+   "id": "dsa-generate-parentheses",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "generate-parentheses",
+   "title": "Building Balanced Mobiles One Hook at a Time",
+   "subtitle": "Generate Parentheses by tracking open and close counts so only valid strings are ever built, then Remove Invalid Parentheses and Letter Case Permutation with the same idea",
+   "track": "dsa-recursion",
+   "track_order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-backtracking-template"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "backtracking",
+    "parentheses",
+    "catalan numbers",
+    "pruning"
+   ],
+   "complexity": {
+    "time": "O(n × Catalan(n)) for Generate Parentheses",
+    "space": "O(n) recursion plus the output"
+   },
+   "practice_problems": [
+    {
+     "name": "Letter Case Permutation",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/letter-case-permutation/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Generate Parentheses",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/generate-parentheses/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Remove Invalid Parentheses",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/remove-invalid-parentheses/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Balanced string",
+     "definition": "A bracket string where every prefix has at least as many opening as closing brackets, and the totals are equal at the end."
+    },
+    {
+     "term": "Prefix rule",
+     "definition": "While building a string, never let the number of ')' exceed the number of '(' so far; any prefix that breaks it can never become balanced."
+    },
+    {
+     "term": "Catalan number",
+     "definition": "The n-th term of 1, 1, 2, 5, 14, 42, ..., equal to the number of balanced strings with n pairs of brackets."
+    },
+    {
+     "term": "Minimum removals",
+     "definition": "The fewest brackets to delete to make a string valid: the unmatched ')' found scanning left to right plus the '(' still open at the end."
+    },
+    {
+     "term": "Generate and filter",
+     "definition": "Producing every possible candidate and discarding the invalid ones afterwards, usually far slower than never building invalid candidates."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "When building a string for n = 3, when may you add a ')'?",
+     "options": [
+      "Always",
+      "Only if fewer than 3 ')' have been used",
+      "Only if fewer ')' than '(' have been used so far",
+      "Only at the end"
+     ],
+     "answer": 2,
+     "explain": "A ')' must close an earlier '('. If close equals open, adding ')' would make a prefix with more closers than openers, which can never be fixed."
+    },
+    {
+     "q": "How many balanced strings have 4 pairs of brackets?",
+     "options": [
+      "8",
+      "14",
+      "16",
+      "24"
+     ],
+     "answer": 1,
+     "explain": "The counts are the Catalan numbers 1, 1, 2, 5, 14, ..., so 4 pairs give 14."
+    },
+    {
+     "q": "For '()(()' what is the minimum number of removals, and why?",
+     "options": [
+      "0",
+      "1, because one '(' is left unmatched at the end",
+      "2",
+      "3"
+     ],
+     "answer": 1,
+     "explain": "Scanning left to right, no ')' is ever unmatched, and one '(' is still open at the end. Removing it gives '()()'."
+    }
+   ],
+   "cover_seed": "generate-parentheses",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.82,
+   "path": "dsa/generate-parentheses.md",
+   "hash": "dc1cc1b5b6f4",
+   "word_count": 1214,
+   "excerpt": "List every valid way to arrange three pairs of brackets: ((())), (()()), and so on. One way is to write all 64 strings of six brackets and throw away the ones that do not balance. Five survive. The other way never writes an invalid string at all, and it makes 22 recursive calls in total. Generate…"
   },
   {
    "id": "dsa-tree-traversals",

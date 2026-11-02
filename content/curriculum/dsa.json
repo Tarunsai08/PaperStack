@@ -2874,8 +2874,8 @@
     "dsa-backtracking-template",
     "dsa-dfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Mark visited in place",
@@ -2905,8 +2905,8 @@
    "prerequisites": [
     "dsa-backtracking-template"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Open and close counts",

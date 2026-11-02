@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 79 | 0 | 73 | 152 | 53/72 |
+| dsa | 81 | 0 | 71 | 152 | 55/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **281** | **0** | **392** | **673** | |
+| **All** | **283** | **0** | **390** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -25,8 +25,6 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### dsa
 
-- [ ] `dsa-word-search` (P0, problem-walkthrough, dsa-recursion): Word Search: Backtracking on a Grid
-- [ ] `dsa-generate-parentheses` (P0, problem-walkthrough, dsa-recursion): Generating Valid Parentheses
 - [ ] `dsa-tree-recursion` (P0, pattern, dsa-trees): Thinking Recursively About Trees
 - [ ] `dsa-top-k-pattern` (P0, pattern, dsa-heaps-greedy): Top K: The Heap of Size K Trick
 - [ ] `dsa-greedy-exchange` (P0, pattern, dsa-heaps-greedy): Greedy Algorithms and the Exchange Argument
@@ -35,6 +33,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-dijkstra` (P0, pattern, dsa-graphs): Dijkstra: Shortest Paths With Weights
 - [ ] `dsa-word-ladder` (P0, problem-walkthrough, dsa-graphs): Word Ladder: BFS on Implicit Graphs
 - [ ] `dsa-islands-variants` (P0, problem-walkthrough, dsa-graphs): Number of Islands and Its Many Variants
+- [ ] `dsa-combination-sum` (P1, problem-walkthrough, dsa-recursion): Combination Sum and Avoiding Duplicate Combinations
+- [ ] `dsa-rat-in-maze` (P1, problem-walkthrough, dsa-recursion): Rat in a Maze and Path Enumeration
 
 ### cp
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 79 written</summary>
+<details><summary>dsa: 81 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -150,6 +150,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-copy-random-list` Copying a List With Random Pointers
 - [x] `dsa-largest-rectangle` Largest Rectangle in a Histogram
 - [x] `dsa-basic-calculator` Building a Calculator With Stacks
+- [x] `dsa-word-search` Word Search: Backtracking on a Grid
+- [x] `dsa-generate-parentheses` Generating Valid Parentheses
 - [x] `dsa-coin-change` Coin Change: Minimum Coins and Number of Ways
 - [x] `dsa-word-break` Word Break: DP Over Prefixes
 - [x] `dsa-house-robber-variants` House Robber and Its Variants
