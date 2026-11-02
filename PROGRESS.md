@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 45 | 0 | 107 | 152 | 44/72 |
-| cp | 44 | 0 | 71 | 115 | 20/29 |
+| dsa | 46 | 0 | 106 | 152 | 45/72 |
+| cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **246** | **0** | **427** | **673** | |
+| **All** | **248** | **0** | **425** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -29,7 +29,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-queue-deque` (P0, pattern, dsa-linear): Queues and Deques: Sliding Window Maximum
 - [ ] `dsa-largest-rectangle` (P0, problem-walkthrough, dsa-linear): Largest Rectangle in a Histogram
 - [ ] `dsa-linked-list-classics` (P0, problem-walkthrough, dsa-linear): Linked List Classics: Intersection, Palindrome and Add Two Numbers
-- [ ] `dsa-subsets-permutations` (P0, pattern, dsa-recursion): Generating Subsets and Permutations
+- [ ] `dsa-backtracking-template` (P0, pattern, dsa-recursion): Backtracking: Explore, Undo, Repeat
 - [ ] `dsa-tree-recursion` (P0, pattern, dsa-trees): Thinking Recursively About Trees
 - [ ] `dsa-top-k-pattern` (P0, pattern, dsa-heaps-greedy): Top K: The Heap of Size K Trick
 - [ ] `dsa-greedy-exchange` (P0, pattern, dsa-heaps-greedy): Greedy Algorithms and the Exchange Argument
@@ -46,8 +46,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `cp-segment-tree-descend` (P1, pattern, cp-ranges): Walking Down a Segment Tree
 - [ ] `cp-mos-algorithm` (P1, pattern, cp-ranges): Mo's Algorithm: Offline Range Queries
 - [ ] `cp-range-sum-queries-cses` (P1, problem-walkthrough, cp-ranges): From Static to Dynamic Range Queries
-- [ ] `cp-pbds-ordered-set` (P1, pattern, cp-ranges): Ordered Sets With Rank: Policy-Based Data Structures
 - [ ] `cp-dp-with-data-structures` (P1, pattern, cp-dp): DP Sped Up by Segment Trees and BITs
+- [ ] `cp-dsu-advanced` (P1, pattern, cp-graphs): DSU Tricks: Rollback, Parity and Offline
 
 ### famous-algos
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 45 written</summary>
+<details><summary>dsa: 46 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -112,6 +112,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-stack-patterns` Stacks: Matching, Undo and Expression Parsing
 - [x] `dsa-monotonic-stack` Monotonic Stacks: Next Greater Element and Friends
 - [x] `dsa-lru-cache` Designing an LRU Cache
+- [x] `dsa-subsets-permutations` Generating Subsets and Permutations
 - [x] `dsa-tree-traversals` Tree Traversals: Pre, In, Post and Level Order
 - [x] `dsa-heap-basics` Heaps: Always Know the Smallest
 - [x] `dsa-graph-representation` Graphs: Modelling Problems as Nodes and Edges
@@ -140,7 +141,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 </details>
 
-<details><summary>cp: 44 written</summary>
+<details><summary>cp: 45 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -185,6 +186,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `cp-projects-dp` Projects: Weighted Interval Scheduling
 - [x] `cp-nim-games` Nim and Its Variants
 - [x] `cp-invariants-observations` Invariants and Observations: The Heart of Div 2
+- [x] `cp-pbds-ordered-set` Ordered Sets With Rank: Policy-Based Data Structures
 - [x] `cp-practice-plan` A 12-Week Contest Practice Plan
 
 </details>

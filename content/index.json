@@ -1,7 +1,7 @@
 {
- "content_version": "f32093c9282e5653",
+ "content_version": "6dad2a4ce136cad6",
  "generated_at": "2026-11-02",
- "count": 246,
+ "count": 248,
  "subjects": [
   {
    "id": "ml",
@@ -11247,6 +11247,139 @@
    "excerpt": "\"Design an LRU cache\" is one of the most frequently asked interview questions at product companies, and for good reason. It is short to state, it has a clean optimal answer, and getting there tests whether you can combine two data structures so that each covers the other's weakness. It is also real…"
   },
   {
+   "id": "dsa-subsets-permutations",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "subsets-permutations",
+   "title": "Take It or Leave It: Generating Every Subset",
+   "subtitle": "Subsets, permutations and their duplicate-free versions, built from one recursive idea: make one choice, recurse, undo it",
+   "track": "dsa-recursion",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-recursion-basics"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 10,
+   "topics": [
+    "recursion",
+    "backtracking",
+    "subsets",
+    "permutations"
+   ],
+   "complexity": {
+    "time": "O(n · 2^n) for subsets, O(n · n!) for permutations",
+    "space": "O(n) besides the output"
+   },
+   "practice_problems": [
+    {
+     "name": "Subsets",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/subsets/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Subsets II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/subsets-ii/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Permutations",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/permutations/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Permutations II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/permutations-ii/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Combinations",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/combinations/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Creating Strings",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1622",
+     "difficulty": "Easy"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Subset",
+     "definition": "Any selection of the elements, in any number from none to all, where order does not matter. A set of n elements has 2^n subsets."
+    },
+    {
+     "term": "Permutation",
+     "definition": "An arrangement of all the elements in some order. n distinct elements have n! permutations."
+    },
+    {
+     "term": "Recursion tree",
+     "definition": "The tree of all calls a recursive function makes. Each edge is one choice, and each root-to-leaf path is one complete set of choices."
+    },
+    {
+     "term": "Backtracking",
+     "definition": "Building a solution one choice at a time, recursing, and then undoing the choice so the next option starts from the same state."
+    },
+    {
+     "term": "Path",
+     "definition": "The shared list of choices made so far on the way down the recursion tree. It grows on the way down and shrinks on the way back."
+    },
+    {
+     "term": "Sibling skip",
+     "definition": "The rule that, after sorting, a value equal to the one just tried at the same level is skipped, so duplicate inputs do not create duplicate outputs."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How many subsets does a set of 5 distinct elements have?",
+     "options": [
+      "5",
+      "10",
+      "32",
+      "120"
+     ],
+     "answer": 2,
+     "explain": "Each element is either taken or left, independently, so there are 2 × 2 × 2 × 2 × 2 = 32 subsets, including the empty set and the full set."
+    },
+    {
+     "q": "In the sorted start-index loop for Subsets II, why is the check i > start rather than i > 0?",
+     "options": [
+      "To avoid going out of bounds",
+      "Equal values may be used together in one subset; only equal values at the same level are skipped",
+      "It makes the code faster",
+      "It sorts the input"
+     ],
+     "answer": 1,
+     "explain": "i > start means a[i] is not the first choice at this level. Skipping it only then still allows [2, 2], where the second 2 is chosen at a deeper level."
+    },
+    {
+     "q": "You add path to the result list but later every stored subset is empty. What went wrong?",
+     "options": [
+      "The recursion never ended",
+      "You stored a reference to the shared path, which is emptied as the recursion unwinds",
+      "The input was unsorted",
+      "You used 2^n instead of n!"
+     ],
+     "answer": 1,
+     "explain": "There is only one path, reused for every branch. Store a copy of it at the moment you record it."
+    }
+   ],
+   "cover_seed": "subsets-permutations",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.9,
+   "path": "dsa/subsets-permutations.md",
+   "hash": "54af86515b07",
+   "word_count": 2135,
+   "excerpt": "You are packing for a trip with a camera, a book and a jacket, and you want to list every possible bag you could carry. Taking nothing counts, taking everything counts. How many bags are there, and how do you write them all down without missing one or listing one twice? Now swap the question: three…"
+  },
+  {
    "id": "dsa-tree-traversals",
    "kind": "pattern",
    "subject": "dsa",
@@ -16904,6 +17037,139 @@
    "hash": "a68dd5487a62",
    "word_count": 1630,
    "excerpt": "A problem gives you 200,000 numbers and asks two kinds of questions: add a value to a range, and sum a range. A plain loop is O(n) per operation, which means billions of steps. Prefix sums answer sums instantly but must be rebuilt after every change. A segment tree solves this in O(log n), but…"
+  },
+  {
+   "id": "cp-pbds-ordered-set",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "pbds-ordered-set",
+   "title": "A Sorted Shelf That Knows Every Book's Position",
+   "subtitle": "GCC's policy-based ordered set: k-th element and rank queries in O(log n), duplicates with pairs, Josephus and nested ranges",
+   "track": "cp-ranges",
+   "track_order": 16,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-coordinate-compression"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 11,
+   "topics": [
+    "ordered set",
+    "policy-based data structures",
+    "order statistics",
+    "balanced bst"
+   ],
+   "complexity": {
+    "time": "O(log n) per insert, erase, order_of_key and find_by_order",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Josephus Problem II",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2163",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Nested Ranges Count",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2169",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "List Removals",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1749",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Sliding Window Median",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1076",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Salary Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1144",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Count of Smaller Numbers After Self",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/count-of-smaller-numbers-after-self/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Ordered set",
+     "definition": "A sorted set that, besides insert, erase and find, can report the k-th smallest element and how many elements are smaller than a value."
+    },
+    {
+     "term": "Rank",
+     "definition": "The number of elements strictly smaller than a value, which is also the 0-indexed position the value has or would have in sorted order."
+    },
+    {
+     "term": "Order statistic",
+     "definition": "The k-th smallest element of a collection. The 0-th order statistic is the minimum."
+    },
+    {
+     "term": "Subtree size",
+     "definition": "The number of nodes in the subtree below and including a node. Storing it in every node is what lets a balanced tree answer rank questions."
+    },
+    {
+     "term": "Policy-based data structures",
+     "definition": "A GCC library extension, in the __gnu_pbds namespace, that builds trees and hash tables from chosen policies, including one that keeps subtree sizes."
+    },
+    {
+     "term": "Tie-breaker",
+     "definition": "An extra unique field, such as the original index, paired with a value so that equal values become distinct keys in a set."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A pbds ordered set holds {3, 8, 15, 21, 40}. What does order_of_key(16) return?",
+     "options": [
+      "2",
+      "3",
+      "4",
+      "15"
+     ],
+     "answer": 1,
+     "explain": "order_of_key counts elements strictly smaller than the key. 3, 8 and 15 are smaller than 16, so the answer is 3."
+    },
+    {
+     "q": "You insert the values 5, 5 and 5 into ordered_set<int>. What is its size?",
+     "options": [
+      "0",
+      "1",
+      "3",
+      "It does not compile"
+     ],
+     "answer": 1,
+     "explain": "It is a set, so equal keys are stored once. To keep duplicates, store pairs (value, unique index)."
+    },
+    {
+     "q": "Which statement about the pbds ordered set is true?",
+     "options": [
+      "It is part of standard C++17",
+      "It works with any compiler",
+      "It is a GCC libstdc++ extension, fine on judges that use GNU G++ but not portable",
+      "It needs coordinate compression first"
+     ],
+     "answer": 2,
+     "explain": "The header lives under ext/ in GCC's standard library. Codeforces and CSES compile with GNU G++, so it is safe there, but not in interview code or with MSVC."
+    }
+   ],
+   "cover_seed": "pbds-ordered-set",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.8,
+   "path": "cp/pbds-ordered-set.md",
+   "hash": "a379f5ed5e75",
+   "word_count": 2460,
+   "excerpt": "You are reading numbers one at a time, and after each one you must say how many earlier numbers were smaller. Or children stand in a circle, and you must repeatedly remove the child k places ahead, among those still standing. Both questions ask about positions in a sorted order that keeps changing.…"
   },
   {
    "id": "cp-digit-dp",
