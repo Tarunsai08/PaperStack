@@ -539,8 +539,8 @@
    "prerequisites": [
     "cp-binomial-coefficients"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Product and sum rules",
@@ -571,8 +571,8 @@
     "cp-counting-techniques",
     "cp-modular-arithmetic"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Linearity even with dependence",
@@ -1962,8 +1962,8 @@
    "prerequisites": [
     "cp-modular-arithmetic"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Points as vectors",
@@ -2330,8 +2330,8 @@
    "prerequisites": [
     "cp-sieve"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Precompute divisor counts with a sieve",
@@ -2359,8 +2359,8 @@
    "prerequisites": [
     "cp-binomial-coefficients"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Multinomial coefficient",
@@ -2389,8 +2389,8 @@
     "cp-binary-exponentiation",
     "cp-modular-inverse"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Reduce exponent mod p-1",

@@ -1880,8 +1880,8 @@
    "prerequisites": [
     "dsa-recursion-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Overlapping subproblems",
@@ -1911,8 +1911,8 @@
    "prerequisites": [
     "dsa-dp-intro"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Define dp[i]",
@@ -1943,8 +1943,8 @@
    "prerequisites": [
     "dsa-dp-1d"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "dp over items and capacity",
@@ -2235,8 +2235,8 @@
     "dsa-hashing-patterns",
     "dsa-tree-traversals"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Prefix tree nodes",
@@ -2528,8 +2528,8 @@
     "dsa-two-pointers",
     "dsa-monotonic-stack"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Water level is min of max-left and max-right",
@@ -4866,8 +4866,8 @@
    "prerequisites": [
     "dsa-problem-solving-framework"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Pattern cue table across all topics",

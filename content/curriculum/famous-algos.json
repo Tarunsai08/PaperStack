@@ -1393,8 +1393,8 @@
    "prerequisites": [
     "dsa-sliding-window"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Back-references to earlier text",
@@ -1809,8 +1809,8 @@
    "prerequisites": [
     "famous-algos-diffie-hellman"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Two primes, public and private exponents",
@@ -1903,8 +1903,8 @@
    "prerequisites": [
     "famous-algos-rsa"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Sign with private key, verify with public",
@@ -2125,8 +2125,8 @@
    "prerequisites": [
     "famous-algos-inverted-index"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Term frequency",
@@ -2347,8 +2347,8 @@
    "prerequisites": [
     "famous-algos-cryptographic-hashing"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Weak rolling checksum plus strong hash",
@@ -2540,8 +2540,8 @@
    "prerequisites": [
     "dsa-big-o"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Predict, then update",

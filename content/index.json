@@ -1,7 +1,7 @@
 {
- "content_version": "95c939c5f2e5cc3d",
+ "content_version": "90fd49f00f8a5ae0",
  "generated_at": "2026-11-02",
- "count": 176,
+ "count": 200,
  "subjects": [
   {
    "id": "ml",
@@ -2557,7 +2557,7 @@
    "subject": "ml",
    "slug": "going-deeper-with-convolutions",
    "title": "We Need to Go Deeper",
-   "subtitle": "How GoogLeNet squeezed 22 layers into a modest computing budget",
+   "subtitle": "How GoogLeNet built a 22-layer network on a modest budget by looking at every scale at once and briefing each expert first",
    "track": "deep-learning",
    "track_order": 9,
    "prerequisites": [
@@ -2566,89 +2566,93 @@
     "paper-dropout"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 10,
+   "read_minutes": 7,
    "topics": [
     "computer vision",
-    "convolutional neural networks",
+    "convolutional networks",
     "googlenet",
     "inception",
     "image classification"
    ],
-   "paper_title": "Going deeper with convolutions",
+   "paper_title": "Going Deeper with Convolutions",
    "authors": [
-    "C. Szegedy",
+    "Christian Szegedy",
     "Wei Liu",
-    "Yang-Qing Jia",
+    "Yangqing Jia",
     "et al."
    ],
-   "year": 2014,
-   "venue": "Computer Vision and Pattern Recognition",
+   "year": 2015,
+   "venue": "CVPR",
    "paper_url": "https://arxiv.org/abs/1409.4842",
    "glossary": [
     {
-     "term": "Inception Module",
-     "definition": "A sub-network block that computes parallel convolutions of different patch sizes alongside pooling and stacks their outputs together."
+     "term": "Inception module",
+     "definition": "A block that runs 1x1, 3x3 and 5x5 convolutions and a pooling branch side by side on the same input, then stacks their outputs along the channel dimension."
     },
     {
-     "term": "1x1 Convolution",
-     "definition": "A convolution operating across channels with a single-pixel spatial window, used to compress feature depth without changing spatial height or width."
+     "term": "1x1 convolution",
+     "definition": "A convolution that looks at one pixel position at a time but mixes all of its channels. Used to shrink or grow the number of channels cheaply."
     },
     {
-     "term": "Global Average Pooling",
-     "definition": "An operation that averages each 2D feature map into a single scalar value, drastically cutting down trainable parameters before classification."
+     "term": "Channel",
+     "definition": "One feature map in a layer's output. A layer with 192 channels produces 192 stacked maps, each detecting a different pattern."
     },
     {
-     "term": "Auxiliary Classifier",
-     "definition": "A small secondary prediction head attached to intermediate layers during training to inject fresh gradients into lower layers."
+     "term": "Multiply-add",
+     "definition": "One multiplication followed by one addition, the basic unit used to count the compute cost of a layer."
     },
     {
-     "term": "Hebbian Principle",
-     "definition": "The classic neuroscience rule that neurons firing together wire together, used as inspiration to group correlated visual filters together."
+     "term": "Global average pooling",
+     "definition": "Replacing each final feature map by its average value, so the classifier sees one number per channel instead of a huge flattened grid."
+    },
+    {
+     "term": "Auxiliary classifier",
+     "definition": "A small extra prediction head attached to a middle layer during training, adding its loss so gradients reach early layers more strongly. Removed at test time."
     }
    ],
    "quiz": [
     {
-     "q": "What is the primary computational benefit of placing a 1x1 convolution before a 5x5 convolution in an Inception module?",
+     "q": "Why does GoogLeNet put a 1x1 convolution before its 5x5 convolutions?",
      "options": [
-      "It downsamples the spatial width and height of the image",
-      "It compresses the channel depth so the 5x5 convolution operates on fewer input channels",
-      "It turns the linear activations into recurrent memory cells",
-      "It eliminates the need for backpropagation through that branch"
+      "To make the image smaller in height and width",
+      "To cut the number of channels, so the expensive 5x5 filter has far fewer inputs to read",
+      "To replace backpropagation",
+      "To add more classes"
      ],
      "answer": 1,
-     "explain": "A 1x1 convolution acts as a bottleneck. By reducing 192 or 256 channels down to 16 or 32 channels before running the expensive 5x5 filter, it saves millions of arithmetic operations."
+     "explain": "The cost of a 5x5 layer grows with its input channels. Shrinking 192 channels to 16 first cut the example layer's cost by about 10 times."
     },
     {
-     "q": "Why did the authors attach auxiliary classifiers halfway up the 22-layer network during training?",
+     "q": "What happens to the auxiliary classifiers after training?",
      "options": [
-      "To output predictions for different image datasets simultaneously",
-      "To ensemble multiple model predictions during final production inference",
-      "To pump fresh gradient signals directly into intermediate layers and prevent vanishing gradients",
-      "To calculate bounding boxes for object localization without classification"
+      "They become the main classifier",
+      "They are thrown away; only the main head is used for predictions",
+      "They are averaged with the main head",
+      "They are used for detection"
      ],
-     "answer": 2,
-     "explain": "Auxiliary classifiers combat vanishing gradients in deep networks by computing intermediate loss signals during training. They are discarded at test time."
+     "answer": 1,
+     "explain": "They exist only to inject extra gradient into the middle of the network during training."
     },
     {
-     "q": "How did GoogLeNet's parameter count compare to AlexNet?",
+     "q": "Compared with AlexNet, what did the paper report about GoogLeNet's size?",
      "options": [
-      "GoogLeNet had about 12 times fewer parameters than AlexNet",
-      "GoogLeNet had 10 times more parameters because it was nearly three times deeper",
-      "Both networks had almost the exact same parameter count",
-      "GoogLeNet eliminated all weights by relying purely on pooling operations"
+      "About 12 times more parameters",
+      "About 12 times fewer parameters, while being clearly more accurate",
+      "The same size",
+      "No parameters at all"
      ],
-     "answer": 0,
-     "explain": "Despite expanding depth from 8 layers to 22 layers, GoogLeNet used roughly 12 times fewer parameters than AlexNet, mostly thanks to 1x1 bottlenecks and global average pooling."
+     "answer": 1,
+     "explain": "The abstract states GoogLeNet uses 12 times fewer parameters than the 2012 winning network, despite being much deeper and more accurate."
     }
    ],
    "cover_seed": "going-deeper-with-convolutions",
-   "generated_by": "gemini-gemini-flash-latest",
-   "generated_at": "2026-10-21",
+   "generated_by": "claude-revised",
+   "generated_at": "2026-11-02",
    "importance_score": 0.94,
    "path": "papers/going-deeper-with-convolutions.md",
-   "hash": "ea8deeaa7609",
-   "word_count": 2107,
-   "excerpt": "In 2014, computer vision researchers faced a wall. If you wanted a neural network to recognize images more accurately, the recipe seemed simple: stack more convolutional layers and make each layer wider. There was just one catch. Stacking layers caused models to balloon to tens of millions of…"
+   "hash": "a68c23bbfd4c",
+   "word_count": 1524,
+   "excerpt": "In 2014, the recipe for a better image classifier was blunt: add more layers and more filters. It worked, but the bill grew fast. Every doubling of filters in two consecutive layers roughly quadrupled the arithmetic, and the models were filling GPU memory and taking weeks to train. A team at Google…"
   },
   {
    "id": "paper-inception-v4-inception-resnet-and-the-impact-of-residual-con",
@@ -2947,8 +2951,8 @@
    "kind": "paper",
    "subject": "ml",
    "slug": "unet-redesigning-skip-connections-to-exploit-multiscale-feat",
-   "title": "Fixing U-Net's Empty Middle",
-   "subtitle": "How nested skip pathways and deep supervision made medical segmentation sharper and faster",
+   "title": "Filling U-Net's Empty Middle",
+   "subtitle": "UNet++ nests U-Nets of every depth inside one network, so skip connections refine features step by step and the model can be pruned after training",
    "track": "deep-learning",
    "track_order": 13,
    "prerequisites": [
@@ -2956,88 +2960,92 @@
     "paper-resnet"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 10,
+   "read_minutes": 7,
    "topics": [
-    "image-segmentation",
-    "medical-imaging",
+    "image segmentation",
+    "medical imaging",
     "u-net",
-    "deep-supervision"
+    "deep supervision"
    ],
    "paper_title": "UNet++: Redesigning Skip Connections to Exploit Multiscale Features in Image Segmentation",
    "authors": [
-    "Zong-Wei Zhou",
-    "M. R. Siddiquee",
+    "Zongwei Zhou",
+    "Md Mahfuzur Rahman Siddiquee",
     "Nima Tajbakhsh",
-    "et al."
+    "Jianming Liang"
    ],
    "year": 2019,
    "venue": "IEEE Transactions on Medical Imaging",
    "paper_url": "https://arxiv.org/abs/1912.05074",
    "glossary": [
     {
-     "term": "Skip Connection",
-     "definition": "A shortcut pathway that routes feature maps directly from early encoder layers to later decoder layers to preserve high-resolution spatial details."
+     "term": "Segmentation",
+     "definition": "Labelling every pixel of an image with a class, such as tumour or background, to outline structures precisely."
     },
     {
-     "term": "Semantic Gap",
-     "definition": "The mismatch in abstraction level between shallow encoder features (edges, corners) and deep decoder features (complex organ structures)."
+     "term": "Skip connection",
+     "definition": "A path that carries feature maps from an encoder layer directly to a decoder layer at the same resolution, so fine spatial detail is not lost."
     },
     {
-     "term": "Deep Supervision",
-     "definition": "A training method that attaches loss functions to intermediate layers, forcing multiple depths of a network to predict the target mask directly."
+     "term": "Semantic gap",
+     "definition": "The mismatch between shallow encoder features, which describe edges and textures, and deep decoder features, which describe whole structures."
     },
     {
-     "term": "Model Pruning",
-     "definition": "Cutting away unused parts of a neural network during inference to make it run faster and consume less memory."
+     "term": "Deep supervision",
+     "definition": "Attaching a loss to several intermediate outputs, not only the final one, so each of them learns to produce a useful prediction."
     },
     {
-     "term": "Dense Convolutional Block",
-     "definition": "A cluster of convolutional layers where each layer receives inputs from all preceding layers at the same resolution level."
+     "term": "Model pruning",
+     "definition": "Removing parts of a trained network at inference time to make it faster and smaller."
+    },
+    {
+     "term": "Dice loss",
+     "definition": "A loss based on the overlap between predicted and true masks, which keeps small structures from being ignored."
     }
    ],
    "quiz": [
     {
-     "q": "What is the primary motivation for introducing intermediate convolution nodes along skip pathways in UNet++?",
+     "q": "What problem with U-Net's skip connections did UNet++ target?",
      "options": [
-      "To eliminate downsampling and pooling operations completely",
-      "To bridge the semantic gap between encoder and decoder feature maps through gradual aggregation",
-      "To convert 2D convolutions into 3D volumetric convolutions",
-      "To cut the network parameter count in half compared to standard U-Net"
+      "They used too little memory",
+      "They join shallow, low-level encoder features directly to deep, high-level decoder features, a semantic gap the decoder must bridge in one step",
+      "They removed spatial detail",
+      "They prevented training"
      ],
      "answer": 1,
-     "explain": "In standard U-Net, shallow encoder features and deep decoder features are semantically dissimilar. Intermediate nodes gradually refine representations across scales to bridge this gap."
+     "explain": "UNet++ places convolution nodes along each skip path so features become gradually more abstract before they meet the decoder."
     },
     {
-     "q": "How does deep supervision enable model pruning in UNet++ at inference time?",
+     "q": "With a UNet++ of depth 4, how many nodes remain if you prune it to depth 2 (keeping nodes with i + j at most 2)?",
      "options": [
-      "It zeroes out all convolutional weights that fall below an absolute threshold",
-      "It quantizes 32-bit floating-point weights into 8-bit integers",
-      "Because segmentation heads produce valid outputs at multiple sub-depths, inference can halt early and discard deeper layers",
-      "It automatically stops backpropagation whenever the batch loss plateaus"
-     ],
-     "answer": 2,
-     "explain": "Because heads at multiple depths are supervised to output full segmentation masks, you can take predictions from an early head and completely skip executing deeper encoder and decoder blocks."
-    },
-    {
-     "q": "What did the authors discover when comparing embedded training to isolated training of shallower UNet++ subnets?",
-     "options": [
-      "Isolated training achieved higher accuracy because it focused on fewer parameters",
-      "Embedded training performed significantly better because gradients from deeper layers regularized and enriched shallow representations",
-      "Both training methods produced identical results across every dataset",
-      "Embedded training suffered from catastrophic gradient explosion"
+      "3",
+      "6",
+      "10",
+      "15"
      ],
      "answer": 1,
-     "explain": "Training the full nested network transfers rich supervision signals into the shallow sub-networks, allowing pruned subnets to far outperform identical subnets trained in isolation."
+     "explain": "The kept nodes are X0,0, X0,1, X0,2, X1,0, X1,1 and X2,0. The full depth-4 network has 15."
+    },
+    {
+     "q": "Why can a trained UNet++ be pruned at all?",
+     "options": [
+      "Because its weights are random",
+      "Because deep supervision trains an output head at every depth, so a shallower sub-network already produces a valid mask",
+      "Because pruning retrains it",
+      "Because it has no decoder"
+     ],
+     "answer": 1,
+     "explain": "Each top-row node has its own segmentation head. Keep the sub-network that feeds a chosen head and drop the rest."
     }
    ],
    "cover_seed": "unet-redesigning-skip-connections-to-exploit-multiscale-feat",
-   "generated_by": "gemini-gemini-flash-latest",
-   "generated_at": "2026-10-17",
+   "generated_by": "claude-revised",
+   "generated_at": "2026-11-02",
    "importance_score": 0.7,
    "path": "papers/unet-redesigning-skip-connections-to-exploit-multiscale-feat.md",
-   "hash": "24d3de617239",
-   "word_count": 2132,
-   "excerpt": "Imagine handing a raw blueprint sketch drawn by an apprentice directly to a master builder who is putting the final gold leaf on a cathedral dome. The builder knows where the altar goes, but your sketch shows where individual bricks sit on the ground floor. If you force the builder to stitch those…"
+   "hash": "0459c4750213",
+   "word_count": 1461,
+   "excerpt": "A radiologist needs to outline a liver tumour on a CT scan, slice by slice. A neural network can do this in seconds, and for years the default choice was U-Net. But anyone building one faced two awkward questions. How deep should it be: three downsampling steps, four, five? And why did its skip…"
   },
   {
    "id": "paper-nnu-net-a-self-configuring-method-for-deep-learning-based-bi",
@@ -4350,8 +4358,8 @@
    "kind": "paper",
    "subject": "ml",
    "slug": "high-resolution-image-synthesis-and-semantic-manipulation-wi",
-   "title": "Megapixel Realism: How Pix2PixHD Scaled Conditional GANs",
-   "subtitle": "Turning rough label maps into crisp, editable 2K photographs",
+   "title": "From Colouring Book to Street Photo",
+   "subtitle": "pix2pixHD turned label maps into 2048 × 1024 images by painting coarse to fine and judging at three distances",
    "track": "generative",
    "track_order": 5,
    "prerequisites": [
@@ -4360,7 +4368,7 @@
     "paper-unet"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 9,
+   "read_minutes": 7,
    "topics": [
     "conditional gans",
     "image-to-image translation",
@@ -4374,70 +4382,82 @@
     "Jun-Yan Zhu",
     "et al."
    ],
-   "year": 2017,
-   "venue": "2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+   "year": 2018,
+   "venue": "CVPR",
    "paper_url": "https://arxiv.org/abs/1711.11585",
    "glossary": [
     {
+     "term": "Semantic label map",
+     "definition": "An image where every pixel holds a class id, such as road, car or sky, instead of a colour. It is the input pix2pixHD turns into a photo."
+    },
+    {
+     "term": "Conditional GAN",
+     "definition": "A generative adversarial network whose generator and discriminator both see an input condition, here the label map, so the output must match it."
+    },
+    {
      "term": "Coarse-to-fine generator",
-     "definition": "A generator decomposed into cascaded networks where lower-resolution representations provide global context to subsequent networks that synthesize higher-resolution local detail."
+     "definition": "A generator split into a global network that lays out the scene at low resolution and a local enhancer that adds detail at full resolution."
     },
     {
      "term": "Multi-scale discriminators",
-     "definition": "Multiple discriminator networks of identical architecture applied to downsampled versions of an image pyramid to simultaneously capture global consistency and fine texture details."
+     "definition": "Several discriminators with the same design, each judging the image at a different downsampled size, so together they check both overall layout and fine texture."
+    },
+    {
+     "term": "Receptive field",
+     "definition": "The patch of the input image that one output value of a network can see."
     },
     {
      "term": "Feature matching loss",
-     "definition": "A training loss computed by taking the L1 distance between intermediate layer activations of the discriminator for real versus generated images."
+     "definition": "A loss that asks the generator's image to produce the same intermediate discriminator features as the real photo, which steadies GAN training."
     },
     {
      "term": "Instance boundary map",
-     "definition": "A binary edge map identifying the pixel borders between distinct individual object instances of the same semantic class."
+     "definition": "A map marking the pixels where one object ends and another begins, even when both have the same class, such as two touching cars."
     }
    ],
    "quiz": [
     {
-     "q": "Why does the framework use three discriminators operating at different scales rather than one large discriminator?",
+     "q": "Why use three discriminators on different image sizes instead of one?",
      "options": [
-      "A single discriminator would require an impractically deep network or huge receptive field, increasing memory and risking overfitting.",
-      "A single discriminator cannot compute gradient backpropagation on GPUs.",
-      "Using multiple discriminators is required to calculate the cross-entropy loss between multiple labels.",
-      "Three discriminators are necessary to process red, green, and blue color channels independently."
-     ],
-     "answer": 0,
-     "explain": "A discriminator needs a vast receptive field to evaluate 2048x1024 images globally. Increasing kernel size or depth blows up parameter count and GPU memory, whereas an image pyramid lets small discriminators inspect both global context and fine local details."
-    },
-    {
-     "q": "How does pix2pixHD prevent adjacent objects of the same class (like parked cars) from merging into a single blob?",
-     "options": [
-      "By enforcing a contrastive loss between different color clusters.",
-      "By computing an instance boundary map and appending it to the semantic segmentation channels.",
-      "By increasing the learning rate of the local enhancer network.",
-      "By downsampling the semantic mask by 4x before feeding it to the generator."
+      "To save training data",
+      "One discriminator would need a huge receptive field to judge a 2048 × 1024 image as a whole; the downsampled copies let small critics see the global layout while the full-size one checks texture",
+      "Each handles one colour channel",
+      "To produce three output images"
      ],
      "answer": 1,
-     "explain": "Because pure semantic label maps assign the same class ID to neighboring cars, the authors extract 1-pixel instance boundary maps from instance IDs and concatenate them with the label input."
+     "explain": "The same network sees four times more of the scene on an image shrunk by four, so the pyramid covers both global layout and fine detail without a giant critic."
     },
     {
-     "q": "In the discriminator feature matching loss, what role does the discriminator play regarding the feature matching term?",
+     "q": "How does pix2pixHD stop two touching cars from merging into one strange car?",
      "options": [
-      "The discriminator maximizes the feature matching loss to increase divergence.",
-      "The discriminator updates its weights to make real and fake features as far apart as possible.",
-      "The discriminator acts solely as a static feature extractor; only the generator minimizes this loss.",
-      "The discriminator discards all convolutional layers and uses fully connected projections."
+      "It uses a bigger generator",
+      "It adds an instance boundary map to the input, marking where one object ends and the next begins",
+      "It removes cars from the dataset",
+      "It trains longer"
      ],
-     "answer": 2,
-     "explain": "The paper explicitly notes that for the feature matching loss LFM, the discriminator Dk only serves as a feature extractor and does not maximize LFM; only the generator G minimizes it to match natural statistics."
+     "answer": 1,
+     "explain": "A label map gives both cars the same class, so their pixels form one blob. The boundary channel tells the generator where each instance ends."
+    },
+    {
+     "q": "In the feature matching loss, what does the discriminator do?",
+     "options": [
+      "It tries to maximise the loss",
+      "It only serves as a fixed feature extractor for that term; the generator minimises the difference",
+      "It is retrained from scratch",
+      "It is ignored"
+     ],
+     "answer": 1,
+     "explain": "The paper states that the discriminator does not maximise the feature matching loss; only the generator is trained to reduce it."
     }
    ],
    "cover_seed": "high-resolution-image-synthesis-and-semantic-manipulation-wi",
-   "generated_by": "gemini-gemini-flash-latest",
-   "generated_at": "2026-11-01",
+   "generated_by": "claude-revised",
+   "generated_at": "2026-11-02",
    "importance_score": 0.73,
    "path": "papers/high-resolution-image-synthesis-and-semantic-manipulation-wi.md",
-   "hash": "3fe135f0a6c5",
-   "word_count": 1980,
-   "excerpt": "Imagine drawing a rough digital sketch where you color a block blue for \"sky\", gray for \"road\", and red for \"car\". You tap a button, and the cartoonish silhouette turns into a crisp, photorealistic 2048 \\times 1024 street scene: raindrops glinting on car windshields, distinct leaves on roadside…"
+   "hash": "7f996c414ffe",
+   "word_count": 1634,
+   "excerpt": "Colour a picture the way a child fills in a colouring book: this region is road, that one is sky, these blobs are cars and those are trees. Press a button, and a realistic street photograph comes back at 2048 × 1024 pixels, with the cars, trees and road surfaces where you drew them. Then click a…"
   },
   {
    "id": "paper-denoising-diffusion-implicit-models",
@@ -6481,8 +6501,8 @@
    "kind": "paper",
    "subject": "ml",
    "slug": "blip-2-bootstrapping-language-image-pre-training-with-frozen",
-   "title": "Teaching Blind LLMs to See Without Retraining Them",
-   "subtitle": "How 32 queries bridged vision and language on a shoestring compute budget",
+   "title": "Teaching a Blind Scholar to See, Without Retraining Them",
+   "subtitle": "BLIP-2 kept an image model and a language model frozen and trained only a small Q-Former that writes 32 visual notes for the LLM",
    "track": "transformers-llms",
    "track_order": 14,
    "prerequisites": [
@@ -6491,7 +6511,7 @@
     "paper-bert"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 10,
+   "read_minutes": 7,
    "topics": [
     "multimodal",
     "vision-language",
@@ -6503,77 +6523,81 @@
    "authors": [
     "Junnan Li",
     "Dongxu Li",
-    "S. Savarese",
-    "et al."
+    "Silvio Savarese",
+    "Steven Hoi"
    ],
    "year": 2023,
-   "venue": "International Conference on Machine Learning",
+   "venue": "ICML",
    "paper_url": "https://arxiv.org/abs/2301.12597",
    "glossary": [
     {
-     "term": "Q-Former (Querying Transformer)",
-     "definition": "A lightweight 188-million parameter transformer that extracts language-aligned visual features using learned query tokens."
+     "term": "Frozen model",
+     "definition": "A pretrained model whose weights are not updated during further training. It is used as-is, like a fixed tool."
     },
     {
-     "term": "Information Bottleneck",
-     "definition": "A compression mechanism where fixed query vectors compress high-dimensional image representations into a small set of informative tokens."
+     "term": "Q-Former",
+     "definition": "BLIP-2's small trainable transformer that uses a fixed set of learned query vectors to pull language-relevant information out of a frozen image encoder."
     },
     {
-     "term": "Image-Text Contrastive Learning (ITC)",
-     "definition": "A pre-training objective that pulls representations of matching image-text pairs closer together while pushing unmatched pairs apart."
+     "term": "Learned queries",
+     "definition": "A fixed number of trainable vectors (32 in BLIP-2) that ask the image features questions through cross-attention and carry the answers out."
     },
     {
-     "term": "Image-Grounded Text Generation (ITG)",
-     "definition": "A generative pre-training task where a model produces the matching caption conditioned on visual query features."
+     "term": "Cross-attention",
+     "definition": "Attention where one set of vectors (here the queries) looks at another set (here the image patch features) to gather information from it."
     },
     {
-     "term": "Image-Text Matching (ITM)",
-     "definition": "A binary classification task that trains the model to decide whether a given image and caption truly belong together."
+     "term": "Soft prompt",
+     "definition": "Continuous vectors placed in front of a language model's input in place of word tokens, steering what the model generates."
+    },
+    {
+     "term": "Catastrophic forgetting",
+     "definition": "When further training on a new task damages abilities a model had already learned."
     }
    ],
    "quiz": [
     {
-     "q": "Why does BLIP-2 freeze both the vision encoder and the LLM during pre-training?",
+     "q": "Which parts of BLIP-2 are trained?",
      "options": [
-      "To save massive amounts of compute and prevent the models from forgetting their original capabilities",
-      "Because backpropagation cannot mathematically pass through two different architectures",
-      "To avoid needing any text captions during training",
-      "Because frozen models run significantly faster at inference time"
-     ],
-     "answer": 0,
-     "explain": "Freezing off-the-shelf vision models and LLMs saves huge training costs and protects the models from catastrophic forgetting."
-    },
-    {
-     "q": "What is the primary purpose of the 32 learned queries in the Q-Former?",
-     "options": [
-      "To act as an information bottleneck that distills text-relevant features from the frozen image encoder",
-      "To replace the text tokenizer inside the language model",
-      "To classify images into 32 predefined visual categories",
-      "To generate raw image pixels from text inputs"
-     ],
-     "answer": 0,
-     "explain": "The 32 queries interact with image features through cross-attention to extract only the visual information most useful for language."
-    },
-    {
-     "q": "Why did BLIP-2 struggle with few-shot in-context learning compared to models like Flamingo?",
-     "options": [
-      "Its language model backbone was too small to understand prompts",
-      "Its pre-training data consisted only of single image-text pairs rather than interleaved web documents",
-      "Vision transformers cannot process more than one image at test time",
-      "The Q-Former is mathematically restricted to a single forward pass per conversation"
+      "The image encoder and the LLM",
+      "Only the Q-Former and a small projection layer; the image encoder and LLM stay frozen",
+      "Everything end to end",
+      "Only the LLM"
      ],
      "answer": 1,
-     "explain": "BLIP-2 trained exclusively on single image-caption pairs, so it never saw sequences containing multiple images and texts arranged together."
+     "explain": "Keeping both large models frozen is what makes BLIP-2 cheap to train and protects the LLM's language skills."
+    },
+    {
+     "q": "Why does BLIP-2 first train the Q-Former against the image encoder alone (stage 1), before connecting the LLM?",
+     "options": [
+      "It is faster to code",
+      "So the queries already extract language-relevant visual information; without it, the paper found training with the LLM worked much worse",
+      "Because the LLM cannot be loaded at first",
+      "To train the image encoder"
+     ],
+     "answer": 1,
+     "explain": "The paper's ablation shows that skipping representation learning hurts zero-shot results, and with OPT, performance even degraded as training continued."
+    },
+    {
+     "q": "The image encoder gives 257 vectors of size 1,024; the Q-Former outputs 32 vectors of size 768. Roughly how much smaller is the Q-Former's output?",
+     "options": [
+      "About 2 times",
+      "About 11 times",
+      "About 100 times",
+      "The same size"
+     ],
+     "answer": 1,
+     "explain": "257 × 1,024 = 263,168 numbers versus 32 × 768 = 24,576, about 10.7 times fewer."
     }
    ],
    "cover_seed": "blip-2-bootstrapping-language-image-pre-training-with-frozen",
-   "generated_by": "gemini-gemini-flash-latest",
-   "generated_at": "2026-10-14",
+   "generated_by": "claude-revised",
+   "generated_at": "2026-11-02",
    "importance_score": 0.83,
    "path": "papers/blip-2-bootstrapping-language-image-pre-training-with-frozen.md",
-   "hash": "2bf02b398901",
-   "word_count": 2191,
-   "excerpt": "Imagine you have two geniuses in a room. One is a master photographer who inspects pictures with forensic precision but speaks only in coordinate vectors. The other is a brilliant writer who has read every book in human history, knows how to reason through complex logic, but was born completely…"
+   "hash": "8cc412d7fe91",
+   "word_count": 1540,
+   "excerpt": "You have two experts. One is a superb photographer who notices everything in a picture but can only describe it in long lists of numbers. The other is a brilliant scholar who has read nearly everything and reasons well in words, but has never seen an image. You want them to answer questions about…"
   },
   {
    "id": "paper-minigpt-4-enhancing-vision-language-understanding-with-advan",
@@ -7686,7 +7710,7 @@
    "subject": "ml",
    "slug": "the-llama-3-herd-of-models",
    "title": "The Engineering Playbook of Llama 3",
-   "subtitle": "How 16,000 GPUs and meticulous post-training built an open frontier model",
+   "subtitle": "How Meta built an open 405-billion-parameter model with a plain Transformer, very careful data, 16,000 GPUs and six rounds of tasting",
    "track": "useful-llms",
    "track_order": 11,
    "prerequisites": [
@@ -7698,9 +7722,10 @@
    "read_minutes": 8,
    "topics": [
     "llm",
-    "scaling-laws",
-    "distributed-training",
-    "dpo"
+    "scaling laws",
+    "distributed training",
+    "post-training",
+    "open models"
    ],
    "paper_title": "The Llama 3 Herd of Models",
    "authors": [
@@ -7714,73 +7739,77 @@
    "paper_url": "https://arxiv.org/abs/2407.21783",
    "glossary": [
     {
-     "term": "4D Parallelism",
-     "definition": "A distributed training setup combining Tensor Parallelism, Context Parallelism, Pipeline Parallelism, and Data Parallelism to fit massive models across thousands of GPUs."
+     "term": "Dense Transformer",
+     "definition": "A Transformer where every parameter is used for every token, as opposed to a mixture-of-experts model that routes each token through only some parts."
     },
     {
-     "term": "Grouped-Query Attention (GQA)",
-     "definition": "An attention variant where several query heads share one key-value head, drastically shrinking memory bandwidth during decoding."
+     "term": "Grouped-query attention (GQA)",
+     "definition": "An attention variant where several query heads share one key and value head, shrinking the memory needed to cache keys and values."
     },
     {
-     "term": "Model FLOPs Utilization (MFU)",
-     "definition": "The percentage of a GPU hardware theoretical peak arithmetic speed actually spent calculating model operations."
+     "term": "KV cache",
+     "definition": "The stored keys and values of earlier tokens, kept during generation so they are not recomputed for every new token."
     },
     {
-     "term": "Context Parallelism (CP)",
-     "definition": "A method that slices long token sequences across separate GPUs to process extended contexts without running out of memory."
+     "term": "4D parallelism",
+     "definition": "Splitting training across GPUs in four ways at once: within weight matrices (tensor), across sequence chunks (context), across layers (pipeline) and across batches (data)."
     },
     {
-     "term": "Direct Preference Optimization (DPO)",
-     "definition": "An alignment technique that trains language models directly on human preference pairs without using a complex reinforcement learning loop."
+     "term": "Rejection sampling",
+     "definition": "Generating several answers to a prompt, scoring them with a reward model, and keeping the best as new fine-tuning data."
     },
     {
-     "term": "Rejection Sampling",
-     "definition": "Generating multiple answer candidates from a model and using a reward scorer to pick the best one for further training."
+     "term": "Direct preference optimization (DPO)",
+     "definition": "Training a model directly on pairs of preferred and rejected answers, without a separate reinforcement learning loop."
+    },
+    {
+     "term": "Overtraining",
+     "definition": "Training a model on more tokens than the compute-optimal amount for its size, so a small model becomes stronger and cheaper to serve."
     }
    ],
    "quiz": [
     {
-     "q": "Why did the authors use an all-gather approach for Context Parallelism instead of a ring communication pattern?",
+     "q": "Llama 3's flagship has about 405 billion parameters and was trained on about 15.6 trillion tokens. Using the rule compute ≈ 6 × parameters × tokens, roughly how much training compute is that?",
      "options": [
-      "Ring communication is mathematically incompatible with standard attention.",
-      "Grouped-Query Attention makes key and value tensors small enough that all-gather overhead is negligible.",
-      "All-gather eliminates the need for network cables between servers.",
-      "Ring patterns cause catastrophic loss spikes during AdamW optimization."
+      "About 4 × 10^19 FLOPs",
+      "About 4 × 10^25 FLOPs",
+      "About 4 × 10^30 FLOPs",
+      "About 1 × 10^12 FLOPs"
      ],
      "answer": 1,
-     "explain": "Because Grouped-Query Attention shares key and value heads, K and V tensors are tiny compared to queries. The simple all-gather step adds negligible overhead while easily supporting custom document masking."
+     "explain": "6 × 4.05 × 10^11 × 1.56 × 10^13 ≈ 3.8 × 10^25, which matches the figure the paper reports."
     },
     {
-     "q": "What modification did the authors add to Direct Preference Optimization to keep training stable?",
+     "q": "Why did the authors choose a plain dense Transformer instead of a mixture of experts?",
      "options": [
-      "They raised the learning rate to 1.0 and removed the reward model.",
-      "They masked special formatting tokens and added a negative log-likelihood penalty on preferred responses.",
-      "They alternated between DPO and PPO on every training batch.",
-      "They switched from half precision to single precision for all weights."
+      "Mixture of experts cannot be trained",
+      "To maximise training stability and simplicity at scale, putting the effort into data and infrastructure",
+      "Dense models use less compute",
+      "They had no GPUs"
      ],
      "answer": 1,
-     "explain": "Masking special control tokens prevented conflicting update gradients, while the negative log-likelihood penalty on chosen answers prevented the model from losing probability mass on correct styles."
+     "explain": "The paper deliberately chose a standard architecture to reduce risk, and spent its innovation on data quality, scale and post-training."
     },
     {
-     "q": "What was the single largest cause of unexpected training interruptions across the 16,000 GPU cluster?",
+     "q": "What does grouped-query attention save during generation?",
      "options": [
-      "Data center power outages",
-      "Failing hard disk drives",
-      "GPU hardware and memory faults",
-      "Scheduler software crashes"
+      "Training data",
+      "Memory for the key-value cache, because many query heads share each key and value head",
+      "Vocabulary size",
+      "The number of layers"
      ],
-     "answer": 2,
-     "explain": "GPU faults accounted for 58.7% of all unexpected interruptions, showing that individual silicon failures dominate operational headaches at 16K scale."
+     "answer": 1,
+     "explain": "With 8 key-value heads instead of 128, the cache per token is 16 times smaller, which matters a lot at long context lengths."
     }
    ],
    "cover_seed": "the-llama-3-herd-of-models",
-   "generated_by": "gemini-gemini-flash-latest",
-   "generated_at": "2026-10-18",
+   "generated_by": "claude-revised",
+   "generated_at": "2026-11-02",
    "importance_score": 0.92,
    "path": "papers/the-llama-3-herd-of-models.md",
-   "hash": "1e5e8439f531",
-   "word_count": 1695,
-   "excerpt": "What happens when you hook 16,000 cutting-edge graphics processors together in a single room and feed them electricity equivalent to a small city? Every single day, something breaks. Silicon processors fail, optical transceivers burn out, and power fluctuations can cause tens of megawatts of…"
+   "hash": "7cc86f46bdbd",
+   "word_count": 1661,
+   "excerpt": "Imagine a kitchen cooking one enormous banquet over almost two months, with 16,000 cooks working in lockstep, ovens failing every few hours, and power draw swinging so sharply that the building's electrical supply notices. The menu is deliberately ordinary, but the ingredients, the stations and the…"
   },
   {
    "id": "paper-megatron-lm",
@@ -9703,6 +9732,118 @@
    "excerpt": "\"For each position, return the product of every other number in the array. No division. O(n) time.\" It is one of the most asked medium questions at large tech companies, and it is a perfect test of one idea: splitting \"everything except me\" into \"everything before me\" and \"everything after me\".…"
   },
   {
+   "id": "dsa-trapping-rain-water",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "trapping-rain-water",
+   "title": "Filling the Potholes Between Buildings",
+   "subtitle": "Trapping Rain Water three ways: prefix maxima, two pointers and a monotonic stack, all from one idea about water levels",
+   "track": "dsa-arrays",
+   "track_order": 11,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-two-pointers",
+    "dsa-monotonic-stack"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "arrays",
+    "two pointers",
+    "prefix maximum",
+    "monotonic stack"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(1) with two pointers, O(n) with prefix arrays or a stack"
+   },
+   "practice_problems": [
+    {
+     "name": "Trapping Rain Water",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/trapping-rain-water/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Container With Most Water",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/container-with-most-water/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Trapping Rain Water II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/trapping-rain-water-ii/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Elevation map",
+     "definition": "An array of non-negative bar heights, each bar one unit wide, standing side by side."
+    },
+    {
+     "term": "Water level",
+     "definition": "The height water reaches above a given bar: the smaller of the tallest bar to its left and the tallest bar to its right."
+    },
+    {
+     "term": "Prefix maximum",
+     "definition": "For each index, the largest value from the start of the array up to and including that index."
+    },
+    {
+     "term": "Suffix maximum",
+     "definition": "For each index, the largest value from that index to the end of the array."
+    },
+    {
+     "term": "Bottleneck wall",
+     "definition": "Of the two tallest walls around a bar, the shorter one, which decides how high water can rise before spilling over."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Heights [0, 2, 0, 4, 1, 0, 3, 1]. How much water sits above index 5 (height 0)?",
+     "options": [
+      "0",
+      "2",
+      "3",
+      "4"
+     ],
+     "answer": 2,
+     "explain": "Tallest to the left is 4, tallest to the right is 3, so the level is min(4, 3) = 3, and 3 − 0 = 3 units sit above it."
+    },
+    {
+     "q": "In the two-pointer method, why is it safe to settle the left bar when h[left] < h[right]?",
+     "options": [
+      "Because the left side is always shorter",
+      "Because some bar on the right is at least h[right] > h[left], so the left side's maximum is the bottleneck for this bar",
+      "Because water flows left",
+      "It is not safe"
+     ],
+     "answer": 1,
+     "explain": "The right side already contains a wall taller than the current left bar, so the water level at left is decided by left_max alone."
+    },
+    {
+     "q": "How does Container With Most Water differ from Trapping Rain Water?",
+     "options": [
+      "It is the same problem",
+      "It picks just two walls to hold one rectangle of water and ignores the bars between them; trapping water sums water above every bar",
+      "It allows negative heights",
+      "It needs a stack"
+     ],
+     "answer": 1,
+     "explain": "Container treats the lines as thin walls with nothing between them and maximises one area. Trapping water fills every dip in the solid bars."
+    }
+   ],
+   "cover_seed": "trapping-rain-water",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.9,
+   "path": "dsa/trapping-rain-water.md",
+   "hash": "0e6f3021bc6c",
+   "word_count": 1431,
+   "excerpt": "A row of buildings of different heights stands side by side, each one unit wide. It rains hard. How many units of water stay trapped in the gaps between them after the rain stops? Trapping Rain Water is one of the most famous hard interview problems, and for good reason. The brute force is easy,…"
+  },
+  {
    "id": "dsa-subarray-sum-k",
    "kind": "problem-walkthrough",
    "subject": "dsa",
@@ -11152,6 +11293,552 @@
    "hash": "e6dff8415fe1",
    "word_count": 1108,
    "excerpt": "Almost every tree problem in an interview, from \"maximum depth\" to \"serialize a tree\" to \"lowest common ancestor\", is a traversal with a small twist. The twist is usually when you do the work at each node: before visiting the children, between them, after them, or level by level. Get the four…"
+  },
+  {
+   "id": "dsa-dp-intro",
+   "kind": "primer",
+   "subject": "dsa",
+   "slug": "dp-intro",
+   "title": "Dynamic Programming Is Just Careful Recursion",
+   "subtitle": "Overlapping subproblems, memoisation and bottom-up tables, built from Fibonacci and Climbing Stairs",
+   "track": "dsa-dp",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-recursion-basics"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "dynamic programming",
+    "memoisation",
+    "recursion",
+    "tabulation"
+   ],
+   "glossary": [
+    {
+     "term": "Dynamic programming (DP)",
+     "definition": "Solving a problem by combining answers to smaller versions of it, computing each smaller answer only once."
+    },
+    {
+     "term": "Overlapping subproblems",
+     "definition": "When a recursive solution asks the same smaller question many times, such as fib(3) inside both fib(5) and fib(4)."
+    },
+    {
+     "term": "Memoisation",
+     "definition": "Top-down DP: keep the recursion, but store each result the first time it is computed and return the stored value afterwards."
+    },
+    {
+     "term": "Tabulation",
+     "definition": "Bottom-up DP: fill a table from the smallest subproblems upward with a loop, so every value needed is already there."
+    },
+    {
+     "term": "State",
+     "definition": "The parameters that identify one subproblem, such as 'the number of ways to reach step i'."
+    },
+    {
+     "term": "Transition",
+     "definition": "The formula that computes a state from smaller states, such as ways(i) = ways(i − 1) + ways(i − 2)."
+    },
+    {
+     "term": "Base case",
+     "definition": "The smallest states whose answers are known directly, which stop the recursion or start the table."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How many calls does the plain recursive fib(n) make for n = 5, counting the first call?",
+     "options": [
+      "5",
+      "9",
+      "15",
+      "32"
+     ],
+     "answer": 2,
+     "explain": "The call tree for fib(5) has 15 nodes because fib(3), fib(2) and smaller values are recomputed many times. With memoisation it drops to 9 calls, and only 6 distinct values are computed."
+    },
+    {
+     "q": "What are the three things you must define before writing any DP?",
+     "options": [
+      "Loop, array, print",
+      "State, transition and base case",
+      "Graph, queue and visited set",
+      "Sort order, pointer and window"
+     ],
+     "answer": 1,
+     "explain": "The state says what one subproblem means, the transition builds it from smaller ones, and the base cases start everything off."
+    },
+    {
+     "q": "When is a problem a good candidate for DP?",
+     "options": [
+      "Whenever it uses an array",
+      "When the recursive solution solves the same subproblems repeatedly and the answer is built from optimal or counted sub-answers",
+      "Only for Fibonacci",
+      "When greedy works"
+     ],
+     "answer": 1,
+     "explain": "DP pays off when there are overlapping subproblems to reuse and the full answer can be assembled from sub-answers."
+    }
+   ],
+   "cover_seed": "dp-intro",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.94,
+   "path": "dsa/dp-intro.md",
+   "hash": "b69229a85219",
+   "word_count": 1103,
+   "excerpt": "Dynamic programming has a fearsome reputation. Students talk about it as if it were a separate kind of magic, where you either \"see the formula\" or you do not. Interviewers know this, which is why DP questions appear in so many placement rounds. Here is the secret that takes the fear away: dynamic…"
+  },
+  {
+   "id": "dsa-dp-1d",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "dp-1d",
+   "title": "Stairs, Robbers and Secret Codes",
+   "subtitle": "One-dimensional DP: define dp[i], look back a fixed number of steps, and shrink the table to a few variables",
+   "track": "dsa-dp",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-dp-intro"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "dynamic programming",
+    "1d dp",
+    "house robber",
+    "coin change"
+   ],
+   "complexity": {
+    "time": "O(n × k) for k choices per step",
+    "space": "O(n), often O(1)"
+   },
+   "practice_problems": [
+    {
+     "name": "House Robber",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/house-robber/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "House Robber II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/house-robber-ii/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Decode Ways",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/decode-ways/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Coin Change",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/coin-change/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Dice Combinations",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1633",
+     "difficulty": "Easy"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "1D DP",
+     "definition": "A dynamic programming solution whose state is a single index, such as dp[i] for the first i items or for amount i."
+    },
+    {
+     "term": "Look-back window",
+     "definition": "How many earlier states a transition reads, such as 2 for House Robber or the number of coin types for Coin Change."
+    },
+    {
+     "term": "Rolling variables",
+     "definition": "Replacing the dp array with a few variables that hold only the states the transition still needs."
+    },
+    {
+     "term": "Optimisation DP",
+     "definition": "A DP that takes the minimum or maximum over choices, such as the most money or the fewest coins."
+    },
+    {
+     "term": "Counting DP",
+     "definition": "A DP that adds up the number of ways over choices, such as the number of decodings or dice sequences."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "House values [5, 1, 2, 9, 4, 3], no two adjacent houses. What is the most you can rob?",
+     "options": [
+      "14",
+      "16",
+      "17",
+      "24"
+     ],
+     "answer": 2,
+     "explain": "dp goes 5, 5, 7, 14, 14, 17. The best plan robs houses with 5, 9 and 3."
+    },
+    {
+     "q": "Coins {1, 3, 4}, amount 6. Why does picking the largest coin first fail?",
+     "options": [
+      "It does not fail",
+      "Greedy takes 4 + 1 + 1 = 3 coins, but 3 + 3 uses only 2",
+      "Coins must be sorted",
+      "Amount 6 is impossible"
+     ],
+     "answer": 1,
+     "explain": "Greedy is only safe for special coin systems. DP tries every last coin and finds 2."
+    },
+    {
+     "q": "In Decode Ways for the string '1206', why is the answer 1?",
+     "options": [
+      "Every digit decodes alone",
+      "'0' cannot stand alone, so it must pair with the '2' before it as '20', which forces the split 1, 20, 6",
+      "Strings with zeros have no decoding",
+      "Because 12 is valid"
+     ],
+     "answer": 1,
+     "explain": "A zero is only valid as part of 10 or 20. That removes the option of reading '12' and leaves exactly one decoding."
+    }
+   ],
+   "cover_seed": "dp-1d",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.92,
+   "path": "dsa/dp-1d.md",
+   "hash": "3705c472965d",
+   "word_count": 1290,
+   "excerpt": "A robber walks down a street of houses, each holding some money. Robbing two neighbours in a row trips the alarm. Which houses should they hit? A message of digits must be decoded where 1 means A and 26 means Z: how many readings does \"2261\" have? A vending machine has coins of 1, 3 and 4: what is…"
+  },
+  {
+   "id": "dsa-knapsack-01",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "knapsack-01",
+   "title": "Packing a Backpack With a Weight Limit",
+   "subtitle": "0/1 knapsack: a DP over items and capacity, the backwards loop that makes it 1D, and subset sum as a special case",
+   "track": "dsa-dp",
+   "track_order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-dp-1d"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "dynamic programming",
+    "knapsack",
+    "subset sum",
+    "2d dp"
+   ],
+   "complexity": {
+    "time": "O(n × W)",
+    "space": "O(W) with the 1D table"
+   },
+   "practice_problems": [
+    {
+     "name": "Partition Equal Subset Sum",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/partition-equal-subset-sum/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Target Sum",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/target-sum/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Last Stone Weight II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/last-stone-weight-ii/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Book Shop",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1158",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "0/1 knapsack",
+     "definition": "Choose a subset of items, each with a weight and a value, to maximise total value without exceeding a capacity. Each item is taken whole or not at all, at most once."
+    },
+    {
+     "term": "Capacity",
+     "definition": "The maximum total weight allowed, usually called W."
+    },
+    {
+     "term": "Subset sum",
+     "definition": "The special case that asks whether some subset of numbers adds up to exactly a target, a knapsack where only reachability matters."
+    },
+    {
+     "term": "Pseudo-polynomial time",
+     "definition": "Running time polynomial in the numeric value W rather than in the number of bits needed to write W, so it is fast only when W is small."
+    },
+    {
+     "term": "Unbounded knapsack",
+     "definition": "The variant where each item may be taken any number of times."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In the 1D knapsack table, why must the capacity loop run from W down to the item's weight?",
+     "options": [
+      "It is faster",
+      "So that dp[c − w] still holds the value from before this item, which prevents using the same item twice",
+      "Because weights are sorted",
+      "It does not matter"
+     ],
+     "answer": 1,
+     "explain": "Going upward, dp[c − w] may already include the current item, so the item gets added again. Going downward reads only old values."
+    },
+    {
+     "q": "Items (weight, value): (1, 1), (3, 4), (4, 5), (5, 7). Capacity 7. What is the best value?",
+     "options": [
+      "8",
+      "9",
+      "11",
+      "12"
+     ],
+     "answer": 1,
+     "explain": "Taking weights 3 and 4 gives value 4 + 5 = 9. Weights 5 and 1 give only 8, and 1 + 3 gives 5."
+    },
+    {
+     "q": "Partition Equal Subset Sum reduces to which question?",
+     "options": [
+      "Longest increasing subsequence",
+      "Is there a subset summing to exactly half of the total?",
+      "Minimum coins",
+      "Sorting the array"
+     ],
+     "answer": 1,
+     "explain": "If one part sums to half, the rest sums to the other half. That is subset sum with target total / 2, which needs an even total."
+    }
+   ],
+   "cover_seed": "knapsack-01",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.92,
+   "path": "dsa/knapsack-01.md",
+   "hash": "75081a4ff52f",
+   "word_count": 1379,
+   "excerpt": "You are packing for a trek and your backpack holds 7 kg. On the floor: a stove, a camera, a tent, a sleeping bag, each with a weight and a usefulness score. Every item goes in whole or stays behind. Which combination is most useful without breaking the weight limit? That is the 0/1 knapsack…"
+  },
+  {
+   "id": "dsa-tries",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "tries",
+   "title": "Autocomplete in Your Pocket",
+   "subtitle": "Tries: a tree of letters that answers 'is this a word?' and 'what starts with this?' in time proportional to the word, not the dictionary",
+   "track": "dsa-advanced",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-hashing-patterns",
+    "dsa-tree-traversals"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "trie",
+    "prefix tree",
+    "strings",
+    "autocomplete"
+   ],
+   "complexity": {
+    "time": "O(L) per insert or lookup, for a word of length L",
+    "space": "O(total characters × alphabet size) in the worst case"
+   },
+   "practice_problems": [
+    {
+     "name": "Implement Trie (Prefix Tree)",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/implement-trie-prefix-tree/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Design Add and Search Words Data Structure",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/design-add-and-search-words-data-structure/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Replace Words",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/replace-words/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Word Search II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/word-search-ii/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Maximum XOR of Two Numbers in an Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Trie",
+     "definition": "A tree where each edge is labelled with a character, so every path from the root spells a prefix. Also called a prefix tree."
+    },
+    {
+     "term": "Prefix",
+     "definition": "The first few characters of a string. 'ca' is a prefix of 'card' and of 'cat'."
+    },
+    {
+     "term": "End-of-word marker",
+     "definition": "A flag on a trie node saying that the path to this node spells a complete word, not just a prefix of one."
+    },
+    {
+     "term": "Prefix count",
+     "definition": "A counter stored on each node recording how many inserted words pass through it, so 'how many words start with this?' is one lookup."
+    },
+    {
+     "term": "Alphabet size",
+     "definition": "The number of distinct characters a node may branch on, such as 26 for lowercase English letters or 2 for bits."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "You insert car, card, care, cat and dog into an empty trie. How many nodes does it have, counting the root?",
+     "options": [
+      "6",
+      "10",
+      "17",
+      "18"
+     ],
+     "answer": 1,
+     "explain": "Shared prefixes share nodes. Root, then c-a-r-d-e-t for the 'ca' family (6 nodes), then d-o-g (3 nodes): 1 + 6 + 3 = 10."
+    },
+    {
+     "q": "After inserting 'card' only, does search('car') return true?",
+     "options": [
+      "Yes, because the path c-a-r exists",
+      "No, because the node for 'r' has no end-of-word marker",
+      "Only if 'car' is a prefix",
+      "It crashes"
+     ],
+     "answer": 1,
+     "explain": "The path exists, so startsWith('car') is true, but search needs the end-of-word marker on the last node."
+    },
+    {
+     "q": "Why is a trie better than a hash set for Word Search II?",
+     "options": [
+      "It uses less memory",
+      "While walking the grid you can stop as soon as the current path is not a prefix of any word",
+      "Hash sets cannot store strings",
+      "It sorts the words"
+     ],
+     "answer": 1,
+     "explain": "A hash set can only answer 'is this whole string a word?'. The trie also answers 'can this path still become a word?', which prunes the search early."
+    }
+   ],
+   "cover_seed": "tries",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "dsa/tries.md",
+   "hash": "f33d5cbd2298",
+   "word_count": 1203,
+   "excerpt": "You type \"ca\" into a search box and suggestions appear instantly: car, card, care, cat. The dictionary behind it might hold a million words. Checking each one for the prefix \"ca\" on every keystroke would be far too slow, and a hash set cannot help, because it only answers \"is this exact string…"
+  },
+  {
+   "id": "dsa-interview-dsa-revision",
+   "kind": "primer",
+   "subject": "dsa",
+   "slug": "interview-dsa-revision",
+   "title": "The Night-Before Revision Sheet",
+   "subtitle": "One checklist for interview day: which pattern a problem is asking for, what each tool costs, and the edge cases that break code",
+   "track": "dsa-advanced",
+   "track_order": 12,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-problem-solving-framework"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 6,
+   "topics": [
+    "interview preparation",
+    "revision",
+    "patterns",
+    "complexity"
+   ],
+   "glossary": [
+    {
+     "term": "Pattern cue",
+     "definition": "A phrase or constraint in a problem statement that points towards a specific technique, such as 'sorted array' pointing to binary search or two pointers."
+    },
+    {
+     "term": "Constraint",
+     "definition": "The stated limits on the input, such as n ≤ 10⁵, which tell you how fast the solution must be."
+    },
+    {
+     "term": "Edge case",
+     "definition": "An unusual input at the boundary, such as an empty array, one element or all values equal, that often breaks otherwise correct code."
+    },
+    {
+     "term": "Dry run",
+     "definition": "Tracing your code by hand on a small input, line by line, to catch bugs before running it."
+    },
+    {
+     "term": "Amortised cost",
+     "definition": "The average cost per operation over a whole sequence of operations, even if a single operation is occasionally expensive."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "The input size is n ≤ 20 and the problem asks for the best subset. What should you consider first?",
+     "options": [
+      "A segment tree",
+      "Trying all 2^n subsets, with bitmasks or backtracking",
+      "Binary search",
+      "Union-find"
+     ],
+     "answer": 1,
+     "explain": "2^20 is about a million, which is easily affordable. The small constraint is an invitation to enumerate subsets."
+    },
+    {
+     "q": "A problem asks for the minimum number of moves in an unweighted grid. Which tool fits?",
+     "options": [
+      "DFS",
+      "BFS",
+      "Dijkstra with a heap",
+      "Sorting"
+     ],
+     "answer": 1,
+     "explain": "In an unweighted graph BFS explores by distance, so the first time it reaches the target is the shortest path. Dijkstra works but is unnecessary."
+    },
+    {
+     "q": "What is the most useful thing to do the night before an interview?",
+     "options": [
+      "Learn a brand new advanced topic",
+      "Revise the patterns you already know, rehearse your explanation routine, and sleep",
+      "Solve 50 new hard problems",
+      "Memorise solutions word for word"
+     ],
+     "answer": 1,
+     "explain": "New topics learned in a rush rarely stick and add anxiety. Recognising known patterns quickly and explaining clearly is what wins the round."
+    }
+   ],
+   "cover_seed": "interview-dsa-revision",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.9,
+   "path": "dsa/interview-dsa-revision.md",
+   "hash": "bb9178fea297",
+   "word_count": 1344,
+   "excerpt": "It is the night before your interview. You have solved hundreds of problems over months, and right now they blur together. Was it the sliding window that needed positive numbers, or the prefix sums? Does the heap pop in log n or in n? What was that edge case that broke your code last week? This…"
   },
   {
    "id": "cp-how-contests-work",
@@ -13165,6 +13852,245 @@
    "excerpt": "There is a number. Divided by 3 it leaves 2, divided by 5 it leaves 3, divided by 7 it leaves 2. What is it? This puzzle comes from an ancient Chinese mathematical text, the Sunzi Suanjing, and its answer, 23, can be found by a method that still powers contest solutions and real systems today. In…"
   },
   {
+   "id": "cp-counting-techniques",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "counting-techniques",
+   "title": "Counting Outfits Without Trying Them On",
+   "subtitle": "The combinatorics toolkit for contests: product and sum rules, complement counting, Catalan numbers and Burnside's lemma for symmetric objects",
+   "track": "cp-math",
+   "track_order": 10,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-binomial-coefficients"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "combinatorics",
+    "counting",
+    "catalan numbers",
+    "burnside"
+   ],
+   "complexity": {
+    "time": "O(n) after O(n) factorial precomputation for most formulas",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Bracket Sequences I",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2064",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Counting Necklaces",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2209",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Distributing Apples",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1716",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Bracket Sequences II",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2187",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Product rule",
+     "definition": "If a choice is made in independent stages with a, b, c options, the total number of outcomes is a × b × c."
+    },
+    {
+     "term": "Sum rule",
+     "definition": "If outcomes split into separate cases that do not overlap, the total is the sum of the counts of each case."
+    },
+    {
+     "term": "Complement counting",
+     "definition": "Counting what you do not want and subtracting it from the total."
+    },
+    {
+     "term": "Bijection",
+     "definition": "A one-to-one pairing between two sets of objects, which proves they have the same size."
+    },
+    {
+     "term": "Catalan numbers",
+     "definition": "The sequence 1, 1, 2, 5, 14, 42, ... counting balanced bracket sequences and many structures equivalent to them."
+    },
+    {
+     "term": "Burnside's lemma",
+     "definition": "The number of distinct objects up to symmetry equals the average, over all symmetries, of the number of objects each symmetry leaves unchanged."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How many strings of length 4 over the 26 lowercase letters contain at least one 'a'?",
+     "options": [
+      "4 × 25³",
+      "26⁴ − 25⁴",
+      "26⁴",
+      "25⁴"
+     ],
+     "answer": 1,
+     "explain": "Count the complement: strings with no 'a' number 25⁴. Subtract from all 26⁴ strings: 456,976 − 390,625 = 66,351."
+    },
+    {
+     "q": "How many balanced bracket sequences of length 8 are there?",
+     "options": [
+      "8",
+      "14",
+      "42",
+      "70"
+     ],
+     "answer": 1,
+     "explain": "Length 8 means n = 4 pairs, and the 4th Catalan number is C(8, 4) / 5 = 70 / 5 = 14."
+    },
+    {
+     "q": "Using Burnside's lemma, how many distinct necklaces of 4 beads in 2 colours exist, counting rotations as the same?",
+     "options": [
+      "4",
+      "6",
+      "8",
+      "16"
+     ],
+     "answer": 1,
+     "explain": "Rotations by 0, 1, 2, 3 positions fix 16, 2, 4 and 2 colourings. The average is (16 + 2 + 4 + 2) / 4 = 6."
+    }
+   ],
+   "cover_seed": "counting-techniques",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.74,
+   "path": "cp/counting-techniques.md",
+   "hash": "c69c5066c73b",
+   "word_count": 1126,
+   "excerpt": "A contest problem asks: how many valid bracket sequences of length 10⁶ are there, modulo 10⁹ + 7? Another asks for the number of distinct necklaces of 10⁶ beads in 10⁹ colours, where rotating a necklace does not make it different. Listing the objects is out of the question; even for length 40 there…"
+  },
+  {
+   "id": "cp-probability-expectation",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "probability-expectation",
+   "title": "Averaging Over a Thousand Parallel Universes",
+   "subtitle": "Expected value and linearity of expectation: indicator variables, probability DP, and printing expected values modulo a prime",
+   "track": "cp-math",
+   "track_order": 11,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-counting-techniques",
+    "cp-modular-arithmetic"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "probability",
+    "expected value",
+    "linearity of expectation",
+    "dynamic programming"
+   ],
+   "complexity": {
+    "time": "Often O(n) with linearity; O(n · states) for probability DP",
+    "space": "O(states)"
+   },
+   "practice_problems": [
+    {
+     "name": "Dice Probability",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1725",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Moving Robots",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1726",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Candy Lottery",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1727",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Inversion Probability",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1728",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Random variable",
+     "definition": "A number whose value depends on the outcome of a random experiment, such as the sum of two dice."
+    },
+    {
+     "term": "Expected value",
+     "definition": "The probability-weighted average of a random variable's values: what you get on average over many repetitions."
+    },
+    {
+     "term": "Linearity of expectation",
+     "definition": "The rule E[X + Y] = E[X] + E[Y], which holds for any random variables, independent or not."
+    },
+    {
+     "term": "Indicator variable",
+     "definition": "A random variable that is 1 if an event happens and 0 otherwise. Its expected value equals the event's probability."
+    },
+    {
+     "term": "Independence",
+     "definition": "Two events are independent when knowing one happened does not change the probability of the other."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A random permutation of n items is drawn. What is the expected number of items left in their original position?",
+     "options": [
+      "0",
+      "1",
+      "n / 2",
+      "It depends on n"
+     ],
+     "answer": 1,
+     "explain": "Each of the n positions is a fixed point with probability 1/n. By linearity, the expected count is n × 1/n = 1, for every n."
+    },
+    {
+     "q": "Does linearity of expectation require the variables to be independent?",
+     "options": [
+      "Yes, always",
+      "No, E[X + Y] = E[X] + E[Y] holds for any random variables",
+      "Only for indicator variables",
+      "Only for two variables"
+     ],
+     "answer": 1,
+     "explain": "Linearity holds for dependent variables too. Independence is needed for E[XY] = E[X]E[Y], not for sums."
+    },
+    {
+     "q": "An expected value is 7/2 and the problem asks for it modulo 10⁹ + 7. What do you print?",
+     "options": [
+      "3",
+      "3.5",
+      "7 × inverse(2) mod 10⁹ + 7 = 500000007",
+      "7 mod 2"
+     ],
+     "answer": 2,
+     "explain": "A fraction P/Q is printed as P × Q⁻¹ modulo the prime. The inverse of 2 is 500000004, and 7 × 500000004 mod 10⁹ + 7 = 500000007."
+    }
+   ],
+   "cover_seed": "probability-expectation",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "cp/probability-expectation.md",
+   "hash": "18599259eef2",
+   "word_count": 1232,
+   "excerpt": "You shuffle a deck of 52 cards. On average, how many cards end up in their original position? Trying to answer by listing all 52! orders is hopeless, and even computing the probability of exactly k fixed points needs inclusion-exclusion. Yet the expected number is exactly 1, and the proof takes one…"
+  },
+  {
    "id": "cp-matrix-exponentiation",
    "kind": "pattern",
    "subject": "cp",
@@ -13280,6 +14206,357 @@
    "hash": "76a622952958",
    "word_count": 1052,
    "excerpt": "Compute the 10¹⁸-th Fibonacci number modulo 10⁹ + 7. A loop that adds the last two terms needs 10¹⁸ steps, which would take decades. Yet the answer comes back in microseconds with a trick built from two things you already know: the recurrence, and fast exponentiation from Raising to the Power of a…"
+  },
+  {
+   "id": "cp-counting-divisors",
+   "kind": "problem-walkthrough",
+   "subject": "cp",
+   "slug": "counting-divisors",
+   "title": "A Million Numbers, Each Asking How Many Divisors It Has",
+   "subtitle": "Counting divisors for many queries by letting every number drop a token into its multiples, and why that costs only N log N",
+   "track": "cp-math",
+   "track_order": 14,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-sieve"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "number theory",
+    "divisors",
+    "sieve",
+    "harmonic series"
+   ],
+   "complexity": {
+    "time": "O(N log N) precomputation, O(1) per query",
+    "space": "O(N)"
+   },
+   "practice_problems": [
+    {
+     "name": "Counting Divisors",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1713",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Common Divisors",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1081",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Sum of Divisors",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1082",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Divisor Analysis",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2182",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Divisor",
+     "definition": "A positive integer d divides n when n / d is a whole number. For example, the divisors of 12 are 1, 2, 3, 4, 6 and 12."
+    },
+    {
+     "term": "Divisor-count function",
+     "definition": "d(n), the number of positive divisors of n. d(12) = 6."
+    },
+    {
+     "term": "Harmonic series",
+     "definition": "The sum 1 + 1/2 + 1/3 + ... + 1/N, which grows like the natural logarithm of N."
+    },
+    {
+     "term": "Smallest prime factor (SPF) sieve",
+     "definition": "A precomputed table storing the smallest prime dividing each number up to N, which lets you factorise any number in O(log n) steps."
+    },
+    {
+     "term": "Offline precomputation",
+     "definition": "Computing answers for every possible input once, before reading queries, so each query becomes a table lookup."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does the 'add 1 to every multiple of d' loop cost about N ln N in total?",
+     "options": [
+      "Each d visits N numbers",
+      "Each d visits N/d multiples, and N/1 + N/2 + ... + N/N is N times the harmonic series, about N ln N",
+      "It uses binary search",
+      "It only visits primes"
+     ],
+     "answer": 1,
+     "explain": "The work for d is N/d. Summing over d gives N(1 + 1/2 + ... + 1/N) ≈ N ln N, about 1.4 × 10⁷ for N = 10⁶."
+    },
+    {
+     "q": "What is d(72), using 72 = 2³ × 3²?",
+     "options": [
+      "5",
+      "6",
+      "12",
+      "72"
+     ],
+     "answer": 2,
+     "explain": "Each divisor picks an exponent 0..3 for 2 and 0..2 for 3: (3 + 1)(2 + 1) = 12."
+    },
+    {
+     "q": "For the maximum gcd of any pair in an array, what do you check for each candidate d from large to small?",
+     "options": [
+      "Whether d is prime",
+      "Whether at least two array elements are multiples of d",
+      "Whether d divides the array sum",
+      "Whether d is in the array"
+     ],
+     "answer": 1,
+     "explain": "Two multiples of d have gcd at least d. Scanning d downwards, the first d with two multiples present is the answer."
+    }
+   ],
+   "cover_seed": "counting-divisors",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.68,
+   "path": "cp/counting-divisors.md",
+   "hash": "8e9bf5108525",
+   "word_count": 1074,
+   "excerpt": "Counting the divisors of one number is a beginner exercise: try every candidate up to its square root. Now do it for 100,000 numbers, each up to a million, inside a one-second limit. Suddenly the beginner method is borderline, and the problem is really asking whether you know a different way to…"
+  },
+  {
+   "id": "cp-creating-strings-ii",
+   "kind": "problem-walkthrough",
+   "subject": "cp",
+   "slug": "creating-strings-ii",
+   "title": "Shuffling Letter Tiles When Some Tiles Are Twins",
+   "subtitle": "Counting distinct arrangements of a word with the multinomial coefficient, factorials modulo a prime and modular inverses",
+   "track": "cp-math",
+   "track_order": 15,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-binomial-coefficients"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "combinatorics",
+    "multinomial",
+    "factorials",
+    "modular inverse"
+   ],
+   "complexity": {
+    "time": "O(n + log p)",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Creating Strings II",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1715",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Distributing Apples",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1716",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Binomial Coefficients",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1079",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Creating Strings",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1622",
+     "difficulty": "Easy"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Permutation",
+     "definition": "An ordering of items. n distinct items have n! orderings."
+    },
+    {
+     "term": "Multinomial coefficient",
+     "definition": "n! / (c₁! c₂! ... c_k!), the number of distinct orderings of n items where cᵢ items are identical copies of type i."
+    },
+    {
+     "term": "Factorial table",
+     "definition": "Precomputed values of 0!, 1!, ..., n! modulo a prime, so any factorial is available in O(1)."
+    },
+    {
+     "term": "Modular inverse",
+     "definition": "For a prime p and x not divisible by p, the number x⁻¹ with x · x⁻¹ ≡ 1 (mod p). It replaces division in modular arithmetic."
+    },
+    {
+     "term": "Stars and bars",
+     "definition": "A counting method for distributing identical items into distinct groups by arranging items and dividers in a row."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How many distinct strings can be made from the letters of 'banana'?",
+     "options": [
+      "720",
+      "120",
+      "60",
+      "36"
+     ],
+     "answer": 2,
+     "explain": "6 letters with a × 3, n × 2, b × 1: 6! / (3! · 2! · 1!) = 720 / 12 = 60."
+    },
+    {
+     "q": "Why can you not compute n! mod p and then divide by c! mod p with ordinary integer division?",
+     "options": [
+      "Division is slow",
+      "After reducing mod p the true quotient is lost; you must multiply by the modular inverse instead",
+      "Factorials are always odd",
+      "It works fine"
+     ],
+     "answer": 1,
+     "explain": "n! mod p is not divisible by c! mod p in general. Modular division means multiplying by an inverse, which exists because p is prime."
+    },
+    {
+     "q": "In how many ways can 2 identical apples be given to 3 children (some may get none)?",
+     "options": [
+      "3",
+      "6",
+      "8",
+      "9"
+     ],
+     "answer": 1,
+     "explain": "Stars and bars: arrange 2 apples and 2 dividers in a row, C(4, 2) = 6."
+    }
+   ],
+   "cover_seed": "creating-strings-ii",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.66,
+   "path": "cp/creating-strings-ii.md",
+   "hash": "8abba62e0f29",
+   "word_count": 1027,
+   "excerpt": "How many different strings can you make by rearranging the letters of \"mississippi\"? If all 11 letters were different, the answer would be 11! = 39,916,800. But swapping two of the s's produces the same string, so most of those orderings are repeats. The real answer is much smaller, and finding it…"
+  },
+  {
+   "id": "cp-exponentiation-ii",
+   "kind": "problem-walkthrough",
+   "subject": "cp",
+   "slug": "exponentiation-ii",
+   "title": "A Tower of Powers on a Clock That Repeats",
+   "subtitle": "Computing a^(b^c) mod p with Fermat's little theorem: reduce the exponent modulo p − 1, never modulo p, and watch the zero cases",
+   "track": "cp-math",
+   "track_order": 16,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-binary-exponentiation",
+    "cp-modular-inverse"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "number theory",
+    "fermat's little theorem",
+    "modular exponentiation"
+   ],
+   "complexity": {
+    "time": "O(log c + log p) per query",
+    "space": "O(1)"
+   },
+   "practice_problems": [
+    {
+     "name": "Exponentiation II",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1712",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Exponentiation",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1095",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Pow(x, n)",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/powx-n/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Super Pow",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/super-pow/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Fermat's little theorem",
+     "definition": "For a prime p and an integer a not divisible by p, a^(p−1) ≡ 1 (mod p)."
+    },
+    {
+     "term": "Exponent tower",
+     "definition": "An expression like a^(b^c), evaluated from the top down: first b^c, then a raised to that."
+    },
+    {
+     "term": "Order of an element",
+     "definition": "The smallest k > 0 with a^k ≡ 1 (mod p). It always divides p − 1."
+    },
+    {
+     "term": "Binary exponentiation",
+     "definition": "Computing a^e mod m with about 2 log e multiplications by squaring and multiplying according to the bits of e."
+    },
+    {
+     "term": "Euler's theorem",
+     "definition": "The generalisation of Fermat: a^φ(n) ≡ 1 (mod n) whenever gcd(a, n) = 1."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "To compute 3^(2^3) mod 7, what exponent should you actually use?",
+     "options": [
+      "8 mod 7 = 1",
+      "8 mod 6 = 2",
+      "8",
+      "2^3 mod 3"
+     ],
+     "answer": 1,
+     "explain": "By Fermat, 3^6 ≡ 1 (mod 7), so exponents repeat every 6. 8 mod 6 = 2 and 3² = 9 ≡ 2 (mod 7)."
+    },
+    {
+     "q": "Why does reducing the exponent modulo p give wrong answers?",
+     "options": [
+      "It is too slow",
+      "Powers repeat with period dividing p − 1, not p, so exponents are equivalent modulo p − 1",
+      "Exponents cannot be reduced at all",
+      "p is not prime"
+     ],
+     "answer": 1,
+     "explain": "Fermat's little theorem gives a^(p−1) ≡ 1, so the cycle length divides p − 1. Using p shifts the exponent by one step per wrap."
+    },
+    {
+     "q": "When does Fermat's reduction fail outright?",
+     "options": [
+      "When b is even",
+      "When a is a multiple of p, since then a^(p−1) ≡ 0, not 1",
+      "When c = 1",
+      "Never"
+     ],
+     "answer": 1,
+     "explain": "Fermat requires a not divisible by p. If a ≡ 0, the answer is 0 for any positive exponent and 1 for exponent 0, which must be handled separately."
+    }
+   ],
+   "cover_seed": "exponentiation-ii",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.66,
+   "path": "cp/exponentiation-ii.md",
+   "hash": "67b624491028",
+   "word_count": 1154,
+   "excerpt": "Computing aᵇ mod p for b up to 10⁹ is the classic fast exponentiation exercise from Raising to the Power of a Billion in Thirty Steps. Now raise the stakes: compute a^(b^c) mod p, where b and c are each up to 10⁹. The exponent b^c can have billions of digits. You cannot even write it down, let…"
   },
   {
    "id": "cp-coordinate-compression",
@@ -13398,6 +14675,123 @@
    "hash": "0f086fcbd636",
    "word_count": 1004,
    "excerpt": "You want to count, for each number in an array, how many smaller numbers appear after it. A Fenwick tree over values would do it in O(n log n): walk from the right, query \"how many values below x have I seen?\", then add x. There is one problem. Values go up to 10⁹, and an array of a billion…"
+  },
+  {
+   "id": "cp-geometry-basics",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "geometry-basics",
+   "title": "Left Turn or Right Turn at the Junction",
+   "subtitle": "Contest geometry with integers: points as vectors, the cross product for orientation, segment intersection and polygon area",
+   "track": "cp-misc",
+   "track_order": 3,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-modular-arithmetic"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "geometry",
+    "cross product",
+    "orientation",
+    "polygons"
+   ],
+   "complexity": {
+    "time": "O(1) per orientation or intersection test, O(n) for polygon area",
+    "space": "O(1)"
+   },
+   "practice_problems": [
+    {
+     "name": "Point Location Test",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2189",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Line Segment Intersection",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2190",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Polygon Area",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2191",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Point in Polygon",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2192",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Vector",
+     "definition": "A direction and length, written as (x, y). The vector from point A to point B is B − A."
+    },
+    {
+     "term": "Cross product",
+     "definition": "For 2D vectors u and v, the number u.x·v.y − u.y·v.x. Its sign says whether v turns left or right from u, and its size is twice the triangle area."
+    },
+    {
+     "term": "Orientation",
+     "definition": "Whether three points A, B, C make a left turn (counter-clockwise), a right turn (clockwise) or lie on one line."
+    },
+    {
+     "term": "Collinear",
+     "definition": "Lying on the same straight line. Three points are collinear when their cross product is zero."
+    },
+    {
+     "term": "Shoelace formula",
+     "definition": "A formula for a polygon's area: half the absolute value of the sum of cross products of consecutive vertices."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A = (0, 0), B = (4, 0), C = (2, 3). What does cross(B − A, C − A) = 12 tell you?",
+     "options": [
+      "C is to the right of AB",
+      "C is to the left of AB, a counter-clockwise turn",
+      "The points are collinear",
+      "AB has length 12"
+     ],
+     "answer": 1,
+     "explain": "A positive cross product means a left (counter-clockwise) turn. Its value, 12, is also twice the area of triangle ABC."
+    },
+    {
+     "q": "Two segments AB and CD are not collinear. When do they cross?",
+     "options": [
+      "When their lengths are equal",
+      "When C and D are on opposite sides of AB and A and B are on opposite sides of CD",
+      "When any cross product is zero",
+      "When they share an x-coordinate"
+     ],
+     "answer": 1,
+     "explain": "Opposite signs of the two cross products in both directions mean each segment straddles the other's line."
+    },
+    {
+     "q": "Why are integer coordinates preferred in contest geometry?",
+     "options": [
+      "They are shorter",
+      "Cross products of integers are exact, so tests like 'is it exactly zero?' never suffer from rounding errors",
+      "Floats cannot be negative",
+      "Integers are faster to print"
+     ],
+     "answer": 1,
+     "explain": "With up to 10⁹ coordinates, cross products fit in 64-bit integers and are exact. Floating point can misjudge collinear or touching cases."
+    }
+   ],
+   "cover_seed": "geometry-basics",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.68,
+   "path": "cp/geometry-basics.md",
+   "hash": "444585eb48d1",
+   "word_count": 1154,
+   "excerpt": "Geometry problems scare many contestants: angles, trigonometry, floating-point errors, special cases everywhere. But the vast majority of contest geometry needs exactly one tool, used over and over. It decides whether a point is left or right of a line, whether two segments cross, whether a polygon…"
   },
   {
    "id": "cp-practice-plan",
@@ -15173,6 +16567,97 @@
    "excerpt": "A food delivery app has 300,000 restaurants and a hungry user at a particular latitude and longitude. \"Show restaurants within 3 km\" sounds easy, but computing the distance to all 300,000 for every search, thousands of times a second, is wasteful. And a normal database index sorts by one number at…"
   },
   {
+   "id": "famous-algos-lz77",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "lz77",
+   "title": "Writing Ditto Marks Instead of Repeating Yourself",
+   "subtitle": "LZ77: replace repeated text with short back-references into a sliding window, the idea inside ZIP, gzip and PNG",
+   "track": "fa-coding",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-sliding-window"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "compression",
+    "lz77",
+    "sliding window",
+    "deflate"
+   ],
+   "glossary": [
+    {
+     "term": "Lossless compression",
+     "definition": "Shrinking data so that decompressing gives back exactly the original bytes, with nothing lost."
+    },
+    {
+     "term": "Back-reference",
+     "definition": "An instruction that says: copy some bytes that already appeared earlier in the output, instead of storing them again."
+    },
+    {
+     "term": "Sliding window",
+     "definition": "The most recent stretch of already-processed text, which the encoder searches for matches and the decoder keeps in memory."
+    },
+    {
+     "term": "Distance-length pair",
+     "definition": "A back-reference written as (how far back to start copying, how many bytes to copy)."
+    },
+    {
+     "term": "Literal",
+     "definition": "A byte written out as itself because no useful earlier match exists."
+    },
+    {
+     "term": "Entropy",
+     "definition": "A measure of how unpredictable data is. Data with high entropy, such as random bytes, cannot be compressed losslessly."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What does the token (distance 3, length 6) tell the decoder to do?",
+     "options": [
+      "Skip 6 bytes",
+      "Go back 3 bytes in the output and copy 6 bytes forward, one at a time",
+      "Repeat the last byte 3 times",
+      "Insert the number 36"
+     ],
+     "answer": 1,
+     "explain": "A back-reference copies from earlier output. Because it copies byte by byte, the length may exceed the distance, so the copy can overlap the bytes it is producing."
+    },
+    {
+     "q": "Why can't LZ77 shrink a file of truly random bytes?",
+     "options": [
+      "The window is too small",
+      "Random data has no repeated phrases to point back to, so every byte becomes a literal plus overhead",
+      "Random data is already sorted",
+      "It can, by about half"
+     ],
+     "answer": 1,
+     "explain": "Compression removes redundancy. Random data has none, so no lossless method can shrink it on average."
+    },
+    {
+     "q": "Why does the decoder not need a copy of the dictionary sent separately?",
+     "options": [
+      "It guesses it",
+      "The dictionary is the text already decoded, which the decoder rebuilds as it goes",
+      "It is stored in the file header",
+      "There is no dictionary"
+     ],
+     "answer": 1,
+     "explain": "Both sides use the recent text as the dictionary. The decoder has produced exactly that text itself, so nothing extra is transmitted."
+    }
+   ],
+   "cover_seed": "lz77",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.86,
+   "path": "famous-algos/lz77.md",
+   "hash": "664bc2847869",
+   "word_count": 1195,
+   "excerpt": "Open a web page and the HTML, CSS and JavaScript usually arrive compressed, often to a fraction of their size. Download a ZIP file, save a PNG, or look at a server log archived as .gz, and the same trick is at work. Text, code and logs repeat themselves constantly: the same tags, the same variable…"
+  },
+  {
    "id": "famous-algos-cryptographic-hashing",
    "kind": "concept",
    "subject": "famous-algos",
@@ -15442,6 +16927,189 @@
    "excerpt": "You open a website you have never visited. Within a fraction of a second, your browser and a server on another continent agree on a secret key that encrypts everything you send. They have never met, they share no password, and every message they exchanged to agree on that key crossed networks where…"
   },
   {
+   "id": "famous-algos-rsa",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "rsa",
+   "title": "A Padlock Anyone Can Close but Only You Can Open",
+   "subtitle": "RSA: public-key encryption and signatures from two secret primes, modular exponentiation and the difficulty of factoring",
+   "track": "fa-crypto",
+   "track_order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-diffie-hellman"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "cryptography",
+    "public-key",
+    "rsa",
+    "modular arithmetic"
+   ],
+   "glossary": [
+    {
+     "term": "Public key",
+     "definition": "The pair (n, e) that anyone may know and use to encrypt messages to you or verify your signatures."
+    },
+    {
+     "term": "Private key",
+     "definition": "The exponent d (with the primes behind it), kept secret and used to decrypt or sign."
+    },
+    {
+     "term": "Modulus",
+     "definition": "The number n = p × q, the product of two large secret primes, which all RSA arithmetic is done modulo."
+    },
+    {
+     "term": "Euler's totient",
+     "definition": "φ(n), the count of numbers from 1 to n coprime to n. For n = p × q with distinct primes it is (p − 1)(q − 1)."
+    },
+    {
+     "term": "Trapdoor function",
+     "definition": "A function that is easy to compute, hard to invert, but easy to invert for someone holding a secret, here the primes p and q."
+    },
+    {
+     "term": "Padding",
+     "definition": "Structured randomness added to a message before RSA is applied, such as OAEP for encryption or PSS for signatures, without which RSA is insecure."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "With p = 11, q = 17 and e = 7, what is the private exponent d?",
+     "options": [
+      "7",
+      "23",
+      "160",
+      "187"
+     ],
+     "answer": 1,
+     "explain": "φ(n) = 10 × 16 = 160. d is the inverse of 7 modulo 160: 7 × 23 = 161 ≡ 1 (mod 160)."
+    },
+    {
+     "q": "Why is it safe to publish n and e?",
+     "options": [
+      "Because they are random",
+      "Computing d needs φ(n), which needs the factors p and q, and factoring a large n is believed infeasible",
+      "Because e is small",
+      "It is not safe"
+     ],
+     "answer": 1,
+     "explain": "Knowing p and q makes φ(n) and hence d easy. Without them, no efficient classical method is known for 2048-bit moduli."
+    },
+    {
+     "q": "Why is 'textbook' RSA, applying m^e mod n directly, insecure?",
+     "options": [
+      "It is too slow",
+      "It is deterministic, so equal messages give equal ciphertexts and guesses can be checked, and it has exploitable algebraic structure",
+      "Keys are too short",
+      "It cannot decrypt"
+     ],
+     "answer": 1,
+     "explain": "Real systems add randomised padding (OAEP, PSS) so the same message encrypts differently each time and the structure cannot be abused."
+    }
+   ],
+   "cover_seed": "rsa",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.9,
+   "path": "famous-algos/rsa.md",
+   "hash": "cdb3d911ede9",
+   "word_count": 1237,
+   "excerpt": "Diffie-Hellman showed in 1976 that two strangers can agree on a secret in public. But it left an obvious question open: could you publish one thing, once, so that anyone in the world could send you a secret message, or check that a message really came from you, without ever talking to you first? A…"
+  },
+  {
+   "id": "famous-algos-digital-signatures",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "digital-signatures",
+   "title": "A Chain of Notaries Behind Every Padlock Icon",
+   "subtitle": "Digital signatures and certificates: sign with a private key, verify with a public one, and chain trust from a few root authorities to every website",
+   "track": "fa-crypto",
+   "track_order": 8,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-rsa"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "cryptography",
+    "digital signatures",
+    "certificates",
+    "pki",
+    "tls"
+   ],
+   "glossary": [
+    {
+     "term": "Digital signature",
+     "definition": "A value computed from a message with a private key, which anyone holding the matching public key can check, proving who signed and that the message is unchanged."
+    },
+    {
+     "term": "Certificate",
+     "definition": "A signed document (usually in X.509 format) binding a public key to a name such as a domain, signed by a certificate authority."
+    },
+    {
+     "term": "Certificate authority (CA)",
+     "definition": "An organisation trusted to check identities and sign certificates."
+    },
+    {
+     "term": "Root certificate",
+     "definition": "A self-signed CA certificate shipped inside operating systems and browsers, the starting point of trust."
+    },
+    {
+     "term": "Chain of trust",
+     "definition": "A sequence of certificates, each signed by the next, ending at a root the verifier already trusts."
+    },
+    {
+     "term": "Non-repudiation",
+     "definition": "The signer cannot plausibly deny having signed, since only their private key could have produced the signature."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Which key does a website use to sign its part of the TLS handshake?",
+     "options": [
+      "The browser's public key",
+      "The website's private key, which the browser checks with the public key in its certificate",
+      "The CA's private key",
+      "A shared password"
+     ],
+     "answer": 1,
+     "explain": "Signing always uses the signer's private key. The certificate tells the browser which public key belongs to the site."
+    },
+    {
+     "q": "Why does a browser trust a certificate signed by an intermediate CA it has never seen?",
+     "options": [
+      "It trusts everything",
+      "The intermediate's own certificate is signed by a root CA in the browser's trust store, so the chain ends at a trusted root",
+      "Intermediates are always secret",
+      "Because of encryption"
+     ],
+     "answer": 1,
+     "explain": "The browser verifies each signature up the chain until it reaches a root certificate it already holds."
+    },
+    {
+     "q": "Does signing a message keep it secret?",
+     "options": [
+      "Yes, signing encrypts it",
+      "No, a signature proves origin and integrity; the message itself stays readable unless it is separately encrypted",
+      "Only with RSA",
+      "Only for short messages"
+     ],
+     "answer": 1,
+     "explain": "Signatures and encryption solve different problems. Anyone can read a signed message; they just cannot forge or alter it undetected."
+    }
+   ],
+   "cover_seed": "digital-signatures",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "famous-algos/digital-signatures.md",
+   "hash": "edc61e884a58",
+   "word_count": 1235,
+   "excerpt": "You type your bank's address and a padlock appears. Your browser has never met this server, and the network in between could be a café's Wi-Fi run by anyone. Yet within a fraction of a second it decided: this really is the bank, not someone pretending. That decision rests on two ideas. A digital…"
+  },
+  {
    "id": "famous-algos-inverted-index",
    "kind": "concept",
    "subject": "famous-algos",
@@ -15535,6 +17203,282 @@
    "hash": "7148c03da126",
    "word_count": 1052,
    "excerpt": "Type three words into a search box and results from billions of pages appear in a fraction of a second. Reading every page for those words would take far longer than that, even for a huge data centre. The search engine is not reading pages when you search. It did the reading long before, and built…"
+  },
+  {
+   "id": "famous-algos-tf-idf-bm25",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "tf-idf-bm25",
+   "title": "A Word That Appears Everywhere Tells You Nothing",
+   "subtitle": "TF-IDF and BM25: score documents by how often they use rare query words, with saturation and length normalisation",
+   "track": "fa-search",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-inverted-index"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "search",
+    "ranking",
+    "information retrieval",
+    "tf-idf",
+    "bm25"
+   ],
+   "glossary": [
+    {
+     "term": "Term frequency (TF)",
+     "definition": "How many times a query term appears in a document."
+    },
+    {
+     "term": "Document frequency (DF)",
+     "definition": "How many documents in the collection contain the term at least once."
+    },
+    {
+     "term": "Inverse document frequency (IDF)",
+     "definition": "A weight that is high for rare terms and low for common ones, typically a logarithm of (total documents / documents containing the term)."
+    },
+    {
+     "term": "Saturation",
+     "definition": "In BM25, the way extra occurrences of a term add less and less to the score, approaching a ceiling."
+    },
+    {
+     "term": "Length normalisation",
+     "definition": "Adjusting scores so long documents do not win just because they contain more words."
+    },
+    {
+     "term": "Relevance score",
+     "definition": "A number estimating how well a document matches a query, used to sort search results."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A term appears in every document in the collection. What is its TF-IDF weight with IDF = log(N / df)?",
+     "options": [
+      "Very high",
+      "Zero, because log(N / N) = log 1 = 0",
+      "Equal to its term frequency",
+      "Negative"
+     ],
+     "answer": 1,
+     "explain": "A term in every document cannot tell documents apart, so plain IDF gives it no weight at all."
+    },
+    {
+     "q": "What does the k1 parameter in BM25 control?",
+     "options": [
+      "The number of documents",
+      "How quickly extra occurrences of a term stop adding to the score",
+      "The length of the query",
+      "The size of the index"
+     ],
+     "answer": 1,
+     "explain": "With k1 = 1.2 the frequency factor is 1.0 for one occurrence, about 1.375 for two and about 1.96 for ten, approaching k1 + 1 = 2.2: diminishing returns."
+    },
+    {
+     "q": "What does b = 0 mean in BM25?",
+     "options": [
+      "Full length normalisation",
+      "No length normalisation: long and short documents are treated alike",
+      "Scores are all zero",
+      "IDF is ignored"
+     ],
+     "answer": 1,
+     "explain": "b scales how much document length matters. b = 1 normalises fully, b = 0 not at all; 0.75 is a common default."
+    }
+   ],
+   "cover_seed": "tf-idf-bm25",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.86,
+   "path": "famous-algos/tf-idf-bm25.md",
+   "hash": "324c414ed4c0",
+   "word_count": 1158,
+   "excerpt": "You search a recipe site for \"tomato pasta\". A lookup in an inverted index, as in The Index at the Back of Every Search Engine, instantly finds every document containing either word: a pasta recipe, a soup page that says \"tomato\" three times, an essay on the history of tomatoes, a quick pasta…"
+  },
+  {
+   "id": "famous-algos-rsync-rolling-checksum",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "rsync-rolling-checksum",
+   "title": "Copying Only the Paragraphs That Changed",
+   "subtitle": "The rsync algorithm: a cheap rolling checksum finds matching blocks at any offset, a strong hash confirms them, and only the differences cross the network",
+   "track": "fa-search",
+   "track_order": 9,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-cryptographic-hashing"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "rsync",
+    "rolling hash",
+    "checksums",
+    "file synchronisation",
+    "delta encoding"
+   ],
+   "glossary": [
+    {
+     "term": "Delta transfer",
+     "definition": "Sending only the differences between an old and a new version of a file, plus instructions to rebuild the new version from the old one."
+    },
+    {
+     "term": "Block",
+     "definition": "A fixed-size piece of the old file, for example a few kilobytes, that the receiver fingerprints."
+    },
+    {
+     "term": "Rolling checksum",
+     "definition": "A weak checksum over a window of bytes that can be updated in constant time when the window slides by one byte."
+    },
+    {
+     "term": "Strong hash",
+     "definition": "A cryptographic-quality hash used to confirm that a block whose weak checksum matched really is identical."
+    },
+    {
+     "term": "False positive",
+     "definition": "A weak checksum match between two blocks that are actually different, which the strong hash catches."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why can't rsync simply compare block 1 of the old file with block 1 of the new file?",
+     "options": [
+      "It would be too slow",
+      "Inserting a single byte near the start shifts every later block, so fixed-offset comparison finds no matches",
+      "Blocks are random",
+      "Files must be the same length"
+     ],
+     "answer": 1,
+     "explain": "Content that did not change has moved by one byte. Checking every byte offset with a rolling checksum finds it again."
+    },
+    {
+     "q": "Why does rsync use two checksums instead of one?",
+     "options": [
+      "For redundancy",
+      "The weak rolling checksum is cheap enough to compute at every offset; the strong hash is expensive but rules out accidental matches",
+      "One is for each machine",
+      "The strong one compresses data"
+     ],
+     "answer": 1,
+     "explain": "Computing a strong hash at every byte would be too slow. The weak checksum filters candidates, the strong hash confirms them."
+    },
+    {
+     "q": "A window [3, 1, 4, 1] has a = 9 and b = 24. The window slides to [1, 4, 1, 5]. What is the new a?",
+     "options": [
+      "9",
+      "11",
+      "14",
+      "23"
+     ],
+     "answer": 1,
+     "explain": "a' = a − outgoing + incoming = 9 − 3 + 5 = 11. Then b' = b − 4 × 3 + a' = 24 − 12 + 11 = 23."
+    }
+   ],
+   "cover_seed": "rsync-rolling-checksum",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.82,
+   "path": "famous-algos/rsync-rolling-checksum.md",
+   "hash": "f08af8f05720",
+   "word_count": 1210,
+   "excerpt": "You have a 2 GB database backup on a remote server, and today's version on your laptop differs from yesterday's in a few scattered places. Uploading 2 GB again over a slow link takes an hour. If both machines could somehow agree on which parts are the same, you would send a few megabytes instead.…"
+  },
+  {
+   "id": "famous-algos-kalman-filter",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "kalman-filter",
+   "title": "Dead Reckoning Meets a Foggy Lighthouse",
+   "subtitle": "The Kalman filter: predict where you are, measure noisily, and blend the two in proportion to how much you trust each",
+   "track": "fa-signals",
+   "track_order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "kalman filter",
+    "estimation",
+    "sensor fusion",
+    "robotics",
+    "gps"
+   ],
+   "glossary": [
+    {
+     "term": "State",
+     "definition": "The quantities being tracked, such as position and velocity."
+    },
+    {
+     "term": "Variance",
+     "definition": "A number measuring uncertainty: the larger the variance, the less sure we are. Its square root is the standard deviation."
+    },
+    {
+     "term": "Prediction step",
+     "definition": "Using a motion model to move the estimate forward in time, which adds uncertainty."
+    },
+    {
+     "term": "Update step",
+     "definition": "Blending the prediction with a new measurement, which reduces uncertainty."
+    },
+    {
+     "term": "Kalman gain",
+     "definition": "The weight, between 0 and 1 in one dimension, that decides how far to move the estimate toward a new measurement."
+    },
+    {
+     "term": "Process noise",
+     "definition": "Uncertainty added by the motion itself, such as currents pushing a ship off course, written Q."
+    },
+    {
+     "term": "Measurement noise",
+     "definition": "Uncertainty in the sensor reading, written R."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In one dimension, predicted variance P = 3 and measurement variance R = 1. What is the Kalman gain?",
+     "options": [
+      "0.25",
+      "0.5",
+      "0.75",
+      "3"
+     ],
+     "answer": 2,
+     "explain": "K = P / (P + R) = 3 / 4 = 0.75. The measurement is more trustworthy than the prediction, so the estimate moves three quarters of the way toward it."
+    },
+    {
+     "q": "What happens to the uncertainty during the prediction step?",
+     "options": [
+      "It shrinks",
+      "It grows, because process noise is added",
+      "It stays the same",
+      "It becomes zero"
+     ],
+     "answer": 1,
+     "explain": "Moving forward in time without looking adds uncertainty: P becomes P + Q."
+    },
+    {
+     "q": "When does the Kalman filter give the best possible estimate?",
+     "options": [
+      "Always",
+      "When the system is linear and the noise is Gaussian, it is optimal; otherwise it is an approximation",
+      "Only for GPS",
+      "Only with one sensor"
+     ],
+     "answer": 1,
+     "explain": "Under linear dynamics and Gaussian noise it is the optimal estimator. For non-linear systems, variants such as the extended Kalman filter approximate it."
+    }
+   ],
+   "cover_seed": "kalman-filter",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.84,
+   "path": "famous-algos/kalman-filter.md",
+   "hash": "26cd78ea2cef",
+   "word_count": 1166,
+   "excerpt": "The blue dot on your phone's map moves smoothly as you walk, even though the GPS reading behind it jumps around by several metres, and even when it drops out under a flyover. Your phone is not trusting any single source. It combines a prediction from the phone's motion sensors with each noisy GPS…"
   },
   {
    "id": "system-design-interview-framework",
@@ -17092,6 +19036,102 @@
    "excerpt": "When you upload a video, the site answers \"Upload complete\" in a second. But converting that video into ten resolutions takes minutes. If the upload request waited for all of it, uploads would time out, and a burst of uploads after a viral moment would crash the converters. Instead, the upload…"
   },
   {
+   "id": "system-design-blob-storage",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "blob-storage",
+   "title": "The Cloakroom That Never Loses a Coat",
+   "subtitle": "Blob storage: how S3-style systems keep billions of files safe with buckets, metadata, replication, erasure coding, pre-signed URLs and multipart uploads",
+   "track": "sd-blocks",
+   "track_order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-sql-vs-nosql"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "system design",
+    "blob storage",
+    "object storage",
+    "s3",
+    "erasure coding"
+   ],
+   "glossary": [
+    {
+     "term": "Blob",
+     "definition": "Binary large object: any file treated as an opaque sequence of bytes, such as an image, a video or a backup."
+    },
+    {
+     "term": "Object storage",
+     "definition": "A storage system that keeps whole objects addressed by a key inside a bucket, instead of files in a folder hierarchy or rows in tables."
+    },
+    {
+     "term": "Bucket",
+     "definition": "A named container for objects, with its own access rules and settings."
+    },
+    {
+     "term": "Erasure coding",
+     "definition": "Splitting data into k pieces and computing m extra parity pieces, so the original can be rebuilt from any k of the k + m pieces."
+    },
+    {
+     "term": "Pre-signed URL",
+     "definition": "A time-limited URL, signed by the server, that lets a client upload or download one specific object directly from storage."
+    },
+    {
+     "term": "Multipart upload",
+     "definition": "Uploading a large object as separate parts that can be sent in parallel and retried individually, then combined into one object."
+    },
+    {
+     "term": "Durability",
+     "definition": "The probability that stored data is not lost over a period of time. Different from availability, which is whether you can reach it right now."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A (6, 3) erasure code stores 6 data pieces and 3 parity pieces. What is its storage overhead, and how many pieces can be lost?",
+     "options": [
+      "3x overhead, 2 losses",
+      "1.5x overhead, any 3 losses",
+      "2x overhead, 1 loss",
+      "1x overhead, no losses"
+     ],
+     "answer": 1,
+     "explain": "9 pieces for 6 pieces of data is 1.5x, and any 6 of the 9 rebuild the object, so any 3 can be lost. Three full replicas cost 3x and survive only 2 losses."
+    },
+    {
+     "q": "Why do apps hand clients pre-signed URLs instead of streaming uploads through their own servers?",
+     "options": [
+      "It is required by HTTP",
+      "The bytes go straight to storage, so app servers are not tied up moving large files, while access stays limited to one object for a short time",
+      "Pre-signed URLs compress files",
+      "It makes files public"
+     ],
+     "answer": 1,
+     "explain": "The app server only signs permission; the heavy transfer goes directly between client and storage."
+    },
+    {
+     "q": "Where should the metadata about a user's uploaded photo (owner, caption, storage key) live?",
+     "options": [
+      "Inside the image bytes",
+      "In the application database, pointing to the object key in blob storage",
+      "In the CDN only",
+      "Nowhere"
+     ],
+     "answer": 1,
+     "explain": "Databases are good at small, queryable records; blob stores are good at large immutable bytes. Each stores what it is good at, linked by the key."
+    }
+   ],
+   "cover_seed": "blob-storage",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "system-design/blob-storage.md",
+   "hash": "243d36bb4fcf",
+   "word_count": 1353,
+   "excerpt": "Every photo you post, every video you upload, every PDF attached to an email, every nightly database backup has to live somewhere. It is not in the database: a 4 GB video in a table row would make every backup, replica and query painfully slow. It sits in a different kind of system, one built for a…"
+  },
+  {
    "id": "system-design-distributed-cache",
    "kind": "deep-dive",
    "subject": "system-design",
@@ -17653,6 +19693,480 @@
    "hash": "57a527c87c59",
    "word_count": 1357,
    "excerpt": "You send \"on my way\" and, a moment later, two grey ticks turn blue. Behind those ticks, your message travelled over a connection your phone kept open, through a server that knew which machine your friend's phone was connected to, into durable storage, onto their screen, and back as a receipt. If…"
+  },
+  {
+   "id": "system-design-notification-system",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "notification-system",
+   "title": "Design a Notification System",
+   "subtitle": "Push, SMS and email at scale: templates, user preferences, per-channel queues, retries, deduplication and rate limits",
+   "track": "sd-cases",
+   "track_order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-message-queues"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "system design",
+    "case study",
+    "notifications",
+    "queues",
+    "push"
+   ],
+   "glossary": [
+    {
+     "term": "Channel",
+     "definition": "A route for reaching a user: mobile push, SMS, email or in-app."
+    },
+    {
+     "term": "Provider",
+     "definition": "The external service that actually delivers on a channel, such as Apple Push Notification service, Firebase Cloud Messaging, an SMS gateway or an email service."
+    },
+    {
+     "term": "Device token",
+     "definition": "An identifier issued by a push provider for one app install on one device, needed to send it a push notification."
+    },
+    {
+     "term": "Template",
+     "definition": "A stored message pattern with placeholders, such as 'Your order {order_id} has shipped', rendered per user and language."
+    },
+    {
+     "term": "Deduplication key",
+     "definition": "An id identifying one logical notification, used to drop repeats caused by retries or duplicate events."
+    },
+    {
+     "term": "Dead-letter queue",
+     "definition": "A queue where messages go after failing too many times, so they can be inspected without blocking the main flow."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does each channel (push, SMS, email) get its own queue and workers?",
+     "options": [
+      "To save memory",
+      "So a slow or failing provider on one channel cannot block delivery on the others, and each can scale and rate-limit separately",
+      "Because providers require it",
+      "To order messages globally"
+     ],
+     "answer": 1,
+     "explain": "If the SMS gateway slows down, push and email keep flowing. Isolation is the main reason."
+    },
+    {
+     "q": "An order service retries a 'shipped' event after a timeout. How do you stop the user getting two pushes?",
+     "options": [
+      "Hope it does not happen",
+      "Attach a deduplication key such as order id plus event type, and skip sends whose key was already processed",
+      "Send only emails",
+      "Delay all notifications by an hour"
+     ],
+     "answer": 1,
+     "explain": "At-least-once delivery means duplicates will happen. A dedup key checked before sending makes the send idempotent."
+    },
+    {
+     "q": "Where should user notification preferences (opted out of marketing SMS, quiet hours) be checked?",
+     "options": [
+      "In the mobile app only",
+      "In the notification service before enqueuing, so every sender obeys them",
+      "In each calling service separately",
+      "Nowhere"
+     ],
+     "answer": 1,
+     "explain": "Centralising the check means no team can accidentally bypass a user's opt-out or quiet hours."
+    }
+   ],
+   "cover_seed": "notification-system",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "system-design/notification-system.md",
+   "hash": "f37f9c221b8d",
+   "word_count": 1307,
+   "excerpt": "Your food is out for delivery. Your bank flags a payment. Your flight gate changed. A friend commented on your photo. Each of these reaches you as a buzz on your phone, an SMS or an email, sent by a system most users never think about until it misfires: the same alert three times, a promotional SMS…"
+  },
+  {
+   "id": "system-design-video-streaming",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "video-streaming",
+   "title": "Design a Video Streaming Platform",
+   "subtitle": "A YouTube-style system: resumable uploads, a parallel transcoding pipeline, adaptive bitrate playback, CDN delivery and view counting",
+   "track": "sd-cases",
+   "track_order": 9,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-cdn",
+    "system-design-blob-storage"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "system design",
+    "case study",
+    "video",
+    "cdn",
+    "transcoding"
+   ],
+   "glossary": [
+    {
+     "term": "Transcoding",
+     "definition": "Converting a video from its uploaded format into other formats, resolutions and bitrates suitable for playback on different devices and networks."
+    },
+    {
+     "term": "Rendition",
+     "definition": "One encoded version of a video at a particular resolution and bitrate, such as 720p at 3 Mbps."
+    },
+    {
+     "term": "Segment",
+     "definition": "A short chunk of a rendition, a few seconds long, stored as its own file so players can download video piece by piece."
+    },
+    {
+     "term": "Manifest",
+     "definition": "A small playlist file listing the available renditions and the URLs of their segments, used by the player to choose what to fetch."
+    },
+    {
+     "term": "Adaptive bitrate streaming (ABR)",
+     "definition": "Playback where the player switches between renditions segment by segment, based on measured bandwidth and buffer level."
+    },
+    {
+     "term": "DAG (directed acyclic graph)",
+     "definition": "A set of tasks with dependencies and no cycles, used to describe which processing steps must finish before others start."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why is each rendition split into short segments?",
+     "options": [
+      "To save storage",
+      "So the player can switch quality between segments, start playing quickly, and let CDNs cache small files",
+      "Because codecs require it",
+      "To hide the video from users"
+     ],
+     "answer": 1,
+     "explain": "Segments are the unit of adaptation and caching: the player picks a rendition per segment, and every segment is an ordinary cacheable file."
+    },
+    {
+     "q": "Average concurrent viewers are 1.7 million at 3 Mbps each. Roughly what egress bandwidth is that, and who should serve it?",
+     "options": [
+      "5 Gbps from app servers",
+      "About 5 Tbps, mostly from CDN edge caches",
+      "50 Mbps from the database",
+      "500 Tbps from blob storage"
+     ],
+     "answer": 1,
+     "explain": "1.7 × 10^6 × 3 × 10^6 bits per second ≈ 5 × 10^12 bits per second. Only a CDN close to viewers can serve that economically."
+    },
+    {
+     "q": "Why is the view count updated asynchronously instead of with one database write per view?",
+     "options": [
+      "Views are not important",
+      "Thousands of views per second on popular videos would create hot rows; aggregating events in a stream and writing periodic totals is far cheaper",
+      "Databases cannot count",
+      "To hide counts"
+     ],
+     "answer": 1,
+     "explain": "Batching counts trades a few seconds of delay for orders of magnitude fewer writes."
+    }
+   ],
+   "cover_seed": "video-streaming",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.9,
+   "path": "system-design/video-streaming.md",
+   "hash": "8a6118ec2cea",
+   "word_count": 1293,
+   "excerpt": "You press play on a video and it starts almost instantly. Halfway through, your train enters a tunnel and the picture turns a little blurry instead of freezing, then sharpens again when the signal returns. Meanwhile, somewhere, a creator just uploaded a 4K video from a phone, and within minutes it…"
+  },
+  {
+   "id": "system-design-ride-sharing",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "ride-sharing",
+   "title": "Design a Ride-Sharing App",
+   "subtitle": "An Uber-style system: streaming driver locations, a geospatial index, matching riders to drivers, a trip state machine and surge pricing",
+   "track": "sd-cases",
+   "track_order": 10,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-geohash",
+    "system-design-realtime-communication"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "system design",
+    "case study",
+    "geospatial",
+    "matching",
+    "location"
+   ],
+   "glossary": [
+    {
+     "term": "Geospatial index",
+     "definition": "A data structure that answers 'which items are near this point?' quickly, such as geohash cells, quadtrees, S2 or H3."
+    },
+    {
+     "term": "Location service",
+     "definition": "The component that ingests frequent driver location updates and keeps the latest position of each driver in memory."
+    },
+    {
+     "term": "Matching",
+     "definition": "Choosing which available driver to offer a ride request to, based on distance, estimated arrival time and other factors."
+    },
+    {
+     "term": "Trip state machine",
+     "definition": "The fixed set of states a trip moves through, such as requested, matched, driver arriving, in progress, completed or cancelled, with allowed transitions between them."
+    },
+    {
+     "term": "ETA",
+     "definition": "Estimated time of arrival, computed from the road network and traffic, not from straight-line distance."
+    },
+    {
+     "term": "Surge pricing",
+     "definition": "Temporarily raising prices in an area where ride requests greatly exceed available drivers."
+    },
+    {
+     "term": "Hot cell",
+     "definition": "A geographic cell with far more drivers or requests than average, such as an airport or stadium, which overloads whoever owns it."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "1 million active drivers each send a location every 4 seconds. How many location writes per second is that?",
+     "options": [
+      "4,000",
+      "25,000",
+      "250,000",
+      "4 million"
+     ],
+     "answer": 2,
+     "explain": "1,000,000 / 4 = 250,000 updates per second, which is why latest locations live in memory rather than in a disk-based database row per update."
+    },
+    {
+     "q": "Why must a driver be 'locked' when a ride is offered to them?",
+     "options": [
+      "To save battery",
+      "So two concurrent ride requests cannot both be assigned the same driver",
+      "Because GPS is slow",
+      "To compute surge"
+     ],
+     "answer": 1,
+     "explain": "Matching runs concurrently. An atomic reservation, with a timeout if the driver does not accept, prevents double booking."
+    },
+    {
+     "q": "Why is straight-line distance a poor way to rank nearby drivers?",
+     "options": [
+      "It is too slow to compute",
+      "Roads, one-way streets, rivers and traffic make a driver 500 m away possibly 10 minutes away",
+      "GPS does not give coordinates",
+      "It is always accurate"
+     ],
+     "answer": 1,
+     "explain": "The geospatial index finds candidates by distance; ranking uses road-network ETA."
+    }
+   ],
+   "cover_seed": "ride-sharing",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.9,
+   "path": "system-design/ride-sharing.md",
+   "hash": "a8e9d623ed74",
+   "word_count": 1325,
+   "excerpt": "You tap \"Request ride\". Within seconds, the app shows a car icon heading toward you, a driver's name, and \"4 min away\". To get there, the system knew where hundreds of thousands of drivers were, to within a few metres, a few seconds ago. It found the handful near you, estimated which could arrive…"
+  },
+  {
+   "id": "system-design-consistency-models",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "consistency-models",
+   "title": "The Promises a Messenger Can Make",
+   "subtitle": "Consistency models from linearizable to eventual: what each one guarantees about reads and writes on replicated data, with timelines",
+   "track": "sd-distributed",
+   "track_order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-cap-pacelc"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "system design",
+    "distributed systems",
+    "consistency",
+    "linearizability",
+    "replication"
+   ],
+   "glossary": [
+    {
+     "term": "Consistency model",
+     "definition": "A contract describing which values a read may return when data is replicated and accessed concurrently."
+    },
+    {
+     "term": "Linearizability",
+     "definition": "Every operation appears to take effect at a single instant between its start and its end, so once a write completes, every later read sees it. Also called strong or atomic consistency."
+    },
+    {
+     "term": "Sequential consistency",
+     "definition": "All clients see operations in one single order that respects each client's own program order, but that order need not match real time."
+    },
+    {
+     "term": "Causal consistency",
+     "definition": "Operations that are causally related, such as a reply and the message it answers, are seen by everyone in cause-before-effect order; unrelated operations may be seen in different orders."
+    },
+    {
+     "term": "Read-your-writes",
+     "definition": "A session guarantee that a client always sees its own earlier writes."
+    },
+    {
+     "term": "Monotonic reads",
+     "definition": "A session guarantee that once a client has seen a value, it never later sees an older one."
+    },
+    {
+     "term": "Eventual consistency",
+     "definition": "If writes stop, all replicas eventually converge to the same value; until then reads may return stale values."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A's write x = 1 finishes at 10:00:02. B starts a read at 10:00:03 and gets x = 0. Which model does this break?",
+     "options": [
+      "Eventual consistency",
+      "Linearizability",
+      "Read-your-writes for B",
+      "None"
+     ],
+     "answer": 1,
+     "explain": "Linearizability requires reads that start after a write completes to see it. A sequentially consistent system may still return 0, because B's read can be ordered before A's write."
+    },
+    {
+     "q": "Carol sees Bob's reply 'Great news!' before Alice's post 'Found my phone' that Bob was replying to. Which model is violated?",
+     "options": [
+      "Causal consistency",
+      "Eventual consistency",
+      "Monotonic writes only",
+      "None"
+     ],
+     "answer": 0,
+     "explain": "The reply depends on the post, so causal consistency requires everyone to see the post first."
+    },
+    {
+     "q": "What is the difference between consistency models and transaction isolation levels?",
+     "options": [
+      "They are the same thing",
+      "Consistency models describe what reads see on replicated data relative to time and other clients; isolation levels describe how concurrent multi-operation transactions interfere",
+      "Isolation is only for NoSQL",
+      "Consistency is only for SQL"
+     ],
+     "answer": 1,
+     "explain": "They answer different questions and are often confused. A system can be serializable but not linearizable, and the other way round."
+    }
+   ],
+   "cover_seed": "consistency-models",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.86,
+   "path": "system-design/consistency-models.md",
+   "hash": "d68201518575",
+   "word_count": 1220,
+   "excerpt": "You change your profile picture, refresh, and the old one is back. A friend replies to your comment, but someone else sees the reply before your comment exists. A bank shows a balance that ignores a transfer you made a second ago. None of these is a crash. Each is the system keeping, or not…"
+  },
+  {
+   "id": "system-design-isolation-levels",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "isolation-levels",
+   "title": "Several Cashiers, One Ledger",
+   "subtitle": "Transaction isolation levels and the anomalies they allow: dirty reads, non-repeatable reads, phantoms, lost updates and write skew",
+   "track": "sd-distributed",
+   "track_order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-consistency-models"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "system design",
+    "databases",
+    "transactions",
+    "isolation",
+    "concurrency"
+   ],
+   "glossary": [
+    {
+     "term": "Transaction",
+     "definition": "A group of reads and writes that the database treats as one unit: all of it commits or none of it does."
+    },
+    {
+     "term": "Isolation level",
+     "definition": "The degree to which concurrent transactions are shielded from each other's intermediate and committed changes."
+    },
+    {
+     "term": "Anomaly",
+     "definition": "A result that could not happen if transactions ran one at a time, caused by their interleaving."
+    },
+    {
+     "term": "Snapshot isolation",
+     "definition": "Each transaction reads from a consistent snapshot of the database taken when it started, and a write conflicts if another transaction committed a change to the same row first."
+    },
+    {
+     "term": "Serializable",
+     "definition": "The strongest standard level: the outcome equals some order of running the transactions one after another."
+    },
+    {
+     "term": "Write skew",
+     "definition": "Two transactions read overlapping data, each makes a decision based on it, and they write different rows, together breaking a rule that each alone respected."
+    },
+    {
+     "term": "Phantom",
+     "definition": "A row that appears in, or disappears from, the result of the same search query when it is repeated inside one transaction, because another transaction inserted or deleted matching rows."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Under read committed, T1 reads a balance of 100, T2 commits a change to 80, and T1 reads again. What does T1 see?",
+     "options": [
+      "100",
+      "80",
+      "An error",
+      "0"
+     ],
+     "answer": 1,
+     "explain": "Read committed only forbids seeing uncommitted data. Each statement sees the latest committed value, so the second read returns 80: a non-repeatable read."
+    },
+    {
+     "q": "Two on-call doctors each check 'at least one other doctor is on call', then each takes themselves off call, in concurrent transactions. Which level prevents both from succeeding?",
+     "options": [
+      "Read committed",
+      "Snapshot isolation",
+      "Serializable",
+      "Read uncommitted"
+     ],
+     "answer": 2,
+     "explain": "This is write skew: they update different rows, so snapshot isolation sees no write conflict. Only serializable detects that the combined outcome matches no serial order."
+    },
+    {
+     "q": "What is the default isolation level in PostgreSQL?",
+     "options": [
+      "Serializable",
+      "Repeatable read",
+      "Read committed",
+      "Read uncommitted"
+     ],
+     "answer": 2,
+     "explain": "PostgreSQL defaults to read committed. Assuming serializable by default is a common and costly mistake."
+    }
+   ],
+   "cover_seed": "isolation-levels",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "system-design/isolation-levels.md",
+   "hash": "362beae075a1",
+   "word_count": 1225,
+   "excerpt": "Two support agents refund the same order at the same moment, and the customer gets paid twice. A hospital rota allows every doctor to go off call because each one checked that \"someone else is still on\". A report adds up account balances while transfers run and shows money that never existed. Every…"
   }
  ]
 }

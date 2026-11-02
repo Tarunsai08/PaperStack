@@ -9,15 +9,15 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 25 | 0 | 127 | 152 | 24/72 |
-| cp | 22 | 0 | 93 | 115 | 15/29 |
-| famous-algos | 23 | 0 | 68 | 91 | 21/32 |
-| system-design | 23 | 0 | 96 | 119 | 23/60 |
+| dsa | 31 | 0 | 121 | 152 | 30/72 |
+| cp | 28 | 0 | 87 | 115 | 15/29 |
+| famous-algos | 29 | 0 | 62 | 91 | 27/32 |
+| system-design | 29 | 0 | 90 | 119 | 29/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **176** | **0** | **497** | **673** | |
+| **All** | **200** | **0** | **473** | **673** | |
 
-Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **23**
+Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **18**
 
 ## Next to write
 
@@ -25,7 +25,6 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### dsa
 
-- [ ] `dsa-trapping-rain-water` (P0, problem-walkthrough, dsa-arrays): Trapping Rain Water Three Ways
 - [ ] `dsa-gcd-primes` (P0, pattern, dsa-math): GCD, Primes and Divisors for Interviews
 - [ ] `dsa-queue-deque` (P0, pattern, dsa-linear): Queues and Deques: Sliding Window Maximum
 - [ ] `dsa-largest-rectangle` (P0, problem-walkthrough, dsa-linear): Largest Rectangle in a Histogram
@@ -35,45 +34,46 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-heap-basics` (P0, pattern, dsa-heaps-greedy): Heaps: Always Know the Smallest
 - [ ] `dsa-greedy-exchange` (P0, pattern, dsa-heaps-greedy): Greedy Algorithms and the Exchange Argument
 - [ ] `dsa-graph-representation` (P0, primer, dsa-graphs): Graphs: Modelling Problems as Nodes and Edges
+- [ ] `dsa-unbounded-knapsack` (P0, pattern, dsa-dp): Unbounded Knapsack and Coin Change
 
 ### cp
 
+- [ ] `cp-digit-dp` (P0, pattern, cp-dp): Digit DP: Counting Numbers With Properties
+- [ ] `cp-game-theory` (P0, pattern, cp-misc): Game Theory: Winning and Losing Positions
 - [ ] `cp-weird-algorithm` (P1, problem-walkthrough, cp-start): Your First CSES Problems: Weird Algorithm to Increasing Array
 - [ ] `cp-implementation-skills` (P1, primer, cp-start): Implementation Problems: Getting the Details Right
-- [ ] `cp-counting-techniques` (P1, pattern, cp-math): Counting Without Listing: Combinatorics Toolkit
-- [ ] `cp-counting-divisors` (P1, problem-walkthrough, cp-math): Counting Divisors for a Million Numbers
-- [ ] `cp-creating-strings-ii` (P1, problem-walkthrough, cp-math): Counting Arrangements of a Word
-- [ ] `cp-exponentiation-ii` (P1, problem-walkthrough, cp-math): a^(b^c) mod p: Fermat to the Rescue
 - [ ] `cp-sqrt-decomposition` (P1, pattern, cp-ranges): Square Root Decomposition
 - [ ] `cp-pbds-ordered-set` (P1, pattern, cp-ranges): Ordered Sets With Rank: Policy-Based Data Structures
-- [ ] `cp-geometry-basics` (P1, pattern, cp-misc): Geometry Basics: Cross Products Solve Everything
-- [ ] `cp-interactive-problems` (P1, primer, cp-misc): Interactive Problems: Talking to the Judge
+- [ ] `cp-dp-probability` (P1, pattern, cp-dp): DP With Probabilities and Expected Values
+- [ ] `cp-knapsack-variants` (P1, pattern, cp-dp): Knapsack Variants in Contests
+- [ ] `cp-convex-hull-trick` (P1, pattern, cp-dp): The Convex Hull Trick
+- [ ] `cp-projects-dp` (P1, problem-walkthrough, cp-dp): Projects: Weighted Interval Scheduling
 
 ### famous-algos
 
-- [ ] `famous-algos-lz77` (P0, concept, fa-coding): Lempel-Ziv: How ZIP Files Shrink Your Data
-- [ ] `famous-algos-rsa` (P0, concept, fa-crypto): RSA: Locks Anyone Can Close but Only You Can Open
-- [ ] `famous-algos-tf-idf-bm25` (P0, concept, fa-search): TF-IDF and BM25: Ranking by Relevance
-- [ ] `famous-algos-rsync-rolling-checksum` (P0, concept, fa-search): rsync: Copying Only What Changed
-- [ ] `famous-algos-kalman-filter` (P0, concept, fa-signals): The Kalman Filter: Blending Guesses With Noisy Measurements
 - [ ] `famous-algos-counting-bloom-cuckoo` (P1, concept, fa-sketches): Deletable Filters: Counting Bloom and Cuckoo Filters
 - [ ] `famous-algos-heavy-hitters` (P1, concept, fa-sketches): Finding Heavy Hitters in a Stream: Misra-Gries and Space-Saving
 - [ ] `famous-algos-lsh` (P1, concept, fa-sketches): Locality-Sensitive Hashing: Finding Near Neighbours Fast
 - [ ] `famous-algos-paxos` (P1, concept, fa-distributed): Paxos: The Original Consensus Algorithm
 - [ ] `famous-algos-crdts` (P1, concept, fa-distributed): CRDTs: Data Types That Merge Themselves
+- [ ] `famous-algos-leader-election-leases` (P1, concept, fa-distributed): Leases and Fencing Tokens: Safe Leadership
+- [ ] `famous-algos-sliding-window-limits` (P1, concept, fa-networking): Sliding Window Rate Limiting: Logs and Counters
+- [ ] `famous-algos-skip-lists-practice` (P1, concept, fa-storage): Skip Lists in Practice: Redis Sorted Sets
+- [ ] `famous-algos-swiss-tables` (P1, concept, fa-storage): The Hash Table You Use Every Day: Open Addressing and Swiss Tables
+- [ ] `famous-algos-quadtrees-rtrees` (P1, concept, fa-storage): Quadtrees and R-Trees: Spatial Indexes
 
 ### system-design
 
 - [ ] `system-design-auth-basics` (P0, deep-dive, sd-fundamentals): Authentication and Authorisation: Sessions, JWT and OAuth
-- [ ] `system-design-blob-storage` (P0, deep-dive, sd-blocks): Blob Storage: How S3-Style Systems Store Files
 - [ ] `system-design-scaling-journey` (P0, deep-dive, sd-scaling): From One Server to a Million Users
 - [ ] `system-design-async-processing` (P0, deep-dive, sd-scaling): Doing Work Later: Queues, Workers and Background Jobs
-- [ ] `system-design-notification-system` (P0, case-study, sd-cases): Design a Notification System
-- [ ] `system-design-ride-sharing` (P0, case-study, sd-cases): Design a Ride-Sharing App Like Uber
+- [ ] `system-design-typeahead` (P0, case-study, sd-cases): Design Search Autocomplete
 - [ ] `system-design-oop-solid` (P0, lld, sd-lld): Object-Oriented Design and SOLID Principles
-- [ ] `system-design-consistency-models` (P0, deep-dive, sd-distributed): Consistency Models: Linearizable to Eventual
+- [ ] `system-design-two-phase-commit` (P0, deep-dive, sd-distributed): Two-Phase Commit and Its Weak Spot
 - [ ] `system-design-networking-essentials` (P1, deep-dive, sd-fundamentals): TCP, UDP and QUIC for System Designers
 - [ ] `system-design-proxies` (P1, deep-dive, sd-fundamentals): Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere
+- [ ] `system-design-search-systems` (P1, deep-dive, sd-blocks): Search Systems: Elasticsearch and Inverted Indexes
+- [ ] `system-design-api-gateway` (P1, deep-dive, sd-blocks): API Gateways and Service Discovery
 
 ### ml
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 25 written</summary>
+<details><summary>dsa: 31 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -113,14 +113,20 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-monotonic-stack` Monotonic Stacks: Next Greater Element and Friends
 - [x] `dsa-lru-cache` Designing an LRU Cache
 - [x] `dsa-tree-traversals` Tree Traversals: Pre, In, Post and Level Order
+- [x] `dsa-dp-intro` Dynamic Programming Is Just Careful Recursion
+- [x] `dsa-dp-1d` 1D DP: Stairs, Robbers and Decoding
+- [x] `dsa-knapsack-01` 0/1 Knapsack: Take It or Leave It
+- [x] `dsa-tries` Tries: Autocomplete in Your Pocket
 - [x] `dsa-product-except-self` Product of Array Except Self Without Division
+- [x] `dsa-trapping-rain-water` Trapping Rain Water Three Ways
 - [x] `dsa-subarray-sum-k` Counting Subarrays With Sum K
 - [x] `dsa-rotated-array-search` Searching a Rotated Sorted Array
 - [x] `dsa-dutch-national-flag` Sort Colors: The Dutch National Flag in One Pass
+- [x] `dsa-interview-dsa-revision` The Night-Before Revision Sheet
 
 </details>
 
-<details><summary>cp: 22 written</summary>
+<details><summary>cp: 28 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -139,15 +145,21 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `cp-inclusion-exclusion` Inclusion-Exclusion: Counting by Correcting Overcounts
 - [x] `cp-euler-totient` Euler's Totient Function
 - [x] `cp-chinese-remainder` The Chinese Remainder Theorem
+- [x] `cp-counting-techniques` Counting Without Listing: Combinatorics Toolkit
+- [x] `cp-probability-expectation` Expected Value and Linearity of Expectation
 - [x] `cp-matrix-exponentiation` Matrix Exponentiation for Linear Recurrences
 - [x] `cp-coordinate-compression` Coordinate Compression
+- [x] `cp-geometry-basics` Geometry Basics: Cross Products Solve Everything
 - [x] `cp-contest-strategy` Contest Strategy: Order, Time and Nerves
+- [x] `cp-counting-divisors` Counting Divisors for a Million Numbers
+- [x] `cp-creating-strings-ii` Counting Arrangements of a Word
+- [x] `cp-exponentiation-ii` a^(b^c) mod p: Fermat to the Rescue
 - [x] `cp-invariants-observations` Invariants and Observations: The Heart of Div 2
 - [x] `cp-practice-plan` A 12-Week Contest Practice Plan
 
 </details>
 
-<details><summary>famous-algos: 23 written</summary>
+<details><summary>famous-algos: 29 written</summary>
 
 - [x] `famous-algos-bloom-filter` Bloom Filters: Saying No Without Looking
 - [x] `famous-algos-count-min-sketch` Count-Min Sketch: Counting Billions of Things in Kilobytes
@@ -168,14 +180,20 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `famous-algos-write-ahead-log` Write-Ahead Logging: Never Lose a Committed Write
 - [x] `famous-algos-mvcc` MVCC: Readers Never Block Writers
 - [x] `famous-algos-geohash` Geohash: Turning a Map Into a String
+- [x] `famous-algos-lz77` Lempel-Ziv: How ZIP Files Shrink Your Data
 - [x] `famous-algos-cryptographic-hashing` Cryptographic Hashes: Fingerprints You Cannot Fake
 - [x] `famous-algos-password-hashing` Storing Passwords Safely: Salts, bcrypt and Argon2
 - [x] `famous-algos-diffie-hellman` Diffie-Hellman: Agreeing on a Secret in Public
+- [x] `famous-algos-rsa` RSA: Locks Anyone Can Close but Only You Can Open
+- [x] `famous-algos-digital-signatures` Digital Signatures and Certificates: Trust on the Internet
 - [x] `famous-algos-inverted-index` Inverted Indexes: How Search Finds Pages in Milliseconds
+- [x] `famous-algos-tf-idf-bm25` TF-IDF and BM25: Ranking by Relevance
+- [x] `famous-algos-rsync-rolling-checksum` rsync: Copying Only What Changed
+- [x] `famous-algos-kalman-filter` The Kalman Filter: Blending Guesses With Noisy Measurements
 
 </details>
 
-<details><summary>system-design: 23 written</summary>
+<details><summary>system-design: 29 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -194,12 +212,18 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `system-design-sql-vs-nosql` SQL vs NoSQL: Choosing a Database Honestly
 - [x] `system-design-database-indexing` Database Indexes: Why Some Queries Are Instant
 - [x] `system-design-message-queues` Message Queues and Pub-Sub: Decoupling With Kafka and Friends
+- [x] `system-design-blob-storage` Blob Storage: How S3-Style Systems Store Files
 - [x] `system-design-distributed-cache` Redis and Distributed Caches
 - [x] `system-design-cache-problems` When Caches Hurt: Stampedes, Hot Keys and Invalidation
 - [x] `system-design-url-shortener` Design a URL Shortener
 - [x] `system-design-rate-limiter` Design a Rate Limiter
 - [x] `system-design-unique-id-generator` Design a Unique ID Generator
 - [x] `system-design-chat-system` Design a Chat System Like WhatsApp
+- [x] `system-design-notification-system` Design a Notification System
+- [x] `system-design-video-streaming` Design a Video Streaming Platform Like YouTube
+- [x] `system-design-ride-sharing` Design a Ride-Sharing App Like Uber
+- [x] `system-design-consistency-models` Consistency Models: Linearizable to Eventual
+- [x] `system-design-isolation-levels` Transaction Isolation Levels and Anomalies
 
 </details>
 
