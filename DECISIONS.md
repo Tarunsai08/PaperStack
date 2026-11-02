@@ -84,3 +84,4 @@ Choices made while building, so nobody has to guess later.
 - **Subject prompts are templates** (`pipeline/prompts/<subject>.md`) that pull in the shared writing guide, format spec and one exemplar article at run time, so the guide lives in one place. Each template's `exemplar:` line should point at the best article of that subject once it exists.
 - **Gemini gets at most 2 retries** on transient errors (429/503) via a per-provider `max_retries`, then the run falls through to Groq.
 - **The workflow has `timeout-minutes: 30`** and commits articles, curriculum status, drafts and `PROGRESS.md` together with a `[content]` message.
+- **Length limits for code-bearing kinds** (`pattern`, `problem-walkthrough`, `concept`, `lld`) start at 900 words, because code fences are excluded from the count and these articles carry substantial pseudocode, C++ and trace tables on top of the prose.

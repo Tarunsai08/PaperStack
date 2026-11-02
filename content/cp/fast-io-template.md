@@ -145,7 +145,7 @@ Most input is whitespace-separated numbers, which `cin >>` handles. Two cases ne
 - **Whole lines with spaces:** use `getline(cin, s)`. If you read a number with `cin >>` just before, the newline after it is still waiting, so call `cin.ignore()` first or `getline` will return an empty line.
 - **Grids of characters:** read each row as a `string`, so `grid[i][j]` gives the cell directly.
 
-Compile with warnings on, such as `g++ -std=c++17 -O2 -Wall`. The compiler flags many bugs, like an `int` compared with `size()` or a variable used before it is set, before the judge ever sees them.
+Compile with warnings on, such as `g++ -std=c++17 -O2 -Wall`. The compiler flags many bugs, like an `int` compared with `size()` or a variable used before it is set, before the judge ever sees them. Adding `-fsanitize=address,undefined` to your local build goes further: it stops the program at the exact line that reads outside an array or overflows a signed integer, instead of letting it limp on and print a wrong answer.
 
 ## A tiny example
 
