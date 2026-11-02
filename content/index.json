@@ -1,7 +1,7 @@
 {
- "content_version": "957a5ac1e544df13",
+ "content_version": "419ddfba27cf5d1e",
  "generated_at": "2026-11-02",
- "count": 283,
+ "count": 285,
  "subjects": [
   {
    "id": "ml",
@@ -15720,6 +15720,240 @@
    "hash": "dc1cc1b5b6f4",
    "word_count": 1214,
    "excerpt": "List every valid way to arrange three pairs of brackets: ((())), (()()), and so on. One way is to write all 64 strings of six brackets and throw away the ones that do not balance. Five survive. The other way never writes an invalid string at all, and it makes 22 recursive calls in total. Generate…"
+  },
+  {
+   "id": "dsa-combination-sum",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "combination-sum",
+   "title": "Laying Coins Down Smallest First",
+   "subtitle": "Combination Sum I, II and III with one backtracking loop: the start index stops reorderings, i versus i + 1 controls reuse, and sorting handles duplicates and pruning; plus why IV is a DP",
+   "track": "dsa-recursion",
+   "track_order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-subsets-permutations"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "backtracking",
+    "combinations",
+    "pruning",
+    "dynamic programming"
+   ],
+   "complexity": {
+    "time": "Exponential in the target and candidate count, cut heavily by pruning",
+    "space": "O(target / smallest candidate) recursion depth"
+   },
+   "practice_problems": [
+    {
+     "name": "Combination Sum",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/combination-sum/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Combination Sum II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/combination-sum-ii/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Combination Sum III",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/combination-sum-iii/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Combination Sum IV",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/combination-sum-iv/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Combination",
+     "definition": "A selection where order does not matter, so 1 + 2 and 2 + 1 are the same combination."
+    },
+    {
+     "term": "Start index",
+     "definition": "The position from which the loop may choose the next candidate. Never choosing an earlier index means each combination is built in one order only."
+    },
+    {
+     "term": "Reuse",
+     "definition": "Whether a candidate may be chosen more than once. Recursing with i allows it; recursing with i + 1 forbids it."
+    },
+    {
+     "term": "Sibling skip",
+     "definition": "After sorting, skipping a candidate equal to the previous one at the same level of the loop, so equal values do not create duplicate combinations."
+    },
+    {
+     "term": "Ordered count",
+     "definition": "Counting sequences where order matters, as Combination Sum IV does; it is solved with dynamic programming instead of listing."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In Combination Sum, why does the recursion start the next loop at i instead of 0?",
+     "options": [
+      "To allow reuse and avoid listing the same combination in different orders",
+      "To skip duplicates",
+      "Because the array is sorted",
+      "To make it O(n)"
+     ],
+     "answer": 0,
+     "explain": "Starting at i lets the same candidate be used again, and never going back to an earlier index means every combination is built in non-decreasing index order only once."
+    },
+    {
+     "q": "Combination Sum II has candidates [1, 1, 1, 3, 3, 5] and each element may be used once. Why skip i > start with c[i] == c[i − 1]?",
+     "options": [
+      "To use each element once",
+      "Two equal values at the same position in the combination lead to identical subtrees, so trying the second one only repeats answers",
+      "To prune large values",
+      "It is not needed"
+     ],
+     "answer": 1,
+     "explain": "Using the second 1 as the first pick produces exactly the combinations the first 1 already produced. Deeper levels may still use it, because i > start restricts only the same level."
+    },
+    {
+     "q": "Why is Combination Sum IV solved by DP rather than backtracking?",
+     "options": [
+      "It forbids reuse",
+      "It counts ordered sequences, whose number can be huge, and the count for each target reuses counts for smaller targets",
+      "It needs sorted output",
+      "Backtracking cannot handle sums"
+     ],
+     "answer": 1,
+     "explain": "The number of ordered ways to reach t is the sum, over candidates x, of the ways to reach t − x. Listing them would be exponential; counting is O(target × candidates)."
+    }
+   ],
+   "cover_seed": "combination-sum",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.75,
+   "path": "dsa/combination-sum.md",
+   "hash": "8a3979efacdd",
+   "word_count": 1429,
+   "excerpt": "A shopkeeper needs to make 8 rupees from coins of 2, 3 and 5 and wants every different way to do it. If she is not careful, she lists 2 + 3 + 3, then 3 + 2 + 3, then 3 + 3 + 2, three times the same handful of coins. The trick that stops this is the same trick behind four interview problems with…"
+  },
+  {
+   "id": "dsa-rat-in-maze",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "rat-in-maze",
+   "title": "A Mouse Exploring a Maze With Breadcrumbs",
+   "subtitle": "Enumerating paths in a grid with backtracking: four directions, visited marks that are picked up again, lexicographic move order, and paths that must cover every cell",
+   "track": "dsa-recursion",
+   "track_order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-backtracking-template"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "backtracking",
+    "grid",
+    "path enumeration",
+    "pruning"
+   ],
+   "complexity": {
+    "time": "Exponential in the number of open cells in the worst case",
+    "space": "O(rows × cols) for marks and recursion"
+   },
+   "practice_problems": [
+    {
+     "name": "Word Search",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/word-search/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Path with Maximum Gold",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/path-with-maximum-gold/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Unique Paths III",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/unique-paths-iii/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Grid Paths",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1625",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Path enumeration",
+     "definition": "Listing or counting every route from a start to a goal, as opposed to finding just one shortest route."
+    },
+    {
+     "term": "Breadcrumb",
+     "definition": "A mark left on a cell while it is on the current path and removed when the path backs off it."
+    },
+    {
+     "term": "Move order",
+     "definition": "The fixed order in which the four directions are tried. Trying D, L, R, U produces paths in alphabetical order of their move strings."
+    },
+    {
+     "term": "Hamiltonian path",
+     "definition": "A path that visits every allowed cell exactly once."
+    },
+    {
+     "term": "Dead-end pruning",
+     "definition": "Abandoning a partial path as soon as it can no longer reach the goal or satisfy the rules, such as when the remaining cells are cut off."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does a path-listing search pick up its breadcrumb when it backs off a cell?",
+     "options": [
+      "To save memory",
+      "Other paths may pass through that cell; it is only blocked for the path currently being built",
+      "Because the maze changes",
+      "It should not pick it up"
+     ],
+     "answer": 1,
+     "explain": "Different routes to the goal can share cells. Leaving the mark would wrongly hide every later path through that cell."
+    },
+    {
+     "q": "With moves tried in the order D, L, R, U, in what order are paths found?",
+     "options": [
+      "Shortest first",
+      "Alphabetical order of their move strings",
+      "Random",
+      "Longest first"
+     ],
+     "answer": 1,
+     "explain": "Depth-first search with a fixed alphabetical move order explores, and so records, paths in lexicographic order of their move sequences."
+    },
+    {
+     "q": "Why is breadth-first search the wrong tool for listing every path?",
+     "options": [
+      "It is slower for shortest paths",
+      "BFS visits each cell once, so it finds one shortest route per cell but cannot list all the different routes through the same cells",
+      "BFS cannot use grids",
+      "It uses recursion"
+     ],
+     "answer": 1,
+     "explain": "BFS marks a cell visited for good the first time it is reached. Listing every route needs a mark that is undone when a path backs off, which is backtracking."
+    }
+   ],
+   "cover_seed": "rat-in-maze",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.68,
+   "path": "dsa/rat-in-maze.md",
+   "hash": "78ce4cee6b64",
+   "word_count": 1343,
+   "excerpt": "A mouse in a maze wants every possible route from the entrance to the cheese, not just one. As it walks, it drops breadcrumbs so it never runs in a circle. When it hits a dead end, it walks back, eating the breadcrumbs it passes, so the next route it tries can use those squares again. Rat in a…"
   },
   {
    "id": "dsa-tree-traversals",

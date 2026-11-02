@@ -2936,8 +2936,8 @@
    "prerequisites": [
     "dsa-subsets-permutations"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Start index prevents reorderings",
@@ -3988,8 +3988,8 @@
    "prerequisites": [
     "dsa-backtracking-template"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Four directions",
