@@ -1,7 +1,7 @@
 {
- "content_version": "a4bd3ec7a4365d5d",
+ "content_version": "945ba9bc9877e2e1",
  "generated_at": "2026-11-02",
- "count": 276,
+ "count": 277,
  "subjects": [
   {
    "id": "ml",
@@ -14762,6 +14762,123 @@
    "hash": "1d949cf372d5",
    "word_count": 1339,
    "excerpt": "A canteen has a stack of clean trays. New trays go on top, and people take trays from the top: last in, first out. The manager wants the opposite, so the oldest trays get used first and none sit at the bottom for weeks. She has room for exactly two stacks. Can she serve the oldest tray first using…"
+  },
+  {
+   "id": "dsa-stack-simulations",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "stack-simulations",
+   "title": "Cars Merging Onto a Single-Lane Road",
+   "subtitle": "Stack simulations: asteroid collisions, stock spans with merged counts, and greedy digit and letter removal with a monotonic stack",
+   "track": "dsa-linear",
+   "track_order": 15,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-monotonic-stack"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "stack",
+    "monotonic stack",
+    "simulation",
+    "greedy"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Asteroid Collision",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/asteroid-collision/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Online Stock Span",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/online-stock-span/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Remove K Digits",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/remove-k-digits/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Remove Duplicate Letters",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/remove-duplicate-letters/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Simulation stack",
+     "definition": "A stack holding the survivors so far, where each new element may destroy some of the top elements before it is pushed or destroyed itself."
+    },
+    {
+     "term": "Span",
+     "definition": "For today's price, the number of consecutive days up to and including today whose price was at most today's."
+    },
+    {
+     "term": "Greedy removal",
+     "definition": "Deleting an earlier element whenever a smaller one arrives after it and a deletion is still allowed, which makes the remaining sequence as small as possible."
+    },
+    {
+     "term": "Lexicographically smallest",
+     "definition": "Smallest in dictionary order: compared position by position, the first difference decides."
+    },
+    {
+     "term": "Last occurrence",
+     "definition": "The final index at which a character appears in the string, used to know whether a character can safely be dropped now and picked up later."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In Asteroid Collision, when can the new asteroid collide with the stack's top?",
+     "options": [
+      "Always",
+      "Only when the top moves right (positive) and the new one moves left (negative)",
+      "Only when both move left",
+      "When they have equal size"
+     ],
+     "answer": 1,
+     "explain": "A collision needs them to move towards each other. A left-moving top and a right-moving newcomer move apart, so they never meet."
+    },
+    {
+     "q": "Remove K Digits on 30200 with k = 1 gives what?",
+     "options": [
+      "0200",
+      "200",
+      "3020",
+      "3200"
+     ],
+     "answer": 1,
+     "explain": "Removing the 3 makes the number smallest, leaving 0200. Leading zeros must be stripped, so the answer is 200."
+    },
+    {
+     "q": "In Remove Duplicate Letters, why may a larger letter on the stack be popped only if it appears again later?",
+     "options": [
+      "To keep the stack sorted",
+      "Each letter must appear exactly once in the answer, so a letter can only be dropped now if a later copy can take its place",
+      "Because the stack is small",
+      "It may always be popped"
+     ],
+     "answer": 1,
+     "explain": "Popping a letter that never appears again would remove it from the answer entirely. The last-occurrence index tells you whether a later copy exists."
+    }
+   ],
+   "cover_seed": "stack-simulations",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "dsa/stack-simulations.md",
+   "hash": "be124830c0c8",
+   "word_count": 1383,
+   "excerpt": "Cars from a slip road merge one at a time into a single lane. Each new car can only interact with the car directly in front of it, the last one that merged. Sometimes it pushes that car out of the lane, then the one in front of that, until something stops it. The lane only ever changes at its back…"
   },
   {
    "id": "dsa-subsets-permutations",

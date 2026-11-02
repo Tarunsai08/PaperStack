@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 74 | 0 | 78 | 152 | 52/72 |
+| dsa | 75 | 0 | 77 | 152 | 52/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **276** | **0** | **397** | **673** | |
+| **All** | **277** | **0** | **396** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -34,7 +34,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-dijkstra` (P0, pattern, dsa-graphs): Dijkstra: Shortest Paths With Weights
 - [ ] `dsa-word-ladder` (P0, problem-walkthrough, dsa-graphs): Word Ladder: BFS on Implicit Graphs
 - [ ] `dsa-islands-variants` (P0, problem-walkthrough, dsa-graphs): Number of Islands and Its Many Variants
-- [ ] `dsa-stack-simulations` (P1, problem-walkthrough, dsa-linear): Stack Simulations: Asteroids, Stock Span and Removing Digits
+- [ ] `dsa-divide-and-conquer` (P1, pattern, dsa-recursion): Divide and Conquer: Split, Solve, Combine
 
 ### cp
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 74 written</summary>
+<details><summary>dsa: 75 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -164,6 +164,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-sort-linked-list` Sorting a Linked List With Merge Sort
 - [x] `dsa-flatten-lists` Flattening Multilevel and Nested Lists
 - [x] `dsa-queue-via-stacks` Building Queues From Stacks and Stacks From Queues
+- [x] `dsa-stack-simulations` Stack Simulations: Asteroids, Stock Span and Removing Digits
 - [x] `dsa-subset-sum-count` Counting Subsets: Target Sum and Partitions
 - [x] `dsa-interview-dsa-revision` The Night-Before Revision Sheet
 
