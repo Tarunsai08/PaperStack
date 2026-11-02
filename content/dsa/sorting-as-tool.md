@@ -19,6 +19,7 @@ practice_problems:
   - { name: "Car Fleet", platform: "LeetCode", url: "https://leetcode.com/problems/car-fleet/", difficulty: "Medium" }
   - { name: "Distinct Numbers", platform: "CSES", url: "https://cses.fi/problemset/task/1621", difficulty: "Easy" }
   - { name: "Minimum Absolute Difference", platform: "LeetCode", url: "https://leetcode.com/problems/minimum-absolute-difference/", difficulty: "Easy" }
+  - { name: "Boats to Save People", platform: "LeetCode", url: "https://leetcode.com/problems/boats-to-save-people/", difficulty: "Medium" }
 glossary:
   - term: "Comparator"
     definition: "A function that decides whether one element should come before another during sorting."
@@ -67,9 +68,9 @@ Sorting costs O(n log n) once. In exchange, it creates structure: neighbours are
 
 The pattern has three steps:
 
-1. **Choose the [[sort key]]**: what order makes the problem simple? Value, end time, length, ratio?
-2. **Sort**, with a [[comparator]] if the key is not the natural order.
-3. **Scan** the sorted data once, often with a running variable, two pointers or a greedy choice.
+- **Choose the [[sort key]]:**: what order makes the problem simple? Value, end time, length, ratio?
+- **Sort**, with a [[comparator]] if the key is not the natural order.
+- **Scan** the sorted data once, often with a running variable, two pointers or a greedy choice.
 
 ```mermaid
 flowchart TD
@@ -144,24 +145,81 @@ string largestNumber(const vector<int>& nums) {
     return r[0] == '0' ? "0" : r;
 }
 
+vector<int> frequencySort(vector<int> a) {                   // rarest first, ties: larger value first
+    unordered_map<int, int> cnt;
+    for (int x : a) cnt[x]++;
+    sort(a.begin(), a.end(), [&](int x, int y) {
+        return make_pair(cnt[x], -x) < make_pair(cnt[y], -y);
+    });
+    return a;
+}
+
+int carFleet(int target, const vector<int>& pos, const vector<int>& speed) {
+    vector<pair<int, int>> cars;
+    for (size_t i = 0; i < pos.size(); i++) cars.push_back({pos[i], speed[i]});
+    sort(cars.rbegin(), cars.rend());                         // closest to the target first
+    int fleets = 0;
+    double slowest = 0;                                       // arrival time of the fleet ahead
+    for (auto [p, v] : cars) {
+        double t = double(target - p) / v;
+        if (t > slowest) fleets++, slowest = t;               // cannot catch up: a new fleet
+    }
+    return fleets;
+}
+
+int numBoats(vector<int> w, int limit) {
+    sort(w.begin(), w.end());
+    int boats = 0;
+    for (int l = 0, r = (int)w.size() - 1; l <= r; r--, boats++)
+        if (w[l] + w[r] <= limit) l++;                        // the lightest rides with the heaviest
+    return boats;
+}
+
 int main() {
-    cout << largestNumber({3, 30, 34, 5, 9}) << '\n';  // 9534330
+    cout << largestNumber({3, 30, 34, 5, 9}) << '\n';        // 9534330
 
     // Sorting indices by value, keeping original positions.
     vector<int> v = {40, 11, 26, 27, 2};
     vector<int> idx(v.size());
     iota(idx.begin(), idx.end(), 0);
     sort(idx.begin(), idx.end(), [&](int i, int j) { return v[i] < v[j]; });
-    for (int i : idx) cout << i << ':' << v[i] << ' ';  // 4:2 1:11 2:26 3:27 0:40
-    cout << '\n';
+    for (int i : idx) cout << i << ':' << v[i] << ' ';
+    cout << '\n';                                            // 4:2 1:11 2:26 3:27 0:40
+
+    for (int x : frequencySort({1, 1, 2, 2, 2, 3})) cout << x << ' ';
+    cout << '\n';                                            // 3 1 1 2 2 2
+    cout << carFleet(12, {10, 8, 0, 5, 3}, {2, 4, 1, 1, 3}) << ' '
+         << numBoats({3, 2, 2, 1}, 3) << '\n';               // 3 3
 }
 ```
 
 The second half shows an [[index sort]]: sort positions by their values, so you know where each sorted value came from.
 
-### Counting sort when values are small
+### Sorting by more than one key
 
-If values are small integers, say exam scores from 0 to 100, you can skip comparison sorting altogether: count how many times each value appears, then walk the counts in order. That runs in O(n + k) for k possible values, faster than O(n log n) when k is small. It is the same idea as asking students to stand in numbered boxes on the ground instead of comparing heights pair by pair.
+Many problems sort by one thing, then break ties by another. *Sort Array by Increasing Frequency* wants values ordered by how often they appear, rarest first, and equal frequencies ordered from the largest value down. Compare tuples: the key for x is (count of x, −x), and C++ compares pairs and tuples one field at a time. For [1, 1, 2, 2, 2, 3], the keys are (2, −1), (3, −2) and (1, −3), so the order is 3, then the two 1s, then the three 2s: [3, 1, 1, 2, 2, 2].
+
+### Car Fleet: sorting reveals the structure
+
+Cars drive towards a target at 12 and can never pass each other; a fast car that catches a slower one joins its fleet. Sort cars by position, closest to the target first, and compute each car's arrival time if it drove alone. A car whose lone time is no greater than the fleet ahead of it catches up and joins; a slower car starts a new fleet.
+
+| Position | Speed | Time alone to reach 12 | Compared with the slowest fleet ahead | Fleets |
+|---|---|---|---|---|
+| 10 | 2 | 1.0 | none ahead | 1 |
+| 8 | 4 | 1.0 | 1.0, catches up | 1 |
+| 5 | 1 | 7.0 | slower than 1.0, new fleet | 2 |
+| 3 | 3 | 3.0 | 7.0, catches up | 2 |
+| 0 | 1 | 12.0 | slower than 7.0, new fleet | 3 |
+
+Three fleets. Without sorting, deciding who catches whom would mean comparing every pair of cars; in order, each car only looks at the fleet directly ahead.
+
+### Sort, then two pointers: Boats to Save People
+
+Each boat carries at most two people and a weight limit, here 3. Sort the weights [3, 2, 2, 1] to [1, 2, 2, 3]. Pair the heaviest remaining person with the lightest if they fit together; otherwise the heaviest goes alone. 3 goes alone (3 + 1 > 3), then 2 and 1 share, then the last 2 goes alone: 3 boats. Sorting is what makes "pair the heaviest with the lightest" a safe greedy choice.
+
+### When not to compare at all
+
+If values are small integers, say exam scores from 0 to 100, you can skip comparison sorting: count how many times each value appears, then walk the counts in order, in O(n + k) for k possible values. [Sorting Mail Into Pigeonholes](article:dsa-counting-bucket-sort) covers counting, radix and bucket sort. And if you only need the relative order of huge values, not the values themselves, [Renaming Huge Numbers as 1, 2, 3](article:cp-coordinate-compression) sorts once and replaces each value by its rank.
 
 ## Complexity
 
@@ -178,10 +236,12 @@ Common misconception: "sorting destroys the information I need." It destroys the
 - **Sorting when order must be preserved**, as in subarray problems, where the original sequence matters.
 - **Forgetting the all-zeros case** in Largest Number, which would print "000".
 - **Sorting inside a loop**, turning O(n log n) into O(n² log n) without noticing.
+- **Calling `cnt[x]` inside a comparator** on a map that might insert new keys; build the counts first, as the code does, so every lookup finds an existing key.
+- **Comparing floating-point times with `==`** in problems like Car Fleet. The strict `>` test avoids needing equality, and exact fractions with cross-multiplication avoid rounding entirely.
 
 ## Practice problems
 
-*Minimum Absolute Difference* and *Distinct Numbers* are sort-then-scan in their simplest form. *Merge Intervals* sorts intervals by start time, after which every overlap is between neighbours. *Largest Number* is all about the comparator. *Car Fleet* sorts cars by position and scans from the front, a nice example of sorting revealing the structure.
+*Minimum Absolute Difference* and *Distinct Numbers* are sort-then-scan in their simplest form. *Merge Intervals* sorts intervals by start time, after which every overlap is between neighbours. *Largest Number* is all about the comparator. *Car Fleet* sorts cars by position and scans from the front, a nice example of sorting revealing the structure. *Boats to Save People* combines a sort with two pointers.
 
 ## Key takeaways
 

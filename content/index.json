@@ -1,5 +1,5 @@
 {
- "content_version": "da7dbc9421b6bbf8",
+ "content_version": "f34620b4560a65f7",
  "generated_at": "2026-11-02",
  "count": 261,
  "subjects": [
@@ -11383,7 +11383,7 @@
     "dsa-binary-search"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 6,
+   "read_minutes": 7,
    "topics": [
     "binary search",
     "optimisation",
@@ -11488,8 +11488,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.92,
    "path": "dsa/binary-search-answer.md",
-   "hash": "bccd6ff96121",
-   "word_count": 1405,
+   "hash": "29001f790f5b",
+   "word_count": 1441,
    "excerpt": "A shipping company must move a row of packages, in order, within 5 days. Every day the ship carries packages from the front of the row until the next one would exceed its capacity. What is the smallest capacity that gets the job done? Computing that capacity directly is awkward. But answering a…"
   },
   {
@@ -11506,7 +11506,7 @@
     "dsa-cpp-stl-toolkit"
    ],
    "difficulty": "beginner",
-   "read_minutes": 4,
+   "read_minutes": 6,
    "topics": [
     "sorting",
     "comparators",
@@ -11547,6 +11547,12 @@
      "platform": "LeetCode",
      "url": "https://leetcode.com/problems/minimum-absolute-difference/",
      "difficulty": "Easy"
+    },
+    {
+     "name": "Boats to Save People",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/boats-to-save-people/",
+     "difficulty": "Medium"
     }
    ],
    "glossary": [
@@ -11611,8 +11617,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "dsa/sorting-as-tool.md",
-   "hash": "390ebf7a4ffa",
-   "word_count": 935,
+   "hash": "e90d8114f56e",
+   "word_count": 1342,
    "excerpt": "\"Find the two numbers in this list that are closest together.\" The brute force compares every pair: about n²/2 comparisons. Now sort the list first. The closest pair is suddenly sitting side by side, and one pass finds it. You rarely need to write a sorting algorithm in an interview. What you need…"
   },
   {
