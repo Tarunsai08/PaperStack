@@ -52,9 +52,9 @@ importance_score: 0.92
 
 ## The hook
 
-A course catalogue says Algorithms needs Data Structures, Data Structures needs Discrete Maths, and Discrete Maths needs Algorithms. Nobody can ever start. A build tool finds that module A imports B, B imports C and C imports A, and refuses to compile. A spreadsheet shows a "circular reference" error.
+A course catalogue says Algorithms needs Data Structures, Data Structures needs Discrete Maths, and Discrete Maths needs Algorithms. Nobody can ever start. A build tool refuses to compile because module A imports B, B imports C and C imports A, and a spreadsheet shows a "circular reference" error.
 
-Each of these is the same question: does following the connections ever bring you back to where you started? DFS from [Going Deep With a Ball of String](article:dsa-dfs) answers it in linear time. But there is a trap. The check that works for two-way roads gives wrong answers on one-way streets. Why?
+Each of these is the same question: does following the connections ever bring you back to where you started? DFS from [Going Deep With a Ball of String](article:dsa-dfs) answers it in linear time, with one trap: the check that works for two-way roads gives wrong answers on one-way streets. Why?
 
 ## The intuition
 
@@ -284,7 +284,11 @@ There are two non-DFS alternatives worth knowing. For directed graphs, Kahn's al
 
 ## Practice problems
 
-Start with *Course Schedule*, the three-colour template on a prerequisite graph. *Round Trip* (CSES) is the undirected version and asks you to print the loop using parent pointers. *Redundant Connection* finds the edge that closes the loop in an undirected graph; DFS works, and union-find is shorter. *Course Schedule II* returns a valid order, which you can collect as vertices turn black. *Find Eventual Safe States* asks which vertices can never reach a cycle, which is exactly "turned black". *Round Trip II* prints a directed loop. The often-cited *Graph Valid Tree* is premium-only on LeetCode, so practise its idea, "connected and acyclic", with *Round Trip* and *Redundant Connection* instead.
+- *Course Schedule* is the three-colour template on a prerequisite graph, and *Course Schedule II* returns a valid order, collected as vertices turn black.
+- *Round Trip* (CSES) is the undirected version and asks you to print the loop using parent pointers; *Round Trip II* prints a directed loop.
+- *Redundant Connection* finds the edge that closes the loop in an undirected graph; DFS works, and union-find is shorter.
+- *Find Eventual Safe States* asks which vertices can never reach a cycle, which is exactly "turned black".
+- The often-cited *Graph Valid Tree* is premium-only on LeetCode, so practise its idea, "connected and acyclic", with *Round Trip* and *Redundant Connection* instead.
 
 ## Key takeaways
 

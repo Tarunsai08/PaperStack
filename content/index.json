@@ -1,5 +1,5 @@
 {
- "content_version": "6301cfc86d017362",
+ "content_version": "9bbb3bd561e58a6f",
  "generated_at": "2026-11-02",
  "count": 332,
  "subjects": [
@@ -19900,9 +19900,9 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.92,
    "path": "dsa/graph-representation.md",
-   "hash": "0edbf344f2e4",
-   "word_count": 1500,
-   "excerpt": "A maps app finds a route across a city. A social network suggests \"people you may know\". A university checks that you took the prerequisites before a course. A puzzle asks for the fewest moves to open a lock. These look like four unrelated problems. They are all the same shape: things, and…"
+   "hash": "20c5ab9f6674",
+   "word_count": 1491,
+   "excerpt": "A maps app finds a route across a city, a social network suggests \"people you may know\", a university checks your prerequisites, and a puzzle asks for the fewest moves to open a lock. These look like four unrelated problems. They are all the same shape: things, and connections between things. Once…"
   },
   {
    "id": "dsa-bfs",
@@ -20034,8 +20034,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.93,
    "path": "dsa/bfs.md",
-   "hash": "d5462a1ddb2d",
-   "word_count": 1732,
+   "hash": "41e775558552",
+   "word_count": 1730,
    "excerpt": "You are in a maze of corridors and want the exit in the fewest steps. One plan is to pick a corridor and follow it as deep as it goes, backing up at dead ends. You will find an exit, but maybe after a route ten times longer than needed, and you cannot know it was the shortest without trying…"
   },
   {
@@ -20299,9 +20299,9 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.92,
    "path": "dsa/cycle-detection.md",
-   "hash": "af61b5ed02da",
-   "word_count": 1514,
-   "excerpt": "A course catalogue says Algorithms needs Data Structures, Data Structures needs Discrete Maths, and Discrete Maths needs Algorithms. Nobody can ever start. A build tool finds that module A imports B, B imports C and C imports A, and refuses to compile. A spreadsheet shows a \"circular reference\"…"
+   "hash": "93aebe0bd5f9",
+   "word_count": 1508,
+   "excerpt": "A course catalogue says Algorithms needs Data Structures, Data Structures needs Discrete Maths, and Discrete Maths needs Algorithms. Nobody can ever start. A build tool refuses to compile because module A imports B, B imports C and C imports A, and a spreadsheet shows a \"circular reference\" error.…"
   },
   {
    "id": "dsa-topological-sort",
@@ -20559,8 +20559,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.93,
    "path": "dsa/union-find.md",
-   "hash": "7cc4c515e093",
-   "word_count": 1462,
+   "hash": "0ea319fa84a2",
+   "word_count": 1464,
    "excerpt": "A social app processes a stream of \"A is now friends with B\" events, and after each one it must answer \"are X and Y in the same circle?\" You could rebuild the graph and run a search for every question, but with a hundred thousand events and questions, that is billions of steps. What you need is a…"
   },
   {

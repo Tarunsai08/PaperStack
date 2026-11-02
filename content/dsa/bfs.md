@@ -56,7 +56,7 @@ importance_score: 0.93
 
 You are in a maze of corridors and want the exit in the fewest steps. One plan is to pick a corridor and follow it as deep as it goes, backing up at dead ends. You will find *an* exit, but maybe after a route ten times longer than needed, and you cannot know it was the shortest without trying everything else.
 
-A better plan sounds almost lazy. First check every spot one step away. Then every spot two steps away. Then three. The first time you see the exit, you know no shorter route exists, because you checked all shorter distances already. That plan is breadth-first search, and it is the answer whenever a problem asks for the fewest moves, hops, swaps or minutes in a world where every move costs the same. How do you make a computer search in rings like that?
+A better plan sounds almost lazy: check every spot one step away, then every spot two steps away, then three. The first time you see the exit, no shorter route can exist, because every shorter distance was already checked. That plan is breadth-first search, and it is the answer whenever a problem asks for the fewest moves, hops, swaps or minutes in a world where every move costs the same. How do you make a computer search in rings like that?
 
 ## The intuition
 
