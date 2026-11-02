@@ -1,7 +1,7 @@
 {
- "content_version": "a1b3ce3453de26aa",
+ "content_version": "a4bd3ec7a4365d5d",
  "generated_at": "2026-11-02",
- "count": 273,
+ "count": 276,
  "subjects": [
   {
    "id": "ml",
@@ -14420,6 +14420,348 @@
    "hash": "d4e4a24ee973",
    "word_count": 1485,
    "excerpt": "Two railway lines start in different towns and merge at a junction, after which they share the same track. Two trains leave their towns at the same moment and the same speed. Where do they first meet? If the lines have different lengths before the junction, they arrive at different times, and it…"
+  },
+  {
+   "id": "dsa-sort-linked-list",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "sort-linked-list",
+   "title": "Splitting a Deck in Half and Merging the Piles",
+   "subtitle": "Sorting a linked list with merge sort: cut at the middle with fast and slow pointers, merge by relinking, and go bottom-up for O(1) extra space; then merge k sorted lists",
+   "track": "dsa-linear",
+   "track_order": 12,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-linked-list-basics",
+    "dsa-merge-sort-inversions"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "linked list",
+    "merge sort",
+    "divide and conquer",
+    "heap"
+   ],
+   "complexity": {
+    "time": "O(n log n)",
+    "space": "O(log n) top-down, O(1) bottom-up"
+   },
+   "practice_problems": [
+    {
+     "name": "Merge Two Sorted Lists",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/merge-two-sorted-lists/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Insertion Sort List",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/insertion-sort-list/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Sort List",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sort-list/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Merge k Sorted Lists",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/merge-k-sorted-lists/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Relinking merge",
+     "definition": "Merging two sorted lists by changing next pointers to weave the existing nodes together, with no new nodes and no buffer."
+    },
+    {
+     "term": "Cut",
+     "definition": "Setting the next pointer of the node before the middle to null, so the list really becomes two separate halves."
+    },
+    {
+     "term": "Top-down merge sort",
+     "definition": "Recursively splitting the list in half, sorting each half, and merging them, using O(log n) stack space."
+    },
+    {
+     "term": "Bottom-up merge sort",
+     "definition": "Merging sorted runs of size 1, then 2, then 4 and so on, iteratively, so no recursion stack is needed."
+    },
+    {
+     "term": "k-way merge",
+     "definition": "Merging k sorted lists into one, usually with a min-heap holding the current front of each list."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why must the list be cut at the middle before recursing in top-down merge sort?",
+     "options": [
+      "To save memory",
+      "Otherwise the left half still links into the right half, so the recursion never sees a smaller list and loops forever",
+      "Because merge needs it",
+      "It does not need cutting"
+     ],
+     "answer": 1,
+     "explain": "Without setting the middle's previous node's next to null, the 'left half' is still the whole list, and the split never shrinks it."
+    },
+    {
+     "q": "Why is merge sort preferred over quicksort for linked lists?",
+     "options": [
+      "Quicksort is wrong on lists",
+      "Merging only needs to walk two lists front to back and relink nodes, while quicksort's partition and random access suit arrays",
+      "Merge sort uses no comparisons",
+      "Lists are always nearly sorted"
+     ],
+     "answer": 1,
+     "explain": "Lists cannot jump to an index cheaply, but they can merge by relinking with no extra memory. Merge sort's access pattern fits lists perfectly."
+    },
+    {
+     "q": "What is the cost of merging k sorted lists with N nodes in total using a min-heap?",
+     "options": [
+      "O(N k)",
+      "O(N log k)",
+      "O(k log N)",
+      "O(N²)"
+     ],
+     "answer": 1,
+     "explain": "The heap holds at most k nodes, so each of the N pops and pushes costs O(log k)."
+    }
+   ],
+   "cover_seed": "sort-linked-list",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "dsa/sort-linked-list.md",
+   "hash": "fc205289b13e",
+   "word_count": 1351,
+   "excerpt": "Sorting an array is a library call. Sorting a linked list in O(n log n) time with no extra array is an interview question, because the tools you know from arrays do not fit. Quicksort wants to jump to any index; heap sort wants array positions; insertion sort is O(n²). Merge sort, on the other…"
+  },
+  {
+   "id": "dsa-flatten-lists",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "flatten-lists",
+   "title": "Folding Nested Drawers Onto One Shelf",
+   "subtitle": "Flattening multilevel linked lists, binary trees and nested lists: splice each child in place, or walk depth-first with a stack, without losing a single next pointer",
+   "track": "dsa-linear",
+   "track_order": 13,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-linked-list-basics",
+    "dsa-stack-patterns"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "linked list",
+    "depth-first search",
+    "stack",
+    "iterator"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(1) for in-place splicing, O(depth) with a stack"
+   },
+   "practice_problems": [
+    {
+     "name": "Flatten a Multilevel Doubly Linked List",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Flatten Binary Tree to Linked List",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/flatten-binary-tree-to-linked-list/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Flatten Nested List Iterator",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/flatten-nested-list-iterator/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Multilevel list",
+     "definition": "A doubly linked list where any node may also have a child pointer to another doubly linked list, which may have children of its own."
+    },
+    {
+     "term": "Splice",
+     "definition": "Inserting a whole chain of nodes between two adjacent nodes by changing the four pointers at its two ends."
+    },
+    {
+     "term": "Depth-first order",
+     "definition": "Visiting a node, then everything inside its child completely, before moving on to the node's next sibling."
+    },
+    {
+     "term": "Lazy flattening",
+     "definition": "Unpacking nested structure only as far as needed to produce the next element, instead of flattening everything up front."
+    },
+    {
+     "term": "Preorder",
+     "definition": "Visiting a tree node before its left subtree and then its right subtree."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "When splicing a child list between node and node.next in a doubly linked list, which pointers change?",
+     "options": [
+      "Only node.next",
+      "node.next, child.prev, childTail.next and oldNext.prev, plus clearing node.child",
+      "Only the child pointer",
+      "Every pointer in the child list"
+     ],
+     "answer": 1,
+     "explain": "The child chain is inserted as a block. Only its two ends and the two nodes around it are rewired, and the child pointer is set to null as the problem requires."
+    },
+    {
+     "q": "Why is the in-place splicing method O(n) even though it walks to each child list's tail?",
+     "options": [
+      "It is O(n²)",
+      "Each tail walk covers one level of a child list, and each node is walked by at most one such search plus the main pass",
+      "Because the lists are short",
+      "It uses a hash map"
+     ],
+     "answer": 1,
+     "explain": "A child list's own children are not spliced yet when its tail is found, so the tail walk covers only that level. Every node is touched a constant number of times."
+    },
+    {
+     "q": "In Flatten Nested List Iterator, why flatten lazily in hasNext rather than in the constructor?",
+     "options": [
+      "It is required for correctness",
+      "It uses memory proportional to the nesting depth instead of the total size, and does no work for elements that are never asked for",
+      "Constructors cannot use stacks",
+      "It is faster in the worst case"
+     ],
+     "answer": 1,
+     "explain": "Flattening everything up front is accepted, but lazy flattening keeps only the current path of nested lists on the stack."
+    }
+   ],
+   "cover_seed": "flatten-lists",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.68,
+   "path": "dsa/flatten-lists.md",
+   "hash": "5605ff2fd3e0",
+   "word_count": 1457,
+   "excerpt": "A cabinet has a row of drawers. Some drawers contain smaller drawers, and some of those contain smaller ones still. You want to lay everything out on a single long shelf in the order you would meet it if you opened each drawer completely before moving to the next. Done by hand, it is easy. Done…"
+  },
+  {
+   "id": "dsa-queue-via-stacks",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "queue-via-stacks",
+   "title": "Pouring Trays From One Stack Into Another",
+   "subtitle": "Building a queue from two stacks with lazy transfer and amortised O(1) operations, a stack from one queue, and a circular deque in an array",
+   "track": "dsa-linear",
+   "track_order": 14,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-stack-patterns",
+    "dsa-queue-deque"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "stack",
+    "queue",
+    "amortised analysis",
+    "design"
+   ],
+   "complexity": {
+    "time": "Amortised O(1) per queue operation",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Implement Queue using Stacks",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/implement-queue-using-stacks/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Implement Stack using Queues",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/implement-stack-using-queues/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Design Circular Deque",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/design-circular-deque/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Inbox stack",
+     "definition": "The stack that receives every pushed element in the two-stack queue."
+    },
+    {
+     "term": "Outbox stack",
+     "definition": "The stack that serves pops and peeks; when it is empty, the whole inbox is poured into it, reversing the order."
+    },
+    {
+     "term": "Lazy transfer",
+     "definition": "Moving elements from the inbox to the outbox only when the outbox is empty, rather than on every operation."
+    },
+    {
+     "term": "Amortised cost",
+     "definition": "The average cost per operation over any sequence of operations, which can be O(1) even if a single operation is occasionally expensive."
+    },
+    {
+     "term": "Circular deque",
+     "definition": "A double-ended queue stored in a fixed array whose front and back indices wrap around with modulo arithmetic."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In the two-stack queue, when do elements move from the inbox to the outbox?",
+     "options": [
+      "On every push",
+      "On every pop",
+      "Only when a pop or peek finds the outbox empty",
+      "Never"
+     ],
+     "answer": 2,
+     "explain": "As long as the outbox has elements, its top is the oldest element. Pouring only when it is empty keeps every element's moves to a minimum."
+    },
+    {
+     "q": "Why is the two-stack queue amortised O(1) per operation?",
+     "options": [
+      "Because stacks are fast",
+      "Each element is pushed onto the inbox once, moved to the outbox once and popped once, so any n operations do O(n) work in total",
+      "Because transfers are rare",
+      "It is O(log n)"
+     ],
+     "answer": 1,
+     "explain": "A single pop may move many elements, but no element is ever moved twice. Spread over all operations, the cost is constant."
+    },
+    {
+     "q": "How does a stack built from one queue return the newest element first?",
+     "options": [
+      "It cannot",
+      "After each push, rotate the queue by moving the older elements from the front to the back, so the new element is at the front",
+      "By sorting the queue",
+      "By using a second stack"
+     ],
+     "answer": 1,
+     "explain": "Pushing x and then cycling the other k elements behind it puts x at the front, so pop and top are O(1) and push is O(n)."
+    }
+   ],
+   "cover_seed": "queue-via-stacks",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.78,
+   "path": "dsa/queue-via-stacks.md",
+   "hash": "1d949cf372d5",
+   "word_count": 1339,
+   "excerpt": "A canteen has a stack of clean trays. New trays go on top, and people take trays from the top: last in, first out. The manager wants the opposite, so the oldest trays get used first and none sit at the bottom for weeks. She has room for exactly two stacks. Can she serve the oldest tray first using…"
   },
   {
    "id": "dsa-subsets-permutations",

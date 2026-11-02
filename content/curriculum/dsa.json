@@ -3862,8 +3862,8 @@
     "dsa-linked-list-basics",
     "dsa-merge-sort-inversions"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Split with slow and fast",
@@ -3894,8 +3894,8 @@
     "dsa-linked-list-basics",
     "dsa-stack-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "DFS with a stack",
@@ -3926,8 +3926,8 @@
     "dsa-stack-patterns",
     "dsa-queue-deque"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Two stacks with lazy transfer",
