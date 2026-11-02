@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 19 | 0 | 133 | 152 | 18/72 |
+| dsa | 20 | 0 | 132 | 152 | 19/72 |
 | cp | 16 | 0 | 99 | 115 | 13/29 |
 | famous-algos | 17 | 0 | 74 | 91 | 15/32 |
 | system-design | 17 | 0 | 102 | 119 | 17/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **152** | **0** | **521** | **673** | |
+| **All** | **153** | **0** | **520** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **23**
 
@@ -25,7 +25,6 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### dsa
 
-- [ ] `dsa-dutch-national-flag` (P0, problem-walkthrough, dsa-arrays): Sort Colors: The Dutch National Flag in One Pass
 - [ ] `dsa-rotated-array-search` (P0, problem-walkthrough, dsa-search-sort): Searching a Rotated Sorted Array
 - [ ] `dsa-gcd-primes` (P0, pattern, dsa-math): GCD, Primes and Divisors for Interviews
 - [ ] `dsa-fast-slow-pointers` (P0, pattern, dsa-linear): Fast and Slow Pointers: The Tortoise and the Hare
@@ -35,6 +34,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-tree-traversals` (P0, pattern, dsa-trees): Tree Traversals: Pre, In, Post and Level Order
 - [ ] `dsa-heap-basics` (P0, pattern, dsa-heaps-greedy): Heaps: Always Know the Smallest
 - [ ] `dsa-greedy-exchange` (P0, pattern, dsa-heaps-greedy): Greedy Algorithms and the Exchange Argument
+- [ ] `dsa-graph-representation` (P0, primer, dsa-graphs): Graphs: Modelling Problems as Nodes and Edges
 
 ### cp
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 19 written</summary>
+<details><summary>dsa: 20 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -111,6 +111,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-stack-patterns` Stacks: Matching, Undo and Expression Parsing
 - [x] `dsa-product-except-self` Product of Array Except Self Without Division
 - [x] `dsa-subarray-sum-k` Counting Subarrays With Sum K
+- [x] `dsa-dutch-national-flag` Sort Colors: The Dutch National Flag in One Pass
 
 </details>
 

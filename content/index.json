@@ -1,7 +1,7 @@
 {
- "content_version": "aca8d22c714bc126",
+ "content_version": "bef32170c640fdc3",
  "generated_at": "2026-11-02",
- "count": 152,
+ "count": 153,
  "subjects": [
   {
    "id": "ml",
@@ -9821,6 +9821,119 @@
    "hash": "d775f7207d60",
    "word_count": 906,
    "excerpt": "\"Count the subarrays whose sum equals k.\" With only positive numbers, a sliding window solves it in one pass. Add a single negative number, and the window falls apart: growing it might shrink the sum, so you no longer know which end to move. The fix combines two tools you already have, prefix sums…"
+  },
+  {
+   "id": "dsa-dutch-national-flag",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "dutch-national-flag",
+   "title": "Sorting Three Colours in a Single Sweep",
+   "subtitle": "The Dutch national flag problem: three pointers, three regions, and an invariant that makes it obviously correct",
+   "track": "dsa-arrays",
+   "track_order": 15,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-two-pointers"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 4,
+   "topics": [
+    "arrays",
+    "two pointers",
+    "partitioning",
+    "invariants"
+   ],
+   "complexity": {
+    "time": "O(n), one pass",
+    "space": "O(1)"
+   },
+   "practice_problems": [
+    {
+     "name": "Sort Colors",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sort-colors/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Move Zeroes",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/move-zeroes/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Sort Array By Parity",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sort-array-by-parity/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Partition Array According to Given Pivot",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/partition-array-according-to-given-pivot/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Partition",
+     "definition": "Rearranging an array so elements of one kind come before elements of another, without fully sorting."
+    },
+    {
+     "term": "Invariant",
+     "definition": "A statement about the array that is true before and after every step of the loop."
+    },
+    {
+     "term": "Region",
+     "definition": "A contiguous stretch of the array known to contain only one kind of element, such as all 0s."
+    },
+    {
+     "term": "Unclassified zone",
+     "definition": "The part of the array not yet examined, between the mid and high pointers."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "When a[mid] is 2 and you swap it with a[high], why does mid NOT move forward?",
+     "options": [
+      "It always moves",
+      "The value swapped in from high has not been examined yet and could be 0, 1 or 2",
+      "Because 2 is the largest",
+      "To save time"
+     ],
+     "answer": 1,
+     "explain": "The element arriving from the high end is unknown, so mid must look at it on the next step."
+    },
+    {
+     "q": "When a[mid] is 0 and you swap it with a[low], why can mid move forward safely?",
+     "options": [
+      "Because a[low] is always 1 (or low equals mid), which is already in the right place",
+      "Because 0s never move",
+      "It cannot",
+      "Because low is always 0"
+     ],
+     "answer": 0,
+     "explain": "Everything between low and mid is already known to be 1, so the value swapped into mid is a 1 (or the same element), and needs no further check."
+    },
+    {
+     "q": "What is the time complexity?",
+     "options": [
+      "O(n log n)",
+      "O(n), because each step either advances mid or shrinks high, so there are at most n steps",
+      "O(n squared)",
+      "O(1)"
+     ],
+     "answer": 1,
+     "explain": "Every iteration shrinks the unclassified zone by one, so the loop runs at most n times."
+    }
+   ],
+   "cover_seed": "dutch-national-flag",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.84,
+   "path": "dsa/dutch-national-flag.md",
+   "hash": "fca3c8343084",
+   "word_count": 917,
+   "excerpt": "An array holds only 0s, 1s and 2s, like red, white and blue balls in a jumbled row. Sort it. You could call sort in O(n log n), or count the three colours and rewrite the array in two passes. The interview follow-up is always the same: \"Can you do it in one pass, in place?\" Edsger Dijkstra posed…"
   },
   {
    "id": "dsa-binary-search",
