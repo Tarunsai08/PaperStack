@@ -126,7 +126,7 @@ A Div. 3 round with problems A to F, two hours. One sensible run:
 | 1:15-1:40 | E looked like a graph BFS: solved | Standings showed E solved more than D |
 | 1:40-2:00 | Back to D with fresh eyes; the observation clicks | Background thinking paid off |
 
-Four problems instead of two, with exactly the same knowledge. The only differences were the order of reading, a time box, and a stress test used at the right moment.
+Four problems instead of two, with exactly the same knowledge. Pacing turned knowledge into points. The only differences were the order of reading, a time box, and a stress test used at the right moment.
 
 :::try-this
 Plan your next contest on paper before it starts: write your time box for hard problems, the order you will read problems in, and your three-step Wrong Answer checklist. After the contest, write one line on what you would change. (Most people find that their biggest leak is either untested submissions or staying too long on one problem.)

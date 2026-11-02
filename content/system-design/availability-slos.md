@@ -134,7 +134,7 @@ A request goes through a load balancer (99.99%), an app tier with two independen
 
 ## In the real world
 
-Google's Site Reliability Engineering practices popularised SLOs and error budgets, and many companies now run on similar rules. Cloud providers publish SLAs for their services, and architects combine those numbers with the series and parallel formulas to estimate what their own systems can promise. In interviews, stating an availability target early, as part of the non-functional requirements in the [interview framework](article:system-design-interview-framework), justifies every replica and region you add later.
+Google's Site Reliability Engineering practices popularised SLOs and error budgets, and many companies now run on similar rules. Cloud providers publish SLAs for their services, and architects combine those numbers with the series and parallel formulas to estimate what their own systems can promise. In interviews, stating an availability target early, as part of the non-functional requirements in the [interview framework](article:system-design-interview-framework), justifies every replica and region you add later. It also tells you when to stop adding them.
 
 ## Further reading
 

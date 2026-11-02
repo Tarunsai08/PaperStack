@@ -126,7 +126,7 @@ Take the last contest you did, or any recent Div. 2 or Div. 3 round. Pick the fi
 
 ## Where you'll see this again
 
-The [rating ladder](article:cp-rating-ladder) tells you which band your upsolves should come from, and [debugging in contests](article:cp-debugging-in-contest) gives the checklist your mistakes log will refine. Every technique article in this subject lists practice problems, which double as an upsolving queue for that topic.
+The [rating ladder](article:cp-rating-ladder) tells you which band your upsolves should come from, and [debugging in contests](article:cp-debugging-in-contest) gives the checklist your mistakes log will refine. Every technique article in this subject lists practice problems, which double as an upsolving queue for that topic. Work through them in order, and treat any you cannot finish exactly like a contest problem you missed: retry, read, implement from memory, log.
 
 ## Key takeaways
 
