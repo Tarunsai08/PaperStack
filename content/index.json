@@ -1,7 +1,7 @@
 {
- "content_version": "285d7d31812c2831",
+ "content_version": "a1b3ce3453de26aa",
  "generated_at": "2026-11-02",
- "count": 270,
+ "count": 273,
  "subjects": [
   {
    "id": "ml",
@@ -14063,6 +14063,363 @@
    "hash": "dc19bc31d35c",
    "word_count": 1320,
    "excerpt": "Copying a normal linked list is easy: walk it and create a new node for each old one. Now give every node a second pointer that can point anywhere: forwards, backwards, to itself or to nothing. Copy that list, and the copy's extra pointers must point into the copy, never back into the original.…"
+  },
+  {
+   "id": "dsa-largest-rectangle",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "largest-rectangle",
+   "title": "Pushing a Box Under the Skyline",
+   "subtitle": "Largest Rectangle in a Histogram with a monotonic stack, then the same idea for the biggest all-ones rectangle in a matrix and for summing subarray minimums",
+   "track": "dsa-linear",
+   "track_order": 9,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-monotonic-stack"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "monotonic stack",
+    "histogram",
+    "previous smaller element",
+    "contribution technique"
+   ],
+   "complexity": {
+    "time": "O(n) per histogram, O(rows × cols) for the matrix",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Largest Rectangle in Histogram",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/largest-rectangle-in-histogram/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Maximal Rectangle",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/maximal-rectangle/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Sum of Subarray Minimums",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sum-of-subarray-minimums/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Maximal Square",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/maximal-square/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Histogram",
+     "definition": "A row of adjacent bars of width 1 and given heights."
+    },
+    {
+     "term": "Previous smaller element",
+     "definition": "For index i, the nearest index to its left whose height is smaller than h[i], or −1 if none."
+    },
+    {
+     "term": "Next smaller element",
+     "definition": "For index i, the nearest index to its right whose height is smaller than h[i], or n if none."
+    },
+    {
+     "term": "Sentinel bar",
+     "definition": "An extra bar of height 0 appended at the end, which forces every remaining bar off the stack so no special final loop is needed."
+    },
+    {
+     "term": "Contribution technique",
+     "definition": "Summing an expression over all subarrays by counting, for each element, how many subarrays it is responsible for, such as being their minimum."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "When a bar is popped from the increasing stack, what are the boundaries of its widest rectangle?",
+     "options": [
+      "The bar itself only",
+      "The new stack top on the left and the current index on the right, both exclusive",
+      "The array ends",
+      "The previous and next taller bars"
+     ],
+     "answer": 1,
+     "explain": "The current bar is the first one to its right that is smaller, and the new top is the nearest one to its left that is smaller. Between them the popped bar is the shortest, so its rectangle spans that whole gap."
+    },
+    {
+     "q": "Why append a bar of height 0 at the end?",
+     "options": [
+      "To make the answer at least 0",
+      "It is smaller than every bar, so it pops everything left on the stack and computes their areas in the same loop",
+      "To handle negative heights",
+      "It is required by the stack"
+     ],
+     "answer": 1,
+     "explain": "Without it, bars still on the stack at the end need a separate loop with right boundary n. The sentinel removes that special case."
+    },
+    {
+     "q": "In Sum of Subarray Minimums, why use < on one side and ≤ on the other when finding the smaller neighbours?",
+     "options": [
+      "For speed",
+      "With equal values, each subarray must be credited to exactly one of the equal minimums, not to all of them",
+      "Because the array is sorted",
+      "It does not matter"
+     ],
+     "answer": 1,
+     "explain": "If both sides used strict comparisons, a subarray containing two equal minimums would be counted twice. Making one side non-strict assigns it to exactly one of them."
+    }
+   ],
+   "cover_seed": "largest-rectangle",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.85,
+   "path": "dsa/largest-rectangle.md",
+   "hash": "5f9ebe8dd768",
+   "word_count": 1540,
+   "excerpt": "A city skyline is a row of buildings of width 1. You want to slide the largest possible flat box under the skyline, resting on the ground, with its top below the roofs it covers. Try every pair of left and right edges and take the lowest roof between them, and you have an O(n²) or even O(n³)…"
+  },
+  {
+   "id": "dsa-basic-calculator",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "basic-calculator",
+   "title": "A Waiter Keeping Track of Nested Orders",
+   "subtitle": "Building a calculator with stacks: multi-digit numbers, operator precedence, parentheses and unary minus, plus Decode String and a recursive parser",
+   "track": "dsa-linear",
+   "track_order": 10,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-stack-patterns"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "stack",
+    "expression parsing",
+    "operator precedence",
+    "recursion"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(n) for the stack"
+   },
+   "practice_problems": [
+    {
+     "name": "Evaluate Reverse Polish Notation",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/evaluate-reverse-polish-notation/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Basic Calculator II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/basic-calculator-ii/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Decode String",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/decode-string/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Basic Calculator",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/basic-calculator/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Operator precedence",
+     "definition": "The rule that some operators bind tighter than others: multiplication and division are applied before addition and subtraction."
+    },
+    {
+     "term": "Term",
+     "definition": "A part of an expression separated by + or −, such as 2*2 in 3+2*2. Terms are evaluated first and then added."
+    },
+    {
+     "term": "Unary minus",
+     "definition": "A minus sign that negates what follows rather than subtracting it from something, as in −(2+3) or a leading −5."
+    },
+    {
+     "term": "Reverse Polish notation",
+     "definition": "Writing operators after their operands, such as 3 4 + 2 *, which can be evaluated with one stack and needs no parentheses."
+    },
+    {
+     "term": "Recursive descent",
+     "definition": "Parsing by writing one function per grammar level, such as expression, term and factor, each calling the next and handling its own operators."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In Basic Calculator II, how is 3+2*2 handled so that the multiplication happens first?",
+     "options": [
+      "Sort the operators",
+      "Push 3; when the * applies, pop the last term 2 and push 2*2 = 4; finally sum the stack",
+      "Evaluate left to right",
+      "Use recursion only"
+     ],
+     "answer": 1,
+     "explain": "Addition and subtraction push a new term; multiplication and division combine with the last term on the stack. Summing the stack at the end adds the finished terms."
+    },
+    {
+     "q": "In Basic Calculator, what is pushed onto the stack when a '(' appears?",
+     "options": [
+      "Nothing",
+      "The result so far and the sign in front of the parenthesis",
+      "Only the next number",
+      "The closing position"
+     ],
+     "answer": 1,
+     "explain": "The bracket starts a fresh sub-result. When ')' arrives, the inner result is multiplied by the saved sign and added to the saved outer result."
+    },
+    {
+     "q": "What is the value of 2-(5-6)?",
+     "options": [
+      "-9",
+      "1",
+      "3",
+      "-3"
+     ],
+     "answer": 2,
+     "explain": "The bracket is 5 − 6 = −1, and 2 − (−1) = 3. The saved sign in front of the bracket is −1, which flips the inner result."
+    }
+   ],
+   "cover_seed": "basic-calculator",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "dsa/basic-calculator.md",
+   "hash": "d6ae9c72c413",
+   "word_count": 1313,
+   "excerpt": "Type 3+22 into a calculator and it says 7, not 10. Type -(2+3)-(4-(1+2)) and it says −6. Writing the code that gets these right, reading the string one character at a time, is a classic interview problem in several sizes: with multiplication but no brackets, with brackets but no multiplication, and…"
+  },
+  {
+   "id": "dsa-linked-list-classics",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "linked-list-classics",
+   "title": "Two Walkers Who Swap Routes and Meet",
+   "subtitle": "Linked list classics: the intersection of two lists by switching heads, palindrome checks by reversing half, adding numbers digit by digit, and removing duplicate runs",
+   "track": "dsa-linear",
+   "track_order": 11,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-fast-slow-pointers"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "linked list",
+    "two pointers",
+    "reversal",
+    "carry"
+   ],
+   "complexity": {
+    "time": "O(m + n)",
+    "space": "O(1) extra, apart from the output list"
+   },
+   "practice_problems": [
+    {
+     "name": "Intersection of Two Linked Lists",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/intersection-of-two-linked-lists/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Palindrome Linked List",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/palindrome-linked-list/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Add Two Numbers",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/add-two-numbers/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Remove Duplicates from Sorted List II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Add Two Numbers II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/add-two-numbers-ii/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Intersection node",
+     "definition": "The first node shared by two linked lists, after which they continue as the same chain of nodes."
+    },
+    {
+     "term": "Head switching",
+     "definition": "When a pointer reaches the end of its list, restarting it at the head of the other list, so both pointers walk the same total distance."
+    },
+    {
+     "term": "Carry",
+     "definition": "The amount, 0 or 1 when adding two digits plus a carry, passed from one digit position to the next when a sum reaches 10."
+    },
+    {
+     "term": "Second-half reversal",
+     "definition": "Finding the middle with fast and slow pointers, reversing the list after it, and comparing it with the first half."
+    },
+    {
+     "term": "Dummy head",
+     "definition": "An extra node before the real head, used so that removing or adding the first node needs no special case."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "List A has 2 private nodes then a shared tail of 2; list B has 1 private node then the same tail. After switching heads at the end, where do the two pointers meet?",
+     "options": [
+      "They never meet",
+      "At the first shared node, after both have walked 2 + 1 + 2 = 5 nodes",
+      "At the last node",
+      "At the head of A"
+     ],
+     "answer": 1,
+     "explain": "Pointer A walks a + c then b, pointer B walks b + c then a. Both have walked a + b + c nodes when they reach the shared node together."
+    },
+    {
+     "q": "Adding 9 → 9 (the number 99) and 1 gives what list?",
+     "options": [
+      "0 → 0",
+      "1 → 0 → 0",
+      "0 → 0 → 1",
+      "10 → 0"
+     ],
+     "answer": 2,
+     "explain": "Digits are stored in reverse order. 9 + 1 = 10 writes 0 with carry 1, 9 + 1 = 10 writes 0 with carry 1, and the final carry adds a new node 1. That is 100."
+    },
+    {
+     "q": "Why restore the second half after checking Palindrome Linked List?",
+     "options": [
+      "It is needed for correctness of the check",
+      "The input should be left as the caller gave it; reversing half of it in place is a side effect",
+      "To free memory",
+      "To make it faster"
+     ],
+     "answer": 1,
+     "explain": "The check itself is complete before restoring. Reversing the second half back is good practice so the function does not silently damage its input."
+    }
+   ],
+   "cover_seed": "linked-list-classics",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.85,
+   "path": "dsa/linked-list-classics.md",
+   "hash": "d4e4a24ee973",
+   "word_count": 1485,
+   "excerpt": "Two railway lines start in different towns and merge at a junction, after which they share the same track. Two trains leave their towns at the same moment and the same speed. Where do they first meet? If the lines have different lengths before the junction, they arrive at different times, and it…"
   },
   {
    "id": "dsa-subsets-permutations",

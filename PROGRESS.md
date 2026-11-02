@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 68 | 0 | 84 | 152 | 49/72 |
+| dsa | 71 | 0 | 81 | 152 | 51/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **270** | **0** | **403** | **673** | |
+| **All** | **273** | **0** | **400** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -25,8 +25,6 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### dsa
 
-- [ ] `dsa-largest-rectangle` (P0, problem-walkthrough, dsa-linear): Largest Rectangle in a Histogram
-- [ ] `dsa-linked-list-classics` (P0, problem-walkthrough, dsa-linear): Linked List Classics: Intersection, Palindrome and Add Two Numbers
 - [ ] `dsa-queue-via-stacks` (P0, problem-walkthrough, dsa-linear): Building Queues From Stacks and Stacks From Queues
 - [ ] `dsa-backtracking-template` (P0, pattern, dsa-recursion): Backtracking: Explore, Undo, Repeat
 - [ ] `dsa-tree-recursion` (P0, pattern, dsa-trees): Thinking Recursively About Trees
@@ -35,6 +33,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-meeting-rooms` (P0, problem-walkthrough, dsa-heaps-greedy): How Many Meeting Rooms Do You Need?
 - [ ] `dsa-topological-sort` (P0, pattern, dsa-graphs): Topological Sort: Ordering Tasks With Dependencies
 - [ ] `dsa-dijkstra` (P0, pattern, dsa-graphs): Dijkstra: Shortest Paths With Weights
+- [ ] `dsa-word-ladder` (P0, problem-walkthrough, dsa-graphs): Word Ladder: BFS on Implicit Graphs
+- [ ] `dsa-islands-variants` (P0, problem-walkthrough, dsa-graphs): Number of Islands and Its Many Variants
 
 ### cp
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 68 written</summary>
+<details><summary>dsa: 71 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -144,6 +144,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-peak-element` Finding a Peak With Binary Search
 - [x] `dsa-reverse-k-group` Reversing Nodes in k-Groups
 - [x] `dsa-copy-random-list` Copying a List With Random Pointers
+- [x] `dsa-largest-rectangle` Largest Rectangle in a Histogram
+- [x] `dsa-basic-calculator` Building a Calculator With Stacks
 - [x] `dsa-coin-change` Coin Change: Minimum Coins and Number of Ways
 - [x] `dsa-word-break` Word Break: DP Over Prefixes
 - [x] `dsa-house-robber-variants` House Robber and Its Variants
@@ -158,6 +160,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-ordered-set-windows` Ordered Sets in Sliding Windows
 - [x] `dsa-longest-consecutive` Longest Consecutive Sequence in Linear Time
 - [x] `dsa-string-compression-parsing` String Parsing: Compression, Splitting and Validation
+- [x] `dsa-linked-list-classics` Linked List Classics: Intersection, Palindrome and Add Two Numbers
 - [x] `dsa-subset-sum-count` Counting Subsets: Target Sum and Partitions
 - [x] `dsa-interview-dsa-revision` The Night-Before Revision Sheet
 
