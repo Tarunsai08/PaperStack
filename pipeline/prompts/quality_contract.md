@@ -25,7 +25,7 @@ Your article is rejected unless it meets every point below. These are not sugges
 
 ## Accuracy
 16. **Never invent** numbers, results, dates, names, quotes, products or links. If you are not certain, say it qualitatively or leave it out. Fewer facts that are all true beat many that might be wrong.
-17. **Practice problems:** use the problems named in the brief when given. URLs must follow the real formats exactly: `https://leetcode.com/problems/<slug>/`, `https://cses.fi/problemset/task/<number>`, `https://codeforces.com/problemset/problem/<contest>/<letter>`, `https://atcoder.jp/contests/<id>/tasks/<id>`. If you are not sure a problem exists at that URL, choose a different, famous one. Never copy problem statements.
+17. **Practice problems:** use the problems named in the brief when given. URLs must follow the real formats exactly: `https://leetcode.com/problems/<slug>/`, `https://cses.fi/problemset/task/<number>`, `https://codeforces.com/problemset/problem/<contest>/<letter>`, `https://atcoder.jp/contests/<id>/tasks/<id>`. If you are not sure a problem exists at that URL, choose a different, famous one. Avoid LeetCode premium-only problems (for example Meeting Rooms), since most readers cannot open them. Never copy problem statements.
 18. **System design numbers** are labelled as estimates and show their arithmetic.
 19. **Complexity claims** are correct and justified in one sentence each.
 20. Respect the exact section headings, frontmatter fields and counts in the format spec: glossary 3 to 8, exactly 3 quiz questions with 4 options, the target length for the kind.

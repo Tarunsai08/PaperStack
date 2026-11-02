@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 10 | 0 | 142 | 152 | 10/72 |
+| dsa | 12 | 0 | 140 | 152 | 11/72 |
 | cp | 10 | 0 | 105 | 115 | 7/29 |
-| famous-algos | 10 | 0 | 81 | 91 | 8/32 |
-| system-design | 10 | 0 | 109 | 119 | 10/60 |
+| famous-algos | 11 | 0 | 80 | 91 | 9/32 |
+| system-design | 12 | 0 | 107 | 119 | 12/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **123** | **0** | **550** | **673** | |
+| **All** | **128** | **0** | **545** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **23**
 
@@ -31,13 +31,15 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-product-except-self` (P0, problem-walkthrough, dsa-arrays): Product of Array Except Self Without Division
 - [ ] `dsa-subarray-sum-k` (P0, problem-walkthrough, dsa-arrays): Counting Subarrays With Sum K
 - [ ] `dsa-dutch-national-flag` (P0, problem-walkthrough, dsa-arrays): Sort Colors: The Dutch National Flag in One Pass
-- [ ] `dsa-sorting-as-tool` (P0, pattern, dsa-search-sort): Sorting as a Superpower
 - [ ] `dsa-rotated-array-search` (P0, problem-walkthrough, dsa-search-sort): Searching a Rotated Sorted Array
 - [ ] `dsa-gcd-primes` (P0, pattern, dsa-math): GCD, Primes and Divisors for Interviews
 - [ ] `dsa-linked-list-basics` (P0, pattern, dsa-linear): Linked Lists: Pointer Surgery Made Safe
+- [ ] `dsa-stack-patterns` (P0, pattern, dsa-linear): Stacks: Matching, Undo and Expression Parsing
 
 ### cp
 
+- [ ] `cp-modular-arithmetic` (P0, pattern, cp-math): Modular Arithmetic: Doing Maths on a Clock
+- [ ] `cp-coordinate-compression` (P0, pattern, cp-ranges): Coordinate Compression
 - [ ] `cp-practice-plan` (P0, primer, cp-misc): A 12-Week Contest Practice Plan
 - [ ] `cp-weird-algorithm` (P1, problem-walkthrough, cp-start): Your First CSES Problems: Weird Algorithm to Increasing Array
 - [ ] `cp-implementation-skills` (P1, primer, cp-start): Implementation Problems: Getting the Details Right
@@ -48,28 +50,29 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### famous-algos
 
+- [ ] `famous-algos-merkle-trees` (P0, concept, fa-distributed): Merkle Trees: Proving Data Is Intact With One Hash
 - [ ] `famous-algos-tcp-congestion-control` (P0, concept, fa-networking): TCP Congestion Control: How the Internet Avoids Gridlock
+- [ ] `famous-algos-exponential-backoff` (P0, concept, fa-networking): Exponential Backoff With Jitter: Retrying Without a Stampede
 - [ ] `famous-algos-power-of-two-choices` (P0, concept, fa-networking): The Power of Two Choices: Smarter Load Balancing
+- [ ] `famous-algos-lsm-trees` (P0, concept, fa-storage): LSM Trees: Why Modern Databases Write So Fast
 - [ ] `famous-algos-geohash` (P0, concept, fa-storage): Geohash: Turning a Map Into a String
 - [ ] `famous-algos-lz77` (P0, concept, fa-coding): Lempel-Ziv: How ZIP Files Shrink Your Data
 - [ ] `famous-algos-cryptographic-hashing` (P0, concept, fa-crypto): Cryptographic Hashes: Fingerprints You Cannot Fake
 - [ ] `famous-algos-inverted-index` (P0, concept, fa-search): Inverted Indexes: How Search Finds Pages in Milliseconds
 - [ ] `famous-algos-kalman-filter` (P0, concept, fa-signals): The Kalman Filter: Blending Guesses With Noisy Measurements
-- [ ] `famous-algos-counting-bloom-cuckoo` (P1, concept, fa-sketches): Deletable Filters: Counting Bloom and Cuckoo Filters
-- [ ] `famous-algos-heavy-hitters` (P1, concept, fa-sketches): Finding Heavy Hitters in a Stream: Misra-Gries and Space-Saving
-- [ ] `famous-algos-lsh` (P1, concept, fa-sketches): Locality-Sensitive Hashing: Finding Near Neighbours Fast
 
 ### system-design
 
-- [ ] `system-design-stateless-idempotency` (P0, deep-dive, sd-fundamentals): Stateless Services and Idempotent APIs
-- [ ] `system-design-caching` (P0, deep-dive, sd-blocks): Caching: Cache-Aside, Write-Through and Friends
+- [ ] `system-design-auth-basics` (P0, deep-dive, sd-fundamentals): Authentication and Authorisation: Sessions, JWT and OAuth
+- [ ] `system-design-load-balancers` (P0, deep-dive, sd-blocks): Load Balancers: L4, L7 and the Algorithms Inside
+- [ ] `system-design-cdn` (P0, deep-dive, sd-blocks): CDNs: Moving Content Closer to Users
 - [ ] `system-design-sql-vs-nosql` (P0, deep-dive, sd-blocks): SQL vs NoSQL: Choosing a Database Honestly
+- [ ] `system-design-message-queues` (P0, deep-dive, sd-blocks): Message Queues and Pub-Sub: Decoupling With Kafka and Friends
+- [ ] `system-design-distributed-cache` (P0, deep-dive, sd-blocks): Redis and Distributed Caches
+- [ ] `system-design-cache-problems` (P0, deep-dive, sd-scaling): When Caches Hurt: Stampedes, Hot Keys and Invalidation
+- [ ] `system-design-url-shortener` (P0, case-study, sd-cases): Design a URL Shortener
 - [ ] `system-design-unique-id-generator` (P0, case-study, sd-cases): Design a Unique ID Generator
 - [ ] `system-design-oop-solid` (P0, lld, sd-lld): Object-Oriented Design and SOLID Principles
-- [ ] `system-design-consistency-models` (P0, deep-dive, sd-distributed): Consistency Models: Linearizable to Eventual
-- [ ] `system-design-networking-essentials` (P1, deep-dive, sd-fundamentals): TCP, UDP and QUIC for System Designers
-- [ ] `system-design-proxies` (P1, deep-dive, sd-fundamentals): Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere
-- [ ] `system-design-time-ordering` (P1, deep-dive, sd-distributed): Time and Ordering in Distributed Systems
 
 ### ml
 
@@ -86,11 +89,12 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 10 written</summary>
+<details><summary>dsa: 12 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
 - [x] `dsa-problem-solving-framework` How to Attack a Problem You Have Never Seen
+- [x] `dsa-bit-basics` Bits and Bytes: Thinking in Binary
 - [x] `dsa-prefix-sums` Prefix Sums: Answering Range Questions Instantly
 - [x] `dsa-two-pointers` Two Pointers: Squeezing Answers From Both Ends
 - [x] `dsa-sliding-window` Sliding Windows: One Pass Instead of Two Loops
@@ -98,6 +102,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-kadane` Kadane's Algorithm: The Best Subarray in One Pass
 - [x] `dsa-binary-search` Binary Search, Done Right Every Time
 - [x] `dsa-binary-search-answer` Binary Search on the Answer
+- [x] `dsa-sorting-as-tool` Sorting as a Superpower
 
 </details>
 
@@ -116,7 +121,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 </details>
 
-<details><summary>famous-algos: 10 written</summary>
+<details><summary>famous-algos: 11 written</summary>
 
 - [x] `famous-algos-bloom-filter` Bloom Filters: Saying No Without Looking
 - [x] `famous-algos-count-min-sketch` Count-Min Sketch: Counting Billions of Things in Kilobytes
@@ -128,10 +133,11 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `famous-algos-gossip-protocols` Gossip Protocols: How Rumours Keep Clusters in Sync
 - [x] `famous-algos-swim-failure-detection` SWIM: Detecting Dead Machines Politely
 - [x] `famous-algos-raft` Raft: Consensus You Can Actually Understand
+- [x] `famous-algos-token-bucket` Token Bucket: Rate Limiting With Room for Bursts
 
 </details>
 
-<details><summary>system-design: 10 written</summary>
+<details><summary>system-design: 12 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -143,6 +149,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `system-design-cap-pacelc` CAP and PACELC Without the Myths
 - [x] `system-design-consistency-basics` Strong vs Eventual Consistency, Plainly
 - [x] `system-design-availability-slos` Availability, Nines and SLOs
+- [x] `system-design-stateless-idempotency` Stateless Services and Idempotent APIs
+- [x] `system-design-caching` Caching: Cache-Aside, Write-Through and Friends
 
 </details>
 

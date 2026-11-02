@@ -537,7 +537,7 @@
    "order": 9,
    "priority": "P0",
    "prerequisites": [
-    "dsa-tree-traversals"
+    "dsa-hashing-patterns"
    ],
    "status": "planned",
    "written_by": null,
@@ -763,7 +763,7 @@
    "order": 1,
    "priority": "P0",
    "prerequisites": [
-    "famous-algos-gossip-protocols"
+    "famous-algos-token-bucket"
    ],
    "status": "planned",
    "written_by": null,
@@ -797,10 +797,10 @@
    "order": 2,
    "priority": "P0",
    "prerequisites": [
-    "dsa-queue-deque"
+    "dsa-big-o"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Tokens refill at a rate",
