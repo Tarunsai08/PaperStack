@@ -1,7 +1,7 @@
 {
- "content_version": "8a5fd88daa6063b7",
+ "content_version": "8993782ee3a5a23a",
  "generated_at": "2026-11-02",
- "count": 294,
+ "count": 296,
  "subjects": [
   {
    "id": "ml",
@@ -17112,6 +17112,234 @@
    "hash": "2dd4693247c1",
    "word_count": 1395,
    "excerpt": "A binary search tree promises O(log n) search, insert and delete. Then someone inserts the keys in sorted order: 1, 2, 3, and so on up to a million. Every new key goes to the right of the last one, and the \"tree\" is a long chain. Searching for the largest key now walks a million nodes, the same as…"
+  },
+  {
+   "id": "dsa-serialize-tree",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "serialize-tree",
+   "title": "Packing a Tree Into a Box and Rebuilding It",
+   "subtitle": "Serialise and deserialise a binary tree with preorder and null markers, the level-order alternative, a compact encoding for BSTs, and serialisation as a key for finding duplicate subtrees",
+   "track": "dsa-trees",
+   "track_order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-tree-construction"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "binary tree",
+    "serialization",
+    "preorder",
+    "hashing"
+   ],
+   "complexity": {
+    "time": "O(n) to serialise and to deserialise",
+    "space": "O(n) for the string"
+   },
+   "practice_problems": [
+    {
+     "name": "Construct String from Binary Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/construct-string-from-binary-tree/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Serialize and Deserialize Binary Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Serialize and Deserialize BST",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/serialize-and-deserialize-bst/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Find Duplicate Subtrees",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-duplicate-subtrees/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Serialisation",
+     "definition": "Turning a data structure into a flat string or byte sequence that can be stored or sent and later turned back into the same structure."
+    },
+    {
+     "term": "Deserialisation",
+     "definition": "Rebuilding the original structure from its serialised form."
+    },
+    {
+     "term": "Null marker",
+     "definition": "A symbol such as # written in place of a missing child, which makes a single traversal enough to describe the shape exactly."
+    },
+    {
+     "term": "Token",
+     "definition": "One value or marker in the serialised string, separated from the next by a delimiter such as a comma."
+    },
+    {
+     "term": "Canonical form",
+     "definition": "An encoding where two structures get the same string exactly when they are identical, so the string can serve as a key."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does preorder alone not describe a tree, but preorder with null markers does?",
+     "options": [
+      "It always does",
+      "Without markers you cannot tell where a subtree ends; with them, each subtree's encoding ends exactly when its last null is read",
+      "Markers sort the values",
+      "Because of commas"
+     ],
+     "answer": 1,
+     "explain": "Preorder [1, 2] could mean 2 is a left or a right child. With markers, 1,2,#,#,# and 1,#,2,#,# are different strings."
+    },
+    {
+     "q": "How many null markers does the preorder encoding of a tree with n nodes contain?",
+     "options": [
+      "n − 1",
+      "n",
+      "n + 1",
+      "2n"
+     ],
+     "answer": 2,
+     "explain": "A binary tree with n nodes has n + 1 empty child slots, and each one is written as a marker."
+    },
+    {
+     "q": "Why can a BST be serialised without null markers?",
+     "options": [
+      "BSTs have no empty children",
+      "The ordering rule lets the deserialiser decide where each subtree ends by comparing values with bounds",
+      "BSTs are always complete",
+      "It cannot"
+     ],
+     "answer": 1,
+     "explain": "Rebuilding a BST from preorder with lower and upper bounds needs no markers, because a value outside the current bounds belongs to an ancestor."
+    }
+   ],
+   "cover_seed": "serialize-tree",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.74,
+   "path": "dsa/serialize-tree.md",
+   "hash": "57385a734869",
+   "word_count": 1339,
+   "excerpt": "A tree lives in memory as nodes connected by pointers. Pointers mean nothing on disk or across a network, so to save a tree to a file, send it to another server or cache it, you must turn it into a flat string, and later turn the string back into exactly the same tree. That is serialisation, and…"
+  },
+  {
+   "id": "dsa-max-path-sum",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "max-path-sum",
+   "title": "The Best Ridge Walk Through a Peak",
+   "subtitle": "Binary Tree Maximum Path Sum: return the best one-sided path to the parent, record the best two-sided path at each node, drop negative branches, and handle all-negative trees",
+   "track": "dsa-trees",
+   "track_order": 9,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-tree-recursion"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "binary tree",
+    "tree dp",
+    "post-order",
+    "global best"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(h) recursion"
+   },
+   "practice_problems": [
+    {
+     "name": "Diameter of Binary Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/diameter-of-binary-tree/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Longest Univalue Path",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/longest-univalue-path/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Binary Tree Maximum Path Sum",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/binary-tree-maximum-path-sum/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Path",
+     "definition": "A sequence of nodes where each consecutive pair is joined by an edge and no node repeats. In a tree, a path goes up to some highest node and then down."
+    },
+    {
+     "term": "Peak",
+     "definition": "The highest node of a path, where it turns from going up to going down. Every path has exactly one peak."
+    },
+    {
+     "term": "Gain",
+     "definition": "The best sum of a path that starts at a node and goes straight down one side, the value a node returns to its parent."
+    },
+    {
+     "term": "Two-sided path",
+     "definition": "A path whose peak is the current node and which uses both the left gain and the right gain."
+    },
+    {
+     "term": "Clamping at zero",
+     "definition": "Replacing a negative child gain by 0, which means not extending the path into that child at all."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "At a node with value 3, left gain 0 and right gain 5, what does it return to its parent and what does it record?",
+     "options": [
+      "Returns 8, records 8",
+      "Returns 3 + max(0, 5) = 8 and records 3 + 0 + 5 = 8",
+      "Returns 3, records 5",
+      "Returns 8, records 3"
+     ],
+     "answer": 1,
+     "explain": "The parent can only extend one side, so return value + the better gain. The candidate answer with this node as the peak uses both sides."
+    },
+    {
+     "q": "Why clamp a child's gain at zero?",
+     "options": [
+      "To avoid overflow",
+      "A path does not have to go into a child; if the best downward path there is negative, skipping it is better",
+      "Because node values are positive",
+      "To find the diameter"
+     ],
+     "answer": 1,
+     "explain": "Adding a negative gain only lowers the sum. Treating it as 0 means the path stops at the current node on that side."
+    },
+    {
+     "q": "A tree has one node with value −3. What is its maximum path sum?",
+     "options": [
+      "0",
+      "−3",
+      "3",
+      "Undefined"
+     ],
+     "answer": 1,
+     "explain": "A path must contain at least one node, so the answer is −3. That is why the global best starts at minus infinity, not 0."
+    }
+   ],
+   "cover_seed": "max-path-sum",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.85,
+   "path": "dsa/max-path-sum.md",
+   "hash": "557653a22958",
+   "word_count": 1242,
+   "excerpt": "A hiker looks at a mountain range drawn as a tree of ridges, each point marked with how pleasant it is to walk past, some negative where the ridge is rocky. She wants the single best walk: start anywhere, end anywhere, never retrace a step. The best walk might climb up one ridge to a peak and come…"
   },
   {
    "id": "dsa-heap-basics",

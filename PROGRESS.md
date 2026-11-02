@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 92 | 0 | 60 | 152 | 58/72 |
+| dsa | 94 | 0 | 58 | 152 | 59/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **294** | **0** | **379** | **673** | |
+| **All** | **296** | **0** | **377** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -25,7 +25,6 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### dsa
 
-- [ ] `dsa-max-path-sum` (P0, problem-walkthrough, dsa-trees): Binary Tree Maximum Path Sum
 - [ ] `dsa-nodes-at-distance-k` (P0, problem-walkthrough, dsa-trees): Nodes at Distance K and Burning a Tree
 - [ ] `dsa-top-k-pattern` (P0, pattern, dsa-heaps-greedy): Top K: The Heap of Size K Trick
 - [ ] `dsa-greedy-exchange` (P0, pattern, dsa-heaps-greedy): Greedy Algorithms and the Exchange Argument
@@ -34,7 +33,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-dijkstra` (P0, pattern, dsa-graphs): Dijkstra: Shortest Paths With Weights
 - [ ] `dsa-word-ladder` (P0, problem-walkthrough, dsa-graphs): Word Ladder: BFS on Implicit Graphs
 - [ ] `dsa-islands-variants` (P0, problem-walkthrough, dsa-graphs): Number of Islands and Its Many Variants
-- [ ] `dsa-serialize-tree` (P1, problem-walkthrough, dsa-trees): Serialising and Deserialising a Binary Tree
+- [ ] `dsa-bst-iterator-two-sum` (P1, problem-walkthrough, dsa-trees): BST Iterators and Two Sum in a BST
+- [ ] `dsa-build-bst` (P1, problem-walkthrough, dsa-trees): Building Balanced BSTs From Sorted Data
 
 ### cp
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 92 written</summary>
+<details><summary>dsa: 94 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -159,6 +159,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-word-search` Word Search: Backtracking on a Grid
 - [x] `dsa-generate-parentheses` Generating Valid Parentheses
 - [x] `dsa-combination-sum` Combination Sum and Avoiding Duplicate Combinations
+- [x] `dsa-serialize-tree` Serialising and Deserialising a Binary Tree
+- [x] `dsa-max-path-sum` Binary Tree Maximum Path Sum
 - [x] `dsa-coin-change` Coin Change: Minimum Coins and Number of Ways
 - [x] `dsa-word-break` Word Break: DP Over Prefixes
 - [x] `dsa-house-robber-variants` House Robber and Its Variants
