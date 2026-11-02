@@ -1261,8 +1261,8 @@
    "prerequisites": [
     "dsa-cpp-stl-toolkit"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Complete binary tree in an array",
@@ -1518,8 +1518,8 @@
    "prerequisites": [
     "dsa-cpp-stl-toolkit"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Adjacency list vs matrix",
@@ -1581,8 +1581,8 @@
     "dsa-graph-representation",
     "dsa-recursion-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Recursive and iterative DFS",
@@ -1614,8 +1614,8 @@
    "prerequisites": [
     "dsa-dfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Undirected: visited parent check",
@@ -1680,8 +1680,8 @@
    "prerequisites": [
     "dsa-graph-representation"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Find with path compression",
@@ -3435,8 +3435,8 @@
    "prerequisites": [
     "dsa-dp-1d"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Linear, circular and tree versions",
@@ -4616,8 +4616,8 @@
    "prerequisites": [
     "dsa-knapsack-01"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Count ways instead of yes or no",
