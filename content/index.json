@@ -1,7 +1,7 @@
 {
- "content_version": "287d1bae31e95690",
+ "content_version": "44a91cebaaacc61c",
  "generated_at": "2026-11-02",
- "count": 261,
+ "count": 264,
  "subjects": [
   {
    "id": "ml",
@@ -12348,6 +12348,383 @@
    "hash": "655dfbe53005",
    "word_count": 1548,
    "excerpt": "You are standing on a hillside in fog so thick you can see only the ground under your feet. You want to reach a summit, any summit. You cannot see the whole hill, but you can feel whether the ground rises to your left or to your right. Walk uphill, and you are guaranteed to reach a top. That is the…"
+  },
+  {
+   "id": "dsa-gcd-primes",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "gcd-primes",
+   "title": "Cutting Two Ribbons Into Equal Pieces",
+   "subtitle": "GCD, primes and divisors for interviews: Euclid's algorithm, trial division to the square root, the sieve, and the problems they unlock",
+   "track": "dsa-math",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 6,
+   "topics": [
+    "gcd",
+    "primes",
+    "sieve",
+    "divisors",
+    "number theory"
+   ],
+   "complexity": {
+    "time": "O(log min(a, b)) for gcd, O(√n) for trial division, O(n log log n) for the sieve",
+    "space": "O(1), or O(n) for the sieve"
+   },
+   "practice_problems": [
+    {
+     "name": "Find Greatest Common Divisor of Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-greatest-common-divisor-of-array/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Ugly Number",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/ugly-number/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Greatest Common Divisor of Strings",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/greatest-common-divisor-of-strings/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Simplified Fractions",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/simplified-fractions/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Count Primes",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/count-primes/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Greatest common divisor",
+     "definition": "The largest integer that divides both of two numbers exactly, written gcd(a, b)."
+    },
+    {
+     "term": "Least common multiple",
+     "definition": "The smallest positive integer that both numbers divide exactly. lcm(a, b) = a / gcd(a, b) × b."
+    },
+    {
+     "term": "Euclid's algorithm",
+     "definition": "Computing gcd(a, b) by repeatedly replacing (a, b) with (b, a mod b) until the second number is 0."
+    },
+    {
+     "term": "Prime",
+     "definition": "An integer greater than 1 whose only positive divisors are 1 and itself."
+    },
+    {
+     "term": "Trial division",
+     "definition": "Testing whether n is prime, or factoring it, by trying divisors d = 2, 3, 4, ... only while d × d ≤ n."
+    },
+    {
+     "term": "Sieve of Eratosthenes",
+     "definition": "Finding all primes below n by crossing out the multiples of each prime, starting from its square."
+    },
+    {
+     "term": "Prime factorisation",
+     "definition": "Writing a number as a product of primes, such as 360 = 2³ × 3² × 5, which is unique for every integer above 1."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is gcd(48, 18), and how many steps of Euclid's algorithm does it take?",
+     "options": [
+      "6, three steps",
+      "3, two steps",
+      "6, six steps",
+      "2, one step"
+     ],
+     "answer": 0,
+     "explain": "48 mod 18 = 12, 18 mod 12 = 6, 12 mod 6 = 0. The last non-zero remainder is 6, after three divisions."
+    },
+    {
+     "q": "To test whether n is prime by trial division, which divisors must you try?",
+     "options": [
+      "All d from 2 to n − 1",
+      "All d from 2 to n / 2",
+      "All d with d × d ≤ n",
+      "Only odd d"
+     ],
+     "answer": 2,
+     "explain": "If n = a × b with a ≤ b, then a × a ≤ n. So any factorisation has a factor no bigger than √n, and checking up to √n is enough."
+    },
+    {
+     "q": "How many divisors does 360 = 2³ × 3² × 5 have?",
+     "options": [
+      "6",
+      "10",
+      "24",
+      "30"
+     ],
+     "answer": 2,
+     "explain": "Each divisor picks an exponent of 2 from 0 to 3, of 3 from 0 to 2 and of 5 from 0 to 1: 4 × 3 × 2 = 24 choices."
+    }
+   ],
+   "cover_seed": "gcd-primes",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.85,
+   "path": "dsa/gcd-primes.md",
+   "hash": "a756d7901770",
+   "word_count": 1421,
+   "excerpt": "A tailor has two ribbons, 48 cm and 18 cm long, and wants to cut both into pieces of the same length with nothing left over. Pieces of 1 cm work, and so do 2 and 3, but she wants the longest possible pieces. The answer, 6 cm, is the greatest common divisor, and the method for finding it fast is…"
+  },
+  {
+   "id": "dsa-modular-fast-power",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "modular-fast-power",
+   "title": "Arithmetic on a Clock That Never Overflows",
+   "subtitle": "Why answers are taken mod 1e9+7, the rules that keep numbers small, C++'s negative remainder trap, and computing powers in O(log n) by squaring",
+   "track": "dsa-math",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-gcd-primes",
+    "dsa-bit-basics"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "modular arithmetic",
+    "fast exponentiation",
+    "binary exponentiation",
+    "overflow"
+   ],
+   "complexity": {
+    "time": "O(log n) multiplications for x^n",
+    "space": "O(1) iterative"
+   },
+   "practice_problems": [
+    {
+     "name": "Pow(x, n)",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/powx-n/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Exponentiation",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1095",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Count Good Numbers",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/count-good-numbers/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Super Pow",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/super-pow/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Modulus",
+     "definition": "The number m you divide by; working mod m means keeping only remainders from 0 to m − 1."
+    },
+    {
+     "term": "Modular arithmetic",
+     "definition": "Adding, subtracting and multiplying while keeping only the remainder mod m after each step. The final remainder is the same as if you had computed the huge exact number first."
+    },
+    {
+     "term": "Binary exponentiation",
+     "definition": "Computing x^n by repeatedly squaring x and multiplying the result by the current square whenever the matching bit of n is 1, using O(log n) multiplications."
+    },
+    {
+     "term": "Modular inverse",
+     "definition": "For a modulo a prime p, the number b with a × b ≡ 1 mod p. Dividing by a mod p means multiplying by its inverse."
+    },
+    {
+     "term": "Overflow",
+     "definition": "When a result is too large for its integer type and silently wraps around, giving a wrong value with no error."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In C++, what does -7 % 3 evaluate to, and how do you get a remainder in 0 to 2?",
+     "options": [
+      "2; nothing to fix",
+      "-1; use ((x % m) + m) % m",
+      "1; use abs",
+      "It is undefined"
+     ],
+     "answer": 1,
+     "explain": "C++ division truncates towards zero, so the remainder takes the sign of the dividend: -7 % 3 is -1. Adding m and taking the remainder again gives 2."
+    },
+    {
+     "q": "How many multiplications does binary exponentiation need for x^1000000?",
+     "options": [
+      "About 1,000,000",
+      "About 1,000",
+      "About 40, two per bit of the exponent",
+      "Exactly 1"
+     ],
+     "answer": 2,
+     "explain": "The exponent has about 20 bits, and each bit costs one squaring plus possibly one multiplication, so at most about 40."
+    },
+    {
+     "q": "Why is 1e9 + 7 such a common modulus?",
+     "options": [
+      "It is a power of two",
+      "It is prime, fits in a 32-bit int, and the product of two remainders fits in a 64-bit integer",
+      "It makes all answers even",
+      "It is the largest prime"
+     ],
+     "answer": 1,
+     "explain": "Being prime allows division through modular inverses, and (1e9 + 6)² is about 10¹⁸, below the 64-bit limit of about 9.2 × 10¹⁸."
+    }
+   ],
+   "cover_seed": "modular-fast-power",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.85,
+   "path": "dsa/modular-fast-power.md",
+   "hash": "c9850dd1b5fc",
+   "word_count": 1423,
+   "excerpt": "\"Return the answer modulo 10⁹ + 7\" appears in hundreds of problems. The true answer may have thousands of digits, and computing it first overflows long before the end. Done properly, you never hold a number bigger than about 10¹⁸. The same problems often need a power like 5 to the 10¹⁵. Repeated…"
+  },
+  {
+   "id": "dsa-combinatorics-basics",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "combinatorics-basics",
+   "title": "Picking the Team, Then the Batting Order",
+   "subtitle": "Counting for interviews: permutations versus combinations, Pascal's triangle, nCr modulo a prime, stars and bars, and Catalan numbers",
+   "track": "dsa-math",
+   "track_order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-modular-fast-power"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "combinatorics",
+    "binomial coefficients",
+    "pascal's triangle",
+    "catalan numbers"
+   ],
+   "complexity": {
+    "time": "O(n) precomputation, O(1) per nCr query mod p",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Pascal's Triangle",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/pascals-triangle/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Unique Paths",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/unique-paths/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Count Sorted Vowel Strings",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/count-sorted-vowel-strings/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Unique Binary Search Trees",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/unique-binary-search-trees/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Binomial Coefficients",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1079",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Permutation",
+     "definition": "An ordered selection. The number of ways to pick r of n distinct items in order is nPr = n! / (n − r)!."
+    },
+    {
+     "term": "Combination",
+     "definition": "An unordered selection. The number of ways to choose r of n items is nCr = n! / (r! (n − r)!), also written C(n, r)."
+    },
+    {
+     "term": "Pascal's rule",
+     "definition": "C(n, r) = C(n − 1, r − 1) + C(n − 1, r): either a particular item is chosen or it is not."
+    },
+    {
+     "term": "Factorial",
+     "definition": "n! = 1 × 2 × ... × n, the number of ways to order n distinct items. 0! is 1."
+    },
+    {
+     "term": "Stars and bars",
+     "definition": "Counting ways to split n identical items into k groups, which is C(n + k − 1, k − 1)."
+    },
+    {
+     "term": "Catalan number",
+     "definition": "The sequence 1, 1, 2, 5, 14, 42, ... with C(2n, n) / (n + 1) as its n-th term, counting balanced bracket strings, binary search tree shapes and many other structures."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "From a squad of 11, how many ways are there to pick 3 players, and how many to pick 3 and also decide who bats first, second and third?",
+     "options": [
+      "165 and 990",
+      "990 and 165",
+      "33 and 165",
+      "165 and 1331"
+     ],
+     "answer": 0,
+     "explain": "Ordered picks: 11 × 10 × 9 = 990. Each unordered group of 3 appears in 3! = 6 orders, so there are 990 / 6 = 165 groups."
+    },
+    {
+     "q": "How many paths does a robot have from the top-left to the bottom-right of a 3 by 7 grid, moving only right or down?",
+     "options": [
+      "21",
+      "28",
+      "36",
+      "84"
+     ],
+     "answer": 1,
+     "explain": "Every path is 8 moves, 2 of them down and 6 right. Choosing which 2 moves are down gives C(8, 2) = 28."
+    },
+    {
+     "q": "Why compute nCr mod p with precomputed factorials and inverse factorials instead of dividing?",
+     "options": [
+      "Division is slow",
+      "Remainders cannot be divided directly, so the division by r!(n − r)! becomes multiplication by modular inverses",
+      "Factorials are always small",
+      "It avoids Pascal's triangle"
+     ],
+     "answer": 1,
+     "explain": "Modulo a prime, dividing by x means multiplying by x's inverse. Precomputing inverse factorials makes every nCr two multiplications."
+    }
+   ],
+   "cover_seed": "combinatorics-basics",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.8,
+   "path": "dsa/combinatorics-basics.md",
+   "hash": "02f85860dea2",
+   "word_count": 1640,
+   "excerpt": "A robot sits in the top-left corner of a grid and may only move right or down. How many different routes reach the bottom-right corner? You could write a recursion, or a DP table, or you could notice that every route is just a choice of which moves go down, and write the answer in one line.…"
   },
   {
    "id": "dsa-linked-list-basics",

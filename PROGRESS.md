@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 59 | 0 | 93 | 152 | 45/72 |
+| dsa | 62 | 0 | 90 | 152 | 48/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **261** | **0** | **412** | **673** | |
+| **All** | **264** | **0** | **409** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -25,7 +25,6 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### dsa
 
-- [ ] `dsa-gcd-primes` (P0, pattern, dsa-math): GCD, Primes and Divisors for Interviews
 - [ ] `dsa-queue-deque` (P0, pattern, dsa-linear): Queues and Deques: Sliding Window Maximum
 - [ ] `dsa-largest-rectangle` (P0, problem-walkthrough, dsa-linear): Largest Rectangle in a Histogram
 - [ ] `dsa-linked-list-classics` (P0, problem-walkthrough, dsa-linear): Linked List Classics: Intersection, Palindrome and Add Two Numbers
@@ -35,6 +34,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-greedy-exchange` (P0, pattern, dsa-heaps-greedy): Greedy Algorithms and the Exchange Argument
 - [ ] `dsa-meeting-rooms` (P0, problem-walkthrough, dsa-heaps-greedy): How Many Meeting Rooms Do You Need?
 - [ ] `dsa-topological-sort` (P0, pattern, dsa-graphs): Topological Sort: Ordering Tasks With Dependencies
+- [ ] `dsa-dijkstra` (P0, pattern, dsa-graphs): Dijkstra: Shortest Paths With Weights
 
 ### cp
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 59 written</summary>
+<details><summary>dsa: 62 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -144,6 +144,9 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-coin-change` Coin Change: Minimum Coins and Number of Ways
 - [x] `dsa-word-break` Word Break: DP Over Prefixes
 - [x] `dsa-house-robber-variants` House Robber and Its Variants
+- [x] `dsa-gcd-primes` GCD, Primes and Divisors for Interviews
+- [x] `dsa-modular-fast-power` Modular Arithmetic and Fast Power
+- [x] `dsa-combinatorics-basics` Counting Basics: nCr, Pascal and Catalan
 - [x] `dsa-dutch-national-flag` Sort Colors: The Dutch National Flag in One Pass
 - [x] `dsa-majority-and-rearrange` Rearranging Arrays In Place
 - [x] `dsa-ordered-set-windows` Ordered Sets in Sliding Windows
