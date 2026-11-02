@@ -1,7 +1,7 @@
 {
- "content_version": "ea2ff3b3291248f6",
+ "content_version": "4bcb1f454b9e8ecd",
  "generated_at": "2026-11-02",
- "count": 256,
+ "count": 259,
  "subjects": [
   {
    "id": "ml",
@@ -11608,6 +11608,384 @@
    "hash": "390ebf7a4ffa",
    "word_count": 935,
    "excerpt": "\"Find the two numbers in this list that are closest together.\" The brute force compares every pair: about n²/2 comparisons. Now sort the list first. The closest pair is suddenly sitting side by side, and one pass finds it. You rarely need to write a sorting algorithm in an interview. What you need…"
+  },
+  {
+   "id": "dsa-merge-sort-inversions",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "merge-sort-inversions",
+   "title": "Merging Two Piles of Exam Papers",
+   "subtitle": "Merge sort from the merge step up, and how the same merge counts inversions, smaller elements after each position and reverse pairs in O(n log n)",
+   "track": "dsa-search-sort",
+   "track_order": 4,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-sorting-as-tool",
+    "dsa-recursion-basics"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "merge sort",
+    "divide and conquer",
+    "inversions",
+    "sorting"
+   ],
+   "complexity": {
+    "time": "O(n log n)",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Sort an Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sort-an-array/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Merge Sorted Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/merge-sorted-array/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Sort List",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sort-list/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Count of Smaller Numbers After Self",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/count-of-smaller-numbers-after-self/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Reverse Pairs",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/reverse-pairs/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Merge",
+     "definition": "Combining two sorted lists into one sorted list by repeatedly taking the smaller of the two front elements."
+    },
+    {
+     "term": "Divide and conquer",
+     "definition": "Solving a problem by splitting it into smaller copies of itself, solving those recursively and combining their answers."
+    },
+    {
+     "term": "Inversion",
+     "definition": "A pair of positions i < j with a[i] > a[j]: two elements that are in the wrong order relative to each other."
+    },
+    {
+     "term": "Cross inversion",
+     "definition": "An inversion whose larger element is in the left half and smaller element in the right half, counted during the merge."
+    },
+    {
+     "term": "Stable sort",
+     "definition": "A sort that keeps equal elements in their original relative order. Merge sort is stable if ties take from the left half."
+    },
+    {
+     "term": "Recurrence",
+     "definition": "An equation that describes the running time of a recursive algorithm in terms of smaller inputs, such as T(n) = 2T(n/2) + n."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "While merging left [3, 5] and right [1, 4, 8], the merge takes 1 from the right. How many inversions does that step count?",
+     "options": [
+      "0",
+      "1",
+      "2",
+      "3"
+     ],
+     "answer": 2,
+     "explain": "Every element still waiting in the left half, here 3 and 5, is larger than 1 and sits before it in the original array. So 2 inversions are counted at once."
+    },
+    {
+     "q": "Why is merge sort O(n log n)?",
+     "options": [
+      "Each merge is O(log n)",
+      "The array is halved about log n times, and all the merges on one level together touch n elements",
+      "It compares every pair once",
+      "It only works on small arrays"
+     ],
+     "answer": 1,
+     "explain": "There are about log₂ n levels of halving, and each level's merges process n elements in total, giving n × log n."
+    },
+    {
+     "q": "In Reverse Pairs, why count the pairs with a[i] > 2 · a[j] in a separate pass before merging?",
+     "options": [
+      "Because the merge order and the counting condition differ, so the merge comparisons cannot do the counting",
+      "To save memory",
+      "Because the halves are unsorted",
+      "It is not necessary"
+     ],
+     "answer": 0,
+     "explain": "The merge compares a[i] with a[j], but the condition compares a[i] with 2 · a[j]. Two pointers over the two sorted halves count the condition first, then a normal merge sorts."
+    }
+   ],
+   "cover_seed": "merge-sort-inversions",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.8,
+   "path": "dsa/merge-sort-inversions.md",
+   "hash": "9e6ff1abff2a",
+   "word_count": 1605,
+   "excerpt": "Two teachers have each sorted their stack of exam papers by roll number, and now the office needs one sorted stack. Nobody re-sorts from scratch. You put both stacks face up, look at the two top papers, take the smaller one, and repeat. A few seconds later the combined stack is sorted. That one…"
+  },
+  {
+   "id": "dsa-quickselect",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "quickselect",
+   "title": "Finding the Median Without Sorting the Crowd",
+   "subtitle": "Quickselect: partition around a pivot, keep only the side that holds the answer, and find the k-th element in expected O(n)",
+   "track": "dsa-search-sort",
+   "track_order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-sorting-as-tool"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "quickselect",
+    "partition",
+    "selection",
+    "randomised algorithms"
+   ],
+   "complexity": {
+    "time": "O(n) expected, O(n²) worst case",
+    "space": "O(1) extra for the iterative version"
+   },
+   "practice_problems": [
+    {
+     "name": "Kth Largest Element in an Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/kth-largest-element-in-an-array/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "K Closest Points to Origin",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/k-closest-points-to-origin/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Top K Frequent Elements",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/top-k-frequent-elements/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Find the Kth Largest Integer in the Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-the-kth-largest-integer-in-the-array/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Selection problem",
+     "definition": "Finding the element that would sit at position k if the array were sorted, without necessarily sorting it."
+    },
+    {
+     "term": "Pivot",
+     "definition": "The element an array is partitioned around: smaller elements go to its left and larger ones to its right."
+    },
+    {
+     "term": "Partition",
+     "definition": "Rearranging a range so every element left of the pivot's final position is smaller and every element right of it is not smaller."
+    },
+    {
+     "term": "Expected time",
+     "definition": "The average running time over the algorithm's random choices, here the random pivots, for any fixed input."
+    },
+    {
+     "term": "nth_element",
+     "definition": "A C++ standard library function that rearranges a range so the element at position k is the one sorted order would put there, with smaller ones before it and larger ones after."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "After partitioning, the pivot lands at index 3, and you want index 4. What does quickselect do next?",
+     "options": [
+      "Recurse on both sides",
+      "Recurse only on the part to the right of index 3",
+      "Sort the whole array",
+      "Return the pivot"
+     ],
+     "answer": 1,
+     "explain": "Everything left of the pivot is smaller, so index 4 must be on the right. Quickselect throws the left part away, which is what makes it faster than quicksort."
+    },
+    {
+     "q": "Why is quickselect O(n) on average while quicksort is O(n log n)?",
+     "options": [
+      "It uses a better pivot",
+      "It recurses into only one side, so the work shrinks like n + n/2 + n/4 + ..., which is at most about 2n",
+      "It skips the partition step",
+      "It only works on small arrays"
+     ],
+     "answer": 1,
+     "explain": "Quicksort must sort both sides at every level. Quickselect keeps one side, so the sizes form a shrinking series that sums to a constant times n."
+    },
+    {
+     "q": "What makes quickselect hit its O(n²) worst case?",
+     "options": [
+      "Duplicate values only",
+      "Pivots that are always the smallest or largest element, such as always choosing the last element of a sorted array",
+      "Using random pivots",
+      "Arrays of odd length"
+     ],
+     "answer": 1,
+     "explain": "If each partition removes only the pivot, the range shrinks by one per step. Random pivots make this extremely unlikely."
+    }
+   ],
+   "cover_seed": "quickselect",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.8,
+   "path": "dsa/quickselect.md",
+   "hash": "6df5335b9b50",
+   "word_count": 1556,
+   "excerpt": "A thousand students stand on a field, and the coach wants the student of median height. One way is to line everyone up by height, which is a full sort. There is a lazier way. Pick any student, send everyone shorter to the left and everyone taller to the right, and count. If 600 people went left,…"
+  },
+  {
+   "id": "dsa-counting-bucket-sort",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "counting-bucket-sort",
+   "title": "Sorting Mail Into Pigeonholes",
+   "subtitle": "Counting sort, radix sort and bucket sort: how small value ranges and digit-by-digit passes beat the n log n limit, and the pigeonhole trick behind Maximum Gap",
+   "track": "dsa-search-sort",
+   "track_order": 6,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-sorting-as-tool"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "counting sort",
+    "radix sort",
+    "bucket sort",
+    "pigeonhole principle"
+   ],
+   "complexity": {
+    "time": "O(n + k) for counting sort, O(d · (n + b)) for radix sort",
+    "space": "O(n + k)"
+   },
+   "practice_problems": [
+    {
+     "name": "Sort Colors",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sort-colors/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Relative Sort Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/relative-sort-array/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "H-Index",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/h-index/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Sort Characters By Frequency",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sort-characters-by-frequency/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Top K Frequent Elements",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/top-k-frequent-elements/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Maximum Gap",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/maximum-gap/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Comparison sort",
+     "definition": "A sort that learns about the order only by comparing pairs of elements, such as merge sort or quicksort. No comparison sort can beat about n log n comparisons in the worst case."
+    },
+    {
+     "term": "Counting sort",
+     "definition": "Sorting integers from a small range by counting how many times each value occurs, then writing the values back out in order."
+    },
+    {
+     "term": "Radix sort",
+     "definition": "Sorting numbers one digit at a time, from the least significant digit to the most, using a stable counting sort for each digit."
+    },
+    {
+     "term": "Bucket sort",
+     "definition": "Spreading values into buckets that each cover a slice of the range, sorting each small bucket, then concatenating."
+    },
+    {
+     "term": "Pigeonhole principle",
+     "definition": "If more items than boxes are placed into boxes, some box holds at least two items; and if n items are spread over n − 1 gaps, some gap is at least average."
+    },
+    {
+     "term": "Stable",
+     "definition": "Keeping equal keys in their original order, which radix sort relies on so earlier digit passes are not undone."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "When is counting sort a good choice?",
+     "options": [
+      "When values are arbitrary 64-bit integers",
+      "When values are integers in a range k that is not much bigger than n",
+      "When values are strings of any length",
+      "Never, it is always slower than quicksort"
+     ],
+     "answer": 1,
+     "explain": "Counting sort costs O(n + k) time and O(k) memory for the counts. With k close to n it is linear; with k in the billions the count array is impossible."
+    },
+    {
+     "q": "Why must each pass of an LSD radix sort be stable?",
+     "options": [
+      "To save memory",
+      "So the order produced by earlier, less significant digits survives when later digits are equal",
+      "Because digits are small",
+      "It does not need to be stable"
+     ],
+     "answer": 1,
+     "explain": "When two numbers share the current digit, their relative order must still reflect the lower digits sorted earlier. An unstable pass would scramble it."
+    },
+    {
+     "q": "In Maximum Gap, why can the answer never come from two numbers inside the same bucket?",
+     "options": [
+      "Buckets are sorted",
+      "Bucket width is at most the average gap, and the largest gap is at least the average, so a gap inside one bucket can be at most as large as one that crosses buckets",
+      "Each bucket holds one number",
+      "Because of hashing"
+     ],
+     "answer": 1,
+     "explain": "The pigeonhole principle guarantees the maximum gap is at least (max − min) / (n − 1). Making buckets no wider than that means the maximum gap can always be found between neighbouring non-empty buckets."
+    }
+   ],
+   "cover_seed": "counting-bucket-sort",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.65,
+   "path": "dsa/counting-bucket-sort.md",
+   "hash": "068fe5cd019e",
+   "word_count": 1624,
+   "excerpt": "A post office sorts letters by PIN code all day. Nobody there compares two envelopes and asks which comes first. Each letter goes straight into the pigeonhole for its code, and at the end the pigeonholes are emptied in order. Thousands of letters, no comparisons, and the result is sorted. Every…"
   },
   {
    "id": "dsa-rotated-array-search",

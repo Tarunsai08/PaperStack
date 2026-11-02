@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 54 | 0 | 98 | 152 | 45/72 |
+| dsa | 57 | 0 | 95 | 152 | 45/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **256** | **0** | **417** | **673** | |
+| **All** | **259** | **0** | **414** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 54 written</summary>
+<details><summary>dsa: 57 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -109,6 +109,9 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-binary-search` Binary Search, Done Right Every Time
 - [x] `dsa-binary-search-answer` Binary Search on the Answer
 - [x] `dsa-sorting-as-tool` Sorting as a Superpower
+- [x] `dsa-merge-sort-inversions` Merge Sort and Counting Inversions
+- [x] `dsa-quickselect` Quickselect: The k-th Element Without Sorting Everything
+- [x] `dsa-counting-bucket-sort` Counting and Bucket Sort: Beating n log n
 - [x] `dsa-linked-list-basics` Linked Lists: Pointer Surgery Made Safe
 - [x] `dsa-fast-slow-pointers` Fast and Slow Pointers: The Tortoise and the Hare
 - [x] `dsa-stack-patterns` Stacks: Matching, Undo and Expression Parsing

@@ -580,8 +580,8 @@
     "dsa-sorting-as-tool",
     "dsa-recursion-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Divide, sort halves, merge",
@@ -612,8 +612,8 @@
    "prerequisites": [
     "dsa-sorting-as-tool"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Partition around a pivot",
@@ -645,8 +645,8 @@
    "prerequisites": [
     "dsa-sorting-as-tool"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Small value ranges allow counting",
