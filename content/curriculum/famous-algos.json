@@ -1426,8 +1426,8 @@
    "prerequisites": [
     "famous-algos-lz77"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Two stages",
@@ -1459,8 +1459,8 @@
    "prerequisites": [
     "famous-algos-lz77"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Sort all rotations",
@@ -1524,8 +1524,8 @@
    "prerequisites": [
     "dsa-bit-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "7 bits per byte with continuation",
@@ -1554,8 +1554,8 @@
    "prerequisites": [
     "dsa-bit-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Polynomial division over bits",
@@ -1584,8 +1584,8 @@
    "prerequisites": [
     "famous-algos-crc"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Parity bits at powers of two",
@@ -1616,8 +1616,8 @@
    "prerequisites": [
     "famous-algos-hamming-codes"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Data as polynomial values",
