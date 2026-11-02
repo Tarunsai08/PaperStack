@@ -1,234 +1,173 @@
 ---
-id: paper-large-language-models-are-zero-shot-reasoners
-kind: paper
+id: "paper-large-language-models-are-zero-shot-reasoners"
+kind: "paper"
 subject: "ml"
-slug: large-language-models-are-zero-shot-reasoners
-title: The Magic Words for Machine Logic
-subtitle: How four words unlocked multi-step reasoning without a single example
+slug: "large-language-models-are-zero-shot-reasoners"
+title: "Five Words That Made Models Show Their Working"
+subtitle: "Zero-shot chain of thought: no examples, just a nudge to reason before answering"
 track: "useful-llms"
 track_order: 7
-prerequisites:
-- paper-gpt-3
-- paper-instructgpt
-- paper-chain-of-thought
-difficulty: intermediate
-read_minutes: 7
-topics:
-- chain-of-thought
-- reasoning
-- prompt-engineering
-- zero-shot-learning
-paper_title: Large Language Models are Zero-Shot Reasoners
-authors:
-- Takeshi Kojima
-- Shi-Xiang Gu
-- Machel Reid
-- et al.
+prerequisites: ["paper-gpt-3", "paper-instructgpt", "paper-chain-of-thought"]
+difficulty: "intermediate"
+read_minutes: 8
+topics: ["chain of thought", "reasoning", "prompting", "zero-shot learning"]
+paper_title: "Large Language Models are Zero-Shot Reasoners"
+authors: ["Takeshi Kojima", "Shixiang Shane Gu", "Machel Reid", "Yutaka Matsuo", "Yusuke Iwasawa"]
 year: 2022
-venue: Neural Information Processing Systems
-paper_url: https://arxiv.org/abs/2205.11916
+venue: "NeurIPS"
+paper_url: "https://arxiv.org/abs/2205.11916"
 glossary:
-- term: Zero-shot-CoT
-  definition: A two-stage zero-shot prompting strategy that coaxes an LLM to generate an intermediate rationale before extracting the final answer.
-- term: Chain of Thought (CoT)
-  definition: A sequence of natural language intermediate reasoning steps produced before outputting the final answer.
-- term: System-2 Reasoning
-  definition: Slow, deliberate, multi-step logical thinking, contrasted with immediate associative pattern-matching.
-- term: Answer Cleansing
-  definition: A rule-based parsing step that extracts the final target output from raw model generations.
+  - term: "Zero-shot prompting"
+    definition: "Asking a model to do a task with only an instruction or question, and no worked examples in the prompt."
+  - term: "Few-shot chain of thought"
+    definition: "Prompting with a handful of hand-written examples that show step-by-step reasoning before their answers, so the model imitates the style."
+  - term: "Zero-shot-CoT"
+    definition: "The paper's method: add a trigger such as Let's think step by step, let the model write its reasoning, then ask a second time for the final answer."
+  - term: "Trigger phrase"
+    definition: "A short fixed piece of text added to the prompt to steer what kind of continuation the model writes."
+  - term: "Answer extraction"
+    definition: "The second prompt in Zero-shot-CoT, which feeds the reasoning back and asks for the answer in a fixed format, followed by a simple parser that pulls it out."
 quiz:
-- q: Why does Zero-shot-CoT split the interaction into two prompting stages?
-  options:
-  - The first extracts an unconstrained step-by-step rationale, and the second pulls a clean final answer from that text.
-  - The first validates question grammar, and the second runs Python code.
-  - The first runs on a small language model, and the second queries a 540B model.
-  - The first generates multiple choice options, and the second selects one at random.
-  answer: 0
-  explain: Stage one asks for intermediate reasoning without worrying about exact formatting. Stage two appends the reasoning and asks the model to isolate the final answer value.
-- q: Which trigger phrase produced the highest accuracy on the MultiArith dataset?
-  options:
-  - First,
-  - Let's think about this logically.
-  - Let's think step by step.
-  - The answer is after the proof.
-  answer: 2
-  explain: Let's think step by step reached 78.7% accuracy on MultiArith with text-davinci-002, outperforming all other tested phrases.
-- q: How did Zero-shot-CoT behave as language models grew larger?
-  options:
-  - Accuracy degraded because larger models suffer from distraction.
-  - Performance remained flat across all model sizes, just like direct answering.
-  - Accuracy only improved on models with fewer than 10 billion parameters.
-  - Performance leaped dramatically on 100B+ parameter models, breaking the flat scaling curve.
-  answer: 3
-  explain: Direct zero-shot answering stayed flat even as models scaled up, but Zero-shot-CoT unlocked sharp performance gains on large models like PaLM 540B and InstructGPT.
-cover_seed: large-language-models-are-zero-shot-reasoners
-generated_by: gemini-gemini-flash-latest
-generated_at: '2026-10-31'
+  - q: "What makes Zero-shot-CoT different from the original chain-of-thought prompting?"
+    options: ["It fine-tunes the model on reasoning data", "It needs no hand-written reasoning examples, only a generic trigger phrase", "It uses a smaller model", "It samples many answers and votes"]
+    answer: 1
+    explain: "Original chain-of-thought prompting needs a few hand-written worked examples per task. Zero-shot-CoT uses the same short trigger for every task."
+  - q: "Why does the method use a second prompt after the reasoning?"
+    options: ["To check the reasoning for mistakes", "To translate the answer", "To get the final answer in a fixed, easy-to-parse format", "To make the reasoning longer"]
+    answer: 2
+    explain: "Free-form reasoning can end in many ways. The second prompt, such as Therefore, the answer (arabic numerals) is, makes the model state the answer cleanly so a simple parser can read it."
+  - q: "According to the paper, how did the benefit of Zero-shot-CoT change with model size?"
+    options: ["It helped small models most", "It helped all sizes equally", "It helped little in small models and a lot in large ones", "It hurt large models"]
+    answer: 2
+    explain: "The gains grew with scale: small models barely improved, while large models such as text-davinci-002 and PaLM 540B improved sharply."
+cover_seed: "large-language-models-are-zero-shot-reasoners"
+generated_by: "claude-revised"
+generated_at: "2026-11-02"
 importance_score: 0.79
 ---
 
 ## The hook
 
-Give a large language model a multi-step arithmetic problem and ask it directly for the answer, and it fails miserably. For months, the AI community believed you had to handcraft careful demonstrations to teach models how to reason. Then a team of researchers appended four words to the prompt: *Let's think step by step*. Without a single worked example, accuracy on a classic grade-school arithmetic benchmark jumped from under 18% to nearly 79%.
+In early 2022, getting a language model to solve a word problem meant writing a few worked solutions by hand and pasting them into the prompt. A different set of worked examples for maths, another for logic puzzles, another for dates.
+
+Then a team from the University of Tokyo and Google tried something almost too simple. They wrote no examples at all and added one line before the answer: "Let's think step by step." On one arithmetic benchmark, accuracy went from 17.7% to 78.7%. How can five words do that?
 
 ## Before you start
 
-To get the most out of this article, make sure you understand:
-- How models generate text from prompts, covered in [Just Show It a Few Examples](article:paper-gpt-3).
-- How models learn to follow instructions, covered in [How a Text Predictor Learned to Be Helpful](article:paper-instructgpt).
-- Why worked examples help models solve word problems, covered in [Show Your Working: The Prompt That Unlocked Reasoning](article:paper-chain-of-thought).
+You should know how [GPT-3](article:paper-gpt-3) continues a prompt one token at a time, how [InstructGPT](article:paper-instructgpt) was trained to follow instructions, and the idea behind [chain-of-thought prompting](article:paper-chain-of-thought): showing worked examples makes a model write its own steps.
 
 ## The world before this paper
 
-In early 2022, everyone knew large language models were amazing wordsmiths but terrible logicians. If you asked a model a factual question like "What is the capital of Kenya?", it answered instantly. But if you gave it a two-step puzzle—like calculating the number of tennis balls left in a bucket after several rounds of practice—the model guessed blindly and almost always missed.
+Large models were good at many tasks with [[zero-shot prompting]], where you simply ask. Multi-step reasoning was the weak spot. Ask "how many are left after these three operations?" and the model often wrote a number straight away, usually the wrong one.
 
-The common diagnosis was that neural networks only perform fast, intuitive pattern matching. Cognitive psychologists call this System-1 thinking: split-second intuition without deliberate analysis. In contrast, multi-step math or logic requires slow, deliberate calculation, known as [[System-2 Reasoning]]. Because language models output one token after another, predicting the final answer right away forced them to compute the entire multi-step solution in a single forward pass.
+[[Few-shot chain of thought]] fixed much of that. You give the model a few examples whose answers show the working, and it imitates that style on the new question. But someone has to write those examples, and good ones for maths do not transfer well to, say, tracking a coin through flips.
 
 :::history
-When researchers realized this, the initial breakthrough came from Jason Wei and his colleagues in early 2022. They introduced [[Chain of Thought (CoT)|Chain of Thought]] prompting. By providing several few-shot exemplars that wrote out intermediate reasoning steps, they demonstrated that huge models like PaLM could solve tough word problems. But everyone drew the same conclusion from that paper: the model only reasoned because human engineers painstakingly taught it how via in-context demonstrations.
+Takeshi Kojima, Shixiang Shane Gu, Machel Reid, Yutaka Matsuo and Yusuke Iwasawa posted the paper in May 2022, and it appeared at NeurIPS 2022. The common belief was that the worked examples were teaching the model to reason. The authors suspected the ability was already there, and that the examples mostly changed what kind of text the model thought should come next.
 :::
-
-Because few-shot prompts worked so well, researchers treated in-context demonstrations as an absolute necessity. Nobody even bothered to measure whether a model could generate reasoning chains on its own, without examples.
 
 ## The big idea
 
-The authors suspected that the capacity for logical deduction was not created by few-shot demonstrations. Instead, that reasoning capacity was already sitting dormant inside pretrained language models.
-
-When you ask a model a question and immediately follow it with "The answer is:", you force it to compress an entire deduction into the very next word. But if you alter the conversational context so the most natural continuation is an explanation, the model happily generates its own scratchpad.
-
 :::analogy
-Asking an LLM for an immediate answer is like demanding that a student solve a three-step algebra problem entirely in their head in two seconds. They will panic and blurt out an incorrect guess. Adding *Let's think step by step* is like handing that student a blank sheet of scratch paper and asking them to show their work first.
+Picture an exam hall. A student who must write the final answer straight into a small box guesses on the hard questions. Give the same student a rough sheet and say "work it out first", and they write the steps, catch the carry, and get it right. Then, at the end, they copy the result neatly into the answer box.
 :::
 
-The authors called this approach [[Zero-shot-CoT]]. It requires zero demonstrations, zero fine-tuning, and zero task-specific customization. A single universal sentence unlocks latent reasoning across math, symbolic logic, and planning.
+[[Zero-shot-CoT]] does exactly this. The [[trigger phrase]] "Let's think step by step" is the rough sheet. It makes an explanation the most natural continuation, so the model writes intermediate steps instead of jumping to a number. A second prompt is the answer box: it asks for the final result in a fixed format.
+
+Why would writing steps help? A language model produces each token from what came before. If the next token must be the final number, the whole calculation has to happen inside one prediction. If the model first writes "one third of 24 is 8", that 8 is now on the page, and the next step only needs to build on it. Each written step turns a hard jump into a short hop.
+
+:::insight
+The reasoning ability was already in the large models. The trigger did not teach anything new; it changed which continuation was most likely, so the model spent tokens working the problem out before committing to an answer.
+:::
 
 ## How it works
 
-To make zero-shot reasoning work reliably, you cannot just tell the model to think and hope it ends its monologue with a tidy final number. Kojima and his team designed an elegant two-stage pipeline.
-
 ```mermaid
 flowchart TD
-    Q[Input Question] --> S1[Stage 1 Prompt Add Lets think step by step]
-    S1 --> R[LLM Generates Reasoning Chain]
-    R --> S2[Stage 2 Prompt Append Reasoning and Answer Trigger]
-    S2 --> A[LLM Outputs Final Answer String]
-    A --> P[Answer Cleansing Parser]
-    P --> F[Final Extracted Prediction]
+  A[Question] --> B[Add Lets think step by step]
+  B --> C[Model writes its reasoning]
+  C --> D[Add the answer prompt]
+  D --> E[Model states the answer]
+  E --> F[Parser reads the answer]
 ```
 
-### Stage 1: Reasoning extraction
+### Stage 1: reasoning on the rough sheet
 
-First, the system wraps the user's question with a trigger phrase designed to elicit an intermediate explanation:
+The prompt is the question, then "A: Let's think step by step." The model continues freely. Here is the kind of trace you hope for, on our own example problem:
 
-```text
-Q: A juggler can juggle 16 balls. Half of the balls are golf balls,
-and half of the golf balls are blue. How many blue golf balls are there?
-A: Let's think step by step.
-```
+| Step | What the model writes | Running value |
+|---|---|---|
+| Question | A shop has 24 cupcakes. A customer buys a third of them. The baker then makes 6 more. How many are there now? | |
+| 1 | A third of 24 is 24 ÷ 3 = 8. | 8 sold |
+| 2 | After the sale, 24 − 8 = 16 are left. | 16 |
+| 3 | The baker adds 6, so 16 + 6 = 22. | 22 |
 
-The language model takes this prompt and generates a stream of tokens using greedy decoding. Because the prompt sets up the tone of an educator working through a problem, the model writes out the intermediate logic:
+Each line needs only one small operation. Asked for the answer directly, the model would have to do all three inside a single next-token prediction.
 
-```text
-There are 16 balls in total. Half of the balls are golf balls.
-That means that there are 8 golf balls. Half of the golf balls are blue.
-That means that there are 4 blue golf balls.
-```
+### Stage 2: copying into the answer box
 
-### Stage 2: Answer extraction
+Free-form reasoning can end anywhere: "so there are 22", "22 cupcakes in total", or it may keep chatting. So the method runs a second prompt. It takes the question, the trigger and the generated reasoning, and appends an answer prompt suited to the task. For numbers the paper uses "Therefore, the answer (arabic numerals) is". The model continues with something short like "22."
 
-Now we have a great explanation, but the model has not delivered a crisp, machine-readable answer yet. If an automated grading script checks the text, parsing where the answer lives inside a conversational paragraph is messy.
+### Stage 3: reading the box
 
-To solve this, the pipeline feeds the generated reasoning back into the model alongside an answer extraction trigger:
+A small rule-based parser then pulls out the answer: the first number for arithmetic tasks, or the first option letter for multiple choice. This [[answer extraction]] step matters for scoring. Without it, a correct answer buried in a sentence could be marked wrong.
 
-```text
-[Question + Stage 1 Prompt + Generated Reasoning]
-Therefore, the answer (arabic numerals) is
-```
+| Raw output after the answer prompt | Task type | Parsed answer |
+|---|---|---|
+| 22. | number | 22 |
+| 22 cupcakes are left in the shop. | number | 22 |
+| (C) 22 | multiple choice | C |
 
-When prompted with this completion, the model completes the thought with a simple token: `4`.
-
-### Answer cleansing
-
-Finally, the authors apply a tiny deterministic parser called [[Answer Cleansing]]. If the task requires a number, the parser scans the Stage 2 output and picks out the first sequence of digits. If the task is multiple choice, it grabs the first uppercase option letter (such as A through E). This eliminates trailing punctuation, stray conversational filler, and formatting quirks.
+Notice that the same trigger and the same two-stage recipe are used for every task. Only the format hint in the answer prompt changes. That is what "zero-shot" means here: no task-specific examples at all.
 
 :::try-this
-Take this word problem: *"A bakery has 24 cupcakes. A customer buys 1/3 of them. Then the baker bakes 6 more. How many cupcakes are in the bakery?"*
-Try answering it by directly guessing the final number in one second. Now write out:
-1. One third of 24 is 8.
-2. 24 minus 8 is 16.
-3. 16 plus 6 is 22.
-Notice how each small sentence turns a hard three-step mental calculation into three trivial one-step calculations. That is exactly what the model does token by token.
-:::
-
-## What they found
-
-The results sent shockwaves through the community. On the MultiArith benchmark, standard zero-shot prompting on InstructGPT achieved an accuracy of only 17.7%. Appending the simple phrase *Let's think step by step* boosted that score to 78.7%.
-
-On the challenging GSM8K grade-school math benchmark, standard zero-shot accuracy sat at 10.4%. With Zero-shot-CoT, it leaped to 40.7%.
-
-```
-MultiArith Accuracy (InstructGPT text-davinci-002)
-Standard Zero-Shot:  [===                 ] 17.7%
-Zero-Shot-CoT:       [====================] 78.7%
-
-GSM8K Math Accuracy (InstructGPT text-davinci-002)
-Standard Zero-Shot:  [==                  ] 10.4%
-Zero-Shot-CoT:       [==========          ] 40.7%
-```
-
-The technique was not just an arithmetic party trick. It extended to symbolic and logical tasks:
-- **Last Letter Concatenation:** Combining the final letters of words jumped from 0.2% to 57.6%.
-- **Coin Flip Tracking:** Tracking the orientation of a flipped coin surged from 12.8% to 91.4%.
-- **Model Scale Matters:** On small models (under 10 billion parameters), the technique yielded almost no gain. But once models grew past 100 billion parameters (like PaLM 540B and InstructGPT), the reasoning curve skyrocketed.
-
-:::insight
-Chain-of-thought capability is an emergent property of model scale. The logic already exists in the weights of massive models; you just need to prompt the model to allocate compute tokens to intermediate thoughts before committing to an answer.
+A model is given: "Riya has 5 boxes with 4 pens each. She gives away 7 pens. How many pens does she have?" With the trigger, write the steps a good trace would contain, then say how many separate operations a direct answer would have to hide. (Steps: 5 × 4 = 20, then 20 − 7 = 13. A direct answer hides two operations in one prediction.)
 :::
 
 ### Does the exact wording matter?
 
-The authors tested 16 different prompt variations on MultiArith to see if *Let's think step by step* was special.
+The authors tried many trigger phrases. Phrases that encourage step-by-step working, such as asking the model to think logically or to start with "First,", also helped a lot, and "Let's think step by step" did best in their comparison. Phrases that were misleading or irrelevant did not help. In the analogy, the student needs to be told to use the rough sheet. Saying something unrelated before the exam does nothing.
 
-| Prompt Template | Category | MultiArith Accuracy |
-| :--- | :--- | :--- |
-| **Let's think step by step.** | Instructive | **78.7%** |
-| First, | Instructive | 77.3% |
-| Let's think about this logically. | Instructive | 74.5% |
-| Let's solve this problem by splitting it into steps. | Instructive | 72.2% |
-| Let's think | Instructive | 57.5% |
-| Don't think. Just feel. | Misleading | 18.8% |
-| Abrakadabra! | Irrelevant | 15.5% |
-| *Standard Zero-Shot (No trigger)* | Baseline | 17.7% |
+:::warning
+Common misconception: "The phrase is a magic spell that works on any model." The gains depended heavily on scale. In the paper, small models barely improved, while large models improved sharply. A small model given a rough sheet still cannot do the steps.
+:::
 
-Any prompt that encouraged stepwise decomposition led to massive improvements. Misleading or irrelevant prompts kept performance near the baseline.
+## What they found
+
+The abstract gives the headline numbers, with the large InstructGPT model text-davinci-002:
+
+| Benchmark | Zero-shot | Zero-shot-CoT | Ratio |
+|---|---|---|---|
+| MultiArith, arithmetic word problems | 17.7% | 78.7% | about 4.4 times |
+| GSM8K, grade-school maths | 10.4% | 40.7% | about 3.9 times |
+
+The paper reports improvements of similar size with a second large model, the 540-billion-parameter PaLM, and gains across arithmetic, symbolic reasoning such as last-letter concatenation and coin tracking, and other logical reasoning tasks.
+
+Three further findings stand out:
+
+- **Scale matters.** Plain zero-shot accuracy on these tasks stayed fairly flat as models grew. Zero-shot-CoT accuracy rose steeply with size.
+- **Examples still help more.** Hand-written few-shot chain-of-thought prompts generally scored higher than the zero-shot trigger. The value of Zero-shot-CoT is that it is a strong, free baseline that needs no examples.
+- **Not every task benefits.** On CommonsenseQA, a question-answering benchmark that needs knowledge more than multi-step calculation, the trigger gave little or no gain.
 
 ## What it got wrong (or left open)
 
-While the paper made reasoning dramatically cheaper, it revealed several quirks and limitations:
-
-:::warning
-Zero-shot-CoT does not match the peak accuracy of human-crafted few-shot demonstrations. On GSM8K, 8-shot CoT achieved 48.7%, compared to 40.7% for Zero-shot-CoT. Demonstrations still guide the model on formatting and specific stylistic expectations better than a generic prompt.
-:::
-
-Second, the model occasionally suffers from overthinking. In error analyses, the authors observed that the model sometimes deduced the correct answer early in its reasoning chain, but kept generating subsequent lines of unnecessary logic, confusing itself and ultimately flipping its answer to an incorrect one.
-
-Third, Zero-shot-CoT provides virtually no benefit on simple, single-step tasks (such as basic single-operation addition or subtraction) or standard commonsense benchmarks like CommonsenseQA. If a question does not require intermediate deductions, forcing an artificial chain of steps introduces extra opportunities for hallucinations.
-
-Finally, the phrasing was discovered purely through manual experimentation. The authors did not offer a formal method for automatically finding the best possible trigger sentence.
+- **Overthinking.** The authors' error analysis found cases where the model reached the right answer, kept writing unnecessary steps, and talked itself into a wrong one. The rough sheet can also be a place to wander off.
+- **Reasoning can be wrong but sound confident.** A fluent chain of steps is not a proof. Nothing in the method checks whether each step is true.
+- **Found by hand.** The best trigger came from trying phrases manually. The paper does not explain why one wording beats another, or how to find the best one automatically.
+- **Two calls per question.** The answer-extraction stage roughly doubles the number of model calls, though the second call is short.
 
 ## What happened next
 
-This paper changed the standard evaluation protocol for every subsequent reasoning study. After Kojima et al., researchers could no longer claim that reasoning required complex exemplars; Zero-shot-CoT became the de facto minimal baseline for any benchmark.
+Zero-shot-CoT quickly became a standard baseline in reasoning papers: before claiming your elaborate prompt helps, show it beats "Let's think step by step".
 
-Building directly on this insight, researchers soon asked: if four hand-picked words could boost accuracy by 60 percentage points, could an algorithm find even better words? This inspired Automatic Prompt Engineer (APE), where language models themselves were tasked with searching for and optimizing trigger phrases.
+It also combined well with later ideas. [Self-consistency](article:paper-self-consistency-improves-chain-of-thought-reasoning-in-lang) samples many reasoning paths, with or without examples, and takes a majority vote on the answers. [Letting a Language Model Back Up and Try Again](article:paper-tree-of-thoughts-deliberate-problem-solving-with-large-langu) turned single chains into a search over partial reasoning. Other work searched automatically for better trigger phrases.
 
-Soon after, other researchers combined this idea with voting strategies. Papers like [Why Multiple Reasoning Paths Beat One Greedy Guess](article:paper-self-consistency-improves-chain-of-thought-reasoning-in-lang) sampled multiple different reasoning paths and took the majority vote, pushing accuracy even higher. Eventually, tree-based search methods explored in [Giving Language Models the Power to Backtrack](article:paper-tree-of-thoughts-deliberate-problem-solving-with-large-langu) extended stepwise generation into deliberate search trees.
-
-Most importantly, this paper changed how people viewed language models. They were no longer seen as static search engines that either knew an answer or didn't. They were systems that needed computational room to think.
+The broader lesson lasted longest: a model may know how to do something that a plain prompt does not bring out, and giving it room to work before answering is one of the cheapest ways to get more from it.
 
 ## Key takeaways
 
-- Adding *Let's think step by step* unlocks latent multi-step reasoning in large language models without any task-specific demonstrations.
-- The two-stage pipeline separates reasoning generation from answer extraction, allowing clean evaluation without human prompt engineering.
-- Multi-step reasoning is an emergent ability that appears sharply in models scaled past tens of billions of parameters, while remaining largely absent in smaller networks.
-- While few-shot demonstrations still achieve higher peak scores, universal zero-shot triggers provide an indispensable, task-agnostic baseline.
+- Zero-shot-CoT adds a generic trigger such as "Let's think step by step", lets the model write its reasoning, then asks a second time for the answer in a fixed format.
+- Written steps help because each token builds on what is already on the page, so a multi-step calculation becomes a series of small hops.
+- With text-davinci-002, the method raised MultiArith accuracy from 17.7% to 78.7% and GSM8K from 10.4% to 40.7%, with no task-specific examples.
+- The gains grew sharply with model size, so the trigger mostly helps large models that already have the underlying ability.
+- Hand-written few-shot examples generally still did better, and the method gave little help on commonsense tasks and no protection against confident but wrong reasoning.

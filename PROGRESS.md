@@ -17,7 +17,7 @@ Read `HANDOFF.md` first if you are picking this project up.
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
 | **All** | **246** | **0** | **427** | **673** | |
 
-Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **5**
+Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
 ## Next to write
 

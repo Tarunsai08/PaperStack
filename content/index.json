@@ -1,5 +1,5 @@
 {
- "content_version": "0431e68e1aae3e14",
+ "content_version": "f32093c9282e5653",
  "generated_at": "2026-11-02",
  "count": 246,
  "subjects": [
@@ -1558,8 +1558,8 @@
    "kind": "paper",
    "subject": "ml",
    "slug": "thumbs-up-sentiment-classification-using-machine-learning-te",
-   "title": "Thumbs Up? How Machines Learned to Read Reviews",
-   "subtitle": "Why human word lists failed and simple statistics conquered sentiment analysis",
+   "title": "Can a Computer Tell If You Liked the Movie?",
+   "subtitle": "The 2002 study that showed learned classifiers beat hand-picked word lists at reading opinions, and where they still fail",
    "track": "foundations",
    "track_order": 7,
    "prerequisites": [
@@ -1568,7 +1568,7 @@
     "primer-data-features-labels"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 8,
+   "read_minutes": 7,
    "topics": [
     "sentiment analysis",
     "natural language processing",
@@ -1577,82 +1577,82 @@
    ],
    "paper_title": "Thumbs up? Sentiment Classification using Machine Learning Techniques",
    "authors": [
-    "B. Pang",
+    "Bo Pang",
     "Lillian Lee",
-    "S. Vaithyanathan"
+    "Shivakumar Vaithyanathan"
    ],
    "year": 2002,
-   "venue": "Conference on Empirical Methods in Natural Language Processing",
+   "venue": "EMNLP",
    "paper_url": "https://arxiv.org/abs/cs/0205070",
    "glossary": [
     {
-     "term": "Sentiment Classification",
-     "definition": "The task of identifying whether an opinionated text expresses an overall positive or negative attitude."
+     "term": "Sentiment classification",
+     "definition": "Deciding whether a piece of text expresses an overall positive or negative opinion."
     },
     {
-     "term": "Bag-of-Features",
-     "definition": "A document representation that counts or notes the presence of individual tokens while ignoring sentence structure and word order."
+     "term": "Bag of words",
+     "definition": "Representing a document only by which words it contains, or how often, ignoring their order."
     },
     {
-     "term": "Maximum Entropy (MaxEnt)",
-     "definition": "A probabilistic classifier that chooses feature weights to maximize uncertainty while satisfying observed data averages."
+     "term": "Unigram",
+     "definition": "A single word used as a feature. A bigram is a pair of adjacent words."
     },
     {
-     "term": "Support Vector Machine (SVM)",
-     "definition": "A classifier that finds a boundary line or plane maximizing the margin between two opposing classes."
+     "term": "Feature presence",
+     "definition": "A feature value of 1 if the word appears in the document at least once and 0 otherwise, ignoring how many times."
     },
     {
-     "term": "Negation Tagging",
-     "definition": "A simple text modification adding a marker to every word between a negative word like not and the next punctuation mark."
+     "term": "Negation tagging",
+     "definition": "Marking every word between a negation word such as not and the next punctuation mark, so not good becomes a different feature from good."
     },
     {
-     "term": "Thwarted Expectations",
-     "definition": "A rhetorical setup where an author lists praise or background details before delivering an opposite verdict."
+     "term": "Thwarted expectations",
+     "definition": "A review that builds up one impression, often with many positive words, and then reverses it in the final verdict."
     }
    ],
    "quiz": [
     {
-     "q": "What counterintuitive finding did the authors discover about feature representation in sentiment classification?",
+     "q": "Which representation worked better for the classifiers in this paper?",
      "options": [
-      "Raw word frequencies decisively beat binary presence indicators.",
-      "Binary feature presence outperformed raw word frequencies across models.",
-      "Using bigrams alone beat using unigrams by a wide margin.",
-      "Restricting vocabularies to adjectives produced peak accuracy."
+      "Counting how many times each word appears",
+      "Recording only whether each word appears",
+      "Using adjectives only",
+      "Using word order"
      ],
      "answer": 1,
-     "explain": "Simply marking whether a word appeared at least once worked better than counting how many times it was repeated."
+     "explain": "Feature presence beat term frequency. For the SVM with single words, accuracy rose from 72.8% with counts to 82.9% with presence."
     },
     {
-     "q": "How did machine learning models compare against human-selected word lists on movie reviews?",
+     "q": "Why did the hand-picked word lists perform poorly?",
      "options": [
-      "Human intuition crushed machine learning models because humans grasp sarcasm.",
-      "Human word lists tied with Naive Bayes but lost to Support Vector Machines.",
-      "Machine learning algorithms decisively outperformed the human-crafted word lists.",
-      "All methods failed to beat the random guessing baseline of 50 percent."
-     ],
-     "answer": 2,
-     "explain": "Human lists only scored between 58% and 64% accuracy with massive tie rates, while ML models crossed 80%."
-    },
-    {
-     "q": "Why do thwarted expectations pose a major hurdle for bag-of-words classifiers?",
-     "options": [
-      "They make the vocabulary matrix too wide for computers to invert.",
-      "Positive words in background exposition can outnumber the actual negative verdict.",
-      "They cause the Maximum Entropy training loop to produce infinite weights.",
-      "They force the tokenizer to delete punctuation marks like question marks."
+      "The lists were too long",
+      "Many reviews contained none of the chosen words or equal numbers of each kind, so the method had to guess",
+      "The words were in the wrong language",
+      "Computers could not count words in 2002"
      ],
      "answer": 1,
-     "explain": "A reviewer praising the cast or premise before concluding the movie is terrible supplies too many opposing words for simple counts."
+     "explain": "With short intuitive lists, many reviews ended up as ties. On top of that, people's intuitions missed many useful words."
+    },
+    {
+     "q": "What does a thwarted-expectations review do to a bag-of-words classifier?",
+     "options": [
+      "It crashes the classifier",
+      "Its many positive words in the build-up can outvote the short negative verdict",
+      "It has no words at all",
+      "It makes training slower"
+     ],
+     "answer": 1,
+     "explain": "The classifier sees which words appear, not that the last sentence reverses everything before it."
     }
    ],
    "cover_seed": "thumbs-up-sentiment-classification-using-machine-learning-te",
-   "generated_by": "gemini-gemini-flash-latest",
-   "generated_at": "2026-10-16",
+   "generated_by": "claude-revised",
+   "generated_at": "2026-11-02",
    "importance_score": 0.76,
    "path": "papers/thumbs-up-sentiment-classification-using-machine-learning-te.md",
-   "hash": "484e2d7d5d97",
-   "word_count": 1759,
-   "excerpt": "If you want a computer to know whether an article is about sports or politics, you just look for words like \"touchdown\" or \"senator\". Topic classification is easy because the subject dictates the vocabulary. But what happens when you ask an algorithm whether a movie review is a glowing…"
+   "hash": "8ea7d811dda4",
+   "word_count": 1537,
+   "excerpt": "By 2002, computers could already sort news into sport or politics: a story full of \"wicket\" and \"innings\" is about cricket. But a film review can say \"brilliant\", \"stunning\" and \"talented\" and still end with \"it is a mess\". The words give away the topic, not the verdict. So should you tell the…"
   },
   {
    "id": "paper-stop-explaining-black-box-machine-learning-models-for-high-s",
@@ -3665,8 +3665,8 @@
    "kind": "paper",
    "subject": "ml",
    "slug": "learning-phrase-representations-using-rnn-encoder-decoder-fo",
-   "title": "Compress, Then Translate: The First Encoder-Decoder",
-   "subtitle": "How two recurrent networks teamed up to rewrite machine translation",
+   "title": "Read It, Summarise It, Say It in French",
+   "subtitle": "The paper that paired two recurrent networks into an encoder-decoder and quietly introduced the GRU",
    "track": "sequences-language",
    "track_order": 6,
    "prerequisites": [
@@ -3681,93 +3681,100 @@
     "machine translation",
     "gru"
    ],
-   "paper_title": "Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation",
+   "paper_title": "Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation",
    "authors": [
     "Kyunghyun Cho",
     "Bart van Merriënboer",
-    "Çaglar Gülçehre",
-    "et al."
+    "Caglar Gulcehre",
+    "Dzmitry Bahdanau",
+    "Fethi Bougares",
+    "Holger Schwenk",
+    "Yoshua Bengio"
    ],
    "year": 2014,
-   "venue": "Conference on Empirical Methods in Natural Language Processing",
+   "venue": "EMNLP",
    "paper_url": "https://arxiv.org/abs/1406.1078",
    "glossary": [
     {
-     "term": "RNN Encoder-Decoder",
-     "definition": "A neural network architecture consisting of two RNNs: one that reads an input sequence into a fixed-length summary vector, and another that unrolls the vector into an output sequence."
+     "term": "Encoder-decoder",
+     "definition": "Two networks working in sequence: the encoder reads an input sequence into a fixed-size vector, and the decoder generates an output sequence from that vector."
     },
     {
-     "term": "Reset Gate",
-     "definition": "A gating mechanism in the GRU that determines whether the hidden state should ignore the previous hidden state and rely only on the current input."
+     "term": "Summary vector",
+     "definition": "The single fixed-size vector the encoder produces after reading the whole input, often written c. It is the only thing the decoder knows about the input."
     },
     {
-     "term": "Update Gate",
-     "definition": "A gating mechanism in the GRU that controls how much information from the previous hidden state carries over into the current hidden state."
+     "term": "Update gate",
+     "definition": "A number between 0 and 1 per hidden unit that decides how much of the old hidden state to keep and how much to replace with the new proposal."
+    },
+    {
+     "term": "Reset gate",
+     "definition": "A number between 0 and 1 per hidden unit that decides how much of the old hidden state to use when drafting the new proposal."
     },
     {
      "term": "Phrase-based SMT",
-     "definition": "A statistical machine translation approach that translates sentences by dividing them into sub-sequences of words evaluated via a log-linear model."
+     "definition": "Statistical machine translation that cuts a sentence into short phrases, looks up translations for each in a phrase table, and picks the combination a weighted scoring formula likes best."
     },
     {
-     "term": "CSLM",
-     "definition": "Continuous Space Language Model, a neural network-based language model trained to estimate word sequence probabilities in a continuous vector space."
+     "term": "Log-linear model",
+     "definition": "A scoring formula that adds up several feature scores, each multiplied by a tuned weight, to rank candidate translations."
     },
     {
      "term": "BLEU",
-     "definition": "Bilingual Evaluation Understudy, an automated metric measuring the n-gram overlap between machine-generated translations and human reference translations."
+     "definition": "An automatic translation metric that measures how many word sequences in the machine output also appear in human reference translations."
     }
    ],
    "quiz": [
     {
-     "q": "What two gates comprise the new recurrent hidden unit introduced in this paper?",
+     "q": "In this paper's main experiment, how was the encoder-decoder used?",
      "options": [
-      "Input gate and output gate",
-      "Reset gate and update gate",
-      "Forget gate and cell gate",
-      "Read gate and write gate"
+      "As a complete translator that replaced the whole pipeline",
+      "To score existing phrase pairs, added as one more feature in a phrase-based system",
+      "Only as a language model over French sentences",
+      "To align words between the two languages"
      ],
      "answer": 1,
-     "explain": "The paper proposed a simplified alternative to the LSTM unit containing only two gates: a reset gate and an update gate."
+     "explain": "The network scored each English-French phrase pair in the phrase table, and that score became an extra feature in the existing log-linear model."
     },
     {
-     "q": "How was the trained RNN Encoder-Decoder evaluated in the main machine translation experiment?",
+     "q": "In the paper's gated unit, what happens when the update gate is close to 1?",
      "options": [
-      "As an end-to-end standalone translator replacing the entire pipeline",
-      "As a speech-to-text acoustic decoder",
-      "By scoring phrase pairs in an existing phrase table as an additional feature in a log-linear model",
-      "Exclusively as a target-side language model without reading source phrases"
+      "The old hidden state is wiped",
+      "The new proposal replaces the old state",
+      "The old hidden state is carried forward almost unchanged",
+      "The unit outputs zero"
      ],
      "answer": 2,
-     "explain": "Due to the computational expense of generating target phrases from scratch, the authors added conditional phrase-pair probabilities computed by the model as an extra feature in a standard Moses SMT system."
+     "explain": "The new state is z times the old state plus (1 - z) times the proposal, so z near 1 keeps the old state."
     },
     {
-     "q": "Why were phrase frequencies ignored when training the RNN Encoder-Decoder on phrase pairs?",
+     "q": "Why did later work add attention to this design?",
      "options": [
-      "To prevent the model from merely memorizing phrase counts instead of learning linguistic regularities",
-      "Because frequency data was missing from the WMT corpora",
-      "Because the GPU implementation did not support integer counts",
-      "To intentionally reduce BLEU score variance"
+      "The decoder could not handle French",
+      "Squeezing a whole long sentence into one fixed-size vector loses detail",
+      "Gated units were too slow to train",
+      "BLEU could not measure the output"
      ],
-     "answer": 0,
-     "explain": "The authors ignored frequencies to ensure the model used its capacity to distinguish plausible from implausible translations rather than fitting raw occurrence frequencies."
+     "answer": 1,
+     "explain": "Every input, short or long, had to fit into the same fixed-size summary vector. Attention lets the decoder look back at all encoder states instead."
     }
    ],
    "cover_seed": "learning-phrase-representations-using-rnn-encoder-decoder-fo",
-   "generated_by": "gemini-gemini-flash-latest",
-   "generated_at": "2026-10-15",
+   "generated_by": "claude-revised",
+   "generated_at": "2026-11-02",
    "importance_score": 0.9,
    "path": "papers/learning-phrase-representations-using-rnn-encoder-decoder-fo.md",
-   "hash": "afd0e0c7bb7a",
-   "word_count": 1873,
-   "excerpt": "Translating a sentence from English to French is not a word-by-word swap. Word orders swap, single words blossom into three, and entire idioms collapse into single phrases. How can a machine take five words, understand their meaning, and emit seven completely different words in another language? In…"
+   "hash": "5ebbddae71b5",
+   "word_count": 1915,
+   "excerpt": "A phrase like \"a cup of tea\" becomes \"une tasse de thé\" in French. The words line up nicely. But \"I miss you\" becomes \"tu me manques\", where the subject and object swap places. No word-for-word lookup gets that right. In 2014, translation systems handled this with huge tables of memorised phrase…"
   },
   {
    "id": "paper-enriching-word-vectors-with-subword-information",
    "kind": "paper",
    "subject": "ml",
    "slug": "enriching-word-vectors-with-subword-information",
-   "title": "Inside Words: How FastText Mastered Morphology",
-   "subtitle": "How breaking words into character pieces gave machines a cure for vocabulary blindness",
+   "title": "Building Word Vectors From the Pieces Inside Words",
+   "subtitle": "fastText's simple trick: a word is the sum of its character chunks, so even unseen words get a vector",
    "track": "sequences-language",
    "track_order": 7,
    "prerequisites": [
@@ -3776,7 +3783,7 @@
     "primer-embeddings"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 10,
+   "read_minutes": 7,
    "topics": [
     "embeddings",
     "subwords",
@@ -3786,79 +3793,83 @@
    ],
    "paper_title": "Enriching Word Vectors with Subword Information",
    "authors": [
-    "P. Bojanowski",
-    "E. Grave",
-    "A. Joulin",
-    "et al."
+    "Piotr Bojanowski",
+    "Edouard Grave",
+    "Armand Joulin",
+    "Tomas Mikolov"
    ],
-   "year": 2016,
-   "venue": "Transactions of the Association for Computational Linguistics",
+   "year": 2017,
+   "venue": "TACL",
    "paper_url": "https://arxiv.org/abs/1607.04606",
    "glossary": [
     {
-     "term": "Subword Information",
-     "definition": "Linguistic signals derived from units smaller than an entire word, such as prefixes, suffixes, roots, or character n-grams."
-    },
-    {
      "term": "Character n-gram",
-     "definition": "A contiguous sequence of n characters cut directly out of a written word string."
+     "definition": "A run of n consecutive characters taken from a word, such as pla from play."
     },
     {
-     "term": "Out-of-Vocabulary (OOV)",
-     "definition": "Words that never appeared in the training corpus and therefore have no dedicated entry in a model lookup table."
-    },
-    {
-     "term": "FNV-1a Hashing",
-     "definition": "A fast non-cryptographic hash function used to map arbitrary text strings into a bounded table of vector buckets."
+     "term": "Out-of-vocabulary word",
+     "definition": "A word that never appeared in the training text, so a plain word-vector model has no vector for it."
     },
     {
      "term": "Morphology",
-     "definition": "The branch of linguistics that studies how smaller units of meaning combine to form complex words."
+     "definition": "How words are built from smaller meaningful parts, such as roots, prefixes and endings."
+    },
+    {
+     "term": "Skip-gram",
+     "definition": "The word2vec training task where a word's vector is trained to predict the words that appear around it."
+    },
+    {
+     "term": "Hashing trick",
+     "definition": "Mapping each n-gram string to one of a fixed number of buckets with a hash function, so memory stays bounded however many distinct n-grams exist."
+    },
+    {
+     "term": "Hash collision",
+     "definition": "When two different n-grams land in the same bucket and therefore share one vector."
     }
    ],
    "quiz": [
     {
-     "q": "How does this model build a vector representation for an out-of-vocabulary word?",
+     "q": "How does this model give a vector to a word it never saw in training?",
      "options": [
       "It returns a vector of zeros",
-      "It sums the vector representations of all character n-grams found in the word",
-      "It copies the vector of the most frequent word in the training set",
-      "It runs a nearest-neighbor string search to copy the closest word"
+      "It adds up the vectors of the character n-grams inside the word",
+      "It copies the vector of the most frequent word",
+      "It retrains the model on that word"
      ],
      "answer": 1,
-     "explain": "Because the model learns vectors for subword character n-grams, it can represent any unseen word simply by breaking it into pieces and adding up those subword vectors."
+     "explain": "Each n-gram has its own vector, learned from many training words. An unseen word still breaks into known n-grams, so their sum gives it a vector."
     },
     {
-     "q": "Why does the model place boundary brackets '<' and '>' around words before extracting n-grams?",
+     "q": "Why are the boundary symbols < and > added around each word?",
      "options": [
-      "To satisfy the format required by the FNV-1a hash algorithm",
-      "To distinguish affixes like prefixes and suffixes from identical character patterns inside words",
-      "To ensure all words have identical lengths in memory",
-      "To tell the network whether the word is lowercase or capitalized"
+      "To make all words the same length",
+      "So that n-grams at the start or end of a word are different from the same letters in the middle",
+      "To mark capital letters",
+      "Because the hash function needs them"
      ],
      "answer": 1,
-     "explain": "Brackets let the model distinguish word boundaries from internal text. For example, the standalone pronoun '<her>' gets a different set of n-grams than the internal sequence 'her' inside the word '<where>'."
+     "explain": "With boundaries, ing> means the word ends in ing, while ing alone can appear anywhere. Prefixes and suffixes become their own pieces."
     },
     {
-     "q": "On which task did adding subword n-grams produce the largest performance improvement over standard Skip-gram?",
+     "q": "Where did subword vectors help most, according to the paper?",
      "options": [
-      "English semantic analogies on common nouns",
-      "Syntactic analogies in morphologically rich languages like Czech",
-      "Filtering out stop words from high-frequency text",
-      "Measuring cosine distance between frequent English words in WordSim-353"
+      "Semantic analogies about capitals and countries",
+      "Syntactic tasks and rare words, especially in languages with many word forms",
+      "Very frequent English words only",
+      "Speeding up training"
      ],
      "answer": 1,
-     "explain": "Subwords capture prefixes, suffixes, and conjugations directly. This led to massive leaps on syntactic benchmarks, such as Czech syntactic analogies jumping from 52.8% to 77.8% accuracy."
+     "explain": "Shared pieces capture endings and roots, so the gains were largest on syntactic analogies, rare words and morphologically rich languages."
     }
    ],
    "cover_seed": "enriching-word-vectors-with-subword-information",
-   "generated_by": "gemini-gemini-flash-latest",
-   "generated_at": "2026-10-19",
+   "generated_by": "claude-revised",
+   "generated_at": "2026-11-02",
    "importance_score": 0.81,
    "path": "papers/enriching-word-vectors-with-subword-information.md",
-   "hash": "5d24d4897833",
-   "word_count": 2103,
-   "excerpt": "If you teach a standard word embedding model the word \"teach\", \"teacher\", and \"teaching\", it treats them as three completely unrelated symbols. To the algorithm, the connection between \"teach\" and \"teacher\" is just as opaque as the connection between \"teach\" and \"submarine\". If the model then runs…"
+   "hash": "71b342ba8412",
+   "word_count": 1638,
+   "excerpt": "A word2vec model trained on millions of sentences knows \"play\" and \"played\" well. Then it meets \"replayed\", which happened to appear nowhere in its training text. It has no vector for it at all, even though any child can see the word is \"re\" plus \"played\". The problem gets much worse in languages…"
   },
   {
    "id": "paper-bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro",
@@ -6332,8 +6343,8 @@
    "kind": "paper",
    "subject": "ml",
    "slug": "opt-open-pre-trained-transformer-language-models",
-   "title": "The Engineering Diary of Training OPT-175B",
-   "subtitle": "How Meta cloned GPT-3, released its weights, and documented every crash",
+   "title": "The GPT-3-Sized Model Anyone Could Study",
+   "subtitle": "How Meta rebuilt a 175-billion-parameter model, shared the weights and published the messy diary of training it",
    "track": "transformers-llms",
    "track_order": 12,
    "prerequisites": [
@@ -6342,7 +6353,7 @@
     "paper-scaling-laws"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 9,
+   "read_minutes": 8,
    "topics": [
     "large language models",
     "open science",
@@ -6354,76 +6365,85 @@
     "Susan Zhang",
     "Stephen Roller",
     "Naman Goyal",
+    "Mikel Artetxe",
     "et al."
    ],
    "year": 2022,
-   "venue": "arXiv.org",
+   "venue": "arXiv",
    "paper_url": "https://arxiv.org/abs/2205.01068",
    "glossary": [
     {
-     "term": "Fully Sharded Data Parallel (FSDP)",
-     "definition": "A distributed training technique that splits model parameters, gradients, and optimizer states across GPUs rather than replicating them on every device."
+     "term": "Open weights",
+     "definition": "Releasing the trained parameters of a model so other people can run, inspect and fine-tune it themselves, instead of only calling it through an API."
     },
     {
-     "term": "Dynamic Loss Scaling",
-     "definition": "A technique in mixed-precision training that multiplies loss by a changing factor to keep tiny gradient values from vanishing to zero."
+     "term": "Fully Sharded Data Parallel",
+     "definition": "A training method that splits the model's weights, gradients and optimizer state across all GPUs, so no single GPU holds a full copy."
     },
     {
-     "term": "metaseq",
-     "definition": "An open-source training codebase developed by Meta AI to train large-scale language models efficiently across GPU clusters."
+     "term": "Tensor parallelism",
+     "definition": "Splitting the big matrix multiplications inside each layer across several GPUs, which work on their slices at the same time."
     },
     {
-     "term": "CrowS-Pairs",
-     "definition": "A benchmark measuring stereotypical bias across social groups by comparing sentence pairs that differ only in demographic terms."
+     "term": "Mixed precision",
+     "definition": "Training with 16-bit numbers for most of the work to save memory and time, while keeping sensitive values in 32-bit."
     },
     {
-     "term": "Nucleus Sampling",
-     "definition": "A text generation method that samples only from the smallest pool of tokens whose cumulative probability exceeds a cutoff threshold p."
+     "term": "Loss scaling",
+     "definition": "Multiplying the loss by a large factor before backpropagation so tiny gradients do not round to zero in 16-bit numbers, then dividing it back out before the update."
+    },
+    {
+     "term": "Loss divergence",
+     "definition": "A training failure where the loss suddenly shoots up and does not recover, often caused by numerical instability."
+    },
+    {
+     "term": "Base model",
+     "definition": "A model trained only to predict the next token of web-scale text, with no extra training to follow instructions or behave safely."
     }
    ],
    "quiz": [
     {
-     "q": "Why was OPT-175B able to match GPT-3 with roughly one-seventh of the estimated carbon footprint?",
+     "q": "What did OPT give researchers that GPT-3 did not?",
      "options": [
-      "It trained on far fewer total tokens using an early-exit architecture",
-      "It used newer A100 GPUs and high compute utilization via FSDP and Megatron tensor parallelism",
-      "It switched from dense attention to sparse Mixture-of-Experts routing",
-      "It bypassed backpropagation in the first 32 layers of the network"
+      "A larger model",
+      "Access to the trained weights, plus code and a training logbook",
+      "A new attention mechanism",
+      "Instruction-following behaviour"
      ],
      "answer": 1,
-     "explain": "OPT-175B ran on NVIDIA A100 GPUs using efficient distributed training, reaching 147 TFLOP/s per GPU and consuming an estimated 75 tons of CO2eq compared to 500 tons for GPT-3."
+     "explain": "OPT was designed to be roughly GPT-3-sized and comparable in quality. The new part was openness: weights for researchers, code and a record of the training run."
     },
     {
-     "q": "What early warning sign reliably warned the authors that training loss was about to explode?",
+     "q": "Why does loss scaling help in 16-bit training?",
      "options": [
-      "GPU memory usage dropped suddenly to zero across all worker nodes",
-      "The dynamic loss scale collapsed toward zero while final-layer activation norms surged upward",
-      "The vocabulary size doubled automatically after encountering unnormalized text",
-      "The weight decay parameter in the optimizer turned negative"
+      "It makes the model larger",
+      "It stops tiny gradients from rounding to zero by moving them into the range 16-bit numbers can represent",
+      "It removes the need for an optimizer",
+      "It speeds up data loading"
      ],
      "answer": 1,
-     "explain": "Loss spikes were preceded by a collapse in the dynamic loss scalar and an uncontrolled rise in the L2-norm of the final layer activations."
+     "explain": "Multiplying the loss by S multiplies every gradient by S. Values too small for 16-bit become representable, and dividing by S afterwards restores their true size."
     },
     {
-     "q": "How did base OPT-175B respond when researchers fed it direct declarative instructions?",
+     "q": "OPT-175B was trained on about 180 billion tokens. What does the Chinchilla rule of thumb of about 20 tokens per parameter suggest?",
      "options": [
-      "It executed them with step-by-step reasoning",
-      "It crashed due to a sequence length overflow",
-      "It roleplayed a conversational dialogue starting with the command rather than carrying it out",
-      "It returned empty strings because it lacked a chat token"
+      "It was trained on far too many tokens",
+      "It was roughly compute-optimal",
+      "It was trained on far fewer tokens than compute-optimal, about 3.5 trillion",
+      "Token count does not matter"
      ],
      "answer": 2,
-     "explain": "As an unaligned base model, OPT-175B treated direct instructions as the opening line of a dialogue between two characters rather than a command to execute."
+     "explain": "20 tokens per parameter times 175 billion parameters is about 3.5 trillion tokens, nearly 20 times what OPT-175B saw."
     }
    ],
    "cover_seed": "opt-open-pre-trained-transformer-language-models",
-   "generated_by": "gemini-gemini-flash-latest",
-   "generated_at": "2026-10-22",
+   "generated_by": "claude-revised",
+   "generated_at": "2026-11-02",
    "importance_score": 0.75,
    "path": "papers/opt-open-pre-trained-transformer-language-models.md",
-   "hash": "df723aa80e3f",
-   "word_count": 1918,
-   "excerpt": "In May 2020, OpenAI revealed GPT-3. It showed the world that a 175-billion-parameter Transformer could write prose, translate code, and solve puzzles from just a few examples. Then came the lockdown. OpenAI did not release the model weights. They did not release the training code. They offered a…"
+   "hash": "2b8a7fe2cc0f",
+   "word_count": 1663,
+   "excerpt": "Suppose you are a researcher in 2021 and you want to know why GPT-3 says biased things. You can type prompts into a paid API and read the answers. You cannot look at a single weight or activation, and you cannot retrain it to test a fix. Studying the most talked-about model in AI meant poking a…"
   },
   {
    "id": "paper-a-survey-of-large-language-models",
@@ -7360,8 +7380,8 @@
    "kind": "paper",
    "subject": "ml",
    "slug": "large-language-models-are-zero-shot-reasoners",
-   "title": "The Magic Words for Machine Logic",
-   "subtitle": "How four words unlocked multi-step reasoning without a single example",
+   "title": "Five Words That Made Models Show Their Working",
+   "subtitle": "Zero-shot chain of thought: no examples, just a nudge to reason before answering",
    "track": "useful-llms",
    "track_order": 7,
    "prerequisites": [
@@ -7372,82 +7392,87 @@
    "difficulty": "intermediate",
    "read_minutes": 7,
    "topics": [
-    "chain-of-thought",
+    "chain of thought",
     "reasoning",
-    "prompt-engineering",
-    "zero-shot-learning"
+    "prompting",
+    "zero-shot learning"
    ],
    "paper_title": "Large Language Models are Zero-Shot Reasoners",
    "authors": [
     "Takeshi Kojima",
-    "Shi-Xiang Gu",
+    "Shixiang Shane Gu",
     "Machel Reid",
-    "et al."
+    "Yutaka Matsuo",
+    "Yusuke Iwasawa"
    ],
    "year": 2022,
-   "venue": "Neural Information Processing Systems",
+   "venue": "NeurIPS",
    "paper_url": "https://arxiv.org/abs/2205.11916",
    "glossary": [
     {
+     "term": "Zero-shot prompting",
+     "definition": "Asking a model to do a task with only an instruction or question, and no worked examples in the prompt."
+    },
+    {
+     "term": "Few-shot chain of thought",
+     "definition": "Prompting with a handful of hand-written examples that show step-by-step reasoning before their answers, so the model imitates the style."
+    },
+    {
      "term": "Zero-shot-CoT",
-     "definition": "A two-stage zero-shot prompting strategy that coaxes an LLM to generate an intermediate rationale before extracting the final answer."
+     "definition": "The paper's method: add a trigger such as Let's think step by step, let the model write its reasoning, then ask a second time for the final answer."
     },
     {
-     "term": "Chain of Thought (CoT)",
-     "definition": "A sequence of natural language intermediate reasoning steps produced before outputting the final answer."
+     "term": "Trigger phrase",
+     "definition": "A short fixed piece of text added to the prompt to steer what kind of continuation the model writes."
     },
     {
-     "term": "System-2 Reasoning",
-     "definition": "Slow, deliberate, multi-step logical thinking, contrasted with immediate associative pattern-matching."
-    },
-    {
-     "term": "Answer Cleansing",
-     "definition": "A rule-based parsing step that extracts the final target output from raw model generations."
+     "term": "Answer extraction",
+     "definition": "The second prompt in Zero-shot-CoT, which feeds the reasoning back and asks for the answer in a fixed format, followed by a simple parser that pulls it out."
     }
    ],
    "quiz": [
     {
-     "q": "Why does Zero-shot-CoT split the interaction into two prompting stages?",
+     "q": "What makes Zero-shot-CoT different from the original chain-of-thought prompting?",
      "options": [
-      "The first extracts an unconstrained step-by-step rationale, and the second pulls a clean final answer from that text.",
-      "The first validates question grammar, and the second runs Python code.",
-      "The first runs on a small language model, and the second queries a 540B model.",
-      "The first generates multiple choice options, and the second selects one at random."
+      "It fine-tunes the model on reasoning data",
+      "It needs no hand-written reasoning examples, only a generic trigger phrase",
+      "It uses a smaller model",
+      "It samples many answers and votes"
      ],
-     "answer": 0,
-     "explain": "Stage one asks for intermediate reasoning without worrying about exact formatting. Stage two appends the reasoning and asks the model to isolate the final answer value."
+     "answer": 1,
+     "explain": "Original chain-of-thought prompting needs a few hand-written worked examples per task. Zero-shot-CoT uses the same short trigger for every task."
     },
     {
-     "q": "Which trigger phrase produced the highest accuracy on the MultiArith dataset?",
+     "q": "Why does the method use a second prompt after the reasoning?",
      "options": [
-      "First,",
-      "Let's think about this logically.",
-      "Let's think step by step.",
-      "The answer is after the proof."
+      "To check the reasoning for mistakes",
+      "To translate the answer",
+      "To get the final answer in a fixed, easy-to-parse format",
+      "To make the reasoning longer"
      ],
      "answer": 2,
-     "explain": "Let's think step by step reached 78.7% accuracy on MultiArith with text-davinci-002, outperforming all other tested phrases."
+     "explain": "Free-form reasoning can end in many ways. The second prompt, such as Therefore, the answer (arabic numerals) is, makes the model state the answer cleanly so a simple parser can read it."
     },
     {
-     "q": "How did Zero-shot-CoT behave as language models grew larger?",
+     "q": "According to the paper, how did the benefit of Zero-shot-CoT change with model size?",
      "options": [
-      "Accuracy degraded because larger models suffer from distraction.",
-      "Performance remained flat across all model sizes, just like direct answering.",
-      "Accuracy only improved on models with fewer than 10 billion parameters.",
-      "Performance leaped dramatically on 100B+ parameter models, breaking the flat scaling curve."
+      "It helped small models most",
+      "It helped all sizes equally",
+      "It helped little in small models and a lot in large ones",
+      "It hurt large models"
      ],
-     "answer": 3,
-     "explain": "Direct zero-shot answering stayed flat even as models scaled up, but Zero-shot-CoT unlocked sharp performance gains on large models like PaLM 540B and InstructGPT."
+     "answer": 2,
+     "explain": "The gains grew with scale: small models barely improved, while large models such as text-davinci-002 and PaLM 540B improved sharply."
     }
    ],
    "cover_seed": "large-language-models-are-zero-shot-reasoners",
-   "generated_by": "gemini-gemini-flash-latest",
-   "generated_at": "2026-10-31",
+   "generated_by": "claude-revised",
+   "generated_at": "2026-11-02",
    "importance_score": 0.79,
    "path": "papers/large-language-models-are-zero-shot-reasoners.md",
-   "hash": "867daf6599c4",
-   "word_count": 1565,
-   "excerpt": "Give a large language model a multi-step arithmetic problem and ask it directly for the answer, and it fails miserably. For months, the AI community believed you had to handcraft careful demonstrations to teach models how to reason. Then a team of researchers appended four words to the prompt:…"
+   "hash": "640fc8e5ebf9",
+   "word_count": 1521,
+   "excerpt": "In early 2022, getting a language model to solve a word problem meant writing a few worked solutions by hand and pasting them into the prompt. A different set of worked examples for maths, another for logic puzzles, another for dates. Then a team from the University of Tokyo and Google tried…"
   },
   {
    "id": "paper-large-language-models-encode-clinical-knowledge",
