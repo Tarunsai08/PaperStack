@@ -1,7 +1,7 @@
 {
- "content_version": "609731b6d5f0cbfc",
+ "content_version": "3e9faab92f84ae42",
  "generated_at": "2026-11-02",
- "count": 277,
+ "count": 279,
  "subjects": [
   {
    "id": "ml",
@@ -15024,6 +15024,240 @@
    "hash": "54af86515b07",
    "word_count": 2135,
    "excerpt": "You are packing for a trip with a camera, a book and a jacket, and you want to list every possible bag you could carry. Taking nothing counts, taking everything counts. How many bags are there, and how do you write them all down without missing one or listing one twice? Now swap the question: three…"
+  },
+  {
+   "id": "dsa-backtracking-template",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "backtracking-template",
+   "title": "Chalk Marks You Rub Out on the Way Back",
+   "subtitle": "Backtracking as one template: choose, explore, unchoose, plus pruning that cuts the search tree and how to estimate whether it will finish in time",
+   "track": "dsa-recursion",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-subsets-permutations"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "backtracking",
+    "recursion",
+    "pruning",
+    "search"
+   ],
+   "complexity": {
+    "time": "Proportional to the number of nodes in the search tree, often exponential",
+    "space": "O(depth) for the path and recursion"
+   },
+   "practice_problems": [
+    {
+     "name": "Letter Combinations of a Phone Number",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/letter-combinations-of-a-phone-number/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Combination Sum",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/combination-sum/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Palindrome Partitioning",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/palindrome-partitioning/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Word Search",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/word-search/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Partition to K Equal Sum Subsets",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/partition-to-k-equal-sum-subsets/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Backtracking",
+     "definition": "Building a solution one choice at a time, recursing to explore the consequences, and undoing the choice before trying the next option."
+    },
+    {
+     "term": "Search tree",
+     "definition": "The tree of partial solutions: the root is the empty choice, each edge is one choice, and each leaf is a complete or abandoned attempt."
+    },
+    {
+     "term": "State",
+     "definition": "Everything the recursion needs to know about the current partial solution, such as the path so far, a running sum or which cells are used."
+    },
+    {
+     "term": "Pruning",
+     "definition": "Stopping a branch as soon as it is clear that it cannot lead to a valid or better answer, so its whole subtree is never explored."
+    },
+    {
+     "term": "Branching factor",
+     "definition": "How many choices each node of the search tree has. With branching factor b and depth d, the tree has up to about b^d leaves."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What are the three steps every backtracking loop body performs?",
+     "options": [
+      "Sort, search, merge",
+      "Choose an option, explore by recursing, then undo the choice",
+      "Push, pop, peek",
+      "Read, write, verify"
+     ],
+     "answer": 1,
+     "explain": "Making a choice changes the state, the recursive call explores everything that follows from it, and undoing restores the state for the next option."
+    },
+    {
+     "q": "In Combination Sum with sorted candidates, why can the loop break, not just skip, when a candidate is bigger than the remaining target?",
+     "options": [
+      "To save memory",
+      "Every later candidate is at least as big, so none of them can fit either",
+      "Because the answer is found",
+      "Breaking and skipping are the same"
+     ],
+     "answer": 1,
+     "explain": "Sorting makes candidates increase. Once one is too big, all the rest are too, so the whole remaining loop can be cut."
+    },
+    {
+     "q": "Letter Combinations on a 7-digit number whose keys have 3 or 4 letters each: what bounds the work?",
+     "options": [
+      "7",
+      "About 4⁷ = 16,384 complete strings, each built in 7 steps",
+      "7!",
+      "2⁷"
+     ],
+     "answer": 1,
+     "explain": "The branching factor is at most 4 and the depth is 7, so there are at most 4⁷ leaves. Each output string costs O(7) to copy."
+    }
+   ],
+   "cover_seed": "backtracking-template",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.9,
+   "path": "dsa/backtracking-template.md",
+   "hash": "c24f9464da84",
+   "word_count": 1463,
+   "excerpt": "You are exploring a cave system with a piece of chalk. At every fork you mark the tunnel you take. If it dead-ends, you walk back to the fork, rub out the mark and try the next tunnel. You never get lost, you never explore the same tunnel twice from the same fork, and when you return to the…"
+  },
+  {
+   "id": "dsa-n-queens",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "n-queens",
+   "title": "Seating Rivals So No Two Can See Each Other",
+   "subtitle": "N-Queens with backtracking and O(1) attack checks: one queen per row, sets for columns and both diagonals keyed by r − c and r + c, and a bitmask version for counting",
+   "track": "dsa-recursion",
+   "track_order": 3,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-backtracking-template"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "backtracking",
+    "n-queens",
+    "bitmask",
+    "pruning"
+   ],
+   "complexity": {
+    "time": "Exponential, far below n^n thanks to pruning",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "N-Queens",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/n-queens/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "N-Queens II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/n-queens-ii/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Chessboard and Queens",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1624",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Attack",
+     "definition": "Two queens attack each other if they share a row, a column or a diagonal."
+    },
+    {
+     "term": "Diagonal key",
+     "definition": "r − c, which is the same for every cell on one top-left to bottom-right diagonal."
+    },
+    {
+     "term": "Anti-diagonal key",
+     "definition": "r + c, which is the same for every cell on one top-right to bottom-left diagonal."
+    },
+    {
+     "term": "Bitmask",
+     "definition": "An integer whose bits record a set of small numbers, such as which columns are taken; testing and setting a bit is O(1)."
+    },
+    {
+     "term": "Row-by-row placement",
+     "definition": "Placing exactly one queen in each row, in order, so row conflicts are impossible by construction."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Queens at (1, 3) and (3, 1): do they attack each other, and which key shows it?",
+     "options": [
+      "No",
+      "Yes: both have r + c = 4, the same anti-diagonal",
+      "Yes: same column",
+      "Yes: both have r − c = 2"
+     ],
+     "answer": 1,
+     "explain": "1 + 3 = 4 and 3 + 1 = 4, so they share an anti-diagonal. Their r − c values are −2 and 2, so they are not on the same main diagonal."
+    },
+    {
+     "q": "Why place one queen per row instead of trying every cell for every queen?",
+     "options": [
+      "It is required by the rules",
+      "Two queens in one row always attack, so every solution has exactly one per row; fixing that removes row checks and shrinks the search enormously",
+      "It finds solutions in sorted order",
+      "It uses less memory only"
+     ],
+     "answer": 1,
+     "explain": "With n queens on n rows and no shared row, each row holds exactly one queen. Choosing a column per row turns the search into n levels with at most n choices each."
+    },
+    {
+     "q": "How many solutions does the 8-queens puzzle have?",
+     "options": [
+      "8",
+      "12",
+      "92",
+      "40,320"
+     ],
+     "answer": 2,
+     "explain": "There are 92 placements of 8 non-attacking queens on an 8 by 8 board; the search in the code counts them."
+    }
+   ],
+   "cover_seed": "n-queens",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "dsa/n-queens.md",
+   "hash": "8e45ea13e583",
+   "word_count": 1246,
+   "excerpt": "A host is seating eight guests at a square banquet laid out like a chessboard, and every guest is a rival of every other. Two rivals must never be able to see each other: not along a row, not along a column and not along a diagonal. How many ways are there to seat them? That is the eight queens…"
   },
   {
    "id": "dsa-tree-traversals",

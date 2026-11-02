@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 75 | 0 | 77 | 152 | 52/72 |
+| dsa | 77 | 0 | 75 | 152 | 53/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **277** | **0** | **396** | **673** | |
+| **All** | **279** | **0** | **394** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -25,7 +25,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### dsa
 
-- [ ] `dsa-backtracking-template` (P0, pattern, dsa-recursion): Backtracking: Explore, Undo, Repeat
+- [ ] `dsa-word-search` (P0, problem-walkthrough, dsa-recursion): Word Search: Backtracking on a Grid
+- [ ] `dsa-generate-parentheses` (P0, problem-walkthrough, dsa-recursion): Generating Valid Parentheses
 - [ ] `dsa-tree-recursion` (P0, pattern, dsa-trees): Thinking Recursively About Trees
 - [ ] `dsa-top-k-pattern` (P0, pattern, dsa-heaps-greedy): Top K: The Heap of Size K Trick
 - [ ] `dsa-greedy-exchange` (P0, pattern, dsa-heaps-greedy): Greedy Algorithms and the Exchange Argument
@@ -34,7 +35,6 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-dijkstra` (P0, pattern, dsa-graphs): Dijkstra: Shortest Paths With Weights
 - [ ] `dsa-word-ladder` (P0, problem-walkthrough, dsa-graphs): Word Ladder: BFS on Implicit Graphs
 - [ ] `dsa-islands-variants` (P0, problem-walkthrough, dsa-graphs): Number of Islands and Its Many Variants
-- [ ] `dsa-divide-and-conquer` (P1, pattern, dsa-recursion): Divide and Conquer: Split, Solve, Combine
 
 ### cp
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 75 written</summary>
+<details><summary>dsa: 77 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -119,6 +119,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-queue-deque` Queues and Deques: Sliding Window Maximum
 - [x] `dsa-lru-cache` Designing an LRU Cache
 - [x] `dsa-subsets-permutations` Generating Subsets and Permutations
+- [x] `dsa-backtracking-template` Backtracking: Explore, Undo, Repeat
+- [x] `dsa-n-queens` N-Queens: Backtracking With Smart Bookkeeping
 - [x] `dsa-tree-traversals` Tree Traversals: Pre, In, Post and Level Order
 - [x] `dsa-heap-basics` Heaps: Always Know the Smallest
 - [x] `dsa-graph-representation` Graphs: Modelling Problems as Nodes and Edges
