@@ -29,8 +29,10 @@ for arg in "$@"; do
   fi
 done
 
-python3 pipeline/generate_article.py "$@"
+python3 pipeline/curriculum_generate.py "$@"
 python3 pipeline/build_index.py
+python3 tools/check_cpp.py
+python3 tools/progress.py
 echo
 echo "Review the new files in content/papers/, then commit them:"
 echo "  git add content && git commit -m \"[content] New articles\" && git push"

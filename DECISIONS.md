@@ -75,3 +75,12 @@ Choices made while building, so nobody has to guess later.
 - **Curriculum authoring:** curricula were drafted in a compact line format and converted once to JSON; the JSON is now the only source of truth (`status` = planned / written / needs_review).
 - **ML priority:** placement-relevant ML (primers and a handful of core papers) is P1; the rest is P2, because the target roles are product and infra engineering.
 - **Practice problem links** use LeetCode slugs, CSES task ids and Codeforces problem ids that are well known; they were not all opened live from this sandbox. `tools/check_links.py` (when added) or a manual click-through should confirm them.
+
+## v2: curriculum-driven pipeline
+
+- **`pipeline/curriculum_generate.py` replaces discovery for the daily job.** It only writes planned curriculum entries whose prerequisites exist, by priority then path order, using `daily_mix` from `config.yaml` (default one per subject). No Semantic Scholar calls, so no 429 waits. `generate_article.py` stays for manual `--arxiv` runs.
+- **Three passes plus a final check:** draft, critic (JSON rubric in `pipeline/prompts/critic.md`), revise, then a final critic score. Publishing needs: no validator errors, length within range, every runnable C++ block compiling, and a final score of at least `quality_threshold` (7.5). Otherwise the draft goes to `pipeline/drafts/<id>.md` (outside the app's content folders) and the entry becomes `needs_review`.
+- **Metadata stays authoritative:** id, slug, subject, kind, track, order, priority, dates, cover seed and (for ML) the paper link come from the curriculum, never from the model. Prerequisites are filtered to written articles; unknown links and glossary marks are repaired.
+- **Subject prompts are templates** (`pipeline/prompts/<subject>.md`) that pull in the shared writing guide, format spec and one exemplar article at run time, so the guide lives in one place. Each template's `exemplar:` line should point at the best article of that subject once it exists.
+- **Gemini gets at most 2 retries** on transient errors (429/503) via a per-provider `max_retries`, then the run falls through to Groq.
+- **The workflow has `timeout-minutes: 30`** and commits articles, curriculum status, drafts and `PROGRESS.md` together with a `[content]` message.

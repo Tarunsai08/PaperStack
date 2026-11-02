@@ -39,6 +39,8 @@ class Provider:
     api_key_env: str = ""
     requests_per_minute: int = 10
     max_input_tokens: int = 30000
+    # Retries on transient errors (429, 503...) before falling through to the next provider.
+    max_retries: int | None = None
     last_call: float = 0.0
     _client: Any = field(default=None, repr=False)
 
@@ -92,6 +94,7 @@ def load_providers(config: dict, only: str | None = None) -> list[Provider]:
             api_key_env=p.get("api_key_env", "") or "",
             requests_per_minute=int(p.get("requests_per_minute", 10)),
             max_input_tokens=int(p.get("max_input_tokens", config.get("max_input_tokens", 30000))),
+            max_retries=int(p["max_retries"]) if p.get("max_retries") is not None else None,
         )
         if only and prov.name != only:
             continue
@@ -175,7 +178,8 @@ class LLM:
                 log_event("llm_cache_hit", provider=prov.name, model=prov.model)
                 return Completion(data["text"], prov.name, prov.model, prov.tag, cached=True)
 
-            for attempt in range(self.max_retries + 1):
+            retries = self.max_retries if prov.max_retries is None else prov.max_retries
+            for attempt in range(retries + 1):
                 prov.wait_for_rate_limit(self.sleep)
                 started = time.monotonic()
                 try:
@@ -183,7 +187,7 @@ class LLM:
                 except Exception as e:  # noqa: BLE001 - we classify below
                     transient = is_transient(e)
                     log_event("llm_error", provider=prov.name, model=prov.model, attempt=attempt, transient=transient, error=str(e)[:300])
-                    if transient and attempt < self.max_retries:
+                    if transient and attempt < retries:
                         self.sleep(2 ** (attempt + 1))
                         continue
                     errors.append(f"{prov.name}: {e}")
