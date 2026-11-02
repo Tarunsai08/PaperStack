@@ -1,5 +1,5 @@
 {
- "content_version": "986ad61089549273",
+ "content_version": "8f71cd1d4a5fc267",
  "generated_at": "2026-11-02",
  "count": 256,
  "subjects": [
@@ -9514,7 +9514,7 @@
     "dsa-two-pointers"
    ],
    "difficulty": "beginner",
-   "read_minutes": 6,
+   "read_minutes": 7,
    "topics": [
     "strings",
     "palindromes",
@@ -9626,8 +9626,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "dsa/string-patterns.md",
-   "hash": "8fc6223b147b",
-   "word_count": 1403,
+   "hash": "57ee82af2856",
+   "word_count": 1435,
    "excerpt": "String questions look endless: anagrams, palindromes, \"longest substring with at most k changes\", \"group words that are rearrangements of each other\". Then you notice something. Almost all of them reduce to two tools you already know: counting letters, and two pointers moving in from the ends or…"
   },
   {
@@ -9778,7 +9778,7 @@
     "dsa-sorting-as-tool"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 4,
+   "read_minutes": 7,
    "topics": [
     "intervals",
     "sorting",
@@ -9818,6 +9818,12 @@
      "name": "Interval List Intersections",
      "platform": "LeetCode",
      "url": "https://leetcode.com/problems/interval-list-intersections/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Non-overlapping Intervals",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/non-overlapping-intervals/",
      "difficulty": "Medium"
     }
    ],
@@ -9883,8 +9889,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.9,
    "path": "dsa/intervals-sweep.md",
-   "hash": "a9027620d00e",
-   "word_count": 902,
+   "hash": "f21029e86793",
+   "word_count": 1451,
    "excerpt": "A calendar app must show your busy blocks, merging back-to-back and overlapping meetings into single stretches. A restaurant wants to know the most customers it ever had at once. A booking system must check whether a new reservation clashes with existing ones. These sound like different problems.…"
   },
   {

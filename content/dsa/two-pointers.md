@@ -302,5 +302,4 @@ Begin with *Two Sum II* and *Valid Palindrome*, the purest forms. *Sum of Two Va
 - Each comparison safely discards one end, because sorted order proves that element cannot be part of any answer.
 - The invariant "any valid pair lies between the pointers" is what guarantees the answer is never skipped.
 - Same-direction pointers compact or filter an array in place with O(1) extra memory.
-- The same discard argument powers 3Sum after sorting, counting pairs in one step, Container With Most Water and merging two sorted arrays.
-- Sorted input plus a pair or triplet condition is the cue to try two pointers, and 3Sum extends it by fixing one element first.
+- Sorted input plus a pair or triplet condition is the cue, and the same discard argument powers 3Sum, counting pairs in one step, Container With Most Water and merging sorted arrays.
