@@ -1484,8 +1484,8 @@
     "dsa-heap-basics",
     "dsa-greedy-exchange"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Merge the two rarest symbols",
@@ -3059,8 +3059,8 @@
     "dsa-intervals-sweep",
     "dsa-heap-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Min-heap of end times",
@@ -3091,8 +3091,8 @@
    "prerequisites": [
     "dsa-greedy-exchange"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Track farthest reachable",
