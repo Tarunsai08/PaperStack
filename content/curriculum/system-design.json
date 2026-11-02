@@ -902,8 +902,8 @@
     "system-design-caching",
     "system-design-sql-vs-nosql"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Separate DB",
@@ -1023,8 +1023,8 @@
    "prerequisites": [
     "system-design-message-queues"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Accept fast, process async",
@@ -1492,8 +1492,8 @@
     "system-design-caching",
     "system-design-async-processing"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Fan-out on write vs read",
