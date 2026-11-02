@@ -1975,8 +1975,8 @@
    "prerequisites": [
     "dsa-knapsack-01"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Items reusable, iterate forward",
@@ -2008,8 +2008,8 @@
     "dsa-dp-1d",
     "dsa-binary-search"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "O(n^2) DP",
@@ -2039,8 +2039,8 @@
    "prerequisites": [
     "dsa-dp-intro"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "2D table over prefixes",
@@ -2074,8 +2074,8 @@
    "prerequisites": [
     "dsa-dp-intro"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "dp[r][c] from top and left",
@@ -3311,8 +3311,8 @@
    "prerequisites": [
     "dsa-unbounded-knapsack"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Min coins vs count ways",
@@ -3344,8 +3344,8 @@
     "dsa-dp-1d",
     "dsa-tries"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "dp[i] true if prefix splits",
