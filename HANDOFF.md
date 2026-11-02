@@ -16,7 +16,7 @@ The owner's v2 brief, in execution order. Tick boxes reflect the repo at the las
 - [x] `CLAUDE.md`, this file, `tools/progress.py`, `tools/check_cpp.py` (in CI).
 - [ ] **Seed articles**: about 50 each for DSA, CP, Famous Algorithms, System Design. Rotate subjects in rounds of 10 (first 10 of each, then the next 10, ...), batches of about 5, commit after each batch.
 - [ ] **Review and rewrite the 31 Gemini-generated ML articles** (`generated_by: gemini-*`). Log before/after scores in `REVIEW_LOG.md`. Keep `id`, `slug`, `paper_url`; set `generated_by: "claude-revised"`.
-- [ ] **Curriculum-driven daily pipeline**: replace Semantic Scholar discovery with the curriculum queue; per-subject prompts in `pipeline/prompts/<subject>.md`; draft, critic, revise passes; quality gate (validator + C++ check + score threshold); `needs_review` on failure; Gemini retry at most 2 times then Groq; `timeout-minutes: 30`; `[content]` commits that also update curriculum status and `PROGRESS.md`.
+- [x] **Curriculum-driven daily pipeline** (done: `pipeline/curriculum_generate.py`, plan/draft/critic/revise, quality contract, lint gate, kind-matched exemplars): replace Semantic Scholar discovery with the curriculum queue; per-subject prompts in `pipeline/prompts/<subject>.md`; draft, critic, revise passes; quality gate (validator + C++ check + score threshold); `needs_review` on failure; Gemini retry at most 2 times then Groq; `timeout-minutes: 30`; `[content]` commits that also update curriculum status and `PROGRESS.md`.
 - [ ] Final pass: performance, accessibility, tests, README, screenshots of every screen in all themes at phone width.
 
 ## 3. How to write one article
@@ -31,8 +31,11 @@ Only link (`[text](article:<id>)`) and list prerequisites that **already exist a
 
 ## 4. Exemplars to imitate
 - **ML:** `content/primers/gradient-descent.md`, `content/papers/attention-is-all-you-need.md`, `content/papers/resnet.md`.
-- **DSA:** `content/dsa/prefix-sums.md` (pattern), `content/dsa/big-o.md` (primer). Add a walkthrough exemplar here once written.
-- **CP, Famous Algorithms, System Design:** add the first three written articles of each subject here as you write them.
+- **DSA:** `content/dsa/prefix-sums.md`, `content/dsa/two-pointers.md`, `content/dsa/binary-search.md` (patterns), `content/dsa/big-o.md` (primer). Add a walkthrough exemplar once written.
+- **CP:** `content/cp/stress-testing.md` (pattern), `content/cp/how-contests-work.md`, `content/cp/fast-io-template.md` (primers).
+- **Famous Algorithms:** `content/famous-algos/bloom-filter.md`, `content/famous-algos/consistent-hashing.md`, `content/famous-algos/hyperloglog.md`.
+- **System Design:** `content/system-design/client-server-http.md`, `content/system-design/dns-deep-dive.md` (deep dives), `content/system-design/back-of-envelope.md` (primer). Add the first case study and LLD article here once written.
+- **Length tip:** first drafts tend to land 5-15% short of the minimum; aim for the middle of the range.
 
 ## 5. Common pitfalls
 - A `[[Term]]` that is not in the glossary fails validation. So does an `article:` link to an id that does not exist yet.

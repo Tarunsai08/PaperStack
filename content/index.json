@@ -1,7 +1,7 @@
 {
- "content_version": "8b35b886e57a33c3",
+ "content_version": "8ebe9c7aab72a43c",
  "generated_at": "2026-11-02",
- "count": 103,
+ "count": 107,
  "subjects": [
   {
    "id": "ml",
@@ -9134,6 +9134,128 @@
    "excerpt": "A trader looks back at a year of daily profits and losses: up 3, down 7, up 4, up 2, down 1, up 5. What stretch of consecutive days would have made the most money? Checking every start and end day is easy to write and slow to run: about n² stretches. Jon Bentley tells the story of this problem in…"
   },
   {
+   "id": "dsa-binary-search",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "binary-search",
+   "title": "Binary Search Without the Off-by-One Fear",
+   "subtitle": "One invariant, one template, and the lower_bound way of thinking that ends boundary bugs",
+   "track": "dsa-search-sort",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 4,
+   "topics": [
+    "binary search",
+    "searching",
+    "invariants"
+   ],
+   "complexity": {
+    "time": "O(log n)",
+    "space": "O(1)"
+   },
+   "practice_problems": [
+    {
+     "name": "Binary Search",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/binary-search/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Search Insert Position",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/search-insert-position/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "First Bad Version",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/first-bad-version/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Find First and Last Position of Element in Sorted Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Search a 2D Matrix",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/search-a-2d-matrix/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Predicate",
+     "definition": "A yes-or-no question about an index, like 'is a[i] at least x?'. Binary search needs it to be no for a while, then yes for the rest."
+    },
+    {
+     "term": "Monotonic",
+     "definition": "Changing in only one direction. A monotonic predicate switches from no to yes once and never back."
+    },
+    {
+     "term": "Search space",
+     "definition": "The range of indices that could still contain the answer, shrinking by half each step."
+    },
+    {
+     "term": "Lower bound",
+     "definition": "The first position whose value is at least x, which is also where x would be inserted to keep the array sorted."
+    },
+    {
+     "term": "Half-open interval",
+     "definition": "A range written [lo, hi) that includes lo but not hi. It makes the length simply hi minus lo."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In the template lo = 0, hi = n, while lo < hi, what is the meaning of hi?",
+     "options": [
+      "The last index that might be the answer",
+      "One past the last candidate, so the answer lies in [lo, hi)",
+      "Always n - 1",
+      "The middle element"
+     ],
+     "answer": 1,
+     "explain": "With a half-open range, hi itself is never checked. When lo meets hi, that position is the first yes, or n if there is none."
+    },
+    {
+     "q": "Why is mid computed as lo + (hi - lo) / 2 instead of (lo + hi) / 2?",
+     "options": [
+      "It is faster",
+      "It avoids integer overflow when lo and hi are large",
+      "It rounds up",
+      "It is required by the compiler"
+     ],
+     "answer": 1,
+     "explain": "lo + hi can exceed the largest int for big ranges. lo + (hi - lo) / 2 never does."
+    },
+    {
+     "q": "On [1, 3, 3, 3, 7], what are lower_bound(3) and upper_bound(3)?",
+     "options": [
+      "1 and 3",
+      "1 and 4",
+      "0 and 4",
+      "2 and 3"
+     ],
+     "answer": 1,
+     "explain": "lower_bound is the first index with value at least 3, which is 1. upper_bound is the first index with value greater than 3, which is 4. Their difference, 3, counts the 3s."
+    }
+   ],
+   "cover_seed": "binary-search",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.94,
+   "path": "dsa/binary-search.md",
+   "hash": "e2b2c2b6b9e4",
+   "word_count": 908,
+   "excerpt": "Donald Knuth noted that although the first binary search was published in 1946, the first version that worked correctly for every input took many more years to appear. Decades later, a bug was found in the binary search inside Java's standard library: computing (low + high) / 2 overflowed on very…"
+  },
+  {
    "id": "cp-how-contests-work",
    "kind": "primer",
    "subject": "cp",
@@ -9484,6 +9606,122 @@
    "excerpt": "Most people quit competitive programming in the first two months. Not because they lack talent, but because they practise blindly: random problems, some far too easy, some impossibly hard, no sense of progress. The rating graph goes flat, and so does the motivation. Climbers do not walk up a…"
   },
   {
+   "id": "cp-stress-testing",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "stress-testing",
+   "title": "Let a Robot Find Your Wrong Answer",
+   "subtitle": "Stress testing: a brute force, a random generator and a loop that finds the failing test for you",
+   "track": "cp-start",
+   "track_order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-fast-io-template"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 4,
+   "topics": [
+    "competitive programming",
+    "testing",
+    "debugging"
+   ],
+   "complexity": {
+    "time": "Thousands of tiny tests in seconds",
+    "space": "Small; tests are tiny"
+   },
+   "practice_problems": [
+    {
+     "name": "Maximum Subarray Sum",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1643",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Sum of Two Values",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1640",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Apartments",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1084",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Watermelon",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/4/A",
+     "difficulty": "800"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Stress test",
+     "definition": "Running your fast solution and a simple brute force on many random small inputs and comparing their outputs."
+    },
+    {
+     "term": "Brute force",
+     "definition": "A slow but obviously correct solution, used here only as a referee on tiny inputs."
+    },
+    {
+     "term": "Generator",
+     "definition": "A small program that prints a random valid input, usually tiny, for a given random seed."
+    },
+    {
+     "term": "Counterexample",
+     "definition": "An input on which the fast and brute-force solutions disagree, which pinpoints the bug."
+    },
+    {
+     "term": "Seed",
+     "definition": "The number that starts a random generator. The same seed always produces the same test, so failures can be reproduced."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why should generated tests be tiny, like n between 1 and 6?",
+     "options": [
+      "Judges only use tiny tests",
+      "The brute force must be fast enough, and a tiny counterexample is easy to debug by hand",
+      "Big tests never find bugs",
+      "To save disk space"
+     ],
+     "answer": 1,
+     "explain": "Most bugs show up on small inputs. Tiny tests keep the brute force fast and give you a failing case you can trace on paper."
+    },
+    {
+     "q": "Why pass a seed to the generator?",
+     "options": [
+      "It makes the tests harder",
+      "So the exact failing test can be regenerated and debugged",
+      "Seeds make the program faster",
+      "The judge requires it"
+     ],
+     "answer": 1,
+     "explain": "With the seed, you can reproduce the same random input any time, which turns a flaky failure into a fixed test case."
+    },
+    {
+     "q": "Your stress test runs 10,000 cases without a difference, but the judge still says Wrong Answer. What is a likely cause?",
+     "options": [
+      "The judge is wrong",
+      "Your generator never produces the failing pattern, such as large values that overflow or a specific edge case",
+      "Stress tests always find every bug",
+      "You need more seeds of the same tiny size only"
+     ],
+     "answer": 1,
+     "explain": "A stress test only covers what the generator produces. Overflow, maximum sizes or special structures like all-equal arrays may need their own generators."
+    }
+   ],
+   "cover_seed": "stress-testing",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.82,
+   "path": "cp/stress-testing.md",
+   "hash": "fb88823f60a5",
+   "word_count": 896,
+   "excerpt": "Wrong answer on test 7. You reread your code three times. It looks right. The samples pass. You cannot see test 7. Twenty minutes slip by while you stare at the screen, trying to imagine what the judge could possibly be feeding it. Experienced contestants do something different. In about five…"
+  },
+  {
    "id": "famous-algos-bloom-filter",
    "kind": "concept",
    "subject": "famous-algos",
@@ -9829,6 +10067,93 @@
    "hash": "73d7f607e098",
    "word_count": 970,
    "excerpt": "It is the biggest sale of the year, and your cache cluster is struggling. You add a fifth server to the four you have. Within seconds, almost every cache lookup starts missing, the database behind the cache is flooded with requests, and the site slows to a crawl. Adding capacity made things worse.…"
+  },
+  {
+   "id": "famous-algos-lamport-clocks",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "lamport-clocks",
+   "title": "Ordering Events Without Trusting Any Clock",
+   "subtitle": "Lamport clocks: a single counter per machine that captures what could have caused what",
+   "track": "fa-distributed",
+   "track_order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-consistent-hashing"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 4,
+   "topics": [
+    "distributed systems",
+    "logical clocks",
+    "ordering",
+    "causality"
+   ],
+   "glossary": [
+    {
+     "term": "Happened-before",
+     "definition": "Event a happened before event b if they are on the same machine in that order, or a is sending a message that b receives, or a chain of these links them."
+    },
+    {
+     "term": "Logical clock",
+     "definition": "A counter that orders events by cause and effect instead of by physical time."
+    },
+    {
+     "term": "Concurrent events",
+     "definition": "Two events where neither could have influenced the other, because no chain of messages connects them."
+    },
+    {
+     "term": "Clock skew",
+     "definition": "The difference between the physical clocks of two machines, which can be milliseconds or more even with synchronisation."
+    },
+    {
+     "term": "Total order",
+     "definition": "An ordering in which every pair of events is ranked, with ties broken by a fixed rule such as machine id."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A machine with Lamport clock 5 receives a message stamped 9. What is its clock after receiving?",
+     "options": [
+      "6",
+      "9",
+      "10",
+      "14"
+     ],
+     "answer": 2,
+     "explain": "On receive, the clock becomes max(local, received) + 1, which is max(5, 9) + 1 = 10."
+    },
+    {
+     "q": "If event a happened before event b, what must be true of their Lamport timestamps?",
+     "options": [
+      "L(a) > L(b)",
+      "L(a) < L(b)",
+      "L(a) = L(b)",
+      "Nothing"
+     ],
+     "answer": 1,
+     "explain": "This is the clock condition. Every step along a happened-before chain increases the counter, so the earlier event has a smaller timestamp."
+    },
+    {
+     "q": "L(a) = 3 and L(b) = 7. What can you conclude?",
+     "options": [
+      "a happened before b",
+      "b happened before a",
+      "b did not happen before a, but a and b may be concurrent",
+      "They are on the same machine"
+     ],
+     "answer": 2,
+     "explain": "Smaller timestamps do not prove causality. You only know b could not have caused a. Detecting concurrency needs vector clocks."
+    }
+   ],
+   "cover_seed": "lamport-clocks",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "famous-algos/lamport-clocks.md",
+   "hash": "16a14e9d2239",
+   "word_count": 980,
+   "excerpt": "Two servers record events with their own clocks. Server A logs \"user deleted the file\" at 10:00:00.120. Server B logs \"user edited the file\" at 10:00:00.100. So the edit came first? Not necessarily: B's clock might run 50 milliseconds fast. Physical clocks on different machines never agree exactly,…"
   },
   {
    "id": "system-design-interview-framework",
@@ -10184,6 +10509,94 @@
    "hash": "ae1162e5373f",
    "word_count": 1116,
    "excerpt": "You type a web address and press Enter. Half a second later, a page appears. It feels like one action. It is actually a relay race: at least four separate conversations with machines you never see, each one costing a trip across the network before the next can start. Knowing those legs is not…"
+  },
+  {
+   "id": "system-design-dns-deep-dive",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "dns-deep-dive",
+   "title": "The Phone Book That Holds the Internet Together",
+   "subtitle": "How DNS turns names into addresses, why caching makes it fast, and how it doubles as a load balancer",
+   "track": "sd-fundamentals",
+   "track_order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-client-server-http"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "dns",
+    "networking",
+    "caching",
+    "load balancing"
+   ],
+   "glossary": [
+    {
+     "term": "Resolver",
+     "definition": "The DNS server your device asks first, often run by your ISP or a public service. It does the legwork of finding the answer."
+    },
+    {
+     "term": "Authoritative server",
+     "definition": "The DNS server that holds the official records for a domain and gives the final answer."
+    },
+    {
+     "term": "TTL",
+     "definition": "Time to live: how many seconds a DNS answer may be cached before it must be looked up again."
+    },
+    {
+     "term": "Record",
+     "definition": "One entry in DNS, such as an A record (name to IPv4 address) or a CNAME (name to another name)."
+    },
+    {
+     "term": "GeoDNS",
+     "definition": "Answering the same name with different addresses depending on where the user is, to send them to a nearby server."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A record has a TTL of 300 seconds. You change the IP address. When will every user see the new address?",
+     "options": [
+      "Instantly",
+      "Within roughly 300 seconds for well-behaved caches, sometimes longer for caches that ignore TTLs",
+      "Exactly after one day",
+      "Never, DNS cannot change"
+     ],
+     "answer": 1,
+     "explain": "Caches may keep the old answer until its TTL expires. Most respect it, but some clients and resolvers hold answers longer."
+    },
+    {
+     "q": "Who walks the chain from root to TLD to authoritative server?",
+     "options": [
+      "Your browser",
+      "The recursive resolver",
+      "The root server",
+      "The web server"
+     ],
+     "answer": 1,
+     "explain": "Your device asks the resolver one question. The resolver does the iterative lookups and caches what it learns."
+    },
+    {
+     "q": "Why is DNS-based load balancing coarse?",
+     "options": [
+      "DNS cannot return more than one address",
+      "Answers are cached for the TTL, so traffic shifts slowly and the DNS server cannot see actual server load",
+      "DNS only works for one region",
+      "It requires HTTPS"
+     ],
+     "answer": 1,
+     "explain": "Once a client caches an address, it keeps using it until the TTL ends. That makes DNS good for rough geographic steering, not fine-grained balancing."
+    }
+   ],
+   "cover_seed": "dns-deep-dive",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.85,
+   "path": "system-design/dns-deep-dive.md",
+   "hash": "376a7682fb75",
+   "word_count": 1122,
+   "excerpt": "Every website you visit begins with a question your browser asks before anything else: \"where is this name?\" If that question cannot be answered, a perfectly healthy service simply vanishes. Several of the internet's most visible outages have come not from servers crashing but from DNS answers…"
   }
  ]
 }

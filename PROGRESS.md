@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 8 | 0 | 144 | 152 | 8/72 |
-| cp | 4 | 0 | 111 | 115 | 4/29 |
-| famous-algos | 4 | 0 | 87 | 91 | 4/32 |
-| system-design | 4 | 0 | 115 | 119 | 4/60 |
+| dsa | 9 | 0 | 143 | 152 | 9/72 |
+| cp | 5 | 0 | 110 | 115 | 5/29 |
+| famous-algos | 5 | 0 | 86 | 91 | 5/32 |
+| system-design | 5 | 0 | 114 | 119 | 5/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **103** | **0** | **570** | **673** | |
+| **All** | **107** | **0** | **566** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **31**
 
@@ -31,38 +31,39 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-product-except-self` (P0, problem-walkthrough, dsa-arrays): Product of Array Except Self Without Division
 - [ ] `dsa-subarray-sum-k` (P0, problem-walkthrough, dsa-arrays): Counting Subarrays With Sum K
 - [ ] `dsa-dutch-national-flag` (P0, problem-walkthrough, dsa-arrays): Sort Colors: The Dutch National Flag in One Pass
-- [ ] `dsa-binary-search` (P0, pattern, dsa-search-sort): Binary Search, Done Right Every Time
+- [ ] `dsa-binary-search-answer` (P0, pattern, dsa-search-sort): Binary Search on the Answer
 - [ ] `dsa-sorting-as-tool` (P0, pattern, dsa-search-sort): Sorting as a Superpower
+- [ ] `dsa-rotated-array-search` (P0, problem-walkthrough, dsa-search-sort): Searching a Rotated Sorted Array
 - [ ] `dsa-gcd-primes` (P0, pattern, dsa-math): GCD, Primes and Divisors for Interviews
-- [ ] `dsa-linked-list-basics` (P0, pattern, dsa-linear): Linked Lists: Pointer Surgery Made Safe
 
 ### cp
 
-- [ ] `cp-stress-testing` (P0, pattern, cp-start): Stress Testing: Catch Wrong Answers Yourself
 - [ ] `cp-invariants-observations` (P0, pattern, cp-start): Invariants and Observations: The Heart of Div 2
+- [ ] `cp-contest-strategy` (P0, primer, cp-misc): Contest Strategy: Order, Time and Nerves
+- [ ] `cp-debugging-in-contest` (P1, primer, cp-start): Debugging Under Time Pressure
 - [ ] `cp-upsolving` (P1, primer, cp-start): Upsolving: Where Rating Actually Comes From
 - [ ] `cp-constructive-problems` (P1, pattern, cp-start): Constructive Problems: Build the Answer
 - [ ] `cp-weird-algorithm` (P1, problem-walkthrough, cp-start): Your First CSES Problems: Weird Algorithm to Increasing Array
 - [ ] `cp-implementation-skills` (P1, primer, cp-start): Implementation Problems: Getting the Details Right
 - [ ] `cp-sqrt-decomposition` (P1, pattern, cp-ranges): Square Root Decomposition
+- [ ] `cp-interactive-problems` (P1, primer, cp-misc): Interactive Problems: Talking to the Judge
 - [ ] `cp-two-pointer-cp` (P1, pattern, cp-misc): Two Pointers and Monotonicity in Contests
 
 ### famous-algos
 
-- [ ] `famous-algos-lamport-clocks` (P0, concept, fa-distributed): Lamport Clocks: Ordering Events Without a Shared Clock
+- [ ] `famous-algos-vector-clocks` (P0, concept, fa-distributed): Vector Clocks: Detecting Concurrent Updates
 - [ ] `famous-algos-gossip-protocols` (P0, concept, fa-distributed): Gossip Protocols: How Rumours Keep Clusters in Sync
+- [ ] `famous-algos-raft` (P0, concept, fa-distributed): Raft: Consensus You Can Actually Understand
 - [ ] `famous-algos-power-of-two-choices` (P0, concept, fa-networking): The Power of Two Choices: Smarter Load Balancing
+- [ ] `famous-algos-geohash` (P0, concept, fa-storage): Geohash: Turning a Map Into a String
 - [ ] `famous-algos-lz77` (P0, concept, fa-coding): Lempel-Ziv: How ZIP Files Shrink Your Data
 - [ ] `famous-algos-cryptographic-hashing` (P0, concept, fa-crypto): Cryptographic Hashes: Fingerprints You Cannot Fake
 - [ ] `famous-algos-inverted-index` (P0, concept, fa-search): Inverted Indexes: How Search Finds Pages in Milliseconds
 - [ ] `famous-algos-kalman-filter` (P0, concept, fa-signals): The Kalman Filter: Blending Guesses With Noisy Measurements
 - [ ] `famous-algos-counting-bloom-cuckoo` (P1, concept, fa-sketches): Deletable Filters: Counting Bloom and Cuckoo Filters
-- [ ] `famous-algos-heavy-hitters` (P1, concept, fa-sketches): Finding Heavy Hitters in a Stream: Misra-Gries and Space-Saving
-- [ ] `famous-algos-minhash` (P1, concept, fa-sketches): MinHash: Estimating Similarity Without Comparing Everything
 
 ### system-design
 
-- [ ] `system-design-dns-deep-dive` (P0, deep-dive, sd-fundamentals): DNS: The Internet's Phone Book
 - [ ] `system-design-api-design` (P0, deep-dive, sd-fundamentals): API Design: REST, gRPC and GraphQL
 - [ ] `system-design-availability-slos` (P0, deep-dive, sd-fundamentals): Availability, Nines and SLOs
 - [ ] `system-design-caching` (P0, deep-dive, sd-blocks): Caching: Cache-Aside, Write-Through and Friends
@@ -70,6 +71,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `system-design-oop-solid` (P0, lld, sd-lld): Object-Oriented Design and SOLID Principles
 - [ ] `system-design-networking-essentials` (P1, deep-dive, sd-fundamentals): TCP, UDP and QUIC for System Designers
 - [ ] `system-design-proxies` (P1, deep-dive, sd-fundamentals): Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere
+- [ ] `system-design-time-ordering` (P1, deep-dive, sd-distributed): Time and Ordering in Distributed Systems
 
 ### ml
 
@@ -86,7 +88,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 8 written</summary>
+<details><summary>dsa: 9 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -96,33 +98,37 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-sliding-window` Sliding Windows: One Pass Instead of Two Loops
 - [x] `dsa-hashing-patterns` Hash Maps: Trading Memory for Speed
 - [x] `dsa-kadane` Kadane's Algorithm: The Best Subarray in One Pass
+- [x] `dsa-binary-search` Binary Search, Done Right Every Time
 
 </details>
 
-<details><summary>cp: 4 written</summary>
+<details><summary>cp: 5 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
 - [x] `cp-reading-problems-fast` Reading a Problem in Two Minutes
 - [x] `cp-rating-ladder` The Rating Ladder: What to Practise at Each Level
+- [x] `cp-stress-testing` Stress Testing: Catch Wrong Answers Yourself
 
 </details>
 
-<details><summary>famous-algos: 4 written</summary>
+<details><summary>famous-algos: 5 written</summary>
 
 - [x] `famous-algos-bloom-filter` Bloom Filters: Saying No Without Looking
 - [x] `famous-algos-count-min-sketch` Count-Min Sketch: Counting Billions of Things in Kilobytes
 - [x] `famous-algos-hyperloglog` HyperLogLog: Counting Unique Visitors With Almost No Memory
 - [x] `famous-algos-consistent-hashing` Consistent Hashing: Adding Servers Without Moving Everything
+- [x] `famous-algos-lamport-clocks` Lamport Clocks: Ordering Events Without a Shared Clock
 
 </details>
 
-<details><summary>system-design: 4 written</summary>
+<details><summary>system-design: 5 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
 - [x] `system-design-latency-numbers` Latency Numbers Every Engineer Should Feel
 - [x] `system-design-client-server-http` What Happens When You Type a URL
+- [x] `system-design-dns-deep-dive` DNS: The Internet's Phone Book
 
 </details>
 
