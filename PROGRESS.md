@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 139 | 0 | 13 | 152 | 72/72 |
+| dsa | 142 | 0 | 10 | 152 | 72/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **341** | **0** | **332** | **673** | |
+| **All** | **344** | **0** | **329** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -25,14 +25,11 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### dsa
 
-- [ ] `dsa-longest-common-substring` (P1, problem-walkthrough, dsa-dp): Longest Common Substring vs Subsequence
-- [ ] `dsa-dp-on-subsequences` (P1, pattern, dsa-dp): Counting Subsequences With DP
 - [ ] `dsa-fenwick-tree` (P1, pattern, dsa-advanced): Fenwick Trees: Prefix Sums That Change
 - [ ] `dsa-bit-manipulation-tricks` (P1, pattern, dsa-advanced): Bit Manipulation Tricks Interviewers Love
 - [ ] `dsa-string-matching-basics` (P1, pattern, dsa-advanced): Pattern Matching: From Brute Force to Rolling Hash
 - [ ] `dsa-design-data-structures` (P1, pattern, dsa-advanced): Designing Data Structures in Interviews
 - [ ] `dsa-lfu-cache` (P1, problem-walkthrough, dsa-advanced): Designing an LFU Cache
-- [ ] `dsa-dp-grid-advanced` (P2, problem-walkthrough, dsa-dp): Cherry Pickup: Two Walkers in One DP
 - [ ] `dsa-monotonic-queue-dp` (P2, pattern, dsa-advanced): Optimising DP With a Monotonic Deque
 
 ### cp
@@ -89,7 +86,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 139 written</summary>
+<details><summary>dsa: 142 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -229,6 +226,9 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-egg-drop` Egg Drop: Thinking About the Worst Case
 - [x] `dsa-subset-sum-count` Counting Subsets: Target Sum and Partitions
 - [x] `dsa-rod-cutting` Rod Cutting and Integer Break
+- [x] `dsa-longest-common-substring` Longest Common Substring vs Subsequence
+- [x] `dsa-dp-on-subsequences` Counting Subsequences With DP
+- [x] `dsa-dp-grid-advanced` Cherry Pickup: Two Walkers in One DP
 - [x] `dsa-interview-dsa-revision` The Night-Before Revision Sheet
 
 </details>

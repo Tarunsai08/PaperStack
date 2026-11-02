@@ -51,7 +51,7 @@ importance_score: 0.9
 
 ## The hook
 
-Your phone suggests "receive" when you type "recieve". `git diff` shows exactly which lines changed between two versions of a file. A biologist compares a gene from a mouse with the same gene from a human and asks how similar they are. All three are the same question: how do two sequences line up?
+Your phone suggests "receive" when you type "recieve", `git diff` shows exactly which lines changed between two versions of a file, and a biologist compares a mouse gene with the same human gene. All three ask the same question: how do two sequences line up?
 
 Two classic DPs answer it. The longest common subsequence measures what two strings share. Edit distance measures how many changes separate them. They use the same table, the same way of thinking, and together they unlock a whole family of interview problems: minimum deletions, shortest common supersequence, longest palindromic subsequence and distinct subsequences.
 

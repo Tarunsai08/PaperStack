@@ -51,7 +51,7 @@ importance_score: 0.92
 
 ## The hook
 
-A robber walks down a street of houses, each holding some money. Robbing two neighbours in a row trips the alarm. Which houses should they hit? A message of digits must be decoded where 1 means A and 26 means Z: how many readings does "2261" have? A vending machine has coins of 1, 3 and 4: what is the fewest coins for 6?
+A robber walks down a street of houses, each holding some money, and must never rob two neighbours in a row. A message of digits, where 1 means A and 26 means Z, can be read in several ways: how many readings does "2261" have? And with coins of 1, 3 and 4, what is the fewest coins for 6?
 
 These sound like three different puzzles, but they are the same pattern: walk along a line, and at each position make a choice that depends only on the last few positions. That is one-dimensional DP, and it is the most common DP shape in placement interviews. Master it and the bigger DPs become extensions, not new ideas.
 
@@ -78,6 +78,8 @@ There are two kinds: an [[optimisation DP]] takes the max or min over choices, a
 - dp[i] = most money from the first i houses.
 - Choice for house i: skip it (dp[i − 1]) or rob it (a[i] + dp[i − 2], since house i − 1 must be skipped).
 - dp[i] = max(dp[i − 1], dp[i − 2] + a[i]); dp[0] = 0, dp[1] = a[1].
+
+This is the freelance month exactly: robbing a house is working that day, skipping it is resting, and the alarm is the rule against working two days in a row. Today's best plan needs only yesterday's total and the total from the day before yesterday.
 
 ### Decode Ways (counting, look back 2)
 
@@ -120,7 +122,7 @@ In a 1D DP, the question at each position is always "what was the last decision?
 
 ## Walk through an example
 
-**House Robber**, values [5, 1, 2, 9, 4, 3]:
+**House Robber**, values [5, 1, 2, 9, 4, 3]. Read each value as a day's freelance pay: on every day, decide between resting, which keeps yesterday's total, and working, which adds today's pay to the total from the day before yesterday.
 
 | i | house value | skip: dp[i−1] | rob: dp[i−2] + value | dp[i] |
 |---|---|---|---|---|

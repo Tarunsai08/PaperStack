@@ -1,5 +1,5 @@
 {
- "content_version": "1246055d648d4786",
+ "content_version": "d4e977d3c3af7b8f",
  "generated_at": "2026-11-02",
  "count": 344,
  "subjects": [
@@ -22367,7 +22367,7 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.94,
    "path": "dsa/dp-intro.md",
-   "hash": "b69229a85219",
+   "hash": "9a3a95b025a6",
    "word_count": 1103,
    "excerpt": "Dynamic programming has a fearsome reputation. Students talk about it as if it were a separate kind of magic, where you either \"see the formula\" or you do not. Interviewers know this, which is why DP questions appear in so many placement rounds. Here is the secret that takes the fear away: dynamic…"
   },
@@ -22490,9 +22490,9 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.92,
    "path": "dsa/dp-1d.md",
-   "hash": "3705c472965d",
-   "word_count": 1290,
-   "excerpt": "A robber walks down a street of houses, each holding some money. Robbing two neighbours in a row trips the alarm. Which houses should they hit? A message of digits must be decoded where 1 means A and 26 means Z: how many readings does \"2261\" have? A vending machine has coins of 1, 3 and 4: what is…"
+   "hash": "6d7672e3a4df",
+   "word_count": 1363,
+   "excerpt": "A robber walks down a street of houses, each holding some money, and must never rob two neighbours in a row. A message of digits, where 1 means A and 26 means Z, can be read in several ways: how many readings does \"2261\" have? And with coins of 1, 3 and 4, what is the fewest coins for 6? These…"
   },
   {
    "id": "dsa-knapsack-01",
@@ -22978,9 +22978,9 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.9,
    "path": "dsa/lcs-edit-distance.md",
-   "hash": "5a809b37a60e",
-   "word_count": 1197,
-   "excerpt": "Your phone suggests \"receive\" when you type \"recieve\". git diff shows exactly which lines changed between two versions of a file. A biologist compares a gene from a mouse with the same gene from a human and asks how similar they are. All three are the same question: how do two sequences line up?…"
+   "hash": "5629203e6cb1",
+   "word_count": 1188,
+   "excerpt": "Your phone suggests \"receive\" when you type \"recieve\", git diff shows exactly which lines changed between two versions of a file, and a biologist compares a mouse gene with the same human gene. All three ask the same question: how do two sequences line up? Two classic DPs answer it. The longest…"
   },
   {
    "id": "dsa-grid-dp",
@@ -24491,9 +24491,9 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.86,
    "path": "dsa/subset-sum-count.md",
-   "hash": "4c4131e7dc0e",
-   "word_count": 1623,
-   "excerpt": "Five friends' dishes arrive on one bill, and two of them are paying. Each dish goes on one person's tab or the other's. One of them says, \"I'll pay exactly ₹5 of this.\" How many different ways can the dishes be assigned so that works out? Then someone points at the free glass of water on the bill,…"
+   "hash": "e5ef360585c5",
+   "word_count": 1620,
+   "excerpt": "Five friends' dishes arrive on one bill, and two of them are paying, with each dish going on one tab or the other. One says, \"I'll pay exactly ₹5 of this\": how many different ways can the dishes be assigned so that works out? Then someone points at the free glass of water on the bill, priced ₹0. It…"
   },
   {
    "id": "dsa-rod-cutting",
