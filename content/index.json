@@ -1,7 +1,7 @@
 {
- "content_version": "df00f5dc9fc35e61",
+ "content_version": "0ed30e90d68b1150",
  "generated_at": "2026-11-02",
- "count": 111,
+ "count": 115,
  "subjects": [
   {
    "id": "ml",
@@ -9963,6 +9963,93 @@
    "excerpt": "A chessboard has two opposite corners cut off, leaving 62 squares. Can you cover it exactly with 31 dominoes? People try for minutes, shuffling dominoes around in their heads. Then someone notices the colours: every domino covers one black and one white square, but the two removed corners are the…"
   },
   {
+   "id": "cp-contest-strategy",
+   "kind": "primer",
+   "subject": "cp",
+   "slug": "contest-strategy",
+   "title": "Pacing a Two-Hour Race",
+   "subtitle": "Contest strategy: problem order, when to skip, penalties, and keeping your nerve when the clock runs",
+   "track": "cp-start",
+   "track_order": 14,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-rating-ladder",
+    "cp-stress-testing"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 4,
+   "topics": [
+    "competitive programming",
+    "strategy",
+    "time management"
+   ],
+   "glossary": [
+    {
+     "term": "Penalty",
+     "definition": "Extra cost for wrong submissions or late solves. In many formats each rejected attempt on a solved problem adds penalty time."
+    },
+    {
+     "term": "Standings",
+     "definition": "The live scoreboard showing how many contestants solved each problem, a useful hint about relative difficulty."
+    },
+    {
+     "term": "Sunk cost",
+     "definition": "Time already spent that cannot be recovered. It should not decide whether you keep going on a problem."
+    },
+    {
+     "term": "Pretests",
+     "definition": "On Codeforces, the tests run during the contest. Passing them does not guarantee passing the full system tests afterwards."
+    },
+    {
+     "term": "Time box",
+     "definition": "A fixed amount of time you allow yourself for a task before you stop and reassess."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "You have spent 35 minutes on problem C with no progress, and many contestants have solved D. What should you usually do?",
+     "options": [
+      "Keep going on C until the end",
+      "Read D, since the standings suggest it may be easier for you, and come back to C later",
+      "Stop the contest",
+      "Resubmit your old C code"
+     ],
+     "answer": 1,
+     "explain": "Problem difficulty is personal, and the standings are evidence. A fresh problem often unlocks progress, and your mind keeps working on C in the background."
+    },
+    {
+     "q": "Why test before submitting even when you are confident?",
+     "options": [
+      "It is required",
+      "Each wrong submission can cost penalty time or points, and a quick edge-case test is cheaper",
+      "To slow down",
+      "Tests change the problem rating"
+     ],
+     "answer": 1,
+     "explain": "A minute spent on n = 1, maximum values and the samples usually costs less than a rejected attempt."
+    },
+    {
+     "q": "What does passing pretests on Codeforces mean?",
+     "options": [
+      "The solution is certainly correct",
+      "It passed the tests run during the contest; full system tests later may still fail it",
+      "Nothing",
+      "The problem is skipped"
+     ],
+     "answer": 1,
+     "explain": "Pretests are a subset. Hacks and system tests can still find bugs like overflow or time limits on maximum inputs."
+    }
+   ],
+   "cover_seed": "contest-strategy",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.78,
+   "path": "cp/contest-strategy.md",
+   "hash": "af76c8901981",
+   "word_count": 876,
+   "excerpt": "Two contestants know exactly the same algorithms. One finishes with four problems solved; the other with two. The difference is not intelligence. The second spent seventy minutes fighting problem C, never read problem D, and submitted B three times without testing it. Contests reward knowledge, but…"
+  },
+  {
    "id": "famous-algos-bloom-filter",
    "kind": "concept",
    "subject": "famous-algos",
@@ -10482,6 +10569,97 @@
    "hash": "4832f7347f13",
    "word_count": 998,
    "excerpt": "You add a book to your shopping cart on your phone. A moment later, on your laptop, you add headphones. Both requests reach different replicas of the cart service during a brief network hiccup. When the replicas sync, which cart is right? If the system simply keeps the \"latest\" write, one of your…"
+  },
+  {
+   "id": "famous-algos-gossip-protocols",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "gossip-protocols",
+   "title": "How Rumours Keep a Thousand Servers in Sync",
+   "subtitle": "Gossip protocols: random chatter between pairs spreads news to a whole cluster in a handful of rounds",
+   "track": "fa-distributed",
+   "track_order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-consistent-hashing"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 4,
+   "topics": [
+    "distributed systems",
+    "gossip",
+    "membership",
+    "eventual consistency"
+   ],
+   "glossary": [
+    {
+     "term": "Gossip protocol",
+     "definition": "A way of spreading information in which each node periodically shares what it knows with a few randomly chosen peers."
+    },
+    {
+     "term": "Round",
+     "definition": "One period of gossip, such as one second, in which every node contacts its chosen peers once."
+    },
+    {
+     "term": "Fan-out",
+     "definition": "How many peers each node contacts per round."
+    },
+    {
+     "term": "Anti-entropy",
+     "definition": "A background process where pairs of nodes compare their data and repair any differences."
+    },
+    {
+     "term": "Membership list",
+     "definition": "Each node's view of which nodes are in the cluster and whether they seem alive."
+    },
+    {
+     "term": "Eventual consistency",
+     "definition": "A guarantee that if updates stop, all nodes will eventually hold the same data, without promising when."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Roughly how many gossip rounds does it take for news to reach all n nodes?",
+     "options": [
+      "About n",
+      "About n squared",
+      "About log n",
+      "Exactly 2"
+     ],
+     "answer": 2,
+     "explain": "The number of informed nodes roughly doubles or more each round, so the time grows like log n. A thousand nodes need only around ten to twenty rounds."
+    },
+    {
+     "q": "Why is gossip robust to failures?",
+     "options": [
+      "It uses a central server",
+      "There is no single path; news travels along many random routes, so a few dead nodes barely slow it",
+      "It retries forever on one path",
+      "It requires all nodes to be online"
+     ],
+     "answer": 1,
+     "explain": "Because every node picks random peers, information flows through many redundant paths and the loss of some nodes does not stop it."
+    },
+    {
+     "q": "What does gossip NOT give you?",
+     "options": [
+      "Fast spread",
+      "Fault tolerance",
+      "Strong consistency, where everyone sees an update at the same moment",
+      "Scalability"
+     ],
+     "answer": 2,
+     "explain": "Gossip is eventually consistent. Different nodes learn news at different times, so it suits membership and metadata, not bank balances."
+    }
+   ],
+   "cover_seed": "gossip-protocols",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.84,
+   "path": "famous-algos/gossip-protocols.md",
+   "hash": "cc145da44767",
+   "word_count": 913,
+   "excerpt": "In an office of five hundred people, nobody sends an email to announce that the manager is leaving. Yet by lunch, everyone knows. Each person mentions it to a couple of colleagues at the coffee machine, those colleagues tell a couple more, and the news races through the building with no one in…"
   },
   {
    "id": "system-design-interview-framework",
@@ -11018,6 +11196,189 @@
    "hash": "d44c6a14102d",
    "word_count": 1115,
    "excerpt": "A mobile app ships with a call to GET /feed?page=2. A year later the backend team changes how pages work. The app in millions of pockets cannot be updated overnight, and suddenly half your users see duplicated posts or blank screens. APIs are the part of a system that is hardest to take back. Once…"
+  },
+  {
+   "id": "system-design-realtime-communication",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "realtime-communication",
+   "title": "Checking the Mailbox vs Hearing the Doorbell",
+   "subtitle": "Polling, long polling, server-sent events and WebSockets: how servers push updates and what each costs",
+   "track": "sd-fundamentals",
+   "track_order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-api-design"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "websockets",
+    "real-time",
+    "push",
+    "polling"
+   ],
+   "glossary": [
+    {
+     "term": "Polling",
+     "definition": "The client asks the server for updates on a fixed schedule, such as every five seconds, whether or not anything changed."
+    },
+    {
+     "term": "Long polling",
+     "definition": "The client asks for updates and the server holds the request open until something happens or a timeout passes, then the client asks again."
+    },
+    {
+     "term": "Server-sent events",
+     "definition": "A browser standard where the server keeps an HTTP response open and streams text events to the client, one direction only."
+    },
+    {
+     "term": "WebSocket",
+     "definition": "A protocol that upgrades an HTTP connection into a long-lived, two-way channel for messages in both directions."
+    },
+    {
+     "term": "Connection gateway",
+     "definition": "A fleet of servers whose job is to hold many open client connections and route messages to them."
+    },
+    {
+     "term": "Fan-out",
+     "definition": "Delivering one event to many recipients, such as a message to every member of a group chat."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is the main cost of short polling every 2 seconds?",
+     "options": [
+      "It needs WebSockets",
+      "Most requests return nothing new, wasting bandwidth and server work, and updates still arrive up to 2 seconds late",
+      "It only works on mobile",
+      "It cannot use HTTPS"
+     ],
+     "answer": 1,
+     "explain": "Polling pays for a request every interval even when nothing changed, and latency is bounded by the interval."
+    },
+    {
+     "q": "When are server-sent events a good fit?",
+     "options": [
+      "Two-way chat with frequent client messages",
+      "One-way streams from server to browser, like live scores or notifications",
+      "File uploads",
+      "Binary video streams"
+     ],
+     "answer": 1,
+     "explain": "SSE is simple and works over plain HTTP, with automatic reconnection in browsers, but data flows only from server to client."
+    },
+    {
+     "q": "Why do chat systems usually have a separate gateway tier for WebSockets?",
+     "options": [
+      "WebSockets are illegal on app servers",
+      "Holding millions of mostly idle connections is a different job from business logic, so it is scaled and deployed separately",
+      "Gateways encrypt messages",
+      "It removes the need for a database"
+     ],
+     "answer": 1,
+     "explain": "Connection holding is memory-heavy and long-lived; business logic is CPU-heavy and stateless. Separating them lets each scale and deploy independently."
+    }
+   ],
+   "cover_seed": "realtime-communication",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.85,
+   "path": "system-design/realtime-communication.md",
+   "hash": "d24c9ea67b82",
+   "word_count": 1114,
+   "excerpt": "HTTP was designed for asking: the client requests, the server replies, the conversation ends. But a chat message, a driver's location or a cricket score is something the server learns first. How does the server tell you, when you did not ask? There are four answers, from crude to elegant, and every…"
+  },
+  {
+   "id": "system-design-consistency-basics",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "consistency-basics",
+   "title": "Why Your Like Count Can Be Wrong for a Second",
+   "subtitle": "Strong vs eventual consistency in plain words, and the guarantees users actually notice",
+   "track": "sd-fundamentals",
+   "track_order": 9,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-api-design"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 4,
+   "topics": [
+    "system design",
+    "consistency",
+    "replication",
+    "distributed systems"
+   ],
+   "glossary": [
+    {
+     "term": "Replica",
+     "definition": "A copy of the same data kept on another machine, for durability, availability or faster reads."
+    },
+    {
+     "term": "Strong consistency",
+     "definition": "Every read sees the latest completed write, as if there were a single copy of the data."
+    },
+    {
+     "term": "Eventual consistency",
+     "definition": "If writes stop, all replicas eventually agree, but a read in the meantime may return an older value."
+    },
+    {
+     "term": "Replication lag",
+     "definition": "The delay between a write landing on one replica and reaching the others."
+    },
+    {
+     "term": "Read-your-writes",
+     "definition": "A guarantee that after you write something, your own later reads always see it, even if other users might not yet."
+    },
+    {
+     "term": "Monotonic reads",
+     "definition": "A guarantee that once you have seen a value, you never later see an older one."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A user posts a comment, refreshes, and the comment is missing for two seconds. Which guarantee is being violated?",
+     "options": [
+      "Durability",
+      "Read-your-writes",
+      "Availability",
+      "Partition tolerance"
+     ],
+     "answer": 1,
+     "explain": "The user's own read went to a replica that had not yet received their write. Read-your-writes guarantees the author sees their own changes."
+    },
+    {
+     "q": "Which data most clearly needs strong consistency?",
+     "options": [
+      "The view count on a video",
+      "A bank account balance used to approve withdrawals",
+      "A list of trending hashtags",
+      "Profile photo thumbnails"
+     ],
+     "answer": 1,
+     "explain": "Approving a withdrawal on a stale balance can overdraw an account. A view count being slightly behind harms nobody."
+    },
+    {
+     "q": "Why do systems accept eventual consistency at all?",
+     "options": [
+      "It is easier to spell",
+      "It allows reads from nearby replicas and keeps working during network problems, giving lower latency and higher availability",
+      "It uses no disk",
+      "It guarantees fresher data"
+     ],
+     "answer": 1,
+     "explain": "Waiting for every replica, or for a distant leader, costs latency and fails during partitions. Relaxing freshness buys speed and availability."
+    }
+   ],
+   "cover_seed": "consistency-basics",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "system-design/consistency-basics.md",
+   "hash": "1e7f95dfd797",
+   "word_count": 988,
+   "excerpt": "You like a friend's photo. The heart turns red. You refresh, and the like count drops by one. You refresh again, and it is back. Nothing is broken. You just watched two copies of the same data disagree for a moment. Every large system keeps several copies of its data, and copies take time to agree.…"
   }
  ]
 }

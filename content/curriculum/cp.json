@@ -2199,15 +2199,15 @@
    "title_working": "Contest Strategy: Order, Time and Nerves",
    "subject": "cp",
    "kind": "primer",
-   "track": "cp-misc",
-   "order": 11,
+   "track": "cp-start",
+   "order": 14,
    "priority": "P0",
    "prerequisites": [
     "cp-rating-ladder",
     "cp-stress-testing"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Read all problems first",
