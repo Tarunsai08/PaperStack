@@ -1929,8 +1929,8 @@
    "prerequisites": [
     "cp-game-theory"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Grundy numbers with mex",
@@ -1994,8 +1994,8 @@
    "prerequisites": [
     "cp-geometry-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Monotone chain",
@@ -2088,8 +2088,8 @@
     "cp-fast-io-template",
     "dsa-binary-search"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Flush output",
@@ -2175,8 +2175,8 @@
    "prerequisites": [
     "dsa-sliding-window"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Monotone conditions",
@@ -2675,8 +2675,8 @@
     "dsa-binary-search",
     "dsa-dp-1d"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Sort by end",
@@ -2903,8 +2903,8 @@
    "prerequisites": [
     "cp-sprague-grundy"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "XOR of piles",
