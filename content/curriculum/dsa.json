@@ -1783,8 +1783,8 @@
     "dsa-union-find",
     "dsa-heap-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Cut property",
@@ -1816,8 +1816,8 @@
     "dsa-bfs",
     "dsa-dfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Colour with BFS or DFS",
@@ -1848,8 +1848,8 @@
     "dsa-bfs",
     "dsa-dfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Direction arrays",

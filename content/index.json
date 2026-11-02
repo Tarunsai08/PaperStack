@@ -1,7 +1,7 @@
 {
- "content_version": "9776337ae36b5d5d",
+ "content_version": "5bae27e45941d7c3",
  "generated_at": "2026-11-02",
- "count": 319,
+ "count": 322,
  "subjects": [
   {
    "id": "ml",
@@ -20803,6 +20803,351 @@
    "hash": "5fdf29af5777",
    "word_count": 1702,
    "excerpt": "A rumour starts with one person. In the first round, everyone who talks to that person hears it. In the second round, their friends hear it, and so on. After enough rounds, the rumour has reached everyone it can reach, and each person heard it along the shortest chain of conversations. Dijkstra…"
+  },
+  {
+   "id": "dsa-mst",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "mst",
+   "title": "Connecting Villages With the Cheapest Roads",
+   "subtitle": "Minimum spanning trees: the cut property that makes greedy safe, Kruskal with sorted edges and union-find, Prim growing from one village with a heap, and what to do when the map is disconnected",
+   "track": "dsa-graphs",
+   "track_order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-union-find",
+    "dsa-heap-basics"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "graphs",
+    "minimum spanning tree",
+    "greedy",
+    "union-find",
+    "heap"
+   ],
+   "complexity": {
+    "time": "O(E log E) for Kruskal, O(E log V) for Prim with a heap, O(V²) for dense Prim",
+    "space": "O(V + E)"
+   },
+   "practice_problems": [
+    {
+     "name": "Road Reparation",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1675",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Min Cost to Connect All Points",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/min-cost-to-connect-all-points/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Spanning tree",
+     "definition": "A set of V - 1 edges that connects all V vertices with no cycle."
+    },
+    {
+     "term": "Minimum spanning tree",
+     "definition": "A spanning tree whose total edge weight is as small as possible; often shortened to MST."
+    },
+    {
+     "term": "Cut",
+     "definition": "A split of the vertices into two non-empty groups; an edge crosses the cut if its endpoints are in different groups."
+    },
+    {
+     "term": "Cut property",
+     "definition": "For any cut, a lightest edge crossing it belongs to some minimum spanning tree, which is why greedy choices are safe."
+    },
+    {
+     "term": "Cycle property",
+     "definition": "The heaviest edge on any cycle, if strictly heaviest, belongs to no minimum spanning tree, which is why Kruskal can skip edges that close a cycle."
+    },
+    {
+     "term": "Minimum spanning forest",
+     "definition": "The result on a disconnected graph: one minimum spanning tree per connected component."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Kruskal is considering edge C–D of weight 6, but C and D are already connected by lighter edges. What does it do?",
+     "options": [
+      "Takes it anyway",
+      "Skips it: it would close a cycle, and it is the heaviest edge on that cycle",
+      "Replaces a lighter edge",
+      "Stops the algorithm"
+     ],
+     "answer": 1,
+     "explain": "Edges are processed in increasing order, so every edge already joining C and D is lighter. By the cycle property, the heaviest edge on that cycle is never needed."
+    },
+    {
+     "q": "Why is the lightest edge leaving the current tree in Prim's algorithm always safe?",
+     "options": [
+      "Because the heap is sorted",
+      "The tree and the rest of the graph form a cut, and a lightest edge crossing a cut belongs to some MST",
+      "Because it is the shortest path",
+      "It is not always safe"
+     ],
+     "answer": 1,
+     "explain": "Any spanning tree must cross that cut somewhere. Swapping its crossing edge for the lightest one never increases the total, so some MST uses the lightest one."
+    },
+    {
+     "q": "Road Reparation gives a graph that turns out to be disconnected. How does Kruskal notice?",
+     "options": [
+      "It loops forever",
+      "It finishes with fewer than V - 1 edges taken",
+      "The total weight is negative",
+      "It cannot notice"
+     ],
+     "answer": 1,
+     "explain": "A spanning tree of V vertices has exactly V - 1 edges. If fewer were taken after every edge is processed, some vertices are unreachable, and the answer is IMPOSSIBLE."
+    }
+   ],
+   "cover_seed": "mst",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.82,
+   "path": "dsa/mst.md",
+   "hash": "95974d621820",
+   "word_count": 1629,
+   "excerpt": "A district has six villages and a list of possible roads, each with a building cost. The council wants every village reachable from every other, by some route, at the lowest total cost. They do not care about short trips; one long winding route is fine, as long as nobody is cut off. Building every…"
+  },
+  {
+   "id": "dsa-bipartite",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "bipartite",
+   "title": "Two Teams, No Rivals on the Same Side",
+   "subtitle": "Bipartite graphs and two-colouring with BFS, DFS or union-find, why an odd cycle is the only thing that can stop it, and why every component needs its own start",
+   "track": "dsa-graphs",
+   "track_order": 10,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-bfs",
+    "dsa-dfs"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "graphs",
+    "bipartite",
+    "BFS",
+    "DFS",
+    "colouring"
+   ],
+   "complexity": {
+    "time": "O(V + E)",
+    "space": "O(V + E)"
+   },
+   "practice_problems": [
+    {
+     "name": "Is Graph Bipartite?",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/is-graph-bipartite/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Possible Bipartition",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/possible-bipartition/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Building Teams",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1668",
+     "difficulty": "Easy"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Bipartite graph",
+     "definition": "A graph whose vertices can be split into two groups so that every edge joins a vertex in one group to a vertex in the other."
+    },
+    {
+     "term": "Two-colouring",
+     "definition": "Giving every vertex one of two colours so that no edge joins two vertices of the same colour; possible exactly when the graph is bipartite."
+    },
+    {
+     "term": "Odd cycle",
+     "definition": "A cycle with an odd number of edges, such as a triangle; a graph is bipartite if and only if it contains none."
+    },
+    {
+     "term": "Conflict edge",
+     "definition": "An edge found during colouring whose two endpoints already have the same colour, proving the graph is not bipartite."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Rivalries: 1–2, 2–3, 3–1. Can the three students be split into two teams with no rivals on the same team?",
+     "options": [
+      "Yes, {1} and {2, 3}",
+      "No: the triangle is an odd cycle, and colours along it must alternate, which fails after three steps",
+      "Yes, {1, 3} and {2}",
+      "Only with three teams"
+     ],
+     "answer": 1,
+     "explain": "Alternate colours around the triangle: 1 red, 2 blue, 3 red. The edge 3–1 then joins two reds. Any odd cycle fails the same way."
+    },
+    {
+     "q": "A graph has two components. Your BFS colours component one without conflict and stops. What is wrong?",
+     "options": [
+      "Nothing",
+      "Component two was never checked; it may contain an odd cycle, so start a new BFS from every uncoloured vertex",
+      "BFS must start from the highest vertex",
+      "Bipartite graphs are always connected"
+     ],
+     "answer": 1,
+     "explain": "Colouring spreads only along edges. Loop over all vertices and start a fresh colouring from each one that is still uncoloured."
+    },
+    {
+     "q": "Why does an even cycle never cause a conflict?",
+     "options": [
+      "Even cycles are not real cycles",
+      "Alternating colours around an even cycle returns to the start with the starting colour, so the closing edge joins different colours",
+      "Because BFS skips them",
+      "They do cause conflicts"
+     ],
+     "answer": 1,
+     "explain": "After an even number of steps the colour has flipped an even number of times, so it matches the start. The edge back to the start joins the last vertex, of the opposite colour, to the first."
+    }
+   ],
+   "cover_seed": "bipartite",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "dsa/bipartite.md",
+   "hash": "a57ff3b60cae",
+   "word_count": 1363,
+   "excerpt": "A teacher must split a class into two teams for a debate. Some pairs of students are rivals and must not be on the same team; everyone else is happy anywhere. With a dozen students you might juggle names on paper. With thousands of students and rivalries, you want a method that either produces the…"
+  },
+  {
+   "id": "dsa-grid-graph-tricks",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "grid-graph-tricks",
+   "title": "A Robot Vacuum Mapping the Room",
+   "subtitle": "Grids as graphs: direction arrays, path reconstruction, 0-1 BFS with a deque, BFS over states such as remaining wall breaks, and the minimax trick behind Swim in Rising Water",
+   "track": "dsa-graphs",
+   "track_order": 11,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-bfs",
+    "dsa-dfs"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 8,
+   "topics": [
+    "graphs",
+    "grids",
+    "BFS",
+    "0-1 BFS",
+    "state space"
+   ],
+   "complexity": {
+    "time": "O(R × C × S) for S extra states per cell",
+    "space": "O(R × C × S)"
+   },
+   "practice_problems": [
+    {
+     "name": "Labyrinth",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1193",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Shortest Path in a Grid with Obstacles Elimination",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Minimum Cost to Make at Least One Valid Path in a Grid",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/minimum-cost-to-make-at-least-one-valid-path-in-a-grid/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Swim in Rising Water",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/swim-in-rising-water/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Direction array",
+     "definition": "Two small arrays of row and column offsets, such as up, down, left and right, looped over to visit a cell's neighbours without repeated code."
+    },
+    {
+     "term": "0-1 BFS",
+     "definition": "Shortest paths when every edge costs 0 or 1: a deque where 0-cost moves go to the front and 1-cost moves go to the back."
+    },
+    {
+     "term": "State",
+     "definition": "Everything the search must remember to decide future moves, such as (row, column, walls you may still break); each distinct state is one vertex."
+    },
+    {
+     "term": "State explosion",
+     "definition": "The number of states growing as the product of every extra dimension, which can make a correct BFS too slow or too large for memory."
+    },
+    {
+     "term": "Minimax path",
+     "definition": "A path chosen to minimise the largest value along it, rather than the sum; Dijkstra solves it with max in place of plus."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why is 0-1 BFS correct with a deque, when plain BFS fails once some moves are free?",
+     "options": [
+      "The deque is faster",
+      "Pushing 0-cost moves to the front keeps the deque sorted by distance, so cells still come out in increasing distance order",
+      "Because grids have no cycles",
+      "It is not correct"
+     ],
+     "answer": 1,
+     "explain": "The deque only ever holds two distance values, d and d + 1. A free move keeps distance d, so it belongs at the front; a paid move has d + 1 and goes to the back. That is Dijkstra without a heap."
+    },
+    {
+     "q": "In Shortest Path with Obstacles Elimination, why must visited be indexed by (row, column, eliminations left)?",
+     "options": [
+      "To save memory",
+      "Reaching a cell with more eliminations left is a genuinely better situation, so it must not be blocked by an earlier visit with fewer",
+      "Because the grid is 3D",
+      "It does not need to be"
+     ],
+     "answer": 1,
+     "explain": "Two arrivals at the same cell with different remaining eliminations have different futures. Treating them as the same vertex can discard the arrival that would have reached the goal."
+    },
+    {
+     "q": "Swim in Rising Water asks for the smallest time t at which a path exists through cells with height at most t. Which method fits?",
+     "options": [
+      "Plain BFS by steps",
+      "Dijkstra where a path's cost is the maximum height on it, or binary search on t with a BFS check",
+      "Floyd-Warshall",
+      "Topological sort"
+     ],
+     "answer": 1,
+     "explain": "The cost of a path is its highest cell, a minimax path. Dijkstra works because the cost never decreases as the path grows; binary search on t also works because 'reachable by time t' only gets easier as t grows."
+    }
+   ],
+   "cover_seed": "grid-graph-tricks",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.8,
+   "path": "dsa/grid-graph-tricks.md",
+   "hash": "bb21d2035866",
+   "word_count": 1737,
+   "excerpt": "A robot vacuum is switched on in a strange room. It knows only its own square of floor and can bump into walls. It moves one square at a time, up, down, left or right, and slowly builds a map. Nobody hands it a list of edges; the floor plan itself is the graph. Grid problems are the most common…"
   },
   {
    "id": "dsa-dp-intro",

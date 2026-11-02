@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 117 | 0 | 35 | 152 | 68/72 |
+| dsa | 120 | 0 | 32 | 152 | 68/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **319** | **0** | **354** | **673** | |
+| **All** | **322** | **0** | **351** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -28,13 +28,13 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-word-ladder` (P0, problem-walkthrough, dsa-graphs): Word Ladder: BFS on Implicit Graphs
 - [ ] `dsa-course-schedule` (P0, problem-walkthrough, dsa-graphs): Course Schedule: Can You Graduate?
 - [ ] `dsa-islands-variants` (P0, problem-walkthrough, dsa-graphs): Number of Islands and Its Many Variants
-- [ ] `dsa-mst` (P1, pattern, dsa-graphs): Minimum Spanning Trees: Kruskal and Prim
-- [ ] `dsa-bipartite` (P1, pattern, dsa-graphs): Bipartite Graphs and Two-Colouring
-- [ ] `dsa-grid-graph-tricks` (P1, pattern, dsa-graphs): Grid Problems as Graphs
 - [ ] `dsa-network-delay` (P1, problem-walkthrough, dsa-graphs): Network Delay Time With Dijkstra
 - [ ] `dsa-cheapest-flights-k-stops` (P1, problem-walkthrough, dsa-graphs): Cheapest Flights With At Most K Stops
 - [ ] `dsa-critical-connections` (P1, problem-walkthrough, dsa-graphs): Critical Connections: Bridges in a Network
 - [ ] `dsa-snakes-ladders-bfs` (P1, problem-walkthrough, dsa-graphs): Snakes and Ladders and Other BFS Puzzles
+- [ ] `dsa-shortest-path-dag` (P1, pattern, dsa-graphs): Shortest and Longest Paths in DAGs
+- [ ] `dsa-graph-clone-and-copy` (P1, problem-walkthrough, dsa-graphs): Clone Graph and Accounts Merge
+- [ ] `dsa-interval-dp` (P1, pattern, dsa-dp): Interval DP: Solving From the Inside Out
 
 ### cp
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 117 written</summary>
+<details><summary>dsa: 120 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -146,6 +146,9 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-union-find` Union-Find: Who Is Connected to Whom
 - [x] `dsa-dijkstra` Dijkstra: Shortest Paths With Weights
 - [x] `dsa-bellman-ford-floyd` Bellman-Ford and Floyd-Warshall
+- [x] `dsa-mst` Minimum Spanning Trees: Kruskal and Prim
+- [x] `dsa-bipartite` Bipartite Graphs and Two-Colouring
+- [x] `dsa-grid-graph-tricks` Grid Problems as Graphs
 - [x] `dsa-dp-intro` Dynamic Programming Is Just Careful Recursion
 - [x] `dsa-dp-1d` 1D DP: Stairs, Robbers and Decoding
 - [x] `dsa-knapsack-01` 0/1 Knapsack: Take It or Leave It
