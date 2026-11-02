@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 16 | 0 | 136 | 152 | 15/72 |
-| cp | 14 | 0 | 101 | 115 | 11/29 |
-| famous-algos | 15 | 0 | 76 | 91 | 13/32 |
-| system-design | 15 | 0 | 104 | 119 | 15/60 |
+| dsa | 17 | 0 | 135 | 152 | 16/72 |
+| cp | 15 | 0 | 100 | 115 | 12/29 |
+| famous-algos | 16 | 0 | 75 | 91 | 14/32 |
+| system-design | 16 | 0 | 103 | 119 | 16/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **143** | **0** | **530** | **673** | |
+| **All** | **147** | **0** | **526** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **23**
 
@@ -31,28 +31,28 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-rotated-array-search` (P0, problem-walkthrough, dsa-search-sort): Searching a Rotated Sorted Array
 - [ ] `dsa-gcd-primes` (P0, pattern, dsa-math): GCD, Primes and Divisors for Interviews
 - [ ] `dsa-fast-slow-pointers` (P0, pattern, dsa-linear): Fast and Slow Pointers: The Tortoise and the Hare
-- [ ] `dsa-stack-patterns` (P0, pattern, dsa-linear): Stacks: Matching, Undo and Expression Parsing
+- [ ] `dsa-monotonic-stack` (P0, pattern, dsa-linear): Monotonic Stacks: Next Greater Element and Friends
 - [ ] `dsa-lru-cache` (P0, problem-walkthrough, dsa-linear): Designing an LRU Cache
 - [ ] `dsa-subsets-permutations` (P0, pattern, dsa-recursion): Generating Subsets and Permutations
 - [ ] `dsa-tree-traversals` (P0, pattern, dsa-trees): Tree Traversals: Pre, In, Post and Level Order
 
 ### cp
 
-- [ ] `cp-modular-inverse` (P0, pattern, cp-math): Modular Inverse: Dividing Under a Modulus
+- [ ] `cp-binomial-coefficients` (P0, pattern, cp-math): Binomial Coefficients Fast
 - [ ] `cp-coordinate-compression` (P0, pattern, cp-ranges): Coordinate Compression
 - [ ] `cp-practice-plan` (P0, primer, cp-misc): A 12-Week Contest Practice Plan
 - [ ] `cp-weird-algorithm` (P1, problem-walkthrough, cp-start): Your First CSES Problems: Weird Algorithm to Increasing Array
 - [ ] `cp-implementation-skills` (P1, primer, cp-start): Implementation Problems: Getting the Details Right
 - [ ] `cp-euler-totient` (P1, pattern, cp-math): Euler's Totient Function
+- [ ] `cp-chinese-remainder` (P1, pattern, cp-math): The Chinese Remainder Theorem
 - [ ] `cp-matrix-exponentiation` (P1, pattern, cp-math): Matrix Exponentiation for Linear Recurrences
 - [ ] `cp-counting-divisors` (P1, problem-walkthrough, cp-math): Counting Divisors for a Million Numbers
-- [ ] `cp-sqrt-decomposition` (P1, pattern, cp-ranges): Square Root Decomposition
-- [ ] `cp-geometry-basics` (P1, pattern, cp-misc): Geometry Basics: Cross Products Solve Everything
+- [ ] `cp-exponentiation-ii` (P1, problem-walkthrough, cp-math): a^(b^c) mod p: Fermat to the Rescue
 
 ### famous-algos
 
 - [ ] `famous-algos-tcp-congestion-control` (P0, concept, fa-networking): TCP Congestion Control: How the Internet Avoids Gridlock
-- [ ] `famous-algos-write-ahead-log` (P0, concept, fa-storage): Write-Ahead Logging: Never Lose a Committed Write
+- [ ] `famous-algos-mvcc` (P0, concept, fa-storage): MVCC: Readers Never Block Writers
 - [ ] `famous-algos-geohash` (P0, concept, fa-storage): Geohash: Turning a Map Into a String
 - [ ] `famous-algos-lz77` (P0, concept, fa-coding): Lempel-Ziv: How ZIP Files Shrink Your Data
 - [ ] `famous-algos-cryptographic-hashing` (P0, concept, fa-crypto): Cryptographic Hashes: Fingerprints You Cannot Fake
@@ -66,14 +66,14 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 - [ ] `system-design-auth-basics` (P0, deep-dive, sd-fundamentals): Authentication and Authorisation: Sessions, JWT and OAuth
 - [ ] `system-design-load-balancers` (P0, deep-dive, sd-blocks): Load Balancers: L4, L7 and the Algorithms Inside
-- [ ] `system-design-message-queues` (P0, deep-dive, sd-blocks): Message Queues and Pub-Sub: Decoupling With Kafka and Friends
 - [ ] `system-design-blob-storage` (P0, deep-dive, sd-blocks): Blob Storage: How S3-Style Systems Store Files
 - [ ] `system-design-distributed-cache` (P0, deep-dive, sd-blocks): Redis and Distributed Caches
 - [ ] `system-design-cache-problems` (P0, deep-dive, sd-scaling): When Caches Hurt: Stampedes, Hot Keys and Invalidation
+- [ ] `system-design-async-processing` (P0, deep-dive, sd-scaling): Doing Work Later: Queues, Workers and Background Jobs
 - [ ] `system-design-url-shortener` (P0, case-study, sd-cases): Design a URL Shortener
 - [ ] `system-design-unique-id-generator` (P0, case-study, sd-cases): Design a Unique ID Generator
-- [ ] `system-design-oop-solid` (P0, lld, sd-lld): Object-Oriented Design and SOLID Principles
-- [ ] `system-design-consistency-models` (P0, deep-dive, sd-distributed): Consistency Models: Linearizable to Eventual
+- [ ] `system-design-chat-system` (P0, case-study, sd-cases): Design a Chat System Like WhatsApp
+- [ ] `system-design-notification-system` (P0, case-study, sd-cases): Design a Notification System
 
 ### ml
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 16 written</summary>
+<details><summary>dsa: 17 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -108,10 +108,11 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-binary-search-answer` Binary Search on the Answer
 - [x] `dsa-sorting-as-tool` Sorting as a Superpower
 - [x] `dsa-linked-list-basics` Linked Lists: Pointer Surgery Made Safe
+- [x] `dsa-stack-patterns` Stacks: Matching, Undo and Expression Parsing
 
 </details>
 
-<details><summary>cp: 14 written</summary>
+<details><summary>cp: 15 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -125,12 +126,13 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `cp-binary-exponentiation` Fast Exponentiation: Powers in log n Steps
 - [x] `cp-sieve` The Sieve of Eratosthenes
 - [x] `cp-gcd-lcm` GCD, LCM and the Euclidean Algorithm
+- [x] `cp-modular-inverse` Modular Inverse: Dividing Under a Modulus
 - [x] `cp-contest-strategy` Contest Strategy: Order, Time and Nerves
 - [x] `cp-invariants-observations` Invariants and Observations: The Heart of Div 2
 
 </details>
 
-<details><summary>famous-algos: 15 written</summary>
+<details><summary>famous-algos: 16 written</summary>
 
 - [x] `famous-algos-bloom-filter` Bloom Filters: Saying No Without Looking
 - [x] `famous-algos-count-min-sketch` Count-Min Sketch: Counting Billions of Things in Kilobytes
@@ -147,10 +149,11 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `famous-algos-exponential-backoff` Exponential Backoff With Jitter: Retrying Without a Stampede
 - [x] `famous-algos-power-of-two-choices` The Power of Two Choices: Smarter Load Balancing
 - [x] `famous-algos-lsm-trees` LSM Trees: Why Modern Databases Write So Fast
+- [x] `famous-algos-write-ahead-log` Write-Ahead Logging: Never Lose a Committed Write
 
 </details>
 
-<details><summary>system-design: 15 written</summary>
+<details><summary>system-design: 16 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -167,6 +170,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `system-design-cdn` CDNs: Moving Content Closer to Users
 - [x] `system-design-sql-vs-nosql` SQL vs NoSQL: Choosing a Database Honestly
 - [x] `system-design-database-indexing` Database Indexes: Why Some Queries Are Instant
+- [x] `system-design-message-queues` Message Queues and Pub-Sub: Decoupling With Kafka and Friends
 
 </details>
 
