@@ -1,5 +1,5 @@
 {
- "content_version": "b2b6e68d2699070c",
+ "content_version": "8b35b886e57a33c3",
  "generated_at": "2026-11-02",
  "count": 103,
  "subjects": [
@@ -9411,7 +9411,7 @@
     "cp-reading-problems-fast"
    ],
    "difficulty": "beginner",
-   "read_minutes": 4,
+   "read_minutes": 5,
    "topics": [
     "competitive programming",
     "practice plan",
@@ -9479,8 +9479,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.8,
    "path": "cp/rating-ladder.md",
-   "hash": "79c00036f9ec",
-   "word_count": 978,
+   "hash": "25fea40c6eca",
+   "word_count": 1011,
    "excerpt": "Most people quit competitive programming in the first two months. Not because they lack talent, but because they practise blindly: random problems, some far too easy, some impossibly hard, no sense of progress. The rating graph goes flat, and so does the motivation. Climbers do not walk up a…"
   },
   {

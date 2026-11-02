@@ -91,6 +91,7 @@ A sustainable week for someone also preparing for placements:
 - **Upsolving** the next one or two problems you missed in each.
 - **Topic sets**: five to ten problems on one technique you just learned, from CSES or Codeforces problem tags.
 - **A mistakes log**: one line per Wrong Answer explaining the real cause, such as "overflow" or "did not reset array".
+- **One rest day.** Rating curves are noisy, and tired practice builds bad habits. A day off keeps the routine sustainable across the months before placements, which matters more than any single heroic week.
 
 ### When to read the editorial
 
