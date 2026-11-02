@@ -1,7 +1,7 @@
 {
- "content_version": "bef32170c640fdc3",
+ "content_version": "2df0704b4ca644d2",
  "generated_at": "2026-11-02",
- "count": 153,
+ "count": 156,
  "subjects": [
   {
    "id": "ml",
@@ -12209,6 +12209,124 @@
    "excerpt": "A cricket coach has 15 players and must pick 11. How many different teams are possible? Writing them out would take a lifetime: there are 1,365. Now pick 50 out of a million, modulo 10⁹ + 7, a hundred thousand times. Counting problems like this fill contest rounds from about 1400 rating upward. All…"
   },
   {
+   "id": "cp-coordinate-compression",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "coordinate-compression",
+   "title": "Renaming Huge Numbers as 1, 2, 3",
+   "subtitle": "Coordinate compression: map values up to 10^9 onto their ranks so arrays, Fenwick trees and segment trees can index them",
+   "track": "cp-ranges",
+   "track_order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-sorting-as-tool",
+    "dsa-binary-search"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "coordinate compression",
+    "sorting",
+    "ranking",
+    "offline queries"
+   ],
+   "complexity": {
+    "time": "O(n log n) to build; O(log n) per lookup",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Rank Transform of an Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/rank-transform-of-an-array/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Count of Smaller Numbers After Self",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/count-of-smaller-numbers-after-self/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Salary Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1144",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Distinct Values Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1734",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Coordinate compression",
+     "definition": "Replacing each value by its rank among all distinct values, so huge or sparse values become small consecutive indices."
+    },
+    {
+     "term": "Rank",
+     "definition": "A value's position in the sorted list of distinct values, for example 0 for the smallest."
+    },
+    {
+     "term": "Order-preserving",
+     "definition": "A mapping where a < b exactly when map(a) < map(b), so comparisons give the same answers after compression."
+    },
+    {
+     "term": "Offline processing",
+     "definition": "Reading all input and queries first, then answering them, which lets you compress every value that will ever appear."
+    },
+    {
+     "term": "Fenwick tree",
+     "definition": "A structure over an array of counts that supports prefix sums and point updates in O(log n), indexed by position."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Values [1000000000, 5, 70, 5] compress to which ranks (starting from 0)?",
+     "options": [
+      "[3, 0, 2, 0]",
+      "[2, 0, 1, 0]",
+      "[1, 0, 2, 0]",
+      "[2, 1, 0, 1]"
+     ],
+     "answer": 1,
+     "explain": "Distinct sorted values are 5, 70, 1000000000, with ranks 0, 1, 2. Duplicates share a rank."
+    },
+    {
+     "q": "Why must you include query values, not just the initial array, when compressing for a problem with updates and queries?",
+     "options": [
+      "To make the array longer",
+      "A value that appears only in a later update or query would otherwise have no index",
+      "Queries are always larger",
+      "It is not necessary"
+     ],
+     "answer": 1,
+     "explain": "Compression is a fixed dictionary. Every value you will ever need to index, including those in future updates and range bounds, must be in it."
+    },
+    {
+     "q": "What property makes compression safe for problems about comparisons and ranges?",
+     "options": [
+      "It keeps exact differences between values",
+      "It is order-preserving, so less-than and equality relations are unchanged",
+      "It removes duplicates from the input",
+      "It sorts the input array"
+     ],
+     "answer": 1,
+     "explain": "Ranks keep the order of values, so any question that depends only on order gives the same answer. Questions that depend on actual distances do not survive."
+    }
+   ],
+   "cover_seed": "coordinate-compression",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.84,
+   "path": "cp/coordinate-compression.md",
+   "hash": "0f086fcbd636",
+   "word_count": 1004,
+   "excerpt": "You want to count, for each number in an array, how many smaller numbers appear after it. A Fenwick tree over values would do it in O(n log n): walk from the right, query \"how many values below x have I seen?\", then add x. There is one problem. Values go up to 10⁹, and an array of a billion…"
+  },
+  {
    "id": "famous-algos-bloom-filter",
    "kind": "concept",
    "subject": "famous-algos",
@@ -13707,6 +13825,97 @@
    "hash": "0895a3193228",
    "word_count": 1050,
    "excerpt": "Type \"PaperStack\" into a SHA-256 calculator and you get 64 hexadecimal characters. Change one letter to \"paperStack\" and the output looks completely unrelated. Not a little different: about half of its bits flip, with no visible pattern. That strange property, plus the fact that nobody can work…"
+  },
+  {
+   "id": "famous-algos-password-hashing",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "password-hashing",
+   "title": "A Lock That Takes a Second to Turn",
+   "subtitle": "Storing passwords safely: salts, deliberately slow hashes like bcrypt and Argon2, and why SHA-256 alone is not enough",
+   "track": "fa-crypto",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-cryptographic-hashing"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "security",
+    "passwords",
+    "hashing",
+    "authentication"
+   ],
+   "glossary": [
+    {
+     "term": "Salt",
+     "definition": "A random value generated per user and stored next to the password hash, so identical passwords produce different hashes."
+    },
+    {
+     "term": "Work factor",
+     "definition": "A tunable setting that controls how slow a password hash is, such as bcrypt's cost or Argon2's time and memory parameters."
+    },
+    {
+     "term": "Key stretching",
+     "definition": "Making a hash deliberately expensive, for example by repeating it many times, so each guess costs an attacker much more."
+    },
+    {
+     "term": "Rainbow table",
+     "definition": "A precomputed table mapping common passwords to their unsalted hashes, used to look passwords up instantly."
+    },
+    {
+     "term": "Memory-hard function",
+     "definition": "A hash that needs a lot of memory to compute, which makes cheap parallel hardware like GPUs far less effective at guessing."
+    },
+    {
+     "term": "Pepper",
+     "definition": "A secret value, kept outside the database, mixed into every password hash as an extra layer of protection."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why is a fast hash like SHA-256 a poor choice for storing passwords?",
+     "options": [
+      "It is not secure for files",
+      "Attackers who steal the hashes can try enormous numbers of guesses per second, so weak passwords fall quickly",
+      "It produces collisions",
+      "It cannot be computed on servers"
+     ],
+     "answer": 1,
+     "explain": "Speed helps the attacker. Password hashes are designed to be slow so each guess is expensive."
+    },
+    {
+     "q": "What does a per-user salt prevent?",
+     "options": [
+      "Slow logins",
+      "Using one precomputed table for everyone, and seeing which users share a password",
+      "Strong passwords",
+      "Server crashes"
+     ],
+     "answer": 1,
+     "explain": "With a unique salt, the same password hashes differently for each user, so precomputed tables and duplicate spotting stop working."
+    },
+    {
+     "q": "Why do memory-hard functions like Argon2 help against GPU attackers?",
+     "options": [
+      "GPUs cannot run code",
+      "Each guess needs lots of memory, and GPUs have far less memory per core than compute, which limits parallel guessing",
+      "They use encryption",
+      "They are shorter"
+     ],
+     "answer": 1,
+     "explain": "GPUs win by running thousands of cheap computations in parallel. Requiring megabytes of memory per guess removes most of that advantage."
+    }
+   ],
+   "cover_seed": "password-hashing",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.86,
+   "path": "famous-algos/password-hashing.md",
+   "hash": "3fb7b19f47c9",
+   "word_count": 1053,
+   "excerpt": "Every few months, some company announces that its user database was stolen. The question that decides how bad it is: how were the passwords stored? If they were plain text, every account is open immediately. If they were hashed with a fast hash, most weak and common passwords are cracked within…"
   },
   {
    "id": "system-design-interview-framework",
@@ -15262,6 +15471,98 @@
    "hash": "5efac426f224",
    "word_count": 1110,
    "excerpt": "When you upload a video, the site answers \"Upload complete\" in a second. But converting that video into ten resolutions takes minutes. If the upload request waited for all of it, uploads would time out, and a burst of uploads after a viral moment would crash the converters. Instead, the upload…"
+  },
+  {
+   "id": "system-design-distributed-cache",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "distributed-cache",
+   "title": "A Shared Whiteboard the Whole Fleet Can Read",
+   "subtitle": "Redis and distributed caches: data structures, sharding, replication, persistence, and the jobs they do in real systems",
+   "track": "sd-blocks",
+   "track_order": 8,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-caching"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "redis",
+    "memcached",
+    "caching",
+    "sharding"
+   ],
+   "glossary": [
+    {
+     "term": "Distributed cache",
+     "definition": "A cache that runs as its own cluster of servers shared by many application servers, instead of living inside each one."
+    },
+    {
+     "term": "Redis",
+     "definition": "A popular in-memory data store that offers strings, hashes, lists, sets, sorted sets and more, often used as a cache, counter or lightweight queue."
+    },
+    {
+     "term": "Memcached",
+     "definition": "A simple, very fast in-memory key-value cache, without Redis's richer data types or persistence."
+    },
+    {
+     "term": "Sorted set",
+     "definition": "A Redis type that keeps members ordered by a score, so ranking and range queries are fast."
+    },
+    {
+     "term": "Replica",
+     "definition": "A copy of a cache node that can serve reads and take over if the primary fails."
+    },
+    {
+     "term": "Persistence",
+     "definition": "Saving in-memory data to disk, through snapshots or an append-only log, so it can be restored after a restart."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why use a shared cache cluster instead of an in-memory cache inside each app server?",
+     "options": [
+      "It is always faster",
+      "All servers see the same cached data, the cache survives app deploys, and memory is not duplicated across servers",
+      "It needs no network",
+      "It is required by HTTP"
+     ],
+     "answer": 1,
+     "explain": "A local cache is fastest but each server has its own copy, goes cold on restart and can disagree with others. A shared cache gives one consistent cache for the fleet."
+    },
+    {
+     "q": "Which Redis data type fits a real-time leaderboard?",
+     "options": [
+      "String",
+      "List",
+      "Sorted set",
+      "Bitmap"
+     ],
+     "answer": 2,
+     "explain": "A sorted set keeps members ordered by score, so updating a score and fetching the top N or a player's rank are fast."
+    },
+    {
+     "q": "Why is Redis often called a cache 'with care' rather than a primary database?",
+     "options": [
+      "It cannot store data",
+      "Data lives in memory, and depending on persistence settings, recent writes can be lost on a crash",
+      "It is too slow",
+      "It has no keys"
+     ],
+     "answer": 1,
+     "explain": "Persistence is configurable, and asynchronous replication can lose the latest writes on failover. Many teams treat it as rebuildable state."
+    }
+   ],
+   "cover_seed": "distributed-cache",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "system-design/distributed-cache.md",
+   "hash": "4992f6df6c52",
+   "word_count": 1148,
+   "excerpt": "Your app runs on fifty servers. Each one keeps a little in-memory cache of user profiles. A user changes their photo; one server updates its copy, and the other forty-nine keep showing the old one until their entries expire. After every deploy, all fifty caches start empty and hammer the database…"
   }
  ]
 }

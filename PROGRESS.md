@@ -10,12 +10,12 @@ Read `HANDOFF.md` first if you are picking this project up.
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
 | dsa | 20 | 0 | 132 | 152 | 19/72 |
-| cp | 16 | 0 | 99 | 115 | 13/29 |
-| famous-algos | 17 | 0 | 74 | 91 | 15/32 |
-| system-design | 17 | 0 | 102 | 119 | 17/60 |
+| cp | 17 | 0 | 98 | 115 | 14/29 |
+| famous-algos | 18 | 0 | 73 | 91 | 16/32 |
+| system-design | 18 | 0 | 101 | 119 | 18/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **153** | **0** | **520** | **673** | |
+| **All** | **156** | **0** | **517** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **23**
 
@@ -38,7 +38,6 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### cp
 
-- [ ] `cp-coordinate-compression` (P0, pattern, cp-ranges): Coordinate Compression
 - [ ] `cp-practice-plan` (P0, primer, cp-misc): A 12-Week Contest Practice Plan
 - [ ] `cp-weird-algorithm` (P1, problem-walkthrough, cp-start): Your First CSES Problems: Weird Algorithm to Increasing Array
 - [ ] `cp-implementation-skills` (P1, primer, cp-start): Implementation Problems: Getting the Details Right
@@ -48,6 +47,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `cp-counting-techniques` (P1, pattern, cp-math): Counting Without Listing: Combinatorics Toolkit
 - [ ] `cp-matrix-exponentiation` (P1, pattern, cp-math): Matrix Exponentiation for Linear Recurrences
 - [ ] `cp-counting-divisors` (P1, problem-walkthrough, cp-math): Counting Divisors for a Million Numbers
+- [ ] `cp-creating-strings-ii` (P1, problem-walkthrough, cp-math): Counting Arrangements of a Word
 
 ### famous-algos
 
@@ -55,22 +55,22 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `famous-algos-mvcc` (P0, concept, fa-storage): MVCC: Readers Never Block Writers
 - [ ] `famous-algos-geohash` (P0, concept, fa-storage): Geohash: Turning a Map Into a String
 - [ ] `famous-algos-lz77` (P0, concept, fa-coding): Lempel-Ziv: How ZIP Files Shrink Your Data
-- [ ] `famous-algos-password-hashing` (P0, concept, fa-crypto): Storing Passwords Safely: Salts, bcrypt and Argon2
 - [ ] `famous-algos-diffie-hellman` (P0, concept, fa-crypto): Diffie-Hellman: Agreeing on a Secret in Public
 - [ ] `famous-algos-inverted-index` (P0, concept, fa-search): Inverted Indexes: How Search Finds Pages in Milliseconds
 - [ ] `famous-algos-rsync-rolling-checksum` (P0, concept, fa-search): rsync: Copying Only What Changed
 - [ ] `famous-algos-kalman-filter` (P0, concept, fa-signals): The Kalman Filter: Blending Guesses With Noisy Measurements
 - [ ] `famous-algos-counting-bloom-cuckoo` (P1, concept, fa-sketches): Deletable Filters: Counting Bloom and Cuckoo Filters
+- [ ] `famous-algos-heavy-hitters` (P1, concept, fa-sketches): Finding Heavy Hitters in a Stream: Misra-Gries and Space-Saving
 
 ### system-design
 
 - [ ] `system-design-auth-basics` (P0, deep-dive, sd-fundamentals): Authentication and Authorisation: Sessions, JWT and OAuth
 - [ ] `system-design-blob-storage` (P0, deep-dive, sd-blocks): Blob Storage: How S3-Style Systems Store Files
-- [ ] `system-design-distributed-cache` (P0, deep-dive, sd-blocks): Redis and Distributed Caches
 - [ ] `system-design-scaling-journey` (P0, deep-dive, sd-scaling): From One Server to a Million Users
 - [ ] `system-design-cache-problems` (P0, deep-dive, sd-scaling): When Caches Hurt: Stampedes, Hot Keys and Invalidation
 - [ ] `system-design-async-processing` (P0, deep-dive, sd-scaling): Doing Work Later: Queues, Workers and Background Jobs
 - [ ] `system-design-url-shortener` (P0, case-study, sd-cases): Design a URL Shortener
+- [ ] `system-design-rate-limiter` (P0, case-study, sd-cases): Design a Rate Limiter
 - [ ] `system-design-unique-id-generator` (P0, case-study, sd-cases): Design a Unique ID Generator
 - [ ] `system-design-chat-system` (P0, case-study, sd-cases): Design a Chat System Like WhatsApp
 - [ ] `system-design-notification-system` (P0, case-study, sd-cases): Design a Notification System
@@ -115,7 +115,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 </details>
 
-<details><summary>cp: 16 written</summary>
+<details><summary>cp: 17 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -131,12 +131,13 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `cp-gcd-lcm` GCD, LCM and the Euclidean Algorithm
 - [x] `cp-modular-inverse` Modular Inverse: Dividing Under a Modulus
 - [x] `cp-binomial-coefficients` Binomial Coefficients Fast
+- [x] `cp-coordinate-compression` Coordinate Compression
 - [x] `cp-contest-strategy` Contest Strategy: Order, Time and Nerves
 - [x] `cp-invariants-observations` Invariants and Observations: The Heart of Div 2
 
 </details>
 
-<details><summary>famous-algos: 17 written</summary>
+<details><summary>famous-algos: 18 written</summary>
 
 - [x] `famous-algos-bloom-filter` Bloom Filters: Saying No Without Looking
 - [x] `famous-algos-count-min-sketch` Count-Min Sketch: Counting Billions of Things in Kilobytes
@@ -155,10 +156,11 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `famous-algos-lsm-trees` LSM Trees: Why Modern Databases Write So Fast
 - [x] `famous-algos-write-ahead-log` Write-Ahead Logging: Never Lose a Committed Write
 - [x] `famous-algos-cryptographic-hashing` Cryptographic Hashes: Fingerprints You Cannot Fake
+- [x] `famous-algos-password-hashing` Storing Passwords Safely: Salts, bcrypt and Argon2
 
 </details>
 
-<details><summary>system-design: 17 written</summary>
+<details><summary>system-design: 18 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -177,6 +179,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `system-design-sql-vs-nosql` SQL vs NoSQL: Choosing a Database Honestly
 - [x] `system-design-database-indexing` Database Indexes: Why Some Queries Are Instant
 - [x] `system-design-message-queues` Message Queues and Pub-Sub: Decoupling With Kafka and Friends
+- [x] `system-design-distributed-cache` Redis and Distributed Caches
 
 </details>
 
