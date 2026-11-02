@@ -69,7 +69,7 @@ Components in series, like links in one chain, multiply their availability downw
 | 99.99% (four nines) | about 53 minutes | about 4.3 minutes |
 | 99.999% (five nines) | about 5.3 minutes | about 26 seconds |
 
-These follow directly from the percentages: for example, 0.1% of 525,600 minutes in a year is about 526 minutes. Each extra nine cuts allowed downtime by ten, and usually costs far more than ten times as much engineering.
+These follow directly from the percentages: for example, 0.1% of 525,600 minutes in a year is about 526 minutes. Each extra nine cuts allowed downtime by a factor of ten, and usually costs far more than ten times as much engineering.
 
 ### SLIs, SLOs and SLAs
 
@@ -77,7 +77,7 @@ These follow directly from the percentages: for example, 0.1% of 525,600 minutes
 - An **[[SLO]]** is your target: "99.9% of requests per 30 days meet the SLI".
 - An **[[SLA]]** is a promise to customers, with refunds or penalties. SLAs are usually looser than internal SLOs, so you notice trouble before it costs money.
 
-Good SLIs measure what users feel: successful requests, latency at the 99th percentile, freshness of data. "CPU below 80%" is not an SLI; users do not feel CPU.
+Good SLIs measure what users actually feel: successful requests, latency at the 99th percentile, freshness of data. "CPU below 80%" is not an SLI; users do not feel CPU.
 
 ### Series and parallel
 

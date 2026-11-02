@@ -46,7 +46,7 @@ importance_score: 0.72
 
 Two students do the same number of contests in a semester. One improves steadily; the other stays flat. When you look at their weeks, the difference is not in the contests at all. It is in the hour after each one.
 
-The first student goes back to the problem that beat them, learns why, and codes it. The second closes the tab and waits for the next round. That hour is called upsolving, and it is where most of the improvement in competitive programming actually happens.
+The first student goes back to the problem that beat them, learns why, and codes it. The second closes the tab and waits for the next round. That hour is called upsolving, and it is where most of the improvement in competitive programming actually happens. It is also the cheapest training you will ever get: the problems are already chosen for you, at exactly your edge, with a written explanation waiting once you have tried.
 
 ## The intuition
 
