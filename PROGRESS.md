@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 136 | 0 | 16 | 152 | 71/72 |
+| dsa | 139 | 0 | 13 | 152 | 72/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **338** | **0** | **335** | **673** | |
+| **All** | **341** | **0** | **332** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -25,9 +25,6 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### dsa
 
-- [ ] `dsa-matrix-chain` (P0, problem-walkthrough, dsa-dp): Matrix Chain Multiplication: The Partition DP Template
-- [ ] `dsa-egg-drop` (P1, problem-walkthrough, dsa-dp): Egg Drop: Thinking About the Worst Case
-- [ ] `dsa-rod-cutting` (P1, problem-walkthrough, dsa-dp): Rod Cutting and Integer Break
 - [ ] `dsa-longest-common-substring` (P1, problem-walkthrough, dsa-dp): Longest Common Substring vs Subsequence
 - [ ] `dsa-dp-on-subsequences` (P1, pattern, dsa-dp): Counting Subsequences With DP
 - [ ] `dsa-fenwick-tree` (P1, pattern, dsa-advanced): Fenwick Trees: Prefix Sums That Change
@@ -35,6 +32,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-string-matching-basics` (P1, pattern, dsa-advanced): Pattern Matching: From Brute Force to Rolling Hash
 - [ ] `dsa-design-data-structures` (P1, pattern, dsa-advanced): Designing Data Structures in Interviews
 - [ ] `dsa-lfu-cache` (P1, problem-walkthrough, dsa-advanced): Designing an LFU Cache
+- [ ] `dsa-dp-grid-advanced` (P2, problem-walkthrough, dsa-dp): Cherry Pickup: Two Walkers in One DP
+- [ ] `dsa-monotonic-queue-dp` (P2, pattern, dsa-advanced): Optimising DP With a Monotonic Deque
 
 ### cp
 
@@ -90,7 +89,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 136 written</summary>
+<details><summary>dsa: 139 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -226,7 +225,10 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-snakes-ladders-bfs` Snakes and Ladders and Other BFS Puzzles
 - [x] `dsa-shortest-path-dag` Shortest and Longest Paths in DAGs
 - [x] `dsa-graph-clone-and-copy` Clone Graph and Accounts Merge
+- [x] `dsa-matrix-chain` Matrix Chain Multiplication: The Partition DP Template
+- [x] `dsa-egg-drop` Egg Drop: Thinking About the Worst Case
 - [x] `dsa-subset-sum-count` Counting Subsets: Target Sum and Partitions
+- [x] `dsa-rod-cutting` Rod Cutting and Integer Break
 - [x] `dsa-interview-dsa-revision` The Night-Before Revision Sheet
 
 </details>

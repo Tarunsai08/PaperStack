@@ -1,7 +1,7 @@
 {
- "content_version": "2f3c1d903c29fb7b",
+ "content_version": "dc70616d0e287e85",
  "generated_at": "2026-11-02",
- "count": 338,
+ "count": 341,
  "subjects": [
   {
    "id": "ml",
@@ -24159,6 +24159,225 @@
    "excerpt": "A thief walks down a street at night. Every house holds some cash, and the houses share alarm wiring: rob two neighbours on the same night and the alarm goes off. Grab every big pile you see and you soon find that the big piles sit next to each other. Interviewers love this problem because it comes…"
   },
   {
+   "id": "dsa-matrix-chain",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "matrix-chain",
+   "title": "Gluing a Chain of Pipes in the Cheapest Order",
+   "subtitle": "Matrix chain multiplication as the partition DP template: dp[i][j] over the best last split, rebuilding the brackets, and the same template in Minimum Cost to Cut a Stick and polygon triangulation",
+   "track": "dsa-dp",
+   "track_order": 17,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-interval-dp"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "dynamic programming",
+    "interval DP",
+    "partition DP",
+    "matrices"
+   ],
+   "complexity": {
+    "time": "O(n³)",
+    "space": "O(n²)"
+   },
+   "practice_problems": [
+    {
+     "name": "Minimum Cost to Cut a Stick",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/minimum-cost-to-cut-a-stick/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Minimum Score Triangulation of Polygon",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/minimum-score-triangulation-of-polygon/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Burst Balloons",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/burst-balloons/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Matrix chain",
+     "definition": "A product M1 × M2 × ... × Mn of matrices with compatible sizes, where the order of multiplication changes the cost but not the result."
+    },
+    {
+     "term": "Dimension array",
+     "definition": "An array d of length n + 1 where matrix Mi has d[i - 1] rows and d[i] columns."
+    },
+    {
+     "term": "Partition DP",
+     "definition": "Interval DP where dp[i][j] tries every split point k for the final operation on the range and adds the cost of that operation."
+    },
+    {
+     "term": "Split table",
+     "definition": "An array storing the best k for each range, used to rebuild the optimal bracketing after the DP."
+    },
+    {
+     "term": "Associativity",
+     "definition": "The property that (A × B) × C equals A × (B × C), which is why only the cost, not the answer, depends on the bracketing."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Multiplying a p × q matrix by a q × r matrix costs how many scalar multiplications?",
+     "options": [
+      "p + q + r",
+      "p × q × r",
+      "p × r",
+      "q²"
+     ],
+     "answer": 1,
+     "explain": "The result is p × r, and each of its entries is a dot product of length q, so p × r × q multiplications."
+    },
+    {
+     "q": "For the chain Mi..Mj, what does the split k represent?",
+     "options": [
+      "The first multiplication done",
+      "The last multiplication: (Mi..Mk) × (Mk+1..Mj), with each side bracketed optimally on its own",
+      "The largest matrix",
+      "The middle index"
+     ],
+     "answer": 1,
+     "explain": "Whatever the bracketing, there is one final multiplication joining a left block and a right block. Trying every k for that final step and adding the two optimal sides covers every bracketing."
+    },
+    {
+     "q": "In Minimum Cost to Cut a Stick, why add the cut positions 0 and n before running the DP?",
+     "options": [
+      "To sort them",
+      "So that every piece is described by two neighbouring cut positions, and the cost of a cut is the piece's length, p[j] - p[i]",
+      "Because LeetCode requires it",
+      "To count the cuts"
+     ],
+     "answer": 1,
+     "explain": "With the ends included, dp[i][j] is the cheapest way to make all cuts strictly between p[i] and p[j]. The first cut in that piece costs its full length, p[j] - p[i]."
+    }
+   ],
+   "cover_seed": "matrix-chain",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.8,
+   "path": "dsa/matrix-chain.md",
+   "hash": "5ea59f2ef844",
+   "word_count": 1511,
+   "excerpt": "A plumber has a row of pipe sections to glue into one long pipe. Gluing two pieces costs an amount that depends on both pieces' end sizes, and the pieces in the row must stay in order. Glue left to right, right to left, or middle first? The final pipe is identical every time, but the bill is not.…"
+  },
+  {
+   "id": "dsa-egg-drop",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "egg-drop",
+   "title": "Dropping Phones to Test a Case",
+   "subtitle": "Egg Drop as worst-case DP: the O(k n²) table, why inverting the question to 'how many floors can m moves cover?' is so much faster, and the minimax interval DP behind Guess Number Higher or Lower II",
+   "track": "dsa-dp",
+   "track_order": 18,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-dp-intro",
+    "dsa-binary-search"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "dynamic programming",
+    "worst case",
+    "minimax",
+    "binary search"
+   ],
+   "complexity": {
+    "time": "O(k × answer) with the inverted DP",
+    "space": "O(k)"
+   },
+   "practice_problems": [
+    {
+     "name": "Super Egg Drop",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/super-egg-drop/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Egg Drop With 2 Eggs and N Floors",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/egg-drop-with-2-eggs-and-n-floors/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Guess Number Higher or Lower II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/guess-number-higher-or-lower-ii/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Critical floor",
+     "definition": "The highest floor from which an egg (or phone) survives a drop; every floor above breaks it and every floor at or below does not."
+    },
+    {
+     "term": "Worst-case cost",
+     "definition": "The number of moves a strategy needs against the least favourable outcome, which is what the egg drop problem minimises."
+    },
+    {
+     "term": "Minimax",
+     "definition": "Choosing the action that minimises the maximum cost over the possible outcomes, as an adversary would pick the worst one."
+    },
+    {
+     "term": "Inverted DP",
+     "definition": "Swapping the question from 'fewest moves for n floors' to 'most floors decidable with m moves', which has a much simpler recurrence."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "With one egg, why must you test floors one by one from the bottom?",
+     "options": [
+      "It is just a convention",
+      "If the only egg breaks at a skipped floor, you can never test the floors below it, so the answer would be unknown",
+      "Because binary search needs two eggs",
+      "You do not have to"
+     ],
+     "answer": 1,
+     "explain": "With a single egg, one break ends the experiment. Starting at floor 1 and going up is the only way to be certain, so n floors need n drops in the worst case."
+    },
+    {
+     "q": "What is the recurrence for f(m, e), the most floors that m moves and e eggs can fully decide?",
+     "options": [
+      "f(m, e) = 2 × f(m - 1, e)",
+      "f(m, e) = f(m - 1, e - 1) + f(m - 1, e) + 1: the drop floor itself, the floors below it if the egg breaks, and the floors above if it survives",
+      "f(m, e) = m × e",
+      "f(m, e) = f(m, e - 1) + 1"
+     ],
+     "answer": 1,
+     "explain": "Drop once. If it breaks, m - 1 moves and e - 1 eggs handle the floors below. If not, m - 1 moves and e eggs handle the floors above. Plus the floor you dropped from."
+    },
+    {
+     "q": "With 2 eggs and 100 floors, how many drops are needed in the worst case?",
+     "options": [
+      "10",
+      "14",
+      "50",
+      "7"
+     ],
+     "answer": 1,
+     "explain": "f(m, 2) = m(m + 1) / 2. The smallest m with m(m + 1) / 2 ≥ 100 is 14, since 14 × 15 / 2 = 105 and 13 × 14 / 2 = 91."
+    }
+   ],
+   "cover_seed": "egg-drop",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.68,
+   "path": "dsa/egg-drop.md",
+   "hash": "145ecc9f7e2d",
+   "word_count": 1586,
+   "excerpt": "A company has designed a new phone case and wants to know the highest floor of its test tower from which a protected phone survives a drop. Phones are expensive, so the lab has only a few. Drop from too high and you lose a phone; drop timidly floor by floor and the test takes all day. With…"
+  },
+  {
    "id": "dsa-subset-sum-count",
    "kind": "problem-walkthrough",
    "subject": "dsa",
@@ -24275,6 +24494,112 @@
    "hash": "4c4131e7dc0e",
    "word_count": 1623,
    "excerpt": "Five friends' dishes arrive on one bill, and two of them are paying. Each dish goes on one person's tab or the other's. One of them says, \"I'll pay exactly ₹5 of this.\" How many different ways can the dishes be assigned so that works out? Then someone points at the free glass of water on the bill,…"
+  },
+  {
+   "id": "dsa-rod-cutting",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "rod-cutting",
+   "title": "A Carpenter Cutting Planks to Sell",
+   "subtitle": "Rod cutting as unbounded knapsack over lengths, keeping the uncut option, the maths shortcut behind Integer Break, Perfect Squares as fewest pieces, and Minimum Cost For Tickets as covering days with passes",
+   "track": "dsa-dp",
+   "track_order": 20,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-unbounded-knapsack"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "dynamic programming",
+    "unbounded knapsack",
+    "maths"
+   ],
+   "complexity": {
+    "time": "O(n²) for rod cutting, O(n √n) for perfect squares",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Integer Break",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/integer-break/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Perfect Squares",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/perfect-squares/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Minimum Cost For Tickets",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/minimum-cost-for-tickets/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Rod cutting",
+     "definition": "Cutting a rod of length n into integer pieces, with a price for each piece length, to maximise the total price."
+    },
+    {
+     "term": "First piece",
+     "definition": "The length of the leftmost piece in a cut plan; trying every first piece and solving the rest recursively covers every plan."
+    },
+    {
+     "term": "Uncut option",
+     "definition": "Selling the whole rod as one piece, which must be one of the choices whenever a single piece is allowed."
+    },
+    {
+     "term": "Covering DP",
+     "definition": "A DP over days or positions where each choice covers a block of them, such as a 7-day pass covering the next seven days."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does rod cutting allow the same piece length to be used many times?",
+     "options": [
+      "It does not",
+      "Cutting a 2 from the rod does not stop you cutting another 2, so lengths are reusable like coins in unbounded knapsack",
+      "Because prices are sorted",
+      "To make the DP faster"
+     ],
+     "answer": 1,
+     "explain": "Each piece length is a 'coin' you may use any number of times, and the rod length is the target. That is exactly unbounded knapsack with a maximise objective."
+    },
+    {
+     "q": "In Integer Break, n must be split into at least two parts. Why does dp[i] use max(j, dp[j]) for a part j?",
+     "options": [
+      "For speed",
+      "A part j can either stay whole or be split further, and for small j such as 2 or 3, staying whole is better than splitting",
+      "Because j is prime",
+      "It does not need to"
+     ],
+     "answer": 1,
+     "explain": "dp[j] forces at least one split. As a part of a bigger number, j itself may be left whole, so take whichever of j and dp[j] is larger."
+    },
+    {
+     "q": "What is the largest product for Integer Break with n = 10?",
+     "options": [
+      "25",
+      "36, from 3 × 3 × 4",
+      "30",
+      "32"
+     ],
+     "answer": 1,
+     "explain": "Use as many 3s as possible, but never leave a 1: 10 = 3 + 3 + 4, giving 3 × 3 × 4 = 36."
+    }
+   ],
+   "cover_seed": "rod-cutting",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.68,
+   "path": "dsa/rod-cutting.md",
+   "hash": "731f4d4383c8",
+   "word_count": 1594,
+   "excerpt": "A carpenter has a 6-foot plank and a price list: a 1-foot piece sells for 2, a 2-foot piece for 5, a 3-foot piece for 7, up to 14 for the full 6 feet. Selling it whole earns 14. Cutting it into three 2-foot pieces earns 15. Is there anything better? There are 2⁵ = 32 ways to cut a 6-foot plank at…"
   },
   {
    "id": "dsa-tries",

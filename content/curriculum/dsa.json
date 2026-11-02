@@ -4554,8 +4554,8 @@
    "prerequisites": [
     "dsa-interval-dp"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "dp[i][j] = best split k",
@@ -4586,8 +4586,8 @@
     "dsa-dp-intro",
     "dsa-binary-search"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "dp over eggs and moves",
@@ -4647,8 +4647,8 @@
    "prerequisites": [
     "dsa-unbounded-knapsack"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Each length reusable",
