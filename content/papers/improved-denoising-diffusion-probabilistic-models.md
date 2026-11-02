@@ -1,299 +1,178 @@
 ---
-id: paper-improved-denoising-diffusion-probabilistic-models
-kind: paper
+id: "paper-improved-denoising-diffusion-probabilistic-models"
+kind: "paper"
 subject: "ml"
-slug: improved-denoising-diffusion-probabilistic-models
-title: Teaching Diffusion Models to Walk in Big Strides
-subtitle: How learning variance and smoothing noise cut sampling time by ten
+slug: "improved-denoising-diffusion-probabilistic-models"
+title: "Small Fixes That Made Diffusion Grow Up"
+subtitle: "Learned noise levels, a gentler schedule and a hybrid loss: the tune-up that set diffusion up to beat GANs"
 track: "generative"
 track_order: 8
-prerequisites:
-- paper-ddpm
-- paper-vae
-- paper-denoising-diffusion-implicit-models
-difficulty: intermediate
+prerequisites: ["paper-ddpm", "paper-denoising-diffusion-implicit-models"]
+difficulty: "advanced"
 read_minutes: 10
-topics:
-- diffusion models
-- generative models
-- likelihood estimation
-- image synthesis
-paper_title: Improved Denoising Diffusion Probabilistic Models
-authors:
-- Alex Nichol
-- Prafulla Dhariwal
+topics: ["diffusion models", "generative models", "likelihood", "noise schedules"]
+paper_title: "Improved Denoising Diffusion Probabilistic Models"
+authors: ["Alex Nichol", "Prafulla Dhariwal"]
 year: 2021
 venue: "ICML"
-paper_url: https://arxiv.org/abs/2102.09672
+paper_url: "https://arxiv.org/abs/2102.09672"
 glossary:
-- term: Variational Lower Bound (VLB)
-  definition: A mathematically tractable lower bound on the true log-likelihood of data under a latent variable model, maximized to train the model to cover all modes.
-- term: Cosine Schedule
-  definition: A noise schedule where the cumulative signal factor drops following a squared cosine curve, preventing abrupt information destruction at the boundaries.
-- term: Learned Variance Parameterization
-  definition: Formulating the reverse step variance as an interpolation between upper and lower theoretical variance bounds in log space, predicted via an unbounded network scalar.
-- term: Precision and Recall for Generative Models
-  definition: Evaluation metrics where precision measures sample fidelity (how realistic generated samples look) and recall measures mode coverage (what fraction of the real data distribution is generated).
+  - term: "Noise schedule"
+    definition: "The plan for how much noise is added at each step of the forward process, from almost none to pure noise."
+  - term: "Variance"
+    definition: "How spread out a random value is. Here, how much fresh randomness the model adds at each step of generation."
+  - term: "Log-likelihood"
+    definition: "A score for how probable the model thinks real data is. Higher means the model covers the data distribution better."
+  - term: "Variational lower bound"
+    definition: "A quantity that is always below the true log-likelihood, so maximising it pushes the likelihood up. Often abbreviated VLB."
+  - term: "FID"
+    definition: "Fréchet Inception Distance, a common score for generated images that compares their statistics to real images. Lower is better."
+  - term: "Recall"
+    definition: "For generative models, how much of the variety in the real data the generated samples cover."
 quiz:
-- q: Why did earlier DDPM setups fix the reverse step variance instead of learning it?
-  options:
-  - Learning the variance made no mathematical sense in the diffusion derivation.
-  - Predicting variance directly caused training instabilities because the valid variance range between bounds is tiny.
-  - Fixing the variance guaranteed higher log-likelihood than learning it.
-  - The neural network was too small to output two tensors at the same time.
-  answer: 1
-  explain: The gap between the upper and lower theoretical bounds is extremely narrow for most steps. Predicting the raw variance directly made gradients explode or collapse, so earlier work simply locked it to a constant.
-- q: What trade-off occurred when training purely on the resampled variational lower bound rather than the hybrid loss?
-  options:
-  - Training collapsed immediately and produced NaN gradients.
-  - Negative log-likelihood improved, but sample visual quality degraded significantly.
-  - Sample visual quality improved drastically, but negative log-likelihood became worse than random guessing.
-  - Sampling required forty thousand steps instead of four thousand.
-  answer: 1
-  explain: Directly optimizing the variational lower bound pushed log-likelihood to its best values, but visual quality collapsed (FID jumped from 19.2 to 40.1 on ImageNet 64x64).
-- q: How does the cosine schedule differ from the original linear noise schedule?
-  options:
-  - It destroys image details within the first five percent of diffusion steps.
-  - It retains a nearly constant noise level throughout the entire diffusion process.
-  - It preserves information longer and avoids sudden noise jumps near the start and end.
-  - It completely eliminates Gaussian noise in favor of uniform noise.
-  answer: 2
-  explain: The linear schedule dropped signal too fast in the middle and wasted the final quarter of steps on pure static. The cosine schedule decays smoothly, keeping useful signal alive across a broader range of steps.
-cover_seed: improved-denoising-diffusion-probabilistic-models
-generated_by: gemini-gemini-flash-latest
-generated_at: '2026-10-25'
+  - q: "What did the paper let the network learn that DDPM had fixed by hand?"
+    options: ["The image resolution", "The variance of each reverse step, interpolated between two sensible bounds", "The number of layers", "The training dataset"]
+    answer: 1
+    explain: "DDPM fixed the reverse-step variance to a constant. Learning it, as a blend between two known bounds, improved likelihood and allowed sampling with fewer steps."
+  - q: "Why replace the linear noise schedule with a cosine one?"
+    options: ["Cosines are faster to compute", "The linear schedule destroyed information too quickly, so many late steps were nearly pure noise and wasted", "To make images brighter", "It was required for learned variances"]
+    answer: 1
+    explain: "With the linear schedule, images, especially small ones, became almost pure noise well before the final steps. The cosine schedule adds noise more evenly."
+  - q: "Compared with BigGAN at similar FID, what did the diffusion model show?"
+    options: ["Lower precision and lower recall", "Higher recall, meaning it covered more of the data's variety", "Exactly the same samples", "It could not be compared"]
+    answer: 1
+    explain: "GANs often miss parts of the distribution. The paper found diffusion models achieved better recall, a sign of fuller coverage."
+cover_seed: "improved-denoising-diffusion-probabilistic-models"
+generated_by: "claude-revised"
+generated_at: "2026-11-02"
 importance_score: 0.76
 ---
 
 ## The hook
 
-In late 2020, denoising diffusion models looked like an astonishing party trick that was far too slow to use. They could generate photorealistic faces, but creating a single picture took several minutes on a high-end graphics card because the model had to take four thousand tiny, nervous steps. Worse, when evaluated on standard information-theory metrics like log-likelihood, diffusion appeared mediocre, leading many researchers to suspect these networks were quietly dropping modes and ignoring parts of the data. Alex Nichol and Prafulla Dhariwal showed that diffusion models were not flawed at their core; they were simply walking blindfolded with a poorly tuned pace.
+By early 2021, diffusion models made beautiful pictures but had an awkward report card. Their likelihood scores, the standard test of how well a model captures the data, trailed other model families. They needed hundreds or thousands of steps to sample. And nobody was sure they could match GANs on big, diverse datasets like ImageNet.
+
+Two OpenAI researchers took the original recipe apart piece by piece, like mechanics tuning an engine. They did not invent a new model. They found a handful of small, careful changes that fixed most of the weaknesses at once, and within months the same pair showed diffusion beating GANs.
 
 ## Before you start
 
-To get the most out of this article, make sure you are comfortable with:
-- How score-based generation reverses Gaussian noise step by step in [DDPM](article:paper-ddpm).
-- How latent variables and the evidence lower bound work in [VAEs](article:paper-vae).
-- How non-Markovian step skipping accelerates inference in [DDIM](article:paper-denoising-diffusion-implicit-models).
+You should know the basic diffusion recipe from [Denoising Diffusion Probabilistic Models](article:paper-ddpm): add noise step by step, train a network to predict that noise, then reverse the process. Knowing that sampling can skip steps, from [Same Model, Fifty Times Fewer Steps](article:paper-denoising-diffusion-implicit-models), helps.
 
 ## The world before this paper
 
-The machine learning community spent years caught in a tug-of-war between two generative philosophies.
+DDPM trained a network to predict the noise in a noisy image with a simple squared-error loss, which the authors called $L_{\text{simple}}$. Two choices in that recipe were fixed by hand:
 
-On one side stood [GANs](article:paper-gan). A generator and discriminator fought each other in an adversarial game. GANs generated crisp images in a single forward pass, but training them felt like balancing a pencil on its tip. They suffered from mode collapse, completely ignoring entire categories of data, and offered no straightforward way to measure data likelihood.
+- **The [[noise schedule]]**: noise increased linearly from step 1 to step 1,000.
+- **The reverse-step [[variance]]**: how much fresh randomness to add at each generation step was a constant, not learned.
 
-On the other side stood likelihood-based models, such as autoregressive networks and [VAEs](article:paper-vae). They optimized the [[Variational Lower Bound (VLB)]] directly, capturing every corner of the distribution. But autoregressive models generated images one slow pixel at a time, and standard VAEs produced blurry textures.
-
-Then Jonathan Ho and colleagues published [DDPM](article:paper-ddpm). By corrupting an image with hundreds of subtle doses of Gaussian noise and training a neural network to estimate the added noise at each step, they produced samples rivaling GANs.
-
-Yet DDPM had two glaring flaws:
-
-1. **Abysmal log-likelihood:** On ImageNet $64 \times 64$, DDPM scored roughly $3.99$ bits per dimension, trailing far behind autoregressive models. This suggested the model might be skipping rare training images.
-2. **Excruciatingly slow sampling:** Turning random noise into an image required stepping through $1{,}000$ to $4{,}000$ sequential evaluations of a massive U-Net. Generating a small batch of images took minutes.
-
-To stabilize training, the original DDPM authors made a radical simplification: they fixed the reverse variance to an untrained constant instead of letting the network learn it, and they used a crude linear noise schedule. Nichol and Dhariwal set out to ask a fundamental question: what happens if we actually fix the math?
+These shortcuts made training simple and samples pretty, but the model's [[log-likelihood]] was poor, and sampling with fewer steps hurt quality badly.
 
 :::history
-Alex Nichol and Prafulla Dhariwal worked together at OpenAI. While the broader community treated DDPM's thousand-step requirement as an unavoidable law of physics, Nichol and Dhariwal suspected that DDPM's hand-crafted shortcuts—specifically freezing the variance and using a linear schedule—were hobbling both its speed and its statistical rigor.
+Alex Nichol and Prafulla Dhariwal at OpenAI wanted to know whether diffusion models could be both good at likelihood and practical at scale. Their paper appeared on arXiv in February 2021 and at ICML 2021. Later that year they published "Diffusion Models Beat GANs on Image Synthesis", building directly on these improvements.
 :::
 
 ## The big idea
 
 :::analogy
-Imagine hiking down a steep, fog-covered mountain trail. 
-
-If you have no idea how wide the path is (a fixed, rigid guess for variance), you dare not take large strides. You must take $4{,}000$ tiny baby steps, shuffling forward an inch at a time so you do not tumble off the cliff.
-
-If your guide measures the exact width of the trail at every turn (a learned variance) and smooths out the steepest drop-offs (a cosine schedule), you can see exactly where it is safe to plant your boots. Instead of thousands of shuffling steps, you can stride down confidently in $50$ to $100$ long bounds, reaching the mountain base just as safely in a tenth of the time.
+Think of tuning a car that runs well but drinks fuel and needs a long warm-up. You do not redesign the engine. You adjust the fuel mixture so it is not fixed at one setting, smooth out the gear ratios so no gear is wasted, and add a sensor so the engine learns from more information. Each tweak is small. Together they turn a showroom car into one you can actually drive every day.
 :::
 
-Nichol and Dhariwal realized that the network could learn its own uncertainty. By parameterizing the variance as a smooth interpolation between theoretical bounds, training on a hybrid loss, and replacing the linear noise schedule with a smooth cosine function, diffusion models could match the likelihood of autoregressive models while slicing sampling passes by an order of magnitude.
-
-```mermaid
-flowchart TD
-    A[Input Image x0] --> B[Cosine Noise Schedule]
-    B --> C[Noisy Latent xt]
-    C --> D[U-Net Backbone]
-    D --> E[Predict Added Noise epsilon]
-    D --> F[Predict Variance Factor v]
-    E --> G[Lsimple Loss for Mean]
-    F --> H[Lvlb Loss for Variance]
-    G --> I[Combined Lhybrid Objective]
-    H --> I
-```
+The paper's big idea is that diffusion's weaknesses came from a few hand-fixed choices, not from the approach itself. Let the network learn its step variances, spread the noise more evenly over time, and train with a loss that cares about likelihood as well as image quality. Those three adjustments are the fuel mixture, the gear ratios and the sensor.
 
 ## How it works
 
-Let us walk through the four interconnected engineering steps that transformed diffusion from a slow curiosity into a practical engine.
+### 1. Learn the variance, safely
 
-### 1. The Learned Variance Parameterization
+DDPM's reverse-step variance was fixed to one of two sensible values, $\beta_t$ or $\tilde\beta_t$, which turned out to be close to each other for most steps. Instead of predicting a variance from scratch, which proved unstable, the network outputs a number $v$ per dimension and the variance is a blend between the two bounds:
 
-In diffusion, we start with real data $x_0$ and destroy it over $T$ timesteps by adding Gaussian noise:
+$$\Sigma_\theta(x_t, t) = \exp\big(v \log \beta_t + (1 - v) \log \tilde\beta_t\big)$$
 
-$$q(x_t \mid x_{t-1}) = \mathcal{N}\left(x_t; \sqrt{1 - \beta_t}\, x_{t-1}, \beta_t \mathbf{I}\right)$$
+- $\beta_t$ and $\tilde\beta_t$ are the upper and lower sensible values for step t.
+- $v$ between 0 and 1 picks a point between them on a log scale.
 
-Here, $\beta_t \in (0, 1)$ governs the noise injected at step $t$. To generate an image, we reverse this process:
+This is the fuel mixture: adjustable, but within safe limits.
 
-$$p_\theta(x_{t-1} \mid x_t) = \mathcal{N}\left(x_{t-1}; \mu_\theta(x_t, t), \Sigma_\theta(x_t, t)\right)$$
+### 2. A hybrid loss
 
-In DDPM, the mean $\mu_\theta$ was predicted by a neural network, but the variance $\Sigma_\theta$ was locked to a fixed diagonal matrix $\sigma_t^2 \mathbf{I}$. Theory provides two extreme bounds for this variance:
+$L_{\text{simple}}$ ignores the variance completely, so it cannot teach $v$. The full [[variational lower bound]] $L_{\text{vlb}}$ does, but is noisy to optimise. The paper adds a little of it:
 
-- **Upper bound ($\beta_t$):** The true posterior variance if the original image $x_0$ was pure isotropic Gaussian noise.
-- **Lower bound ($\tilde{\beta}_t$):** The true posterior variance if the original image $x_0$ was a single deterministic point:
+$$L_{\text{hybrid}} = L_{\text{simple}} + \lambda L_{\text{vlb}}, \quad \lambda = 0.001$$
 
-$$\tilde{\beta}_t = \frac{1 - \bar{\alpha}_{t-1}}{1 - \bar{\alpha}_t} \beta_t$$
+The mean is still learned mainly through the stable simple loss; the small VLB term teaches the variances. The paper also showed that sampling time steps for the VLB with importance sampling, favouring steps where the loss is large and noisy, made pure VLB training workable.
 
-where $\alpha_t = 1 - \beta_t$ and $\bar{\alpha}_t = \prod_{s=1}^t \alpha_s$.
+### Why the VLB is hard to train on
 
-Ho et al. observed that choosing either extreme yielded almost identical sample quality when $T = 1{,}000$. Why? Because throughout most of the process, $\beta_t$ and $\tilde{\beta}_t$ are nearly identical. They only diverge near $t=0$, where the model resolves fine pixel textures.
+The variational bound is a sum of terms, one per time step, and those terms differ enormously in size: the first few steps contribute far more than the rest. If you train on a random step each time, the loss jumps wildly between examples, which makes gradients noisy. Importance sampling fixes this by picking steps in proportion to how large their loss terms have been recently, then reweighting so the average is still correct. It is like an examiner spending more time on the questions students most often get wrong, while still grading the whole paper fairly.
 
-Because the numerical gap between $\beta_t$ and $\tilde{\beta}_t$ is tiny, asking a neural network to predict raw variance directly causes wild instability. Nichol and Dhariwal introduced [[Learned Variance Parameterization]]. Instead of predicting variance directly, the network outputs an unconstrained vector $v$:
+### 3. A cosine noise schedule
 
-$$\Sigma_\theta(x_t, t) = \exp\left(v \log \beta_t + (1 - v) \log \tilde{\beta}_t\right)$$
+With the linear schedule, especially for small 64 by 64 images, the image was almost pure noise well before the last step, so many final steps did little useful work. The cosine schedule sets the remaining signal as
 
-- When $v = 0$, the model picks the lower bound $\tilde{\beta}_t$.
-- When $v = 1$, the model picks the upper bound $\beta_t$.
-- When $v$ is between $0$ and $1$, it smoothly blends between the two in log space.
+$$\bar\alpha_t = \frac{f(t)}{f(0)}, \quad f(t) = \cos^2\!\left(\frac{t/T + s}{1 + s} \cdot \frac{\pi}{2}\right)$$
 
-Let us test this with numbers.
+- $\bar\alpha_t$ is the fraction of the original image left at step t.
+- $s$ is a small offset (0.008 in the paper) so the first steps are not too tiny.
+
+This is the gear ratio fix: information is destroyed gradually across the whole range, so no stretch of steps is wasted.
+
+```mermaid
+flowchart TD
+  A[DDPM recipe] --> B[Learn variances between two bounds]
+  A --> C[Hybrid loss: simple plus a little VLB]
+  A --> D[Cosine noise schedule]
+  B --> E[Better likelihood]
+  C --> E
+  D --> E
+  B --> F[Good samples in about 50 steps]
+```
+
+### A quick feel for the schedules
+
+| Point in the process | Linear schedule (signal left) | Cosine schedule (signal left) |
+|---|---|---|
+| Start | almost all | almost all |
+| Middle | already very little | about half |
+| Last fifth | practically none | small but non-zero |
+
+The exact numbers depend on settings, but the shape is the point: the cosine curve keeps useful signal for longer.
 
 :::try-this
-Suppose at a specific timestep, $\beta_t = 0.04$ and $\tilde{\beta}_t = 0.01$.
-
-If the neural network outputs $v = 0.5$:
-1. Compute $\log \beta_t = \log(0.04) \approx -3.219$
-2. Compute $\log \tilde{\beta}_t = \log(0.01) \approx -4.605$
-3. Blend them: $0.5(-3.219) + 0.5(-4.605) = -3.912$
-4. Exponentiate: $\exp(-3.912) = 0.02$
-
-The network smoothly lands at the geometric mean ($0.02$) without ever needing to output precarious numbers near zero directly.
+Using $f(t) = \cos^2(\frac{t/T + s}{1+s} \cdot \frac{\pi}{2})$ with s close to 0, estimate $\bar\alpha$ at the halfway point t = T/2. (The angle is about π/4, and cos²(π/4) = 0.5, so about half the signal remains, versus far less with the linear schedule.)
 :::
-
-### 2. The Hybrid Loss
-
-How do we train $v$? The simplified DDPM loss ($L_{\text{simple}}$) only trains the network to predict the added noise $\epsilon$. It contains zero gradient signal for $\Sigma_\theta$.
-
-The true statistical objective is the [[Variational Lower Bound (VLB)]], denoted as $L_{\text{vlb}}$. It computes the Kullback-Leibler divergence between the ground-truth reverse distribution and the model's predicted Gaussian at every step.
-
-However, training solely on $L_{\text{vlb}}$ produces blurry images. The mean squared error in $L_{\text{simple}}$ places heavier weight on difficult middle timesteps, which makes images sharp. To get the best of both worlds, the authors constructed a hybrid loss:
-
-$$L_{\text{hybrid}} = L_{\text{simple}} + \lambda L_{\text{vlb}}$$
-
-They set $\lambda = 0.001$. Crucially, they placed a **stop-gradient** on $\mu_\theta$ inside the $L_{\text{vlb}}$ term:
-
-$$\text{stop\_gradient}(\mu_\theta)$$
-
-This tiny technical choice ensures $L_{\text{simple}}$ is the sole driver of the image mean (keeping samples sharp), while $L_{\text{vlb}}$ exclusively guides the variance vector $v$.
-
-```mermaid
-flowchart TD
-    LossVLB[Variational Lower Bound Loss] -->|Stop Gradient on Mean| VarOnly[Update Variance Head v]
-    LossSimple[Simple MSE Noise Loss] -->|Full Gradient| MeanOnly[Update Noise Head epsilon]
-    VarOnly --> TotalLoss[Hybrid Objective]
-    MeanOnly --> TotalLoss
-```
-
-### 3. The Cosine Noise Schedule
-
-The original DDPM used a linear schedule: $\beta_t$ grew linearly from $\beta_1 = 10^{-4}$ to $\beta_T = 0.02$.
-
-This linear ramp had a severe flaw. The cumulative signal factor $\bar{\alpha}_t$ dropped toward zero much too quickly. By step $3{,}000$ out of $4{,}000$, the image was already pure, unrecognizable static. The model spent the final quarter of its steps predicting noise on data that contained no image information at all.
-
-Nichol and Dhariwal proposed the [[Cosine Schedule]]:
-
-$$\bar{\alpha}_t = \frac{f(t)}{f(0)}, \quad f(t) = \cos^2\left(\frac{\frac{t}{T} + s}{1 + s} \cdot \frac{\pi}{2}\right)$$
-
-Here, $s = 0.008$ is a tiny offset that prevents $\beta_0$ from being zero.
-
-The cosine schedule produces a gentle, linear drop in signal through the middle steps, with flat, delicate transitions near $t=0$ (clean image) and $t=T$ (pure noise). It avoids sudden information shock at the start and never wastes steps on pure noise at the end.
 
 :::insight
-A linear noise schedule destroys image details too quickly in low-resolution images. A cosine schedule degrades information steadily, giving every timestep a meaningful job.
+Learning the variances matters most when you take fewer steps. With big jumps between noise levels, how much randomness to add at each jump is no longer a detail, and a learned value adapts where a fixed one cannot.
 :::
-
-### 4. Strided Fast Sampling
-
-With a learned variance and a smooth cosine schedule, you no longer need all $4{,}000$ steps to produce a crisp image.
-
-Suppose we train with $T = 4{,}000$ steps, but during inference we only want to run $K = 100$ steps. We pick a strided sequence of timesteps $S = (s_1, s_2, \dots, s_K)$ evenly spaced between $1$ and $T$.
-
-Because our model outputs a fractional interpolation $v$ rather than fixed numbers, the variance formula automatically adjusts to the larger gap between steps:
-
-$$\beta_{S_t} = 1 - \frac{\bar{\alpha}_{S_t}}{\bar{\alpha}_{S_{t-1}}}$$
-
-The model plugs this rescaled gap directly into its learned variance formula.
-
-```mermaid
-flowchart TD
-    Start[Noise Sample xT] --> SelectSteps[Pick 100 Evenly Spaced Steps]
-    SelectSteps --> RescaleBounds[Rescale Variance Bounds for Wider Steps]
-    RescaleBounds --> PredictV[Evaluate Learned Sigma Using Parameter v]
-    PredictV --> DenoiseStep[Step Down Reverse Trajectory]
-    DenoiseStep --> Done[Clean Sample x0 in 100 Steps]
-```
 
 ## What they found
 
-The authors validated their discoveries across ImageNet $64 \times 64$ and CIFAR-10.
-
-### Competitive Log-Likelihoods
-
-On ImageNet $64 \times 64$, baseline DDPM ($T=1{,}000$) scored an NLL of $3.99$ bits per dimension. By bumping $T$ to $4{,}000$, adding the cosine schedule, and training with importance-sampled $L_{\text{vlb}}$, Nichol and Dhariwal drove NLL down to **$3.53$ bits/dim**.
-
-This matched top-tier convolutional autoregressive models like PixelCNN ($3.57$) and closed the historical gap between diffusion and likelihood-based architectures.
-
-| Model Setup (ImageNet $64 \times 64$) | Schedule | Loss Objective | NLL (bits/dim) $\downarrow$ | FID $\downarrow$ |
-| :--- | :--- | :--- | :--- | :--- |
-| Baseline DDPM ($T=1\text{K}$) | Linear | $L_{\text{simple}}$ | 3.99 | 32.5 |
-| Baseline DDPM ($T=4\text{K}$) | Linear | $L_{\text{simple}}$ | 3.77 | 31.3 |
-| Improved DDPM | Cosine | $L_{\text{hybrid}}$ | 3.62 | 28.0 |
-| Improved DDPM ($1.5\text{M}$ iters) | Cosine | $L_{\text{hybrid}}$ | 3.57 | **19.2** |
-| Improved DDPM ($1.5\text{M}$ iters) | Cosine | $L_{\text{vlb}}$ (resampled) | **3.53** | 40.1 |
-
-### Slashing Sampling Steps by 90%
-
-The most dramatic practical result was inference speed. When running models trained with fixed variances, reducing sampling steps caused sample quality to crater.
-
-In contrast, models trained with $L_{\text{hybrid}}$ and learned variances preserved their visual quality down to **$100$ or even $50$ sampling steps**. Generating an image went from taking several minutes down to a few seconds.
-
-### Mode Coverage: Diffusion vs GANs
-
-To determine whether diffusion models capture data modes better than GANs, the authors turned to [[Precision and Recall for Generative Models]]:
-
-- **Precision** measures sample realism (do generated images look like valid dataset items?).
-- **Recall** measures distribution coverage (does the model reproduce the full variety of real data?).
-
-On class-conditional ImageNet $64 \times 64$, BigGAN-deep achieved an FID of $4.06$ with a recall of $0.59$. The large Improved DDPM model beat BigGAN on image quality with an FID of **$2.92$**, while achieving a recall of **$0.71$**.
-
-Diffusion did not just generate sharp pictures; it generated diverse pictures, proving it did not suffer from the insidious mode collapse that plagued GANs.
+- **Competitive log-likelihoods.** With these changes, diffusion models reached log-likelihoods competitive with other likelihood-based models on datasets such as CIFAR-10 and ImageNet 64 by 64, a big improvement over DDPM.
+- **Fast sampling with learned variances.** Models with learned variances produced near-full-quality samples with as few as 50 sampling steps, where fixed-variance models degraded more.
+- **Better coverage than GANs.** Measuring precision and [[recall]] against BigGAN at a similar [[FID]], the diffusion model had substantially higher recall: it covered more of the variety in the data.
+- **Smooth scaling.** Sample quality and likelihood improved predictably as model size and training compute grew.
 
 :::warning
-Do not confuse optimizing $L_{\text{vlb}}$ with generating pretty pictures. Direct optimization of the variational lower bound achieved the best negative log-likelihood ($3.53$), but its FID degraded from $19.2$ to $40.1$. The model wasted network capacity on imperceptible high-frequency pixel noise instead of recognizable visual structures. That is why $L_{\text{hybrid}}$ is preferred in practice.
+Common misconception: "better likelihood always means better-looking images." The two can disagree. A model can assign high probability to real data and still produce some odd samples, or vice versa. This paper improved both, but it measured them separately for good reason.
 :::
+
+Taken together, the paper reads like a careful lab notebook: change one ingredient, measure, keep what helps. Many later diffusion papers follow the same style.
 
 ## What it got wrong (or left open)
 
-While the paper transformed diffusion into an efficient, competitive class of models, several friction points remained:
-
-1. **Still slower than GANs:** Dropping from $4{,}000$ steps to $50$ steps was a ten-to-forty-fold speedup, but fifty forward passes through a U-Net is still fifty times slower than a single GAN generator pass. Real-time generation remained out of reach.
-2. **The NLL-FID tradeoff remained unresolved:** You still had to choose between optimal log-likelihood ($L_{\text{vlb}}$) and optimal visual quality ($L_{\text{hybrid}}$). The field lacked a unified objective that maximized both simultaneously.
-3. **Pixel-space computational overhead:** The model still operated directly in high-dimensional image space. Generating larger images ($256 \times 256$ or $512 \times 512$) remained prohibitively expensive without architectural workarounds.
+- **Still slower than GANs.** Fifty network passes is far better than a thousand, but still fifty times one GAN pass.
+- **Unconditional quality on ImageNet still trailed the best GANs** in this paper; closing that gap needed the guidance techniques of the follow-up.
+- **The hybrid weight and schedule offset were tuned by hand**, leaving open what the best design choices are in general.
 
 ## What happened next
 
-This paper served as the direct springboard for the modern generative AI boom.
+Months later, the same authors published "Diffusion Models Beat GANs on Image Synthesis", adding architecture improvements and classifier guidance, which steers samples toward a class using a separate classifier. Diffusion overtook GANs on ImageNet image quality, ending the long dominance of GANs described in [the GAN article](article:paper-gan).
 
-A few months later, Dhariwal and Nichol used these insights to publish *Diffusion Models Beat GANs on Image Synthesis*, introducing classifier guidance and cementing diffusion as the king of computer vision.
-
-The cosine schedule and learned variance parameterization instantly became standard building blocks throughout the field:
-- OpenAI used them in GLIDE and DALL-E 2.
-- The community paired these sampling tricks with latent representations in [Latent Diffusion](article:paper-latent-diffusion) (the foundation of Stable Diffusion), moving the denoising process into compressed latent spaces to tackle megapixel images.
-- Later works on distilled samplers built directly upon the strided sampling concepts formalized here.
+OpenAI's GLIDE and DALL·E 2 built text-to-image systems on diffusion, and [latent diffusion](article:paper-latent-diffusion) moved the process into a compressed space to make it cheap enough for everyone. The cosine schedule and learned variances became common ingredients. Later, [Elucidating the Design Space of Diffusion-Based Generative Models](article:paper-elucidating-the-design-space-of-diffusion-based-generative-m) revisited all of these knobs together and simplified them further.
 
 ## Key takeaways
 
-- Learning the reverse process variance through log-space interpolation allows diffusion models to take large, strided steps without destabilizing the sampling trajectory.
-- The hybrid loss ($L_{\text{hybrid}}$) lets a simple MSE loss guide the visual mean while an evidence lower bound trains the variance via a stop-gradient.
-- The cosine noise schedule prevents premature destruction of image features, ensuring every diffusion step performs useful work.
-- Improved DDPM models generate high-fidelity images in just $50$ to $100$ steps instead of $4{,}000$, cutting sampling time by an order of magnitude.
-- Diffusion models achieve substantially higher distribution recall than GANs, verifying that they cover rare modes instead of memorizing narrow subsets of data.
+- Diffusion's early weaknesses in likelihood and sampling speed came mostly from a few hand-fixed choices.
+- Letting the network learn each step's variance, as a blend between two safe bounds, improved likelihood and made sampling with about 50 steps work well.
+- A hybrid loss adds a small amount of the variational bound to the simple loss so the variances can be trained without destabilising the mean.
+- A cosine noise schedule spreads information loss evenly across steps, so fewer steps are wasted on near-pure noise.
+- These changes set up the follow-up work in which diffusion models beat GANs on image quality.

@@ -1,5 +1,5 @@
 {
- "content_version": "b8d8868e0686fdaa",
+ "content_version": "ee3d0f446dd55e92",
  "generated_at": "2026-11-02",
  "count": 123,
  "subjects": [
@@ -1659,99 +1659,98 @@
    "kind": "paper",
    "subject": "ml",
    "slug": "stop-explaining-black-box-machine-learning-models-for-high-s",
-   "title": "Why Explaining Black Boxes Fails",
-   "subtitle": "How inherently transparent models beat opaque algorithms at high stakes",
+   "title": "Don't Explain the Black Box. Open It.",
+   "subtitle": "Why one researcher argued that high-stakes decisions need models you can read, not explanations bolted on afterwards",
    "track": "foundations",
    "track_order": 8,
    "prerequisites": [
     "primer-classification",
-    "primer-data-features-labels",
     "paper-random-forests"
    ],
-   "difficulty": "intermediate",
-   "read_minutes": 10,
+   "difficulty": "beginner",
+   "read_minutes": 6,
    "topics": [
     "interpretable machine learning",
-    "explainable ai",
-    "algorithmic fairness",
-    "optimization"
+    "explainability",
+    "fairness",
+    "high-stakes decisions"
    ],
    "paper_title": "Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead",
    "authors": [
-    "C. Rudin"
+    "Cynthia Rudin"
    ],
    "year": 2019,
    "venue": "Nature Machine Intelligence",
    "paper_url": "https://arxiv.org/pdf/1811.10154",
    "glossary": [
     {
-     "term": "Black Box Model",
-     "definition": "A predictive model that is either too mathematically complex for human comprehension or proprietary and hidden from public view."
+     "term": "Black box model",
+     "definition": "A model whose internal reasoning is too complex for a person to follow, or is kept secret, so only its inputs and outputs are visible."
     },
     {
-     "term": "Inherently Interpretable Model",
-     "definition": "A predictive model whose internal structure is simple and transparent by design, so its computations are directly verifiable by humans."
+     "term": "Interpretable model",
+     "definition": "A model whose reasoning a person can read and check directly, such as a short list of rules or a small points-based score."
     },
     {
-     "term": "Post-hoc Explanation",
-     "definition": "A secondary method that attempts to approximate or summarize how a trained black-box model makes its decisions after the fact."
+     "term": "Post-hoc explanation",
+     "definition": "An explanation produced after the fact by a second model or method that tries to describe what a black box did."
     },
     {
-     "term": "Rashomon Set",
-     "definition": "The set of diverse predictive models that achieve approximately equal, near-optimal predictive performance on the same dataset."
+     "term": "Faithful",
+     "definition": "An explanation is faithful if it matches what the model actually computes, not just something plausible."
     },
     {
-     "term": "CORELS",
-     "definition": "Certifiably Optimal Rule Lists; a discrete optimization algorithm that uses custom bit-vector operations and branch-and-bound pruning to find provably optimal rule lists."
+     "term": "Saliency map",
+     "definition": "An image showing which pixels an image model was most sensitive to, often used as a visual explanation."
     },
     {
-     "term": "RiskSLIM",
-     "definition": "Risk-Supersparse-Linear-Integer-Models; a mixed-integer nonlinear programming framework that finds sparse scoring systems with small integer weights."
+     "term": "Rule list",
+     "definition": "An ordered list of if-then rules; the first rule that matches a case decides the prediction."
     }
    ],
    "quiz": [
     {
-     "q": "Why does Cynthia Rudin argue that post-hoc explanations cannot be completely trusted for high-stakes decisions?",
+     "q": "Rudin's main argument against post-hoc explanations is that they...",
      "options": [
-      "They take too much GPU compute to generate at runtime.",
-      "They are approximations that are necessarily unfaithful to what the black box actually calculated.",
-      "They can only be created for simple linear regression models.",
-      "They require proprietary source code that is rarely open-source."
+      "Are too slow to compute",
+      "Cannot be fully faithful: if an explanation matched the model perfectly, it would itself be the model",
+      "Use too much memory",
+      "Only work for images"
      ],
      "answer": 1,
-     "explain": "If a post-hoc explanation were 100% faithful to the original model, it would compute the exact same function, making the black box redundant. Any approximation is wrong in some parts of the input space."
+     "explain": "An explanation that agreed with the black box everywhere would be an equally accurate model, so any simpler explanation must sometimes describe the model wrongly."
     },
     {
-     "q": "What does the paper conclude about the widely assumed trade-off between accuracy and interpretability on structured tabular data?",
+     "q": "What claim does the paper make about the accuracy-interpretability trade-off?",
      "options": [
-      "Deep learning models are always at least 15% more accurate than simple models.",
-      "The trade-off is unavoidable because simple models lack capacity to fit any noise.",
-      "The trade-off is largely a myth on clean tabular data with meaningful features.",
-      "Interpretability is only possible if you sacrifice at least half of your model accuracy."
+      "Interpretable models are always far less accurate",
+      "For many problems with structured, meaningful features, interpretable models can be about as accurate as black boxes",
+      "Accuracy does not matter in high-stakes decisions",
+      "Black boxes are always fairer"
      ],
-     "answer": 2,
-     "explain": "On structured tabular data with engineered features, inherently interpretable models routinely match the accuracy of random forests and deep neural networks."
+     "answer": 1,
+     "explain": "Rudin argues the trade-off is often assumed rather than tested; on tabular data such as criminal justice or credit, simple models frequently match complex ones."
     },
     {
-     "q": "According to the Rashomon set argument, why do accurate and interpretable models often exist?",
+     "q": "Why are interpretable models harder to build, according to the paper?",
      "options": [
-      "Because datasets often admit a large collection of diverse, nearly optimal models, making it very likely that at least one of them is simple.",
-      "Because gradient descent always finds the sparsest global minimum first.",
-      "Because deep neural networks automatically compress their weights into tiny decision trees.",
-      "Because nature only follows linear mathematical laws."
+      "They need more data",
+      "Finding the best small, sparse model is a hard optimisation problem that needs real effort and domain knowledge",
+      "They cannot use computers",
+      "They require deep learning"
      ],
-     "answer": 0,
-     "explain": "Finite data often admits a large set of models with nearly identical top-tier accuracy (the Rashomon set). When this set is large and diverse, it typically contains simple, interpretable models."
+     "answer": 1,
+     "explain": "Choosing the best few rules or points from countless possibilities is computationally hard, so interpretable modelling is a research problem of its own."
     }
    ],
    "cover_seed": "stop-explaining-black-box-machine-learning-models-for-high-s",
-   "generated_by": "gemini-gemini-flash-latest",
-   "generated_at": "2026-10-20",
+   "generated_by": "claude-revised",
+   "generated_at": "2026-11-02",
    "importance_score": 0.79,
    "path": "papers/stop-explaining-black-box-machine-learning-models-for-high-s.md",
-   "hash": "64f7bca0a9af",
-   "word_count": 2226,
-   "excerpt": "A judge decides whether a prisoner receives bail based on a proprietary risk score. A doctor chooses whether to send an intensive care patient home based on a neural network output. A city sends emergency crews into an unfolding crisis guided by a machine learning forecast. When these decisions…"
+   "hash": "c8aabfba362e",
+   "word_count": 1400,
+   "excerpt": "A judge is deciding whether to release someone before trial. On her desk is a risk score from a commercial algorithm whose formula is a trade secret. Next to it is a colourful explanation produced by another algorithm, describing which factors \"probably\" mattered. Neither she nor the defendant can…"
   },
   {
    "id": "paper-lenet",
@@ -2851,27 +2850,26 @@
    "kind": "paper",
    "subject": "ml",
    "slug": "aggregated-residual-transformations-for-deep-neural-networks",
-   "title": "ResNeXt: Beyond Depth and Width",
-   "subtitle": "How parallel identical pathways revealed a third dimension in deep networks",
+   "title": "Thirty-Two Small Paths Beat One Wide Road",
+   "subtitle": "ResNeXt added a third knob to network design, cardinality, and got more accuracy for the same cost",
    "track": "deep-learning",
    "track_order": 12,
    "prerequisites": [
-    "paper-alexnet",
-    "paper-batch-normalization",
-    "paper-resnet"
+    "paper-resnet",
+    "paper-going-deeper-with-convolutions"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 10,
+   "read_minutes": 6,
    "topics": [
     "computer vision",
     "convolutional networks",
-    "neural network architecture",
+    "architecture",
     "residual connections"
    ],
    "paper_title": "Aggregated Residual Transformations for Deep Neural Networks",
    "authors": [
     "Saining Xie",
-    "Ross B. Girshick",
+    "Ross Girshick",
     "Piotr Dollár",
     "et al."
    ],
@@ -2881,64 +2879,68 @@
    "glossary": [
     {
      "term": "Cardinality",
-     "definition": "The number of parallel transformation branches aggregated within a single building block."
+     "definition": "The number of parallel paths inside a ResNeXt block, each doing the same kind of transformation on a slice of the channels."
     },
     {
-     "term": "Grouped Convolution",
-     "definition": "A convolution operation where input and output channels are partitioned into distinct groups, with filters operating independently inside each group."
+     "term": "Bottleneck block",
+     "definition": "A residual block that shrinks the channels with a 1 by 1 convolution, does a 3 by 3 convolution, then expands back, to save computation."
     },
     {
-     "term": "Split-Transform-Merge",
-     "definition": "A design paradigm where input features are sliced into low-dimensional embeddings, independently transformed, and subsequently combined."
+     "term": "Grouped convolution",
+     "definition": "A convolution whose channels are split into groups, where each group only connects to its own inputs. It is cheaper than a full convolution."
     },
     {
-     "term": "Bottleneck Block",
-     "definition": "A residual module that compresses channels using a 1x1 convolution, executes spatial convolutions in the reduced dimension, and restores channel width with a final 1x1 convolution."
+     "term": "Split-transform-merge",
+     "definition": "A design pattern: split the input into pieces, transform each separately, then combine the results."
+    },
+    {
+     "term": "Hyperparameter",
+     "definition": "A setting chosen by the designer, such as depth or width, rather than learned during training."
     }
    ],
    "quiz": [
     {
-     "q": "What is 'cardinality' in the context of ResNeXt?",
+     "q": "What is cardinality in ResNeXt?",
      "options": [
-      "The total number of sequential convolutional layers in the network",
-      "The number of parallel, identically structured transformation paths inside a block",
-      "The spatial dimensions of the receptive field in each residual module",
-      "The ratio of training examples to model parameters"
+      "The depth of the network",
+      "The number of parallel, identical-shape paths in each block",
+      "The image resolution",
+      "The learning rate schedule"
      ],
      "answer": 1,
-     "explain": "Cardinality is explicitly defined in the paper as the size of the set of transformations to be aggregated (the number of parallel branches C)."
+     "explain": "Cardinality counts the parallel transformations aggregated in a block. ResNeXt's standard template uses 32 paths."
     },
     {
-     "q": "How does ResNeXt implement its homogeneous multi-branch aggregation cleanly in code?",
+     "q": "How does ResNeXt implement its many paths efficiently?",
      "options": [
-      "Using recursive neural network calls",
-      "Using depthwise separable dilated convolutions",
-      "Using grouped convolutions where group count equals cardinality",
-      "Using attention mechanisms across spatial channels"
+      "With 32 separate networks",
+      "With a grouped convolution, which computes all paths in one operation",
+      "With recurrent layers",
+      "With attention"
+     ],
+     "answer": 1,
+     "explain": "A grouped convolution with 32 groups is mathematically the same as 32 separate small convolutions, but runs as one efficient layer."
+    },
+    {
+     "q": "What did the paper find when adding capacity at roughly the same cost?",
+     "options": [
+      "Going deeper always won",
+      "Going wider always won",
+      "Increasing cardinality improved accuracy more than going deeper or wider",
+      "Nothing helped"
      ],
      "answer": 2,
-     "explain": "The paper demonstrates that aggregating C homogeneous branches is mathematically equivalent to a single wide layer using grouped convolutions with C groups."
-    },
-    {
-     "q": "What happens to ResNeXt's accuracy when increasing cardinality while holding FLOPs and parameter count constant?",
-     "options": [
-      "Classification accuracy improves compared to the standard ResNet baseline",
-      "Accuracy drops precipitously due to vanishing gradients",
-      "FLOPs must increase exponentially to maintain accuracy",
-      "The model severely overfits the training set"
-     ],
-     "answer": 0,
-     "explain": "A key finding is that increasing cardinality while adjusting bottleneck width to maintain constant FLOPs and parameters consistently lowers classification error."
+     "explain": "The authors report that, at comparable complexity, raising cardinality was a more effective way to gain accuracy than adding depth or width."
     }
    ],
    "cover_seed": "aggregated-residual-transformations-for-deep-neural-networks",
-   "generated_by": "gemini-gemini-flash-latest",
-   "generated_at": "2026-10-18",
+   "generated_by": "claude-revised",
+   "generated_at": "2026-11-02",
    "importance_score": 0.82,
    "path": "papers/aggregated-residual-transformations-for-deep-neural-networks.md",
-   "hash": "15c30ee1bf65",
-   "word_count": 2279,
-   "excerpt": "If you want to make an image-recognition network more accurate, what knob do you turn? For years, the deep learning playbook had only two obvious answers: go deeper by stacking more layers, or go wider by packing more channels into each layer. Both strategies helped, but both soon ran into walls of…"
+   "hash": "b87d63081082",
+   "word_count": 1402,
+   "excerpt": "By 2016, the recipe for a better image classifier was \"make it deeper\" or \"make it wider\". ResNet had made very deep networks trainable, and Google's Inception family had shown that clever multi-branch blocks could be efficient. But Inception blocks were hand-crafted puzzles, each branch tuned…"
   },
   {
    "id": "paper-unet-redesigning-skip-connections-to-exploit-multiscale-feat",
@@ -3546,25 +3548,26 @@
    "kind": "paper",
    "subject": "ml",
    "slug": "distributed-representations-of-words-and-phrases-and-their-c",
-   "title": "How Word2Vec Skipped the Softmax Bottleneck",
-   "subtitle": "Negative sampling, phrase learning, and the surprising math of word addition",
+   "title": "Three Tricks That Made Word Vectors Cheap",
+   "subtitle": "Negative sampling, subsampling and phrases: the follow-up that turned word2vec into everyone's default",
    "track": "sequences-language",
    "track_order": 5,
    "prerequisites": [
-    "paper-word2vec"
+    "paper-word2vec",
+    "primer-embeddings"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 10,
+   "read_minutes": 6,
    "topics": [
     "word2vec",
     "embeddings",
-    "negative-sampling",
+    "negative sampling",
     "nlp"
    ],
    "paper_title": "Distributed Representations of Words and Phrases and their Compositionality",
    "authors": [
     "Tomas Mikolov",
-    "I. Sutskever",
+    "Ilya Sutskever",
     "Kai Chen",
     "et al."
    ],
@@ -3573,69 +3576,73 @@
    "paper_url": "https://arxiv.org/abs/1310.4546",
    "glossary": [
     {
-     "term": "Negative Sampling",
-     "definition": "A simplified training method that casts word prediction as binary logistic regression, contrasting the real target word against a few randomly drawn noise words."
+     "term": "Skip-gram",
+     "definition": "A word2vec model that learns a vector for each word by predicting the words around it in a sentence."
     },
     {
-     "term": "Hierarchical Softmax",
-     "definition": "An efficient tree-based approximation of softmax that calculates word probabilities in logarithmic time using paths through a binary tree."
+     "term": "Softmax",
+     "definition": "A function that turns a list of scores into probabilities that add up to 1. Over a large vocabulary it needs one score per word, which is slow."
     },
     {
-     "term": "Noise Contrastive Estimation",
-     "definition": "A statistical technique that estimates model parameters by training a classifier to separate true data points from an artificial noise distribution."
+     "term": "Negative sampling",
+     "definition": "Training a word's vector to score its real neighbours high and a few randomly drawn words low, instead of computing probabilities over the whole vocabulary."
     },
     {
      "term": "Subsampling",
-     "definition": "The technique of randomly dropping ultra-frequent words during training to prevent them from dominating gradients and to speed up learning."
+     "definition": "Randomly skipping very frequent words like 'the' during training, so the model spends its effort on informative words."
     },
     {
-     "term": "Additive Compositionality",
-     "definition": "The property where adding two or more word vectors produces a new vector whose meaning reflects the combined concept of the inputs."
+     "term": "Phrase",
+     "definition": "A group of words that means something different from its parts, like 'New York' or 'Air Canada', treated as a single token."
+    },
+    {
+     "term": "Sigmoid",
+     "definition": "A function that squashes any number into the range 0 to 1, used here to turn a score into a yes-or-no probability."
     }
    ],
    "quiz": [
     {
-     "q": "Why is the standard softmax objective impractical when training Skip-gram on large vocabularies?",
+     "q": "What does negative sampling replace in skip-gram training?",
      "options": [
-      "The denominator requires summing exponentiated scores over hundreds of thousands or millions of words for every training step",
-      "The softmax function cannot be differentiated by backpropagation",
-      "The softmax scores always collapse to zero on long sentences",
-      "The softmax loss only works if words are ordered alphabetically"
-     ],
-     "answer": 0,
-     "explain": "Computing the full softmax denominator requires summing across every token in the vocabulary. Doing that for millions of words at every single step makes training computationally intractable."
-    },
-    {
-     "q": "What noise distribution exponent produced the strongest empirical results for negative sampling?",
-     "options": [
-      "The unigram distribution raised to the 1st power",
-      "The uniform distribution over all vocabulary items",
-      "The unigram distribution raised to the 3/4 power",
-      "The square of the unigram distribution"
-     ],
-     "answer": 2,
-     "explain": "Raising the unigram frequencies to the power of 3/4 gave rare words a slight boost while tempering giant stopwords, outperforming both the raw unigram distribution and uniform sampling."
-    },
-    {
-     "q": "How did the paper enable Word2Vec to represent non-compositional phrases like 'Air Canada'?",
-     "options": [
-      "It ran a multi-layer recursive neural network over the parse trees of every sentence",
-      "It used a statistical bigram score to identify co-occurring words and glued them into single tokens beforehand",
-      "It multiplied the word embeddings together instead of adding them",
-      "It trained separate left-to-right and right-to-left recurrent networks"
+      "The word vectors themselves",
+      "A softmax over the entire vocabulary, which needed a score for every word",
+      "The training corpus",
+      "The context window"
      ],
      "answer": 1,
-     "explain": "The authors calculated a simple ratio comparing how often pairs appeared together versus apart, replacing high-scoring bigrams with glued tokens like 'Air_Canada' across multiple passes."
+     "explain": "Instead of normalising over hundreds of thousands of words, each step only scores the true neighbour and a handful of random 'negative' words."
+    },
+    {
+     "q": "With threshold t = 0.00001, a word making up 1% of all text is discarded with probability about 1 - sqrt(t/f). Roughly how often is it dropped?",
+     "options": [
+      "About 3% of the time",
+      "About 50% of the time",
+      "About 97% of the time",
+      "Never"
+     ],
+     "answer": 2,
+     "explain": "sqrt(0.00001 / 0.01) = sqrt(0.001) ≈ 0.032, so it is dropped about 97% of the time. Very common words rarely carry useful context."
+    },
+    {
+     "q": "Why treat 'Air Canada' as one token?",
+     "options": [
+      "It saves disk space",
+      "Its meaning is not the sum of 'air' and 'Canada', so it deserves its own vector",
+      "Tokens must be two words",
+      "To speed up the sigmoid"
+     ],
+     "answer": 1,
+     "explain": "An airline is not a kind of air or a part of Canada. Detecting such phrases lets the model learn a vector for what the phrase actually means."
     }
    ],
    "cover_seed": "distributed-representations-of-words-and-phrases-and-their-c",
-   "generated_by": "gemini-gemini-flash-latest",
-   "generated_at": "2026-10-19",
+   "generated_by": "claude-revised",
+   "generated_at": "2026-11-02",
    "importance_score": 0.92,
    "path": "papers/distributed-representations-of-words-and-phrases-and-their-c.md",
-   "hash": "c86a8d9ea92f",
-   "word_count": 2262,
-   "excerpt": "What happens when you type vec(\"Russia\") + vec(\"river\") into a computer? If your word vectors only memorize isolated dictionary entries, you get numerical static. But in late 2013, researchers watched a neural model add those two lists of numbers together and land squarely on vec(\"Volga River\").…"
+   "hash": "9b5a8d03504e",
+   "word_count": 1423,
+   "excerpt": "In early 2013, a team at Google showed that simple models could learn word vectors with surprising structure: king minus man plus woman landed near queen. But the training still had an expensive step at its heart, and it treated \"New York\" as two unrelated words. A few months later, the same group…"
   },
   {
    "id": "paper-learning-phrase-representations-using-rnn-encoder-decoder-fo",
@@ -3842,94 +3849,98 @@
    "kind": "paper",
    "subject": "ml",
    "slug": "bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro",
-   "title": "The End of Bag-of-Words Topic Modeling",
-   "subtitle": "How BERTopic united deep transformers with classical statistics",
+   "title": "Sorting a Million Documents Into Piles by Meaning",
+   "subtitle": "BERTopic finds the themes in a pile of text by clustering sentence embeddings, then naming each cluster with its most telling words",
    "track": "sequences-language",
    "track_order": 8,
    "prerequisites": [
-    "paper-bert",
-    "primer-embeddings"
+    "primer-embeddings",
+    "paper-bert"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 10,
+   "read_minutes": 6,
    "topics": [
     "topic modeling",
-    "bert",
+    "embeddings",
     "clustering",
     "nlp"
    ],
    "paper_title": "BERTopic: Neural topic modeling with a class-based TF-IDF procedure",
    "authors": [
-    "M. Grootendorst"
+    "Maarten Grootendorst"
    ],
    "year": 2022,
    "venue": "arXiv",
    "paper_url": "https://arxiv.org/abs/2203.05794",
    "glossary": [
     {
+     "term": "Topic model",
+     "definition": "A method that discovers the main themes in a collection of documents and describes each theme with a list of words."
+    },
+    {
+     "term": "Sentence embedding",
+     "definition": "A vector representing the meaning of a whole sentence or document, so similar texts get nearby vectors."
+    },
+    {
+     "term": "Dimensionality reduction",
+     "definition": "Squeezing high-dimensional vectors into a few dimensions while keeping nearby points nearby, which makes clustering easier."
+    },
+    {
+     "term": "Density-based clustering",
+     "definition": "Grouping points that sit in dense regions, and labelling scattered points as outliers instead of forcing them into a group."
+    },
+    {
+     "term": "TF-IDF",
+     "definition": "A word score that is high when a word is frequent in one document but rare across the collection."
+    },
+    {
      "term": "c-TF-IDF",
-     "definition": "Class-based Term Frequency-Inverse Document Frequency, an adaptation that calculates term importance across document clusters treated as single concatenated classes."
-    },
-    {
-     "term": "UMAP",
-     "definition": "Uniform Manifold Approximation and Projection, a non-linear dimensionality reduction algorithm that preserves both local and global data structure."
-    },
-    {
-     "term": "HDBSCAN",
-     "definition": "Hierarchical Density-Based Spatial Clustering of Applications with Noise, a clustering algorithm that identifies clusters of varying densities and separates outliers as noise."
-    },
-    {
-     "term": "Topic Coherence (NPMI)",
-     "definition": "Normalized Pointwise Mutual Information, an automated evaluation metric measuring how frequently the top words of a topic co-occur in documents."
-    },
-    {
-     "term": "Topic Diversity",
-     "definition": "The proportion of unique words among the top terms across all discovered topics, measuring redundancy between topics."
+     "definition": "BERTopic's variant of TF-IDF that treats all documents in one cluster as a single long document, to find the words that characterise that cluster."
     }
    ],
    "quiz": [
     {
-     "q": "How does BERTopic extract the top descriptive words for a discovered topic?",
+     "q": "What are the four main steps of BERTopic, in order?",
      "options": [
-      "By taking the words whose embeddings are closest to the cluster centroid",
-      "By concatenating documents in a cluster and computing class-based TF-IDF (c-TF-IDF)",
-      "By prompting an autoregressive language model to summarize the cluster",
-      "By running Latent Dirichlet Allocation within each individual cluster"
+      "Tokenise, count, sort, print",
+      "Embed documents, reduce dimensions, cluster, describe clusters with c-TF-IDF",
+      "Train BERT, fine-tune, predict, evaluate",
+      "Cluster, embed, translate, summarise"
      ],
      "answer": 1,
-     "explain": "BERTopic concatenates all documents in a cluster into a single class document and applies c-TF-IDF to find words that are frequent in that cluster but rare across other clusters."
+     "explain": "Documents are embedded by meaning, squeezed into fewer dimensions, clustered by density, and each cluster is then described by its most distinctive words."
     },
     {
-     "q": "Why does BERTopic use UMAP before clustering with HDBSCAN?",
+     "q": "Why does c-TF-IDF treat a whole cluster as one document?",
      "options": [
-      "To convert discrete words into continuous dense embeddings",
-      "To mitigate the curse of dimensionality where high-dimensional distance measures become ill-defined",
-      "To ensure that all document clusters form perfect spheres",
-      "To remove punctuation and stopwords from the text vectors"
+      "To save memory",
+      "So word scores reflect what is typical of the cluster compared with other clusters, giving topic keywords",
+      "Because clusters contain only one document",
+      "To make embeddings smaller"
      ],
      "answer": 1,
-     "explain": "In high-dimensional space, distances between data points become nearly uniform (the curse of dimensionality). UMAP projects embeddings to a lower-dimensional space while preserving local and global structures."
+     "explain": "Joining a cluster's documents lets frequency within the cluster, compared with frequency across all clusters, pick out the words that define it."
     },
     {
-     "q": "Which of the following is identified by the author as a primary limitation of BERTopic?",
+     "q": "What is a known limitation of BERTopic's basic approach?",
      "options": [
-      "It can only run with Doc2Vec embeddings and fails with modern transformers",
-      "It strictly assumes each document is assigned to a single topic rather than a mixture of topics",
-      "It cannot handle dynamic or time-evolving text datasets",
-      "It requires supervised topic category labels during training"
+      "It cannot use embeddings",
+      "It assigns each document to a single topic, although real documents often mix several",
+      "It needs labelled data",
+      "It only works on tweets"
      ],
      "answer": 1,
-     "explain": "BERTopic assumes that each document belongs to a single cluster/topic, which does not naturally represent documents that span multiple themes."
+     "explain": "Clustering puts each document in one group, so a document about both sport and politics must pick one. The paper notes this assumption."
     }
    ],
    "cover_seed": "bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro",
-   "generated_by": "gemini-gemini-flash-latest",
-   "generated_at": "2026-10-30",
+   "generated_by": "claude-revised",
+   "generated_at": "2026-11-02",
    "importance_score": 0.72,
    "path": "papers/bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro.md",
-   "hash": "afdeb83b240e",
-   "word_count": 2273,
-   "excerpt": "Suppose you are handed forty thousand raw customer reviews, support tickets, or political tweets. Your boss asks a simple question: what are people actually talking about? For twenty years, the standard answer was Latent Dirichlet Allocation (LDA). You treated every document as an unordered bag of…"
+   "hash": "bad2cf06dbbe",
+   "word_count": 1406,
+   "excerpt": "A company receives fifty thousand customer complaints a month. Nobody can read them all, but everybody wants to know: what are people actually complaining about? Delivery delays? Refunds? A broken app update? Finding the themes in a pile of text without labels is called topic modelling. For two…"
   },
   {
    "id": "paper-vae",
@@ -4433,22 +4444,20 @@
    "kind": "paper",
    "subject": "ml",
    "slug": "denoising-diffusion-implicit-models",
-   "title": "Skipping Steps: How DDIM Accelerated Diffusion",
-   "subtitle": "How one clever derivation turned a slow 1,000-step random walk into a fast, deterministic slide",
+   "title": "Same Model, Fifty Times Fewer Steps",
+   "subtitle": "DDIM showed that a trained diffusion model can skip most of its denoising steps without retraining",
    "track": "generative",
    "track_order": 6,
    "prerequisites": [
-    "paper-ddpm",
-    "paper-gan",
-    "paper-vae"
+    "paper-ddpm"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 10,
+   "read_minutes": 6,
    "topics": [
     "diffusion models",
     "fast sampling",
     "image generation",
-    "neural odes"
+    "deterministic sampling"
    ],
    "paper_title": "Denoising Diffusion Implicit Models",
    "authors": [
@@ -4461,95 +4470,95 @@
    "paper_url": "https://arxiv.org/abs/2010.02502",
    "glossary": [
     {
-     "term": "DDPM",
-     "definition": "Denoising Diffusion Probabilistic Model; a generative model that creates data by iteratively removing noise across many stochastic steps."
+     "term": "Diffusion model",
+     "definition": "A generative model trained to remove noise step by step, so it can turn pure noise into a realistic image."
     },
     {
-     "term": "DDIM",
-     "definition": "Denoising Diffusion Implicit Model; a deterministic generative model sharing DDPM's training objective but using a non-Markovian process to enable rapid step-skipping."
+     "term": "Forward process",
+     "definition": "The fixed recipe that gradually adds noise to a training image until it becomes pure noise."
     },
     {
-     "term": "Non-Markovian Process",
-     "definition": "A stochastic process where the transition probability depends not just on the immediate previous state, but also on earlier history such as the original clean data point."
+     "term": "Markov chain",
+     "definition": "A sequence of steps where each step depends only on the one just before it."
     },
     {
-     "term": "Implicit Probabilistic Model",
-     "definition": "A generative model that maps a latent random variable deterministically to an output sample, without evaluating an explicit probability density function."
+     "term": "Deterministic sampler",
+     "definition": "A way of generating where the same starting noise always produces exactly the same image, because no fresh randomness is added along the way."
     },
     {
-     "term": "Sampling Trajectory",
-     "definition": "A chosen sub-sequence of timesteps used during reverse generation to create an image in far fewer steps than the full training sequence."
+     "term": "Latent",
+     "definition": "The starting noise image from which a sample is generated. With a deterministic sampler it acts like a code for the final image."
     },
     {
-     "term": "Probability Flow ODE",
-     "definition": "A deterministic ordinary differential equation whose trajectories share the exact same marginal probability densities as a stochastic diffusion process."
+     "term": "Noise predictor",
+     "definition": "The trained network that looks at a noisy image and estimates the noise that was added to it."
     }
    ],
    "quiz": [
     {
-     "q": "Why can DDIM use weights from a pretrained DDPM model without retraining?",
+     "q": "Why could DDIM reuse models already trained as DDPMs?",
      "options": [
-      "DDIM distills the DDPM weights using a separate adversarial discriminator.",
-      "DDIM's non-Markovian variational objective simplifies to the exact same surrogate loss as DDPM.",
-      "DDIM rounds the weights of the DDPM U-Net to reduce precision and increase speed.",
-      "DDIM only alters the spatial resolution of the generated image during inference."
+      "It uses a different loss that happens to match",
+      "Its new family of forward processes has the same single-step noise levels, so the DDPM training objective still applies",
+      "It retrains the last layer",
+      "It only works on new models"
      ],
      "answer": 1,
-     "explain": "Theorem 1 proves that DDIM's variational objective J_sigma equals DDPM's weighted loss L_gamma up to a constant, meaning both processes share the same optimal noise-prediction network."
+     "explain": "The training loss only depends on how noisy an image is at each step, which DDIM keeps the same. Only the sampling procedure changes."
     },
     {
-     "q": "What happens in the DDIM sampling equation when the stochasticity parameter sigma_t (or eta) is set to 0?",
+     "q": "What happens when DDIM's randomness parameter is set to zero?",
      "options": [
-      "The model collapses into an autoencoder with severe blurriness.",
-      "The generative process becomes completely deterministic given the starting noise vector.",
-      "The forward noise schedule reverses direction and adds blur instead of Gaussian noise.",
-      "The network requires twice as many steps to converge to an image."
+      "Sampling stops working",
+      "The same starting noise always gives the same image",
+      "Images become blurry",
+      "It turns into a GAN"
      ],
      "answer": 1,
-     "explain": "Setting sigma_t = 0 zeroes out the random Gaussian noise injection at every reverse step, turning generation into a deterministic mapping from the initial latent noise to the clean image."
+     "explain": "With no fresh noise added during sampling, the path from noise to image is fixed, so the starting noise acts like a code for the image."
     },
     {
-     "q": "Which capability becomes possible with DDIM that standard DDPM could not reliably perform?",
+     "q": "What was DDIM's main practical benefit?",
      "options": [
-      "Generating images directly from text captions without a text encoder.",
-      "Deterministic latent inversion and smooth semantic interpolation between images.",
-      "Eliminating the need for convolutional layers or U-Nets entirely.",
-      "Training high-resolution diffusion models without any noisy data."
+      "Higher-resolution training",
+      "Good samples in far fewer steps, for example 50 instead of 1,000",
+      "Removing the need for a neural network",
+      "Text conditioning"
      ],
      "answer": 1,
-     "explain": "Because DDIM's sampling path is an invertible deterministic ODE, you can reverse the process to encode an existing image into its unique latent noise vector and interpolate smoothly between vectors."
+     "explain": "By skipping steps along a deterministic path, DDIM produced good images 10 to 50 times faster than the original sampler."
     }
    ],
    "cover_seed": "denoising-diffusion-implicit-models",
-   "generated_by": "gemini-gemini-flash-latest",
-   "generated_at": "2026-10-24",
+   "generated_by": "claude-revised",
+   "generated_at": "2026-11-02",
    "importance_score": 0.85,
    "path": "papers/denoising-diffusion-implicit-models.md",
-   "hash": "1f2890232c39",
-   "word_count": 2227,
-   "excerpt": "Imagine generating a batch of images and having to wait 20 hours for your GPU to finish. In 2020, DDPM shocked the world by generating images with quality that rivaled GANs, but it was cripplingly slow. To turn random static into a single crisp picture, DDPM forced you to run 1,000 sequential…"
+   "hash": "9f2986c3546b",
+   "word_count": 1403,
+   "excerpt": "In 2020, diffusion models produced some of the most convincing generated images anyone had seen. There was one embarrassing catch: to make a single picture, the model had to run a neural network about a thousand times in a row, each pass removing a sliver of noise. A GAN could produce an image in…"
   },
   {
    "id": "paper-taming-transformers-for-high-resolution-image-synthesis",
    "kind": "paper",
    "subject": "ml",
    "slug": "taming-transformers-for-high-resolution-image-synthesis",
-   "title": "Taming Transformers for Megapixel Images",
-   "subtitle": "How visual codebooks let attention scale from tiny patches to high resolution",
+   "title": "Teaching a Language Model to Paint in Tiles",
+   "subtitle": "VQGAN compresses images into a short sequence of visual words so a transformer can write pictures like text",
    "track": "generative",
    "track_order": 7,
    "prerequisites": [
-    "paper-attention-is-all-you-need",
+    "paper-vae",
     "paper-gan",
-    "paper-vae"
+    "paper-attention-is-all-you-need"
    ],
-   "difficulty": "intermediate",
-   "read_minutes": 10,
+   "difficulty": "advanced",
+   "read_minutes": 6,
    "topics": [
-    "generative-models",
+    "generative models",
     "vqgan",
     "transformers",
-    "image-synthesis"
+    "image synthesis"
    ],
    "paper_title": "Taming Transformers for High-Resolution Image Synthesis",
    "authors": [
@@ -4562,91 +4571,94 @@
    "paper_url": "https://arxiv.org/abs/2012.09841",
    "glossary": [
     {
-     "term": "VQGAN",
-     "definition": "A generative neural network that combines vector quantization with perceptual and patch-based adversarial losses to compress images into crisp discrete codes."
+     "term": "Codebook",
+     "definition": "A learned list of vectors, each standing for a visual pattern. Every patch of an image is replaced by the index of its closest codebook vector."
     },
     {
-     "term": "Vector Quantization",
-     "definition": "Replacing a continuous feature vector with the closest matching entry from a learned visual dictionary or codebook."
+     "term": "Vector quantisation",
+     "definition": "Replacing a continuous vector with the nearest entry in a fixed codebook, turning it into a whole-number index."
     },
     {
-     "term": "Perceptual Loss",
-     "definition": "A loss measuring structural and feature differences in a deep neural network rather than simple pixel-by-pixel color differences."
+     "term": "Autoregressive",
+     "definition": "Generating a sequence one element at a time, each predicted from all the elements before it."
     },
     {
-     "term": "Patch-based Discriminator",
-     "definition": "A discriminator network that critiques small image patches separately to judge local realism instead of rating the entire canvas all at once."
+     "term": "Perceptual loss",
+     "definition": "A loss that compares images by features from a pre-trained vision network, so it rewards looking similar rather than matching pixel by pixel."
     },
     {
-     "term": "Sliding Attention Window",
-     "definition": "An inference approach where a transformer restricts attention to a local neighborhood of tokens, allowing it to generate images of arbitrary dimensions."
+     "term": "Patch discriminator",
+     "definition": "A GAN discriminator that judges many small regions of an image as real or fake, pushing the decoder to produce sharp local detail."
+    },
+    {
+     "term": "Token",
+     "definition": "One element of a sequence a transformer reads. Here, one codebook index standing for a patch of the image."
     }
    ],
    "quiz": [
     {
-     "q": "Why did standard VQ-VAEs struggle with high compression factors before this paper?",
+     "q": "Why not run a transformer directly on pixels of a 256 by 256 image?",
      "options": [
-      "Their decoders required too much memory",
-      "Pixel-wise L2 reconstruction loss forced them to average out textures, resulting in blurry images",
-      "Transformers could not process discrete tokens",
-      "They lacked a straight-through gradient estimator"
+      "Transformers cannot read numbers",
+      "That is 65,536 pixels per colour channel, and attention cost grows with the square of sequence length",
+      "Pixels are too small",
+      "Images have no order"
      ],
      "answer": 1,
-     "explain": "Relying on standard L2 pixel loss forces the network to hedge its bets on fine details, creating blurry reconstructions when spatial downsampling is aggressive."
+     "explain": "Attention compares every position with every other. A sequence of tens of thousands of pixels is far too long, which is why VQGAN compresses the image to a 16 by 16 grid of tokens."
     },
     {
-     "q": "How does VQGAN allow a transformer to model high-resolution images efficiently?",
+     "q": "What do the adversarial and perceptual losses add to the VQ autoencoder?",
      "options": [
-      "It increases the sequence length by splitting pixels into color channels",
-      "It eliminates the self-attention mechanism completely",
-      "It compresses images into a compact 2D grid of discrete codebook indices",
-      "It trains the transformer using pure feedforward convolutions"
-     ],
-     "answer": 2,
-     "explain": "By shrinking an image into a compact grid of discrete indices, the transformer only needs to attend over a few hundred tokens instead of millions of individual pixels."
-    },
-    {
-     "q": "Which token traversal ordering achieved the best negative log-likelihood in the paper's ablations?",
-     "options": [
-      "Spiral out from the center",
-      "Row-major raster scan",
-      "Morton Z-curve",
-      "Subsampling hierarchy"
+      "Faster training only",
+      "Sharp, realistic detail even when the image is compressed into very few tokens",
+      "Text conditioning",
+      "A bigger codebook automatically"
      ],
      "answer": 1,
-     "explain": "The standard row-major raster scan order achieved the lowest negative log-likelihood (4.767), outperforming spiral and space-filling curve variants."
+     "explain": "Plain pixel losses give blurry reconstructions at high compression. Perceptual and patch-based adversarial losses reward realistic textures, so a short code can still decode into a crisp image."
+    },
+    {
+     "q": "How does the model generate images larger than its training size?",
+     "options": [
+      "It cannot",
+      "The transformer predicts tokens with a sliding attention window over the token grid",
+      "It upsamples a small image",
+      "It trains a new model for each size"
+     ],
+     "answer": 1,
+     "explain": "Each new token only attends to a local window of previous tokens, so generation can continue across a grid much larger than seen in training."
     }
    ],
    "cover_seed": "taming-transformers-for-high-resolution-image-synthesis",
-   "generated_by": "gemini-gemini-flash-latest",
-   "generated_at": "2026-10-15",
+   "generated_by": "claude-revised",
+   "generated_at": "2026-11-02",
    "importance_score": 0.75,
    "path": "papers/taming-transformers-for-high-resolution-image-synthesis.md",
-   "hash": "7ea209756d25",
-   "word_count": 2211,
-   "excerpt": "If you ask a transformer to write a story, it juggles a few thousand words without breaking a sweat. But ask that same model to draw a standard smartphone photo, and its attention mechanism collapses under the weight of several million pixels. For years, researchers assumed transformers were simply…"
+   "hash": "c1ceca62296e",
+   "word_count": 1425,
+   "excerpt": "By 2020, transformers could write paragraphs that read like a person wrote them. So why not pictures? Treat an image as a sequence of pixels and predict the next pixel, the way GPT predicts the next word. The problem is size. A modest 256 by 256 colour image is nearly two hundred thousand numbers,…"
   },
   {
    "id": "paper-improved-denoising-diffusion-probabilistic-models",
    "kind": "paper",
    "subject": "ml",
    "slug": "improved-denoising-diffusion-probabilistic-models",
-   "title": "Teaching Diffusion Models to Walk in Big Strides",
-   "subtitle": "How learning variance and smoothing noise cut sampling time by ten",
+   "title": "Small Fixes That Made Diffusion Grow Up",
+   "subtitle": "Learned noise levels, a gentler schedule and a hybrid loss: the tune-up that set diffusion up to beat GANs",
    "track": "generative",
    "track_order": 8,
    "prerequisites": [
     "paper-ddpm",
-    "paper-vae",
     "paper-denoising-diffusion-implicit-models"
    ],
-   "difficulty": "intermediate",
-   "read_minutes": 10,
+   "difficulty": "advanced",
+   "read_minutes": 6,
    "topics": [
     "diffusion models",
     "generative models",
-    "likelihood estimation",
-    "image synthesis"
+    "likelihood",
+    "noise schedules"
    ],
    "paper_title": "Improved Denoising Diffusion Probabilistic Models",
    "authors": [
@@ -4658,65 +4670,73 @@
    "paper_url": "https://arxiv.org/abs/2102.09672",
    "glossary": [
     {
-     "term": "Variational Lower Bound (VLB)",
-     "definition": "A mathematically tractable lower bound on the true log-likelihood of data under a latent variable model, maximized to train the model to cover all modes."
+     "term": "Noise schedule",
+     "definition": "The plan for how much noise is added at each step of the forward process, from almost none to pure noise."
     },
     {
-     "term": "Cosine Schedule",
-     "definition": "A noise schedule where the cumulative signal factor drops following a squared cosine curve, preventing abrupt information destruction at the boundaries."
+     "term": "Variance",
+     "definition": "How spread out a random value is. Here, how much fresh randomness the model adds at each step of generation."
     },
     {
-     "term": "Learned Variance Parameterization",
-     "definition": "Formulating the reverse step variance as an interpolation between upper and lower theoretical variance bounds in log space, predicted via an unbounded network scalar."
+     "term": "Log-likelihood",
+     "definition": "A score for how probable the model thinks real data is. Higher means the model covers the data distribution better."
     },
     {
-     "term": "Precision and Recall for Generative Models",
-     "definition": "Evaluation metrics where precision measures sample fidelity (how realistic generated samples look) and recall measures mode coverage (what fraction of the real data distribution is generated)."
+     "term": "Variational lower bound",
+     "definition": "A quantity that is always below the true log-likelihood, so maximising it pushes the likelihood up. Often abbreviated VLB."
+    },
+    {
+     "term": "FID",
+     "definition": "Fréchet Inception Distance, a common score for generated images that compares their statistics to real images. Lower is better."
+    },
+    {
+     "term": "Recall",
+     "definition": "For generative models, how much of the variety in the real data the generated samples cover."
     }
    ],
    "quiz": [
     {
-     "q": "Why did earlier DDPM setups fix the reverse step variance instead of learning it?",
+     "q": "What did the paper let the network learn that DDPM had fixed by hand?",
      "options": [
-      "Learning the variance made no mathematical sense in the diffusion derivation.",
-      "Predicting variance directly caused training instabilities because the valid variance range between bounds is tiny.",
-      "Fixing the variance guaranteed higher log-likelihood than learning it.",
-      "The neural network was too small to output two tensors at the same time."
+      "The image resolution",
+      "The variance of each reverse step, interpolated between two sensible bounds",
+      "The number of layers",
+      "The training dataset"
      ],
      "answer": 1,
-     "explain": "The gap between the upper and lower theoretical bounds is extremely narrow for most steps. Predicting the raw variance directly made gradients explode or collapse, so earlier work simply locked it to a constant."
+     "explain": "DDPM fixed the reverse-step variance to a constant. Learning it, as a blend between two known bounds, improved likelihood and allowed sampling with fewer steps."
     },
     {
-     "q": "What trade-off occurred when training purely on the resampled variational lower bound rather than the hybrid loss?",
+     "q": "Why replace the linear noise schedule with a cosine one?",
      "options": [
-      "Training collapsed immediately and produced NaN gradients.",
-      "Negative log-likelihood improved, but sample visual quality degraded significantly.",
-      "Sample visual quality improved drastically, but negative log-likelihood became worse than random guessing.",
-      "Sampling required forty thousand steps instead of four thousand."
+      "Cosines are faster to compute",
+      "The linear schedule destroyed information too quickly, so many late steps were nearly pure noise and wasted",
+      "To make images brighter",
+      "It was required for learned variances"
      ],
      "answer": 1,
-     "explain": "Directly optimizing the variational lower bound pushed log-likelihood to its best values, but visual quality collapsed (FID jumped from 19.2 to 40.1 on ImageNet 64x64)."
+     "explain": "With the linear schedule, images, especially small ones, became almost pure noise well before the final steps. The cosine schedule adds noise more evenly."
     },
     {
-     "q": "How does the cosine schedule differ from the original linear noise schedule?",
+     "q": "Compared with BigGAN at similar FID, what did the diffusion model show?",
      "options": [
-      "It destroys image details within the first five percent of diffusion steps.",
-      "It retains a nearly constant noise level throughout the entire diffusion process.",
-      "It preserves information longer and avoids sudden noise jumps near the start and end.",
-      "It completely eliminates Gaussian noise in favor of uniform noise."
+      "Lower precision and lower recall",
+      "Higher recall, meaning it covered more of the data's variety",
+      "Exactly the same samples",
+      "It could not be compared"
      ],
-     "answer": 2,
-     "explain": "The linear schedule dropped signal too fast in the middle and wasted the final quarter of steps on pure static. The cosine schedule decays smoothly, keeping useful signal alive across a broader range of steps."
+     "answer": 1,
+     "explain": "GANs often miss parts of the distribution. The paper found diffusion models achieved better recall, a sign of fuller coverage."
     }
    ],
    "cover_seed": "improved-denoising-diffusion-probabilistic-models",
-   "generated_by": "gemini-gemini-flash-latest",
-   "generated_at": "2026-10-25",
+   "generated_by": "claude-revised",
+   "generated_at": "2026-11-02",
    "importance_score": 0.76,
    "path": "papers/improved-denoising-diffusion-probabilistic-models.md",
-   "hash": "cd873aa1d572",
-   "word_count": 2211,
-   "excerpt": "In late 2020, denoising diffusion models looked like an astonishing party trick that was far too slow to use. They could generate photorealistic faces, but creating a single picture took several minutes on a high-end graphics card because the model had to take four thousand tiny, nervous steps.…"
+   "hash": "4b2a3635e34e",
+   "word_count": 1407,
+   "excerpt": "By early 2021, diffusion models made beautiful pictures but had an awkward report card. Their likelihood scores, the standard test of how well a model captures the data, trailed other model families. They needed hundreds or thousands of steps to sample. And nobody was sure they could match GANs on…"
   },
   {
    "id": "paper-elucidating-the-design-space-of-diffusion-based-generative-m",
@@ -8179,17 +8199,16 @@
    "kind": "paper",
    "subject": "ml",
    "slug": "efficient-streaming-language-models-with-attention-sinks",
-   "title": "Why Transformers Crash Without Their First Words",
-   "subtitle": "How four pinned tokens unlocked infinite streaming for large language models",
+   "title": "Why Chatbots Cling to Their First Few Words",
+   "subtitle": "Attention sinks: the odd habit that broke long conversations, and the four-token fix that keeps them stable",
    "track": "ai-systems",
    "track_order": 5,
    "prerequisites": [
     "paper-attention-is-all-you-need",
-    "paper-llama",
     "paper-vllm"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 10,
+   "read_minutes": 6,
    "topics": [
     "attention sinks",
     "kv cache",
@@ -8198,7 +8217,7 @@
    ],
    "paper_title": "Efficient Streaming Language Models with Attention Sinks",
    "authors": [
-    "Guang-Xuan Xiao",
+    "Guangxuan Xiao",
     "Yuandong Tian",
     "Beidi Chen",
     "et al."
@@ -8208,65 +8227,73 @@
    "paper_url": "https://arxiv.org/abs/2309.17453",
    "glossary": [
     {
-     "term": "Attention Sink",
-     "definition": "Initial tokens in autoregressive models that accumulate disproportionately high attention scores because the softmax function requires scores to sum to one, serving as an offloading repository for surplus attention."
+     "term": "KV cache",
+     "definition": "The stored keys and values of earlier tokens, kept so a language model does not recompute them for every new token."
     },
     {
-     "term": "KV Cache",
-     "definition": "The stored Key and Value tensor representations from previously processed tokens in a Transformer, reused during autoregressive decoding to avoid recomputing past token representations."
+     "term": "Context window",
+     "definition": "The maximum number of tokens a model was trained to attend to at once."
     },
     {
-     "term": "Window Attention",
-     "definition": "An inference strategy where only the most recent fixed number of tokens are retained in the attention cache, discarding older history."
+     "term": "Sliding window attention",
+     "definition": "Keeping only the most recent tokens in the KV cache and dropping older ones as new tokens arrive."
     },
     {
-     "term": "SoftMax-off-by-One",
-     "definition": "A variant of softmax that adds a constant 1 to the denominator sum, allowing attention weights across contextual tokens to sum to less than one when no token is relevant."
+     "term": "Attention sink",
+     "definition": "An early token, usually the very first, that receives a large share of attention regardless of its meaning."
+    },
+    {
+     "term": "Perplexity",
+     "definition": "A measure of how surprised a language model is by text. Lower is better; a sudden jump means the model has broken down."
+    },
+    {
+     "term": "Softmax",
+     "definition": "The function that turns attention scores into weights that are positive and add up to exactly 1."
     }
    ],
    "quiz": [
     {
-     "q": "Why do autoregressive language models dump excessive attention onto initial tokens?",
+     "q": "What goes wrong when a model with plain sliding window attention evicts its very first tokens?",
      "options": [
-      "Initial tokens always carry the most important semantic information of the document.",
-      "Softmax forces attention weights to sum to one, and initial tokens are visible to every subsequent token in causal masking.",
-      "Positional embeddings penalize tokens that are placed further along in the sequence.",
-      "The model optimizer zeroes out gradients for all tokens except the initial tokens."
+      "Memory use explodes",
+      "Perplexity jumps sharply and text quality collapses",
+      "The model becomes faster",
+      "Nothing; old tokens are useless"
      ],
      "answer": 1,
-     "explain": "Because causal attention allows all subsequent tokens to see the first few tokens, and softmax demands that attention weights sum to 1.0 even when no past context is relevant, the model naturally learns to dump unneeded attention into those initial tokens."
+     "explain": "The first tokens act as attention sinks. Removing them disturbs the attention pattern the model learned, and quality collapses."
     },
     {
-     "q": "How does StreamingLLM modify token position assignments when applying relative positional encodings?",
+     "q": "Why do models dump attention on the first token?",
      "options": [
-      "It uses the token original position index in the raw infinite text stream.",
-      "It sets all token positions to zero to disable position bias.",
-      "It assigns positions based on the token order within the active cache rather than the raw text.",
-      "It randomly samples position indices from the pre-training window."
-     ],
-     "answer": 2,
-     "explain": "StreamingLLM assigns contiguous positional indices according to each token's order inside the cache (such as 0 through 7) rather than its absolute position in the input document."
-    },
-    {
-     "q": "What happens when the first 4 tokens are replaced with newline characters in StreamingLLM?",
-     "options": [
-      "Perplexity collapses completely because semantic context is destroyed.",
-      "Perplexity is restored similarly to keeping the original initial tokens, showing sink behavior is driven by position rather than semantics.",
-      "The model enters an infinite loop repeating newline characters.",
-      "Decoding latency doubles due to vocabulary lookup misses."
+      "It always holds the most important word",
+      "Softmax weights must add up to 1, so heads with nothing to attend to need somewhere harmless to put the leftover weight, and the first token is visible to every later token",
+      "Positional encodings forbid attending elsewhere",
+      "It is a bug in training code"
      ],
      "answer": 1,
-     "explain": "The paper showed that replacing initial tokens with newlines restored perplexity to 5.60 (compared to 5.40 with original tokens and 5158.07 without them), proving that attention sinks are an artifact of absolute position and visibility rather than semantic content."
+     "explain": "When a head finds nothing relevant, it still has to distribute its weight. The first token, seen by every position during training, becomes the default dumping ground."
+    },
+    {
+     "q": "What does StreamingLLM NOT do?",
+     "options": [
+      "Keep generation stable over very long streams",
+      "Let the model recall facts from text that has left the window",
+      "Use a fixed-size KV cache",
+      "Keep a few initial tokens"
+     ],
+     "answer": 1,
+     "explain": "Tokens outside the sinks and the recent window are gone. StreamingLLM keeps the model fluent, not omniscient; it does not extend what the model can remember."
     }
    ],
    "cover_seed": "efficient-streaming-language-models-with-attention-sinks",
-   "generated_by": "gemini-gemini-flash-latest",
-   "generated_at": "2026-10-30",
+   "generated_by": "claude-revised",
+   "generated_at": "2026-11-02",
    "importance_score": 0.7,
    "path": "papers/efficient-streaming-language-models-with-attention-sinks.md",
-   "hash": "a4f8493b6ee8",
-   "word_count": 2294,
-   "excerpt": "Imagine you are having an all-day conversation with an AI assistant. After a few hours of steady chatting, you ask a simple question, and the model suddenly begins emitting random punctuation and gibberish. Under the hood, the server ran out of memory, tried to drop the very first sentence you…"
+   "hash": "a4f1899494ef",
+   "word_count": 1423,
+   "excerpt": "Imagine a chatbot that runs all day: a customer service assistant, or a game character that never stops talking. Its memory of the conversation grows with every token until it no longer fits. The obvious fix is to forget the oldest words and keep only the recent ones. When researchers tried exactly…"
   },
   {
    "id": "dsa-big-o",

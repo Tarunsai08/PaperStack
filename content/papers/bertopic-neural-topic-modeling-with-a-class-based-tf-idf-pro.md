@@ -1,301 +1,172 @@
 ---
-id: paper-bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro
-kind: paper
+id: "paper-bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro"
+kind: "paper"
 subject: "ml"
-slug: bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro
-title: The End of Bag-of-Words Topic Modeling
-subtitle: How BERTopic united deep transformers with classical statistics
+slug: "bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro"
+title: "Sorting a Million Documents Into Piles by Meaning"
+subtitle: "BERTopic finds the themes in a pile of text by clustering sentence embeddings, then naming each cluster with its most telling words"
 track: "sequences-language"
 track_order: 8
-prerequisites:
-- paper-bert
-- primer-embeddings
-difficulty: intermediate
-read_minutes: 10
-topics:
-- topic modeling
-- bert
-- clustering
-- nlp
-paper_title: 'BERTopic: Neural topic modeling with a class-based TF-IDF procedure'
-authors:
-- M. Grootendorst
+prerequisites: ["primer-embeddings", "paper-bert"]
+difficulty: "intermediate"
+read_minutes: 9
+topics: ["topic modeling", "embeddings", "clustering", "nlp"]
+paper_title: "BERTopic: Neural topic modeling with a class-based TF-IDF procedure"
+authors: ["Maarten Grootendorst"]
 year: 2022
 venue: "arXiv"
-paper_url: https://arxiv.org/abs/2203.05794
+paper_url: "https://arxiv.org/abs/2203.05794"
 glossary:
-- term: c-TF-IDF
-  definition: Class-based Term Frequency-Inverse Document Frequency, an adaptation that calculates term importance across document clusters treated as single concatenated classes.
-- term: UMAP
-  definition: Uniform Manifold Approximation and Projection, a non-linear dimensionality reduction algorithm that preserves both local and global data structure.
-- term: HDBSCAN
-  definition: Hierarchical Density-Based Spatial Clustering of Applications with Noise, a clustering algorithm that identifies clusters of varying densities and separates outliers as noise.
-- term: Topic Coherence (NPMI)
-  definition: Normalized Pointwise Mutual Information, an automated evaluation metric measuring how frequently the top words of a topic co-occur in documents.
-- term: Topic Diversity
-  definition: The proportion of unique words among the top terms across all discovered topics, measuring redundancy between topics.
+  - term: "Topic model"
+    definition: "A method that discovers the main themes in a collection of documents and describes each theme with a list of words."
+  - term: "Sentence embedding"
+    definition: "A vector representing the meaning of a whole sentence or document, so similar texts get nearby vectors."
+  - term: "Dimensionality reduction"
+    definition: "Squeezing high-dimensional vectors into a few dimensions while keeping nearby points nearby, which makes clustering easier."
+  - term: "Density-based clustering"
+    definition: "Grouping points that sit in dense regions, and labelling scattered points as outliers instead of forcing them into a group."
+  - term: "TF-IDF"
+    definition: "A word score that is high when a word is frequent in one document but rare across the collection."
+  - term: "c-TF-IDF"
+    definition: "BERTopic's variant of TF-IDF that treats all documents in one cluster as a single long document, to find the words that characterise that cluster."
 quiz:
-- q: How does BERTopic extract the top descriptive words for a discovered topic?
-  options:
-  - By taking the words whose embeddings are closest to the cluster centroid
-  - By concatenating documents in a cluster and computing class-based TF-IDF (c-TF-IDF)
-  - By prompting an autoregressive language model to summarize the cluster
-  - By running Latent Dirichlet Allocation within each individual cluster
-  answer: 1
-  explain: BERTopic concatenates all documents in a cluster into a single class document and applies c-TF-IDF to find words that are frequent in that cluster but rare across other clusters.
-- q: Why does BERTopic use UMAP before clustering with HDBSCAN?
-  options:
-  - To convert discrete words into continuous dense embeddings
-  - To mitigate the curse of dimensionality where high-dimensional distance measures become ill-defined
-  - To ensure that all document clusters form perfect spheres
-  - To remove punctuation and stopwords from the text vectors
-  answer: 1
-  explain: In high-dimensional space, distances between data points become nearly uniform (the curse of dimensionality). UMAP projects embeddings to a lower-dimensional space while preserving local and global structures.
-- q: Which of the following is identified by the author as a primary limitation of BERTopic?
-  options:
-  - It can only run with Doc2Vec embeddings and fails with modern transformers
-  - It strictly assumes each document is assigned to a single topic rather than a mixture of topics
-  - It cannot handle dynamic or time-evolving text datasets
-  - It requires supervised topic category labels during training
-  answer: 1
-  explain: BERTopic assumes that each document belongs to a single cluster/topic, which does not naturally represent documents that span multiple themes.
-cover_seed: bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro
-generated_by: gemini-gemini-flash-latest
-generated_at: '2026-10-30'
+  - q: "What are the four main steps of BERTopic, in order?"
+    options: ["Tokenise, count, sort, print", "Embed documents, reduce dimensions, cluster, describe clusters with c-TF-IDF", "Train BERT, fine-tune, predict, evaluate", "Cluster, embed, translate, summarise"]
+    answer: 1
+    explain: "Documents are embedded by meaning, squeezed into fewer dimensions, clustered by density, and each cluster is then described by its most distinctive words."
+  - q: "Why does c-TF-IDF treat a whole cluster as one document?"
+    options: ["To save memory", "So word scores reflect what is typical of the cluster compared with other clusters, giving topic keywords", "Because clusters contain only one document", "To make embeddings smaller"]
+    answer: 1
+    explain: "Joining a cluster's documents lets frequency within the cluster, compared with frequency across all clusters, pick out the words that define it."
+  - q: "What is a known limitation of BERTopic's basic approach?"
+    options: ["It cannot use embeddings", "It assigns each document to a single topic, although real documents often mix several", "It needs labelled data", "It only works on tweets"]
+    answer: 1
+    explain: "Clustering puts each document in one group, so a document about both sport and politics must pick one. The paper notes this assumption."
+cover_seed: "bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro"
+generated_by: "claude-revised"
+generated_at: "2026-11-02"
 importance_score: 0.72
 ---
 
 ## The hook
 
-Suppose you are handed forty thousand raw customer reviews, support tickets, or political tweets. Your boss asks a simple question: what are people actually talking about? 
+A company receives fifty thousand customer complaints a month. Nobody can read them all, but everybody wants to know: what are people actually complaining about? Delivery delays? Refunds? A broken app update?
 
-For twenty years, the standard answer was Latent Dirichlet Allocation (LDA). You treated every document as an unordered bag of words, threw away sentence structure, ignored context, and hoped the statistical dice rolled in your favor. 
-
-If someone wrote "the battery died after two days" versus "the band had an energetic battery of drummers", LDA saw identical words. 
-
-Maarten Grootendorst changed this by uniting modern transformer representations with a surprisingly simple statistical tweak. The result was BERTopic, a system that quickly became one of the most widely used topic modeling algorithms in data science.
+Finding the themes in a pile of text without labels is called topic modelling. For two decades the standard tools counted words and treated "late" and "delayed" as unrelated. BERTopic, released by Maarten Grootendorst and described in a 2022 paper, starts instead from what each document means.
 
 ## Before you start
 
-Before jumping in, make sure you are comfortable with:
-- How text turns into vector representations in [our guide to embeddings](article:primer-embeddings).
-- How bidirectional self-attention captures contextual word meaning in [the BERT paper](article:paper-bert).
+You should know what an embedding is from [Embeddings: How Words Become Numbers With Meaning](article:primer-embeddings). It helps to know that models like [BERT](article:paper-bert) produce context-aware vectors for text, and that similar meanings land close together.
 
 ## The world before this paper
 
-Topic modeling belongs to unsupervised machine learning. You do not have human labels; you only have text, and you want to discover the themes hidden inside.
+The classic [[topic model]] was Latent Dirichlet Allocation (LDA), from 2003. It treats each document as a bag of words, assumes each document mixes a few topics, and learns which words go with which topic from word co-occurrence counts.
 
-The classical workhorse was LDA, introduced in 2003. LDA imagines that every document is a blend of topics, and each topic is a probability distribution over a vocabulary. 
+LDA works, but it has blind spots. It ignores word order and meaning, so synonyms look unrelated. It needs careful text cleaning. And on short texts like tweets, there are too few words per document for the counts to say much.
 
-While LDA is mathematically elegant, it relies on the bag-of-words assumption. It strips away grammar, context, and word order. On short texts like social media posts, LDA routinely falls apart because a tweet only contains ten or fifteen words. There simply are not enough word co-occurrences for LDA to infer reliable topics.
+Meanwhile, [[sentence embedding]]s from transformer models had become good at placing similar texts near each other. Some methods, such as Top2Vec, had begun clustering embeddings to find topics.
 
 :::history
-When transformers took over natural language processing in 2018, researchers naturally tried applying contextual embeddings to topic discovery. Models like Top2Vec emerged. Top2Vec embedded both words and documents, clustered the documents, and found topic words by picking the vocabulary vectors physically closest to each cluster's center (its centroid).
-
-Maarten Grootendorst, an NLP data scientist building practical applications, ran into a quiet flaw in that strategy. Centroid-based word matching assumes that clusters are tidy, spherical balls in vector space. Real language data is not spherical. Real document clusters form winding ribbons, dense bends, and irregular shapes. Picking words near the center often yielded nonsense or missed the defining vocabulary of the cluster entirely.
+Maarten Grootendorst, a data scientist, built BERTopic as an open-source Python library first; it was already widely used before the paper appeared on arXiv in March 2022. The paper describes the method's design and compares it with LDA, NMF, Top2Vec and a neural topic model called CTM.
 :::
-
-At the same time, end-to-end neural topic models like CTM (Contextualized Topic Models) tried training deep generative networks to link BERT embeddings with topic distributions. They produced good results, but they were notoriously slow to train, tricky to tune, and demanded heavy compute.
-
-The community faced an awkward dilemma. You could have classical models that ran fast but ignored context, or neural models that were either rigid or sluggish.
 
 ## The big idea
 
-Grootendorst realized that topic modeling does not need to be a single, monolithic mathematical model. You can decouple the problem into three clean, modular stages:
-
-1. **Understand:** Turn documents into contextual vectors using pre-trained sentence transformers.
-2. **Cluster:** Group similar documents together based on their geometric density, pushing weird documents aside as noise.
-3. **Describe:** Extract the most distinctive words for each cluster using an adapted version of classical term-weighting.
-
-The breakthrough was in stage three: an algorithm Grootendorst named `[[c-TF-IDF]]` (class-based Term Frequency-Inverse Document Frequency).
-
 :::analogy
-Imagine organizing a chaotic archive of fifty thousand mixed documents. 
-
-First, an expert reader places every document onto a vast floor map. Documents with similar themes land near each other, regardless of whether they share the exact same words.
-
-Next, an organizer walks the floor, spots tight clusters of papers, draws chalk circles around them, and shuffles offbeat oddities into an "unclassified" pile.
-
-Finally, to create a label for each pile, you staple all the documents in that pile into one giant mega-book. You run a quick count: which words appear frequently inside this mega-book, yet stay surprisingly rare across the rest of the library? Those standout words become the title of your topic.
+Imagine sorting a huge pile of letters in a post room. First you read each letter and place it on a big map of the room, putting letters about similar things close together. Then you look for crowded spots on the floor and tie each crowd into a bundle, leaving stray letters aside. Finally, for each bundle, you write a label by picking the words that show up a lot in that bundle but rarely in the others.
 :::
 
-```mermaid
-flowchart TD
-    A[Raw Documents] --> B[Sentence Transformer Embeddings]
-    B --> C[UMAP Dimension Reduction]
-    C --> D[HDBSCAN Density Clustering]
-    D --> E[Concatenate Docs per Cluster]
-    E --> F[c-TF-IDF Topic Words]
-```
+BERTopic's big idea is to separate "which documents belong together" from "what words describe them". Grouping uses meaning, through embeddings and clustering. Naming uses words, through a cluster-level version of [[TF-IDF]]. Each step uses the right tool for its job, and any step can be swapped out.
 
 ## How it works
 
-Let us walk through each step of the pipeline.
+BERTopic runs four steps.
 
-### Step 1: Contextual document embeddings
-
-BERTopic begins by embedding each document into a continuous vector space using Sentence-BERT (SBERT). 
-
-Unlike earlier static embeddings like [Word2Vec](article:paper-word2vec), SBERT processes entire sentences through deep self-attention layers. Polysemous words receive different vectors depending on their sentence context. 
-
-Because BERTopic treats the embedding step as an interchangeable module, you can plug in any embedding model: MPNet, MiniLM, multilingual encoders, or domain-specific biomedical models.
-
-### Step 2: Dimensionality reduction with UMAP
-
-Transformer embeddings typically contain between 384 and 768 dimensions. In such high-dimensional spaces, machine learning algorithms hit the *curse of dimensionality*: the distance from any point to its nearest neighbor approaches the distance to its farthest neighbor. 
-
-Distances lose their discriminative power, making density-based clustering unreliable.
-
-To solve this, BERTopic applies `[[UMAP]]` (Uniform Manifold Approximation and Projection). UMAP reduces vectors down to a manageable size (typically 5 dimensions) while preserving both the local neighborhoods and global trajectory of the data manifold.
-
-### Step 3: Density-based clustering with HDBSCAN
-
-With embeddings compressed into 5 dimensions, BERTopic clusters them using `[[HDBSCAN]]` (Hierarchical Density-Based Spatial Clustering of Applications with Noise).
-
-HDBSCAN brings two enormous benefits over traditional algorithms like k-Means:
-1. **Arbitrary shapes:** It detects clusters of any geometric shape, from bends to branches, rather than forcing everything into spheres.
-2. **Noise awareness:** It does not force every document into a topic. Irrelevant, junk, or outlier documents receive a label of `-1` (noise). Keeping noise out stops garbage text from polluting coherent topics.
-
-### Step 4: Class-based TF-IDF (c-TF-IDF)
-
-Now you have clusters of documents, but you do not know what words describe them. 
-
-Earlier methods tried finding words whose embeddings sat nearest the cluster centroid. As we saw, that fails on non-spherical clusters. 
-
-Grootendorst took a different path: treat each discovered cluster $c$ as a single giant document formed by concatenating all texts assigned to that cluster.
-
-In classical TF-IDF, a word's score measures how frequently it appears in document $d$ relative to how many documents across the corpus contain it:
-
-$$W_{t, d} = \mathrm{tf}_{t, d} \cdot \log\left(\frac{N}{\mathrm{df}_t}\right)$$
-
-Where:
-- $\mathrm{tf}_{t, d}$ is the raw count of term $t$ in document $d$.
-- $N$ is the total count of documents in the collection.
-- $\mathrm{df}_t$ is the number of documents containing term $t$.
-
-Grootendorst adapted this formula from individual documents to clusters (classes):
-
-$$W_{t, c} = \mathrm{tf}_{t, c} \cdot \log\left(1 + \frac{A}{\mathrm{tf}_t}\right)$$
-
-Let us break down every piece of this equation:
-- $W_{t, c}$: The importance score of term $t$ for cluster $c$.
-- $\mathrm{tf}_{t, c}$: How many times term $t$ appears across all concatenated text in cluster $c$.
-- $A$: The average word count across all clusters ($\frac{\text{total words in all clusters}}{\text{number of clusters}}$).
-- $\mathrm{tf}_t$: The total frequency of term $t$ across the entire dataset.
-- $\log(1 + \dots)$: Adding 1 ensures the value inside the logarithm is always greater than or equal to 1, preventing negative weights.
-
-:::insight
-Instead of asking "which words are geometrically closest to the center of this vector blob?", c-TF-IDF asks "which words are uniquely concentrated in this cluster compared to all other clusters?"
-:::
-
-Let us work through a tiny numerical example.
-
-Suppose we have 2 clusters ($C_1$ and $C_2$). Each cluster contains 500 total words. 
-
-The average cluster length $A$ is:
-
-$$A = \frac{500 + 500}{2} = 500$$
-
-Now consider two words inside Cluster 1:
-- The word **"battery"** appears 40 times in $C_1$ and 10 times in $C_2$. Its total frequency $\mathrm{tf}_{\text{battery}} = 50$.
-- The common word **"the"** appears 50 times in $C_1$ and 150 times in $C_2$. Its total frequency $\mathrm{tf}_{\text{the}} = 200$.
-
-Let us calculate their `[[c-TF-IDF]]` weights for Cluster 1 using the natural log:
-
-For **"battery"**:
-$$\frac{A}{\mathrm{tf}_{\text{battery}}} = \frac{500}{50} = 10$$
-$$W_{\text{battery}, C_1} = 40 \cdot \ln(1 + 10) = 40 \cdot \ln(11) \approx 40 \cdot 2.398 = 95.92$$
-
-For **"the"**:
-$$\frac{A}{\mathrm{tf}_{\text{the}}} = \frac{500}{200} = 2.5$$
-$$W_{\text{the}, C_1} = 50 \cdot \ln(1 + 2.5) = 50 \cdot \ln(3.5) \approx 50 \cdot 1.253 = 62.65$$
-
-Even though "the" appeared 50 times in Cluster 1, its heavy use everywhere else penalized its score. "Battery", which is concentrated in Cluster 1, easily wins the top spot.
-
-:::try-this
-Suppose a niche word "carburetor" appears 15 times in Cluster 1 and nowhere else in the entire dataset ($\mathrm{tf}_{\text{carburetor}} = 15$). With $A = 500$, compute its c-TF-IDF score for Cluster 1. 
-
-Notice how $500 / 15 \approx 33.33$, giving $\ln(34.33) \approx 3.536$, and a score of $15 \cdot 3.536 \approx 53.04$. Even with fewer raw occurrences, its high distinctiveness gives it a strong score.
-:::
-
-### Step 5: Dynamic topic modeling
-
-Topics change over time. In 1995, documents about "phones" spoke of landlines and cords. In 2022, they discussed touchscreens and 5G.
-
-Because c-TF-IDF separates the clustering from the word scoring, modeling temporal evolution becomes lightweight:
+1. **Embed.** Turn each document into a sentence embedding with a pre-trained model, by default a Sentence-BERT model.
+2. **Reduce.** Squeeze the embeddings into a handful of dimensions with UMAP, a [[dimensionality reduction]] method that keeps nearby points nearby. Clustering works much better in a few dimensions than in hundreds.
+3. **Cluster.** Group the points with HDBSCAN, a [[density-based clustering]] method. It finds dense regions of any shape and labels scattered documents as outliers instead of forcing them into a topic.
+4. **Describe.** Join all documents in each cluster into one long document and score words with [[c-TF-IDF]].
 
 ```mermaid
 flowchart TD
-    A[Global Topic Clusters] --> B[Slice Texts by Timestep]
-    B --> C[Compute Timestep Frequencies]
-    C --> D[Multiply by Precalculated Global IDF]
-    D --> E[L1 Normalize Vectors]
-    E --> F[Average Timestep t and t minus 1]
-    G[Smoothly Evolving Topic Words] <-- F
+  A[Documents] --> B[Sentence embeddings]
+  B --> C[UMAP reduces dimensions]
+  C --> D[HDBSCAN finds dense clusters]
+  D --> E[Join each cluster into one document]
+  E --> F[c-TF-IDF picks topic words]
 ```
 
-1. Train the global BERTopic model on all data at once. This establishes stable, consistent cluster assignments.
-2. For any given timestep $i$, compute the local term frequency $\mathrm{tf}_{t, c, i}$ of words inside each cluster.
-3. Multiply that local frequency by the global IDF values already computed:
+### c-TF-IDF in plain words
 
-$$W_{t, c, i} = \mathrm{tf}_{t, c, i} \cdot \log\left(1 + \frac{A}{\mathrm{tf}_t}\right)$$
+For word t in cluster c, the paper uses
 
-To prevent sudden jitter from one time window to the next, BERTopic optionally smooths the representations: it normalizes each topic vector with the L1-norm and averages the representation at time $t$ with time $t - 1$.
+$$W_{t,c} = \text{tf}_{t,c} \cdot \log\left(1 + \frac{A}{\text{tf}_t}\right)$$
 
-:::warning
-You do not need to re-run embeddings or clustering to track topics over time. Because the clusters are already fixed, updating topic descriptions across years or months only requires basic word counts.
+- $\text{tf}_{t,c}$ is how often word t appears in cluster c's joined document.
+- $\text{tf}_t$ is how often t appears across all clusters.
+- $A$ is the average number of words per cluster.
+
+A word scores high when it is common in this cluster but not common everywhere. In the post room, that is the word you would write on the bundle's label.
+
+### A tiny example
+
+Two clusters of complaints, about 100 words each, so A = 100.
+
+| Word | Count in cluster 1 (delivery) | Count in all clusters | Score for cluster 1 |
+|---|---|---|---|
+| "late" | 8 | 9 | 8 × log(1 + 100/9) ≈ 8 × 2.49 ≈ 19.9 |
+| "refund" | 1 | 10 | 1 × log(1 + 10) ≈ 2.40 |
+| "the" | 9 | 18 | 9 × log(1 + 100/18) ≈ 9 × 1.88 ≈ 16.9 |
+
+"late" tops cluster 1. In practice, common words like "the" are removed first, which is why BERTopic lets you set stop words and other options for the word-counting step.
+
+:::try-this
+Compute the score of "refund" for a second cluster where it appears 9 times, with the same totals (10 overall, A = 100). (9 × log(1 + 100/10) = 9 × log(11) ≈ 9 × 2.40 ≈ 21.6, so "refund" labels the second cluster.)
 :::
+
+:::insight
+Grouping by meaning and naming by words are different problems. Embeddings are good at the first and poor at producing readable labels; word statistics are the reverse. BERTopic gets readable topics by letting each tool do only what it is good at.
+:::
+
+### How many topics?
+
+Unlike LDA, BERTopic does not ask you for the number of topics up front. HDBSCAN decides how many dense regions exist, guided mainly by a minimum cluster size: small values give many fine-grained topics, large values give a few broad ones. Documents that fall in no dense region get the outlier label −1, which is honest but can be a large share of a messy dataset; the library offers ways to reassign outliers to their nearest topic afterwards. If there are still too many topics, similar ones can be merged by comparing their c-TF-IDF vectors and joining the closest pairs. In the post-room picture, that is tying two nearly identical bundles into one and rewriting the label.
+
+### Topics over time
+
+The same machinery supports dynamic topic modelling. Cluster all documents once, then compute c-TF-IDF separately for each time period. You see the same topic's keywords shift, for example how complaints about an app change after an update.
 
 ## What they found
 
-Grootendorst evaluated BERTopic across three distinct datasets:
-1. **20 NewsGroups:** 16,309 articles across 20 categories, heavily preprocessed.
-2. **BBC News:** 2,225 news articles from 2004 to 2005.
-3. **Trump Tweets:** 44,253 short, noisy tweets spanning 2009 to 2021.
+- **Coherent and diverse topics.** On datasets such as 20 Newsgroups, BBC News and a collection of tweets, BERTopic produced topics with high coherence (their words tend to appear together) and good diversity (topics do not repeat each other), competitive with or better than LDA, NMF, Top2Vec and CTM in the paper's comparisons.
+- **Stable across embedding models.** Results held up with different sentence-embedding models, which supports the modular design.
+- **Useful dynamic topics.** The time-sliced representation captured how topics evolved in datasets with timestamps.
 
-Performance was evaluated using `[[Topic Coherence (NPMI)]]` (how frequently top topic words co-occur in documents) and `[[Topic Diversity]]` (the percentage of unique words across all topic lists).
+:::warning
+Common misconception: "BERTopic understands the topics it finds." It groups documents with similar embeddings and labels them with frequent distinctive words. A human still has to read the clusters and decide whether they are meaningful, and the results depend on the embedding model and clustering settings.
+:::
 
-| Model | 20 NewsGroups (TC / TD) | BBC News (TC / TD) | Trump Tweets (TC / TD) |
-|---|---|---|---|
-| **LDA** | 0.058 / 0.749 | 0.014 / 0.577 | -0.011 / 0.502 |
-| **NMF** | 0.089 / 0.663 | 0.012 / 0.549 | 0.009 / 0.379 |
-| **CTM** | 0.096 / **0.886** | 0.094 / **0.819** | 0.009 / **0.855** |
-| **Top2Vec (MPNet)** | 0.068 / 0.718 | -0.027 / 0.540 | -0.213 / 0.698 |
-| **BERTopic (MPNet)** | **0.166** / 0.851 | **0.167** / 0.794 | **0.066** / 0.663 |
+### When to choose it
 
-Several notable insights emerged from the numbers:
-
-- **Dominance on short, noisy text:** On the Trump tweet dataset, classical LDA produced a negative coherence score (-0.011), and Top2Vec-MPNet plummeted to -0.213. BERTopic achieved 0.066 coherence. Contextual embeddings allowed BERTopic to understand tweet semantics where bag-of-words counting broke down.
-- **Top2Vec brittleness:** When Top2Vec used MPNet transformer embeddings instead of Doc2Vec, its coherence collapsed across all datasets. Why? Doc2Vec trains word vectors and document vectors into the exact same shared space. SBERT does not. Because BERTopic uses c-TF-IDF rather than vector centroids to pick words, it worked reliably across all embedding backends.
-- **Lightweight models win:** When using the smaller, faster `all-MiniLM-L6-v2` encoder, BERTopic scored 0.159 coherence on 20 NewsGroups and 0.170 on BBC News. It delivered top-tier quality while running in a fraction of the time.
-- **Dynamic modeling:** In dynamic topic tracking, BERTopic achieved 0.079 coherence on the Trump dataset and 0.231 on UN General Debates, comfortably beating dynamic LDA (LDA Sequence, which scored 0.009 and 0.173 respectively).
-
-In wall-clock speed benchmarks, CTM was drastically slower than every other model due to its complex neural optimization loop. BERTopic ran dramatically faster, remaining competitive with classical algorithms while scaling naturally whenever a GPU was present.
+BERTopic shines on short or messy texts, such as reviews, support tickets and social media posts, where word counts are too sparse for LDA. It is also a good first look at an unfamiliar collection: a few minutes of clustering shows the main themes and the strange outliers. For long documents that genuinely mix many themes, a mixture model like LDA, or splitting documents into paragraphs first, can be a better fit.
 
 ## What it got wrong (or left open)
 
-While BERTopic provided a major leap in usability, the paper acknowledges distinct limitations:
-
-- **Single topic assumption:** Real documents often discuss multiple themes. An article about electric cars touches technology, climate politics, and corporate finance. BERTopic assigns each document to exactly one cluster (or marks it as noise). While HDBSCAN outputs soft cluster probabilities, the core algorithm trains under the assumption of one topic per document.
-- **Topic words are still bags of words:** Although the documents are grouped using sophisticated deep attention, the final topic representation is extracted via c-TF-IDF word counts. This means topic summaries can still feature redundant synonyms (such as "space", "orbit", and "satellite" filling half the top-ten list).
-- **GPU dependence:** Computing transformer embeddings for hundreds of thousands of documents requires GPU acceleration. On a CPU-only server, calculating embeddings creates a noticeable bottleneck compared to fast linear models like NMF.
+- **One topic per document.** Clustering assigns each document to a single group, though real documents often mix themes. The paper acknowledges this.
+- **Bag-of-words labels.** c-TF-IDF ignores word order, so topic words can be redundant, such as several forms of the same word.
+- **Disconnected steps.** Embeddings and topic words are computed separately, so the words describing a topic are not guaranteed to reflect what the embedding model actually grouped on.
+- **Sensitive settings.** Outlier counts and topic numbers depend on UMAP and HDBSCAN parameters.
 
 ## What happened next
 
-After the paper was released, BERTopic became a cornerstone tool for text analysis across academia and industry. 
+The open-source BERTopic library became one of the most widely used topic modelling tools in research and industry. Later versions added ways to refine topic labels, including using large language models to write a short human-readable name for each cluster from its keywords and example documents.
 
-Because Grootendorst engineered the framework around independent, modular components, the community quickly extended it:
-
-- **Multimodal topic modeling:** By swapping SBERT for vision-language encoders like [CLIP](article:paper-clip), researchers began clustering images and text into unified multimodal topics.
-- **LLM topic representations:** Later versions of BERTopic added direct integration with large language models. Instead of relying purely on a raw list of c-TF-IDF keywords, users can pipe the top c-TF-IDF words into models like [Llama](article:paper-llama) or GPT to generate natural, descriptive topic titles and summaries.
-- **Hierarchical exploration:** By exploiting the hierarchical trees natively produced by HDBSCAN, users can zoom in and out of topics, viewing broad macro-themes or drilling down into hyper-specific sub-conversations.
-
-BERTopic proved that state-of-the-art NLP does not always require end-to-end differentiable neural architectures. Pairing deep contextual embeddings with smart, transparent statistical formulas often produces cleaner, faster, and far more interpretable results.
+More broadly, the pattern of embedding text, clustering, and then summarising each cluster has become a standard way to explore large text collections, now often using embeddings from the same kinds of models described in [Language Models are Few-Shot Learners](article:paper-gpt-3).
 
 ## Key takeaways
 
-- Traditional topic models like LDA rely on bag-of-words assumptions that ignore word order and fail on short texts.
-- Centroid-based embedding clustering fails when document clusters have curved or irregular non-spherical shapes.
-- BERTopic decouples the pipeline into dense embedding (SBERT), dimensionality reduction (UMAP), density clustering (HDBSCAN), and lexical extraction (c-TF-IDF).
-- Class-based TF-IDF treats each cluster as a mega-document, extracting words that are uniquely frequent within that cluster relative to the corpus.
-- The modular design allows seamless adaptation to dynamic time-series modeling, multimodal inputs, and prompt-based LLM topic summaries.
+- BERTopic finds themes in unlabelled text by embedding documents, reducing dimensions, clustering by density and describing each cluster with c-TF-IDF.
+- Embeddings group documents by meaning, so synonyms and short texts are handled better than by pure word counting.
+- c-TF-IDF treats each cluster as one document to find words that are common there but rare elsewhere, giving readable topic labels.
+- Its modular design lets each step be swapped, and it supports topics that change over time.
+- It assigns one topic per document and depends on clustering settings, so human review of the topics remains essential.

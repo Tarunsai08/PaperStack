@@ -17,7 +17,7 @@ Read `HANDOFF.md` first if you are picking this project up.
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
 | **All** | **123** | **0** | **550** | **673** | |
 
-Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **31**
+Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **23**
 
 ## Next to write
 
@@ -148,6 +148,52 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 <details><summary>ml: 83 written</summary>
 
+- [x] `paper-megatron-lm` When One GPU Is Not Enough
+- [x] `paper-flashattention` Faster Attention by Doing More Maths
+- [x] `paper-vllm` Borrowing an Old OS Trick to Serve Chatbots
+- [x] `paper-quantization-and-training-of-neural-networks-for-efficient-i` Ditching Floats: The Secret to Fast Mobile AI
+- [x] `paper-efficient-streaming-language-models-with-attention-sinks` Why Transformers Crash Without Their First Words
+- [x] `paper-lenet` The Network That Read Your Cheques
+- [x] `paper-deep-autoencoders` How to Squeeze a Picture Into Thirty Numbers
+- [x] `paper-alexnet` The Night Deep Learning Won
+- [x] `paper-dropout` Make Your Network Forget, On Purpose
+- [x] `paper-adam` The Optimizer Almost Everyone Uses
+- [x] `paper-batch-normalization` The Simple Fix That Made Deep Networks Train Fast
+- [x] `paper-resnet` Why Deeper Got Worse, and the Shortcut That Fixed It
+- [x] `paper-unet` The U-Shaped Network That Learned From Thirty Images
+- [x] `paper-going-deeper-with-convolutions` We Need to Go Deeper
+- [x] `paper-aggregated-residual-transformations-for-deep-neural-networks` ResNeXt: Beyond Depth and Width
+- [x] `paper-inception-v4-inception-resnet-and-the-impact-of-residual-con` Do Deep Networks Actually Need Shortcuts?
+- [x] `paper-real-time-single-image-and-video-super-resolution-using-an-e` Pixel Shuffle: Upscaling Images at the Very End
+- [x] `paper-unet-redesigning-skip-connections-to-exploit-multiscale-feat` Fixing U-Net's Empty Middle
+- [x] `paper-turing-test` Can Machines Think? Turing's Brilliant Dodge
+- [x] `paper-perceptron` The Machine That Learned From Its Mistakes
+- [x] `paper-backpropagation` Four Pages That Woke Up Neural Networks
+- [x] `paper-support-vector-networks` Draw the Widest Road Between Two Crowds
+- [x] `paper-random-forests` Why a Crowd of Bad Guessers Beats an Expert
+- [x] `paper-few-useful-things` The Folk Wisdom Textbooks Forgot to Teach
+- [x] `paper-thumbs-up-sentiment-classification-using-machine-learning-te` Thumbs Up? How Machines Learned to Read Reviews
+- [x] `paper-stop-explaining-black-box-machine-learning-models-for-high-s` Why Explaining Black Boxes Fails
+- [x] `paper-vae` Teaching an Autoencoder to Dream
+- [x] `paper-gan` The Counterfeiter and the Detective
+- [x] `paper-ddpm` Creating Images by Removing Noise
+- [x] `paper-latent-diffusion` Diffusion in a Smaller World
+- [x] `paper-high-resolution-image-synthesis-and-semantic-manipulation-wi` Megapixel Realism: How Pix2PixHD Scaled Conditional GANs
+- [x] `paper-denoising-diffusion-implicit-models` Skipping Steps: How DDIM Accelerated Diffusion
+- [x] `paper-taming-transformers-for-high-resolution-image-synthesis` Taming Transformers for Megapixel Images
+- [x] `paper-improved-denoising-diffusion-probabilistic-models` Teaching Diffusion Models to Walk in Big Strides
+- [x] `paper-elucidating-the-design-space-of-diffusion-based-generative-m` Unbolting Diffusion: How EDM Tamed the Noise Equation
+- [x] `paper-dqn` One Program, Forty-Nine Atari Games
+- [x] `paper-alphago` The Machine That Mastered Go a Decade Early
+- [x] `paper-ppo` Learn Fast, But Not Too Fast
+- [x] `paper-lstm` Teaching Networks to Remember for a Long Time
+- [x] `paper-word2vec` King Minus Man Plus Woman Equals Queen
+- [x] `paper-seq2seq` Read the Whole Sentence, Then Write the Translation
+- [x] `paper-bahdanau-attention` The First Time a Network Learned Where to Look
+- [x] `paper-distributed-representations-of-words-and-phrases-and-their-c` How Word2Vec Skipped the Softmax Bottleneck
+- [x] `paper-learning-phrase-representations-using-rnn-encoder-decoder-fo` Compress, Then Translate: The First Encoder-Decoder
+- [x] `paper-enriching-word-vectors-with-subword-information` Inside Words: How FastText Mastered Morphology
+- [x] `paper-bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro` The End of Bag-of-Words Topic Modeling
 - [x] `primer-ai-ml-dl-map` AI, ML, and Deep Learning: The Map You Wish You Had
 - [x] `primer-data-features-labels` What Machines Actually Learn From
 - [x] `primer-loss-functions` How Wrong Is the Model?
@@ -158,40 +204,6 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `primer-backprop-intuition` Backpropagation Without the Scary Math
 - [x] `primer-embeddings` How Words Become Numbers With Meaning
 - [x] `primer-how-to-read-papers` How to Read a Research Paper Without Falling Asleep
-- [x] `paper-turing-test` Can Machines Think? Turing's Brilliant Dodge
-- [x] `paper-perceptron` The Machine That Learned From Its Mistakes
-- [x] `paper-backpropagation` Four Pages That Woke Up Neural Networks
-- [x] `paper-support-vector-networks` Draw the Widest Road Between Two Crowds
-- [x] `paper-random-forests` Why a Crowd of Bad Guessers Beats an Expert
-- [x] `paper-few-useful-things` The Folk Wisdom Textbooks Forgot to Teach
-- [x] `paper-thumbs-up-sentiment-classification-using-machine-learning-te` Thumbs Up? How Machines Learned to Read Reviews
-- [x] `paper-stop-explaining-black-box-machine-learning-models-for-high-s` Why Explaining Black Boxes Fails
-- [x] `paper-lenet` The Network That Read Your Cheques
-- [x] `paper-deep-autoencoders` How to Squeeze a Picture Into Thirty Numbers
-- [x] `paper-alexnet` The Night Deep Learning Won
-- [x] `paper-dropout` Make Your Network Forget, On Purpose
-- [x] `paper-adam` The Optimizer Almost Everyone Uses
-- [x] `paper-batch-normalization` The Simple Fix That Made Deep Networks Train Fast
-- [x] `paper-resnet` Why Deeper Got Worse, and the Shortcut That Fixed It
-- [x] `paper-unet` The U-Shaped Network That Learned From Thirty Images
-- [x] `paper-aggregated-residual-transformations-for-deep-neural-networks` ResNeXt: Beyond Depth and Width
-- [x] `paper-real-time-single-image-and-video-super-resolution-using-an-e` Pixel Shuffle: Upscaling Images at the Very End
-- [x] `paper-lstm` Teaching Networks to Remember for a Long Time
-- [x] `paper-word2vec` King Minus Man Plus Woman Equals Queen
-- [x] `paper-seq2seq` Read the Whole Sentence, Then Write the Translation
-- [x] `paper-bahdanau-attention` The First Time a Network Learned Where to Look
-- [x] `paper-learning-phrase-representations-using-rnn-encoder-decoder-fo` Compress, Then Translate: The First Encoder-Decoder
-- [x] `paper-bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro` The End of Bag-of-Words Topic Modeling
-- [x] `paper-vae` Teaching an Autoencoder to Dream
-- [x] `paper-gan` The Counterfeiter and the Detective
-- [x] `paper-ddpm` Creating Images by Removing Noise
-- [x] `paper-latent-diffusion` Diffusion in a Smaller World
-- [x] `paper-taming-transformers-for-high-resolution-image-synthesis` Taming Transformers for Megapixel Images
-- [x] `paper-elucidating-the-design-space-of-diffusion-based-generative-m` Unbolting Diffusion: How EDM Tamed the Noise Equation
-- [x] `paper-high-resolution-image-synthesis-and-semantic-manipulation-wi` Megapixel Realism: How Pix2PixHD Scaled Conditional GANs
-- [x] `paper-dqn` One Program, Forty-Nine Atari Games
-- [x] `paper-alphago` The Machine That Mastered Go a Decade Early
-- [x] `paper-ppo` Learn Fast, But Not Too Fast
 - [x] `paper-attention-is-all-you-need` The Paper That Taught Machines Where to Look
 - [x] `paper-gpt-1` Read Seven Thousand Books, Then Take Any Test
 - [x] `paper-bert` Fill in the Blanks, Understand Everything
@@ -200,8 +212,13 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `paper-chinchilla` The Giant Models Were Underfed
 - [x] `paper-vit` What If an Image Is Just a Sentence of Patches?
 - [x] `paper-clip` Teaching Vision With the Internet's Captions
+- [x] `paper-training-data-efficient-image-transformers-distillation-thro` Teaching Vision Transformers With Less Data
 - [x] `paper-swin-transformer-hierarchical-vision-transformer-using-shift` Shift the Window, Scale the Vision
+- [x] `paper-blip-bootstrapping-language-image-pre-training-for-unified-v` Teaching One Model to See, Read, and Write
+- [x] `paper-opt-open-pre-trained-transformer-language-models` The Engineering Diary of Training OPT-175B
+- [x] `paper-a-survey-of-large-language-models` The Four Pillars of the LLM Revolution
 - [x] `paper-blip-2-bootstrapping-language-image-pre-training-with-frozen` Teaching Blind LLMs to See Without Retraining Them
+- [x] `paper-minigpt-4-enhancing-vision-language-understanding-with-advan` Bridging Sight and Speech with One Linear Layer
 - [x] `paper-instructgpt` How a Text Predictor Learned to Be Helpful
 - [x] `paper-chain-of-thought` Show Your Working: The Prompt That Unlocked Reasoning
 - [x] `paper-rag` Let the Model Look Things Up
@@ -209,27 +226,10 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `paper-dpo` Your Language Model Was the Reward Model All Along
 - [x] `paper-llama` Small Enough to Share, Strong Enough to Matter
 - [x] `paper-nnu-net-a-self-configuring-method-for-deep-learning-based-bi` No New Net: Why Hyperparameters Beat Novel Architectures
-- [x] `paper-unet-redesigning-skip-connections-to-exploit-multiscale-feat` Fixing U-Net's Empty Middle
-- [x] `paper-the-llama-3-herd-of-models` The Engineering Playbook of Llama 3
-- [x] `paper-distributed-representations-of-words-and-phrases-and-their-c` How Word2Vec Skipped the Softmax Bottleneck
-- [x] `paper-enriching-word-vectors-with-subword-information` Inside Words: How FastText Mastered Morphology
-- [x] `paper-blip-bootstrapping-language-image-pre-training-for-unified-v` Teaching One Model to See, Read, and Write
-- [x] `paper-going-deeper-with-convolutions` We Need to Go Deeper
-- [x] `paper-inception-v4-inception-resnet-and-the-impact-of-residual-con` Do Deep Networks Actually Need Shortcuts?
-- [x] `paper-opt-open-pre-trained-transformer-language-models` The Engineering Diary of Training OPT-175B
-- [x] `paper-large-language-models-encode-clinical-knowledge` Can Language Models Safely Practice Medicine?
-- [x] `paper-a-survey-of-large-language-models` The Four Pillars of the LLM Revolution
-- [x] `paper-denoising-diffusion-implicit-models` Skipping Steps: How DDIM Accelerated Diffusion
-- [x] `paper-training-data-efficient-image-transformers-distillation-thro` Teaching Vision Transformers With Less Data
-- [x] `paper-improved-denoising-diffusion-probabilistic-models` Teaching Diffusion Models to Walk in Big Strides
-- [x] `paper-tree-of-thoughts-deliberate-problem-solving-with-large-langu` Giving Language Models the Power to Backtrack
-- [x] `paper-minigpt-4-enhancing-vision-language-understanding-with-advan` Bridging Sight and Speech with One Linear Layer
-- [x] `paper-self-consistency-improves-chain-of-thought-reasoning-in-lang` Why Multiple Reasoning Paths Beat One Greedy Guess
 - [x] `paper-large-language-models-are-zero-shot-reasoners` The Magic Words for Machine Logic
-- [x] `paper-megatron-lm` When One GPU Is Not Enough
-- [x] `paper-flashattention` Faster Attention by Doing More Maths
-- [x] `paper-vllm` Borrowing an Old OS Trick to Serve Chatbots
-- [x] `paper-quantization-and-training-of-neural-networks-for-efficient-i` Ditching Floats: The Secret to Fast Mobile AI
-- [x] `paper-efficient-streaming-language-models-with-attention-sinks` Why Transformers Crash Without Their First Words
+- [x] `paper-large-language-models-encode-clinical-knowledge` Can Language Models Safely Practice Medicine?
+- [x] `paper-self-consistency-improves-chain-of-thought-reasoning-in-lang` Why Multiple Reasoning Paths Beat One Greedy Guess
+- [x] `paper-tree-of-thoughts-deliberate-problem-solving-with-large-langu` Giving Language Models the Power to Backtrack
+- [x] `paper-the-llama-3-herd-of-models` The Engineering Playbook of Llama 3
 
 </details>

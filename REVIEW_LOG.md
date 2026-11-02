@@ -17,21 +17,21 @@ Calibration read (`paper-going-deeper-with-convolutions`): readable and correctl
 |---|---|---|---|---|---|---|
 | `paper-going-deeper-with-convolutions` | 2107 | 8.6 | | | pending | |
 | `paper-the-llama-3-herd-of-models` | 1695 | 8.6 | | | pending | |
-| `paper-efficient-streaming-language-models-with-attention-sinks` | 2294 (over length) | 8.7 | | | pending | |
+| `paper-efficient-streaming-language-models-with-attention-sinks` | 2294 (over length) | 8.7 | 6 | 10.0 heuristic, 8.5+ editorial | rewritten | Author name corrected (Guangxuan Xiao); venue ICLR 2024. Classroom analogy; cache-contents table; clear "no long-term memory" warning; facts limited to the abstract (4M tokens, 22.2x). |
 | `paper-high-resolution-image-synthesis-and-semantic-manipulation-wi` | 1980 | 8.7 | | | pending | |
-| `paper-stop-explaining-black-box-machine-learning-models-for-high-s` | 2226 (over length) | 8.7 | | | pending | |
-| `paper-aggregated-residual-transformations-for-deep-neural-networks` | 2279 (over length) | 8.8 | | | pending | |
-| `paper-bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro` | 2273 (over length) | 8.9 | | | pending | |
+| `paper-stop-explaining-black-box-machine-learning-models-for-high-s` | 2226 (over length) | 8.7 | 6 | 9.8 heuristic, 8.5+ editorial | rewritten | Venue/year Nature Machine Intelligence 2019. Sealed-machine-vs-checklist analogy; made-up scoring table clearly labelled; arguments structured; incentives section. |
+| `paper-aggregated-residual-transformations-for-deep-neural-networks` | 2279 (over length) | 8.8 | 7 | 9.7 heuristic, 8.5+ editorial | rewritten | Venue CVPR 2017. Review-team analogy; exact weight counts per block (69.6k vs 70.1k) and widening cost; claims match the abstract (2nd place ILSVRC 2016). |
+| `paper-bertopic-neural-topic-modeling-with-a-class-based-tf-idf-pro` | 2273 (over length) | 8.9 | 6 | 9.5 heuristic, 8.5+ editorial | rewritten | Author name expanded. Post-room analogy; c-TF-IDF formula with symbols and a computed example; topic-count and when-to-use sections. |
 | `paper-blip-2-bootstrapping-language-image-pre-training-with-frozen` | 2191 | 8.9 | | | pending | |
-| `paper-distributed-representations-of-words-and-phrases-and-their-c` | 2262 (over length) | 8.9 | | | pending | |
+| `paper-distributed-representations-of-words-and-phrases-and-their-c` | 2262 (over length) | 8.9 | 6 | 10.0 heuristic, 8.5+ editorial | rewritten | Re-tracked to Teaching Machines Language; venue NeurIPS. New spice-kitchen analogy reused; worked subsampling table; phrase score explained; claims kept qualitative; links to fastText and CLIP. |
 | `paper-unet-redesigning-skip-connections-to-exploit-multiscale-feat` | 2132 | 8.9 | | | pending | |
 | `paper-inception-v4-inception-resnet-and-the-impact-of-residual-con` | 1716 | 9.0 | | | pending | |
 | `paper-minigpt-4-enhancing-vision-language-understanding-with-advan` | 2076 | 9.1 | | | pending | |
 | `paper-nnu-net-a-self-configuring-method-for-deep-learning-based-bi` | 2012 | 9.1 | | | pending | |
-| `paper-denoising-diffusion-implicit-models` | 2227 (over length) | 9.2 | | | pending | |
+| `paper-denoising-diffusion-implicit-models` | 2227 (over length) | 9.2 | 6 | 9.8 heuristic, 8.5+ editorial | rewritten | Re-tracked to Machines That Create; venue ICLR 2021. Mountain-road analogy; equations with every symbol explained; one-pixel worked example; inversion section. |
 | `paper-quantization-and-training-of-neural-networks-for-efficient-i` | 2044 | 9.2 | | | pending | |
 | `paper-training-data-efficient-image-transformers-distillation-thro` | 2010 | 9.2 | | | pending | |
-| `paper-improved-denoising-diffusion-probabilistic-models` | 2211 (over length) | 9.3 | | | pending | |
+| `paper-improved-denoising-diffusion-probabilistic-models` | 2211 (over length) | 9.3 | 6 | 10.0 heuristic, 8.5+ editorial | rewritten | Re-tracked to Machines That Create. Engine-tuning analogy; learned variance, hybrid loss, cosine schedule explained with symbols; importance sampling explained; no invented numbers. |
 | `paper-self-consistency-improves-chain-of-thought-reasoning-in-lang` | 1677 | 9.3 | | | pending | |
 | `paper-a-survey-of-large-language-models` | 2044 | 9.4 | | | pending | |
 | `paper-blip-bootstrapping-language-image-pre-training-for-unified-v` | 2148 | 9.4 | | | pending | |
@@ -41,7 +41,7 @@ Calibration read (`paper-going-deeper-with-convolutions`): readable and correctl
 | `paper-tree-of-thoughts-deliberate-problem-solving-with-large-langu` | 1899 | 9.5 | | | pending | |
 | `paper-learning-phrase-representations-using-rnn-encoder-decoder-fo` | 1873 | 9.6 | | | pending | |
 | `paper-swin-transformer-hierarchical-vision-transformer-using-shift` | 2009 | 9.6 | | | pending | |
-| `paper-taming-transformers-for-high-resolution-image-synthesis` | 2211 (over length) | 9.6 | | | pending | |
+| `paper-taming-transformers-for-high-resolution-image-synthesis` | 2211 (over length) | 9.6 | 6 | 9.5 heuristic, 8.5+ editorial | rewritten | Venue CVPR 2021. Mosaic-tile analogy; sequence-length table; bits-per-image estimate; clear two-stage diagram; VQGAN+CLIP and latent diffusion history. |
 | `paper-opt-open-pre-trained-transformer-language-models` | 1918 | 9.7 | | | pending | |
 | `paper-large-language-models-are-zero-shot-reasoners` | 1565 | 9.9 | | | pending | |
 | `paper-enriching-word-vectors-with-subword-information` | 2103 | 10.0 | | | pending | |
