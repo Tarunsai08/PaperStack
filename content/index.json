@@ -1,7 +1,7 @@
 {
- "content_version": "10214b4befc3166c",
+ "content_version": "2f3c1d903c29fb7b",
  "generated_at": "2026-11-02",
- "count": 335,
+ "count": 338,
  "subjects": [
   {
    "id": "ml",
@@ -23464,6 +23464,119 @@
    "excerpt": "A trader looks back over a week of prices and asks the classic question: what is the most I could have made? With one trade, it is the biggest rise from a low to a later high. With unlimited trades, it is every upward step. Then the rules get fiddly: a fee per trade, a forced day of rest after each…"
   },
   {
+   "id": "dsa-bitmask-dp-intro",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "bitmask-dp-intro",
+   "title": "A Checklist Written as a Row of Lights",
+   "subtitle": "Bitmask DP: a set of up to about 20 items stored in one integer, dp over masks for the travelling salesman and Hamiltonian paths, BFS over (node, visited mask), and why 2ⁿ is the real limit",
+   "track": "dsa-dp",
+   "track_order": 11,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-dp-intro",
+    "dsa-bit-basics"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "dynamic programming",
+    "bitmask",
+    "subsets",
+    "travelling salesman",
+    "BFS"
+   ],
+   "complexity": {
+    "time": "O(2ⁿ × n²) for paths over all subsets",
+    "space": "O(2ⁿ × n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Hamiltonian Flights",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1690",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Shortest Path Visiting All Nodes",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/shortest-path-visiting-all-nodes/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Partition to K Equal Sum Subsets",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/partition-to-k-equal-sum-subsets/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Bitmask",
+     "definition": "An integer whose bit i is 1 exactly when item i is in the set, so a subset of n items is a number from 0 to 2ⁿ - 1."
+    },
+    {
+     "term": "Mask DP",
+     "definition": "Dynamic programming whose state includes a bitmask of items already used, filled so that every mask is processed after its subsets."
+    },
+    {
+     "term": "Held-Karp",
+     "definition": "The DP for the travelling salesman problem: dp[mask][v] is the shortest path that visits exactly the cities in mask and ends at v."
+    },
+    {
+     "term": "Hamiltonian path",
+     "definition": "A path that visits every vertex exactly once."
+    },
+    {
+     "term": "Full mask",
+     "definition": "The mask with all n bits set, (1 << n) - 1, meaning every item has been used."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why do bitmask DPs usually stop working beyond about n = 20?",
+     "options": [
+      "Integers have 20 bits",
+      "The number of masks is 2ⁿ, and with an extra factor of n or n², 2²⁰ × 20² is already around 400 million steps and a large table",
+      "Because recursion is too deep",
+      "Because of floating point"
+     ],
+     "answer": 1,
+     "explain": "2²⁰ is about a million. Multiplying by n states and n transitions makes the time and memory grow quickly, so constraints with n ≤ 20 are a strong hint for bitmask DP."
+    },
+    {
+     "q": "In Held-Karp, what does dp[mask][v] mean?",
+     "options": [
+      "The number of cities",
+      "The shortest path starting at city 0, visiting exactly the cities in mask, and ending at v",
+      "The longest path",
+      "Whether v is in mask"
+     ],
+     "answer": 1,
+     "explain": "The mask says which cities are done; v says where you stand. Extending to an unvisited city w gives dp[mask | 1 << w][w]. The full tour adds the return edge from v to 0."
+    },
+    {
+     "q": "Why does iterating masks in increasing numeric order work for mask DP?",
+     "options": [
+      "It does not",
+      "Adding an item to a mask sets a bit, which always makes the number larger, so every transition goes from a smaller mask to a larger one",
+      "Because masks are sorted by size",
+      "Because of binary search"
+     ],
+     "answer": 1,
+     "explain": "mask | (1 << w) is larger than mask whenever bit w was 0. So by the time a mask is processed, every mask that leads into it has already been processed."
+    }
+   ],
+   "cover_seed": "bitmask-dp-intro",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.66,
+   "path": "dsa/bitmask-dp-intro.md",
+   "hash": "4acb339a9b7f",
+   "word_count": 1562,
+   "excerpt": "A delivery driver must visit 15 shops and return to the depot by the shortest route. Trying every order means 14! routes, about 87 billion. Yet the problem is solvable in well under a second, because most of those orders share their beginnings: the best way to have visited shops {2, 5, 9} and be…"
+  },
+  {
    "id": "dsa-coin-change",
    "kind": "problem-walkthrough",
    "subject": "dsa",
@@ -23703,6 +23816,224 @@
    "hash": "a1d1ee094e84",
    "word_count": 1192,
    "excerpt": "Search engines see queries like \"icecreamcone\" typed without spaces and still find shops selling ice cream cones. Hashtags like #throwbackthursday get split into words for analysis. Under both sits a simple question: can this string be cut into pieces that are all real words, and if so, how? Word…"
+  },
+  {
+   "id": "dsa-longest-palindromic-subsequence",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "longest-palindromic-subsequence",
+   "title": "Folding a Word So Its Ends Meet",
+   "subtitle": "Longest Palindromic Subsequence with dp over l and r, why it equals the LCS of a string and its reverse, the one-line answer for minimum insertions, and minimum palindrome cuts",
+   "track": "dsa-dp",
+   "track_order": 14,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-interval-dp",
+    "dsa-lcs-edit-distance"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "dynamic programming",
+    "strings",
+    "palindromes",
+    "interval DP"
+   ],
+   "complexity": {
+    "time": "O(n²)",
+    "space": "O(n²), or O(n) with rolling rows"
+   },
+   "practice_problems": [
+    {
+     "name": "Longest Palindromic Subsequence",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/longest-palindromic-subsequence/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Minimum Insertion Steps to Make a String Palindrome",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Palindrome Partitioning II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/palindrome-partitioning-ii/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Subsequence",
+     "definition": "Characters taken from a string in their original order, not necessarily next to each other."
+    },
+    {
+     "term": "Substring",
+     "definition": "A contiguous block of characters; every substring is a subsequence, but not the other way round."
+    },
+    {
+     "term": "Palindromic subsequence",
+     "definition": "A subsequence that reads the same forwards and backwards."
+    },
+    {
+     "term": "Ends rule",
+     "definition": "The LPS recurrence: if the two end characters match, both join the answer; if not, drop one end and keep the better result."
+    },
+    {
+     "term": "Palindrome cut",
+     "definition": "A split point in a string such that every piece between cuts is a palindrome."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In dp[l][r] for the longest palindromic subsequence, what happens when s[l] = s[r]?",
+     "options": [
+      "dp[l][r] = 1",
+      "dp[l][r] = dp[l+1][r-1] + 2, since the two equal ends wrap around the best answer inside",
+      "dp[l][r] = max(dp[l+1][r], dp[l][r-1])",
+      "dp[l][r] = r - l + 1"
+     ],
+     "answer": 1,
+     "explain": "Matching ends can always be used as the outermost pair of a palindrome, so they add 2 to the best palindrome strictly inside."
+    },
+    {
+     "q": "Why does LPS(s) equal LCS(s, reverse(s))?",
+     "options": [
+      "It is a coincidence",
+      "A palindromic subsequence reads the same in s and in reverse(s), so it is common to both, and a longest common subsequence can always be chosen to be a palindrome",
+      "Because the strings have the same length",
+      "It does not"
+     ],
+     "answer": 1,
+     "explain": "Every palindromic subsequence of s appears in reverse(s) too. Conversely, from any common subsequence of maximum length, a palindrome of the same length can be built. So the two lengths agree."
+    },
+    {
+     "q": "A string of length 6 has LPS 5. How many insertions make it a palindrome?",
+     "options": [
+      "5",
+      "1: keep the palindromic subsequence and insert a partner for each other character",
+      "6",
+      "0"
+     ],
+     "answer": 1,
+     "explain": "Characters outside the LPS each need a mirror copy. The minimum is n - LPS = 6 - 5 = 1."
+    }
+   ],
+   "cover_seed": "longest-palindromic-subsequence",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.7,
+   "path": "dsa/longest-palindromic-subsequence.md",
+   "hash": "d0b5a6046f7b",
+   "word_count": 1252,
+   "excerpt": "Write \"agbdba\" on a strip of paper and try to fold it in half so matching letters touch. The a at each end can meet. Inside, the b's can meet. Between them, either g or d can sit on the fold, but not both. You have found a palindrome hidden inside the word: a, b, d, b, a. Finding the longest such…"
+  },
+  {
+   "id": "dsa-regex-matching",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "regex-matching",
+   "title": "A Key With Flexible Teeth",
+   "subtitle": "Regular Expression Matching and Wildcard Matching as a table over text and pattern prefixes: what a star really means in each, the base row for empty text, and why greedy matching fails",
+   "track": "dsa-dp",
+   "track_order": 15,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-lcs-edit-distance"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "dynamic programming",
+    "strings",
+    "pattern matching"
+   ],
+   "complexity": {
+    "time": "O(n × m)",
+    "space": "O(n × m), or O(m) with rolling rows"
+   },
+   "practice_problems": [
+    {
+     "name": "Regular Expression Matching",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/regular-expression-matching/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Wildcard Matching",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/wildcard-matching/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Interleaving String",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/interleaving-string/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Prefix table",
+     "definition": "A table dp[i][j] that says whether the first i characters of the text match the first j characters of the pattern."
+    },
+    {
+     "term": "Regex star",
+     "definition": "In Regular Expression Matching, '*' means zero or more copies of the single character just before it, so 'b*' is a unit."
+    },
+    {
+     "term": "Wildcard star",
+     "definition": "In Wildcard Matching, '*' on its own matches any sequence of characters, including the empty one."
+    },
+    {
+     "term": "Base row",
+     "definition": "Row i = 0 of the table, for empty text, which is true only while the pattern so far can match nothing."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In Regular Expression Matching, what does the pattern 'ab*' match?",
+     "options": [
+      "Only 'ab'",
+      "'a' followed by zero or more b's: 'a', 'ab', 'abb', and so on",
+      "'a' followed by anything",
+      "'ab' followed by anything"
+     ],
+     "answer": 1,
+     "explain": "The regex star applies to the character before it. 'b*' is one unit meaning zero or more b's, so 'ab*' matches 'a', 'ab', 'abb' and so on."
+    },
+    {
+     "q": "With empty text, which regex patterns match?",
+     "options": [
+      "Only the empty pattern",
+      "Patterns made entirely of 'x*' units, such as 'a*b*', since each star can choose zero copies",
+      "Any pattern containing a star",
+      "None"
+     ],
+     "answer": 1,
+     "explain": "Every character must be cancelled by a star taking zero copies. The base row dp[0][j] = (p[j-1] == '*') and dp[0][j-2] captures exactly that."
+    },
+    {
+     "q": "In Wildcard Matching, a pattern '*' is at position j. Which two cells can make dp[i][j] true?",
+     "options": [
+      "dp[i-1][j-1] only",
+      "dp[i][j-1] (the star matches nothing) or dp[i-1][j] (the star also absorbs s[i-1])",
+      "dp[i][j-2] only",
+      "dp[0][j]"
+     ],
+     "answer": 1,
+     "explain": "A wildcard star either matches the empty sequence, leaving the text unchanged, or eats one more text character and stays available for more."
+    }
+   ],
+   "cover_seed": "regex-matching",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.74,
+   "path": "dsa/regex-matching.md",
+   "hash": "9de211c7a256",
+   "word_count": 1326,
+   "excerpt": "A locksmith makes a key with a few flexible teeth. A normal tooth must match its notch exactly. A tooth marked \"any\" fits any single notch. A spring-loaded tooth can stretch across several notches, or fold away to nothing. Does this key open this lock? That is pattern matching with '.', '?' and '',…"
   },
   {
    "id": "dsa-house-robber-variants",
