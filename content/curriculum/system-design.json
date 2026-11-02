@@ -628,8 +628,8 @@
    "prerequisites": [
     "system-design-sql-vs-nosql"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Objects, buckets, metadata",
@@ -1522,8 +1522,8 @@
    "prerequisites": [
     "system-design-message-queues"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Channels: push, SMS, email",
@@ -1584,8 +1584,8 @@
     "system-design-cdn",
     "system-design-blob-storage"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Upload and transcoding pipeline",
@@ -1615,8 +1615,8 @@
     "famous-algos-geohash",
     "system-design-realtime-communication"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Driver location updates",
@@ -3100,8 +3100,8 @@
    "prerequisites": [
     "system-design-cap-pacelc"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Linearizability",
@@ -3131,8 +3131,8 @@
    "prerequisites": [
     "system-design-consistency-models"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Dirty read, non-repeatable read, phantom, write skew",
