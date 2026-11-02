@@ -4,6 +4,7 @@
  * the same rules.
  */
 import formatSpec from '../../../pipeline/prompts/format.md?raw';
+import qualityContract from '../../../pipeline/prompts/quality_contract.md?raw';
 import writingGuide from '../../../pipeline/prompts/writing_guide.md?raw';
 import type { Article, Track } from './types';
 
@@ -24,7 +25,7 @@ export function buildImportPrompt({ paper, trackId, tracks, articles, today }: P
   const idList = articles.map((a) => `- ${a.id}: ${a.title}`).join('\n');
   const track = tracks.some((t) => t.id === trackId && t.id !== 'my-additions') ? trackId : tracks[0]?.id ?? 'foundations';
 
-  return `You are writing an article for PaperStack, an app that teaches AI and machine learning from scratch through engaging articles about landmark research papers.
+  return `You are writing an article for PaperStack, an app that teaches computer science (machine learning, algorithms, competitive programming and system design) through engaging, story-driven articles.
 
 Write a PaperStack article about this paper:
 ${paper.trim()}
@@ -34,6 +35,8 @@ Use track "${track}". Use generated_by "manual-chatbot" and generated_at "${date
 ${writingGuide.trim()}
 
 ${formatSpec.trim()}
+
+${qualityContract.trim()}
 
 ## Track ids
 ${trackList}
