@@ -1,7 +1,7 @@
 {
- "content_version": "ee3d0f446dd55e92",
+ "content_version": "4de15871f4442300",
  "generated_at": "2026-11-02",
- "count": 123,
+ "count": 128,
  "subjects": [
   {
    "id": "ml",
@@ -8557,6 +8557,96 @@
    "excerpt": "The interviewer finishes reading the problem. You have never seen it before. The silence starts, and so does the panic: is it DP? A graph? Something you never studied? Strong candidates feel that same jolt. The difference is that they have a routine for the next five minutes, and the routine does…"
   },
   {
+   "id": "dsa-bit-basics",
+   "kind": "primer",
+   "subject": "dsa",
+   "slug": "bit-basics",
+   "title": "A Row of Light Switches Inside Every Number",
+   "subtitle": "Binary, AND, OR, XOR and shifts: the small toolkit behind bitmasks, fast tricks and half of competitive programming",
+   "track": "dsa-start",
+   "track_order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "bit manipulation",
+    "binary",
+    "bitwise operators"
+   ],
+   "glossary": [
+    {
+     "term": "Bit",
+     "definition": "A single binary digit, 0 or 1. An int in C++ is typically 32 bits; a long long is 64."
+    },
+    {
+     "term": "Bitwise operator",
+     "definition": "An operator that works on each bit position separately: AND (&), OR (|), XOR (^), NOT (~)."
+    },
+    {
+     "term": "Shift",
+     "definition": "Moving all bits left or right. Shifting left by k multiplies by 2 to the power k; shifting right divides, rounding down for non-negative numbers."
+    },
+    {
+     "term": "Mask",
+     "definition": "A number whose 1 bits mark the positions you care about, used to test, set or clear those bits."
+    },
+    {
+     "term": "Two's complement",
+     "definition": "The standard way computers store negative integers, where -x is ~x + 1."
+    },
+    {
+     "term": "Least significant bit",
+     "definition": "The rightmost bit, worth 1. It decides whether a number is odd or even."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is 13 & 6? (13 is 1101, 6 is 0110 in binary)",
+     "options": [
+      "15",
+      "4",
+      "11",
+      "2"
+     ],
+     "answer": 1,
+     "explain": "AND keeps a 1 only where both numbers have a 1. 1101 & 0110 = 0100, which is 4."
+    },
+    {
+     "q": "How do you check whether bit k of x is set?",
+     "options": [
+      "x + k",
+      "(x >> k) & 1",
+      "x | k",
+      "x ^ x"
+     ],
+     "answer": 1,
+     "explain": "Shift x right by k so bit k lands in the last position, then AND with 1 to read just that bit."
+    },
+    {
+     "q": "Why write 1LL << 40 instead of 1 << 40?",
+     "options": [
+      "It is faster",
+      "1 is an int, usually 32 bits, so shifting it by 40 is undefined; 1LL is a 64-bit long long",
+      "The compiler requires it",
+      "There is no difference"
+     ],
+     "answer": 1,
+     "explain": "Shifting a 32-bit int by 32 or more is undefined behaviour. Making the 1 a long long gives 64 bits of room."
+    }
+   ],
+   "cover_seed": "bit-basics",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.8,
+   "path": "dsa/bit-basics.md",
+   "hash": "8b5bb088ea9e",
+   "word_count": 1008,
+   "excerpt": "Here is a puzzle interviewers love: every number in an array appears twice, except one. Find it, in one pass, with no extra memory. A hash map works but uses memory. Sorting works but is slow. The real answer is a single line: XOR all the numbers together. Pairs cancel to zero, and the lonely…"
+  },
+  {
    "id": "dsa-prefix-sums",
    "kind": "pattern",
    "subject": "dsa",
@@ -9404,6 +9494,129 @@
    "hash": "7246a3f8bb34",
    "word_count": 946,
    "excerpt": "A shipping company must move a row of packages, in order, within 5 days. Every day the ship carries packages from the front of the row until the next one would exceed its capacity. What is the smallest capacity that gets the job done? Computing that capacity directly is awkward. But answering a…"
+  },
+  {
+   "id": "dsa-sorting-as-tool",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "sorting-as-tool",
+   "title": "Sort First, Ask Questions Later",
+   "subtitle": "Sorting as a problem-solving tool: custom comparators, sorting indices, and why order reveals structure",
+   "track": "dsa-search-sort",
+   "track_order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-cpp-stl-toolkit"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 4,
+   "topics": [
+    "sorting",
+    "comparators",
+    "greedy",
+    "arrays"
+   ],
+   "complexity": {
+    "time": "O(n log n) for the sort, then usually O(n)",
+    "space": "O(n) or O(log n) depending on the sort"
+   },
+   "practice_problems": [
+    {
+     "name": "Largest Number",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/largest-number/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Merge Intervals",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/merge-intervals/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Car Fleet",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/car-fleet/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Distinct Numbers",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1621",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Minimum Absolute Difference",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/minimum-absolute-difference/",
+     "difficulty": "Easy"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Comparator",
+     "definition": "A function that decides whether one element should come before another during sorting."
+    },
+    {
+     "term": "Strict weak ordering",
+     "definition": "The rules a comparator must follow: never say an element comes before itself, and stay consistent, so equal elements compare false both ways."
+    },
+    {
+     "term": "Stable sort",
+     "definition": "A sort that keeps equal elements in their original relative order."
+    },
+    {
+     "term": "Sort key",
+     "definition": "The value that decides an element's position, such as the end time of an interval or the length of a word."
+    },
+    {
+     "term": "Index sort",
+     "definition": "Sorting a list of positions by the values at those positions, so you keep track of where each element originally was."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "After sorting an array, where must the closest pair of values be?",
+     "options": [
+      "At the two ends",
+      "Next to each other",
+      "Anywhere",
+      "In the middle"
+     ],
+     "answer": 1,
+     "explain": "In sorted order, any value between two others is closer to both. So the minimum difference is always between neighbours, and one pass finds it."
+    },
+    {
+     "q": "Which comparator breaks std::sort?",
+     "options": [
+      "return a < b;",
+      "return a.second < b.second;",
+      "return a <= b;",
+      "return a > b;"
+     ],
+     "answer": 2,
+     "explain": "a <= b returns true for equal elements, which violates strict weak ordering and can cause wrong results or crashes."
+    },
+    {
+     "q": "You must sort values but return answers by original position. What do you sort?",
+     "options": [
+      "Nothing; it is impossible",
+      "Indices (or pairs of value and index) by value",
+      "The answers",
+      "A copy, then search each value"
+     ],
+     "answer": 1,
+     "explain": "Sorting indices by value gives sorted order while remembering where each value came from."
+    }
+   ],
+   "cover_seed": "sorting-as-tool",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "dsa/sorting-as-tool.md",
+   "hash": "390ebf7a4ffa",
+   "word_count": 935,
+   "excerpt": "\"Find the two numbers in this list that are closest together.\" The brute force compares every pair: about n²/2 comparisons. Now sort the list first. The closest pair is suddenly sitting side by side, and one pass finds it. You rarely need to write a sorting algorithm in an interview. What you need…"
   },
   {
    "id": "cp-how-contests-work",
@@ -11244,6 +11457,97 @@
    "excerpt": "Kubernetes stores everything it knows about your cluster, every pod, every config, every secret, in etcd. If etcd's servers ever disagreed about what is stored, your cluster would start doing contradictory things. Yet those servers crash, reboot and lose network links all the time. They stay in…"
   },
   {
+   "id": "famous-algos-token-bucket",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "token-bucket",
+   "title": "The Punch Card That Says Slow Down",
+   "subtitle": "Token bucket rate limiting: allow short bursts, cap the long-run rate, and do it with two numbers per user",
+   "track": "fa-networking",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "rate limiting",
+    "networking",
+    "apis",
+    "traffic shaping"
+   ],
+   "glossary": [
+    {
+     "term": "Rate limiting",
+     "definition": "Capping how many requests a client may make in a period, to protect a service from overload and abuse."
+    },
+    {
+     "term": "Token bucket",
+     "definition": "A rate limiter where tokens refill at a steady rate up to a maximum, and each request spends a token."
+    },
+    {
+     "term": "Refill rate",
+     "definition": "How many tokens are added to the bucket per second. It sets the long-run average rate allowed."
+    },
+    {
+     "term": "Bucket capacity",
+     "definition": "The maximum number of tokens the bucket can hold. It sets the largest burst allowed at once."
+    },
+    {
+     "term": "Leaky bucket",
+     "definition": "A related algorithm where requests queue up and leave at a fixed rate, smoothing traffic instead of allowing bursts."
+    },
+    {
+     "term": "Lazy refill",
+     "definition": "Computing how many tokens to add only when a request arrives, from the time elapsed, instead of running a timer."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A bucket has capacity 10 and refills 2 tokens per second. It is full. How many requests can pass instantly?",
+     "options": [
+      "2",
+      "10",
+      "12",
+      "Unlimited"
+     ],
+     "answer": 1,
+     "explain": "A full bucket holds 10 tokens, so a burst of 10 passes immediately. After that, requests pass at about 2 per second."
+    },
+    {
+     "q": "What two numbers does a token bucket store per client?",
+     "options": [
+      "Count and average",
+      "Current tokens and the time of the last refill",
+      "Total requests and errors",
+      "Capacity and refill rate only"
+     ],
+     "answer": 1,
+     "explain": "Capacity and rate are shared settings. Per client you only need the current token count and when you last updated it."
+    },
+    {
+     "q": "How does a token bucket differ from a leaky bucket?",
+     "options": [
+      "They are identical",
+      "Token bucket allows bursts up to its capacity; leaky bucket releases traffic at a steady rate",
+      "Leaky bucket allows bigger bursts",
+      "Token bucket needs a queue"
+     ],
+     "answer": 1,
+     "explain": "A token bucket lets saved-up tokens be spent quickly, so short bursts pass. A leaky bucket drains at a fixed rate, smoothing everything."
+    }
+   ],
+   "cover_seed": "token-bucket",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.9,
+   "path": "famous-algos/token-bucket.md",
+   "hash": "3ac6eacc78c5",
+   "word_count": 1060,
+   "excerpt": "A popular API serves millions of developers. One of them writes a loop with a bug and starts sending ten thousand requests a second. Without a limit, that one script can slow the service for everyone else. But most real clients are bursty, not abusive: an app opening a screen fires twenty requests…"
+  },
+  {
    "id": "system-design-interview-framework",
    "kind": "primer",
    "subject": "system-design",
@@ -12145,6 +12449,194 @@
    "hash": "1f73efe4939b",
    "word_count": 1100,
    "excerpt": "Ask a product manager how often the app may be down and the answer is \"never\". Ask an engineer what \"never\" costs and the answer is \"infinitely much\". Neither answer helps anyone design anything. The industry's way out is to turn reliability into numbers: how many nines, measured how, over what…"
+  },
+  {
+   "id": "system-design-stateless-idempotency",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "stateless-idempotency",
+   "title": "Pressing the Pay Button Twice Should Charge Once",
+   "subtitle": "Stateless servers and idempotent APIs: the two habits that make retries, scaling and failover safe",
+   "track": "sd-fundamentals",
+   "track_order": 11,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-api-design"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "idempotency",
+    "stateless services",
+    "retries",
+    "payments"
+   ],
+   "glossary": [
+    {
+     "term": "Stateless service",
+     "definition": "A server that keeps no client-specific memory between requests, so any server can handle any request."
+    },
+    {
+     "term": "Session state",
+     "definition": "Information about a user's ongoing interaction, such as who is logged in or what is in their cart."
+    },
+    {
+     "term": "Idempotent",
+     "definition": "An operation that has the same effect whether it runs once or many times."
+    },
+    {
+     "term": "Idempotency key",
+     "definition": "A unique id the client sends with a request so the server can recognise and ignore duplicates of it."
+    },
+    {
+     "term": "At-least-once delivery",
+     "definition": "A guarantee that a message or request will arrive, possibly more than once, which is what retries naturally give you."
+    },
+    {
+     "term": "Horizontal scaling",
+     "definition": "Adding more servers behind a load balancer to handle more traffic."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why do stateless servers make scaling easy?",
+     "options": [
+      "They use less CPU",
+      "Any server can handle any request, so you can add or remove servers freely behind a load balancer",
+      "They never fail",
+      "They do not need a database"
+     ],
+     "answer": 1,
+     "explain": "With no per-user memory on the server, requests can go anywhere, and losing a server loses nothing important."
+    },
+    {
+     "q": "A payment request times out. The client does not know whether it succeeded. What makes a retry safe?",
+     "options": [
+      "Waiting longer",
+      "Sending the same idempotency key, so the server returns the original result if it already processed the request",
+      "Retrying with a new request id",
+      "Never retrying payments"
+     ],
+     "answer": 1,
+     "explain": "The key lets the server recognise the duplicate and return the stored outcome instead of charging again."
+    },
+    {
+     "q": "Which operation is naturally idempotent?",
+     "options": [
+      "Add 100 to the balance",
+      "Set the delivery address to X",
+      "Append a new order",
+      "Send one more email"
+     ],
+     "answer": 1,
+     "explain": "Setting a value to X twice leaves it at X. Adding, appending and sending repeat their effect each time."
+    }
+   ],
+   "cover_seed": "stateless-idempotency",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "system-design/stateless-idempotency.md",
+   "hash": "f4f2d94747d7",
+   "word_count": 1103,
+   "excerpt": "You tap \"Pay\" on a train with patchy signal. The spinner turns, then an error: \"Request timed out.\" Did the payment go through? You have no idea. So you tap again. If the system is built well, you are charged once, and the second tap simply shows the same receipt. If not, you are charged twice, and…"
+  },
+  {
+   "id": "system-design-caching",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "caching",
+   "title": "Keep the Spices on the Counter",
+   "subtitle": "Caching strategies, eviction and hit ratios: the single most effective trick for making systems fast",
+   "track": "sd-blocks",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-latency-numbers"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "caching",
+    "performance",
+    "redis",
+    "eviction"
+   ],
+   "glossary": [
+    {
+     "term": "Cache",
+     "definition": "A small, fast store that keeps copies of frequently used data so it can be served without going to the slower source."
+    },
+    {
+     "term": "Hit ratio",
+     "definition": "The fraction of requests answered by the cache. A 95% hit ratio means only 5% of reads reach the database."
+    },
+    {
+     "term": "Cache-aside",
+     "definition": "A pattern where the application checks the cache first, and on a miss reads the database and stores the result in the cache."
+    },
+    {
+     "term": "Write-through",
+     "definition": "A pattern where every write goes to the cache and the database together, keeping the cache fresh."
+    },
+    {
+     "term": "Write-back",
+     "definition": "A pattern where writes go to the cache first and reach the database later, which is fast but can lose data if the cache fails."
+    },
+    {
+     "term": "TTL",
+     "definition": "Time to live: how long a cached entry may be used before it expires and must be fetched again."
+    },
+    {
+     "term": "Eviction policy",
+     "definition": "The rule for choosing what to remove when the cache is full, such as least recently used."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A database read takes about 10 ms and a cache read about 1 ms. With a 90% hit ratio, what is the average read time?",
+     "options": [
+      "About 10 ms",
+      "About 1.9 ms",
+      "About 5.5 ms",
+      "About 1 ms"
+     ],
+     "answer": 1,
+     "explain": "0.9 × 1 ms + 0.1 × 10 ms = 0.9 + 1.0 = 1.9 ms, about five times faster than going to the database every time. (Counting the wasted cache check on a miss adds only 0.1 ms.)"
+    },
+    {
+     "q": "In cache-aside, what happens on a cache miss?",
+     "options": [
+      "The request fails",
+      "The application reads the database, returns the value and stores it in the cache",
+      "The cache reads the database by itself",
+      "The write is delayed"
+     ],
+     "answer": 1,
+     "explain": "The application owns the logic: check the cache, fall back to the database, then fill the cache for next time."
+    },
+    {
+     "q": "Which strategy risks losing recent writes if the cache crashes?",
+     "options": [
+      "Cache-aside",
+      "Write-through",
+      "Write-back",
+      "Read-through"
+     ],
+     "answer": 2,
+     "explain": "Write-back acknowledges writes once they are in the cache and flushes them to the database later. A crash before the flush loses them."
+    }
+   ],
+   "cover_seed": "caching",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.92,
+   "path": "system-design/caching.md",
+   "hash": "5eae8cf48acc",
+   "word_count": 1110,
+   "excerpt": "A product page is viewed a million times a day. Its price, title and photos change maybe once a week. Yet without a cache, every single view asks the database the same question and waits for the same answer. Caching is the idea of remembering answers you will need again. It is the most effective…"
   }
  ]
 }

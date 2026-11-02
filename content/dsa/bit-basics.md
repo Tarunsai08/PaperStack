@@ -107,7 +107,7 @@ Two more one-liners come up constantly. A number is a power of two exactly when 
 
 ### Sizes and limits
 
-An `int` usually has 32 switches, the leftmost acting as the sign, so it holds values up to about 2.1 × 10⁹. A `long long` has 64 and reaches about 9.2 × 10¹⁸. That is why bitmasks over subsets are practical only for about 20 to 25 items: 2²⁰ is already about a million subsets.
+An `int` usually has 32 switches, the leftmost acting as the sign, so it holds values up to about 2.1 × 10⁹. A `long long` has 64 and reaches about 9.2 × 10¹⁸. That is why bitmasks over subsets are practical only for about 20 to 25 items: 2²⁰ is already about a million subsets. Beyond that, even listing the subsets takes too long, no matter how fast each step is.
 
 ### Negative numbers
 
