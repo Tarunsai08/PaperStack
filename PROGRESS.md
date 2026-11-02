@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 86 | 0 | 66 | 152 | 55/72 |
+| dsa | 88 | 0 | 64 | 152 | 57/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **288** | **0** | **385** | **673** | |
+| **All** | **290** | **0** | **383** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -25,7 +25,9 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### dsa
 
-- [ ] `dsa-tree-recursion` (P0, pattern, dsa-trees): Thinking Recursively About Trees
+- [ ] `dsa-lca` (P0, pattern, dsa-trees): Lowest Common Ancestor
+- [ ] `dsa-max-path-sum` (P0, problem-walkthrough, dsa-trees): Binary Tree Maximum Path Sum
+- [ ] `dsa-nodes-at-distance-k` (P0, problem-walkthrough, dsa-trees): Nodes at Distance K and Burning a Tree
 - [ ] `dsa-top-k-pattern` (P0, pattern, dsa-heaps-greedy): Top K: The Heap of Size K Trick
 - [ ] `dsa-greedy-exchange` (P0, pattern, dsa-heaps-greedy): Greedy Algorithms and the Exchange Argument
 - [ ] `dsa-meeting-rooms` (P0, problem-walkthrough, dsa-heaps-greedy): How Many Meeting Rooms Do You Need?
@@ -33,8 +35,6 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-dijkstra` (P0, pattern, dsa-graphs): Dijkstra: Shortest Paths With Weights
 - [ ] `dsa-word-ladder` (P0, problem-walkthrough, dsa-graphs): Word Ladder: BFS on Implicit Graphs
 - [ ] `dsa-islands-variants` (P0, problem-walkthrough, dsa-graphs): Number of Islands and Its Many Variants
-- [ ] `dsa-tree-construction` (P1, pattern, dsa-trees): Building Trees From Traversals and Serialising Them
-- [ ] `dsa-tree-width-and-structure` (P1, problem-walkthrough, dsa-trees): Maximum Width, Symmetry and Identical Trees
 
 ### cp
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 86 written</summary>
+<details><summary>dsa: 88 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -124,6 +124,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-sudoku-constraints` Solving Sudoku With Constraints
 - [x] `dsa-divide-and-conquer` Divide and Conquer: Split, Solve, Combine
 - [x] `dsa-tree-traversals` Tree Traversals: Pre, In, Post and Level Order
+- [x] `dsa-tree-recursion` Thinking Recursively About Trees
+- [x] `dsa-bst-operations` Binary Search Trees: Order as a Superpower
 - [x] `dsa-heap-basics` Heaps: Always Know the Smallest
 - [x] `dsa-graph-representation` Graphs: Modelling Problems as Nodes and Edges
 - [x] `dsa-bfs` Breadth-First Search: Exploring in Rings

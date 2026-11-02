@@ -1,7 +1,7 @@
 {
- "content_version": "8d84637d9dfc0dad",
+ "content_version": "705735ba2592c3f2",
  "generated_at": "2026-11-02",
- "count": 288,
+ "count": 290,
  "subjects": [
   {
    "id": "ml",
@@ -16416,6 +16416,257 @@
    "hash": "e6dff8415fe1",
    "word_count": 1108,
    "excerpt": "Almost every tree problem in an interview, from \"maximum depth\" to \"serialize a tree\" to \"lowest common ancestor\", is a traversal with a small twist. The twist is usually when you do the work at each node: before visiting the children, between them, after them, or level by level. Get the four…"
+  },
+  {
+   "id": "dsa-tree-recursion",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "tree-recursion",
+   "title": "Managers Summarising Their Teams' Reports",
+   "subtitle": "Thinking recursively about trees: what each node returns to its parent, what it passes down to its children, and when the answer lives in a separate global best",
+   "track": "dsa-trees",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-tree-traversals"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "binary tree",
+    "recursion",
+    "post-order",
+    "tree dp"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(h) recursion, where h is the height"
+   },
+   "practice_problems": [
+    {
+     "name": "Maximum Depth of Binary Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Minimum Depth of Binary Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/minimum-depth-of-binary-tree/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Balanced Binary Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/balanced-binary-tree/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Diameter of Binary Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/diameter-of-binary-tree/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Count Good Nodes in Binary Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/count-good-nodes-in-binary-tree/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Subtree",
+     "definition": "A node together with all of its descendants. Every node is the root of its own subtree."
+    },
+    {
+     "term": "Height",
+     "definition": "The number of nodes on the longest path from a node down to a leaf. An empty tree has height 0 and a single node has height 1."
+    },
+    {
+     "term": "Bottom-up recursion",
+     "definition": "Each node first gets answers from its children's subtrees, then combines them into its own answer and returns it to its parent, a post-order pattern."
+    },
+    {
+     "term": "Top-down recursion",
+     "definition": "Each node receives information from its ancestors as parameters, such as the largest value on the path so far, and passes updated information to its children."
+    },
+    {
+     "term": "Global best",
+     "definition": "A variable outside the recursion that records the best answer seen at any node, used when the answer is not the value a node returns to its parent."
+    },
+    {
+     "term": "Diameter",
+     "definition": "The number of edges on the longest path between any two nodes of a tree. The path may or may not pass through the root."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In the diameter problem, what does each node return to its parent?",
+     "options": [
+      "The diameter of its subtree",
+      "Its height, so the parent can extend a downward path",
+      "The number of nodes",
+      "Nothing"
+     ],
+     "answer": 1,
+     "explain": "A parent can only extend a path that goes down one side, so the returned value is the height. The diameter through this node, left height plus right height, goes into a separate global best."
+    },
+    {
+     "q": "Why does Balanced Binary Tree return −1 from an unbalanced subtree?",
+     "options": [
+      "To mark leaves",
+      "To signal failure upwards so every ancestor can stop early, giving O(n) instead of O(n²)",
+      "Because heights can be negative",
+      "It is a convention only"
+     ],
+     "answer": 1,
+     "explain": "Computing heights separately at every node repeats work. Returning a height or a failure flag in one pass checks balance and height together."
+    },
+    {
+     "q": "Count Good Nodes needs the largest value on the path from the root. How does that information travel?",
+     "options": [
+      "Returned upwards from leaves",
+      "Passed downwards as a parameter, top-down",
+      "Stored in each node",
+      "It cannot be computed recursively"
+     ],
+     "answer": 1,
+     "explain": "It depends on ancestors, not descendants, so each node receives it from its parent and passes max(itself, received) to its children."
+    }
+   ],
+   "cover_seed": "tree-recursion",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.92,
+   "path": "dsa/tree-recursion.md",
+   "hash": "f0f54466113d",
+   "word_count": 1390,
+   "excerpt": "Most binary tree interview questions, maximum depth, balanced or not, diameter, path sums, good nodes, look different and are solved by the same ten-line shape. People who struggle with trees usually try to picture the whole tree at once. People who find trees easy ask a much smaller question: what…"
+  },
+  {
+   "id": "dsa-bst-operations",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "bst-operations",
+   "title": "A Library Where Every Left Shelf Holds Smaller Numbers",
+   "subtitle": "Binary search trees: the ordering rule, search, insert and the three cases of delete, why inorder is sorted, and validating with bounds instead of parent checks",
+   "track": "dsa-trees",
+   "track_order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-tree-recursion",
+    "dsa-binary-search"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "binary search tree",
+    "bst",
+    "inorder",
+    "tree recursion"
+   ],
+   "complexity": {
+    "time": "O(h) per search, insert or delete, where h is the height",
+    "space": "O(h) recursion"
+   },
+   "practice_problems": [
+    {
+     "name": "Search in a Binary Search Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/search-in-a-binary-search-tree/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Lowest Common Ancestor of a Binary Search Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Validate Binary Search Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/validate-binary-search-tree/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Kth Smallest Element in a BST",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Delete Node in a BST",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/delete-node-in-a-bst/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Binary search tree",
+     "definition": "A binary tree where, for every node, all keys in its left subtree are smaller and all keys in its right subtree are larger."
+    },
+    {
+     "term": "BST invariant",
+     "definition": "The ordering rule above, which must hold for every node against its whole subtrees, not just its direct children."
+    },
+    {
+     "term": "Inorder successor",
+     "definition": "The next larger key in the tree: for a node with a right subtree, the smallest key in that subtree."
+    },
+    {
+     "term": "Bounds",
+     "definition": "The open interval (low, high) that a node's key must lie in, inherited from its ancestors during validation."
+    },
+    {
+     "term": "Height",
+     "definition": "The number of levels in the tree. Operations cost O(height), which is O(log n) for a balanced tree and O(n) for a chain."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A tree has root 10, left child 5 and right child 15, and 15 has a left child 6. Is it a valid BST?",
+     "options": [
+      "Yes, every parent and child are in order",
+      "No: 6 is in the right subtree of 10 but is smaller than 10",
+      "Yes, because 6 < 15",
+      "Only if 6 is a leaf"
+     ],
+     "answer": 1,
+     "explain": "The rule applies to whole subtrees. Every key to the right of 10 must exceed 10, and 6 does not."
+    },
+    {
+     "q": "To delete a node with two children, what replaces its key?",
+     "options": [
+      "Its left child",
+      "Its inorder successor, the smallest key in its right subtree, which is then deleted from there",
+      "Its parent",
+      "Any leaf"
+     ],
+     "answer": 1,
+     "explain": "The successor is larger than everything on the left and smaller than everything else on the right, so it keeps the ordering. It has no left child, so deleting it is an easy case."
+    },
+    {
+     "q": "Why is an inorder traversal of a BST sorted?",
+     "options": [
+      "Because it visits leaves first",
+      "It visits the left subtree (all smaller), then the node, then the right subtree (all larger), at every node",
+      "Because the tree is balanced",
+      "It is only sorted for complete trees"
+     ],
+     "answer": 1,
+     "explain": "Applying left, node, right recursively lists everything smaller before the node and everything larger after it, at every level."
+    }
+   ],
+   "cover_seed": "bst-operations",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.9,
+   "path": "dsa/bst-operations.md",
+   "hash": "9953155a9d2f",
+   "word_count": 1407,
+   "excerpt": "A sorted array finds any number in O(log n) with binary search, but inserting a new number means shifting everything after it, O(n). A linked list inserts in O(1) but searches in O(n). A binary search tree gets fast search and fast insertion at the same time, as long as it stays reasonably…"
   },
   {
    "id": "dsa-heap-basics",
