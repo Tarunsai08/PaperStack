@@ -1,7 +1,7 @@
 {
- "content_version": "8ebe9c7aab72a43c",
+ "content_version": "df00f5dc9fc35e61",
  "generated_at": "2026-11-02",
- "count": 107,
+ "count": 111,
  "subjects": [
   {
    "id": "ml",
@@ -9256,6 +9256,129 @@
    "excerpt": "Donald Knuth noted that although the first binary search was published in 1946, the first version that worked correctly for every input took many more years to appear. Decades later, a bug was found in the binary search inside Java's standard library: computing (low + high) / 2 overflowed on very…"
   },
   {
+   "id": "dsa-binary-search-answer",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "binary-search-answer",
+   "title": "Guessing the Answer, Then Checking It",
+   "subtitle": "Binary search on the answer: when finding the best value is hard but checking a value is easy",
+   "track": "dsa-search-sort",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-binary-search"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 4,
+   "topics": [
+    "binary search",
+    "optimisation",
+    "greedy",
+    "minimise the maximum"
+   ],
+   "complexity": {
+    "time": "O(n log R), where R is the range of possible answers",
+    "space": "O(1)"
+   },
+   "practice_problems": [
+    {
+     "name": "Koko Eating Bananas",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/koko-eating-bananas/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Capacity To Ship Packages Within D Days",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Factory Machines",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1620",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Split Array Largest Sum",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/split-array-largest-sum/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Magnetic Force Between Two Balls",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/magnetic-force-between-two-balls/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Answer space",
+     "definition": "The range of values the answer could possibly take, such as capacities from the heaviest package to the total weight."
+    },
+    {
+     "term": "Feasibility check",
+     "definition": "A function that answers 'is this candidate value good enough?' for one guess, usually with a simple greedy pass."
+    },
+    {
+     "term": "Monotonic",
+     "definition": "Changing in one direction only. If capacity c works, every capacity above c also works."
+    },
+    {
+     "term": "Greedy pass",
+     "definition": "A single left-to-right scan that makes the obvious local choice at each step, used here to test one guess."
+    },
+    {
+     "term": "Minimise the maximum",
+     "definition": "A family of problems that asks for the smallest possible value of the worst case, such as the lightest possible heaviest day."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What property must the feasibility check have for binary search on the answer to work?",
+     "options": [
+      "It must be O(1)",
+      "If a value works, every larger value also works (or every smaller one, consistently)",
+      "It must use recursion",
+      "The array must be sorted"
+     ],
+     "answer": 1,
+     "explain": "Binary search needs a no-then-yes pattern over the answer space. Monotonic feasibility provides exactly that."
+    },
+    {
+     "q": "For 'ship packages within D days', what are good search bounds for the capacity?",
+     "options": [
+      "0 to 1",
+      "The heaviest package to the total weight",
+      "1 to D",
+      "The average weight to the median"
+     ],
+     "answer": 1,
+     "explain": "Capacity below the heaviest package can never ship it; capacity equal to the total ships everything in one day. The answer lies between."
+    },
+    {
+     "q": "Why is the overall time O(n log R) and not O(n squared)?",
+     "options": [
+      "Because the check is O(1)",
+      "Each of the log R guesses runs one O(n) check",
+      "Because the array is sorted",
+      "Because R is always small"
+     ],
+     "answer": 1,
+     "explain": "Binary search makes about log2 of the range guesses, and each guess costs one linear greedy pass over the input."
+    }
+   ],
+   "cover_seed": "binary-search-answer",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.92,
+   "path": "dsa/binary-search-answer.md",
+   "hash": "7246a3f8bb34",
+   "word_count": 946,
+   "excerpt": "A shipping company must move a row of packages, in order, within 5 days. Every day the ship carries packages from the front of the row until the next one would exceed its capacity. What is the smallest capacity that gets the job done? Computing that capacity directly is awkward. But answering a…"
+  },
+  {
    "id": "cp-how-contests-work",
    "kind": "primer",
    "subject": "cp",
@@ -9717,9 +9840,127 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.82,
    "path": "cp/stress-testing.md",
-   "hash": "fb88823f60a5",
-   "word_count": 896,
+   "hash": "a0b71d56afb1",
+   "word_count": 916,
    "excerpt": "Wrong answer on test 7. You reread your code three times. It looks right. The samples pass. You cannot see test 7. Twenty minutes slip by while you stare at the screen, trying to imagine what the judge could possibly be feeding it. Experienced contestants do something different. In about five…"
+  },
+  {
+   "id": "cp-invariants-observations",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "invariants-observations",
+   "title": "Find What Never Changes",
+   "subtitle": "Invariants and observations: the reasoning behind most Div. 2 problems from 1200 to 1600",
+   "track": "cp-start",
+   "track_order": 12,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-reading-problems-fast"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "competitive programming",
+    "invariants",
+    "parity",
+    "observations",
+    "constructive"
+   ],
+   "complexity": {
+    "time": "Usually O(n) once the observation is found",
+    "space": "O(1)"
+   },
+   "practice_problems": [
+    {
+     "name": "Two Sets",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1092",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Coin Piles",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1754",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Palindrome Reorder",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1755",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Watermelon",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/4/A",
+     "difficulty": "800"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Invariant",
+     "definition": "A quantity or property that every allowed move leaves unchanged, such as the parity of a sum."
+    },
+    {
+     "term": "Monovariant",
+     "definition": "A quantity that only ever moves in one direction, such as a count that can only decrease, which proves a process must end."
+    },
+    {
+     "term": "Parity",
+     "definition": "Whether a number is even or odd. Many moves change numbers but keep their parity."
+    },
+    {
+     "term": "Necessary condition",
+     "definition": "Something that must be true for an answer to exist. An invariant usually gives one."
+    },
+    {
+     "term": "Sufficient condition",
+     "definition": "Something that, when true, guarantees an answer exists. Proving it usually needs a construction."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A move adds 1 to two different elements. What is invariant?",
+     "options": [
+      "The maximum",
+      "The parity of the sum of all elements",
+      "The number of zeros",
+      "Nothing"
+     ],
+     "answer": 1,
+     "explain": "Each move adds 2 to the total, so the sum's parity (even or odd) never changes."
+    },
+    {
+     "q": "In Coin Piles, each move removes 2 from one pile and 1 from the other. Why must a + b be divisible by 3 to empty both piles?",
+     "options": [
+      "Because 3 is prime",
+      "Every move removes exactly 3 coins in total",
+      "Because piles must be equal",
+      "It does not need to be"
+     ],
+     "answer": 1,
+     "explain": "The total drops by 3 each move, so it can reach 0 only if it starts as a multiple of 3."
+    },
+    {
+     "q": "You found an invariant that rules out some inputs. What is still needed?",
+     "options": [
+      "Nothing",
+      "A proof or construction showing every remaining input really is solvable",
+      "A faster computer",
+      "A brute force for all n"
+     ],
+     "answer": 1,
+     "explain": "An invariant gives a necessary condition. You still need to show it is sufficient, usually by constructing an answer, or by checking it against a brute force."
+    }
+   ],
+   "cover_seed": "invariants-observations",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.85,
+   "path": "cp/invariants-observations.md",
+   "hash": "a007b1b4348b",
+   "word_count": 993,
+   "excerpt": "A chessboard has two opposite corners cut off, leaving 62 squares. Can you cover it exactly with 31 dominoes? People try for minutes, shuffling dominoes around in their heads. Then someone notices the colours: every domino covers one black and one white square, but the two removed corners are the…"
   },
   {
    "id": "famous-algos-bloom-filter",
@@ -10154,6 +10395,93 @@
    "hash": "16a14e9d2239",
    "word_count": 980,
    "excerpt": "Two servers record events with their own clocks. Server A logs \"user deleted the file\" at 10:00:00.120. Server B logs \"user edited the file\" at 10:00:00.100. So the edit came first? Not necessarily: B's clock might run 50 milliseconds fast. Physical clocks on different machines never agree exactly,…"
+  },
+  {
+   "id": "famous-algos-vector-clocks",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "vector-clocks",
+   "title": "Catching Two Edits That Never Saw Each Other",
+   "subtitle": "Vector clocks: one counter per machine, so a system can tell 'came before' from 'happened at the same time'",
+   "track": "fa-distributed",
+   "track_order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-lamport-clocks"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "distributed systems",
+    "logical clocks",
+    "conflicts",
+    "replication"
+   ],
+   "glossary": [
+    {
+     "term": "Vector clock",
+     "definition": "A list of counters, one per machine, attached to each event or version, recording how much of every machine's history it has seen."
+    },
+    {
+     "term": "Dominates",
+     "definition": "Vector A dominates vector B when every entry of A is at least the matching entry of B, and at least one is bigger. Then B happened before A."
+    },
+    {
+     "term": "Concurrent",
+     "definition": "Two versions where neither vector dominates the other. Neither writer knew about the other's change."
+    },
+    {
+     "term": "Sibling",
+     "definition": "One of several concurrent versions of the same key that a store keeps until someone resolves the conflict."
+    },
+    {
+     "term": "Conflict resolution",
+     "definition": "Deciding what the final value should be when concurrent versions exist, for example by merging a shopping cart."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Version A has clock [2, 1, 0] and version B has [2, 2, 0]. What is their relationship?",
+     "options": [
+      "A and B are concurrent",
+      "A happened before B",
+      "B happened before A",
+      "They are identical"
+     ],
+     "answer": 1,
+     "explain": "Every entry of B is at least A's, and the second entry is bigger, so B dominates A. A happened before B, and B can replace it."
+    },
+    {
+     "q": "Version A is [3, 0] and version B is [2, 1]. What should a store do?",
+     "options": [
+      "Keep A, it has the bigger first entry",
+      "Keep B, it is newer",
+      "Keep both as siblings, because they are concurrent",
+      "Delete both"
+     ],
+     "answer": 2,
+     "explain": "A is bigger in the first entry and B in the second, so neither dominates. The writes were concurrent and the conflict must be resolved."
+    },
+    {
+     "q": "When machine i receives a message with vector V, how does it update its own vector?",
+     "options": [
+      "Replace it with V",
+      "Take the entry-wise maximum with V, then add 1 to its own entry",
+      "Add V entry-wise",
+      "Increment every entry"
+     ],
+     "answer": 1,
+     "explain": "The maximum merges everything both sides have seen; the increment records the receive event itself."
+    }
+   ],
+   "cover_seed": "vector-clocks",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.85,
+   "path": "famous-algos/vector-clocks.md",
+   "hash": "4832f7347f13",
+   "word_count": 998,
+   "excerpt": "You add a book to your shopping cart on your phone. A moment later, on your laptop, you add headphones. Both requests reach different replicas of the cart service during a brief network hiccup. When the replicas sync, which cart is right? If the system simply keeps the \"latest\" write, one of your…"
   },
   {
    "id": "system-design-interview-framework",
@@ -10597,6 +10925,99 @@
    "hash": "376a7682fb75",
    "word_count": 1122,
    "excerpt": "Every website you visit begins with a question your browser asks before anything else: \"where is this name?\" If that question cannot be answered, a perfectly healthy service simply vanishes. Several of the internet's most visible outages have come not from servers crashing but from DNS answers…"
+  },
+  {
+   "id": "system-design-api-design",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "api-design",
+   "title": "The Menu Is a Promise to the Kitchen",
+   "subtitle": "API design for interviews and real systems: REST, gRPC, GraphQL, pagination, versioning and errors",
+   "track": "sd-fundamentals",
+   "track_order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-client-server-http"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "api design",
+    "rest",
+    "grpc",
+    "graphql",
+    "pagination"
+   ],
+   "glossary": [
+    {
+     "term": "API",
+     "definition": "Application programming interface: the contract that says which requests a service accepts and what it returns."
+    },
+    {
+     "term": "Resource",
+     "definition": "In REST, a thing the API exposes, such as a user or an order, identified by a URL like /users/42."
+    },
+    {
+     "term": "Idempotent",
+     "definition": "Safe to repeat. Sending the same idempotent request twice has the same effect as sending it once."
+    },
+    {
+     "term": "Cursor pagination",
+     "definition": "Paging through results by passing an opaque marker for where the last page ended, instead of a page number."
+    },
+    {
+     "term": "Schema",
+     "definition": "A formal description of the data an API sends and receives, such as a Protocol Buffers file or a GraphQL schema."
+    },
+    {
+     "term": "Breaking change",
+     "definition": "A change that makes existing clients fail, such as removing a field or changing its meaning."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why is cursor pagination usually better than offset pagination for a fast-changing feed?",
+     "options": [
+      "It uses fewer bytes",
+      "New items inserted at the top do not shift pages, and the database can seek directly instead of skipping rows",
+      "It allows jumping to page 500",
+      "It does not need an index"
+     ],
+     "answer": 1,
+     "explain": "With offsets, inserts move items between pages and the database must skip all earlier rows. A cursor says 'continue after this item', which is stable and uses an index."
+    },
+    {
+     "q": "Which HTTP methods are idempotent by definition?",
+     "options": [
+      "POST only",
+      "GET, PUT and DELETE",
+      "POST and PATCH",
+      "None"
+     ],
+     "answer": 1,
+     "explain": "Repeating GET, PUT or DELETE leaves the same state. POST usually creates something new each time, which is why payment APIs add idempotency keys."
+    },
+    {
+     "q": "When is gRPC a better fit than a public REST API?",
+     "options": [
+      "For browsers calling a public endpoint with no tooling",
+      "For high-volume internal service-to-service calls where a typed schema and efficient binary encoding help",
+      "Never",
+      "Only for file uploads"
+     ],
+     "answer": 1,
+     "explain": "gRPC shines between services you control: strict schemas, generated clients, HTTP/2 streaming and compact messages."
+    }
+   ],
+   "cover_seed": "api-design",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.86,
+   "path": "system-design/api-design.md",
+   "hash": "d44c6a14102d",
+   "word_count": 1115,
+   "excerpt": "A mobile app ships with a call to GET /feed?page=2. A year later the backend team changes how pages work. The app in millions of pockets cannot be updated overnight, and suddenly half your users see duplicated posts or blank screens. APIs are the part of a system that is hardest to take back. Once…"
   }
  ]
 }

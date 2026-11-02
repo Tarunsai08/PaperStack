@@ -167,6 +167,8 @@ Common misconception: "if 10,000 random tests pass, my solution is correct." A s
 
 ## Practice problems
 
+These are simple enough that writing a brute force takes a minute, which makes them ideal for building the habit.
+
 Pick any of these, write a deliberately buggy version (start an answer at 0, use `<=` instead of `<`, forget to sort), and let a stress test find your planted bug. Then write the real solution and stress it against the brute force before submitting. It feels slow the first time and becomes a two-minute habit.
 
 ## Key takeaways

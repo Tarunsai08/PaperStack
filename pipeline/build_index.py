@@ -619,7 +619,7 @@ def build(content: Path = CONTENT, strict: bool = False, partial: bool = False, 
         "articles": entries,
     }
 
-    roadmap, cur_problems = build_roadmap(content, tracks, subjects, {e["id"] for e in entries})
+    roadmap, cur_problems = build_roadmap(content, tracks, subjects, {e["id"]: e for e in entries})
     problems += cur_problems
 
     if problems:
@@ -643,7 +643,7 @@ def load_curricula(content: Path = CONTENT) -> list[dict]:
     return out
 
 
-def build_roadmap(content: Path, tracks: list[dict], subjects: list[dict], written_ids: set[str]) -> tuple[dict, int]:
+def build_roadmap(content: Path, tracks: list[dict], subjects: list[dict], written_ids: dict) -> tuple[dict, int]:
     """Check content/curriculum/*.json and flatten it into content/roadmap.json for the app."""
     track_info = {t["id"]: t for t in tracks}
     problems = 0
@@ -673,6 +673,9 @@ def build_roadmap(content: Path, tracks: list[dict], subjects: list[dict], writt
                 msgs.append("status is written but no article has this id")
             if e.get("status") == "planned" and e.get("id") in written_ids:
                 msgs.append("an article exists but status is still planned")
+            art = written_ids.get(e.get("id"))
+            if art and e.get("subject") != "ml" and (art.get("track") != e.get("track") or art.get("track_order") != e.get("order")):
+                msgs.append(f'article track/track_order ({art.get("track")}, {art.get("track_order")}) must match the curriculum ({e.get("track")}, {e.get("order")})')
             for m in msgs:
                 print(f"ERROR {where}: [curriculum] {m}")
             problems += len(msgs)
