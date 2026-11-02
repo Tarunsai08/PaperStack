@@ -34,7 +34,7 @@ Only link (`[text](article:<id>)`) and list prerequisites that **already exist a
 - **DSA:** `content/dsa/prefix-sums.md`, `content/dsa/two-pointers.md`, `content/dsa/binary-search.md` (patterns), `content/dsa/big-o.md` (primer). Add a walkthrough exemplar once written.
 - **CP:** `content/cp/stress-testing.md` (pattern), `content/cp/how-contests-work.md`, `content/cp/fast-io-template.md` (primers).
 - **Famous Algorithms:** `content/famous-algos/bloom-filter.md`, `content/famous-algos/consistent-hashing.md`, `content/famous-algos/hyperloglog.md`.
-- **System Design:** `content/system-design/client-server-http.md`, `content/system-design/dns-deep-dive.md` (deep dives), `content/system-design/back-of-envelope.md` (primer). Add the first case study and LLD article here once written.
+- **System Design:** `content/system-design/client-server-http.md`, `content/system-design/dns-deep-dive.md` (deep dives), `content/system-design/back-of-envelope.md` (primer). Case study: `content/system-design/url-shortener.md`, `content/system-design/rate-limiter.md`. Add the first LLD article here once written.
 - **Length tip:** first drafts tend to land 5-15% short of the minimum; aim for the middle of the range.
 
 ## 5. Common pitfalls

@@ -1,7 +1,7 @@
 {
- "content_version": "1c59c56f6816387f",
+ "content_version": "e61f9b92769f7a0c",
  "generated_at": "2026-11-02",
- "count": 161,
+ "count": 166,
  "subjects": [
   {
    "id": "ml",
@@ -10427,6 +10427,129 @@
    "excerpt": "Linked list questions are short to state and easy to get wrong. \"Reverse this list.\" Five lines of code, and half of candidates either lose the rest of the list, create a cycle, or crash on an empty input. The problems are not hard. They are fragile. A few habits make them safe every time: draw the…"
   },
   {
+   "id": "dsa-fast-slow-pointers",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "fast-slow-pointers",
+   "title": "The Tortoise and the Hare on a Circular Track",
+   "subtitle": "Fast and slow pointers: detect cycles, find where they start, and find the middle, all in O(1) extra space",
+   "track": "dsa-linear",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-linked-list-basics"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "linked lists",
+    "two pointers",
+    "cycle detection",
+    "floyd"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(1)"
+   },
+   "practice_problems": [
+    {
+     "name": "Linked List Cycle",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/linked-list-cycle/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Middle of the Linked List",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/middle-of-the-linked-list/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Linked List Cycle II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/linked-list-cycle-ii/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Happy Number",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/happy-number/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Find the Duplicate Number",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-the-duplicate-number/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Cycle",
+     "definition": "A loop in a linked structure where following next pointers eventually returns to a node already visited."
+    },
+    {
+     "term": "Slow pointer",
+     "definition": "A pointer that moves one step at a time."
+    },
+    {
+     "term": "Fast pointer",
+     "definition": "A pointer that moves two steps at a time."
+    },
+    {
+     "term": "Cycle entry",
+     "definition": "The first node of the cycle, where the straight part of the list joins the loop."
+    },
+    {
+     "term": "Floyd's algorithm",
+     "definition": "The tortoise-and-hare method for detecting a cycle and finding its entry with two pointers and O(1) memory."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why must the fast pointer eventually meet the slow pointer if there is a cycle?",
+     "options": [
+      "Because they start together",
+      "Once both are in the cycle, the fast one gains exactly one step per move, so the gap shrinks by one each time until it reaches zero",
+      "Because the cycle is short",
+      "It might never meet"
+     ],
+     "answer": 1,
+     "explain": "Inside the loop, the distance from slow to fast changes by one each step, so it must hit zero; the fast pointer cannot jump over the slow one."
+    },
+    {
+     "q": "After the pointers meet, how do you find the cycle entry?",
+     "options": [
+      "Return the meeting node",
+      "Move one pointer back to the head, then move both one step at a time; they meet at the entry",
+      "Count the cycle length only",
+      "Reverse the list"
+     ],
+     "answer": 1,
+     "explain": "The distance from the head to the entry equals the distance from the meeting point to the entry, modulo the cycle length, so stepping together lands both at the entry."
+    },
+    {
+     "q": "When the fast pointer reaches the end of a list with no cycle, where is the slow pointer?",
+     "options": [
+      "At the head",
+      "At the middle",
+      "At the last node",
+      "At a random node"
+     ],
+     "answer": 1,
+     "explain": "Slow has taken half as many steps as fast, so it is at the middle."
+    }
+   ],
+   "cover_seed": "fast-slow-pointers",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "dsa/fast-slow-pointers.md",
+   "hash": "9abdc025d3ba",
+   "word_count": 1035,
+   "excerpt": "A linked list might end, or it might loop back on itself forever. How do you tell, without a hash set of visited nodes? Walk it and you will either reach the end or walk in circles forever, and you cannot know which is happening. There is a neat answer that uses no extra memory at all: send two…"
+  },
+  {
    "id": "dsa-stack-patterns",
    "kind": "pattern",
    "subject": "dsa",
@@ -12207,6 +12330,241 @@
    "hash": "ef023778ac46",
    "word_count": 911,
    "excerpt": "A cricket coach has 15 players and must pick 11. How many different teams are possible? Writing them out would take a lifetime: there are 1,365. Now pick 50 out of a million, modulo 10⁹ + 7, a hundred thousand times. Counting problems like this fill contest rounds from about 1400 rating upward. All…"
+  },
+  {
+   "id": "cp-inclusion-exclusion",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "inclusion-exclusion",
+   "title": "Counting Without Double Counting",
+   "subtitle": "Inclusion-exclusion: add the singles, subtract the pairs, add back the triples, and enumerate it all with bitmasks",
+   "track": "cp-math",
+   "track_order": 7,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-binomial-coefficients"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 4,
+   "topics": [
+    "combinatorics",
+    "inclusion-exclusion",
+    "bitmasks",
+    "number theory"
+   ],
+   "complexity": {
+    "time": "O(2^k · cost of one intersection) for k conditions",
+    "space": "O(1) beyond input"
+   },
+   "practice_problems": [
+    {
+     "name": "Prime Multiples",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2185",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Christmas Party",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1717",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Ugly Number III",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/ugly-number-iii/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Count Primes",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/count-primes/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Inclusion-exclusion principle",
+     "definition": "A rule for counting the size of a union of sets by adding single sets, subtracting pairwise overlaps, adding triple overlaps, and so on."
+    },
+    {
+     "term": "Union",
+     "definition": "Everything that is in at least one of the sets."
+    },
+    {
+     "term": "Intersection",
+     "definition": "Everything that is in all of the chosen sets at once."
+    },
+    {
+     "term": "Complement counting",
+     "definition": "Counting the things you do not want and subtracting from the total, often easier than counting what you want directly."
+    },
+    {
+     "term": "Derangement",
+     "definition": "A permutation where no element stays in its original position, such as a gift exchange where nobody gets their own gift."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How many numbers from 1 to 30 are divisible by 2 or 3?",
+     "options": [
+      "25",
+      "20",
+      "15",
+      "10"
+     ],
+     "answer": 1,
+     "explain": "15 divisible by 2, 10 by 3, minus 5 divisible by both (by 6): 15 + 10 − 5 = 20."
+    },
+    {
+     "q": "With k conditions, how many terms does the full inclusion-exclusion formula have?",
+     "options": [
+      "k",
+      "k squared",
+      "2^k − 1 non-empty subsets",
+      "k factorial"
+     ],
+     "answer": 2,
+     "explain": "Each non-empty subset of the conditions contributes one term, with sign depending on the subset's size."
+    },
+    {
+     "q": "In the formula, which subsets get a minus sign?",
+     "options": [
+      "All of them",
+      "Subsets of even size",
+      "Subsets of odd size",
+      "Only the largest subset"
+     ],
+     "answer": 1,
+     "explain": "Singles are added, pairs subtracted, triples added: subsets of even size carry a minus sign."
+    }
+   ],
+   "cover_seed": "inclusion-exclusion",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.76,
+   "path": "cp/inclusion-exclusion.md",
+   "hash": "02997d74c9af",
+   "word_count": 989,
+   "excerpt": "How many numbers from 1 to 10¹⁸ are divisible by at least one of the primes 2, 3, 5 and 7? You cannot loop to 10¹⁸. Counting multiples of each prime is easy, n / p, but adding them counts 6, 10, 14 and friends twice, and 210 four times. The fix is a counting rule that corrects its own overcounting,…"
+  },
+  {
+   "id": "cp-euler-totient",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "euler-totient",
+   "title": "Counting the Numbers That Share Nothing With n",
+   "subtitle": "Euler's totient function: the product formula from prime factors, a sieve for all values, and Euler's theorem for exponents",
+   "track": "cp-math",
+   "track_order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-sieve",
+    "cp-gcd-lcm"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 4,
+   "topics": [
+    "number theory",
+    "totient",
+    "coprime",
+    "euler's theorem"
+   ],
+   "complexity": {
+    "time": "O(sqrt n) for one value; O(n log log n) for all values up to n",
+    "space": "O(1) or O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Same GCDs",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/1295/D",
+     "difficulty": "1800"
+    },
+    {
+     "name": "Exponentiation II",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1712",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Counting Coprime Pairs",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2417",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Sum of Divisors",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1082",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Euler's totient function",
+     "definition": "φ(n), the count of integers from 1 to n that are coprime to n."
+    },
+    {
+     "term": "Coprime",
+     "definition": "Two numbers are coprime when their greatest common divisor is 1."
+    },
+    {
+     "term": "Multiplicative function",
+     "definition": "A function where f(a·b) = f(a)·f(b) whenever a and b are coprime. φ is multiplicative."
+    },
+    {
+     "term": "Euler's theorem",
+     "definition": "If a and n are coprime, then a^φ(n) ≡ 1 (mod n). Fermat's little theorem is the special case where n is prime."
+    },
+    {
+     "term": "Prime power",
+     "definition": "A number of the form p^k for a prime p, such as 8 = 2^3 or 9 = 3^2."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is φ(12)?",
+     "options": [
+      "4",
+      "6",
+      "8",
+      "11"
+     ],
+     "answer": 0,
+     "explain": "12 = 2^2 × 3. φ(12) = 12 × (1 − 1/2) × (1 − 1/3) = 12 × 1/2 × 2/3 = 4. The coprime numbers are 1, 5, 7 and 11."
+    },
+    {
+     "q": "What is φ(p) for a prime p?",
+     "options": [
+      "1",
+      "p",
+      "p − 1",
+      "p + 1"
+     ],
+     "answer": 2,
+     "explain": "Every number from 1 to p − 1 is coprime to a prime p; only p itself is not."
+    },
+    {
+     "q": "How does Euler's theorem help compute a^b mod n for a huge b when gcd(a, n) = 1?",
+     "options": [
+      "It does not",
+      "Exponents can be reduced modulo φ(n), since a^φ(n) ≡ 1",
+      "Bases can be reduced modulo φ(n)",
+      "It makes the answer always 1"
+     ],
+     "answer": 1,
+     "explain": "Because a^φ(n) ≡ 1 (mod n), a^b ≡ a^(b mod φ(n)) (mod n) when a and n are coprime."
+    }
+   ],
+   "cover_seed": "euler-totient",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "cp/euler-totient.md",
+   "hash": "677fdfef25bb",
+   "word_count": 978,
+   "excerpt": "A clock has 12 positions. You start at 0 and jump forward by the same step each time. With a step of 5 you visit every position before returning to 0; with a step of 4 you only ever visit 0, 4 and 8. The steps that visit every position are exactly those that share no factor with 12: 1, 5, 7 and 11.…"
   },
   {
    "id": "cp-coordinate-compression",
@@ -14007,6 +14365,97 @@
    "hash": "0bf4d42bdd7c",
    "word_count": 952,
    "excerpt": "An analyst starts a report that reads every order from the last year, which takes ten minutes. Meanwhile, the shop keeps selling: thousands of new orders and refunds per minute. If the report locked every row it read, the shop would freeze for ten minutes. If it read rows without any protection, it…"
+  },
+  {
+   "id": "famous-algos-geohash",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "geohash",
+   "title": "Turning a Map Into a String",
+   "subtitle": "Geohash: repeatedly halve the world, interleave the bits, and nearby places share a prefix",
+   "track": "fa-storage",
+   "track_order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-binary-search"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "geospatial",
+    "indexing",
+    "location",
+    "binary search"
+   ],
+   "glossary": [
+    {
+     "term": "Geohash",
+     "definition": "A short string encoding a latitude and longitude, built by repeatedly halving the map and interleaving the choices as bits."
+    },
+    {
+     "term": "Latitude and longitude",
+     "definition": "Coordinates for a point on Earth: latitude runs from −90 (south) to 90 (north), longitude from −180 (west) to 180 (east)."
+    },
+    {
+     "term": "Bit interleaving",
+     "definition": "Alternating bits from two numbers, here longitude then latitude, so a single sequence describes both."
+    },
+    {
+     "term": "Prefix",
+     "definition": "The first few characters of a string. Points whose geohashes share a longer prefix lie in the same smaller cell."
+    },
+    {
+     "term": "Cell",
+     "definition": "The rectangle of the map that a geohash of a given length represents. Longer geohashes mean smaller cells."
+    },
+    {
+     "term": "Base32",
+     "definition": "Writing 5 bits at a time as one character from a 32-character alphabet, which keeps geohashes short and readable."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Two restaurants have geohashes tdr1v9 and tdr1vf. What does the shared prefix tdr1v tell you?",
+     "options": [
+      "They are in different countries",
+      "Both lie inside the same 5-character cell, a few kilometres across",
+      "They are exactly the same place",
+      "Nothing"
+     ],
+     "answer": 1,
+     "explain": "Sharing a 5-character prefix means both points fell into the same cell after 25 halvings, which is roughly a 5 km square."
+    },
+    {
+     "q": "Why is searching only a point's own cell not enough for 'nearby' queries?",
+     "options": [
+      "Cells are too large",
+      "A nearby point can sit just across a cell boundary with a completely different prefix, so the neighbouring cells must be searched too",
+      "Geohashes are random",
+      "Prefixes never match"
+     ],
+     "answer": 1,
+     "explain": "Boundaries split close neighbours. The standard fix is to search the point's cell and its 8 neighbours."
+    },
+    {
+     "q": "What does each extra bit of a geohash do?",
+     "options": [
+      "Doubles the area",
+      "Halves the cell along either longitude or latitude",
+      "Adds a random digit",
+      "Changes the country"
+     ],
+     "answer": 1,
+     "explain": "Bits alternate between longitude and latitude, and each one picks one half of the current range."
+    }
+   ],
+   "cover_seed": "geohash",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.86,
+   "path": "famous-algos/geohash.md",
+   "hash": "504386217fbf",
+   "word_count": 1073,
+   "excerpt": "A food delivery app has 300,000 restaurants and a hungry user at a particular latitude and longitude. \"Show restaurants within 3 km\" sounds easy, but computing the distance to all 300,000 for every search, thousands of times a second, is wasteful. And a normal database index sorts by one number at…"
   },
   {
    "id": "famous-algos-cryptographic-hashing",
@@ -16018,6 +16467,98 @@
    "hash": "38eb1aa8fbe7",
    "word_count": 1321,
    "excerpt": "A public API serves 50,000 developers. One of them deploys a script with a bug and starts sending 20,000 requests per second. Within minutes, database connections are exhausted, latencies spike for everyone, and the on-call engineer's phone starts ringing. A rate limiter would have rejected that…"
+  },
+  {
+   "id": "system-design-unique-id-generator",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "unique-id-generator",
+   "title": "Design a Unique ID Generator",
+   "subtitle": "From auto-increment to UUIDs to Snowflake: generating billions of unique, roughly time-ordered ids without a bottleneck",
+   "track": "sd-cases",
+   "track_order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-back-of-envelope"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "case study",
+    "unique ids",
+    "snowflake",
+    "uuid"
+   ],
+   "glossary": [
+    {
+     "term": "Auto-increment",
+     "definition": "A database feature that assigns the next integer to each new row. Simple, but tied to one database."
+    },
+    {
+     "term": "UUID",
+     "definition": "A 128-bit universally unique identifier. Version 4 UUIDs are mostly random; version 7 UUIDs start with a timestamp so they sort by time."
+    },
+    {
+     "term": "Snowflake id",
+     "definition": "A 64-bit id made of a timestamp, a machine id and a per-millisecond sequence number, popularised by Twitter."
+    },
+    {
+     "term": "Epoch",
+     "definition": "The starting moment from which a timestamp counts, such as a custom date chosen when the system was built."
+    },
+    {
+     "term": "Sequence number",
+     "definition": "A counter that distinguishes ids created by the same machine in the same millisecond."
+    },
+    {
+     "term": "Clock skew",
+     "definition": "Differences between machines' clocks, or a clock jumping backwards, which can break time-based id schemes."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In a Snowflake layout with 12 sequence bits, how many ids can one machine create per millisecond?",
+     "options": [
+      "12",
+      "1,024",
+      "4,096",
+      "Unlimited"
+     ],
+     "answer": 2,
+     "explain": "12 bits give 2^12 = 4,096 distinct sequence numbers per millisecond before the machine must wait for the next millisecond."
+    },
+    {
+     "q": "Why are random UUID v4 primary keys sometimes slow in databases?",
+     "options": [
+      "They are too short",
+      "Random keys insert into random places in a B-tree index, causing page splits and poor cache locality",
+      "They are not unique",
+      "Databases cannot store 128 bits"
+     ],
+     "answer": 1,
+     "explain": "Time-ordered ids append near the end of the index; random ids scatter writes across the whole index."
+    },
+    {
+     "q": "What must a Snowflake generator do if its clock moves backwards?",
+     "options": [
+      "Ignore it",
+      "Wait until the clock passes the last timestamp used, or refuse to generate, to avoid duplicates",
+      "Reset the sequence to zero and continue",
+      "Switch to random ids silently"
+     ],
+     "answer": 1,
+     "explain": "Reusing an old timestamp with a reset sequence could reproduce ids already issued, so the generator must not go backwards."
+    }
+   ],
+   "cover_seed": "unique-id-generator",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "system-design/unique-id-generator.md",
+   "hash": "fc80e2e1b102",
+   "word_count": 1186,
+   "excerpt": "Every tweet, order, message and payment needs an id. In a small app, the database's auto-increment column hands out 1, 2, 3 and nobody thinks about it. At thousands of writes per second across many database shards and data centres, that single counter becomes a bottleneck, a single point of…"
   }
  ]
 }
