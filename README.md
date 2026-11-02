@@ -1,8 +1,12 @@
 # PaperStack
 
-**Learn AI and machine learning from scratch, one landmark research paper at a time.**
+**Story-driven articles for placement preparation: Machine Learning, DSA, Competitive Programming, Famous Algorithms and System Design.**
 
-PaperStack is a Substack-style reading app for Android (and the web) that takes a complete beginner from "What is machine learning?" to how modern language models are trained and served. It ships with 52 story-driven articles: 10 beginner primers and 42 articles on the papers that built the field, from Turing's 1950 question to FlashAttention and vLLM. Every article has diagrams, analogies, tap-to-define glossary terms and a three-question quiz.
+PaperStack is a Substack-style reading app for Android (and the web). It started as a path from "What is machine learning?" to modern LLM systems, told through the research papers that built the field, and now covers five subjects, each with its own learning path, plus a planned CS Core subject (OS, DBMS, networks, OOP). Every article has a story-style hook, one central analogy, diagrams, a traced example, pseudocode (and compiling C++ for DSA and CP), tap-to-define glossary terms and a three-question quiz. DSA and CP articles end with a practice-problem checklist you can tick off.
+
+A **Placement Roadmap** turns the full curriculum (about 670 planned articles, see `content/curriculum/`) into a 6 or 12 month plan across subjects, ordered by priority and prerequisites, with your progress overlaid.
+
+Progress lives in the repository: run `python tools/progress.py` or open [PROGRESS.md](PROGRESS.md). If you are an AI assistant continuing this project, read [CLAUDE.md](CLAUDE.md) and [HANDOFF.md](HANDOFF.md) first.
 
 It costs nothing to run: no server, no database, no accounts. Pushing to `main` builds an installable APK and deploys the web version automatically.
 
@@ -122,7 +126,7 @@ If the secrets are missing, the workflow still builds a debug APK and says so cl
 
 ### 3. (Optional) Daily article generation
 
-Add a free **`GEMINI_API_KEY`** (from [Google AI Studio](https://aistudio.google.com/apikey)) and/or **`GROQ_API_KEY`** (from the [Groq console](https://console.groq.com/keys)) as repository secrets. The `Daily Generate` workflow will then write two new articles every day at 7:00 AM IST. Optional: `S2_API_KEY` for higher Semantic Scholar rate limits. Without keys, the daily job exits cleanly and does nothing.
+Add a free **`GEMINI_API_KEY`** (from [Google AI Studio](https://aistudio.google.com/apikey)) and/or **`GROQ_API_KEY`** (from the [Groq console](https://console.groq.com/keys)) as repository secrets. The `Daily Generate` workflow will then write the next curriculum articles every day at 7:00 AM IST (by default one each for DSA, CP, Famous Algorithms, System Design and ML; change `daily_mix` in `pipeline/config.yaml`). Without keys, the daily job exits cleanly and does nothing.
 
 ### 4. (Optional) Change the app id
 
@@ -134,17 +138,17 @@ All three routes produce the same file format, validated by the same rules.
 
 ### A. Automatically, every day (free cloud models)
 
-With `GEMINI_API_KEY` or `GROQ_API_KEY` set, the daily workflow:
+With `GEMINI_API_KEY` or `GROQ_API_KEY` set, the daily workflow runs `pipeline/curriculum_generate.py`:
 
-1. finds important, well-cited papers on Semantic Scholar that are not already in `content/` (and, if Semantic Scholar's free API is busy, takes the next paper from the curated `seed_papers` queue in `pipeline/config.yaml`, using arXiv for metadata),
-2. downloads and extracts the PDF,
-3. asks the model for structured notes, then for the article itself, using the shared writing guide,
-4. validates it (retrying once with the validator's error messages),
-5. commits it with a `[content]` message and redeploys the web app. The Android app picks it up through content sync; no new APK is built for content-only commits.
+1. picks the next **planned** entries from `content/curriculum/<subject>.json` whose prerequisites are already written, by priority (P0 first) and path order. No paper search is needed; ML entries carry their arXiv id.
+2. **plans** the article as a JSON outline (hook, analogy, traced example, misconception, facts marked certain or omit),
+3. **drafts** it with the subject prompt (`pipeline/prompts/<subject>.md`), the shared writing guide, the format spec, the quality contract (`pipeline/prompts/quality_contract.md`) and the best Claude-written article of the same kind as a style reference,
+4. has a **critic** score it against the rubric, runs the validator, a lint for the quality contract and the C++ compile check, then **revises** it to fix every problem,
+5. publishes only if everything passes and the final critic score is at least `quality_threshold` (8.0). Otherwise the draft goes to `pipeline/drafts/` and the entry is marked `needs_review`, so it never reaches the app.
 
-Run it on demand from **Actions → Daily Generate → Run workflow**. Each run uploads its structured log (`logs/run-<date>.jsonl`) as an artifact.
+Articles, curriculum status and `PROGRESS.md` are committed together with a `[content]` message, and the web app is redeployed. The Android app picks new articles up through content sync; no new APK is built for content-only commits. Gemini is retried at most twice on rate limits before the run falls through to Groq. Each run uploads its structured log as an artifact.
 
-Paper metadata (title, authors, year, venue, link) always comes from Semantic Scholar or arXiv, never from the model, and every article must pass the same validator as the seed content. To steer what gets written next, reorder or extend `seed_papers` in `pipeline/config.yaml`. A free `S2_API_KEY` makes discovery much more reliable, because Semantic Scholar's shared anonymous quota is often exhausted.
+To steer what gets written next, edit the curriculum JSON: reorder entries, change priorities, or improve an entry's `brief`. For a specific paper outside the curriculum, `python pipeline/generate_article.py --arxiv <id>` still works.
 
 ### B. On your own computer with Ollama (free, local)
 
