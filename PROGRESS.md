@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 110 | 0 | 42 | 152 | 66/72 |
+| dsa | 114 | 0 | 38 | 152 | 66/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **312** | **0** | **361** | **673** | |
+| **All** | **316** | **0** | **357** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -29,12 +29,12 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-dijkstra` (P0, pattern, dsa-graphs): Dijkstra: Shortest Paths With Weights
 - [ ] `dsa-word-ladder` (P0, problem-walkthrough, dsa-graphs): Word Ladder: BFS on Implicit Graphs
 - [ ] `dsa-islands-variants` (P0, problem-walkthrough, dsa-graphs): Number of Islands and Its Many Variants
-- [ ] `dsa-gas-station` (P1, problem-walkthrough, dsa-heaps-greedy): Gas Station: A Greedy Proof in One Pass
-- [ ] `dsa-fractional-knapsack-jobs` (P1, problem-walkthrough, dsa-heaps-greedy): Fractional Knapsack and Job Sequencing
-- [ ] `dsa-candy-and-two-pass` (P1, problem-walkthrough, dsa-heaps-greedy): Two-Pass Greedy: Candy and Friends
-- [ ] `dsa-heap-scheduling` (P1, problem-walkthrough, dsa-heaps-greedy): Scheduling With Heaps: CPU Tasks and IPO
 - [ ] `dsa-mst` (P1, pattern, dsa-graphs): Minimum Spanning Trees: Kruskal and Prim
 - [ ] `dsa-bipartite` (P1, pattern, dsa-graphs): Bipartite Graphs and Two-Colouring
+- [ ] `dsa-grid-graph-tricks` (P1, pattern, dsa-graphs): Grid Problems as Graphs
+- [ ] `dsa-critical-connections` (P1, problem-walkthrough, dsa-graphs): Critical Connections: Bridges in a Network
+- [ ] `dsa-snakes-ladders-bfs` (P1, problem-walkthrough, dsa-graphs): Snakes and Ladders and Other BFS Puzzles
+- [ ] `dsa-graph-clone-and-copy` (P1, problem-walkthrough, dsa-graphs): Clone Graph and Accounts Merge
 
 ### cp
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 110 written</summary>
+<details><summary>dsa: 114 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -171,6 +171,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-vertical-order` Vertical Order Traversal
 - [x] `dsa-meeting-rooms` How Many Meeting Rooms Do You Need?
 - [x] `dsa-jump-game` Jump Game: Greedy Reach
+- [x] `dsa-gas-station` Gas Station: A Greedy Proof in One Pass
 - [x] `dsa-coin-change` Coin Change: Minimum Coins and Number of Ways
 - [x] `dsa-word-break` Word Break: DP Over Prefixes
 - [x] `dsa-house-robber-variants` House Robber and Its Variants
@@ -200,6 +201,9 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-build-bst` Building Balanced BSTs From Sorted Data
 - [x] `dsa-tree-width-and-structure` Maximum Width, Symmetry and Identical Trees
 - [x] `dsa-morris-traversal` Morris Traversal: Inorder With O(1) Space
+- [x] `dsa-fractional-knapsack-jobs` Fractional Knapsack and Job Sequencing
+- [x] `dsa-candy-and-two-pass` Two-Pass Greedy: Candy and Friends
+- [x] `dsa-heap-scheduling` Scheduling With Heaps: CPU Tasks and IPO
 - [x] `dsa-subset-sum-count` Counting Subsets: Target Sum and Partitions
 - [x] `dsa-interview-dsa-revision` The Night-Before Revision Sheet
 

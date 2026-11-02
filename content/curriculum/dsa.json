@@ -3121,8 +3121,8 @@
    "prerequisites": [
     "dsa-greedy-exchange"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Total fuel check",
@@ -4306,8 +4306,8 @@
    "prerequisites": [
     "dsa-greedy-exchange"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Sort by value per weight",
@@ -4337,8 +4337,8 @@
    "prerequisites": [
     "dsa-greedy-exchange"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Left-to-right then right-to-left constraints",
@@ -4368,8 +4368,8 @@
     "dsa-heap-basics",
     "dsa-greedy-exchange"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Sort by availability, heap by priority",
