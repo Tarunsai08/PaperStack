@@ -1,7 +1,7 @@
 {
- "content_version": "4058ea93cdcd8aa5",
+ "content_version": "f1fd60f6d81e1d65",
  "generated_at": "2026-11-02",
- "count": 252,
+ "count": 256,
  "subjects": [
   {
    "id": "ml",
@@ -10657,6 +10657,510 @@
    "hash": "fca3c8343084",
    "word_count": 917,
    "excerpt": "An array holds only 0s, 1s and 2s, like red, white and blue balls in a jumbled row. Sort it. You could call sort in O(n log n), or count the three colours and rewrite the array in two passes. The interview follow-up is always the same: \"Can you do it in one pass, in place?\" Edsger Dijkstra posed…"
+  },
+  {
+   "id": "dsa-majority-and-rearrange",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "majority-and-rearrange",
+   "title": "Rotating a Row of Seats Without a Spare Chair",
+   "subtitle": "In-place rearranging: rotation by three reversals, stable write pointers, sign-alternating layouts and marking seen values with signs",
+   "track": "dsa-arrays",
+   "track_order": 16,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-two-pointers",
+    "dsa-cyclic-sort"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 8,
+   "topics": [
+    "arrays",
+    "in-place",
+    "reversal",
+    "two pointers"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(1) extra for rotation, move-zeroes and marking"
+   },
+   "practice_problems": [
+    {
+     "name": "Rotate Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/rotate-array/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Move Zeroes",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/move-zeroes/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Rearrange Array Elements by Sign",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/rearrange-array-elements-by-sign/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Find All Numbers Disappeared in an Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Sort Array By Parity",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sort-array-by-parity/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Reverse Words in a String",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/reverse-words-in-a-string/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "In-place",
+     "definition": "Rearranging the input array itself using only O(1) extra memory, instead of building a second array."
+    },
+    {
+     "term": "Rotation",
+     "definition": "Shifting every element k places to the right, with elements that fall off the end wrapping around to the front."
+    },
+    {
+     "term": "Write pointer",
+     "definition": "An index marking where the next kept element should be written, while a second pointer reads through the array."
+    },
+    {
+     "term": "Stable",
+     "definition": "A rearrangement is stable if elements of the same kind keep their original relative order."
+    },
+    {
+     "term": "Sign marking",
+     "definition": "Recording that value v was seen by making the element at index v − 1 negative, so the array stores a yes or no flag per index without extra memory."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "To rotate [1, 2, 3, 4, 5, 6, 7] right by 3 with reversals, what are the three steps?",
+     "options": [
+      "Reverse the first 3, then the last 4, then all",
+      "Reverse all, then the first 3, then the last 4",
+      "Reverse the last 3 only",
+      "Reverse all twice"
+     ],
+     "answer": 1,
+     "explain": "Reversing all gives 7 6 5 4 3 2 1. Reversing the first 3 gives 5 6 7, and reversing the last 4 gives 1 2 3 4, so the result is 5 6 7 1 2 3 4. Reversing the two parts first and then the whole array also works."
+    },
+    {
+     "q": "Why must you take k mod n before rotating?",
+     "options": [
+      "It makes the code shorter",
+      "Rotating by n changes nothing, so a k larger than n would index past the end",
+      "It sorts the array",
+      "Only for negative numbers"
+     ],
+     "answer": 1,
+     "explain": "Rotating by n is the identity, so only k mod n matters. Without the mod, reversing the first k elements reads out of bounds when k > n."
+    },
+    {
+     "q": "In Find All Numbers Disappeared, why use abs(a[i]) when reading values during the marking pass?",
+     "options": [
+      "To sort the array",
+      "Earlier steps may already have made a[i] negative, but its value still names a home index",
+      "Negative numbers are not allowed",
+      "To count duplicates"
+     ],
+     "answer": 1,
+     "explain": "The sign is the flag for index i; the magnitude is still the original value. Taking abs recovers the value even after the flag was set."
+    }
+   ],
+   "cover_seed": "majority-and-rearrange",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.7,
+   "path": "dsa/majority-and-rearrange.md",
+   "hash": "920b043cbbb2",
+   "word_count": 1850,
+   "excerpt": "Seven friends sit in a cinema row, and the last three must move to the front. There is no spare chair, and people can only swap places. How do you reorder them quickly without a single extra seat? Interviewers love this kind of constraint. \"Rotate the array\", \"move all zeros to the end\", \"put…"
+  },
+  {
+   "id": "dsa-ordered-set-windows",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "ordered-set-windows",
+   "title": "A Sliding Window That Stays Sorted",
+   "subtitle": "Using std::multiset inside a sliding window: live min and max, nearest-value checks with lower_bound, and running medians",
+   "track": "dsa-arrays",
+   "track_order": 17,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-sliding-window",
+    "dsa-cpp-stl-toolkit"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 8,
+   "topics": [
+    "sliding window",
+    "multiset",
+    "ordered set",
+    "median"
+   ],
+   "complexity": {
+    "time": "O(n log k)",
+    "space": "O(k)"
+   },
+   "practice_problems": [
+    {
+     "name": "Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Contains Duplicate III",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/contains-duplicate-iii/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Sliding Window Median",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sliding-window-median/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Sliding Window Maximum",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sliding-window-maximum/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Sliding Window Median",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1076",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Multiset",
+     "definition": "A sorted container that, unlike a set, keeps every copy of equal values. In C++ it is std::multiset, usually a balanced binary search tree."
+    },
+    {
+     "term": "Window",
+     "definition": "The contiguous block of elements between a left and a right index that the algorithm is currently looking at."
+    },
+    {
+     "term": "lower_bound",
+     "definition": "A search that returns the first element not less than a given value, in O(log n) on a sorted container."
+    },
+    {
+     "term": "Running median",
+     "definition": "The median of the current window, updated as elements enter and leave instead of recomputed from scratch."
+    },
+    {
+     "term": "Iterator erase",
+     "definition": "Removing exactly one element of a multiset by passing an iterator to it, as opposed to erasing by value, which removes every copy."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A multiset holds {2, 4, 4, 7}. What does s.erase(4) leave?",
+     "options": [
+      "{2, 4, 7}",
+      "{2, 7}",
+      "{2, 4, 4, 7}",
+      "It does not compile"
+     ],
+     "answer": 1,
+     "explain": "Erasing by value removes every copy. To remove only one 4, write s.erase(s.find(4))."
+    },
+    {
+     "q": "In Contains Duplicate III with value difference t, which query tells you whether some window value lies in [x − t, x + t]?",
+     "options": [
+      "s.find(x)",
+      "s.lower_bound(x − t), then check that it exists and is at most x + t",
+      "s.upper_bound(x + t)",
+      "*s.begin() and *s.rbegin()"
+     ],
+     "answer": 1,
+     "explain": "lower_bound(x − t) is the smallest value that is at least x − t. If it exists and does not exceed x + t, it lies in the range."
+    },
+    {
+     "q": "Why is the multiset approach O(n log k) rather than O(n k)?",
+     "options": [
+      "Because the window is sorted once",
+      "Each element is inserted once and erased once, and each such operation costs O(log k) on a tree holding at most k elements",
+      "Because lower_bound is O(1)",
+      "It is O(n k)"
+     ],
+     "answer": 1,
+     "explain": "Instead of rescanning the window for every position, you pay a logarithmic cost per element entering or leaving."
+    }
+   ],
+   "cover_seed": "ordered-set-windows",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "dsa/ordered-set-windows.md",
+   "hash": "0d1274a9f751",
+   "word_count": 1737,
+   "excerpt": "A sliding window answers \"the best block of consecutive elements\" in one pass, as long as you can update the window's summary cheaply. A sum is easy: add the new element and subtract the old one. But what if the question needs the window's maximum, minimum, median or \"is anything within 3 of this…"
+  },
+  {
+   "id": "dsa-longest-consecutive",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "longest-consecutive",
+   "title": "Only the Front of the Queue Starts Counting",
+   "subtitle": "Longest Consecutive Sequence in O(n) with a hash set, and why checking x − 1 first turns a quadratic loop into a linear one",
+   "track": "dsa-arrays",
+   "track_order": 18,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-hashing-patterns"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "hashing",
+    "hash set",
+    "arrays",
+    "amortised analysis"
+   ],
+   "complexity": {
+    "time": "O(n) expected",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Longest Consecutive Sequence",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/longest-consecutive-sequence/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Contains Duplicate",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/contains-duplicate/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Contains Duplicate II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/contains-duplicate-ii/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Happy Number",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/happy-number/",
+     "difficulty": "Easy"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Consecutive sequence",
+     "definition": "A set of integers x, x + 1, x + 2 and so on with no gaps. Their positions in the array do not matter."
+    },
+    {
+     "term": "Hash set",
+     "definition": "A container that answers 'is x present?' in expected O(1) time, such as unordered_set in C++."
+    },
+    {
+     "term": "Run start",
+     "definition": "A value x in the set such that x − 1 is not in the set. Every consecutive run has exactly one."
+    },
+    {
+     "term": "Amortised analysis",
+     "definition": "Bounding the total cost of all steps together rather than the worst single step, here by noting each value is walked over at most once."
+    },
+    {
+     "term": "Expected time",
+     "definition": "The average running time over the hash function's behaviour. Hash lookups are O(1) expected but can degrade with many collisions."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In [100, 4, 200, 1, 3, 2], which values start a counting walk?",
+     "options": [
+      "All six",
+      "100, 200 and 1",
+      "4 and 3",
+      "Only 1"
+     ],
+     "answer": 1,
+     "explain": "A walk starts only where x − 1 is missing. 99, 199 and 0 are missing, so 100, 200 and 1 start walks; 2, 3 and 4 each have a predecessor."
+    },
+    {
+     "q": "Why is the algorithm O(n) even though it has a while loop inside a for loop?",
+     "options": [
+      "The while loop runs once",
+      "Each value is visited by a walk only from its own run's start, so all walks together cover each value once",
+      "Hash sets are sorted",
+      "It is O(n log n)"
+     ],
+     "answer": 1,
+     "explain": "Walks start only at run starts, and each run is walked once. Summed over all runs, the inner loop does at most n steps."
+    },
+    {
+     "q": "What should you loop over: the original array or the set?",
+     "options": [
+      "Either; it does not matter for correctness, but looping over the set avoids repeating the start check for duplicates",
+      "Only the array",
+      "Only a sorted copy",
+      "Neither"
+     ],
+     "answer": 0,
+     "explain": "Both are correct. With many duplicates of a run start, looping over the array repeats the same walk, which can make it quadratic, so loop over the set or skip repeats."
+    }
+   ],
+   "cover_seed": "longest-consecutive",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.75,
+   "path": "dsa/longest-consecutive.md",
+   "hash": "ce36504e6af7",
+   "word_count": 1543,
+   "excerpt": "You are handed the numbers 100, 4, 200, 1, 3, 2 and asked for the longest run of consecutive integers, here 1, 2, 3, 4. Sorting finds it immediately. Then the interviewer adds one line: \"Do it in O(n).\" That rules out sorting. Yet the solution is only a few lines with a hash set. The trick is not…"
+  },
+  {
+   "id": "dsa-string-compression-parsing",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "string-compression-parsing",
+   "title": "Reading a Messy Receipt One Character at a Time",
+   "subtitle": "String parsing for interviews: run-length compression in place, splitting into tokens, atoi with overflow and validating numbers with a state machine",
+   "track": "dsa-arrays",
+   "track_order": 19,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-string-patterns"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 8,
+   "topics": [
+    "strings",
+    "parsing",
+    "state machine",
+    "two pointers"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(1) extra for compression and atoi, O(n) for tokens"
+   },
+   "practice_problems": [
+    {
+     "name": "String Compression",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/string-compression/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Count and Say",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/count-and-say/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Reverse Words in a String",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/reverse-words-in-a-string/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Compare Version Numbers",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/compare-version-numbers/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "String to Integer (atoi)",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/string-to-integer-atoi/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Valid Number",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/valid-number/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Run-length encoding",
+     "definition": "Compressing a string by replacing each run of equal characters with the character followed by the run's length, such as aaabb becoming a3b2."
+    },
+    {
+     "term": "Token",
+     "definition": "One meaningful piece of a string after splitting, such as a word between spaces or a number between dots."
+    },
+    {
+     "term": "Cursor",
+     "definition": "The index of the next character to read. A parser moves it forward and never needs to look back."
+    },
+    {
+     "term": "State machine",
+     "definition": "A model with a small set of states and rules for moving between them on each input character. The final state decides whether the input is valid."
+    },
+    {
+     "term": "Overflow clamping",
+     "definition": "Stopping a number at the largest or smallest representable value instead of letting it wrap around, as atoi requires for 32-bit results."
+    },
+    {
+     "term": "Phase",
+     "definition": "One stage of a parse that expects a particular kind of character, such as leading spaces, then a sign, then digits."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In-place String Compression turns [a, b, b, b, b, b, b, b, b, b, b, b, b] into what, and what length is returned?",
+     "options": [
+      "a b 1 2, length 4",
+      "a 1 b 1 2, length 5",
+      "a b 12 as one character, length 3",
+      "a b b b b b b b b b b b b, length 13"
+     ],
+     "answer": 0,
+     "explain": "A run of length 1 is written without a count, and 12 is written as two characters, 1 and 2. So the array starts a, b, 1, 2 and the answer is 4."
+    },
+    {
+     "q": "atoi reads '-91283472332'. What should it return?",
+     "options": [
+      "-91283472332",
+      "-2147483648",
+      "0",
+      "2147483647"
+     ],
+     "answer": 1,
+     "explain": "The value is below the 32-bit minimum, so it is clamped to −2147483648. Check before each multiply-and-add, so the intermediate value never overflows."
+    },
+    {
+     "q": "Which string is a valid number under the usual rules?",
+     "options": [
+      "1e",
+      "e3",
+      "-.9",
+      "99e2.5"
+     ],
+     "answer": 2,
+     "explain": "A dot with digits after it is allowed even without digits before, so −.9 is valid. An exponent needs digits on both sides and the exponent itself must be an integer."
+    }
+   ],
+   "cover_seed": "string-compression-parsing",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "dsa/string-compression-parsing.md",
+   "hash": "82dbd60ded3c",
+   "word_count": 1662,
+   "excerpt": "\"Convert this string to an integer.\" It sounds like a one-liner until the interviewer asks what happens with leading spaces, a plus sign, letters after the digits, or a value bigger than any int. Parsing questions are rarely about algorithms. They test whether you can read input carefully, one…"
   },
   {
    "id": "dsa-binary-search",
