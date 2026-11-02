@@ -859,8 +859,8 @@
    "prerequisites": [
     "famous-algos-token-bucket"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Double the wait",
@@ -890,8 +890,8 @@
    "prerequisites": [
     "famous-algos-consistent-hashing"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Pick two servers at random, choose the less loaded",

@@ -1,7 +1,7 @@
 {
- "content_version": "4de15871f4442300",
+ "content_version": "428ab6aadc689a62",
  "generated_at": "2026-11-02",
- "count": 128,
+ "count": 133,
  "subjects": [
   {
    "id": "ml",
@@ -10579,6 +10579,236 @@
    "excerpt": "Two contestants know exactly the same algorithms. One finishes with four problems solved; the other with two. The difference is not intelligence. The second spent seventy minutes fighting problem C, never read problem D, and submitted B three times without testing it. Contests reward knowledge, but…"
   },
   {
+   "id": "cp-modular-arithmetic",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "modular-arithmetic",
+   "title": "Doing Maths on a Clock Face",
+   "subtitle": "Modular arithmetic: why answers come 'modulo 10^9 + 7', and the rules that keep huge numbers small and correct",
+   "track": "cp-math",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-bit-basics"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 4,
+   "topics": [
+    "number theory",
+    "modular arithmetic",
+    "competitive programming",
+    "overflow"
+   ],
+   "complexity": {
+    "time": "O(1) per operation",
+    "space": "O(1)"
+   },
+   "practice_problems": [
+    {
+     "name": "Bit Strings",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1617",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Dice Combinations",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1633",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Exponentiation",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1095",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Count Good Numbers",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/count-good-numbers/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Modulus",
+     "definition": "The number you divide by when taking a remainder, such as 10^9 + 7 in many contest problems."
+    },
+    {
+     "term": "Remainder",
+     "definition": "What is left after dividing: 17 mod 5 is 2, because 17 = 3 × 5 + 2."
+    },
+    {
+     "term": "Congruent",
+     "definition": "Two numbers are congruent modulo m when they have the same remainder after dividing by m."
+    },
+    {
+     "term": "Overflow",
+     "definition": "When a result is too large for its type and wraps around to a wrong value."
+    },
+    {
+     "term": "Prime modulus",
+     "definition": "A modulus that is a prime number, such as 10^9 + 7 or 998244353, which makes division possible through modular inverses."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why is it safe to take the remainder after every addition and multiplication?",
+     "options": [
+      "It is not safe; only take it at the end",
+      "Because (a + b) mod m and (a × b) mod m only depend on a mod m and b mod m",
+      "Because remainders are always zero",
+      "Because the judge rounds the answer"
+     ],
+     "answer": 1,
+     "explain": "Adding or multiplying the remainders gives the same final remainder as using the full numbers, so you can reduce at every step and keep numbers small."
+    },
+    {
+     "q": "In C++, what is (-7) % 3?",
+     "options": [
+      "2",
+      "-1",
+      "1",
+      "-2"
+     ],
+     "answer": 1,
+     "explain": "C++ keeps the sign of the left operand, so the result is -1. To get a value in [0, m), add m and take mod again: ((x % m) + m) % m."
+    },
+    {
+     "q": "a and b are both below 10^9 + 7. Why must a × b be computed in long long?",
+     "options": [
+      "For speed",
+      "The product can be about 10^18, which overflows a 32-bit int but fits in a 64-bit long long",
+      "Judges require it",
+      "It is not necessary"
+     ],
+     "answer": 1,
+     "explain": "10^9 × 10^9 is 10^18. A 32-bit int holds about 2.1 × 10^9, while a long long holds about 9.2 × 10^18."
+    }
+   ],
+   "cover_seed": "modular-arithmetic",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "cp/modular-arithmetic.md",
+   "hash": "a681ba079e46",
+   "word_count": 928,
+   "excerpt": "\"Print the number of ways, modulo 10⁹ + 7.\" This line appears under thousands of contest problems. The true answer might have a million digits; the number of ways to arrange 100,000 items is astronomically large. No integer type can hold it. So the problem asks for the remainder instead. That seems…"
+  },
+  {
+   "id": "cp-binary-exponentiation",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "binary-exponentiation",
+   "title": "Raising to the Power of a Billion in Thirty Steps",
+   "subtitle": "Fast exponentiation: square and multiply along the bits of the exponent",
+   "track": "cp-math",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-modular-arithmetic"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 4,
+   "topics": [
+    "number theory",
+    "exponentiation",
+    "modular arithmetic",
+    "divide and conquer"
+   ],
+   "complexity": {
+    "time": "O(log b) multiplications",
+    "space": "O(1) iterative"
+   },
+   "practice_problems": [
+    {
+     "name": "Exponentiation",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1095",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Exponentiation II",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1712",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Pow(x, n)",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/powx-n/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Count Good Numbers",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/count-good-numbers/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Exponent",
+     "definition": "How many times a base is multiplied by itself: in a^b, b is the exponent."
+    },
+    {
+     "term": "Repeated squaring",
+     "definition": "Building a^2, a^4, a^8 and so on by squaring the previous value, so each step doubles the exponent."
+    },
+    {
+     "term": "Binary representation",
+     "definition": "Writing a number as a sum of powers of two, like 13 = 8 + 4 + 1, which is 1101 in binary."
+    },
+    {
+     "term": "Fermat's little theorem",
+     "definition": "For a prime p and a not divisible by p, a^(p−1) leaves remainder 1 modulo p. It lets you shrink exponents and compute inverses."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How many multiplications does binary exponentiation need for an exponent near 10^18?",
+     "options": [
+      "About 10^18",
+      "About 10^9",
+      "About 120 at most (60 squarings and up to 60 extra multiplications)",
+      "Exactly 2"
+     ],
+     "answer": 2,
+     "explain": "10^18 has about 60 bits. Each bit costs one squaring and possibly one extra multiplication."
+    },
+    {
+     "q": "Using 13 = 8 + 4 + 1, how is a^13 built?",
+     "options": [
+      "a^8 + a^4 + a^1",
+      "a^8 × a^4 × a^1",
+      "a^13 directly",
+      "(a^4)^3 + a"
+     ],
+     "answer": 1,
+     "explain": "Exponents add when powers multiply, so a^13 = a^(8+4+1) = a^8 × a^4 × a^1."
+    },
+    {
+     "q": "To compute a^(b^c) mod p for prime p, which exponent do you reduce first?",
+     "options": [
+      "b^c mod p",
+      "b^c mod (p − 1)",
+      "a mod c",
+      "Nothing can be reduced"
+     ],
+     "answer": 1,
+     "explain": "By Fermat's little theorem, a^(p−1) ≡ 1 mod p when p does not divide a, so exponents only matter modulo p − 1."
+    }
+   ],
+   "cover_seed": "binary-exponentiation",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "cp/binary-exponentiation.md",
+   "hash": "c13f560cd262",
+   "word_count": 920,
+   "excerpt": "Compute 3 to the power 1,000,000,000, modulo 10⁹ + 7. Multiplying by 3 a billion times takes about a billion steps: seconds in C++, too slow when there are a hundred thousand such queries. There is a way that takes about thirty steps. It is one of the oldest algorithms in mathematics, and it shows…"
+  },
+  {
    "id": "famous-algos-bloom-filter",
    "kind": "concept",
    "subject": "famous-algos",
@@ -11546,6 +11776,179 @@
    "hash": "3ac6eacc78c5",
    "word_count": 1060,
    "excerpt": "A popular API serves millions of developers. One of them writes a loop with a bug and starts sending ten thousand requests a second. Without a limit, that one script can slow the service for everyone else. But most real clients are bursty, not abusive: an app opening a screen fires twenty requests…"
+  },
+  {
+   "id": "famous-algos-exponential-backoff",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "exponential-backoff",
+   "title": "Why Your App Waits a Random Moment Before Retrying",
+   "subtitle": "Exponential backoff with jitter: retrying failures without turning a small outage into a stampede",
+   "track": "fa-networking",
+   "track_order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-token-bucket"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 4,
+   "topics": [
+    "retries",
+    "networking",
+    "distributed systems",
+    "resilience"
+   ],
+   "glossary": [
+    {
+     "term": "Retry",
+     "definition": "Sending a failed request again, hoping the failure was temporary."
+    },
+    {
+     "term": "Exponential backoff",
+     "definition": "Waiting longer before each retry, typically doubling the wait each time, so a struggling service gets room to recover."
+    },
+    {
+     "term": "Jitter",
+     "definition": "Randomness added to retry delays so that many clients do not all retry at exactly the same moment."
+    },
+    {
+     "term": "Thundering herd",
+     "definition": "A surge where many clients act at the same instant, such as all retrying together, overwhelming a service."
+    },
+    {
+     "term": "Retry budget",
+     "definition": "A cap on how much extra load retries may add, for example retries may be at most 10% of normal requests."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why add randomness to backoff delays?",
+     "options": [
+      "To make debugging harder",
+      "So clients that failed together do not all retry at the same instant",
+      "Because timers are inaccurate",
+      "To increase total load"
+     ],
+     "answer": 1,
+     "explain": "Without jitter, clients that failed at the same moment retry at the same moments too, hitting the service in synchronized waves."
+    },
+    {
+     "q": "With a base delay of 100 ms doubling each time and a cap of 2 seconds, what is the maximum wait before the 6th retry?",
+     "options": [
+      "600 ms",
+      "3.2 seconds",
+      "2 seconds (the cap)",
+      "100 ms"
+     ],
+     "answer": 2,
+     "explain": "Uncapped it would be 100 × 2^5 = 3,200 ms, but the cap limits it to 2 seconds."
+    },
+    {
+     "q": "Which requests should NOT be retried automatically?",
+     "options": [
+      "Timeouts on reads",
+      "503 Service Unavailable",
+      "A non-idempotent payment without an idempotency key",
+      "429 Too Many Requests with Retry-After"
+     ],
+     "answer": 2,
+     "explain": "If the first attempt might have succeeded, retrying a non-idempotent action can repeat it, such as charging twice."
+    }
+   ],
+   "cover_seed": "exponential-backoff",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.86,
+   "path": "famous-algos/exponential-backoff.md",
+   "hash": "50004edf9797",
+   "word_count": 927,
+   "excerpt": "A database hiccups for two seconds. Ten thousand app servers see errors and immediately retry. Then retry again. And again. The database comes back to find not its normal load but several times it, all arriving in the same instant, and falls over again. A two-second blip becomes a twenty-minute…"
+  },
+  {
+   "id": "famous-algos-power-of-two-choices",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "power-of-two-choices",
+   "title": "Pick Two Lines at Random, Join the Shorter",
+   "subtitle": "The power of two choices: a tiny change to random load balancing that makes the worst server dramatically less overloaded",
+   "track": "fa-networking",
+   "track_order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-consistent-hashing"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 4,
+   "topics": [
+    "load balancing",
+    "randomised algorithms",
+    "distributed systems"
+   ],
+   "glossary": [
+    {
+     "term": "Load balancer",
+     "definition": "A component that spreads incoming requests across many servers."
+    },
+    {
+     "term": "Maximum load",
+     "definition": "The load on the busiest server. It decides tail latency, because requests on that server wait longest."
+    },
+    {
+     "term": "Random assignment",
+     "definition": "Sending each request to a server chosen uniformly at random."
+    },
+    {
+     "term": "Two choices",
+     "definition": "Sampling two servers at random and sending the request to the less loaded of the two."
+    },
+    {
+     "term": "Least connections",
+     "definition": "A strategy that sends each request to the server with the fewest active connections, which needs up-to-date load information for every server."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How does the power of two choices pick a server?",
+     "options": [
+      "Always the least loaded server overall",
+      "Two random servers, then the less loaded of those two",
+      "Round robin",
+      "The server with the lowest id"
+     ],
+     "answer": 1,
+     "explain": "It samples just two servers and compares only them, so it needs very little load information."
+    },
+    {
+     "q": "With n balls thrown into n bins, how does the fullest bin grow with n for one random choice versus two choices?",
+     "options": [
+      "Both stay constant",
+      "Roughly log n / log log n for one choice, versus roughly log log n for two choices",
+      "Both grow like n",
+      "Two choices is worse"
+     ],
+     "answer": 1,
+     "explain": "Classic results show one random choice gives a maximum load of about log n / log log n, while two choices reduce it to about log log n, an exponential improvement."
+    },
+    {
+     "q": "Why not always pick the globally least loaded server?",
+     "options": [
+      "It is not allowed",
+      "It needs fresh load information for every server, and many balancers acting on the same stale view all pile onto the same 'least loaded' server",
+      "It is slower to compute than random",
+      "It always gives worse balance"
+     ],
+     "answer": 1,
+     "explain": "Global least-loaded decisions are expensive and herd-prone with stale data. Two random samples avoid both problems."
+    }
+   ],
+   "cover_seed": "power-of-two-choices",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.84,
+   "path": "famous-algos/power-of-two-choices.md",
+   "hash": "32eab7d9cffa",
+   "word_count": 919,
+   "excerpt": "You are at a supermarket with twenty checkout lines. Choosing a line at random works badly: sometimes you land behind three full trolleys while the next line is empty. Checking all twenty lines works well but takes ages, and everyone rushes to the same \"shortest\" line. Now try something lazy:…"
   },
   {
    "id": "system-design-interview-framework",
@@ -12637,6 +13040,99 @@
    "hash": "5eae8cf48acc",
    "word_count": 1110,
    "excerpt": "A product page is viewed a million times a day. Its price, title and photos change maybe once a week. Yet without a cache, every single view asks the database the same question and waits for the same answer. Caching is the idea of remembering answers you will need again. It is the most effective…"
+  },
+  {
+   "id": "system-design-cdn",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "cdn",
+   "title": "Local Warehouses for the Whole Internet",
+   "subtitle": "Content delivery networks: serving files from nearby edges, cache keys, invalidation and when a CDN helps",
+   "track": "sd-blocks",
+   "track_order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-caching",
+    "system-design-dns-deep-dive"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "cdn",
+    "caching",
+    "latency",
+    "edge"
+   ],
+   "glossary": [
+    {
+     "term": "CDN",
+     "definition": "Content delivery network: a large set of servers spread around the world that cache and serve content close to users."
+    },
+    {
+     "term": "Edge server",
+     "definition": "A CDN server in a location near users, sometimes called a point of presence, that answers requests from its cache."
+    },
+    {
+     "term": "Origin",
+     "definition": "Your own servers or storage, where the original copy of the content lives."
+    },
+    {
+     "term": "Cache key",
+     "definition": "The parts of a request, such as the URL and some headers, that decide whether two requests can share one cached response."
+    },
+    {
+     "term": "Invalidation",
+     "definition": "Telling the CDN to drop or refresh cached copies before their TTL runs out, for example after a file changes."
+    },
+    {
+     "term": "Cache hit ratio",
+     "definition": "The fraction of requests served from the edge without contacting the origin."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is the main reason a CDN makes a page load faster for a distant user?",
+     "options": [
+      "It compresses HTML better",
+      "Content is served from an edge server nearby, cutting long round trips to the origin",
+      "It upgrades the user's internet connection",
+      "It removes the need for DNS"
+     ],
+     "answer": 1,
+     "explain": "Most of the delay for a distant user is round trips. A nearby edge answers in a short hop instead of crossing oceans."
+    },
+    {
+     "q": "Why do many sites put a version or hash in static file names, like app.3f9a2c.js?",
+     "options": [
+      "To hide the file contents",
+      "So a new version gets a new URL, making invalidation unnecessary and allowing very long cache TTLs",
+      "Because CDNs require it",
+      "To make the file smaller"
+     ],
+     "answer": 1,
+     "explain": "A changed file gets a new name, so old cached copies are simply never requested again. The files themselves can be cached for a long time."
+    },
+    {
+     "q": "What can go wrong if a personalised page is cached without the right cache key?",
+     "options": [
+      "Nothing",
+      "One user may be served another user's private page",
+      "The page loads more slowly",
+      "The CDN refuses to cache it"
+     ],
+     "answer": 1,
+     "explain": "If the cache key ignores who is logged in, the first user's response may be stored and handed to everyone after them."
+    }
+   ],
+   "cover_seed": "cdn",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.86,
+   "path": "system-design/cdn.md",
+   "hash": "b86a4cc1e360",
+   "word_count": 1104,
+   "excerpt": "A student in Chennai opens a video site whose servers are in Virginia. Every image, script and video segment would have to cross the Pacific or the Atlantic and back, each request paying a few hundred milliseconds of travel. Multiply by a hundred files per page and a million viewers, and the origin…"
   }
  ]
 }

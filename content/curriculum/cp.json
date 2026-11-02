@@ -255,8 +255,8 @@
    "prerequisites": [
     "dsa-bit-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Add, subtract, multiply under a modulus",
@@ -289,8 +289,8 @@
    "prerequisites": [
     "cp-modular-arithmetic"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Square and multiply",

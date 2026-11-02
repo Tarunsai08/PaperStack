@@ -10,12 +10,12 @@ Read `HANDOFF.md` first if you are picking this project up.
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
 | dsa | 12 | 0 | 140 | 152 | 11/72 |
-| cp | 10 | 0 | 105 | 115 | 7/29 |
-| famous-algos | 11 | 0 | 80 | 91 | 9/32 |
-| system-design | 12 | 0 | 107 | 119 | 12/60 |
+| cp | 12 | 0 | 103 | 115 | 9/29 |
+| famous-algos | 13 | 0 | 78 | 91 | 11/32 |
+| system-design | 13 | 0 | 106 | 119 | 13/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **128** | **0** | **545** | **673** | |
+| **All** | **133** | **0** | **540** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **23**
 
@@ -38,34 +38,34 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### cp
 
-- [ ] `cp-modular-arithmetic` (P0, pattern, cp-math): Modular Arithmetic: Doing Maths on a Clock
+- [ ] `cp-sieve` (P0, pattern, cp-math): The Sieve of Eratosthenes
+- [ ] `cp-gcd-lcm` (P0, pattern, cp-math): GCD, LCM and the Euclidean Algorithm
 - [ ] `cp-coordinate-compression` (P0, pattern, cp-ranges): Coordinate Compression
 - [ ] `cp-practice-plan` (P0, primer, cp-misc): A 12-Week Contest Practice Plan
 - [ ] `cp-weird-algorithm` (P1, problem-walkthrough, cp-start): Your First CSES Problems: Weird Algorithm to Increasing Array
 - [ ] `cp-implementation-skills` (P1, primer, cp-start): Implementation Problems: Getting the Details Right
+- [ ] `cp-matrix-exponentiation` (P1, pattern, cp-math): Matrix Exponentiation for Linear Recurrences
 - [ ] `cp-sqrt-decomposition` (P1, pattern, cp-ranges): Square Root Decomposition
+- [ ] `cp-geometry-basics` (P1, pattern, cp-misc): Geometry Basics: Cross Products Solve Everything
 - [ ] `cp-interactive-problems` (P1, primer, cp-misc): Interactive Problems: Talking to the Judge
-- [ ] `cp-two-pointer-cp` (P1, pattern, cp-misc): Two Pointers and Monotonicity in Contests
-- [ ] `cp-ternary-search` (P2, pattern, cp-misc): Ternary Search on Unimodal Functions
 
 ### famous-algos
 
 - [ ] `famous-algos-merkle-trees` (P0, concept, fa-distributed): Merkle Trees: Proving Data Is Intact With One Hash
 - [ ] `famous-algos-tcp-congestion-control` (P0, concept, fa-networking): TCP Congestion Control: How the Internet Avoids Gridlock
-- [ ] `famous-algos-exponential-backoff` (P0, concept, fa-networking): Exponential Backoff With Jitter: Retrying Without a Stampede
-- [ ] `famous-algos-power-of-two-choices` (P0, concept, fa-networking): The Power of Two Choices: Smarter Load Balancing
 - [ ] `famous-algos-lsm-trees` (P0, concept, fa-storage): LSM Trees: Why Modern Databases Write So Fast
 - [ ] `famous-algos-geohash` (P0, concept, fa-storage): Geohash: Turning a Map Into a String
 - [ ] `famous-algos-lz77` (P0, concept, fa-coding): Lempel-Ziv: How ZIP Files Shrink Your Data
 - [ ] `famous-algos-cryptographic-hashing` (P0, concept, fa-crypto): Cryptographic Hashes: Fingerprints You Cannot Fake
+- [ ] `famous-algos-diffie-hellman` (P0, concept, fa-crypto): Diffie-Hellman: Agreeing on a Secret in Public
 - [ ] `famous-algos-inverted-index` (P0, concept, fa-search): Inverted Indexes: How Search Finds Pages in Milliseconds
 - [ ] `famous-algos-kalman-filter` (P0, concept, fa-signals): The Kalman Filter: Blending Guesses With Noisy Measurements
+- [ ] `famous-algos-counting-bloom-cuckoo` (P1, concept, fa-sketches): Deletable Filters: Counting Bloom and Cuckoo Filters
 
 ### system-design
 
 - [ ] `system-design-auth-basics` (P0, deep-dive, sd-fundamentals): Authentication and Authorisation: Sessions, JWT and OAuth
 - [ ] `system-design-load-balancers` (P0, deep-dive, sd-blocks): Load Balancers: L4, L7 and the Algorithms Inside
-- [ ] `system-design-cdn` (P0, deep-dive, sd-blocks): CDNs: Moving Content Closer to Users
 - [ ] `system-design-sql-vs-nosql` (P0, deep-dive, sd-blocks): SQL vs NoSQL: Choosing a Database Honestly
 - [ ] `system-design-message-queues` (P0, deep-dive, sd-blocks): Message Queues and Pub-Sub: Decoupling With Kafka and Friends
 - [ ] `system-design-distributed-cache` (P0, deep-dive, sd-blocks): Redis and Distributed Caches
@@ -73,6 +73,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `system-design-url-shortener` (P0, case-study, sd-cases): Design a URL Shortener
 - [ ] `system-design-unique-id-generator` (P0, case-study, sd-cases): Design a Unique ID Generator
 - [ ] `system-design-oop-solid` (P0, lld, sd-lld): Object-Oriented Design and SOLID Principles
+- [ ] `system-design-consistency-models` (P0, deep-dive, sd-distributed): Consistency Models: Linearizable to Eventual
 
 ### ml
 
@@ -106,7 +107,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 </details>
 
-<details><summary>cp: 10 written</summary>
+<details><summary>cp: 12 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -116,12 +117,14 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `cp-debugging-in-contest` Debugging Under Time Pressure
 - [x] `cp-upsolving` Upsolving: Where Rating Actually Comes From
 - [x] `cp-constructive-problems` Constructive Problems: Build the Answer
+- [x] `cp-modular-arithmetic` Modular Arithmetic: Doing Maths on a Clock
+- [x] `cp-binary-exponentiation` Fast Exponentiation: Powers in log n Steps
 - [x] `cp-contest-strategy` Contest Strategy: Order, Time and Nerves
 - [x] `cp-invariants-observations` Invariants and Observations: The Heart of Div 2
 
 </details>
 
-<details><summary>famous-algos: 11 written</summary>
+<details><summary>famous-algos: 13 written</summary>
 
 - [x] `famous-algos-bloom-filter` Bloom Filters: Saying No Without Looking
 - [x] `famous-algos-count-min-sketch` Count-Min Sketch: Counting Billions of Things in Kilobytes
@@ -134,10 +137,12 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `famous-algos-swim-failure-detection` SWIM: Detecting Dead Machines Politely
 - [x] `famous-algos-raft` Raft: Consensus You Can Actually Understand
 - [x] `famous-algos-token-bucket` Token Bucket: Rate Limiting With Room for Bursts
+- [x] `famous-algos-exponential-backoff` Exponential Backoff With Jitter: Retrying Without a Stampede
+- [x] `famous-algos-power-of-two-choices` The Power of Two Choices: Smarter Load Balancing
 
 </details>
 
-<details><summary>system-design: 12 written</summary>
+<details><summary>system-design: 13 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -151,6 +156,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `system-design-availability-slos` Availability, Nines and SLOs
 - [x] `system-design-stateless-idempotency` Stateless Services and Idempotent APIs
 - [x] `system-design-caching` Caching: Cache-Aside, Write-Through and Friends
+- [x] `system-design-cdn` CDNs: Moving Content Closer to Users
 
 </details>
 
