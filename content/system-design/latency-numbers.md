@@ -46,7 +46,7 @@ importance_score: 0.88
 
 Nanoseconds, microseconds, milliseconds: the words blur together, and so do the numbers. That blur hides the most important fact in system design. A trip to another continent is not "a bit slower" than reading memory. It is roughly a million times slower.
 
-Scale the numbers to human time and the blur disappears. If reading from the CPU's fastest cache took one second, a single network request across the world would take about five years.
+Scale the numbers to human time and the blur disappears. If reading from the CPU's fastest cache took one second, a single network request across the world would take about five years. Once you feel those distances, choices like "add a cache here" or "keep a copy in every region" stop looking like decoration and start looking obvious.
 
 ## The intuition
 

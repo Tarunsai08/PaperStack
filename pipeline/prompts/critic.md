@@ -11,7 +11,7 @@ Score each criterion from 0 to 10:
 - "quiz": exactly 3 questions that test understanding, not trivia, with good explanations.
 - "accuracy": no invented numbers, results, quotes, dates or links; code and complexity claims are correct; system design numbers are labelled as estimates.
 - "length": within the target length for the kind, with no padding.
-- "no_filler": no filler phrases ("delve", "it is important to note", "in conclusion"), no repetition.
+- "no_filler": no filler phrases ("delve", "moreover", "it is important to note", "in conclusion"), no repetition, no padding.
 
 Return exactly:
 {"scores": {"hook": n, "analogy": n, "intuition_first": n, "structure": n, "diagrams": n, "callouts": n, "glossary": n, "quiz": n, "accuracy": n, "length": n, "no_filler": n},

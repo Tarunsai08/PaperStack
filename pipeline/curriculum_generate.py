@@ -6,12 +6,17 @@ whose prerequisites are already written are picked, by priority then path order,
 with a per-subject mix from pipeline/config.yaml (`daily_mix`). No paper search is
 needed: ML entries carry their arXiv id.
 
-Three passes per article:
-  1. draft   - from the curriculum brief, the subject prompt and an exemplar article
-  2. critic  - scores the draft against the rubric and lists concrete problems
-  3. revise  - fixes those problems and any validator / C++ compile errors
-A final critic score below `quality_threshold`, a validation error, or a C++ block
-that does not compile means the article is NOT published: the draft is saved to
+Passes per article:
+  0. plan    - a JSON outline: hook, central analogy and where it is reused, the traced
+               example, misconception, try-this, facts to handle carefully
+  1. draft   - from the plan, the curriculum brief, the subject prompt, the quality
+               contract (prompts/quality_contract.md) and a kind-matched exemplar article
+  2. critic  - scores the draft against the rubric and lists concrete problems, plus a
+               deterministic lint (banned words, paragraph length, callouts, analogy reuse,
+               practice-problem link formats)
+  3. revise  - fixes every problem, validator error and C++ compile error
+A final critic score below `quality_threshold`, any validation or lint error, or a C++
+block that does not compile means the article is NOT published: the draft is saved to
 pipeline/drafts/<id>.md and the entry becomes "needs_review".
 
 Usage:
@@ -97,17 +102,56 @@ def pick_entries(cur: dict, written: set[str], track_order: dict[str, int], coun
 
 # ---------------------------------------------------------------- prompts
 
-def subject_prompt(subject: str, exemplar_override: Path | None = None) -> str:
-    """pipeline/prompts/<subject>.md with the shared guide, format and an exemplar article filled in."""
+HUMAN_WRITERS = ("claude-seed", "claude-revised")
+
+
+def pick_exemplar(e: dict, content: Path = bi.CONTENT) -> Path | None:
+    """The best Claude-written article to imitate: same subject and kind, else same kind, else same subject."""
+    best: tuple[float, Path] | None = None
+    for p in bi.article_files(content):
+        try:
+            data, body = bi.parse_article(p.read_text(encoding="utf-8"))
+        except bi.ParseError:
+            continue
+        if data.get("generated_by") not in HUMAN_WRITERS or data.get("id") == e["id"]:
+            continue
+        same_kind = data.get("kind") == e["kind"]
+        same_subject = data.get("subject", "ml") == e["subject"]
+        rank = (3 if same_kind and same_subject else 2 if same_kind else 1 if same_subject else 0)
+        if not rank:
+            continue
+        score = rank + float(data.get("importance_score", 0)) / 10
+        if best is None or score > best[0]:
+            best = (score, p)
+    return best[1] if best else None
+
+
+def exemplar_text(path: Path | None, budget_tokens: int) -> str:
+    """Full exemplar for large-context providers; for small ones, its hook, analogy and section outline."""
+    if not path or not path.exists():
+        return "(no exemplar available)"
+    raw = path.read_text(encoding="utf-8")
+    if budget_tokens >= 14000:
+        return raw
+    _, body = bi.parse_article(raw)
+    hook = re.search(r"^## The hook\s*$([\s\S]*?)(?=^## )", body, re.M)
+    analogy = re.search(r"^:::analogy\n[\s\S]*?^:::", body, re.M)
+    heads = "\n".join(f"## {h}" for h in bi.extract_h2(body))
+    return f"## The hook\n{hook.group(1).strip() if hook else ''}\n\n{analogy.group(0) if analogy else ''}\n\nSection outline:\n{heads}"
+
+
+def subject_prompt(e: dict, budget_tokens: int = 30000, content: Path = bi.CONTENT) -> str:
+    """pipeline/prompts/<subject>.md with the shared guide, format, quality contract and an exemplar filled in."""
+    subject = e["subject"]
     tpl = (PROMPTS / f"{subject}.md").read_text(encoding="utf-8")
     m = re.search(r"^exemplar:\s*(\S+)\s*$", tpl, re.M)
-    exemplar_path = exemplar_override or (ROOT / m.group(1) if m else None)
-    exemplar = exemplar_path.read_text(encoding="utf-8") if exemplar_path and exemplar_path.exists() else "(no exemplar yet)"
+    exemplar = pick_exemplar(e, content) or (ROOT / m.group(1) if m else None)
     tpl = re.sub(r"^exemplar:.*\n", "", tpl, flags=re.M)
+    contract = (PROMPTS / "quality_contract.md").read_text(encoding="utf-8").strip()
     return (
         tpl.replace("{{WRITING_GUIDE}}", (PROMPTS / "writing_guide.md").read_text(encoding="utf-8").strip())
-        .replace("{{FORMAT}}", (PROMPTS / "format.md").read_text(encoding="utf-8").strip())
-        .replace("{{EXEMPLAR}}", exemplar.strip())
+        .replace("{{FORMAT}}", (PROMPTS / "format.md").read_text(encoding="utf-8").strip() + "\n\n" + contract)
+        .replace("{{EXEMPLAR}}", exemplar_text(exemplar, budget_tokens).strip())
     )
 
 
@@ -119,14 +163,19 @@ def entry_header(e: dict, written: dict[str, dict], today: str) -> str:
         "prerequisites": [p for p in e.get("prerequisites", []) if p in written],
         "cover_seed": e["slug"], "generated_at": today,
     }
+    if e["subject"] == "ml":
+        fixed.pop("priority")
     if e["kind"] == "paper":
         fixed["paper_url"] = e.get("paper_url")
+    target = bi.WORD_LIMITS.get(e["kind"], (1000, 2000))
     return f"""## The entry to write
 Working title (improve it: curiosity-driven, under 10 words): {e['title_working']}
+Kind: {e['kind']}. Required sections, in order: {' | '.join(bi.SECTIONS[e['kind']])}
+Target length: {target[0]}-{target[1]} words of prose (code blocks are not counted).
 Use these exact frontmatter values:
 {json.dumps(fixed, indent=1, ensure_ascii=False)}
 
-## Brief from the curriculum
+## Brief from the curriculum (cover every key point; respect every trap and exact fact)
 {json.dumps(e.get('brief', {}), indent=1, ensure_ascii=False)}
 
 ## Existing article ids you may link to with [text](article:<id>) (no others)
@@ -134,28 +183,59 @@ Use these exact frontmatter values:
 """
 
 
-def draft_messages(e: dict, written: dict[str, dict], today: str, paper_text: str = "") -> list[dict]:
-    extra = f"\n## Paper excerpt (check every fact against it)\n{paper_text}\n" if paper_text else ""
-    user = entry_header(e, written, today) + extra + "\nWrite the complete article file now. Start with the line --- and end with the last takeaway bullet."
-    return [{"role": "system", "content": subject_prompt(e["subject"])}, {"role": "user", "content": user}]
+def plan_messages(e: dict, written: dict[str, dict], today: str, paper_text: str = "") -> list[dict]:
+    extra = f"\n## Paper excerpt\n{paper_text[:40000]}\n" if paper_text else ""
+    user = entry_header(e, written, today) + extra + """
+Before anything is written, plan the article. Reply with JSON only, with these keys:
+- "title": curiosity-driven title under 10 words
+- "subtitle": one line that promises the payoff
+- "hook": the opening scene, fact or question in 2-3 sentences
+- "analogy": the one everyday analogy, and "analogy_reuse": 2-3 later moments where it explains a hard step
+- "aha": the single insight worth remembering, in one sentence
+- "example": the small concrete input you will trace, and "trace": the step-by-step states with correct values
+- "misconception": a real common misconception and its correction
+- "try_this": a two-minute paper exercise with its answer
+- "diagram": what the Mermaid diagram shows, in under 10 short nodes
+- "glossary": 3-8 terms a beginner needs
+- "quiz": 3 questions that test understanding, with the correct option
+- "practice_problems": for pattern or problem-walkthrough kinds, 3-6 real problems with exact URLs (else [])
+- "careful_facts": every name, date, number or product you plan to mention, each marked "certain" or "omit"
+Drop anything you are not certain about."""
+    return [{"role": "system", "content": "You are a meticulous editor planning an article for PaperStack. You never invent facts. Reply with JSON only."},
+            {"role": "user", "content": user}]
+
+
+def draft_messages(e: dict, written: dict[str, dict], today: str, paper_text: str = "", plan: dict | None = None):
+    def build(prov: Provider) -> list[dict]:
+        extra = f"\n## Paper excerpt (check every fact against it)\n{paper_text[: max(4000, (prov.max_input_tokens - 12000) * 4)]}\n" if paper_text else ""
+        plan_txt = f"\n## Your approved plan (follow it; drop any fact marked omit)\n{json.dumps(plan, indent=1, ensure_ascii=False)}\n" if plan else ""
+        user = (entry_header(e, written, today) + plan_txt + extra
+                + "\nWrite the complete article file now, meeting every point of the quality contract. "
+                "Start with the line --- and end with the last takeaway bullet. Output the file only.")
+        return [{"role": "system", "content": subject_prompt(e, prov.max_input_tokens)}, {"role": "user", "content": user}]
+    return build
 
 
 def critic_messages(e: dict, article: str) -> list[dict]:
     rubric = (PROMPTS / "critic.md").read_text(encoding="utf-8")
+    contract = (PROMPTS / "quality_contract.md").read_text(encoding="utf-8")
     return [
-        {"role": "system", "content": rubric},
+        {"role": "system", "content": rubric + "\n\nThe article must also meet this contract; report every breach as a problem:\n\n" + contract},
         {"role": "user", "content": f"Subject: {e['subject']}. Kind: {e['kind']}. Brief: {json.dumps(e.get('brief', {}), ensure_ascii=False)}\n\n## Article\n{article}"},
     ]
 
 
-def revise_messages(e: dict, written: dict[str, dict], today: str, draft: str, problems: list[str]) -> list[dict]:
-    msgs = draft_messages(e, written, today)
-    msgs += [
-        {"role": "assistant", "content": draft},
-        {"role": "user", "content": "An editor reviewed this draft. Fix every problem below, keep everything that already works, "
-         "and return the complete corrected file starting with the line ---.\n- " + "\n- ".join(problems)},
-    ]
-    return msgs
+def revise_messages(e: dict, written: dict[str, dict], today: str, draft: str, problems: list[str], plan: dict | None = None):
+    base = draft_messages(e, written, today, plan=plan)
+
+    def build(prov: Provider) -> list[dict]:
+        return base(prov) + [
+            {"role": "assistant", "content": draft},
+            {"role": "user", "content": "A strict editor reviewed this draft. Fix every problem below without weakening anything that already works. "
+             "Keep the same central analogy. Recompute every number in the worked example. Return the complete corrected file "
+             "starting with the line ---, and nothing else.\n- " + "\n- ".join(problems)},
+        ]
+    return build
 
 
 # ---------------------------------------------------------------- finalising + gate
@@ -183,9 +263,67 @@ def finalize(raw: str, e: dict, written: dict[str, dict], generated_by: str, tod
     return ordered, body
 
 
+# Filler only. Technical words like "robust" or "loss landscape" are allowed.
+BANNED = [
+    r"delve", r"pivotal", r"tapestry", r"groundbreaking", r"game-changer", r"paradigm shift", r"seamless(ly)?",
+    r"cutting-edge", r"moreover", r"furthermore", r"it is important to note", r"it's worth noting", r"in conclusion",
+    r"in this article,? (we|i)", r"let's dive in", r"dive deep into",
+]
+PROBLEM_URL = re.compile(
+    r"^https://(leetcode\.com/problems/[a-z0-9-]+/|cses\.fi/problemset/task/\d+|codeforces\.com/problemset/problem/\d+/[A-Z]\d?"
+    r"|atcoder\.jp/contests/[a-z0-9_]+/tasks/[a-z0-9_]+)$"
+)
+
+
+def lint(data: dict, body: str) -> tuple[list[str], list[str]]:
+    """Deterministic checks of the quality contract that a model critic tends to miss.
+
+    Returns (errors, advice). Errors block publishing; advice is sent to the revise pass only.
+    """
+    errors: list[str] = []
+    advice: list[str] = []
+    prose = bi.strip_fences(body)
+    low = prose.lower()
+    for w in BANNED:
+        m = re.search(rf"\b{w}\b", low)
+        if m:
+            errors.append(f'Remove the filler phrase "{m.group(0)}".')
+    for d in ("analogy", "insight", "try-this", "warning"):
+        if not re.search(rf"^:::{d}\b", body, re.M):
+            errors.append(f"Add a :::{d} block.")
+    hook = re.search(r"^## The hook\s*$([\s\S]*?)(?=^## )", prose, re.M)
+    if hook:
+        h = hook.group(1).strip()
+        n = len(re.findall(r"[.!?](?:\s|$)", h))
+        if n > 10:
+            advice.append(f"The hook has {n} sentences; keep it to a short scene of at most three short paragraphs.")
+        if re.match(r"(this paper|in this|today we|the paper)\b", h.lower()):
+            errors.append("The hook must not open with 'This paper', 'In this', 'Today we' or 'The paper'.")
+    for para in re.split(r"\n\s*\n", prose):
+        p = para.strip()
+        if not p or p.startswith(("|", "-", "*", ":::", "#", "$$", ">")) or re.match(r"\d+\.", p):
+            continue
+        n = len(re.findall(r"[.!?](?:\s|$)", p))
+        if n > 6:
+            advice.append(f'Split this {n}-sentence paragraph: "{p[:80]}..."')
+    analogy = re.search(r"^:::analogy\n([\s\S]*?)^:::", body, re.M)
+    if analogy:
+        after = low.split(":::analogy", 1)[1].split(":::", 1)[-1]
+        nouns = [w for w in set(re.findall(r"[a-z]{5,}", analogy.group(1).lower())) if w not in
+                 {"think", "imagine", "picture", "about", "which", "their", "there", "where", "would", "every", "never", "always", "other"}]
+        if sum(1 for w in nouns if w in after) < 2:
+            errors.append("Refer back to the central analogy by name at least twice after introducing it.")
+    for p in data.get("practice_problems") or []:
+        if isinstance(p, dict) and isinstance(p.get("url"), str) and not PROBLEM_URL.match(p["url"]):
+            errors.append(f"Practice problem URL has an unexpected format: {p['url']}. Use the exact formats in the contract.")
+    if data.get("kind") in bi.NEEDS_CODE and "```pseudo" not in body:
+        errors.append("Add pseudocode in a ```pseudo fence before any C++ in The code.")
+    return errors, advice
+
+
 def gate_errors(data: dict, body: str, tracks: list[str], written: set[str]) -> list[str]:
     errors, warnings = bi.validate_article(data, body, tracks, written | {data["id"]})
-    out = [x.message for x in errors] + [x.message for x in warnings if x.code.startswith("length")]
+    out = [x.message for x in errors] + [x.message for x in warnings if x.code.startswith("length")] + lint(data, body)[0]
     for i, (info, code) in enumerate(bi.cpp_blocks(body), 1):
         if "partial" in info.split():
             continue
@@ -206,18 +344,23 @@ def critique(llm: LLM, e: dict, article: str) -> tuple[float, list[str]]:
 
 
 def generate_entry(e: dict, llm: LLM, config: dict, written: dict[str, dict], tracks: list[str], today: str, paper_text: str = "") -> tuple[dict, str, float]:
-    threshold = float(config.get("quality_threshold", 7.5))
-    draft = llm.complete(draft_messages(e, written, today, paper_text), temperature=0.6)
+    threshold = float(config.get("quality_threshold", 8.0))
+    plan: dict | None = None
+    try:
+        plan = extract_json(llm.complete(plan_messages(e, written, today, paper_text), temperature=0.4, json_mode=True).text)
+    except (LLMError, ValueError, json.JSONDecodeError) as err:
+        log_event("plan_failed", id=e["id"], error=str(err)[:200])  # the draft can still use the brief alone
+    draft = llm.complete(draft_messages(e, written, today, paper_text, plan), temperature=0.7)
     raw = draft.text
     score, problems = critique(llm, e, raw)
     log_event("critic", id=e["id"], pass_="draft", score=score, problems=len(problems))
     try:
         data, body = finalize(raw, e, written, draft.generated_by, today)
-        problems += gate_errors(data, body, tracks, set(written))
+        problems += gate_errors(data, body, tracks, set(written)) + lint(data, body)[1]
     except bi.ParseError as err:
         problems.append(err.message)
 
-    revised = llm.complete(revise_messages(e, written, today, raw, problems or ["Tighten anything that is vague."]), temperature=0.4)
+    revised = llm.complete(revise_messages(e, written, today, raw, problems or ["Tighten anything that is vague."], plan), temperature=0.3)
     raw = revised.text
     try:
         data, body = finalize(raw, e, written, revised.generated_by, today)
@@ -225,7 +368,7 @@ def generate_entry(e: dict, llm: LLM, config: dict, written: dict[str, dict], tr
         raise GateFailed(f"revised file does not parse: {err.message}", raw) from err
     errs = gate_errors(data, body, tracks, set(written))
     if errs:
-        raise GateFailed("validator or compile errors: " + "; ".join(errs[:5]), render(data, body))
+        raise GateFailed("validator, lint or compile errors: " + "; ".join(errs[:6]), render(data, body))
     final, final_problems = critique(llm, e, render(data, body))
     log_event("critic", id=e["id"], pass_="final", score=final, problems=len(final_problems))
     if final < threshold:

@@ -88,7 +88,7 @@ daily_mix:
   ml: 1
 # Final critic score (0-10) an article needs to be published; below it the draft is saved
 # to pipeline/drafts/ and the curriculum entry is marked needs_review.
-quality_threshold: 7.5
+quality_threshold: 8.0
 
 providers:                     # tried in order with fallback
   - name: gemini
