@@ -1,7 +1,7 @@
 {
- "content_version": "5eda78c9cd8d2f76",
+ "content_version": "aa57c48e2f33a7de",
  "generated_at": "2026-11-02",
- "count": 305,
+ "count": 306,
  "subjects": [
   {
    "id": "ml",
@@ -18504,6 +18504,118 @@
    "hash": "51ef85d237e1",
    "word_count": 1346,
    "excerpt": "Numbers arrive one at a time: response times, prices, sensor readings. After each one, you must report the median so far. Sorting after every arrival is O(n log n) each time. Inserting into a sorted array is O(n). For a million readings, both are far too slow. Two heaps, set back to back, answer…"
+  },
+  {
+   "id": "dsa-k-way-merge",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "k-way-merge",
+   "title": "Several Cashiers Merging Sorted Receipts",
+   "subtitle": "K-way merge with a min-heap of current heads: merging k sorted lists in O(N log k), the k-th smallest in a sorted matrix, and the smallest range that covers every list",
+   "track": "dsa-heaps-greedy",
+   "track_order": 4,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-heap-basics",
+    "dsa-linked-list-basics"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "heap",
+    "k-way merge",
+    "sorted lists",
+    "external sorting"
+   ],
+   "complexity": {
+    "time": "O(N log k) for N elements in k lists",
+    "space": "O(k) for the heap"
+   },
+   "practice_problems": [
+    {
+     "name": "Merge k Sorted Lists",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/merge-k-sorted-lists/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Kth Smallest Element in a Sorted Matrix",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Smallest Range Covering Elements from K Lists",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "K-way merge",
+     "definition": "Combining k sorted sequences into one sorted sequence by repeatedly taking the smallest of their current front elements."
+    },
+    {
+     "term": "Head",
+     "definition": "The next unused element of one sorted list, the only element of that list that can be the overall next smallest."
+    },
+    {
+     "term": "Heap of heads",
+     "definition": "A min-heap holding the current head of every non-empty list, together with which list it came from."
+    },
+    {
+     "term": "External sorting",
+     "definition": "Sorting data too large for memory by sorting chunks that fit, writing them out as sorted runs, and k-way merging the runs."
+    },
+    {
+     "term": "Covering range",
+     "definition": "An interval [low, high] that contains at least one element from every list."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does the heap only need to hold one element from each list?",
+     "options": [
+      "To save time",
+      "Within a sorted list, only its current head can be the next smallest overall; the rest are at least as large",
+      "Because k is small",
+      "Heaps cannot hold more"
+     ],
+     "answer": 1,
+     "explain": "Every other element of a list is no smaller than its head, so it can wait until the head is taken."
+    },
+    {
+     "q": "What is the time to merge k sorted lists with N elements in total using a heap of heads?",
+     "options": [
+      "O(N k)",
+      "O(N log k)",
+      "O(N log N)",
+      "O(k log N)"
+     ],
+     "answer": 1,
+     "explain": "Each of the N elements is pushed and popped once on a heap of at most k entries."
+    },
+    {
+     "q": "In Smallest Range Covering Elements from K Lists, why track the maximum of the heap separately?",
+     "options": [
+      "Heaps give the maximum for free",
+      "A min-heap gives the smallest head; the current range is from that minimum to the largest head, which must be remembered as heads are replaced",
+      "To sort the lists",
+      "It is not needed"
+     ],
+     "answer": 1,
+     "explain": "The range covering the current heads is [min, max]. The min comes from the heap root; the max only changes when a larger head is pushed, so keep it in a variable."
+    }
+   ],
+   "cover_seed": "k-way-merge",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.7,
+   "path": "dsa/k-way-merge.md",
+   "hash": "341723eeda81",
+   "word_count": 1437,
+   "excerpt": "At closing time, five cashiers each hold a stack of receipts already sorted by time. The manager wants one list of every sale in time order. She does not shuffle all the receipts together and sort them. She looks at the top receipt of each stack, takes the earliest, and repeats. With five stacks,…"
   },
   {
    "id": "dsa-graph-representation",
