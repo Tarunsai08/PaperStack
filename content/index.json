@@ -1,7 +1,7 @@
 {
- "content_version": "10afdf57d59f9c08",
+ "content_version": "9af85216e8b899db",
  "generated_at": "2026-11-02",
- "count": 143,
+ "count": 147,
  "subjects": [
   {
    "id": "ml",
@@ -10082,6 +10082,129 @@
    "excerpt": "Linked list questions are short to state and easy to get wrong. \"Reverse this list.\" Five lines of code, and half of candidates either lose the rest of the list, create a cycle, or crash on an empty input. The problems are not hard. They are fragile. A few habits make them safe every time: draw the…"
   },
   {
+   "id": "dsa-stack-patterns",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "stack-patterns",
+   "title": "The Last Plate In Is the First Plate Out",
+   "subtitle": "Stack patterns: matching brackets, evaluating expressions, undo, and a min-stack in O(1)",
+   "track": "dsa-linear",
+   "track_order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-cpp-stl-toolkit"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 4,
+   "topics": [
+    "stacks",
+    "parsing",
+    "brackets",
+    "design"
+   ],
+   "complexity": {
+    "time": "O(n) for a scan; O(1) per push or pop",
+    "space": "O(n) in the worst case"
+   },
+   "practice_problems": [
+    {
+     "name": "Valid Parentheses",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/valid-parentheses/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Min Stack",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/min-stack/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Evaluate Reverse Polish Notation",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/evaluate-reverse-polish-notation/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Decode String",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/decode-string/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Simplify Path",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/simplify-path/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Stack",
+     "definition": "A collection where the last item added is the first one removed (last in, first out)."
+    },
+    {
+     "term": "Push and pop",
+     "definition": "Adding an item to the top of a stack, and removing the item on top."
+    },
+    {
+     "term": "LIFO",
+     "definition": "Last in, first out: the ordering rule of a stack."
+    },
+    {
+     "term": "Reverse Polish notation",
+     "definition": "A way of writing expressions with operators after their operands, like '3 4 +', which needs no brackets and is evaluated with a stack."
+    },
+    {
+     "term": "Nesting",
+     "definition": "Structures inside structures, like brackets inside brackets or folders inside folders, which close in the reverse order they opened."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why is a stack the right tool for checking brackets like ({[]})?",
+     "options": [
+      "Brackets are always balanced",
+      "The most recently opened bracket must be the first one closed, which is last-in-first-out",
+      "Stacks sort brackets",
+      "It is not; use a queue"
+     ],
+     "answer": 1,
+     "explain": "Nesting closes in reverse order of opening, which is exactly what a stack gives you."
+    },
+    {
+     "q": "How does a Min Stack return the minimum in O(1)?",
+     "options": [
+      "It sorts after every push",
+      "Each entry also stores the minimum of the stack up to that point",
+      "It scans the stack",
+      "It uses a hash map"
+     ],
+     "answer": 1,
+     "explain": "Storing the running minimum with each element means the top always knows the minimum of everything below it, even after pops."
+    },
+    {
+     "q": "Evaluate the RPN expression 2 3 + 4 *.",
+     "options": [
+      "14",
+      "20",
+      "24",
+      "9"
+     ],
+     "answer": 1,
+     "explain": "Push 2, push 3, + pops both and pushes 5, push 4, * pops 5 and 4 and pushes 20."
+    }
+   ],
+   "cover_seed": "stack-patterns",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "dsa/stack-patterns.md",
+   "hash": "0ecfff616137",
+   "word_count": 900,
+   "excerpt": "Your code editor knows instantly when a bracket is missing. A calculator app turns \"2 + 3 × 4\" into 14, not 20. The undo button in every editor steps back through your changes in reverse order. Different features, one data structure underneath: the stack. Stacks are simple enough to explain in a…"
+  },
+  {
    "id": "cp-how-contests-work",
    "kind": "primer",
    "subject": "cp",
@@ -11506,6 +11629,124 @@
    "excerpt": "A room is 1,071 cm by 462 cm, and you want to tile it with identical square tiles, no cutting. What is the largest tile size that fits exactly? You could try every size from 462 downward. Or you could use an algorithm written down by Euclid more than two thousand years ago, which answers in a…"
   },
   {
+   "id": "cp-modular-inverse",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "modular-inverse",
+   "title": "Finding the Undo Button on a Clock",
+   "subtitle": "Modular inverses: how to divide under a modulus with Fermat or extended Euclid, and precompute a million at once",
+   "track": "cp-math",
+   "track_order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-binary-exponentiation",
+    "cp-gcd-lcm"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 4,
+   "topics": [
+    "number theory",
+    "modular inverse",
+    "fermat",
+    "combinatorics"
+   ],
+   "complexity": {
+    "time": "O(log m) per inverse; O(n) for n factorial inverses",
+    "space": "O(n) for precomputed tables"
+   },
+   "practice_problems": [
+    {
+     "name": "Binomial Coefficients",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1079",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Creating Strings II",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1715",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Distributing Apples",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1716",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Count Ways to Make Array With Product",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/count-ways-to-make-array-with-product/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Modular inverse",
+     "definition": "For a number a modulo m, a value x with a × x ≡ 1 (mod m). Multiplying by x undoes multiplying by a."
+    },
+    {
+     "term": "Fermat's little theorem",
+     "definition": "For a prime p and a not divisible by p, a^(p−1) ≡ 1 (mod p). It implies the inverse of a is a^(p−2)."
+    },
+    {
+     "term": "Extended Euclidean algorithm",
+     "definition": "An algorithm that finds x and y with a·x + m·y = gcd(a, m). When the gcd is 1, x is the inverse of a."
+    },
+    {
+     "term": "Coprime",
+     "definition": "Having greatest common divisor 1. An inverse of a modulo m exists exactly when a and m are coprime."
+    },
+    {
+     "term": "Factorial table",
+     "definition": "Precomputed values of k! and their inverses modulo p for every k up to n, so binomial coefficients cost O(1)."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Modulo the prime 7, what is the inverse of 3?",
+     "options": [
+      "2",
+      "5",
+      "3",
+      "4"
+     ],
+     "answer": 1,
+     "explain": "3 × 5 = 15 = 2 × 7 + 1, so 3 × 5 ≡ 1 (mod 7)."
+    },
+    {
+     "q": "Why does a^(p−2) give the inverse of a modulo a prime p?",
+     "options": [
+      "By definition of primes",
+      "Fermat says a^(p−1) ≡ 1, so a × a^(p−2) ≡ 1",
+      "It works for any modulus",
+      "Because p − 2 is even"
+     ],
+     "answer": 1,
+     "explain": "a^(p−1) = a × a^(p−2), and Fermat's little theorem says that equals 1 modulo p when p does not divide a."
+    },
+    {
+     "q": "Does 4 have an inverse modulo 6?",
+     "options": [
+      "Yes, it is 4",
+      "Yes, it is 2",
+      "No, because gcd(4, 6) = 2",
+      "Yes, every number has one"
+     ],
+     "answer": 2,
+     "explain": "4 × x is always even, so it can never be 1 more than a multiple of 6. Inverses exist only when the gcd is 1."
+    }
+   ],
+   "cover_seed": "modular-inverse",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.86,
+   "path": "cp/modular-inverse.md",
+   "hash": "e3ca08fd009d",
+   "word_count": 930,
+   "excerpt": "You need n! / (k! (n − k)!) modulo 10⁹ + 7 for n up to a million: the number of ways to choose a team. Computing the factorials modulo p is easy. But then you need to divide, and as Doing Maths on a Clock Face warned, division does not survive taking remainders. The fix is to never divide at all.…"
+  },
+  {
    "id": "famous-algos-bloom-filter",
    "kind": "concept",
    "subject": "famous-algos",
@@ -12826,6 +13067,97 @@
    "hash": "108c768859ce",
    "word_count": 958,
    "excerpt": "A messaging app stores billions of messages, and every second hundreds of thousands more arrive. A storage engine that updates records in place, seeking to the right spot on disk for every write, would spend most of its time jumping around. Many modern databases take a different approach: never…"
+  },
+  {
+   "id": "famous-algos-write-ahead-log",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "write-ahead-log",
+   "title": "Write It in the Ledger Before You Hand Over the Cash",
+   "subtitle": "Write-ahead logging: the append-only diary that lets databases survive crashes without losing a committed write",
+   "track": "fa-storage",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-lsm-trees"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 4,
+   "topics": [
+    "databases",
+    "durability",
+    "crash recovery",
+    "logging"
+   ],
+   "glossary": [
+    {
+     "term": "Write-ahead log",
+     "definition": "An append-only file where a database records each change before applying it to its main data structures."
+    },
+    {
+     "term": "Durability",
+     "definition": "The guarantee that once a write is confirmed, it survives crashes and power loss."
+    },
+    {
+     "term": "fsync",
+     "definition": "An operating system call that forces buffered data to be physically written to storage before returning."
+    },
+    {
+     "term": "Checkpoint",
+     "definition": "A point where the database has written all changes up to some log position into its main files, so older log entries are no longer needed."
+    },
+    {
+     "term": "Replay",
+     "definition": "Reading the log after a crash and re-applying every change after the last checkpoint to rebuild the correct state."
+    },
+    {
+     "term": "Group commit",
+     "definition": "Batching the log writes of many transactions into one fsync to share its cost."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why write to the log before updating the main data files?",
+     "options": [
+      "The log is prettier",
+      "If the machine crashes mid-update, the log still records the intended change, so it can be replayed",
+      "It saves disk space",
+      "Main files cannot be written"
+     ],
+     "answer": 1,
+     "explain": "The log is the source of truth for recent changes. Whatever state the main files were left in, replaying the log brings them up to date."
+    },
+    {
+     "q": "What does a checkpoint allow?",
+     "options": [
+      "Faster writes only",
+      "Deleting or recycling log entries older than the checkpoint, and shorter recovery",
+      "Skipping fsync",
+      "Running without a log"
+     ],
+     "answer": 1,
+     "explain": "Once all changes up to a log position are safely in the main files, older log entries are no longer needed for recovery."
+    },
+    {
+     "q": "Why does group commit improve throughput?",
+     "options": [
+      "It skips durability",
+      "One fsync is shared by many transactions, so the slow flush cost is paid less often per transaction",
+      "It compresses data",
+      "It removes the log"
+     ],
+     "answer": 1,
+     "explain": "fsync is slow. Waiting a moment and flushing several transactions' log records together amortises that cost."
+    }
+   ],
+   "cover_seed": "write-ahead-log",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "famous-algos/write-ahead-log.md",
+   "hash": "79b8e8adee5e",
+   "word_count": 957,
+   "excerpt": "A bank's database is halfway through moving money: it has subtracted ₹5,000 from your account, but not yet added it to your friend's. Then the power fails. When the machine restarts, did the money vanish? In a well-built database, no. Before touching the real data, it wrote one line in an…"
   },
   {
    "id": "system-design-interview-framework",
@@ -14198,6 +14530,98 @@
    "hash": "0dfd6e546c5e",
    "word_count": 1110,
    "excerpt": "A query that took 3 milliseconds yesterday takes 40 seconds today. The code did not change. The table grew from ten thousand rows to fifty million, and the query was quietly reading every one of them. One line, CREATE INDEX, brings it back to milliseconds. Indexes are the most powerful performance…"
+  },
+  {
+   "id": "system-design-message-queues",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "message-queues",
+   "title": "The Ticket Rail Between Waiters and Cooks",
+   "subtitle": "Message queues and pub-sub: decoupling services with Kafka-style logs and RabbitMQ-style queues, and the guarantees each gives",
+   "track": "sd-blocks",
+   "track_order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-api-design"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "message queues",
+    "kafka",
+    "pub-sub",
+    "asynchronous processing"
+   ],
+   "glossary": [
+    {
+     "term": "Message queue",
+     "definition": "A buffer where producers put messages and consumers take them out later, so the two sides do not have to work at the same speed or time."
+    },
+    {
+     "term": "Producer and consumer",
+     "definition": "The producer sends messages; the consumer receives and processes them."
+    },
+    {
+     "term": "Publish-subscribe",
+     "definition": "A pattern where each message published to a topic is delivered to every interested subscriber group."
+    },
+    {
+     "term": "Partition",
+     "definition": "One ordered slice of a topic. Messages within a partition keep their order; different partitions are processed in parallel."
+    },
+    {
+     "term": "Consumer group",
+     "definition": "A set of consumers that share the work of a topic, each partition being read by one member of the group."
+    },
+    {
+     "term": "Dead letter queue",
+     "definition": "A separate queue for messages that keep failing, so they can be inspected without blocking everything else."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is the main benefit of putting a queue between two services?",
+     "options": [
+      "It makes messages smaller",
+      "The producer can keep working even if the consumer is slow or down, and spikes are absorbed by the buffer",
+      "It guarantees exactly-once processing automatically",
+      "It removes the need for a database"
+     ],
+     "answer": 1,
+     "explain": "Decoupling in time and speed is the core benefit: work piles up safely in the queue and is processed when the consumer can."
+    },
+    {
+     "q": "In Kafka-style systems, how do you keep all events for one user in order?",
+     "options": [
+      "Use one consumer for the whole system",
+      "Use the user id as the message key, so all of that user's events go to the same partition",
+      "Sort them in the consumer",
+      "Order is never possible"
+     ],
+     "answer": 1,
+     "explain": "Order is guaranteed only within a partition. Keying by user id routes each user's events to one partition."
+    },
+    {
+     "q": "With at-least-once delivery, what must consumers do?",
+     "options": [
+      "Nothing",
+      "Handle duplicates, for example by making processing idempotent or tracking processed message ids",
+      "Delete the queue",
+      "Process messages twice on purpose"
+     ],
+     "answer": 1,
+     "explain": "A message can be redelivered after a crash or timeout, so processing it twice must not cause harm."
+    }
+   ],
+   "cover_seed": "message-queues",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.9,
+   "path": "system-design/message-queues.md",
+   "hash": "5efac426f224",
+   "word_count": 1110,
+   "excerpt": "When you upload a video, the site answers \"Upload complete\" in a second. But converting that video into ten resolutions takes minutes. If the upload request waited for all of it, uploads would time out, and a burst of uploads after a viral moment would crash the converters. Instead, the upload…"
   }
  ]
 }

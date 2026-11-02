@@ -48,7 +48,7 @@ importance_score: 0.9
 
 When you upload a video, the site answers "Upload complete" in a second. But converting that video into ten resolutions takes minutes. If the upload request waited for all of it, uploads would time out, and a burst of uploads after a viral moment would crash the converters.
 
-Instead, the upload service drops a note on a queue, "new video 81723, please process", and moves on. Converter workers pick notes off the queue at their own pace. That simple handoff is one of the most important building blocks in large systems.
+Instead, the upload service drops a note on a queue, "new video 81723, please process", and moves on. Converter workers pick notes off the queue at their own pace. That simple handoff is one of the most important building blocks in large systems. You will find it in almost every case study in this subject.
 
 ## The intuition
 
