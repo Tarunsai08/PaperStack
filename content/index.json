@@ -1,5 +1,5 @@
 {
- "content_version": "305c853fe91e216e",
+ "content_version": "b7836df747b1f09d",
  "generated_at": "2026-11-02",
  "count": 303,
  "subjects": [
@@ -16303,7 +16303,7 @@
     "dsa-recursion-basics"
    ],
    "difficulty": "beginner",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "trees",
     "binary tree",
@@ -16413,8 +16413,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.92,
    "path": "dsa/tree-traversals.md",
-   "hash": "e6dff8415fe1",
-   "word_count": 1108,
+   "hash": "55631aec3bd5",
+   "word_count": 1289,
    "excerpt": "Almost every tree problem in an interview, from \"maximum depth\" to \"serialize a tree\" to \"lowest common ancestor\", is a traversal with a small twist. The twist is usually when you do the work at each node: before visiting the children, between them, after them, or level by level. Get the four…"
   },
   {
