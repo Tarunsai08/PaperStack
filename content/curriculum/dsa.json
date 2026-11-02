@@ -1261,8 +1261,8 @@
    "prerequisites": [
     "dsa-cpp-stl-toolkit"
    ],
-   "status": "written",
-   "written_by": "claude-seed",
+   "status": "planned",
+   "written_by": null,
    "brief": {
     "key_points": [
      "Complete binary tree in an array",
