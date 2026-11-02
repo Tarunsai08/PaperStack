@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 88 | 0 | 64 | 152 | 57/72 |
+| dsa | 90 | 0 | 62 | 152 | 58/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **290** | **0** | **383** | **673** | |
+| **All** | **292** | **0** | **381** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -25,7 +25,6 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### dsa
 
-- [ ] `dsa-lca` (P0, pattern, dsa-trees): Lowest Common Ancestor
 - [ ] `dsa-max-path-sum` (P0, problem-walkthrough, dsa-trees): Binary Tree Maximum Path Sum
 - [ ] `dsa-nodes-at-distance-k` (P0, problem-walkthrough, dsa-trees): Nodes at Distance K and Burning a Tree
 - [ ] `dsa-top-k-pattern` (P0, pattern, dsa-heaps-greedy): Top K: The Heap of Size K Trick
@@ -35,19 +34,20 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-dijkstra` (P0, pattern, dsa-graphs): Dijkstra: Shortest Paths With Weights
 - [ ] `dsa-word-ladder` (P0, problem-walkthrough, dsa-graphs): Word Ladder: BFS on Implicit Graphs
 - [ ] `dsa-islands-variants` (P0, problem-walkthrough, dsa-graphs): Number of Islands and Its Many Variants
+- [ ] `dsa-tree-paths` (P1, pattern, dsa-trees): Path Problems on Trees
 
 ### cp
 
 - [ ] `cp-lazy-propagation` (P0, pattern, cp-ranges): Lazy Propagation: Range Updates in log n
 - [ ] `cp-scc` (P0, pattern, cp-graphs): Strongly Connected Components
 - [ ] `cp-bridges-articulation` (P0, pattern, cp-graphs): Bridges and Articulation Points
+- [ ] `cp-binary-lifting` (P0, pattern, cp-graphs): Binary Lifting and LCA in log n
 - [ ] `cp-weird-algorithm` (P1, problem-walkthrough, cp-start): Your First CSES Problems: Weird Algorithm to Increasing Array
 - [ ] `cp-implementation-skills` (P1, primer, cp-start): Implementation Problems: Getting the Details Right
 - [ ] `cp-segment-tree-descend` (P1, pattern, cp-ranges): Walking Down a Segment Tree
 - [ ] `cp-mos-algorithm` (P1, pattern, cp-ranges): Mo's Algorithm: Offline Range Queries
 - [ ] `cp-range-sum-queries-cses` (P1, problem-walkthrough, cp-ranges): From Static to Dynamic Range Queries
 - [ ] `cp-dp-with-data-structures` (P1, pattern, cp-dp): DP Sped Up by Segment Trees and BITs
-- [ ] `cp-dsu-advanced` (P1, pattern, cp-graphs): DSU Tricks: Rollback, Parity and Offline
 
 ### famous-algos
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 88 written</summary>
+<details><summary>dsa: 90 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -126,6 +126,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-tree-traversals` Tree Traversals: Pre, In, Post and Level Order
 - [x] `dsa-tree-recursion` Thinking Recursively About Trees
 - [x] `dsa-bst-operations` Binary Search Trees: Order as a Superpower
+- [x] `dsa-lca` Lowest Common Ancestor
+- [x] `dsa-tree-construction` Building Trees From Traversals and Serialising Them
 - [x] `dsa-heap-basics` Heaps: Always Know the Smallest
 - [x] `dsa-graph-representation` Graphs: Modelling Problems as Nodes and Edges
 - [x] `dsa-bfs` Breadth-First Search: Exploring in Rings

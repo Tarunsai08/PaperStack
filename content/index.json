@@ -1,7 +1,7 @@
 {
- "content_version": "705735ba2592c3f2",
+ "content_version": "376807d6aa0d8081",
  "generated_at": "2026-11-02",
- "count": 290,
+ "count": 292,
  "subjects": [
   {
    "id": "ml",
@@ -16667,6 +16667,240 @@
    "hash": "9953155a9d2f",
    "word_count": 1407,
    "excerpt": "A sorted array finds any number in O(log n) with binary search, but inserting a new number means shifting everything after it, O(n). A linked list inserts in O(1) but searches in O(n). A binary search tree gets fast search and fast insertion at the same time, as long as it stays reasonably…"
+  },
+  {
+   "id": "dsa-lca",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "lca",
+   "title": "The Closest Shared Ancestor in a Family Tree",
+   "subtitle": "Lowest common ancestor in any binary tree: the one-pass recursion, parent pointers and paths, the 'both nodes exist' trap, deepest leaves, and binary lifting for many queries",
+   "track": "dsa-trees",
+   "track_order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-tree-recursion"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "lowest common ancestor",
+    "binary tree",
+    "recursion",
+    "binary lifting"
+   ],
+   "complexity": {
+    "time": "O(n) per query with recursion, O(log n) per query after O(n log n) binary-lifting setup",
+    "space": "O(h) recursion, O(n log n) for the lifting table"
+   },
+   "practice_problems": [
+    {
+     "name": "Lowest Common Ancestor of a Binary Search Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Lowest Common Ancestor of a Binary Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Lowest Common Ancestor of Deepest Leaves",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/lowest-common-ancestor-of-deepest-leaves/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Company Queries II",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1688",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Ancestor",
+     "definition": "A node on the path from the root to a given node. Every node counts as an ancestor of itself."
+    },
+    {
+     "term": "Lowest common ancestor",
+     "definition": "For nodes p and q, the deepest node that is an ancestor of both. It is where their paths from the root split."
+    },
+    {
+     "term": "Parent pointer",
+     "definition": "A link from each node to its parent, which lets you walk from any node up to the root."
+    },
+    {
+     "term": "Depth",
+     "definition": "The number of edges from the root to a node; the root has depth 0."
+    },
+    {
+     "term": "Binary lifting",
+     "definition": "Storing each node's 1st, 2nd, 4th, 8th, ... ancestor so that you can jump up any number of levels in O(log n) steps."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In the recursive LCA, the left call returns a node and the right call returns null. What should the current node return?",
+     "options": [
+      "Itself",
+      "The non-null result from the left",
+      "Null",
+      "The root"
+     ],
+     "answer": 1,
+     "explain": "Both targets were found in the left subtree, or one was found there and the other is below it, so the answer is whatever the left subtree reported."
+    },
+    {
+     "q": "When does the recursive LCA give a wrong answer?",
+     "options": [
+      "When p is an ancestor of q",
+      "When one of the two nodes is not in the tree, because it returns the other node as if it were the LCA",
+      "When the tree is a BST",
+      "Never"
+     ],
+     "answer": 1,
+     "explain": "The recursion assumes both nodes exist. If only p is present, it returns p. When existence is not guaranteed, count how many targets were actually found."
+    },
+    {
+     "q": "With binary lifting, how many jumps are needed to climb 13 levels?",
+     "options": [
+      "13",
+      "3, using the 8th, 4th and 1st ancestors",
+      "1",
+      "26"
+     ],
+     "answer": 1,
+     "explain": "13 = 8 + 4 + 1, so three jumps suffice. In general, any distance up to n takes at most about log₂ n jumps, one per set bit."
+    }
+   ],
+   "cover_seed": "lca",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "dsa/lca.md",
+   "hash": "aa04dc3d73e5",
+   "word_count": 1378,
+   "excerpt": "Two cousins want to know their closest shared ancestor. Each could list all their ancestors, parents, grandparents, great-grandparents, and compare the lists. Or they could both start climbing the family tree and see where their paths meet. Either way, the answer is one specific person: the deepest…"
+  },
+  {
+   "id": "dsa-tree-construction",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "tree-construction",
+   "title": "Rebuilding a Family Tree From Two Lists",
+   "subtitle": "Constructing a binary tree from preorder and inorder (or postorder and inorder) in O(n) with an index map, rebuilding a BST from preorder alone with bounds, and when two traversals are not enough",
+   "track": "dsa-trees",
+   "track_order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-tree-traversals"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "binary tree",
+    "tree construction",
+    "traversals",
+    "divide and conquer"
+   ],
+   "complexity": {
+    "time": "O(n) with an index map",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Construct Binary Tree from Preorder and Inorder Traversal",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Construct Binary Tree from Inorder and Postorder Traversal",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Construct Binary Search Tree from Preorder Traversal",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Serialize and Deserialize Binary Tree",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Preorder",
+     "definition": "Visiting a node, then its left subtree, then its right subtree. The first element is always the root."
+    },
+    {
+     "term": "Inorder",
+     "definition": "Visiting the left subtree, then the node, then the right subtree. Everything left of the root's position is in its left subtree."
+    },
+    {
+     "term": "Postorder",
+     "definition": "Visiting the left subtree, then the right subtree, then the node. The last element is always the root."
+    },
+    {
+     "term": "Index map",
+     "definition": "A hash map from each value to its position in the inorder list, so finding the root's position is O(1) instead of a scan."
+    },
+    {
+     "term": "Upper bound",
+     "definition": "When building a BST from preorder, the largest value the current subtree may contain; values above it belong to an ancestor's right side."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Preorder is [1, 2, 4, 5, 3, 6] and inorder is [4, 2, 5, 1, 3, 6]. How many nodes are in the root's left subtree?",
+     "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ],
+     "answer": 2,
+     "explain": "The root is 1, the first preorder value. In the inorder list, 1 is at index 3, so the three values before it, 4, 2 and 5, form the left subtree."
+    },
+    {
+     "q": "Why use an index map from value to inorder position?",
+     "options": [
+      "To sort the values",
+      "Finding the root in the inorder list by scanning costs O(n) per node, O(n²) in total on a skewed tree; the map makes it O(1)",
+      "To handle duplicates",
+      "It is required by C++"
+     ],
+     "answer": 1,
+     "explain": "Each recursive call needs the root's inorder position. A map answers that in O(1), making the whole build O(n)."
+    },
+    {
+     "q": "Can preorder and postorder together always rebuild a binary tree?",
+     "options": [
+      "Yes, always",
+      "No: a node with a single child looks the same whether the child is left or right",
+      "Only for BSTs",
+      "Only if values are sorted"
+     ],
+     "answer": 1,
+     "explain": "For root 1 with one child 2, both preorder [1, 2] and postorder [2, 1] are the same whether 2 is a left or a right child. Inorder is what separates the two sides."
+    }
+   ],
+   "cover_seed": "tree-construction",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "dsa/tree-construction.md",
+   "hash": "28e11e4230e0",
+   "word_count": 1385,
+   "excerpt": "An archivist finds two lists of the same family. One was written by a clerk who always noted a parent before their children, oldest child first. The other was written left to right across a family portrait. Neither list alone shows who is whose child. Together, they pin down the whole family tree.…"
   },
   {
    "id": "dsa-heap-basics",
