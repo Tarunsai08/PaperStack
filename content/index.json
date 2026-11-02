@@ -1,5 +1,5 @@
 {
- "content_version": "0727a09538546e96",
+ "content_version": "986ad61089549273",
  "generated_at": "2026-11-02",
  "count": 256,
  "subjects": [
@@ -9255,7 +9255,7 @@
     "dsa-cpp-stl-toolkit"
    ],
    "difficulty": "beginner",
-   "read_minutes": 5,
+   "read_minutes": 8,
    "topics": [
     "hashing",
     "hash map",
@@ -9295,6 +9295,12 @@
      "name": "Subarray Sum Equals K",
      "platform": "LeetCode",
      "url": "https://leetcode.com/problems/subarray-sum-equals-k/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Top K Frequent Elements",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/top-k-frequent-elements/",
      "difficulty": "Medium"
     }
    ],
@@ -9360,8 +9366,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.92,
    "path": "dsa/hashing-patterns.md",
-   "hash": "c68f845f5598",
-   "word_count": 1026,
+   "hash": "4bf2d5945e54",
+   "word_count": 1774,
    "excerpt": "Two Sum is probably the most famous interview question in the world. Given a list of numbers, find two that add up to a target. Most people's first answer checks every pair, and with 100,000 numbers that is about five billion checks. The fix is so small it feels like cheating: keep a notebook of…"
   },
   {
@@ -9378,7 +9384,7 @@
     "dsa-prefix-sums"
    ],
    "difficulty": "beginner",
-   "read_minutes": 4,
+   "read_minutes": 6,
    "topics": [
     "arrays",
     "dynamic programming",
@@ -9413,6 +9419,18 @@
      "platform": "LeetCode",
      "url": "https://leetcode.com/problems/maximum-sum-circular-subarray/",
      "difficulty": "Medium"
+    },
+    {
+     "name": "Best Time to Buy and Sell Stock",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Maximum Absolute Sum of Any Subarray",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/maximum-absolute-sum-of-any-subarray/",
+     "difficulty": "Medium"
     }
    ],
    "glossary": [
@@ -9431,6 +9449,10 @@
     {
      "term": "Dynamic programming",
      "definition": "Solving a problem by building answers to small subproblems and reusing them, instead of recomputing."
+    },
+    {
+     "term": "Prefix minimum",
+     "definition": "The smallest running total seen so far. Subtracting it from the current running total gives the best subarray ending here."
     }
    ],
    "quiz": [
@@ -9473,8 +9495,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.9,
    "path": "dsa/kadane.md",
-   "hash": "6bd368b06cd7",
-   "word_count": 902,
+   "hash": "af786b8920d7",
+   "word_count": 1402,
    "excerpt": "A trader looks back at a year of daily profits and losses: up 3, down 7, up 4, up 2, down 1, up 5. What stretch of consecutive days would have made the most money? Checking every start and end day is easy to write and slow to run: about n² stretches. Jon Bentley tells the story of this problem in…"
   },
   {
@@ -9492,7 +9514,7 @@
     "dsa-two-pointers"
    ],
    "difficulty": "beginner",
-   "read_minutes": 4,
+   "read_minutes": 6,
    "topics": [
     "strings",
     "palindromes",
@@ -9533,6 +9555,12 @@
      "name": "Longest Repeating Character Replacement",
      "platform": "LeetCode",
      "url": "https://leetcode.com/problems/longest-repeating-character-replacement/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Find All Anagrams in a String",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-all-anagrams-in-a-string/",
      "difficulty": "Medium"
     }
    ],
@@ -9598,8 +9626,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "dsa/string-patterns.md",
-   "hash": "24963093eea2",
-   "word_count": 904,
+   "hash": "8fc6223b147b",
+   "word_count": 1403,
    "excerpt": "String questions look endless: anagrams, palindromes, \"longest substring with at most k changes\", \"group words that are rearrangements of each other\". Then you notice something. Almost all of them reduce to two tools you already know: counting letters, and two pointers moving in from the ends or…"
   },
   {

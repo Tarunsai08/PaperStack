@@ -19,6 +19,7 @@ practice_problems:
   - { name: "Longest Palindromic Substring", platform: "LeetCode", url: "https://leetcode.com/problems/longest-palindromic-substring/", difficulty: "Medium" }
   - { name: "Palindromic Substrings", platform: "LeetCode", url: "https://leetcode.com/problems/palindromic-substrings/", difficulty: "Medium" }
   - { name: "Longest Repeating Character Replacement", platform: "LeetCode", url: "https://leetcode.com/problems/longest-repeating-character-replacement/", difficulty: "Medium" }
+  - { name: "Find All Anagrams in a String", platform: "LeetCode", url: "https://leetcode.com/problems/find-all-anagrams-in-a-string/", difficulty: "Medium" }
 glossary:
   - term: "Frequency array"
     definition: "An array of 26 counters, one per lowercase letter, used instead of a hash map when the alphabet is small and fixed."
@@ -109,6 +110,45 @@ In many languages strings are an [[immutable string]] type, and even in C++ the 
 
 Answer: "bb". An approach that only tried characters as centres would miss it, because "bb" is centred between two letters.
 
+### Counting every palindrome with the same centres
+
+*Palindromic Substrings* asks how many substrings are palindromes. Every palindrome has exactly one centre, so expand from all 2n − 1 centres and count each successful step. For "aaa", the three letter centres give 1 + 2 + 1 palindromes (the middle one grows to "aaa"), and the two gaps give 1 + 1, so there are 6 in total: three "a", two "aa" and one "aaa".
+
+### Palindrome with one deletion allowed
+
+*Valid Palindrome II* allows deleting at most one character. Walk two pointers inward as usual.
+
+At the first mismatch, you have exactly two choices: drop the left character or drop the right one. Check whether either remaining middle part is a plain palindrome. For "abca", the pointers match a and a, then see b and c. Dropping c leaves "b" in the middle, a palindrome, so the answer is true. In mirror terms, you are allowed to smudge one letter on one side of the mirror, and you try each side once.
+
+### A fixed window of cups: Find All Anagrams in a String
+
+To find every place where an anagram of "abc" starts inside "cbaebabacd", slide a window of length 3 and keep its 26 cups up to date: add the entering letter, remove the leaving one. Whenever the window's cups equal the pattern's cups, record the start. Comparing 26 cups is O(26) per step, still linear overall.
+
+| Window start | Window | Matches abc? |
+|---|---|---|
+| 0 | cba | yes |
+| 1 to 5 | bae, aeb, eba, bab, aba | no |
+| 6 | bac | yes |
+| 7 | acd | no |
+
+The answer is [0, 6].
+
+### A variable window of cups: Longest Repeating Character Replacement
+
+With up to k replacements, a window can become all one letter when `window length − count of its most common letter ≤ k`: you replace everything else. Grow the window, track the highest count, and shrink when the rule breaks. For "AABABBA" and k = 1:
+
+| right | char | Counts in window | Highest count | left | Best |
+|---|---|---|---|---|---|
+| 0 | A | A 1 | 1 | 0 | 1 |
+| 1 | A | A 2 | 2 | 0 | 2 |
+| 2 | B | A 2, B 1 | 2 | 0 | 3 |
+| 3 | A | A 3, B 1 | 3 | 0 | 4 |
+| 4 | B | A 2, B 2 | 3 | 1 | 4 |
+| 5 | B | A 1, B 3 | 3 | 2 | 4 |
+| 6 | A | A 2, B 2 | 3 | 3 | 4 |
+
+The answer is 4, for example "AABA" with the B replaced. A subtle point: the "highest count" is never decreased when the window shrinks. That is safe, because the answer can only improve when some letter's count beats the old record, so a stale record never produces a wrong longer answer.
+
 :::try-this
 Check whether "rat" and "tar" are anagrams with one array of 26 cups. Then check "rat" and "car". (rat/tar: r, a, t each go +1 then −1, all cups end at 0, anagrams. rat/car: t stays +1 and c ends at −1, not anagrams.)
 :::
@@ -146,7 +186,7 @@ bool isAnagram(const string& s, const string& t) {
 string longestPalindrome(const string& s) {
     int n = s.size(), start = 0, len = n ? 1 : 0;
     for (int c = 0; c < n; c++) {
-        for (int k = 0; k < 2; k++) {
+        for (int k = 0; k < 2; k++) {                 // k = 0: odd centre, k = 1: even centre
             int l = c, r = c + k;
             while (l >= 0 && r < n && s[l] == s[r]) { l--; r++; }
             if (r - l - 1 > len) { len = r - l - 1; start = l + 1; }
@@ -155,8 +195,56 @@ string longestPalindrome(const string& s) {
     return s.substr(start, len);
 }
 
+int countPalindromes(const string& s) {
+    int n = s.size(), cnt = 0;
+    for (int c = 0; c < n; c++)
+        for (int k = 0; k < 2; k++)
+            for (int l = c, r = c + k; l >= 0 && r < n && s[l] == s[r]; l--, r++) cnt++;
+    return cnt;
+}
+
+bool isPal(const string& s, int l, int r) {
+    while (l < r) if (s[l++] != s[r--]) return false;
+    return true;
+}
+
+bool palindromeOneDelete(const string& s) {
+    for (int l = 0, r = (int)s.size() - 1; l < r; l++, r--)
+        if (s[l] != s[r]) return isPal(s, l + 1, r) || isPal(s, l, r - 1);   // drop one side
+    return true;
+}
+
+vector<int> findAnagrams(const string& s, const string& p) {
+    vector<int> res;
+    if (s.size() < p.size()) return res;
+    array<int, 26> need{}, win{};
+    for (char c : p) need[c - 'a']++;
+    for (int i = 0; i < (int)s.size(); i++) {
+        win[s[i] - 'a']++;                                         // letter enters
+        if (i >= (int)p.size()) win[s[i - p.size()] - 'a']--;      // letter leaves
+        if (i >= (int)p.size() - 1 && win == need) res.push_back(i - p.size() + 1);
+    }
+    return res;
+}
+
+int characterReplacement(const string& s, int k) {
+    array<int, 26> cnt{};
+    int left = 0, top = 0, best = 0;
+    for (int right = 0; right < (int)s.size(); right++) {
+        top = max(top, ++cnt[s[right] - 'A']);
+        while (right - left + 1 - top > k) cnt[s[left++] - 'A']--;
+        best = max(best, right - left + 1);
+    }
+    return best;
+}
+
 int main() {
-    cout << isAnagram("listen", "silent") << ' ' << longestPalindrome("cbbd") << '\n';  // 1 bb
+    cout << isAnagram("listen", "silent") << ' ' << longestPalindrome("cbbd") << '\n';    // 1 bb
+    cout << countPalindromes("aaa") << ' ' << countPalindromes("abcba") << '\n';          // 6 7
+    cout << palindromeOneDelete("abca") << palindromeOneDelete("abc") << '\n';            // 10
+    for (int i : findAnagrams("cbaebabacd", "abc")) cout << i << ' ';
+    cout << '\n';                                                                        // 0 6
+    cout << characterReplacement("AABABBA", 1) << '\n';                                  // 4
 }
 ```
 
@@ -176,10 +264,13 @@ Common misconception: "a hash map is always the right way to count characters." 
 - **Off-by-one when recovering the substring** after expansion: the palindrome is from l + 1 to r − 1.
 - **Assuming lowercase only** when the input may contain capitals, digits or spaces; normalise first, as in Valid Palindrome.
 - **Building strings with `s = s + c`** in a loop, which is quadratic.
+- **Recomputing the window's counts from scratch** at every step of an anagram search, which turns O(n) into O(n · m). Update two cups per step.
+- **Trying only one deletion side** in Valid Palindrome II. At the first mismatch, both "drop left" and "drop right" must be checked.
+- **Using `'a'` offsets on uppercase input,** as in Longest Repeating Character Replacement, where the letters are capitals.
 
 ## Practice problems
 
-*Valid Anagram* and *Valid Palindrome* are the two tools in their purest form. *Longest Palindromic Substring* and *Palindromic Substrings* use expand around centre; the second counts every expansion step. *Longest Repeating Character Replacement* combines letter counts with a sliding window: the window is valid while its length minus its most frequent letter's count is at most k.
+*Valid Anagram* and *Valid Palindrome* are the two tools in their purest form. *Longest Palindromic Substring* and *Palindromic Substrings* use expand around centre; the second counts every expansion step. *Longest Repeating Character Replacement* combines letter counts with a sliding window: the window is valid while its length minus its most frequent letter's count is at most k. *Find All Anagrams in a String* is the fixed window of cups traced above, and *Valid Palindrome II* on LeetCode is a good follow-up for the two-pointer check with one allowed deletion.
 
 ## Key takeaways
 
