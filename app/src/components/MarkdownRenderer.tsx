@@ -14,6 +14,7 @@ import { Callout } from './Callout';
 import { GlossaryTerm } from './GlossaryTerm';
 
 const Mermaid = lazy(() => import('./Mermaid'));
+const CodeBlock = lazy(() => import('./CodeBlock'));
 
 const remarkPlugins = [remarkGfm, remarkMath, remarkDirective, remarkCallouts, remarkGlossary, [remarkSmartypants, { dashes: 'oldschool' }]] as Options['remarkPlugins'];
 const rehypePlugins: [typeof rehypeKatex, { throwOnError: boolean; strict: boolean }][] = [
@@ -46,6 +47,16 @@ const components = {
       return (
         <Suspense fallback={<div className="skeleton h-48 w-full rounded-xl" />}>
           <Mermaid code={hastText(code.children)} />
+        </Suspense>
+      );
+    }
+    const isCpp = cls.includes('language-cpp') || cls.includes('language-c++');
+    if (code && (isCpp || cls.includes('language-pseudo'))) {
+      const meta = String((code.data as { meta?: string } | undefined)?.meta ?? '');
+      const text = hastText(code.children).replace(/\n$/, '');
+      return (
+        <Suspense fallback={<pre><code>{text}</code></pre>}>
+          <CodeBlock code={text} language={isCpp ? 'cpp' : 'pseudo'} partial={meta.split(/\s+/).includes('partial')} />
         </Suspense>
       );
     }

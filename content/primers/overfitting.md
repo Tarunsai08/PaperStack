@@ -1,6 +1,7 @@
 ---
 id: "primer-overfitting"
 kind: "primer"
+subject: "ml"
 slug: "overfitting"
 title: "Memorizing vs Learning"
 subtitle: "Overfitting, underfitting and test sets: how to tell if a model actually understands anything"

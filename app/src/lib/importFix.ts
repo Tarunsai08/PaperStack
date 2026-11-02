@@ -3,7 +3,7 @@
  * user does not have to hand-edit YAML on a phone.
  */
 import { stringify as yamlStringify } from 'yaml';
-import { glossaryRefs, normalizeTerm, parseArticle, type Issue } from './frontmatter';
+import { glossaryRefs, KINDS, normalizeTerm, parseArticle, type Issue } from './frontmatter';
 
 export const FIXABLE = new Set([
   'prerequisite_unknown',
@@ -12,6 +12,9 @@ export const FIXABLE = new Set([
   'track_unknown',
   'date_format',
   'id_format',
+  'kind_invalid',
+  'subject_invalid',
+  'priority_invalid',
 ]);
 
 export function canAutoFix(errors: Issue[]): boolean {
@@ -25,7 +28,10 @@ const slugify = (s: string) =>
     .replace(/^-|-$/g, '')
     .slice(0, 60);
 
-export function autoFix(raw: string, opts: { articleIds: Iterable<string>; trackId: string; today: string }): string {
+export function autoFix(
+  raw: string,
+  opts: { articleIds: Iterable<string>; trackId: string; today: string; subject?: string },
+): string {
   const { data, body: originalBody } = parseArticle(raw);
   const ids = new Set(opts.articleIds);
   const fm = { ...data } as Record<string, unknown>;
@@ -35,11 +41,18 @@ export function autoFix(raw: string, opts: { articleIds: Iterable<string>; track
   fm.track = opts.trackId;
   if (typeof fm.generated_at !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(fm.generated_at)) fm.generated_at = opts.today;
 
-  const kind = fm.kind === 'primer' ? 'primer' : 'paper';
+  const subject = opts.subject ?? (typeof fm.subject === 'string' ? fm.subject : 'ml');
+  fm.subject = subject;
+  let kind = String(fm.kind ?? '');
+  if (subject === 'ml') kind = kind === 'primer' ? 'primer' : 'paper';
+  else if (!(KINDS as readonly string[]).includes(kind) || kind === 'paper') kind = 'concept';
+  fm.kind = kind;
+  if (subject !== 'ml' && !['P0', 'P1', 'P2'].includes(String(fm.priority))) fm.priority = 'P2';
+  const prefix = subject === 'ml' ? kind : subject;
   const slug = slugify(String(fm.slug ?? fm.title ?? 'imported-article')) || 'imported-article';
   fm.slug = slug;
-  if (typeof fm.id !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(fm.id) || !fm.id.startsWith(`${kind}-`)) {
-    fm.id = `${kind}-${slug}`;
+  if (typeof fm.id !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(fm.id) || !fm.id.startsWith(`${prefix}-`)) {
+    fm.id = `${prefix}-${slug}`;
   }
 
   // Unknown article: links become plain text.

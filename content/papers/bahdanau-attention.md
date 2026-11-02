@@ -1,6 +1,7 @@
 ---
 id: "paper-bahdanau-attention"
 kind: "paper"
+subject: "ml"
 slug: "bahdanau-attention"
 title: "The First Time a Network Learned Where to Look"
 subtitle: "Bahdanau attention: letting a translator glance back at the source sentence, and the birth of the most important idea in modern AI"

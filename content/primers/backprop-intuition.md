@@ -1,6 +1,7 @@
 ---
 id: "primer-backprop-intuition"
 kind: "primer"
+subject: "ml"
 slug: "backprop-intuition"
 title: "Backpropagation Without the Scary Math"
 subtitle: "How a network figures out which of its million knobs to blame for a mistake"

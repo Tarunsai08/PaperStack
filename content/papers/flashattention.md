@@ -1,6 +1,7 @@
 ---
 id: "paper-flashattention"
 kind: "paper"
+subject: "ml"
 slug: "flashattention"
 title: "Faster Attention by Doing More Maths"
 subtitle: "FlashAttention: the GPU's real bottleneck was memory traffic, and fixing it made exact attention several times faster"

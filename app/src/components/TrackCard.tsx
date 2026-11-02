@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { trackProgress } from '../lib/progress';
 import { useStore } from '../lib/storage';
 import type { Article, Track } from '../lib/types';
-import { CoverArt } from './CoverArt';
+import { TrackCover } from './ArticleCover';
 import { ProgressRing } from './ProgressRing';
 
 export function TrackCard({ track, articles }: { track: Track; articles: Article[] }) {
@@ -14,7 +14,7 @@ export function TrackCard({ track, articles }: { track: Track; articles: Article
       className="press block w-[232px] shrink-0 snap-start overflow-hidden rounded-card border border-line bg-surface shadow-card"
     >
       <div className="relative">
-        <CoverArt seed={`track-${track.id}`} accent={track.accent} className="aspect-[16/8] w-full" />
+        <TrackCover track={track} className="aspect-[16/8] w-full" />
         <span className="absolute left-3 top-3 rounded-full bg-black/30 px-2 py-0.5 text-[11px] font-semibold text-white backdrop-blur">
           {track.order < 90 ? `Part ${track.order + 1}` : 'Yours'}
         </span>

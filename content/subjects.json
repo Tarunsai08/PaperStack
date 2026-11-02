@@ -1,0 +1,68 @@
+[
+  {
+    "id": "ml",
+    "title": "Machine Learning",
+    "short": "ML",
+    "subtitle": "From zero to modern AI, one landmark paper at a time",
+    "description": "Primers and story-driven articles on the research papers that built modern AI, from the perceptron to transformers and LLM systems.",
+    "order": 0,
+    "accent": "#6C5CE7",
+    "motif": "network",
+    "status": "active"
+  },
+  {
+    "id": "dsa",
+    "title": "Data Structures and Algorithms",
+    "short": "DSA",
+    "subtitle": "Patterns and reasoning for top-tier coding interviews",
+    "description": "Learn to recognise patterns instead of memorising solutions. Every article explains the idea, traces an example by hand, gives clean C++, and ends with practice problems.",
+    "order": 1,
+    "accent": "#2E86DE",
+    "motif": "tree",
+    "status": "active"
+  },
+  {
+    "id": "cp",
+    "title": "Competitive Programming",
+    "short": "CP",
+    "subtitle": "The techniques that go beyond interview DSA",
+    "description": "Number theory, range queries, DP optimisations, advanced graphs, string algorithms and contest strategy, with a rating ladder of practice problems.",
+    "order": 2,
+    "accent": "#E5484D",
+    "motif": "bars",
+    "status": "active"
+  },
+  {
+    "id": "famous-algos",
+    "title": "Famous Algorithms",
+    "short": "Famous",
+    "subtitle": "The clever ideas you use every day but were never taught",
+    "description": "Bloom filters, consistent hashing, Raft, LSM trees, FFT, RSA and more: the algorithms hiding inside databases, browsers and the internet, and why they are clever.",
+    "order": 3,
+    "accent": "#10AC84",
+    "motif": "hex",
+    "status": "active"
+  },
+  {
+    "id": "system-design",
+    "title": "System Design",
+    "short": "Systems",
+    "subtitle": "Design large systems and reason about distributed ones",
+    "description": "Fundamentals, building blocks, scaling, classic case studies and distributed systems deep dives, with original diagrams and honest trade-offs.",
+    "order": 4,
+    "accent": "#E58E26",
+    "motif": "servers",
+    "status": "active"
+  },
+  {
+    "id": "cs-core",
+    "title": "CS Core",
+    "short": "Core",
+    "subtitle": "Operating systems, databases, networks and OOP",
+    "description": "The core CS subjects every interview loop checks. The curriculum is planned; articles are coming soon.",
+    "order": 5,
+    "accent": "#5F6CAF",
+    "motif": "grid",
+    "status": "coming-soon"
+  }
+]

@@ -1,35 +1,87 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Clock3 } from 'lucide-react';
 import { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { TabHeader } from '../components/Headers';
+import { Link, useSearchParams } from 'react-router-dom';
+import { EmptyState, TabHeader } from '../components/Headers';
 import { Page } from '../components/Page';
 import { ProgressRing } from '../components/ProgressRing';
 import { ListSkeleton } from '../components/Skeleton';
 import { StatusDot } from '../components/StatusDot';
 import { nextInPath, statusOf, trackProgress } from '../lib/progress';
-import { useStore } from '../lib/storage';
+import { haptic } from '../lib/native';
+import { setPrefs, useStore } from '../lib/storage';
+import { articleMeta } from '../lib/subjects';
+import type { SubjectId } from '../lib/types';
 import { useContent } from '../lib/useContent';
 
 export default function Learn() {
   const content = useContent();
   const progress = useStore('progress');
-  const next = useMemo(() => nextInPath(content.path, progress), [content.path, progress]);
+  const prefs = useStore('prefs');
+  const solved = useStore('problems');
+  const [params, setParams] = useSearchParams();
+  const fromUrl = params.get('subject');
+  const subjectId = (content.subjectById.has(fromUrl ?? '') ? fromUrl : content.subjectById.has(prefs.subject) ? prefs.subject : 'ml') as SubjectId;
+  const subject = content.subjectById.get(subjectId);
+  const path = content.pathInSubject(subjectId);
+  const tracks = content.tracksInSubject(subjectId);
+  const next = useMemo(() => nextInPath(path, progress), [path, progress]);
   const [open, setOpen] = useState<string | null>(() => null);
-  const openId = open ?? next?.track ?? content.tracks[0]?.id ?? null;
-  const overall = trackProgress(content.path, progress);
+  const openId = open ?? next?.track ?? tracks[0]?.id ?? null;
+  const overall = trackProgress(path, progress);
+  const problems = path.flatMap((a) => (a.practice_problems ?? []).map((p) => ({ a, p })));
+  const problemsSolved = problems.filter(({ a, p }) => solved[a.id]?.includes(p.url)).length;
+
+  const pick = (id: SubjectId) => {
+    haptic('selection');
+    setPrefs({ subject: id });
+    setOpen(null);
+    setParams({ subject: id }, { replace: true });
+  };
 
   return (
     <Page>
-      <TabHeader title="Learn" subtitle="Your learning path" />
+      <TabHeader title="Learn" subtitle={subject ? subject.title : 'Your learning path'} />
+      {content.ready && (
+        <div className="chrome no-scrollbar flex gap-2 overflow-x-auto px-5 pb-1 pt-2" role="tablist" aria-label="Subjects">
+          {content.subjects.map((sub) => {
+            const active = sub.id === subjectId;
+            return (
+              <button
+                key={sub.id}
+                role="tab"
+                aria-selected={active}
+                onClick={() => pick(sub.id)}
+                className={`press flex h-11 shrink-0 items-center gap-1.5 rounded-full border px-4 text-[13.5px] font-semibold transition-colors ${
+                  active ? 'border-ink bg-ink text-bg' : 'border-line bg-surface text-ink'
+                }`}
+              >
+                <span className="h-2 w-2 rounded-full" style={{ background: sub.accent }} aria-hidden />
+                {sub.short}
+              </button>
+            );
+          })}
+        </div>
+      )}
       {!content.ready ? (
         <div className="px-5 pt-4">
           <ListSkeleton rows={6} />
         </div>
+      ) : subject?.status === 'coming-soon' ? (
+        <EmptyState
+          icon={<Clock3 size={28} />}
+          title={`${subject.title} is coming soon`}
+          body={`${subject.description} You can already see where it fits in your plan.`}
+          action={
+            <Link to="/roadmap" className="press inline-flex h-11 items-center rounded-full bg-brand-btn px-5 text-[14px] font-semibold text-white">
+              Open the Placement Roadmap
+            </Link>
+          }
+        />
       ) : (
         <>
           <section className="chrome mx-5 mt-3 flex items-center gap-5 rounded-card border border-line bg-surface p-5 shadow-card">
-            <ProgressRing pct={overall.pct} size={76} stroke={7} label="Overall progress">
+            <ProgressRing pct={overall.pct} size={76} stroke={7} color={subject?.accent} label="Subject progress">
               <span className="text-[18px] font-bold">{Math.round(overall.pct * 100)}%</span>
             </ProgressRing>
             <div className="min-w-0 flex-1">
@@ -37,7 +89,8 @@ export default function Learn() {
                 {overall.done === 0 ? 'Your journey starts here' : overall.done === overall.total ? 'Path complete!' : 'Making progress'}
               </p>
               <p className="mt-0.5 text-[14px] text-muted">
-                {overall.done} of {overall.total} articles · {content.tracks.length} parts
+                {overall.done} of {overall.total} articles · {tracks.length} parts
+                {problems.length > 0 && ` · ${problemsSolved}/${problems.length} problems solved`}
               </p>
               {next && (
                 <Link
@@ -51,7 +104,7 @@ export default function Learn() {
           </section>
 
           <ol className="relative mt-8 space-y-3 px-5">
-            {content.tracks.map((t, i) => {
+            {tracks.map((t, i) => {
               const articles = content.articlesInTrack(t.id);
               const p = trackProgress(articles, progress);
               const isOpen = openId === t.id;
@@ -59,9 +112,10 @@ export default function Learn() {
               return (
                 <li key={t.id} className="overflow-hidden rounded-card border border-line bg-surface shadow-card">
                   <button
-                    onClick={() => setOpen(isOpen ? '' : t.id)}
-                    className="chrome flex w-full items-center gap-4 p-4 text-left"
-                    aria-expanded={isOpen}
+                    onClick={() => articles.length && setOpen(isOpen ? '' : t.id)}
+                    className={`chrome flex w-full items-center gap-4 p-4 text-left ${articles.length ? '' : 'cursor-default'}`}
+                    aria-expanded={articles.length ? isOpen : undefined}
+                    aria-disabled={!articles.length}
                   >
                     <ProgressRing pct={p.pct} size={46} stroke={4} color={t.accent} label={`${t.title} progress`}>
                       <span className="text-[13px] font-bold" style={{ color: t.accent }}>
@@ -72,13 +126,15 @@ export default function Learn() {
                       <p className="text-[16px] font-semibold leading-snug">{t.title}</p>
                       <p className="mt-0.5 text-[13.5px] leading-snug text-muted">{t.subtitle}</p>
                       <p className="mt-1 text-[12.5px] font-medium text-muted">
-                        {p.done}/{p.total} read
+                        {articles.length ? `${p.done}/${p.total} read` : 'Coming soon'}
                       </p>
                     </div>
-                    <ChevronDown size={20} className={`shrink-0 text-muted transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                    {articles.length > 0 && (
+                      <ChevronDown size={20} className={`shrink-0 text-muted transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                    )}
                   </button>
                   <AnimatePresence initial={false}>
-                    {isOpen && (
+                    {isOpen && articles.length > 0 && (
                       <motion.div
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
@@ -98,7 +154,7 @@ export default function Learn() {
                                       {a.title}
                                     </p>
                                     <p className="mt-0.5 truncate text-[12.5px] text-muted">
-                                      {a.paper_title ? `${a.paper_title} · ${a.year}` : 'Primer'} · {a.read_minutes} min
+                                      {articleMeta(a)} · {a.read_minutes} min
                                     </p>
                                   </div>
                                 </Link>

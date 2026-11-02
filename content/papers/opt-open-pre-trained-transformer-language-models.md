@@ -1,11 +1,12 @@
 ---
 id: paper-opt-open-pre-trained-transformer-language-models
 kind: paper
+subject: "ml"
 slug: opt-open-pre-trained-transformer-language-models
 title: The Engineering Diary of Training OPT-175B
 subtitle: How Meta cloned GPT-3, released its weights, and documented every crash
-track: useful-llms
-track_order: 15
+track: "transformers-llms"
+track_order: 12
 prerequisites:
 - paper-gpt-3
 - paper-megatron-lm

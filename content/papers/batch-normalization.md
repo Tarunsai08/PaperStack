@@ -1,6 +1,7 @@
 ---
 id: "paper-batch-normalization"
 kind: "paper"
+subject: "ml"
 slug: "batch-normalization"
 title: "The Simple Fix That Made Deep Networks Train Fast"
 subtitle: "Batch normalization: keep every layer's inputs well-behaved, and training suddenly gets fourteen times quicker"

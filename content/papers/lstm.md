@@ -1,6 +1,7 @@
 ---
 id: "paper-lstm"
 kind: "paper"
+subject: "ml"
 slug: "lstm"
 title: "Teaching Networks to Remember for a Long Time"
 subtitle: "LSTM: gates, a protected memory lane, and the 1997 design that powered speech recognition and translation for two decades"

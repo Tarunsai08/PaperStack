@@ -6,8 +6,8 @@
  * change a rule here, change it there too.
  */
 import { parse as parseYaml } from 'yaml';
-import type { Frontmatter } from './types';
-import { articleLinks, directiveNames, extractH2, glossaryRefs, hasMermaid, normalizeTerm, wordCount } from './markdownText';
+import type { Frontmatter, Kind } from './types';
+import { articleLinks, cppBlocks, directiveNames, extractH2, glossaryRefs, hasMermaid, hasPseudo, normalizeTerm, wordCount } from './markdownText';
 
 export * from './markdownText';
 
@@ -32,14 +32,109 @@ export const PRIMER_SECTIONS = [
   'Key takeaways',
 ] as const;
 
+export const PATTERN_SECTIONS = [
+  'The hook',
+  'The intuition',
+  'How it works',
+  'Walk through an example',
+  'The code',
+  'Complexity',
+  'Common mistakes',
+  'Practice problems',
+  'Key takeaways',
+] as const;
+
+export const WALKTHROUGH_SECTIONS = [
+  'The hook',
+  'The problem',
+  'The obvious approach',
+  'The key insight',
+  'Walk through an example',
+  'The code',
+  'Complexity',
+  'Common mistakes',
+  'Practice problems',
+  'Key takeaways',
+] as const;
+
+export const CONCEPT_SECTIONS = [
+  'The hook',
+  'Where you meet it every day',
+  'The intuition',
+  'How it works',
+  'Walk through an example',
+  'The code',
+  'Why it is clever',
+  'Where it falls short',
+  'Key takeaways',
+] as const;
+
+export const DEEP_DIVE_SECTIONS = [
+  'The hook',
+  'The intuition',
+  'How it works',
+  'Trade-offs',
+  'What can go wrong',
+  'In the real world',
+  'Further reading',
+  'Key takeaways',
+] as const;
+
+export const CASE_STUDY_SECTIONS = [
+  'The hook',
+  'Requirements',
+  'Back-of-envelope numbers',
+  'High-level design',
+  'Deep dives',
+  'Trade-offs',
+  'What can go wrong',
+  'Further reading',
+  'Key takeaways',
+] as const;
+
+export const LLD_SECTIONS = [
+  'The hook',
+  'Requirements',
+  'Core objects',
+  'Class design',
+  'Key flows',
+  'Patterns used',
+  'Extensions',
+  'Key takeaways',
+] as const;
+
+export const SECTIONS: Record<Kind, readonly string[]> = {
+  paper: PAPER_SECTIONS,
+  primer: PRIMER_SECTIONS,
+  pattern: PATTERN_SECTIONS,
+  'problem-walkthrough': WALKTHROUGH_SECTIONS,
+  concept: CONCEPT_SECTIONS,
+  'deep-dive': DEEP_DIVE_SECTIONS,
+  'case-study': CASE_STUDY_SECTIONS,
+  lld: LLD_SECTIONS,
+};
+
 export const DIRECTIVES = ['insight', 'analogy', 'history', 'warning', 'try-this'] as const;
 export const DIFFICULTIES = ['beginner', 'intermediate', 'advanced'] as const;
-export const KINDS = ['paper', 'primer'] as const;
+export const KINDS = Object.keys(SECTIONS) as Kind[];
+export const SUBJECT_IDS = ['ml', 'dsa', 'cp', 'famous-algos', 'system-design', 'cs-core'] as const;
+export const PRIORITIES = ['P0', 'P1', 'P2'] as const;
 
-export const WORD_LIMITS = {
+export const WORD_LIMITS: Record<Kind, readonly [number, number]> = {
   paper: [1400, 2200],
   primer: [1000, 1600],
-} as const;
+  // Code fences are not counted, so code-bearing kinds start a little lower.
+  pattern: [900, 2000],
+  'problem-walkthrough': [900, 2000],
+  concept: [900, 2000],
+  'deep-dive': [1100, 2200],
+  'case-study': [1100, 2200],
+  lld: [900, 2000],
+};
+
+const NEEDS_CODE = new Set<string>(['pattern', 'problem-walkthrough', 'concept', 'lld']);
+const NEEDS_MERMAID = new Set<string>(['paper', 'deep-dive', 'case-study', 'lld']);
+const NEEDS_PROBLEMS = new Set<string>(['pattern', 'problem-walkthrough']);
 
 
 export interface Issue {
@@ -154,14 +249,57 @@ export function validateArticle(
 
   const kind = data.kind;
   if (isStr(kind) && !(KINDS as readonly string[]).includes(kind)) {
-    err('kind_invalid', `"kind" must be "paper" or "primer", not "${kind}".`);
+    err('kind_invalid', `"kind" must be one of ${KINDS.join(', ')}, not "${kind}".`);
   }
   if (kind === 'paper') check(paperRequired);
 
+  let subject = data.subject ?? 'ml';
+  if (!isStr(subject) || !(SUBJECT_IDS as readonly string[]).includes(subject)) {
+    err('subject_invalid', `"subject" must be one of ${SUBJECT_IDS.join(', ')}.`);
+    subject = 'ml';
+  }
+  if (subject === 'ml' && isStr(kind) && kind !== 'paper' && kind !== 'primer') {
+    err('kind_invalid', 'Machine Learning articles use kind "paper" or "primer".');
+  }
+  if (subject !== 'ml' && kind === 'paper') err('kind_invalid', 'Only Machine Learning articles can be kind "paper".');
+
+  if (subject !== 'ml' && data.priority == null) err('field_missing', 'Missing required field "priority".');
+  if (data.priority != null && !(PRIORITIES as readonly unknown[]).includes(data.priority)) {
+    err('priority_invalid', '"priority" must be P0, P1 or P2.');
+  }
+
+  const cx = data.complexity as Record<string, unknown> | null | undefined;
+  if (cx != null && !(typeof cx === 'object' && isStr(cx.time) && isStr(cx.space))) {
+    err('complexity_invalid', '"complexity" needs "time" and "space" text.');
+  }
+  if ((kind === 'pattern' || kind === 'problem-walkthrough') && cx == null) {
+    err('field_missing', 'Missing required field "complexity".');
+  }
+
+  let probs = data.practice_problems as unknown;
+  if (probs != null) {
+    if (!Array.isArray(probs)) {
+      err('problems_invalid', '"practice_problems" must be a list.');
+      probs = [];
+    }
+    (probs as unknown[]).forEach((p, i) => {
+      const item = p as Record<string, unknown> | null;
+      if (!item || typeof item !== 'object' || !['name', 'platform', 'url', 'difficulty'].every((k) => isStr(item[k]))) {
+        err('problems_invalid', `Practice problem ${i + 1} needs "name", "platform", "url" and "difficulty".`);
+      } else if (!/^https?:\/\/\S+$/.test(item.url as string)) {
+        err('problems_invalid', `Practice problem ${i + 1} needs a full http(s) "url".`);
+      }
+    });
+  }
+  if (isStr(kind) && NEEDS_PROBLEMS.has(kind) && !(Array.isArray(probs) && probs.length >= 3 && probs.length <= 6)) {
+    err('problems_count', 'Pattern and walkthrough articles need 3 to 6 practice problems.');
+  }
+
   const id = data.id;
+  const prefix = subject === 'ml' ? kind : subject;
   if (isStr(id)) {
     if (!ID_RE.test(id)) err('id_format', `"id" must be lowercase words joined by dashes, got "${id}".`);
-    else if (isStr(kind) && !id.startsWith(`${kind}-`)) err('id_format', `"id" must start with "${kind}-".`);
+    else if (isStr(prefix) && !id.startsWith(`${prefix}-`)) err('id_format', `"id" must start with "${prefix}-".`);
   }
   if (isStr(data.slug) && !ID_RE.test(data.slug)) err('id_format', '"slug" must be lowercase words joined by dashes.');
 
@@ -223,8 +361,8 @@ export function validateArticle(
   });
 
   // Body
-  if (kind === 'paper' || kind === 'primer') {
-    const expected = kind === 'paper' ? PAPER_SECTIONS : PRIMER_SECTIONS;
+  if (isStr(kind) && (KINDS as readonly string[]).includes(kind)) {
+    const expected = SECTIONS[kind as Kind];
     const found = extractH2(body);
     if (found.length !== expected.length || found.some((h, i) => h !== expected[i])) {
       const missing = expected.filter((h) => !found.includes(h));
@@ -235,11 +373,14 @@ export function validateArticle(
       if (!missing.length && !extra.length) parts.push('They are out of order.');
       err('sections', parts.join(' '));
     }
-    if (kind === 'paper' && !hasMermaid(body)) {
-      err('mermaid_missing', 'Paper articles need at least one ```mermaid diagram.');
+    if (NEEDS_MERMAID.has(kind) && !hasMermaid(body)) {
+      err('mermaid_missing', `${kind} articles need at least one \`\`\`mermaid diagram.`);
+    }
+    if (NEEDS_CODE.has(kind) && !cppBlocks(body).length && !hasPseudo(body)) {
+      err('code_missing', `${kind} articles need a \`\`\`pseudo or \`\`\`cpp block in The code.`);
     }
     const words = wordCount(body);
-    const [lo, hi] = WORD_LIMITS[kind];
+    const [lo, hi] = WORD_LIMITS[kind as Kind];
     if (words < lo) warn('length_short', `Body is ${words} words; aim for ${lo}-${hi}.`);
     if (words > hi) warn('length_long', `Body is ${words} words; aim for ${lo}-${hi}.`);
   }

@@ -1,6 +1,7 @@
 ---
 id: "paper-vit"
 kind: "paper"
+subject: "ml"
 slug: "vit"
 title: "What If an Image Is Just a Sentence of Patches?"
 subtitle: "The Vision Transformer: chop a picture into squares, read them like words, and match the best convolutional networks"

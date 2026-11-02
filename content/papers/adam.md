@@ -1,6 +1,7 @@
 ---
 id: "paper-adam"
 kind: "paper"
+subject: "ml"
 slug: "adam"
 title: "The Optimizer Almost Everyone Uses"
 subtitle: "Adam gives every parameter its own smart step size, and became deep learning's default way to walk downhill"

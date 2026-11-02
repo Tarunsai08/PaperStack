@@ -1,6 +1,7 @@
 ---
 id: "primer-neural-networks"
 kind: "primer"
+subject: "ml"
 slug: "neural-networks"
 title: "Neural Networks from One Neuron Up"
 subtitle: "How stacking thousands of tiny calculators produces something that can see, read and talk"

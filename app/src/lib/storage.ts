@@ -5,7 +5,7 @@
  */
 import { useSyncExternalStore } from 'react';
 import { createStore, getMany, set as idbSet, type UseStore } from 'idb-keyval';
-import type { Frontmatter, IndexEntry, Track } from './types';
+import type { Frontmatter, IndexEntry, Subject, SubjectId, Track } from './types';
 
 export type ThemePref = 'system' | 'light' | 'dark' | 'sepia';
 
@@ -17,6 +17,10 @@ export interface Prefs {
   reminderTime: string | null; // "HH:MM" or null for off
   syncEnabled: boolean;
   onboarded: boolean;
+  /** Subject last opened on the Learn screen. */
+  subject: SubjectId;
+  /** Placement Roadmap length in months. */
+  roadmapMonths: 6 | 12;
 }
 
 export interface ProgressEntry {
@@ -65,6 +69,7 @@ export interface RemoteState {
   /** Only entries that differ from the bundled copy (new or changed). */
   index: IndexEntry[];
   tracks?: Track[];
+  subjects?: Subject[];
   articles: Record<string, string>;
   lastSyncAt: string | null;
 }
@@ -85,6 +90,8 @@ export interface DB {
   imports: Record<string, ImportedArticle>;
   remote: RemoteState;
   meta: Meta;
+  /** Practice problems ticked off, by article id -> problem urls. */
+  problems: Record<string, string[]>;
 }
 
 export const DEFAULT_PREFS: Prefs = {
@@ -95,6 +102,8 @@ export const DEFAULT_PREFS: Prefs = {
   reminderTime: null,
   syncEnabled: true,
   onboarded: false,
+  subject: 'ml',
+  roadmapMonths: 12,
 };
 
 export const defaults = (): DB => ({
@@ -107,6 +116,7 @@ export const defaults = (): DB => ({
   imports: {},
   remote: { contentVersion: null, index: [], articles: {}, lastSyncAt: null },
   meta: { lastUpdateCheck: null, dismissedVersion: null, completedTracks: [] },
+  problems: {},
 });
 
 export const KEYS = Object.keys(defaults()) as (keyof DB)[];
@@ -138,7 +148,7 @@ class Store {
           // Merge objects so new default fields appear after upgrades.
           const d = base[k];
           (this.state as unknown as Record<string, unknown>)[k] =
-            d && typeof d === 'object' && !Array.isArray(d) && k !== 'progress' && k !== 'quiz' && k !== 'highlights' && k !== 'imports'
+            d && typeof d === 'object' && !Array.isArray(d) && k !== 'progress' && k !== 'quiz' && k !== 'highlights' && k !== 'imports' && k !== 'problems'
               ? { ...d, ...(v as object) }
               : v;
         });
@@ -234,6 +244,20 @@ export function toggleSaved(id: string): boolean {
     return nowSaved ? [id, ...s] : s.filter((x) => x !== id);
   });
   return nowSaved;
+}
+
+/** Tick or untick a practice problem. Returns true when it is now solved. */
+export function toggleProblem(articleId: string, url: string): boolean {
+  let solved = false;
+  store.update('problems', (all) => {
+    const list = all[articleId] ?? [];
+    solved = !list.includes(url);
+    const next = solved ? [...list, url] : list.filter((u) => u !== url);
+    const out = { ...all, [articleId]: next };
+    if (!next.length) delete out[articleId];
+    return out;
+  });
+  return solved;
 }
 
 export function exportData(): string {

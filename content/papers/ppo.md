@@ -1,6 +1,7 @@
 ---
 id: "paper-ppo"
 kind: "paper"
+subject: "ml"
 slug: "ppo"
 title: "Learn Fast, But Not Too Fast"
 subtitle: "Proximal Policy Optimization: the simple, sturdy algorithm behind game-playing bots, robot hands and ChatGPT's fine-tuning"

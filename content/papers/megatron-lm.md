@@ -1,6 +1,7 @@
 ---
 id: "paper-megatron-lm"
 kind: "paper"
+subject: "ml"
 slug: "megatron-lm"
 title: "When One GPU Is Not Enough"
 subtitle: "Megatron-LM: slicing each Transformer layer across GPUs, the trick that let language models grow past a single chip"

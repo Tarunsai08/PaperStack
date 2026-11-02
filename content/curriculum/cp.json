@@ -1,0 +1,3472 @@
+{
+ "subject": "cp",
+ "version": 1,
+ "entries": [
+  {
+   "id": "cp-how-contests-work",
+   "slug": "how-contests-work",
+   "title_working": "How Programming Contests Work",
+   "subject": "cp",
+   "kind": "primer",
+   "track": "cp-start",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Codeforces, AtCoder, CodeChef formats",
+     "Ratings and divisions",
+     "Penalties and hacks",
+     "Virtual contests"
+    ],
+    "analogy": "A chess rating system for coders",
+    "include": [
+     "Map of platforms and formats"
+    ],
+    "traps": [
+     "Do not invent rating cutoffs beyond the commonly published colour bands"
+    ]
+   }
+  },
+  {
+   "id": "cp-fast-io-template",
+   "slug": "fast-io-template",
+   "title_working": "Your Contest Template and Fast I/O",
+   "subject": "cp",
+   "kind": "primer",
+   "track": "cp-start",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-how-contests-work",
+    "dsa-cpp-stl-toolkit"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "ios::sync_with_stdio(false) and cin.tie",
+     "long long by default",
+     "Useful macros sparingly",
+     "Multiple test cases"
+    ],
+    "analogy": "A chef's mise en place before service",
+    "include": [
+     "A clean template",
+     "Reading t test cases"
+    ],
+    "traps": [
+     "Using endl in loops",
+     "Global arrays not reset between tests"
+    ]
+   }
+  },
+  {
+   "id": "cp-reading-problems-fast",
+   "slug": "reading-problems-fast",
+   "title_working": "Reading a Problem in Two Minutes",
+   "subject": "cp",
+   "kind": "primer",
+   "track": "cp-start",
+   "order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-how-contests-work"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Constraints first",
+     "Small cases by hand",
+     "Spot the hidden pattern",
+     "Sum of n over test cases"
+    ],
+    "analogy": "A detective scanning a crime scene for clues",
+    "include": [
+     "Checklist for reading",
+     "Example of constraint-driven idea"
+    ],
+    "traps": [
+     "Ignoring the sum-of-n guarantee"
+    ]
+   }
+  },
+  {
+   "id": "cp-rating-ladder",
+   "slug": "rating-ladder",
+   "title_working": "The Rating Ladder: What to Practise at Each Level",
+   "subject": "cp",
+   "kind": "primer",
+   "track": "cp-start",
+   "order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-reading-problems-fast"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "800-1200 implementation and greedy",
+     "1200-1600 binary search, prefix sums, basic DP",
+     "1600-1900 graphs, number theory, DP",
+     "1900+ data structures and harder DP"
+    ],
+    "analogy": "Climbing a mountain with base camps",
+    "include": [
+     "A ladder table with topics and sample problems"
+    ],
+    "traps": [
+     "Grinding only easy problems"
+    ]
+   }
+  },
+  {
+   "id": "cp-stress-testing",
+   "slug": "stress-testing",
+   "title_working": "Stress Testing: Catch Wrong Answers Yourself",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-start",
+   "order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-fast-io-template"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Brute force plus random generator plus checker",
+     "Shrinking counterexamples",
+     "Script loop"
+    ],
+    "analogy": "A crash-test dummy for your code",
+    "include": [
+     "Generator and brute pseudocode",
+     "Shell loop"
+    ],
+    "traps": [
+     "Generators that never produce edge cases"
+    ]
+   }
+  },
+  {
+   "id": "cp-debugging-in-contest",
+   "slug": "debugging-in-contest",
+   "title_working": "Debugging Under Time Pressure",
+   "subject": "cp",
+   "kind": "primer",
+   "track": "cp-start",
+   "order": 6,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-stress-testing"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Overflow, uninitialised values, off-by-one",
+     "Reading verdicts",
+     "Sanity prints to stderr"
+    ],
+    "analogy": "A pilot's emergency checklist",
+    "include": [
+     "Verdict meanings table"
+    ],
+    "traps": [
+     "Changing many things at once"
+    ]
+   }
+  },
+  {
+   "id": "cp-upsolving",
+   "slug": "upsolving",
+   "title_working": "Upsolving: Where Rating Actually Comes From",
+   "subject": "cp",
+   "kind": "primer",
+   "track": "cp-start",
+   "order": 7,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-rating-ladder"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Solve what you missed after the contest",
+     "Read editorials actively",
+     "Keep a mistakes log"
+    ],
+    "analogy": "A football team reviewing match footage",
+    "include": [
+     "Weekly routine template"
+    ],
+    "traps": [
+     "Reading editorials without coding"
+    ]
+   }
+  },
+  {
+   "id": "cp-constructive-problems",
+   "slug": "constructive-problems",
+   "title_working": "Constructive Problems: Build the Answer",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-start",
+   "order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-reading-problems-fast"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Small cases reveal structure",
+     "Invariants",
+     "Parity arguments"
+    ],
+    "analogy": "Building a Lego model from the picture on the box",
+    "include": [
+     "Codeforces constructive problems at 1200-1600"
+    ],
+    "traps": [
+     "Overthinking with heavy algorithms"
+    ]
+   }
+  },
+  {
+   "id": "cp-modular-arithmetic",
+   "slug": "modular-arithmetic",
+   "title_working": "Modular Arithmetic: Doing Maths on a Clock",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-math",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-bit-basics"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Add, subtract, multiply under a modulus",
+     "Why answers mod 1e9+7",
+     "Negative remainders in C++"
+    ],
+    "analogy": "A 12-hour clock face",
+    "include": [
+     "Exponentiation (CSES)",
+     "Exponentiation II (CSES)"
+    ],
+    "traps": [
+     "Subtraction going negative",
+     "Overflow before taking mod"
+    ],
+    "exact_facts": [
+     "1e9+7 is prime"
+    ]
+   }
+  },
+  {
+   "id": "cp-binary-exponentiation",
+   "slug": "binary-exponentiation",
+   "title_working": "Fast Exponentiation: Powers in log n Steps",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-math",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-modular-arithmetic"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Square and multiply",
+     "Bits of the exponent",
+     "Matrix power extension"
+    ],
+    "analogy": "Folding a paper strip in half repeatedly",
+    "include": [
+     "Exponentiation (CSES)",
+     "Exponentiation II (CSES)",
+     "Fibonacci Numbers (CSES)"
+    ],
+    "traps": [
+     "Exponent reduction needs Fermat and prime modulus"
+    ]
+   }
+  },
+  {
+   "id": "cp-sieve",
+   "slug": "sieve",
+   "title_working": "The Sieve of Eratosthenes",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-math",
+   "order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-modular-arithmetic"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Cross out multiples",
+     "Start from p*p",
+     "Smallest prime factor sieve for factorisation"
+    ],
+    "analogy": "Panning for gold and washing away the multiples",
+    "include": [
+     "Counting Divisors (CSES)",
+     "Count Primes (LeetCode)"
+    ],
+    "traps": [
+     "Memory for 1e7 sized sieves"
+    ],
+    "exact_facts": [
+     "Eratosthenes, Greek mathematician"
+    ]
+   }
+  },
+  {
+   "id": "cp-gcd-lcm",
+   "slug": "gcd-lcm",
+   "title_working": "GCD, LCM and the Euclidean Algorithm",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-math",
+   "order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-modular-arithmetic"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "gcd(a,b)=gcd(b,a mod b)",
+     "Extended Euclid",
+     "Bezout coefficients"
+    ],
+    "analogy": "Tiling a floor with the largest square tile",
+    "include": [
+     "Common Divisors (CSES)",
+     "Codeforces GCD problems"
+    ],
+    "traps": [
+     "LCM overflow",
+     "Use a / gcd * b"
+    ],
+    "exact_facts": [
+     "Euclid's Elements, around 300 BC"
+    ]
+   }
+  },
+  {
+   "id": "cp-modular-inverse",
+   "slug": "modular-inverse",
+   "title_working": "Modular Inverse: Dividing Under a Modulus",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-math",
+   "order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-binary-exponentiation",
+    "cp-gcd-lcm"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Fermat's little theorem for primes",
+     "Extended Euclid in general",
+     "Precomputed factorial inverses"
+    ],
+    "analogy": "Finding the undo button on a clock",
+    "include": [
+     "Binomial Coefficients (CSES)",
+     "Creating Strings II (CSES)"
+    ],
+    "traps": [
+     "Inverse does not exist when not coprime"
+    ]
+   }
+  },
+  {
+   "id": "cp-binomial-coefficients",
+   "slug": "binomial-coefficients",
+   "title_working": "Binomial Coefficients Fast",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-math",
+   "order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-modular-inverse"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Factorials and inverse factorials",
+     "Pascal's triangle for small n",
+     "Stars and bars"
+    ],
+    "analogy": "Choosing a team from a squad",
+    "include": [
+     "Binomial Coefficients (CSES)",
+     "Distributing Apples (CSES)"
+    ],
+    "traps": [
+     "Precomputing up to the wrong limit"
+    ]
+   }
+  },
+  {
+   "id": "cp-inclusion-exclusion",
+   "slug": "inclusion-exclusion",
+   "title_working": "Inclusion-Exclusion: Counting by Correcting Overcounts",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-math",
+   "order": 7,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-binomial-coefficients"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Add singles, subtract pairs, add triples",
+     "Bitmask over conditions",
+     "Derangements"
+    ],
+    "analogy": "Counting party guests who like tea or coffee without double counting",
+    "include": [
+     "Prime Multiples (CSES)",
+     "Christmas Party (CSES)"
+    ],
+    "traps": [
+     "Sign errors"
+    ]
+   }
+  },
+  {
+   "id": "cp-euler-totient",
+   "slug": "euler-totient",
+   "title_working": "Euler's Totient Function",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-math",
+   "order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-sieve",
+    "cp-gcd-lcm"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Count numbers coprime to n",
+     "Formula from prime factors",
+     "Euler's theorem"
+    ],
+    "analogy": "Counting gears that never line up the same teeth",
+    "include": [
+     "Codeforces totient problems",
+     "Sum of totients exercises"
+    ],
+    "traps": [
+     "Forgetting the remaining prime factor > sqrt(n)"
+    ]
+   }
+  },
+  {
+   "id": "cp-chinese-remainder",
+   "slug": "chinese-remainder",
+   "title_working": "The Chinese Remainder Theorem",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-math",
+   "order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-modular-inverse"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Combine congruences",
+     "Coprime moduli",
+     "Constructive formula"
+    ],
+    "analogy": "Three clocks with different cycle lengths",
+    "include": [
+     "CRT practice on Codeforces",
+     "Library Checker style tasks"
+    ],
+    "traps": [
+     "Non-coprime moduli handling"
+    ]
+   }
+  },
+  {
+   "id": "cp-counting-techniques",
+   "slug": "counting-techniques",
+   "title_working": "Counting Without Listing: Combinatorics Toolkit",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-math",
+   "order": 10,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-binomial-coefficients"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Product and sum rules",
+     "Complement counting",
+     "Catalan numbers",
+     "Burnside idea"
+    ],
+    "analogy": "Counting outfits instead of trying them on",
+    "include": [
+     "Bracket Sequences I (CSES)",
+     "Counting Necklaces (CSES)"
+    ],
+    "traps": [
+     "Double counting symmetric cases"
+    ]
+   }
+  },
+  {
+   "id": "cp-probability-expectation",
+   "slug": "probability-expectation",
+   "title_working": "Expected Value and Linearity of Expectation",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-math",
+   "order": 11,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-counting-techniques",
+    "cp-modular-arithmetic"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Linearity even with dependence",
+     "Expected values mod p",
+     "Indicator variables"
+    ],
+    "analogy": "Averaging over many parallel universes",
+    "include": [
+     "Dice Probability (CSES)",
+     "Moving Robots (CSES)"
+    ],
+    "traps": [
+     "Assuming independence"
+    ]
+   }
+  },
+  {
+   "id": "cp-matrix-exponentiation",
+   "slug": "matrix-exponentiation",
+   "title_working": "Matrix Exponentiation for Linear Recurrences",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-math",
+   "order": 12,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-binary-exponentiation"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Write the recurrence as a matrix",
+     "Power it in log n",
+     "Counting paths of length k"
+    ],
+    "analogy": "A machine that advances the sequence one step, applied k times at once",
+    "include": [
+     "Fibonacci Numbers (CSES)",
+     "Throwing Dice (CSES)",
+     "Graph Paths I (CSES)"
+    ],
+    "traps": [
+     "Matrix multiplication overflow"
+    ]
+   }
+  },
+  {
+   "id": "cp-number-theory-tricks",
+   "slug": "number-theory-tricks",
+   "title_working": "Divisor Sums and Floor Division Blocks",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-math",
+   "order": 13,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-sieve"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Harmonic lemma",
+     "Iterating over distinct n/i values",
+     "Sum of divisors"
+    ],
+    "analogy": "Grouping receipts by how many times they fit into a budget",
+    "include": [
+     "Sum of Divisors (CSES)",
+     "Divisor Analysis (CSES)"
+    ],
+    "traps": [
+     "Off-by-one in block bounds"
+    ]
+   }
+  },
+  {
+   "id": "cp-sparse-table",
+   "slug": "sparse-table",
+   "title_working": "Sparse Tables: O(1) Range Minimum",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-ranges",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-sparse-table-rmq"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Doubling ranges",
+     "Overlapping is safe for idempotent ops",
+     "log table"
+    ],
+    "analogy": "Asking two overlapping lookouts for the lowest point",
+    "include": [
+     "Static Range Minimum Queries (CSES)"
+    ],
+    "traps": [
+     "Using it for sums"
+    ]
+   }
+  },
+  {
+   "id": "cp-segment-tree",
+   "slug": "segment-tree",
+   "title_working": "Segment Trees From Scratch",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-ranges",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-prefix-sums"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Iterative and recursive versions",
+     "Merge function",
+     "Point update",
+     "Range query"
+    ],
+    "analogy": "A tournament bracket",
+    "include": [
+     "Dynamic Range Minimum Queries (CSES)",
+     "Range Xor Queries (CSES)",
+     "Hotel Queries (CSES)"
+    ],
+    "traps": [
+     "Wrong neutral element"
+    ]
+   }
+  },
+  {
+   "id": "cp-lazy-propagation",
+   "slug": "lazy-propagation",
+   "title_working": "Lazy Propagation: Range Updates in log n",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-ranges",
+   "order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-segment-tree"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Postpone updates with tags",
+     "Push down before visiting children",
+     "Combining tags"
+    ],
+    "analogy": "A manager who promises raises to a whole team and tells each member only when asked",
+    "include": [
+     "Range Updates and Sums (CSES)",
+     "Range Update Queries (CSES)",
+     "Polynomial Queries (CSES)"
+    ],
+    "traps": [
+     "Forgetting to push before querying"
+    ]
+   }
+  },
+  {
+   "id": "cp-fenwick-advanced",
+   "slug": "fenwick-advanced",
+   "title_working": "Fenwick Tree Tricks: Range Updates and 2D",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-ranges",
+   "order": 4,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-fenwick-tree"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Range update point query",
+     "Range update range query with two BITs",
+     "2D BIT"
+    ],
+    "analogy": "Two piggy banks that together track a running total",
+    "include": [
+     "Range Update Queries (CSES)",
+     "Forest Queries II (CSES)"
+    ],
+    "traps": [
+     "Mixed 0 and 1 indexing"
+    ]
+   }
+  },
+  {
+   "id": "cp-coordinate-compression",
+   "slug": "coordinate-compression",
+   "title_working": "Coordinate Compression",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-ranges",
+   "order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-sorting-as-tool"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Map large values to ranks",
+     "Sort and unique",
+     "Use with BIT"
+    ],
+    "analogy": "Replacing street addresses with house numbers 1, 2, 3",
+    "include": [
+     "Salary Queries (CSES)",
+     "Distinct Values Queries (CSES)"
+    ],
+    "traps": [
+     "Compressing queries separately from data"
+    ]
+   }
+  },
+  {
+   "id": "cp-segment-tree-descend",
+   "slug": "segment-tree-descend",
+   "title_working": "Walking Down a Segment Tree",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-ranges",
+   "order": 6,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-segment-tree"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Find first index satisfying a condition",
+     "k-th one",
+     "O(log n) descent"
+    ],
+    "analogy": "A librarian walking down the shelves to the right book",
+    "include": [
+     "Hotel Queries (CSES)",
+     "List Removals (CSES)"
+    ],
+    "traps": [
+     "Descending into the wrong child"
+    ]
+   }
+  },
+  {
+   "id": "cp-merge-sort-tree",
+   "slug": "merge-sort-tree",
+   "title_working": "Merge Sort Trees and Persistent Ideas",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-ranges",
+   "order": 7,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-segment-tree"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Sorted lists in each node",
+     "Count values in a range",
+     "Persistence intuition"
+    ],
+    "analogy": "Keeping a sorted index card box per shelf",
+    "include": [
+     "K-query style problems on Codeforces"
+    ],
+    "traps": [
+     "Memory n log n"
+    ]
+   }
+  },
+  {
+   "id": "cp-sqrt-decomposition",
+   "slug": "sqrt-decomposition",
+   "title_working": "Square Root Decomposition",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-ranges",
+   "order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-prefix-sums"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Blocks of size sqrt n",
+     "Partial blocks plus full blocks",
+     "Simpler than segment trees"
+    ],
+    "analogy": "Splitting a long road into neighbourhoods",
+    "include": [
+     "Range queries with block updates",
+     "Codeforces sqrt problems"
+    ],
+    "traps": [
+     "Choosing the block size"
+    ]
+   }
+  },
+  {
+   "id": "cp-mos-algorithm",
+   "slug": "mos-algorithm",
+   "title_working": "Mo's Algorithm: Offline Range Queries",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-ranges",
+   "order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-sqrt-decomposition"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Sort queries by block then right end",
+     "Add and remove elements",
+     "O((n+q) sqrt n)"
+    ],
+    "analogy": "A tour guide who orders stops to minimise walking",
+    "include": [
+     "Distinct Values Queries (CSES)",
+     "Codeforces Mo's problems"
+    ],
+    "traps": [
+     "Remove before add ordering bugs"
+    ]
+   }
+  },
+  {
+   "id": "cp-segment-tree-beats",
+   "slug": "segment-tree-beats",
+   "title_working": "Segment Tree Patterns: Max Subarray and Beyond",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-ranges",
+   "order": 10,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-lazy-propagation"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Store several values per node",
+     "Merging subarray info",
+     "Range chmin idea"
+    ],
+    "analogy": "Each manager keeps a richer summary of their team",
+    "include": [
+     "Subarray Sum Queries (CSES)",
+     "Prefix Sum Queries (CSES)"
+    ],
+    "traps": [
+     "Incomplete merge logic"
+    ]
+   }
+  },
+  {
+   "id": "cp-bitmask-dp",
+   "slug": "bitmask-dp",
+   "title_working": "Bitmask DP for Contests",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-dp",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-bitmask-dp-intro"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "dp[mask][last]",
+     "Travelling salesman",
+     "Iterating submasks in 3^n"
+    ],
+    "analogy": "A checklist of visited cities as a row of switches",
+    "include": [
+     "Hamiltonian Flights (CSES)",
+     "Elevator Rides (CSES)"
+    ],
+    "traps": [
+     "Memory with n=20 and extra dimensions"
+    ]
+   }
+  },
+  {
+   "id": "cp-digit-dp",
+   "slug": "digit-dp",
+   "title_working": "Digit DP: Counting Numbers With Properties",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-dp",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-dp-intro"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Position, tight flag, state",
+     "Count in [0,R] then subtract"
+    ],
+    "analogy": "Filling an odometer digit by digit without passing the limit",
+    "include": [
+     "Counting Numbers (CSES)",
+     "Codeforces digit DP problems"
+    ],
+    "traps": [
+     "Leading zeros handling"
+    ]
+   }
+  },
+  {
+   "id": "cp-dp-on-trees-advanced",
+   "slug": "dp-on-trees-advanced",
+   "title_working": "Tree DP and Rerooting",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-dp",
+   "order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-dp-on-trees"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Subtree DP",
+     "Rerooting to get answers for every root",
+     "Combining children"
+    ],
+    "analogy": "Asking every town what the map looks like with it as the capital",
+    "include": [
+     "Tree Distances I (CSES)",
+     "Tree Distances II (CSES)",
+     "Tree Matching (CSES)"
+    ],
+    "traps": [
+     "Double counting the parent edge"
+    ]
+   }
+  },
+  {
+   "id": "cp-dp-probability",
+   "slug": "dp-probability",
+   "title_working": "DP With Probabilities and Expected Values",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-dp",
+   "order": 4,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-probability-expectation",
+    "dsa-dp-intro"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "States with probabilities",
+     "Expected steps backwards"
+    ],
+    "analogy": "A board game played over every possible roll at once",
+    "include": [
+     "Dice Probability (CSES)",
+     "Candy Lottery (CSES)"
+    ],
+    "traps": [
+     "Precision issues"
+    ]
+   }
+  },
+  {
+   "id": "cp-knapsack-variants",
+   "slug": "knapsack-variants",
+   "title_working": "Knapsack Variants in Contests",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-dp",
+   "order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-knapsack-01"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Bounded knapsack with binary splitting",
+     "Value-based DP when weights are huge",
+     "Bitset knapsack"
+    ],
+    "analogy": "Packing with a limited number of each item",
+    "include": [
+     "Money Sums (CSES)",
+     "Book Shop II (CSES)"
+    ],
+    "traps": [
+     "Wrong dimension when weights are large"
+    ]
+   }
+  },
+  {
+   "id": "cp-dp-on-dag",
+   "slug": "dp-on-dag",
+   "title_working": "DP on DAGs: Longest and Counting Paths",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-dp",
+   "order": 6,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-topological-sort",
+    "dsa-dp-intro"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Topological order as DP order",
+     "Count paths",
+     "Longest path"
+    ],
+    "analogy": "Water flowing downhill through valleys",
+    "include": [
+     "Longest Flight Route (CSES)",
+     "Game Routes (CSES)"
+    ],
+    "traps": [
+     "Cycles mean not a DAG"
+    ]
+   }
+  },
+  {
+   "id": "cp-broken-profile-dp",
+   "slug": "broken-profile-dp",
+   "title_working": "Broken Profile DP: Tiling Grids",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-dp",
+   "order": 7,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-bitmask-dp"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Process cells, keep a profile mask",
+     "Domino tilings"
+    ],
+    "analogy": "Laying floor tiles row by row while remembering the jagged edge",
+    "include": [
+     "Counting Tilings (CSES)"
+    ],
+    "traps": [
+     "State transitions at row ends"
+    ]
+   }
+  },
+  {
+   "id": "cp-convex-hull-trick",
+   "slug": "convex-hull-trick",
+   "title_working": "The Convex Hull Trick",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-dp",
+   "order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-dp-1d"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Transitions as lines",
+     "Maintain lower envelope",
+     "Li Chao tree alternative"
+    ],
+    "analogy": "Many straight roads and you always want the lowest at your x",
+    "include": [
+     "Monster Game I (CSES)",
+     "Codeforces CHT problems"
+    ],
+    "traps": [
+     "Wrong slope order assumptions"
+    ]
+   }
+  },
+  {
+   "id": "cp-divide-conquer-dp",
+   "slug": "divide-conquer-dp",
+   "title_working": "Divide and Conquer DP Optimisation",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-dp",
+   "order": 9,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-divide-and-conquer"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Monotone optimal split points",
+     "O(k n log n)"
+    ],
+    "analogy": "Splitting a line of shops into k districts sensibly",
+    "include": [
+     "Codeforces D&C DP problems"
+    ],
+    "traps": [
+     "Proving monotonicity"
+    ]
+   }
+  },
+  {
+   "id": "cp-knuth-optimization",
+   "slug": "knuth-optimization",
+   "title_working": "Knuth's Optimisation for Interval DP",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-dp",
+   "order": 10,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-interval-dp"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Optimal split points are monotone",
+     "O(n^2) instead of O(n^3)"
+    ],
+    "analogy": "Narrowing your search because the best cut moved only a little",
+    "include": [
+     "Optimal merging style problems"
+    ],
+    "traps": [
+     "Applying it without the quadrangle condition"
+    ],
+    "exact_facts": [
+     "Knuth, 1971"
+    ]
+   }
+  },
+  {
+   "id": "cp-sos-dp",
+   "slug": "sos-dp",
+   "title_working": "Sum Over Subsets DP",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-dp",
+   "order": 11,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-bitmask-dp"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Accumulate over subsets dimension by dimension",
+     "O(n 2^n)"
+    ],
+    "analogy": "Every combination lock summarising all its sub-combinations",
+    "include": [
+     "Bit Problem (CSES)"
+    ],
+    "traps": [
+     "Loop order"
+    ]
+   }
+  },
+  {
+   "id": "cp-scc",
+   "slug": "scc",
+   "title_working": "Strongly Connected Components",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-graphs",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-dfs"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Kosaraju two passes",
+     "Tarjan low-link",
+     "Condensation DAG"
+    ],
+    "analogy": "One-way streets: which neighbourhoods can reach each other and back",
+    "include": [
+     "Planets and Kingdoms (CSES)",
+     "Flight Routes Check (CSES)",
+     "Coin Collector (CSES)"
+    ],
+    "traps": [
+     "Reverse graph construction"
+    ]
+   }
+  },
+  {
+   "id": "cp-bridges-articulation",
+   "slug": "bridges-articulation",
+   "title_working": "Bridges and Articulation Points",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-graphs",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-dfs"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Discovery time and low-link",
+     "Edge vs vertex criticality"
+    ],
+    "analogy": "Finding the bridges whose collapse splits a city",
+    "include": [
+     "Necessary Roads (CSES)",
+     "Necessary Cities (CSES)"
+    ],
+    "traps": [
+     "Parent edge with multi-edges"
+    ]
+   }
+  },
+  {
+   "id": "cp-two-sat",
+   "slug": "two-sat",
+   "title_working": "2-SAT: Logic Puzzles as Graphs",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-graphs",
+   "order": 3,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-scc"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Implication graph",
+     "Variable and its negation in same SCC means impossible"
+    ],
+    "analogy": "Seating rules turned into one-way arrows",
+    "include": [
+     "Giant Pizza (CSES)"
+    ],
+    "traps": [
+     "Building implications in both directions"
+    ]
+   }
+  },
+  {
+   "id": "cp-binary-lifting",
+   "slug": "binary-lifting",
+   "title_working": "Binary Lifting and LCA in log n",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-graphs",
+   "order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-lca"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "up[v][j] is the 2^j-th ancestor",
+     "Jump to equal depth",
+     "Distance queries"
+    ],
+    "analogy": "Express elevators that skip 1, 2, 4, 8 floors",
+    "include": [
+     "Company Queries I (CSES)",
+     "Company Queries II (CSES)",
+     "Distance Queries (CSES)"
+    ],
+    "traps": [
+     "LOG too small"
+    ]
+   }
+  },
+  {
+   "id": "cp-euler-tour",
+   "slug": "euler-tour",
+   "title_working": "Euler Tour: Turning Subtrees Into Ranges",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-graphs",
+   "order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-binary-lifting",
+    "cp-segment-tree"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "tin and tout times",
+     "Subtree as a contiguous range",
+     "Path queries"
+    ],
+    "analogy": "Numbering a family tree so each branch is a block",
+    "include": [
+     "Subtree Queries (CSES)",
+     "Path Queries (CSES)"
+    ],
+    "traps": [
+     "Mixing entry and exit indices"
+    ]
+   }
+  },
+  {
+   "id": "cp-hld",
+   "slug": "hld",
+   "title_working": "Heavy-Light Decomposition",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-graphs",
+   "order": 6,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-euler-tour"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Heavy child chains",
+     "Path splits into log n chains",
+     "Segment tree over chains"
+    ],
+    "analogy": "Highway lanes for the busiest routes",
+    "include": [
+     "Path Queries II (CSES)"
+    ],
+    "traps": [
+     "Chain head bookkeeping"
+    ]
+   }
+  },
+  {
+   "id": "cp-centroid-decomposition",
+   "slug": "centroid-decomposition",
+   "title_working": "Centroid Decomposition",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-graphs",
+   "order": 7,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-tree-recursion"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Find a centroid",
+     "Recurse on parts",
+     "Counting paths through centroid"
+    ],
+    "analogy": "Splitting a kingdom at its capital again and again",
+    "include": [
+     "Finding a Centroid (CSES)",
+     "Fixed-Length Paths I (CSES)"
+    ],
+    "traps": [
+     "Not marking removed centroids"
+    ]
+   }
+  },
+  {
+   "id": "cp-dsu-advanced",
+   "slug": "dsu-advanced",
+   "title_working": "DSU Tricks: Rollback, Parity and Offline",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-graphs",
+   "order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-union-find"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Weighted DSU for parity",
+     "Rollback for offline queries",
+     "Small-to-large merging"
+    ],
+    "analogy": "Friend groups that also remember who is on which team",
+    "include": [
+     "Codeforces DSU problems",
+     "Road Construction (CSES)"
+    ],
+    "traps": [
+     "Path compression breaks rollback"
+    ]
+   }
+  },
+  {
+   "id": "cp-max-flow",
+   "slug": "max-flow",
+   "title_working": "Maximum Flow: Edmonds-Karp and Dinic",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-graphs",
+   "order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-bfs"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Residual graph",
+     "Augmenting paths",
+     "Min-cut equals max-flow"
+    ],
+    "analogy": "Water pipes from a reservoir to a city",
+    "include": [
+     "Download Speed (CSES)",
+     "Police Chase (CSES)"
+    ],
+    "traps": [
+     "Forgetting reverse edges"
+    ],
+    "exact_facts": [
+     "Ford-Fulkerson, 1956"
+    ]
+   }
+  },
+  {
+   "id": "cp-bipartite-matching",
+   "slug": "bipartite-matching",
+   "title_working": "Bipartite Matching",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-graphs",
+   "order": 10,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-max-flow"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Kuhn's algorithm",
+     "Matching as flow",
+     "Konig's theorem"
+    ],
+    "analogy": "Pairing dancers who agreed to dance together",
+    "include": [
+     "School Dance (CSES)"
+    ],
+    "traps": [
+     "Resetting visited per augmenting path"
+    ]
+   }
+  },
+  {
+   "id": "cp-shortest-path-tricks",
+   "slug": "shortest-path-tricks",
+   "title_working": "Shortest Path Tricks: 0-1 BFS, Multi-State, Potentials",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-graphs",
+   "order": 11,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-dijkstra"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "0-1 BFS with a deque",
+     "State graphs with coupons",
+     "Dijkstra variants"
+    ],
+    "analogy": "A travel planner with one discount voucher",
+    "include": [
+     "Flight Discount (CSES)",
+     "Flight Routes (CSES)"
+    ],
+    "traps": [
+     "State explosion"
+    ]
+   }
+  },
+  {
+   "id": "cp-euler-path",
+   "slug": "euler-path",
+   "title_working": "Eulerian Paths and Circuits",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-graphs",
+   "order": 12,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-dfs"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Degree conditions",
+     "Hierholzer's algorithm"
+    ],
+    "analogy": "Drawing a figure without lifting your pen",
+    "include": [
+     "Mail Delivery (CSES)",
+     "Teleporters Path (CSES)"
+    ],
+    "traps": [
+     "Directed vs undirected conditions"
+    ],
+    "exact_facts": [
+     "Euler, Seven Bridges of Konigsberg, 1736"
+    ]
+   }
+  },
+  {
+   "id": "cp-prefix-function",
+   "slug": "prefix-function",
+   "title_working": "The Prefix Function and KMP",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-strings",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-string-matching-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Longest border of each prefix",
+     "Linear matching",
+     "Automaton view"
+    ],
+    "analogy": "A reader who remembers how much of the pattern still matches after a mismatch",
+    "include": [
+     "String Matching (CSES)",
+     "Finding Borders (CSES)"
+    ],
+    "traps": [
+     "Recomputing instead of falling back"
+    ],
+    "exact_facts": [
+     "Knuth, Morris, Pratt, 1977"
+    ]
+   }
+  },
+  {
+   "id": "cp-z-function",
+   "slug": "z-function",
+   "title_working": "The Z-Function",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-strings",
+   "order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-prefix-function"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Longest match with prefix at each position",
+     "Z-box",
+     "Pattern search with separator"
+    ],
+    "analogy": "A window that slides while remembering what it already verified",
+    "include": [
+     "String Matching (CSES)",
+     "Finding Periods (CSES)"
+    ],
+    "traps": [
+     "Separator character collisions"
+    ]
+   }
+  },
+  {
+   "id": "cp-string-hashing",
+   "slug": "string-hashing",
+   "title_working": "Polynomial String Hashing",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-strings",
+   "order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-string-patterns",
+    "cp-modular-arithmetic"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Rolling hash",
+     "Double hashing",
+     "Comparing substrings in O(1)"
+    ],
+    "analogy": "A fingerprint for every substring",
+    "include": [
+     "String Matching (CSES)",
+     "Finding Periods (CSES)"
+    ],
+    "traps": [
+     "Anti-hash tests on fixed bases"
+    ]
+   }
+  },
+  {
+   "id": "cp-suffix-array",
+   "slug": "suffix-array",
+   "title_working": "Suffix Arrays and LCP",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-strings",
+   "order": 4,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-string-hashing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Sort all suffixes by doubling",
+     "LCP with Kasai",
+     "Distinct substrings"
+    ],
+    "analogy": "A dictionary of every ending of a word",
+    "include": [
+     "Distinct Substrings (CSES)",
+     "Repeating Substring (CSES)"
+    ],
+    "traps": [
+     "O(n log^2 n) vs O(n log n) choice"
+    ]
+   }
+  },
+  {
+   "id": "cp-aho-corasick",
+   "slug": "aho-corasick",
+   "title_working": "Aho-Corasick: Many Patterns at Once",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-strings",
+   "order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-prefix-function",
+    "dsa-tries"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Trie plus failure links",
+     "Output links",
+     "Linear in text plus matches"
+    ],
+    "analogy": "A spam filter scanning for thousands of words in one pass",
+    "include": [
+     "Finding Patterns (CSES)",
+     "Counting Patterns (CSES)"
+    ],
+    "traps": [
+     "Not aggregating counts through failure links"
+    ],
+    "exact_facts": [
+     "Aho, Corasick, 1975"
+    ]
+   }
+  },
+  {
+   "id": "cp-manacher",
+   "slug": "manacher",
+   "title_working": "Manacher's Algorithm: All Palindromes in Linear Time",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-strings",
+   "order": 6,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-z-function"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Mirror trick",
+     "Odd and even centres",
+     "Linear time"
+    ],
+    "analogy": "A mirror that remembers reflections it already checked",
+    "include": [
+     "Longest Palindrome (CSES)"
+    ],
+    "traps": [
+     "Index transformation errors"
+    ],
+    "exact_facts": [
+     "Manacher, 1975"
+    ]
+   }
+  },
+  {
+   "id": "cp-palindromic-tree",
+   "slug": "palindromic-tree",
+   "title_working": "Palindromic Tree (Eertree)",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-strings",
+   "order": 7,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-manacher"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Nodes are distinct palindromes",
+     "Suffix links"
+    ],
+    "analogy": "A family tree of palindromes",
+    "include": [
+     "Count distinct palindromes tasks"
+    ],
+    "traps": [
+     "Edge cases with the two roots"
+    ]
+   }
+  },
+  {
+   "id": "cp-suffix-automaton",
+   "slug": "suffix-automaton",
+   "title_working": "Suffix Automaton",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-strings",
+   "order": 8,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-suffix-array"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Smallest automaton accepting all substrings",
+     "Counting distinct substrings"
+    ],
+    "analogy": "A road map of every way to read part of a word",
+    "include": [
+     "Distinct Substrings (CSES)",
+     "Pattern Positions (CSES)"
+    ],
+    "traps": [
+     "Clone state handling"
+    ]
+   }
+  },
+  {
+   "id": "cp-game-theory",
+   "slug": "game-theory",
+   "title_working": "Game Theory: Winning and Losing Positions",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-misc",
+   "order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-dp-intro"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Positions as win or lose",
+     "Backward induction",
+     "Nim"
+    ],
+    "analogy": "Counting backwards from the last move in a game",
+    "include": [
+     "Stick Game (CSES)",
+     "Nim Game I (CSES)"
+    ],
+    "traps": [
+     "Confusing normal and misere play"
+    ]
+   }
+  },
+  {
+   "id": "cp-sprague-grundy",
+   "slug": "sprague-grundy",
+   "title_working": "Sprague-Grundy: Adding Games Together",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-misc",
+   "order": 2,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-game-theory"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Grundy numbers with mex",
+     "XOR of independent games"
+    ],
+    "analogy": "Every small game secretly behaves like a Nim pile",
+    "include": [
+     "Nim Game II (CSES)",
+     "Grundy's Game (CSES)",
+     "Stair Game (CSES)"
+    ],
+    "traps": [
+     "Games that are not independent"
+    ],
+    "exact_facts": [
+     "Sprague 1935, Grundy 1939"
+    ]
+   }
+  },
+  {
+   "id": "cp-geometry-basics",
+   "slug": "geometry-basics",
+   "title_working": "Geometry Basics: Cross Products Solve Everything",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-misc",
+   "order": 3,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-modular-arithmetic"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Points as vectors",
+     "Cross product for orientation",
+     "Segment intersection",
+     "Integer arithmetic"
+    ],
+    "analogy": "Turning left or right at a junction",
+    "include": [
+     "Point Location Test (CSES)",
+     "Line Segment Intersection (CSES)",
+     "Polygon Area (CSES)"
+    ],
+    "traps": [
+     "Floating point when integers suffice"
+    ]
+   }
+  },
+  {
+   "id": "cp-convex-hull",
+   "slug": "convex-hull",
+   "title_working": "Convex Hull: The Rubber Band Algorithm",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-misc",
+   "order": 4,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-geometry-basics"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Monotone chain",
+     "Sort points",
+     "Remove right turns"
+    ],
+    "analogy": "Snapping a rubber band around nails",
+    "include": [
+     "Convex Hull (CSES)"
+    ],
+    "traps": [
+     "Collinear points handling"
+    ],
+    "exact_facts": [
+     "Andrew's monotone chain, 1979"
+    ]
+   }
+  },
+  {
+   "id": "cp-meet-in-the-middle",
+   "slug": "meet-in-the-middle",
+   "title_working": "Meet in the Middle",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-misc",
+   "order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-subsets-permutations",
+    "dsa-binary-search"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Split into halves",
+     "2^(n/2) each",
+     "Combine with sorting or hashing"
+    ],
+    "analogy": "Two tunnel teams digging from both ends",
+    "include": [
+     "Meet in the Middle (CSES)",
+     "Apple Division (CSES)"
+    ],
+    "traps": [
+     "Combining step too slow"
+    ]
+   }
+  },
+  {
+   "id": "cp-randomized-techniques",
+   "slug": "randomized-techniques",
+   "title_working": "Randomised Techniques in Contests",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-misc",
+   "order": 6,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-string-hashing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Random shuffles",
+     "Randomised hashing",
+     "Probabilistic checks"
+    ],
+    "analogy": "Spot-checking a few receipts to catch errors",
+    "include": [
+     "Codeforces randomised problems",
+     "Freivalds style checks"
+    ],
+    "traps": [
+     "Using rand() with small range"
+    ]
+   }
+  },
+  {
+   "id": "cp-interactive-problems",
+   "slug": "interactive-problems",
+   "title_working": "Interactive Problems: Talking to the Judge",
+   "subject": "cp",
+   "kind": "primer",
+   "track": "cp-misc",
+   "order": 7,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-fast-io-template",
+    "dsa-binary-search"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Flush output",
+     "Query limits",
+     "Binary search interactively"
+    ],
+    "analogy": "Twenty questions with the judge",
+    "include": [
+     "Codeforces interactive problems"
+    ],
+    "traps": [
+     "Forgetting to flush"
+    ]
+   }
+  },
+  {
+   "id": "cp-bitwise-tricks-cp",
+   "slug": "bitwise-tricks-cp",
+   "title_working": "Bitwise Tricks for Contests",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-misc",
+   "order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-bit-manipulation-tricks"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "XOR basis",
+     "Bitset speedups",
+     "Per-bit contribution"
+    ],
+    "analogy": "Counting how often each light is on across all switches",
+    "include": [
+     "Codeforces bitwise problems",
+     "Xor Pyramid (CSES)"
+    ],
+    "traps": [
+     "Integer width"
+    ]
+   }
+  },
+  {
+   "id": "cp-ternary-search",
+   "slug": "ternary-search",
+   "title_working": "Ternary Search on Unimodal Functions",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-misc",
+   "order": 9,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-binary-search-answer"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Discard a third each step",
+     "Integer and real versions"
+    ],
+    "analogy": "Finding the top of a hill by comparing two points",
+    "include": [
+     "Codeforces ternary search problems"
+    ],
+    "traps": [
+     "Using it on non-unimodal functions"
+    ]
+   }
+  },
+  {
+   "id": "cp-two-pointer-cp",
+   "slug": "two-pointer-cp",
+   "title_working": "Two Pointers and Monotonicity in Contests",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-misc",
+   "order": 10,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-sliding-window"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Monotone conditions",
+     "Counting subarrays",
+     "Pairs with constraints"
+    ],
+    "analogy": "A caterpillar that never backs up",
+    "include": [
+     "Subarray Sums I (CSES)",
+     "Sum of Three Values (CSES)"
+    ],
+    "traps": [
+     "Non-monotone conditions"
+    ]
+   }
+  },
+  {
+   "id": "cp-contest-strategy",
+   "slug": "contest-strategy",
+   "title_working": "Contest Strategy: Order, Time and Nerves",
+   "subject": "cp",
+   "kind": "primer",
+   "track": "cp-start",
+   "order": 14,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-rating-ladder",
+    "cp-stress-testing"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Read all problems first",
+     "Skip when stuck",
+     "Penalty awareness",
+     "Mental game"
+    ],
+    "analogy": "A marathon runner pacing the race",
+    "include": [
+     "Contest-day checklist"
+    ],
+    "traps": [
+     "Spending an hour on one problem"
+    ]
+   }
+  },
+  {
+   "id": "cp-weird-algorithm",
+   "slug": "weird-algorithm",
+   "title_working": "Your First CSES Problems: Weird Algorithm to Increasing Array",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-start",
+   "order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-fast-io-template"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Simulate carefully",
+     "long long overflow",
+     "Reading input fast"
+    ],
+    "analogy": "Warm-up laps before the race",
+    "include": [
+     "Weird Algorithm (CSES)",
+     "Missing Number (CSES)",
+     "Repetitions (CSES)",
+     "Increasing Array (CSES)"
+    ],
+    "traps": [
+     "int overflow in Collatz-like steps"
+    ]
+   }
+  },
+  {
+   "id": "cp-greedy-in-contests",
+   "slug": "greedy-in-contests",
+   "title_working": "Greedy in Contests: Guess, Prove, Submit",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-start",
+   "order": 10,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-rating-ladder"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Find a candidate rule from small cases",
+     "Exchange argument",
+     "Counterexample hunting"
+    ],
+    "analogy": "Trying a shortcut and then checking the map",
+    "include": [
+     "Apartments (CSES)",
+     "Ferris Wheel (CSES)",
+     "Concert Tickets (CSES)",
+     "Stick Lengths (CSES)"
+    ],
+    "traps": [
+     "Submitting unproven greedy without stress tests"
+    ]
+   }
+  },
+  {
+   "id": "cp-implementation-skills",
+   "slug": "implementation-skills",
+   "title_working": "Implementation Problems: Getting the Details Right",
+   "subject": "cp",
+   "kind": "primer",
+   "track": "cp-start",
+   "order": 11,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-reading-problems-fast"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Simulations",
+     "Careful indexing",
+     "Writing helper functions"
+    ],
+    "analogy": "A recipe followed to the gram",
+    "include": [
+     "Codeforces 800-1200 implementation problems"
+    ],
+    "traps": [
+     "Rushing edge cases"
+    ]
+   }
+  },
+  {
+   "id": "cp-counting-divisors",
+   "slug": "counting-divisors",
+   "title_working": "Counting Divisors for a Million Numbers",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-math",
+   "order": 14,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-sieve"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Precompute divisor counts with a sieve",
+     "Harmonic series cost"
+    ],
+    "analogy": "Every number dropping a token into the boxes of its multiples",
+    "include": [
+     "Counting Divisors (CSES)",
+     "Common Divisors (CSES)"
+    ],
+    "traps": [
+     "Per-query sqrt factoring too slow"
+    ]
+   }
+  },
+  {
+   "id": "cp-creating-strings-ii",
+   "slug": "creating-strings-ii",
+   "title_working": "Counting Arrangements of a Word",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-math",
+   "order": 15,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-binomial-coefficients"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Multinomial coefficient",
+     "Factorials mod p"
+    ],
+    "analogy": "Arranging letter tiles where identical tiles are interchangeable",
+    "include": [
+     "Creating Strings II (CSES)",
+     "Distributing Apples (CSES)"
+    ],
+    "traps": [
+     "Dividing without inverses"
+    ]
+   }
+  },
+  {
+   "id": "cp-exponentiation-ii",
+   "slug": "exponentiation-ii",
+   "title_working": "a^(b^c) mod p: Fermat to the Rescue",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-math",
+   "order": 16,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-binary-exponentiation",
+    "cp-modular-inverse"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Reduce exponent mod p-1",
+     "Edge cases with zero"
+    ],
+    "analogy": "A clock whose hands repeat every p-1 turns",
+    "include": [
+     "Exponentiation II (CSES)"
+    ],
+    "traps": [
+     "Reducing exponent mod p instead of p-1"
+    ]
+   }
+  },
+  {
+   "id": "cp-bracket-sequences",
+   "slug": "bracket-sequences",
+   "title_working": "Counting Bracket Sequences With Catalan Numbers",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-math",
+   "order": 17,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-counting-techniques"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Catalan formula",
+     "Reflection trick"
+    ],
+    "analogy": "Paths that never dip below sea level",
+    "include": [
+     "Bracket Sequences I (CSES)",
+     "Bracket Sequences II (CSES)"
+    ],
+    "traps": [
+     "Odd lengths"
+    ]
+   }
+  },
+  {
+   "id": "cp-range-sum-queries-cses",
+   "slug": "range-sum-queries-cses",
+   "title_working": "From Static to Dynamic Range Queries",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-ranges",
+   "order": 11,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-segment-tree"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Prefix sums for static",
+     "Fenwick or segment tree for updates",
+     "Choosing the tool"
+    ],
+    "analogy": "Upgrading from a printed map to live traffic",
+    "include": [
+     "Static Range Sum Queries (CSES)",
+     "Dynamic Range Sum Queries (CSES)",
+     "Forest Queries (CSES)"
+    ],
+    "traps": [
+     "Overkill with lazy trees"
+    ]
+   }
+  },
+  {
+   "id": "cp-hotel-queries",
+   "slug": "hotel-queries",
+   "title_working": "Hotel Queries: Descending a Max Segment Tree",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-ranges",
+   "order": 12,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-segment-tree-descend"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "First index with value at least x",
+     "Update after assigning"
+    ],
+    "analogy": "A receptionist checking floors from the bottom",
+    "include": [
+     "Hotel Queries (CSES)",
+     "List Removals (CSES)"
+    ],
+    "traps": [
+     "Linear scans"
+    ]
+   }
+  },
+  {
+   "id": "cp-salary-queries",
+   "slug": "salary-queries",
+   "title_working": "Salary Queries: Compression Meets Fenwick",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-ranges",
+   "order": 13,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-coordinate-compression",
+    "cp-fenwick-advanced"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Offline compress all values",
+     "Count in value ranges"
+    ],
+    "analogy": "Payroll bands instead of exact salaries",
+    "include": [
+     "Salary Queries (CSES)"
+    ],
+    "traps": [
+     "Forgetting update values in compression"
+    ]
+   }
+  },
+  {
+   "id": "cp-distinct-values-queries",
+   "slug": "distinct-values-queries",
+   "title_working": "Distinct Values in a Range, Offline",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-ranges",
+   "order": 14,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-fenwick-advanced",
+    "cp-mos-algorithm"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Sort queries by right end",
+     "Last occurrence trick"
+    ],
+    "analogy": "Only counting a guest at their most recent visit",
+    "include": [
+     "Distinct Values Queries (CSES)"
+    ],
+    "traps": [
+     "Online approaches too slow"
+    ]
+   }
+  },
+  {
+   "id": "cp-subarray-sum-queries",
+   "slug": "subarray-sum-queries",
+   "title_working": "Maximum Subarray Sum With Updates",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-ranges",
+   "order": 15,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-segment-tree-beats"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Node stores sum, best prefix, best suffix, best"
+    ],
+    "analogy": "Each manager knows best start, best end and best overall",
+    "include": [
+     "Subarray Sum Queries (CSES)"
+    ],
+    "traps": [
+     "Incorrect merge"
+    ]
+   }
+  },
+  {
+   "id": "cp-elevator-rides",
+   "slug": "elevator-rides",
+   "title_working": "Elevator Rides: Bitmask DP With Pairs",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-dp",
+   "order": 12,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-bitmask-dp"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "dp[mask] = (rides, weight in last ride)"
+    ],
+    "analogy": "Loading friends into a lift one at a time",
+    "include": [
+     "Elevator Rides (CSES)"
+    ],
+    "traps": [
+     "Comparing pairs incorrectly"
+    ]
+   }
+  },
+  {
+   "id": "cp-counting-numbers",
+   "slug": "counting-numbers",
+   "title_working": "Counting Numbers With No Equal Adjacent Digits",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-dp",
+   "order": 13,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-digit-dp"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "State: position, previous digit, tight, started"
+    ],
+    "analogy": "Writing numbers digit by digit with a rule",
+    "include": [
+     "Counting Numbers (CSES)"
+    ],
+    "traps": [
+     "Leading zero state"
+    ]
+   }
+  },
+  {
+   "id": "cp-removal-game",
+   "slug": "removal-game",
+   "title_working": "Removal Game: Interval DP for Two Players",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-dp",
+   "order": 14,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-game-theory",
+    "dsa-interval-dp"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Score difference trick",
+     "dp[l][r]"
+    ],
+    "analogy": "Two players taking from either end of a row of coins",
+    "include": [
+     "Removal Game (CSES)",
+     "Predict the Winner (LeetCode)"
+    ],
+    "traps": [
+     "Tracking both scores separately"
+    ]
+   }
+  },
+  {
+   "id": "cp-projects-dp",
+   "slug": "projects-dp",
+   "title_working": "Projects: Weighted Interval Scheduling",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-dp",
+   "order": 15,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-binary-search",
+    "dsa-dp-1d"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Sort by end",
+     "Binary search last compatible",
+     "dp"
+    ],
+    "analogy": "A freelancer choosing paid gigs that do not overlap",
+    "include": [
+     "Projects (CSES)",
+     "Maximum Profit in Job Scheduling (LeetCode)"
+    ],
+    "traps": [
+     "Sorting by start"
+    ]
+   }
+  },
+  {
+   "id": "cp-planets-and-kingdoms",
+   "slug": "planets-and-kingdoms",
+   "title_working": "Planets and Kingdoms: SCCs in Practice",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-graphs",
+   "order": 13,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-scc"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Label components",
+     "Kosaraju walk-through"
+    ],
+    "analogy": "One-way teleporters between planets",
+    "include": [
+     "Planets and Kingdoms (CSES)",
+     "Flight Routes Check (CSES)"
+    ],
+    "traps": [
+     "Recursion depth"
+    ]
+   }
+  },
+  {
+   "id": "cp-high-score",
+   "slug": "high-score",
+   "title_working": "High Score: Positive Cycles and Bellman-Ford",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-graphs",
+   "order": 14,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-bellman-ford-floyd"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Negate weights",
+     "Detect cycles that reach the target"
+    ],
+    "analogy": "A game loop that pays you forever",
+    "include": [
+     "High Score (CSES)"
+    ],
+    "traps": [
+     "Cycles not on a path to n"
+    ]
+   }
+  },
+  {
+   "id": "cp-company-queries",
+   "slug": "company-queries",
+   "title_working": "Company Queries: Binary Lifting by Example",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-graphs",
+   "order": 15,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-binary-lifting"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "k-th boss",
+     "LCA of two employees"
+    ],
+    "analogy": "Express elevators in a corporate tower",
+    "include": [
+     "Company Queries I (CSES)",
+     "Company Queries II (CSES)"
+    ],
+    "traps": [
+     "Out-of-range jumps"
+    ]
+   }
+  },
+  {
+   "id": "cp-download-speed",
+   "slug": "download-speed",
+   "title_working": "Download Speed: Max Flow in Practice",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-graphs",
+   "order": 16,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-max-flow"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Model as flow network",
+     "Dinic implementation"
+    ],
+    "analogy": "Bandwidth through routers",
+    "include": [
+     "Download Speed (CSES)",
+     "Police Chase (CSES)"
+    ],
+    "traps": [
+     "int overflow on capacities"
+    ]
+   }
+  },
+  {
+   "id": "cp-finding-borders",
+   "slug": "finding-borders",
+   "title_working": "Finding Borders With the Prefix Function",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-strings",
+   "order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-prefix-function"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Follow failure links from the end"
+    ],
+    "analogy": "Matching the start and end of a word like bookends",
+    "include": [
+     "Finding Borders (CSES)",
+     "Finding Periods (CSES)"
+    ],
+    "traps": [
+     "Including the whole string"
+    ]
+   }
+  },
+  {
+   "id": "cp-longest-palindrome-cses",
+   "slug": "longest-palindrome-cses",
+   "title_working": "Longest Palindrome in Linear Time",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-strings",
+   "order": 10,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-manacher"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Transform string",
+     "Read the answer"
+    ],
+    "analogy": "A mirror walk through the string",
+    "include": [
+     "Longest Palindrome (CSES)"
+    ],
+    "traps": [
+     "Mapping back to original indices"
+    ]
+   }
+  },
+  {
+   "id": "cp-minimal-rotation",
+   "slug": "minimal-rotation",
+   "title_working": "Minimal Rotation of a String",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-strings",
+   "order": 11,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-string-hashing"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Booth's algorithm or hashing with binary search"
+    ],
+    "analogy": "Turning a necklace to its alphabetically smallest start",
+    "include": [
+     "Minimal Rotation (CSES)"
+    ],
+    "traps": [
+     "Quadratic comparisons"
+    ]
+   }
+  },
+  {
+   "id": "cp-nim-games",
+   "slug": "nim-games",
+   "title_working": "Nim and Its Variants",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-misc",
+   "order": 12,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-sprague-grundy"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "XOR of piles",
+     "Misere twist",
+     "Staircase Nim"
+    ],
+    "analogy": "Matchsticks on a table",
+    "include": [
+     "Nim Game I (CSES)",
+     "Nim Game II (CSES)",
+     "Stair Game (CSES)"
+    ],
+    "traps": [
+     "Applying normal-play rule to misere"
+    ]
+   }
+  },
+  {
+   "id": "cp-polygon-area",
+   "slug": "polygon-area",
+   "title_working": "Polygon Area With the Shoelace Formula",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-misc",
+   "order": 13,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-geometry-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Cross products summed",
+     "Integer doubled area"
+    ],
+    "analogy": "Lacing a shoe through the polygon's corners",
+    "include": [
+     "Polygon Area (CSES)",
+     "Polygon Lattice Points (CSES)"
+    ],
+    "traps": [
+     "Sign and orientation"
+    ]
+   }
+  },
+  {
+   "id": "cp-apple-division",
+   "slug": "apple-division",
+   "title_working": "Apple Division: Brute Force Done Right",
+   "subject": "cp",
+   "kind": "problem-walkthrough",
+   "track": "cp-misc",
+   "order": 14,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-subsets-permutations"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Enumerate 2^n subsets",
+     "When n is small brute force wins"
+    ],
+    "analogy": "Trying every split of a fruit basket",
+    "include": [
+     "Apple Division (CSES)",
+     "Meet in the Middle (CSES)"
+    ],
+    "traps": [
+     "Overcomplicating with DP"
+    ]
+   }
+  },
+  {
+   "id": "cp-invariants-observations",
+   "slug": "invariants-observations",
+   "title_working": "Invariants and Observations: The Heart of Div 2",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-start",
+   "order": 12,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-reading-problems-fast"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Find what never changes",
+     "Parity and sums",
+     "MEX reasoning",
+     "Work backwards"
+    ],
+    "analogy": "Noticing the one thing a magician cannot change",
+    "include": [
+     "Codeforces 1200-1600 observation problems"
+    ],
+    "traps": [
+     "Jumping to code before finding the invariant"
+    ]
+   }
+  },
+  {
+   "id": "cp-prefix-xor-tricks",
+   "slug": "prefix-xor-tricks",
+   "title_working": "Prefix XOR and Subarray Tricks",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-start",
+   "order": 13,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-prefix-sums",
+    "dsa-bit-manipulation-tricks"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "XOR prefix differences",
+     "Counting subarrays with XOR k",
+     "Pairs via hash maps"
+    ],
+    "analogy": "An odometer that counts in XOR",
+    "include": [
+     "Range Xor Queries (CSES)",
+     "Count Triplets That Can Form Two Arrays of Equal XOR (LeetCode)"
+    ],
+    "traps": [
+     "Forgetting prefix 0"
+    ]
+   }
+  },
+  {
+   "id": "cp-lucas-theorem",
+   "slug": "lucas-theorem",
+   "title_working": "Lucas' Theorem: nCr Mod a Small Prime",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-math",
+   "order": 18,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-binomial-coefficients"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Write n and r in base p",
+     "Multiply digit binomials"
+    ],
+    "analogy": "Reading a number digit by digit in another base",
+    "include": [
+     "Codeforces nCr mod small prime problems"
+    ],
+    "traps": [
+     "Using factorial inverses when p is small"
+    ],
+    "exact_facts": [
+     "Edouard Lucas, 1878"
+    ]
+   }
+  },
+  {
+   "id": "cp-mobius-inversion",
+   "slug": "mobius-inversion",
+   "title_working": "Mobius Function and Counting Coprime Pairs",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-math",
+   "order": 19,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-euler-totient",
+    "cp-inclusion-exclusion"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Mobius function from primes",
+     "Inversion over divisors",
+     "Counting gcd equal to 1"
+    ],
+    "analogy": "Inclusion-exclusion done automatically over divisors",
+    "include": [
+     "Counting Coprime Pairs (CSES)"
+    ],
+    "traps": [
+     "Sieve of mu errors"
+    ]
+   }
+  },
+  {
+   "id": "cp-fft-ntt",
+   "slug": "fft-ntt",
+   "title_working": "FFT and NTT for Polynomial Multiplication",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-math",
+   "order": 20,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-matrix-exponentiation"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Convolution as polynomial product",
+     "Number theoretic transform mod 998244353",
+     "Counting sums"
+    ],
+    "analogy": "Mixing two recipes for every combination of ingredients at once",
+    "include": [
+     "Signal Processing (CSES)",
+     "Codeforces convolution problems"
+    ],
+    "traps": [
+     "Precision with doubles",
+     "Wrong modulus"
+    ],
+    "exact_facts": [
+     "998244353 = 119 * 2^23 + 1"
+    ]
+   }
+  },
+  {
+   "id": "cp-pbds-ordered-set",
+   "slug": "pbds-ordered-set",
+   "title_working": "Ordered Sets With Rank: Policy-Based Data Structures",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-ranges",
+   "order": 16,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-coordinate-compression"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "order_of_key and find_by_order",
+     "Using pairs for duplicates",
+     "GCC only"
+    ],
+    "analogy": "A sorted shelf that also tells you each book's position",
+    "include": [
+     "Josephus Problem II (CSES)",
+     "Nested Ranges Count (CSES)"
+    ],
+    "traps": [
+     "Duplicates disappear in a set"
+    ]
+   }
+  },
+  {
+   "id": "cp-persistent-segment-tree",
+   "slug": "persistent-segment-tree",
+   "title_working": "Persistent Segment Trees: Querying the Past",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-ranges",
+   "order": 17,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-segment-tree"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Copy only the path you change",
+     "Versions as roots",
+     "k-th smallest in range"
+    ],
+    "analogy": "Saving every version of a document by only storing what changed",
+    "include": [
+     "Range Queries and Copies (CSES)"
+    ],
+    "traps": [
+     "Memory limits"
+    ]
+   }
+  },
+  {
+   "id": "cp-treap",
+   "slug": "treap",
+   "title_working": "Treaps: Randomised Balanced Trees",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-ranges",
+   "order": 18,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-segment-tree"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "BST by key, heap by random priority",
+     "Split and merge",
+     "Implicit keys for arrays"
+    ],
+    "analogy": "Shuffling a deck so the tree stays bushy",
+    "include": [
+     "Cut and Paste (CSES)",
+     "Substring Reversals (CSES)"
+    ],
+    "traps": [
+     "Recursion depth"
+    ]
+   }
+  },
+  {
+   "id": "cp-offline-queries",
+   "slug": "offline-queries",
+   "title_working": "Offline Thinking: Sort the Queries, Not Just the Data",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-ranges",
+   "order": 19,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-coordinate-compression",
+    "cp-fenwick-advanced"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Answer queries in a convenient order",
+     "Sweep with a BIT",
+     "Reverse time for deletions with DSU"
+    ],
+    "analogy": "Grading exams in the order that is easiest, then handing them back in roll order",
+    "include": [
+     "Distinct Values Queries (CSES)",
+     "Nested Ranges Check (CSES)"
+    ],
+    "traps": [
+     "Losing original query order"
+    ]
+   }
+  },
+  {
+   "id": "cp-dp-with-data-structures",
+   "slug": "dp-with-data-structures",
+   "title_working": "DP Sped Up by Segment Trees and BITs",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-dp",
+   "order": 16,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-segment-tree",
+    "dsa-lis"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Transition as range max over earlier values",
+     "LIS in n log n with BIT",
+     "Counting increasing subsequences"
+    ],
+    "analogy": "Asking a scoreboard for the best earlier score instead of checking everyone",
+    "include": [
+     "Increasing Subsequence II (CSES)",
+     "Codeforces DP with BIT problems"
+    ],
+    "traps": [
+     "Compressing values before using a BIT"
+    ]
+   }
+  },
+  {
+   "id": "cp-small-to-large",
+   "slug": "small-to-large",
+   "title_working": "Small-to-Large Merging (DSU on Tree)",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-graphs",
+   "order": 17,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-dsu-advanced",
+    "dsa-tree-recursion"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Merge smaller sets into larger",
+     "O(n log n) total moves",
+     "Subtree distinct counts"
+    ],
+    "analogy": "Smaller families moving into the bigger house",
+    "include": [
+     "Distinct Colors (CSES)"
+    ],
+    "traps": [
+     "Merging large into small"
+    ]
+   }
+  },
+  {
+   "id": "cp-min-cost-flow",
+   "slug": "min-cost-flow",
+   "title_working": "Minimum Cost Flow",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-graphs",
+   "order": 18,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-max-flow",
+    "dsa-bellman-ford-floyd"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Shortest augmenting paths by cost",
+     "Potentials for Dijkstra",
+     "Assignment problems"
+    ],
+    "analogy": "Shipping goods through the cheapest routes until demand is met",
+    "include": [
+     "Distinct Routes II (CSES)",
+     "Task Assignment (CSES)"
+    ],
+    "traps": [
+     "Negative cycle handling"
+    ]
+   }
+  },
+  {
+   "id": "cp-implicit-graphs",
+   "slug": "implicit-graphs",
+   "title_working": "Modelling: When the Graph Is Hidden",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-graphs",
+   "order": 19,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-bfs"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "States as nodes",
+     "Layers for extra resources",
+     "Virtual nodes to cut edges"
+    ],
+    "analogy": "Turning a puzzle's every position into a map",
+    "include": [
+     "Monsters (CSES)",
+     "Codeforces graph modelling problems"
+    ],
+    "traps": [
+     "Too many states"
+    ]
+   }
+  },
+  {
+   "id": "cp-sweep-line-geometry",
+   "slug": "sweep-line-geometry",
+   "title_working": "Sweep Line: Closest Pair and Intersections",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-misc",
+   "order": 15,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-geometry-basics"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Sort events",
+     "Active set",
+     "Closest pair in n log n"
+    ],
+    "analogy": "A scanner bar sliding across a page",
+    "include": [
+     "Minimum Euclidean Distance (CSES)",
+     "Area of Rectangles (CSES)"
+    ],
+    "traps": [
+     "Precision and tie-breaking"
+    ]
+   }
+  },
+  {
+   "id": "cp-bitset-optimisation",
+   "slug": "bitset-optimisation",
+   "title_working": "Bitsets: Dividing by 64 for Free",
+   "subject": "cp",
+   "kind": "pattern",
+   "track": "cp-misc",
+   "order": 16,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-bitwise-tricks-cp"
+   ],
+   "status": "planned",
+   "written_by": null,
+   "brief": {
+    "key_points": [
+     "Shift-or for subset sums",
+     "Transitive closure",
+     "Word-level parallelism"
+    ],
+    "analogy": "Flipping 64 light switches with one hand",
+    "include": [
+     "Money Sums (CSES)",
+     "Reachability Queries (CSES)"
+    ],
+    "traps": [
+     "Fixed size at compile time"
+    ]
+   }
+  },
+  {
+   "id": "cp-practice-plan",
+   "slug": "practice-plan",
+   "title_working": "A 12-Week Contest Practice Plan",
+   "subject": "cp",
+   "kind": "primer",
+   "track": "cp-misc",
+   "order": 17,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-rating-ladder",
+    "cp-upsolving"
+   ],
+   "status": "written",
+   "written_by": "claude-seed",
+   "brief": {
+    "key_points": [
+     "Weekly mix of contests and topic sets",
+     "Tracking weak topics",
+     "Rating milestones"
+    ],
+    "analogy": "A training plan for a marathon",
+    "include": [
+     "Weekly schedule table linking to articles in this subject"
+    ],
+    "traps": [
+     "Doing only virtual contests without review"
+    ]
+   }
+  }
+ ]
+}

@@ -1,6 +1,7 @@
 ---
 id: "paper-clip"
 kind: "paper"
+subject: "ml"
 slug: "clip"
 title: "Teaching Vision With the Internet's Captions"
 subtitle: "CLIP: 400 million image-text pairs, one shared space for pictures and words, and classifiers you create by typing"

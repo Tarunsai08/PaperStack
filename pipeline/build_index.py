@@ -45,10 +45,103 @@ PRIMER_SECTIONS = [
     "Where you'll see this again",
     "Key takeaways",
 ]
+PATTERN_SECTIONS = [
+    "The hook",
+    "The intuition",
+    "How it works",
+    "Walk through an example",
+    "The code",
+    "Complexity",
+    "Common mistakes",
+    "Practice problems",
+    "Key takeaways",
+]
+WALKTHROUGH_SECTIONS = [
+    "The hook",
+    "The problem",
+    "The obvious approach",
+    "The key insight",
+    "Walk through an example",
+    "The code",
+    "Complexity",
+    "Common mistakes",
+    "Practice problems",
+    "Key takeaways",
+]
+CONCEPT_SECTIONS = [
+    "The hook",
+    "Where you meet it every day",
+    "The intuition",
+    "How it works",
+    "Walk through an example",
+    "The code",
+    "Why it is clever",
+    "Where it falls short",
+    "Key takeaways",
+]
+DEEP_DIVE_SECTIONS = [
+    "The hook",
+    "The intuition",
+    "How it works",
+    "Trade-offs",
+    "What can go wrong",
+    "In the real world",
+    "Further reading",
+    "Key takeaways",
+]
+CASE_STUDY_SECTIONS = [
+    "The hook",
+    "Requirements",
+    "Back-of-envelope numbers",
+    "High-level design",
+    "Deep dives",
+    "Trade-offs",
+    "What can go wrong",
+    "Further reading",
+    "Key takeaways",
+]
+LLD_SECTIONS = [
+    "The hook",
+    "Requirements",
+    "Core objects",
+    "Class design",
+    "Key flows",
+    "Patterns used",
+    "Extensions",
+    "Key takeaways",
+]
+SECTIONS = {
+    "paper": PAPER_SECTIONS,
+    "primer": PRIMER_SECTIONS,
+    "pattern": PATTERN_SECTIONS,
+    "problem-walkthrough": WALKTHROUGH_SECTIONS,
+    "concept": CONCEPT_SECTIONS,
+    "deep-dive": DEEP_DIVE_SECTIONS,
+    "case-study": CASE_STUDY_SECTIONS,
+    "lld": LLD_SECTIONS,
+}
 DIRECTIVES = ["insight", "analogy", "history", "warning", "try-this"]
 DIFFICULTIES = ["beginner", "intermediate", "advanced"]
-KINDS = ["paper", "primer"]
-WORD_LIMITS = {"paper": (1400, 2200), "primer": (1000, 1600)}
+KINDS = list(SECTIONS)
+SUBJECTS = ["ml", "dsa", "cp", "famous-algos", "system-design", "cs-core"]
+PRIORITIES = ["P0", "P1", "P2"]
+WORD_LIMITS = {
+    "paper": (1400, 2200),
+    "primer": (1000, 1600),
+    # Code fences are not counted, so code-bearing kinds start a little lower.
+    "pattern": (900, 2000),
+    "problem-walkthrough": (900, 2000),
+    "concept": (900, 2000),
+    "deep-dive": (1100, 2200),
+    "case-study": (1100, 2200),
+    "lld": (900, 2000),
+}
+# Kinds that must show code (pseudocode or C++), a diagram, or practice problems.
+NEEDS_CODE = {"pattern", "problem-walkthrough", "concept", "lld"}
+NEEDS_MERMAID = {"paper", "deep-dive", "case-study", "lld"}
+NEEDS_PROBLEMS = {"pattern", "problem-walkthrough"}
+# ML keeps its original folders and id prefixes so saved progress survives.
+ML_FOLDERS = {"paper": "papers", "primer": "primers"}
 WORDS_PER_MINUTE = 220
 
 FM_RE = re.compile(r"^\ufeff?---[ \t]*\r?\n([\s\S]*?)\r?\n---[ \t]*(?:\r?\n|$)")
@@ -124,6 +217,30 @@ def extract_h2(body: str) -> list[str]:
 
 def has_mermaid(body: str) -> bool:
     return re.search(r"^```mermaid[ \t]*$", body, re.M) is not None
+
+
+CPP_FENCE_RE = re.compile(r"^```(?:cpp|c\+\+)([^\n]*)\n([\s\S]*?)^```[ \t]*$", re.M)
+
+
+def cpp_blocks(body: str) -> list[tuple[str, str]]:
+    """(info, code) for every ```cpp fence. Info "partial" marks a snippet that is not compiled."""
+    return [(m.group(1).strip(), m.group(2)) for m in CPP_FENCE_RE.finditer(body)]
+
+
+def has_pseudo(body: str) -> bool:
+    return re.search(r"^```pseudo[ \t]*$", body, re.M) is not None
+
+
+def article_subject(data: dict) -> str:
+    s = data.get("subject")
+    return s if isinstance(s, str) and s else "ml"
+
+
+def expected_folder(data: dict) -> str:
+    subject = article_subject(data)
+    if subject == "ml":
+        return ML_FOLDERS.get(data.get("kind"), "papers")
+    return subject
 
 
 def plain_text(body: str) -> str:
@@ -251,16 +368,50 @@ def validate_article(
     check(required)
     kind = data.get("kind")
     if _is_str(kind) and kind not in KINDS:
-        err("kind_invalid", f'"kind" must be "paper" or "primer", not "{kind}".')
+        err("kind_invalid", f'"kind" must be one of {", ".join(KINDS)}, not "{kind}".')
     if kind == "paper":
         check(paper_required)
 
+    subject = data.get("subject", "ml")
+    if not _is_str(subject) or subject not in SUBJECTS:
+        err("subject_invalid", f'"subject" must be one of {", ".join(SUBJECTS)}.')
+        subject = "ml"
+    if subject == "ml" and _is_str(kind) and kind not in ("paper", "primer"):
+        err("kind_invalid", 'Machine Learning articles use kind "paper" or "primer".')
+    if subject != "ml" and kind == "paper":
+        err("kind_invalid", 'Only Machine Learning articles can be kind "paper".')
+
+    if subject != "ml" and data.get("priority") is None:
+        err("field_missing", 'Missing required field "priority".')
+    if data.get("priority") is not None and data.get("priority") not in PRIORITIES:
+        err("priority_invalid", '"priority" must be P0, P1 or P2.')
+
+    cx = data.get("complexity")
+    if cx is not None and not (isinstance(cx, dict) and _is_str(cx.get("time")) and _is_str(cx.get("space"))):
+        err("complexity_invalid", '"complexity" needs "time" and "space" text.')
+    if kind in ("pattern", "problem-walkthrough") and cx is None:
+        err("field_missing", 'Missing required field "complexity".')
+
+    probs = data.get("practice_problems")
+    if probs is not None:
+        if not isinstance(probs, list):
+            err("problems_invalid", '"practice_problems" must be a list.')
+            probs = []
+        for i, p in enumerate(probs):
+            if not isinstance(p, dict) or not all(_is_str(p.get(k)) for k in ("name", "platform", "url", "difficulty")):
+                err("problems_invalid", f'Practice problem {i + 1} needs "name", "platform", "url" and "difficulty".')
+            elif not re.match(r"^https?://\S+$", p["url"]):
+                err("problems_invalid", f'Practice problem {i + 1} needs a full http(s) "url".')
+    if kind in NEEDS_PROBLEMS and not (isinstance(probs, list) and 3 <= len(probs) <= 6):
+        err("problems_count", "Pattern and walkthrough articles need 3 to 6 practice problems.")
+
     aid = data.get("id")
+    prefix = kind if subject == "ml" else subject
     if _is_str(aid):
         if not ID_RE.match(aid):
             err("id_format", f'"id" must be lowercase words joined by dashes, got "{aid}".')
-        elif _is_str(kind) and not aid.startswith(f"{kind}-"):
-            err("id_format", f'"id" must start with "{kind}-".')
+        elif _is_str(prefix) and not aid.startswith(f"{prefix}-"):
+            err("id_format", f'"id" must start with "{prefix}-".')
     if _is_str(data.get("slug")) and not ID_RE.match(data["slug"]):
         err("id_format", '"slug" must be lowercase words joined by dashes.')
 
@@ -308,7 +459,7 @@ def validate_article(
             err("quiz_answer", f'Quiz question {i + 1} needs "answer" as a number from 0 to 3.')
 
     if kind in KINDS:
-        expected = PAPER_SECTIONS if kind == "paper" else PRIMER_SECTIONS
+        expected = SECTIONS[kind]
         found = extract_h2(body)
         if found != expected:
             missing = [h for h in expected if h not in found]
@@ -321,8 +472,10 @@ def validate_article(
             if not missing and not extra:
                 parts.append("They are out of order.")
             err("sections", " ".join(parts))
-        if kind == "paper" and not has_mermaid(body):
-            err("mermaid_missing", "Paper articles need at least one ```mermaid diagram.")
+        if kind in NEEDS_MERMAID and not has_mermaid(body):
+            err("mermaid_missing", f"{kind} articles need at least one ```mermaid diagram.")
+        if kind in NEEDS_CODE and not (cpp_blocks(body) or has_pseudo(body)):
+            err("code_missing", f"{kind} articles need a ```pseudo or ```cpp block in The code.")
         words = word_count(body)
         lo, hi = WORD_LIMITS[kind]
         if words < lo:
@@ -365,8 +518,17 @@ def load_tracks(content: Path = CONTENT) -> list[dict]:
     return json.loads((content / "tracks.json").read_text(encoding="utf-8"))
 
 
+def load_subjects(content: Path = CONTENT) -> list[dict]:
+    p = content / "subjects.json"
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else []
+
+
+def content_dirs() -> list[str]:
+    return ["primers", "papers", *[s for s in SUBJECTS if s != "ml"]]
+
+
 def article_files(content: Path = CONTENT) -> list[Path]:
-    return sorted([*content.glob("primers/*.md"), *content.glob("papers/*.md")])
+    return sorted(p for d in content_dirs() for p in content.glob(f"{d}/*.md"))
 
 
 CROSS_REF_CODES = {"prerequisite_unknown", "article_link_unknown"}
@@ -375,6 +537,8 @@ CROSS_REF_CODES = {"prerequisite_unknown", "article_link_unknown"}
 def build(content: Path = CONTENT, strict: bool = False, partial: bool = False, write: bool = True) -> int:
     tracks = load_tracks(content)
     track_ids = [t["id"] for t in tracks]
+    track_subjects = {t["id"]: t.get("subject", "ml") for t in tracks}
+    subjects = load_subjects(content)
     parsed: list[tuple[Path, str, dict, str]] = []
     problems = 0
 
@@ -405,9 +569,12 @@ def build(content: Path = CONTENT, strict: bool = False, partial: bool = False, 
             errors.append(Issue("duplicate_id", f'Duplicate id "{aid}" (also in {seen[aid].name}).'))
         elif isinstance(aid, str):
             seen[aid] = path
-        expected_dir = "papers" if data.get("kind") == "paper" else "primers"
+        expected_dir = expected_folder(data)
         if path.parent.name != expected_dir:
-            errors.append(Issue("wrong_folder", f"{data.get('kind')} articles belong in content/{expected_dir}/."))
+            errors.append(Issue("wrong_folder", f"This article belongs in content/{expected_dir}/."))
+        track_subject = track_subjects.get(data.get("track"))
+        if track_subject and track_subject != article_subject(data):
+            errors.append(Issue("subject_mismatch", f'Track "{data.get("track")}" belongs to subject "{track_subject}".'))
         if data.get("slug") and path.stem != data.get("slug"):
             errors.append(Issue("slug_filename", f'File name must match slug "{data.get("slug")}".'))
         key = (data.get("track"), data.get("track_order"))
@@ -428,6 +595,7 @@ def build(content: Path = CONTENT, strict: bool = False, partial: bool = False, 
             continue
         words = word_count(body)
         entry = dict(data)
+        entry.setdefault("subject", "ml")
         entry.update(
             path=rel,
             hash=hashlib.sha256(raw.encode("utf-8")).hexdigest()[:12],
@@ -437,26 +605,92 @@ def build(content: Path = CONTENT, strict: bool = False, partial: bool = False, 
         )
         entries.append(entry)
 
-    track_order = {t["id"]: t["order"] for t in tracks}
-    entries.sort(key=lambda e: (track_order.get(e["track"], 99), e["track_order"], e["id"]))
+    subject_order = {s["id"]: s.get("order", 0) for s in subjects}
+    track_order = {t["id"]: (subject_order.get(t.get("subject", "ml"), 0), t["order"]) for t in tracks}
+    entries.sort(key=lambda e: (track_order.get(e["track"], (99, 99)), e["track_order"], e["id"]))
 
-    version_src = json.dumps(tracks, sort_keys=True) + "".join(f"{e['id']}:{e['hash']}" for e in entries)
+    version_src = json.dumps([tracks, subjects], sort_keys=True) + "".join(f"{e['id']}:{e['hash']}" for e in entries)
     index = {
         "content_version": hashlib.sha256(version_src.encode("utf-8")).hexdigest()[:16],
         # Deterministic (latest article date, not "now") so rebuilding never creates a diff.
         "generated_at": max((e["generated_at"] for e in entries), default=""),
         "count": len(entries),
+        "subjects": subjects,
         "articles": entries,
     }
+
+    roadmap, cur_problems = build_roadmap(content, tracks, subjects, {e["id"]: e for e in entries})
+    problems += cur_problems
 
     if problems:
         print(f"\n{problems} problem(s) found in {len(parsed)} article(s).")
         return 1
     if write:
         (content / "index.json").write_text(json.dumps(index, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+        (content / "roadmap.json").write_text(json.dumps(roadmap, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     total_words = sum(e["word_count"] for e in entries)
     print(f"OK: {len(entries)} articles, {total_words:,} words, version {index['content_version']}")
     return 0
+
+
+CURRICULUM_STATUSES = {"planned", "written", "needs_review"}
+
+
+def load_curricula(content: Path = CONTENT) -> list[dict]:
+    out = []
+    for p in sorted((content / "curriculum").glob("*.json")):
+        out.append(json.loads(p.read_text(encoding="utf-8")))
+    return out
+
+
+def build_roadmap(content: Path, tracks: list[dict], subjects: list[dict], written_ids: dict) -> tuple[dict, int]:
+    """Check content/curriculum/*.json and flatten it into content/roadmap.json for the app."""
+    track_info = {t["id"]: t for t in tracks}
+    problems = 0
+    entries = []
+    seen: set[str] = set()
+    all_ids = {e["id"] for c in load_curricula(content) for e in c.get("entries", [])}
+    for cur in load_curricula(content):
+        for e in cur.get("entries", []):
+            where = f"curriculum/{cur.get('subject')}.json {e.get('id')}"
+            msgs = []
+            if e.get("id") in seen:
+                msgs.append("duplicate id")
+            seen.add(e.get("id"))
+            if e.get("status") not in CURRICULUM_STATUSES:
+                msgs.append(f'bad status "{e.get("status")}"')
+            if e.get("priority") not in PRIORITIES:
+                msgs.append(f'bad priority "{e.get("priority")}"')
+            if e.get("subject") != cur.get("subject"):
+                msgs.append("subject does not match the file")
+            # Planned CS Core tracks are not in tracks.json yet; every other subject's tracks must exist.
+            if e.get("subject") != "cs-core" and e.get("track") not in track_info:
+                msgs.append(f'unknown track "{e.get("track")}"')
+            unknown = [p for p in e.get("prerequisites", []) if p not in all_ids and p not in written_ids]
+            if unknown:
+                msgs.append(f"unknown prerequisites {unknown}")
+            if e.get("status") == "written" and e.get("id") not in written_ids:
+                msgs.append("status is written but no article has this id")
+            if e.get("status") == "planned" and e.get("id") in written_ids:
+                msgs.append("an article exists but status is still planned")
+            art = written_ids.get(e.get("id"))
+            if art and e.get("subject") != "ml" and (art.get("track") != e.get("track") or art.get("track_order") != e.get("order")):
+                msgs.append(f'article track/track_order ({art.get("track")}, {art.get("track_order")}) must match the curriculum ({e.get("track")}, {e.get("order")})')
+            for m in msgs:
+                print(f"ERROR {where}: [curriculum] {m}")
+            problems += len(msgs)
+            t = track_info.get(e.get("track"), {})
+            entries.append({
+                "id": e["id"],
+                "title": e.get("title_working", e["id"]),
+                "subject": e["subject"],
+                "track": e.get("track"),
+                "seq": int(t.get("order", 50)) * 1000 + int(e.get("order", 0)),
+                "priority": e.get("priority"),
+                "prerequisites": e.get("prerequisites", []),
+                "status": e.get("status"),
+            })
+    return {"generated_from": "content/curriculum", "entries": entries}, problems
 
 
 def main() -> None:

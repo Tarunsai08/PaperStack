@@ -1,6 +1,7 @@
 ---
 id: "paper-random-forests"
 kind: "paper"
+subject: "ml"
 slug: "random-forests"
 title: "Why a Crowd of Bad Guessers Beats an Expert"
 subtitle: "Breiman's random forests: deliberately weakened decision trees that vote their way to excellent predictions"

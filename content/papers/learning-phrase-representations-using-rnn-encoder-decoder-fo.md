@@ -1,11 +1,12 @@
 ---
 id: paper-learning-phrase-representations-using-rnn-encoder-decoder-fo
 kind: paper
+subject: "ml"
 slug: learning-phrase-representations-using-rnn-encoder-decoder-fo
 title: 'Compress, Then Translate: The First Encoder-Decoder'
 subtitle: How two recurrent networks teamed up to rewrite machine translation
-track: sequences-language
-track_order: 5
+track: "sequences-language"
+track_order: 6
 prerequisites:
 - paper-lstm
 - paper-word2vec

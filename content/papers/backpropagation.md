@@ -1,6 +1,7 @@
 ---
 id: "paper-backpropagation"
 kind: "paper"
+subject: "ml"
 slug: "backpropagation"
 title: "Four Pages That Woke Up Neural Networks"
 subtitle: "How backpropagation taught hidden layers to invent their own features, and ended the perceptron's long winter"

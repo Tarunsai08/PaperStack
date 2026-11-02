@@ -1,6 +1,7 @@
 ---
 id: "paper-deep-autoencoders"
 kind: "paper"
+subject: "ml"
 slug: "deep-autoencoders"
 title: "How to Squeeze a Picture Into Thirty Numbers"
 subtitle: "Hinton and Salakhutdinov's deep autoencoders: the 2006 trick that made deep networks trainable again"

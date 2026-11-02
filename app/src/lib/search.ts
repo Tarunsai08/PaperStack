@@ -2,6 +2,7 @@ import MiniSearch from 'minisearch';
 import type { Article } from './types';
 
 export interface SearchFilters {
+  subject?: string | null;
   track?: string | null;
   difficulty?: string | null;
   kind?: string | null;
@@ -37,7 +38,7 @@ export function buildSearchIndex(articles: Article[]): MiniSearch<Doc> {
       topics: a.topics.join(' '),
       glossary: a.glossary.map((g) => `${g.term} ${g.definition}`).join(' '),
       excerpt: a.excerpt,
-      paper: [a.paper_title, ...(a.authors ?? []), a.year, a.venue].filter(Boolean).join(' '),
+      paper: [a.paper_title, ...(a.authors ?? []), a.year, a.venue, ...(a.practice_problems ?? []).map((p) => p.name)].filter(Boolean).join(' '),
     })),
   );
   return ms;
@@ -50,6 +51,7 @@ export function applyFilters(
 ): Article[] {
   return list.filter(
     (a) =>
+      (!f.subject || (a.subject ?? 'ml') === f.subject) &&
       (!f.track || a.track === f.track) &&
       (!f.difficulty || a.difficulty === f.difficulty) &&
       (!f.kind || a.kind === f.kind) &&

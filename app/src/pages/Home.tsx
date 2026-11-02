@@ -1,13 +1,13 @@
-import { ArrowRight, Flame, Settings as SettingsIcon } from 'lucide-react';
+import { ArrowRight, Flame, Map as MapIcon, Settings as SettingsIcon } from 'lucide-react';
 import { useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ArticleCard } from '../components/ArticleCard';
-import { CoverArt } from '../components/CoverArt';
+import { ArticleCover } from '../components/ArticleCover';
 import { SectionTitle } from '../components/Headers';
 import { Page } from '../components/Page';
 import { PullToRefresh } from '../components/PullToRefresh';
 import { CardSkeleton, ListSkeleton, Skeleton } from '../components/Skeleton';
-import { TrackCard } from '../components/TrackCard';
+import { SubjectCard } from '../components/SubjectCard';
 import { syncContent } from '../lib/contentSync';
 import { continueReading, effectiveStreak, localDay, nextInPath } from '../lib/progress';
 import { useStore } from '../lib/storage';
@@ -31,7 +31,7 @@ export default function Home() {
   const content = useContent();
   const progress = useStore('progress');
   const streak = useStore('streak');
-  const { path, trackById, tracks } = content;
+  const { path, trackById, subjects } = content;
 
   const cont = useMemo(() => continueReading(path, progress), [path, progress]);
   const next = useMemo(() => nextInPath(path, progress), [path, progress]);
@@ -40,7 +40,7 @@ export default function Home() {
   const featured = useMemo(() => {
     const skip = new Set([cont?.id, upNext?.id]);
     const pool = path
-      .filter((a) => a.kind === 'paper' && !skip.has(a.id))
+      .filter((a) => a.kind !== 'primer' && !skip.has(a.id))
       .sort((a, b) => b.importance_score - a.importance_score)
       .slice(0, 14);
     const unread = pool.filter((a) => !progress[a.id]?.completedAt);
@@ -107,7 +107,7 @@ export default function Home() {
             <p className="mt-1 text-[15px] text-muted">
               {content.ready
                 ? done === 0
-                  ? `${path.length} articles take you from zero to modern AI.`
+                  ? `${path.length} articles across ${subjects.filter((x) => x.status === 'active').length} subjects, written to get you placement ready.`
                   : `${done} of ${path.length} articles read. Keep going.`
                 : 'Loading your library…'}
             </p>
@@ -144,16 +144,31 @@ export default function Home() {
               <SectionTitle
                 action={
                   <Link to="/learn" className="press flex h-11 items-center gap-1 text-[14px] font-semibold text-brand-ink">
-                    See path <ArrowRight size={16} />
+                    See paths <ArrowRight size={16} />
                   </Link>
                 }
               >
-                The learning path
+                Your subjects
               </SectionTitle>
               <div className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-3 scroll-px-5">
-                {tracks.map((t) => (
-                  <TrackCard key={t.id} track={t} articles={content.articlesInTrack(t.id)} />
+                {subjects.map((sub) => (
+                  <SubjectCard key={sub.id} subject={sub} articles={content.pathInSubject(sub.id)} />
                 ))}
+              </div>
+              <div className="px-5 pt-2">
+                <Link
+                  to="/roadmap"
+                  className="press flex items-center gap-4 rounded-card border border-line bg-surface p-4 shadow-card"
+                >
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand/12 text-brand-ink">
+                    <MapIcon size={22} />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-[16px] font-semibold leading-snug">Placement Roadmap</span>
+                    <span className="mt-0.5 block text-[13.5px] leading-snug text-muted">A 6 or 12 month plan across every subject</span>
+                  </span>
+                  <ArrowRight size={18} className="shrink-0 text-muted" />
+                </Link>
               </div>
             </section>
 
@@ -192,7 +207,7 @@ function ContinueCard({ article, pct, accent = '#FF6719' }: { article: Article; 
     <section className="px-5">
       <p className="chrome mb-3 text-[12px] font-semibold uppercase tracking-[0.08em] text-muted">Continue reading</p>
       <Link to={`/article/${article.id}`} className="press flex items-center gap-4 rounded-card border border-line bg-surface p-3 shadow-card">
-        <CoverArt seed={article.cover_seed} accent={accent} className="h-[76px] w-[76px] shrink-0 rounded-xl" />
+        <ArticleCover article={article} className="h-[76px] w-[76px] shrink-0 rounded-xl" />
         <div className="min-w-0 flex-1">
           <p className="line-clamp-2 font-serif text-[16.5px] font-semibold leading-snug">{article.title}</p>
           <div className="mt-2 flex items-center gap-2.5">
@@ -207,11 +222,11 @@ function ContinueCard({ article, pct, accent = '#FF6719' }: { article: Article; 
   );
 }
 
-function UpNextCard({ article, accent = '#FF6719' }: { article: Article; accent?: string }) {
+function UpNextCard({ article }: { article: Article; accent?: string }) {
   const { trackById } = useContent();
   return (
     <Link to={`/article/${article.id}`} className="press block overflow-hidden rounded-card border border-line bg-surface shadow-card">
-      <CoverArt seed={article.cover_seed} accent={accent} className="aspect-[16/8] w-full" />
+      <ArticleCover article={article} className="aspect-[16/8] w-full" />
       <div className="p-4">
         <p className="text-[12.5px] font-medium text-muted">
           {trackById.get(article.track)?.title} · Part {article.track_order} · {article.read_minutes} min

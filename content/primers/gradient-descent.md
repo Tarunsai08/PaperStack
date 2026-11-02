@@ -1,6 +1,7 @@
 ---
 id: "primer-gradient-descent"
 kind: "primer"
+subject: "ml"
 slug: "gradient-descent"
 title: "Finding the Bottom of a Valley Blindfolded"
 subtitle: "Gradient descent: the humble walking algorithm that trains almost every AI model"

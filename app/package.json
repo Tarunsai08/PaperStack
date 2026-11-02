@@ -11,7 +11,9 @@
     "test": "vitest",
     "lint": "eslint .",
     "typecheck": "tsc -b",
-    "icons": "node scripts/make-icons.mjs && capacitor-assets generate --android --iconBackgroundColor '#FF6719' --iconBackgroundColorDark '#FF6719' --splashBackgroundColor '#FFFFFF' --splashBackgroundColorDark '#111111'"
+    "icons": "node scripts/make-icons.mjs && capacitor-assets generate --android --iconBackgroundColor '#FF6719' --iconBackgroundColorDark '#FF6719' --splashBackgroundColor '#FFFFFF' --splashBackgroundColorDark '#111111'",
+    "progress": "python3 ../tools/progress.py",
+    "check:cpp": "python3 ../tools/check_cpp.py"
   },
   "dependencies": {
     "@capacitor/android": "^7.6.9",
@@ -28,6 +30,7 @@
     "@fontsource-variable/inter": "^5.3.0",
     "@fontsource-variable/literata": "^5.3.0",
     "framer-motion": "^12.43.0",
+    "highlight.js": "^11.11.1",
     "idb-keyval": "^6.3.0",
     "katex": "^0.16.47",
     "lucide-react": "^0.525.0",

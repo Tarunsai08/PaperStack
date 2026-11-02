@@ -1,6 +1,7 @@
 ---
 id: "paper-perceptron"
 kind: "paper"
+subject: "ml"
 slug: "perceptron"
 title: "The Machine That Learned From Its Mistakes"
 subtitle: "Rosenblatt's perceptron: the 1958 invention that started neural networks, and the hype that nearly ended them"

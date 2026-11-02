@@ -1,5 +1,5 @@
 import { Bookmark, Download, FilePlus2, Highlighter, History, Trash2 } from 'lucide-react';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { stringify as yamlStringify } from 'yaml';
 import { ArticleCard } from '../components/ArticleCard';
@@ -37,19 +37,22 @@ export default function Library() {
   const highlights = useStore('highlights');
   const progress = useStore('progress');
   const imports = useStore('imports');
+  const [subject, setSubject] = useState<string | null>(null);
+  const inSubject = (id: string) => !subject || (content.byId.get(id)?.subject ?? 'ml') === subject;
 
-  const savedArticles = saved.map((id) => content.byId.get(id)).filter((a) => !!a);
+  const savedArticles = saved.filter(inSubject).map((id) => content.byId.get(id)).filter((a) => !!a);
   const history = useMemo(
     () =>
       Object.entries(progress)
         .sort((a, b) => b[1].lastReadAt.localeCompare(a[1].lastReadAt))
         .map(([id, p]) => ({ a: content.byId.get(id), p }))
-        .filter((x) => !!x.a),
-    [progress, content.byId],
+        .filter((x) => !!x.a && inSubject(x.a.id)),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [progress, content.byId, subject],
   );
   const hlGroups = Object.entries(highlights)
     .map(([id, list]) => ({ a: content.byId.get(id), list }))
-    .filter((g) => g.a && g.list.length)
+    .filter((g) => g.a && g.list.length && inSubject(g.a.id))
     .sort((x, y) => (y.list.at(-1)?.createdAt ?? '').localeCompare(x.list.at(-1)?.createdAt ?? ''));
   const importList = Object.values(imports).sort((a, b) => b.importedAt.localeCompare(a.importedAt));
 
@@ -75,6 +78,30 @@ export default function Library() {
           ))}
         </div>
       </div>
+
+      {tab !== 'imported' && (
+        <div className="chrome no-scrollbar flex gap-2 overflow-x-auto px-5 pt-4" aria-label="Filter by subject">
+          {[{ id: null, short: 'All', accent: undefined as string | undefined }, ...content.subjects.filter((x) => x.status === 'active')].map((sub) => {
+            const active = subject === sub.id;
+            return (
+              <button
+                key={sub.id ?? 'all'}
+                onClick={() => {
+                  haptic('selection');
+                  setSubject(sub.id);
+                }}
+                aria-pressed={active}
+                className={`press flex h-11 shrink-0 items-center gap-1.5 rounded-full border px-4 text-[13.5px] font-medium transition-colors ${
+                  active ? 'border-ink bg-ink text-bg' : 'border-line bg-surface text-ink'
+                }`}
+              >
+                {sub.accent && <span className="h-2 w-2 rounded-full" style={{ background: sub.accent }} />}
+                {sub.short}
+              </button>
+            );
+          })}
+        </div>
+      )}
 
       <div className="px-5 pt-5">
         {tab === 'saved' &&

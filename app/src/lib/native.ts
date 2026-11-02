@@ -143,3 +143,25 @@ export async function exitApp(): Promise<void> {
   const { App } = await import('@capacitor/app');
   await App.exitApp();
 }
+
+/** Copy text to the clipboard. Falls back to a hidden textarea where the async API is missing. */
+export async function copyText(text: string): Promise<boolean> {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand('copy');
+      ta.remove();
+      return ok;
+    } catch {
+      return false;
+    }
+  }
+}

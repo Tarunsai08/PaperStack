@@ -12,7 +12,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate, useNavigationType, useParams, useSearchParams } from 'react-router-dom';
 import { ArticleCard } from '../components/ArticleCard';
 import { BottomSheet } from '../components/BottomSheet';
-import { CoverArt } from '../components/CoverArt';
+import { ArticleCover } from '../components/ArticleCover';
+import { PracticeProblems } from '../components/PracticeProblems';
 import { GlossaryContext } from '../components/GlossaryTerm';
 import { HighlightLayer } from '../components/HighlightLayer';
 import MarkdownRenderer from '../components/MarkdownRenderer';
@@ -30,6 +31,7 @@ import { completeArticle, justFinishedTrack, recordReading, saveScroll } from '.
 import { store, toggleSaved, useStore } from '../lib/storage';
 import { toast } from '../lib/toast';
 import { useContent } from '../lib/useContent';
+import { kindLabel, PRIORITY_LABEL } from '../lib/subjects';
 
 const DIFFICULTY_LABEL = { beginner: 'Beginner', intermediate: 'Intermediate', advanced: 'Advanced' } as const;
 
@@ -138,9 +140,10 @@ export default function ArticlePage() {
 
   const next = useMemo(() => {
     if (!article) return undefined;
-    const i = content.path.findIndex((a) => a.id === article.id);
-    return i >= 0 ? content.path[i + 1] : undefined;
-  }, [article, content.path]);
+    const list = content.pathInSubject(article.subject ?? 'ml');
+    const i = list.findIndex((a) => a.id === article.id);
+    return i >= 0 ? list[i + 1] : undefined;
+  }, [article, content]);
 
   const related = useMemo(
     () => (article ? relatedArticles(article, content.path, next ? [next.id] : []) : []),
@@ -257,18 +260,19 @@ export default function ArticlePage() {
 
       <article className="mx-auto max-w-read px-5 pb-16">
         <div className="chrome pt-5">
-          <CoverArt
-            seed={article.cover_seed}
-            accent={track?.accent ?? '#FF6719'}
-            className="aspect-[16/9] w-full rounded-card"
-            title={`Cover for ${article.title}`}
-          />
+          <ArticleCover article={article} className="aspect-[16/9] w-full rounded-card" title={`Cover for ${article.title}`} />
           <div className="mt-6 flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px] font-medium text-muted">
             <Link to={`/track/${article.track}`} className="flex items-center gap-1.5 text-ink/80">
               <span className="h-2 w-2 rounded-full" style={{ background: track?.accent }} aria-hidden />
               {track?.title}
             </Link>
             <span aria-hidden>·</span>
+            {article.kind !== 'paper' && article.kind !== 'primer' && (
+              <>
+                <span>{kindLabel(article.kind)}</span>
+                <span aria-hidden>·</span>
+              </>
+            )}
             <span>{DIFFICULTY_LABEL[article.difficulty] ?? article.difficulty}</span>
             <span aria-hidden>·</span>
             <span>{article.read_minutes} min read</span>
@@ -283,6 +287,26 @@ export default function ArticlePage() {
           {article.title}
         </h1>
         <p className="selectable mt-3 text-[18.5px] leading-snug text-muted">{article.subtitle}</p>
+
+        {(article.priority || article.complexity) && (
+          <div className="chrome mt-5 flex flex-wrap gap-2 text-[12.5px] font-semibold">
+            {article.priority && (
+              <span
+                className="rounded-full px-3 py-1.5"
+                style={{ background: `${track?.accent ?? '#FF6719'}1F`, color: 'rgb(var(--text))' }}
+                title="Placement priority"
+              >
+                {article.priority} · {PRIORITY_LABEL[article.priority]}
+              </span>
+            )}
+            {article.complexity && (
+              <>
+                <span className="rounded-full bg-surface-2 px-3 py-1.5"><span className="text-muted">Time</span> {article.complexity.time}</span>
+                <span className="rounded-full bg-surface-2 px-3 py-1.5"><span className="text-muted">Space</span> {article.complexity.space}</span>
+              </>
+            )}
+          </div>
+        )}
 
         {article.kind === 'paper' && article.paper_title && (
           <div className="chrome mt-6 flex items-center gap-3 rounded-2xl border border-line bg-surface-2/60 p-4">
@@ -327,6 +351,9 @@ export default function ArticlePage() {
 
         {body !== null && (
           <div className="chrome mt-14 space-y-10">
+            {article.practice_problems && article.practice_problems.length > 0 && (
+              <PracticeProblems articleId={article.id} problems={article.practice_problems} accent={track?.accent ?? '#FF6719'} />
+            )}
             <div>
               <Quiz articleId={article.id} quiz={article.quiz} onFinish={(s) => finish(true, s)} />
               {!done && (
@@ -346,11 +373,7 @@ export default function ArticlePage() {
                   to={`/article/${next.id}`}
                   className="press flex items-center gap-4 overflow-hidden rounded-card border border-line bg-surface p-3 shadow-card"
                 >
-                  <CoverArt
-                    seed={next.cover_seed}
-                    accent={content.trackById.get(next.track)?.accent ?? '#FF6719'}
-                    className="h-[84px] w-[112px] shrink-0 rounded-xl"
-                  />
+                  <ArticleCover article={next} className="h-[84px] w-[112px] shrink-0 rounded-xl" />
                   <div className="min-w-0 flex-1">
                     <p className="text-[12px] font-medium text-muted">
                       {content.trackById.get(next.track)?.title} · {next.read_minutes} min

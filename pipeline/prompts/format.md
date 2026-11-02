@@ -53,6 +53,28 @@ Paper articles use exactly these `## ` headings, in this order, and no other `##
 
 Primer articles use exactly: `## The hook`, `## The intuition`, `## Let's build it up`, `## A tiny example`, `## Where you'll see this again`, `## Key takeaways`.
 
+### Other subjects
+Articles outside Machine Learning add `subject` and `priority` to the frontmatter, and their `id` starts with the subject: `dsa-`, `cp-`, `famous-algos-`, `system-design-`. `paper` is for Machine Learning only.
+
+```yaml
+subject: "dsa"                    # ml | dsa | cp | famous-algos | system-design
+priority: "P0"                    # P0 must know | P1 strongly useful | P2 extra
+complexity: { time: "O(n)", space: "O(1)" }          # required for pattern and problem-walkthrough
+practice_problems:                                    # 3 to 6, required for pattern and problem-walkthrough
+  - { name: "Two Sum", platform: "LeetCode", url: "https://leetcode.com/problems/two-sum/", difficulty: "Easy" }
+```
+
+Exact `## ` headings per kind, in order:
+
+- `pattern`: The hook | The intuition | How it works | Walk through an example | The code | Complexity | Common mistakes | Practice problems | Key takeaways
+- `problem-walkthrough`: The hook | The problem | The obvious approach | The key insight | Walk through an example | The code | Complexity | Common mistakes | Practice problems | Key takeaways
+- `concept`: The hook | Where you meet it every day | The intuition | How it works | Walk through an example | The code | Why it is clever | Where it falls short | Key takeaways
+- `deep-dive`: The hook | The intuition | How it works | Trade-offs | What can go wrong | In the real world | Further reading | Key takeaways
+- `case-study`: The hook | Requirements | Back-of-envelope numbers | High-level design | Deep dives | Trade-offs | What can go wrong | Further reading | Key takeaways
+- `lld`: The hook | Requirements | Core objects | Class design | Key flows | Patterns used | Extensions | Key takeaways
+
+`pattern`, `problem-walkthrough`, `concept` and `lld` need a ```pseudo or ```cpp block. `deep-dive`, `case-study` and `lld` need at least one ```mermaid diagram.
+
 ## Special blocks
 ```markdown
 :::insight

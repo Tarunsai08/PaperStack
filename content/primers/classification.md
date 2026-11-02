@@ -1,6 +1,7 @@
 ---
 id: "primer-classification"
 kind: "primer"
+subject: "ml"
 slug: "classification"
 title: "Yes or No? How Machines Make Decisions"
 subtitle: "Logistic regression: a weighted vote, a smooth squash, and the first real classifier you can build by hand"

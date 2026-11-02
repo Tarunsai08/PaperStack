@@ -1,292 +1,186 @@
 ---
-id: paper-quantization-and-training-of-neural-networks-for-efficient-i
-kind: paper
-slug: quantization-and-training-of-neural-networks-for-efficient-i
-title: 'Ditching Floats: The Secret to Fast Mobile AI'
-subtitle: How 8-bit integer arithmetic brought real-time vision to smartphones
-track: ai-systems
+id: "paper-quantization-and-training-of-neural-networks-for-efficient-i"
+kind: "paper"
+subject: "ml"
+slug: "quantization-and-training-of-neural-networks-for-efficient-i"
+title: "Teaching Neural Networks to Count in Whole Numbers"
+subtitle: "How 8-bit integers, a little algebra and practice during training made fast on-phone vision practical"
+track: "ai-systems"
 track_order: 4
-prerequisites:
-- paper-batch-normalization
-- paper-backpropagation
-- primer-neural-networks
-difficulty: intermediate
-read_minutes: 9
-topics:
-- quantization
-- inference optimization
-- edge ai
-- qat
-paper_title: Quantization and Training of Neural Networks for Efficient Integer-Arithmetic-Only Inference
-authors:
-- Benoit Jacob
-- S. Kligys
-- Bo Chen
-- et al.
-year: 2017
-venue: 2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition
-paper_url: https://arxiv.org/abs/1712.05877
+prerequisites: ["paper-batch-normalization", "paper-backpropagation", "primer-neural-networks"]
+difficulty: "intermediate"
+read_minutes: 7
+topics: ["quantization", "inference optimization", "edge ai", "qat"]
+paper_title: "Quantization and Training of Neural Networks for Efficient Integer-Arithmetic-Only Inference"
+authors: ["Benoit Jacob", "Skirmantas Kligys", "Bo Chen", "et al."]
+year: 2018
+venue: "CVPR"
+paper_url: "https://arxiv.org/abs/1712.05877"
 glossary:
-- term: Zero-point (Z)
-  definition: The integer value in the quantized domain that corresponds exactly to real-world value 0.0, ensuring zero-padding operations introduce no numerical bias.
-- term: Scale (S)
-  definition: A positive floating-point factor that represents the step size between adjacent quantized integer values.
-- term: Fake Quantization
-  definition: An operation during model training that clamps and rounds floating-point values to discrete levels, simulating quantization noise during the forward pass while preserving continuous gradients.
-- term: Batch Normalization Folding
-  definition: Algebraically absorbing the scaling and shift parameters of batch normalization directly into preceding convolutional weights and biases prior to quantization.
-- term: GEMM
-  definition: General Matrix Multiply, the primary computational kernel underpinning fully connected and convolutional operations in neural networks.
+  - term: "Quantization"
+    definition: "Storing and computing numbers with a small set of allowed values, such as the 256 values of an 8-bit integer, instead of full floating point."
+  - term: "Scale"
+    definition: "The real-number step between two neighbouring integer levels. With scale S, moving the integer up by one adds S to the real value."
+  - term: "Zero-point"
+    definition: "The integer that stands for the real value 0.0, chosen so that zero is represented exactly."
+  - term: "Accumulator"
+    definition: "A wider register, here 32 bits, that collects the running sum of many 8-bit products without overflowing."
+  - term: "Fake quantization"
+    definition: "Rounding values to the integer grid during training while still computing in floating point, so the network learns to tolerate the rounding it will meet at inference."
+  - term: "Batch normalization folding"
+    definition: "Merging a batch normalization layer's scale and shift into the weights and bias of the convolution before it, so inference needs one layer instead of two."
 quiz:
-- q: Why are bias vectors quantized as 32-bit integers rather than 8-bit integers?
-  options:
-  - Biases account for most model parameters, so precision is critical.
-  - Bias quantization error acts as a nonzero-mean offset across many outputs, degrading accuracy.
-  - 8-bit hardware does not support addition operations.
-  - Hardware accumulators cannot add different bit widths together.
-  answer: 1
-  explain: Each bias entry is added to many output activations; any quantization error introduces a systematic nonzero-mean shift, degrading end-to-end model accuracy.
-- q: How is floating-point scaling applied during integer-only inference when converting accumulators back to 8 bits?
-  options:
-  - Using a floating-point multiplier coprocessor.
-  - Via floating-point lookup tables stored in ROM.
-  - By normalizing the scale multiplier into M = 2^(-n) * M0 and executing fixed-point integer multiplication with a bit-shift.
-  - By ignoring the scale factors and rounding integers directly.
-  answer: 2
-  explain: The multiplier M is factored into an integer fixed-point multiplier M0 (in [0.5, 1)) and a power-of-two shift 2^(-n), allowing pure integer hardware to apply the scale.
-- q: Why is batch normalization 'folded' into weights before quantization?
-  options:
-  - Batch normalization layers cannot be computed on mobile CPUs.
-  - To accurately simulate during training the weights that will actually appear in inference.
-  - Folding eliminates all activation functions in the network.
-  - To increase the bit-depth of weights from 8 bits to 16 bits.
-  answer: 1
-  explain: Inference engines fold batch normalization parameters directly into convolutional weights for speed; simulating this folding during training ensures the quantized weights match inference.
-cover_seed: quantization-and-training-of-neural-networks-for-efficient-i
-generated_by: gemini-gemini-flash-latest
-generated_at: '2026-10-28'
+  - q: "In the scheme r = S(q - Z), why must the zero-point Z be an integer?"
+    options: ["Integers are faster to store", "So that the real value 0.0 is represented exactly, which matters for zero-padding", "So the scale can be negative", "It makes the scale unnecessary"]
+    answer: 1
+    explain: "Zero-padding and ReLU produce many exact zeros. If 0.0 fell between two integer levels, every padded value would carry a small systematic error."
+  - q: "How does integer-only inference apply the real-valued rescale factor M = S1 S2 / S3?"
+    options: ["With a floating-point unit", "By ignoring it", "As a fixed-point integer multiply followed by a bit shift", "With a lookup table of logarithms"]
+    answer: 2
+    explain: "M is written as M0 times 2 to the power -n, with M0 between 0.5 and 1 stored as a 32-bit fixed-point integer. Multiplying by M0 and shifting right by n needs only integer hardware."
+  - q: "Why train with fake quantization instead of rounding a finished float model?"
+    options: ["It makes training faster", "The network learns weights that still work after rounding, which matters most for compact models", "It removes the need for biases", "It doubles the model size"]
+    answer: 1
+    explain: "Rounding after training adds errors the network never saw. Simulating the rounding during training lets it adapt, keeping accuracy high even for efficient models like MobileNets."
+cover_seed: "quantization-and-training-of-neural-networks-for-efficient-i"
+generated_by: "claude-revised"
+generated_at: "2026-11-02"
 importance_score: 0.73
 ---
 
 ## The hook
 
-Your smartphone camera needs to detect faces at thirty frames per second without melting through the battery or scorching your palm. In 2017, that was an impossible task. State-of-the-art vision models performed billions of 32-bit floating-point multiplications for every single video frame, draining batteries and choking mobile processors. What if you could banish floating-point numbers completely and run modern vision networks using nothing but humble 8-bit integers?
+Your phone can find faces in the camera preview while you frame a photo, many times a second, without getting hot. Underneath, a neural network is doing millions of multiplications per frame. On many phone chips, doing those with 32-bit floating-point numbers is too slow and too power-hungry.
 
-```
-32-bit Float:  [ s | e e e e e e e e | m m m m m m m m m m m m m m m m m m m m m m m ] (4 bytes)
-8-bit Integer: [ b b b b b b b b ]                                                    (1 byte)
-```
+A team at Google asked a blunt question: what if the network never used a floating-point number at all while running, only small whole numbers between 0 and 255?
 
 ## Before you start
 
-To get the most out of this paper, you should be familiar with the fundamentals of [neural networks](article:primer-neural-networks) and how weights update via [backpropagation](article:paper-backpropagation). It will also help to know how [batch normalization](article:paper-batch-normalization) normalizes layer inputs during training.
+You should know what weights and activations are from [the neural networks primer](article:primer-neural-networks), and how training adjusts weights with gradients from [backpropagation](article:paper-backpropagation). We also mention [batch normalization](article:paper-batch-normalization), a layer that rescales activations during training.
 
 ## The world before this paper
 
-Following the breakthrough of [AlexNet](article:paper-alexnet), deep learning entered an era of brute-force expansion. Models like VGG and early Inceptions packed tens of millions of parameters into deep stacks of convolutions. Because researchers evaluated these networks solely on benchmark accuracy, efficiency took a back seat.
+By 2017, people knew that networks tolerate small errors in their numbers, so there was plenty of work on shrinking them. But two problems kept appearing.
 
-When engineers tried running these models on phones, they ran straight into a wall of thermal throttling and lag. Early attempts to compress networks took extreme paths:
+- **Smaller files, not faster maths.** Many methods compressed weights for storage but converted them back to floats before computing. Downloads got smaller; inference did not get faster.
+- **Exotic formats, fragile baselines.** Binary and ternary networks used 1 or 2 bits per weight, but common phone hardware could not run them efficiently, and accuracy often dropped. Many results were shown on large, redundant networks like [AlexNet](article:paper-alexnet), which tolerate almost anything, rather than on models already designed to be lean.
 
-1. **Storage-only compression:** Quantizing weights to 8 bits for storage on disk, but decompressing them back to 32-bit floats during runtime. This shrunk download sizes but provided zero compute speedup.
-2. **Binary and ternary networks:** Crushing weights down to 1 or 2 bits (values like $\{-1, 0, 1\}$). While mathematically elegant, real-world mobile chips have pipelined multiply-accumulate hardware. Reversing into custom bit-shift operations yielded almost no practical speedup on mobile CPUs, and it devastated accuracy on compact networks.
-3. **Over-parameterized benchmarks:** Researchers tested their compression techniques on massive models like [AlexNet](article:paper-alexnet). AlexNet was so bloated with redundant parameters that you could prune or round half of it away without noticing. But when researchers tried those same tricks on sleek, efficient architectures like MobileNet, the models broke down.
-
-The field needed a practical approach: genuine hardware-level speedups on compact models without sacrificing accuracy.
+The real test was MobileNets: networks built for phones, with little redundancy left to squeeze.
 
 :::history
-In 2017, Google was preparing to launch the Pixel 2 smartphone. Mobile features like portrait mode and on-device vision required real-time execution on low-power ARM cores and digital signal processors (DSPs). A team led by Benoit Jacob set out to build an end-to-end framework that would power the brand-new TensorFlow Lite engine.
+Benoit Jacob, Skirmantas Kligys, Bo Chen, Menglong Zhu, Matthew Tang, Andrew Howard, Hartwig Adam and Dmitry Kalenichenko at Google posted the paper in December 2017, and it appeared at CVPR 2018. It describes the scheme implemented in Google's gemmlowp library for low-precision matrix multiplication, which TensorFlow's mobile tools then built on.
 :::
 
 ## The big idea
 
-Instead of treating quantization as an afterthought applied after training, why not train the model to anticipate 8-bit math from the beginning?
-
-The authors devised an affine quantization scheme that maps continuous real numbers to 8-bit unsigned integers. Every single operation during inference—matrix multiplication, bias addition, scaling, and activation clamping—executes using pure integer math. Floating-point units never wake up.
-
-To keep accuracy intact, they introduced **Quantization-Aware Training (QAT)**. During training, the network computes in standard 32-bit floats, but simulated rounding and clamping nodes mimic the exact errors of 8-bit hardware in the forward pass.
-
 :::analogy
-Imagine painting a portrait with a continuous spectrum of millions of colors, only to discover at the gallery that you must reproduce it using a cheap paint-by-numbers kit with only 256 paint pots. If you paint freely and round each brushstroke at the end, subtle skin tones turn into garish stripes. 
-
-Now imagine painting the original while looking through a special stencil that shows you exactly how each stroke maps onto those 256 pots. As an artist, you adjust your shading in real time so the final 256-color painting looks almost indistinguishable from the master original.
+Imagine a carpenter whose tape measure has only 256 marks. The gap between marks is fixed, and one particular mark lines up with the true zero. She writes every length as a mark number, adds and multiplies mark numbers in her head, and converts back to centimetres only when she needs to. And as an apprentice, she practised with that same coarse tape, so her cuts already allow for its roughness.
 :::
+
+The paper has two parts that match the carpenter's two habits.
+
+1. **An integer-only arithmetic scheme.** Every weight and activation is stored as an 8-bit integer. Every multiplication, addition, bias and activation at inference time uses integer operations only.
+2. **Training that practises with the coarse tape.** During training, the forward pass rounds values onto the same 8-bit grid, so the network learns weights that survive rounding.
 
 ## How it works
 
-### 1. The Affine Quantization Mapping
+### The mapping: real number to mark number
 
-To map an arbitrary real-valued continuous number $r$ (like a weight or activation) to an integer $q$, we use an affine transform defined by two constants:
+Each tensor gets two constants:
 
 $$r = S(q - Z)$$
 
-- $r$ is the real-world floating-point value.
-- $q$ is the quantized integer (an 8-bit unsigned integer, `uint8`, ranging from 0 to 255).
-- $S$ is the **[[Scale (S)]]**, an arbitrary positive real number denoting the step size between adjacent integers.
-- $Z$ is the **[[Zero-point (Z)]]**, an integer of the same type as $q$.
+Here $r$ is the real value, $q$ is the 8-bit integer (0 to 255), $S$ is the [[scale]], the size of one step, and $Z$ is the [[zero-point]], the integer that stands for 0.0. In the analogy, $S$ is the gap between marks and $Z$ is the mark that lines up with true zero.
 
-Why do we need $Z$? In real networks, operations like zero-padding surround images with zeroes. If real $0.0$ does not map to an exact integer, every zero-padded boundary pixel introduces systematic noise. The [[Zero-point (Z)]] guarantees that $r = 0.0$ maps exactly to $q = Z$.
+Why insist that zero is exact? Convolutions pad images with zeros, and ReLU outputs many zeros. If 0.0 fell between two marks, every padded value would carry the same small error, and those errors would add up rather than cancel.
 
-```
-Real space (r):       -1.5      0.0       1.5       3.0
-                       |---------|---------|---------|
-Quantized space (q):   0        32        64        96  ... (Z = 32, S = 0.046875)
-```
+### A worked example: one quantized dot product
 
-### 2. Matrix Multiplication in Pure Integer Math
+Suppose activations range from -1.0 to 2.0. Then $S = 3.0 / 255 \approx 0.01176$ and $Z = 85$. The real value 0.75 becomes $q = 0.75 / 0.01176 + 85 = 63.75 + 85$, rounded to 149. Converting back gives $0.01176 × (149 − 85) \approx 0.7529$, an error of about 0.003.
 
-In modern vision networks, the bulk of computation lives inside general matrix multiplications ([[GEMM]]) or convolutions. Suppose we multiply matrix $r_1$ (weights) by matrix $r_2$ (activations) to produce matrix $r_3$.
+Now a three-number dot product. Activations $x = [0.75, -0.40, 1.45]$ use the scale above. Weights $w = [0.32, -0.20, 0.12]$ range from -0.4 to 0.6, so their scale is $1.0 / 255 \approx 0.00392$ and their zero-point is 102.
 
-Substituting the affine equation for each matrix:
+| | item 1 | item 2 | item 3 |
+|---|---|---|---|
+| $q_x - Z_x$ | 64 | -34 | 123 |
+| $q_w - Z_w$ | 82 | -51 | 31 |
+| product | 5,248 | 1,734 | 3,813 |
 
-$$S_3(q_3^{(i,k)} - Z_3) = \sum_{j=1}^N S_1(q_1^{(i,j)} - Z_1) S_2(q_2^{(j,k)} - Z_2)$$
+The integer sum is 10,795. That sum lives in a 32-bit [[accumulator]], because thousands of such products would overflow 8 bits.
 
-Rearranging for the output integer $q_3$:
+The true float answer is 0.494. The integer sum times both scales gives $0.01176 × 0.00392 × 10{,}795 \approx 0.498$. The carpenter worked only in mark numbers and still landed within about 1 percent.
 
-$$q_3^{(i,k)} = Z_3 + M \sum_{j=1}^N (q_1^{(i,j)} - Z_1)(q_2^{(j,k)} - Z_2)$$
+### Getting back to 8 bits with no floats
 
-Notice the multiplier $M$:
+The output also needs to be an 8-bit integer, with its own scale $S_3$ and zero-point $Z_3$. The rule is:
 
-$$M = \frac{S_1 S_2}{S_3}$$
+$$q_3 = Z_3 + M × \text{(integer sum)}, \quad M = \frac{S_1 S_2}{S_3}$$
 
-$M$ is a real number. If computing $M$ required floating-point hardware at runtime, the entire point of integer inference would be lost. But look closely: $S_1$, $S_2$, and $S_3$ are constants determined before inference runs! 
+$S_1$ and $S_2$ are the input scales. $M$ is a real number, which seems to bring floats back. The trick: all scales are known before inference, and the authors found $M$ is always between 0 and 1 in practice. So it can be written as $M = M_0 × 2^{-n}$, with $M_0$ between 0.5 and 1 stored as a 32-bit fixed-point integer. Multiplying by $M_0$ is an integer multiply; multiplying by $2^{-n}$ is a right shift.
 
-The authors made an empirical discovery: in trained networks, $M$ always falls in the interval $(0, 1)$. This lets us factor $M$ into a normalized fixed-point format:
-
-$$M = 2^{-n} M_0$$
-
-Here, $M_0$ is an integer scaled into the range $[0.5, 1.0)$, and $n$ is a non-negative integer. On an ARM processor, multiplying by $M_0$ is a standard 32-bit fixed-point integer multiplication, and multiplying by $2^{-n}$ is a high-speed hardware bit-shift!
-
-:::insight
-A floating-point scale factor can be replaced entirely by an integer multiplication followed by a bit-shift. No floating-point hardware required.
-:::
-
-### 3. Taming the Zero-Point Overhead
-
-Expanding the product $(q_1 - Z_1)(q_2 - Z_2)$ directly requires $2N^3$ subtractions:
-
-$$(q_1 - Z_1)(q_2 - Z_2) = q_1 q_2 - Z_1 q_2 - Z_2 q_1 + Z_1 Z_2$$
-
-If done naively, this would force 8-bit values into signed 16-bit integers, doubling register pressure. Instead, the authors factored the algebra:
-
-$$q_3^{(i,k)} = Z_3 + M \left( N Z_1 Z_2 - Z_1 \sum_{j=1}^N q_2^{(j,k)} - Z_2 \sum_{j=1}^N q_1^{(i,j)} + \sum_{j=1}^N q_1^{(i,j)} q_2^{(j,k)} \right)$$
-
-Notice what happened:
-- The core loop is $\sum q_1^{(i,j)} q_2^{(j,k)}$: an unsigned 8-bit multiply accumulating into a signed 32-bit register (`int32 += uint8 * uint8`). This takes $O(N^3)$ operations, running at peak SIMD efficiency.
-- The row sums $\sum q_1$ and column sums $\sum q_2$ depend on only one dimension! They take only $O(N^2)$ additions.
-
-All zero-point bookkeeping drops into negligible overhead, leaving raw, unencumbered integer dot products.
-
-### 4. Fused Bias and Clamping Pipeline
-
-How do biases and activation functions fit in?
+In our example, an output range of -1.0 to 1.5 gives $S_3 \approx 0.00980$ and $Z_3 = 102$. Then $M \approx 0.004706 = 0.6024 × 2^{-7}$. The sum times $M$ is 50.8, which rounds to 51, so $q_3 = 102 + 51 = 153$, meaning 0.500 in real terms.
 
 ```mermaid
 flowchart TD
-    A[uint8 Activations] --> C[int32 Matrix Accumulator]
-    B[uint8 Weights] --> C
-    D[int32 Bias Vector] --> E[int32 Sum]
-    C --> E
-    E --> F[Fixed-Point Multiply M0 and Bit-Shift]
-    F --> G[Saturating Clamp 0 to 255]
-    G --> H[uint8 Output Activations]
+  A[uint8 activations] --> C[Multiply and add into int32 accumulator]
+  B[uint8 weights] --> C
+  D[int32 bias] --> C
+  C --> E[Fixed point multiply by M0, shift by n]
+  E --> F[Add output zero point, clamp to 0..255]
+  F --> G[uint8 output for the next layer]
 ```
 
-- **Biases:** Stored as 32-bit integers (`int32`). Why not 8-bit? A single bias value is added to every pixel across an entire output channel. Any quantization error in the bias shifts all outputs in that channel systematically, wrecking accuracy. Quantizing bias to `int32` with scale $S_{\text{bias}} = S_1 S_2$ and zero-point $Z_{\text{bias}} = 0$ allows zero-cost addition directly into the accumulator.
-- **Activation Functions:** Common functions like ReLU and ReLU6 are simple clamping operations. The pipeline folds the activation directly into the final step: when downcasting from the accumulator to `uint8`, it clamps values between $0$ and $255$.
+Three more details make this fast and accurate:
 
-:::warning
-You cannot cleanly fuse transcendental activation functions like Sigmoid or Tanh into this integer pipeline. They require separate polynomial approximations or lookup tables, which can slow down SIMD pipelines.
-:::
-
-### 5. Training with Simulated Quantization
-
-Rounding numbers during inference introduces quantization noise. If you train a model in 32-bit floats and round weights to 8-bit integers after the fact, small errors compound across dozens of layers.
-
-To prevent this drop, the authors introduced **[[Fake Quantization]]** nodes during training:
-
-```mermaid
-flowchart TD
-    A[FP32 Weights] --> B[Batch Norm Folding]
-    B --> C[FakeQuant: Clamp and Round to Grid]
-    D[FP32 Activations] --> E[FakeQuant: Clamp and Round to Grid]
-    C --> F[FP32 Convolution Engine]
-    E --> F
-    F --> G[FP32 Loss Computation]
-    G --> H[Standard Backprop Updates FP32 Weights]
-```
-
-During the forward pass, floating-point weights and activations are clamped and rounded to simulate integer bins:
-
-$$q(r; a, b, n) = \left\lfloor \frac{\text{clamp}(r; a, b) - a}{s(a, b, n)} \right\rceil \cdot s(a, b, n) + a$$
-
-Where $[a, b]$ is the clamping range, $n=256$ is the number of levels, and $\lfloor \cdot \rceil$ rounds to the nearest integer.
-
-During backpropagation, derivatives pass straight through the rounding operator using the straight-through estimator ($d q / d r = 1$ within $[a, b]$). The continuous weights absorb tiny gradient updates, letting parameters adjust around grid boundaries until the model settles into integer-friendly configurations.
-
-### 6. Batch Normalization Folding
-
-Modern vision models rely on [batch normalization](article:paper-batch-normalization) during training. At inference time, batch normalization is folded into the preceding convolution's weights:
-
-$$w_{\text{fold}} = \frac{\gamma w}{\sqrt{\text{EMA}(\sigma_B^2) + \epsilon}}$$
-
-If you quantize the weights first and fold batch norm parameters afterward, the folded weights will fall off the integer grid. The authors solved this by performing **[[Batch Normalization Folding]]** *before* the fake quantization node in the training graph.
+- **Zero-points cost almost nothing.** Expanding $(q_1 - Z_1)(q_2 - Z_2)$ splits the work into the core sum of products, plus row and column sums that are far cheaper. The heavy loop stays a plain 8-bit multiply-accumulate.
+- **Biases stay 32-bit.** A bias is added to every output of a channel, so its rounding error would shift all of them the same way. Biases use scale $S_1 S_2$ and zero-point 0, so they add straight into the accumulator.
+- **ReLU is free.** ReLU and ReLU6 are just clamps, so they merge into the final clamp to 0..255.
 
 :::try-this
-Suppose an activation layer's output falls in the real range $[0.0, 6.0]$, and you quantize it into 8-bit integers (256 levels, from 0 to 255).
-1. What is the scale $S$? ($S = (6.0 - 0.0) / 255 \approx 0.02353$).
-2. What is the zero-point $Z$? (Because $0.0$ maps to $0$, $Z = 0$).
-3. If an activation produces $r = 1.50$, what is the integer $q$? ($q = \text{round}(1.50 / 0.02353) = 64$).
+A ReLU6 layer outputs values from 0 to 6. What are its scale and zero-point, and which integer stores 1.5? (Scale is 6 / 255, about 0.0235; zero-point is 0; and 1.5 / 0.0235 is 63.75, which rounds to 64.)
+:::
+
+### Training: the apprentice practises with the coarse tape
+
+If you train in floats and round afterwards, every layer meets errors it never saw. For lean models, the damage can be large. So the authors insert [[fake quantization]] into the training graph: in the forward pass, weights and activations are rounded to their 8-bit grids; in the backward pass, gradients flow through as if the rounding were not there. Ranges for activations are tracked during training, so the scales are known in advance.
+
+One subtle point: at inference, batch normalization is merged into the convolution, a step called [[batch normalization folding]]. The paper simulates that folding during training too, so the weights being rounded in training are the same weights that run on the phone.
+
+:::warning
+Common misconception: "8-bit quantization just means rounding the trained weights." Rounding only the weights leaves the arithmetic in floats and gives no speedup. This paper quantizes weights and activations, keeps all inference arithmetic in integers, and trains the network to expect it.
+:::
+
+:::insight
+Speed comes from the arithmetic, not the file size. Once every operation is an integer operation, cheap integer hardware can do the work, and a network trained with the rounding in place hardly notices the change.
 :::
 
 ## What they found
 
-The authors evaluated their integer-only scheme across multiple computer vision architectures and mobile hardware targets, focusing heavily on ARM big and LITTLE cores (found in Qualcomm Snapdragon processors).
+The abstract's claims are about the trade-off between accuracy and speed:
 
-### Preserving Accuracy on Hard Benchmarks
+- **A better accuracy and latency trade-off.** For a given time budget on a phone, the quantized models were more accurate, or for a given accuracy they were faster, than their floating-point versions.
+- **Gains even on MobileNets.** The improvements held on MobileNets, a family already designed for efficiency, which was the hard case earlier methods tended to avoid.
+- **Tested on real tasks and real chips.** Results covered ImageNet classification and COCO object detection, measured on popular phone CPUs.
 
-On ImageNet classification with ResNet architectures, 8-bit integer models matched their 32-bit floating-point twins within 1.5 to 2.0 percentage points of top-1 accuracy:
-
-| Architecture | FP32 Accuracy | 8-bit Integer Accuracy | Accuracy Gap |
-| :--- | :--- | :--- | :--- |
-| **ResNet-50** | 76.4% | 74.9% | -1.5% |
-| **ResNet-100** | 78.0% | 76.6% | -1.4% |
-
-Crucially, this integer quantization outperformed prior 2-bit weight schemes like Fine-Grained Quantization (FGQ, 70.8%) while delivering faster real-world speedups than 5-bit methods like Incremental Network Quantization (INQ).
-
-### Unlocking Real-Time Edge Vision
-
-The real victory was on compact architectures like MobileNet, where previous quantization methods collapsed:
-
-- **Snapdragon 835 LITTLE Cores:** Under a strict real-time 33 ms latency budget (30 fps), integer-quantized MobileNets achieved an accuracy roughly **10% higher** than floating-point baselines. Because 8-bit math ran twice as fast, engineers could deploy a larger, more accurate model within the same millisecond budget.
-- **COCO Object Detection:** For MobileNet SSD running on Snapdragon 835 LITTLE cores, 8-bit quantization cut latency nearly in half—dropping from **270 ms down to 146 ms** (and from **121 ms down to 61 ms** on big cores)—with only a negligible 1.8% relative drop in mean Average Precision (mAP).
-- **Face Detection:** On a Snapdragon 835 big core, an 8-bit MobileNet face detector ran at **36 frames per second** (28 ms per frame), crossing the threshold into smooth real-time video processing. The 32-bit float model was stuck at **23 frames per second** (44 ms per frame).
-
-```
-MobileNet SSD COCO Latency (Snapdragon 835 LITTLE Cores):
-Float (FP32):   [=============================] 270 ms
-Quantized (8b): [===============] 146 ms  (~46% faster!)
-```
+The carpenter's two habits, measuring in marks and practising with the coarse tape, together were what made this work.
 
 ## What it got wrong (or left open)
 
-While the paper laid the foundation for modern edge inference, it left several key challenges unsolved:
-
-1. **Post-Training Fragility:** The authors found that purely quantizing weights post-training without QAT fine-tuning severely degraded compact networks. Wide channel-to-channel variations and outlier weights distorted the single per-layer scale factor $S$. Later work resolved this by adopting *per-channel quantization* (giving each convolutional filter its own scale factor).
-2. **Hardware Dependency:** Latency gains depended heavily on the CPU microarchitecture. On chips with specialized, highly optimized floating-point units (like the Qualcomm Snapdragon 821), integer quantization showed smaller speedups compared to chips where integer arithmetic was significantly cheaper.
-3. **Complex Activation Functions:** The affine scheme required activations to be simple clamps. Non-linear functions like Sigmoid, Tanh, or modern GELU activations require auxiliary lookup tables or fixed-point polynomial approximations, breaking the simplicity of the fused GEMM pipeline.
+- **One scale per tensor.** Each layer's weights shared a single scale. Layers whose channels have very different ranges waste precision; later work gave each output channel its own scale.
+- **Retraining needed.** The best results relied on quantization-aware training, which needs the training pipeline and data. Making post-training quantization accurate without retraining became its own research area.
+- **Not every operation fits.** Smooth activations such as sigmoid or tanh are not simple clamps and need extra handling.
+- **Speed depends on the chip.** How much faster integers are than floats varies with the hardware, so gains are not uniform.
 
 ## What happened next
 
-This paper changed how the software industry serves machine learning on edge devices.
+This scheme became a standard way to run networks on phones. TensorFlow Lite's 8-bit models follow the same scale and zero-point idea, and quantization-aware training became a built-in feature of major frameworks.
 
-The quantization scheme described here became the underlying engine of **TensorFlow Lite** and Google's open-source `gemmlowp` (low-precision GEMM) library. It proved that 8-bit integers were not just an approximation tool for memory savings, but a viable format for end-to-end execution.
-
-Following this work, Quantization-Aware Training (QAT) became a standard feature across PyTorch, ONNX Runtime, and TensorRT. Chipmakers responded in kind: modern mobile System-on-Chips (SoCs), Apple Silicon Neural Engines, and server-grade AI accelerators (including Google TPUs and NVIDIA Tensor Cores) now ship with dedicated hardware units optimized around the 8-bit integer formats popularized by this paper.
+The same thinking now shapes large language model serving, where 8-bit and even 4-bit weights cut memory and cost. Methods that cope with unusual activation patterns, such as the outlier tokens discussed in [the attention sinks article](article:paper-efficient-streaming-language-models-with-attention-sinks), and systems like [vLLM](article:paper-vllm) all sit in the same engineering tradition: make the arithmetic fit the hardware.
 
 ## Key takeaways
 
-- Real-world mobile inference requires eliminating floating-point math entirely, not just compressing weights for storage.
-- An affine mapping ($r = S(q - Z)$) maps continuous real values to 8-bit unsigned integers while ensuring zero maps to an exact integer for zero-overhead padding.
-- Floating-point scale factors can be factored into a fixed-point integer multiplier and a power-of-two bit-shift, keeping all runtime operations strictly inside integer registers.
-- Biases must be kept at 32-bit integer precision because any quantization error in a bias creates a systematic nonzero-mean offset across all spatial outputs.
-- Quantization-Aware Training (QAT) simulates rounding errors in the forward pass, allowing standard backpropagation to steer network weights into robust, integer-friendly minimums.
+- The paper maps each real number to an 8-bit integer with a scale and an integer zero-point, so that 0.0 is represented exactly.
+- All inference arithmetic is integer-only: 8-bit products sum into 32-bit accumulators, and the real rescale factor becomes a fixed-point multiply and a bit shift.
+- Biases are kept at 32 bits and ReLU merges into the final clamp, so a whole layer runs without floating point.
+- Training with fake quantization, including simulated batch normalization folding, lets the network learn weights that survive rounding.
+- The approach improved the accuracy and latency trade-off on phone CPUs, even for compact MobileNets.

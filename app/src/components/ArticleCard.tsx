@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useContent } from '../lib/useContent';
 import { useStore } from '../lib/storage';
 import type { Article } from '../lib/types';
-import { CoverArt } from './CoverArt';
+import { ArticleCover } from './ArticleCover';
 
 type Variant = 'feed' | 'row' | 'featured' | 'compact';
 
@@ -47,8 +47,6 @@ function Status({ id }: { id: string }) {
 }
 
 export function ArticleCard({ article, variant = 'feed' }: { article: Article; variant?: Variant }) {
-  const { trackById } = useContent();
-  const accent = trackById.get(article.track)?.accent ?? '#FF6719';
   const to = `/article/${article.id}`;
 
   if (variant === 'row' || variant === 'compact') {
@@ -62,7 +60,7 @@ export function ArticleCard({ article, variant = 'feed' }: { article: Article; v
           )}
         </div>
         <div className="relative shrink-0">
-          <CoverArt seed={article.cover_seed} accent={accent} className="h-[68px] w-[92px] rounded-xl" />
+          <ArticleCover article={article} className="h-[68px] w-[92px] rounded-xl" />
           <div className="absolute -bottom-1.5 -right-1.5">
             <Status id={article.id} />
           </div>
@@ -75,7 +73,7 @@ export function ArticleCard({ article, variant = 'feed' }: { article: Article; v
     return (
       <Link to={to} className="press block overflow-hidden rounded-card border border-line bg-surface shadow-card">
         <div className="relative">
-          <CoverArt seed={article.cover_seed} accent={accent} className="aspect-[16/10] w-full" title={article.title} />
+          <ArticleCover article={article} className="aspect-[16/10] w-full" title={article.title} />
           <span className="absolute left-3 top-3 rounded-full bg-black/35 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-white backdrop-blur">
             Featured
           </span>
@@ -97,7 +95,7 @@ export function ArticleCard({ article, variant = 'feed' }: { article: Article; v
   return (
     <Link to={to} className="press block">
       <div className="relative">
-        <CoverArt seed={article.cover_seed} accent={accent} className="aspect-[16/9] w-full rounded-card" />
+        <ArticleCover article={article} className="aspect-[16/9] w-full rounded-card" />
         <div className="absolute right-2.5 top-2.5">
           <Status id={article.id} />
         </div>

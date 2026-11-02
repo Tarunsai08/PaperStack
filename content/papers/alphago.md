@@ -1,6 +1,7 @@
 ---
 id: "paper-alphago"
 kind: "paper"
+subject: "ml"
 slug: "alphago"
 title: "The Machine That Mastered Go a Decade Early"
 subtitle: "AlphaGo: neural intuition plus careful search cracked the game experts thought computers could not win"

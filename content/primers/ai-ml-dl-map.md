@@ -1,6 +1,7 @@
 ---
 id: "primer-ai-ml-dl-map"
 kind: "primer"
+subject: "ml"
 slug: "ai-ml-dl-map"
 title: "AI, ML, and Deep Learning: The Map You Wish You Had"
 subtitle: "Three buzzwords, one simple picture, and why the difference actually matters"

@@ -24,6 +24,11 @@
   --hl-pink: 255 55 140;
   --hl-alpha: 0.32;
   --code-bg: 246 246 244;
+  --code-kw: 150 30 150;
+  --code-str: 30 115 40;
+  --code-num: 140 90 0;
+  --code-fn: 31 90 195;
+  --code-meta: 160 70 15;
   color-scheme: light;
 }
 
@@ -41,6 +46,11 @@
   --shadow-float: 0 8px 40px rgb(0 0 0 / 0.6);
   --hl-alpha: 0.38;
   --code-bg: 30 30 30;
+  --code-kw: 198 120 221;
+  --code-str: 152 195 121;
+  --code-num: 209 154 102;
+  --code-fn: 97 175 239;
+  --code-meta: 224 108 117;
   color-scheme: dark;
 }
 
@@ -58,6 +68,11 @@
   --shadow-float: 0 8px 40px rgb(59 47 42 / 0.18);
   --hl-alpha: 0.34;
   --code-bg: 239 230 211;
+  --code-kw: 135 30 135;
+  --code-str: 35 100 30;
+  --code-num: 125 80 0;
+  --code-fn: 30 80 175;
+  --code-meta: 145 62 12;
   color-scheme: light;
 }
 
@@ -413,4 +428,50 @@ select:focus-visible {
   );
   background-size: 800px 100%;
   animation: shimmer 1.4s linear infinite;
+}
+
+/* C++ code blocks: copy button header, horizontal scroll on phones, offline syntax colours. */
+.prose-read .code-block {
+  margin: 1.4em 0;
+  background: rgb(var(--code-bg));
+  border-radius: 12px;
+  overflow: hidden;
+}
+.prose-read .code-block pre {
+  margin: 0;
+  padding: 4px 16px 14px;
+  border-radius: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: pre;
+  word-break: normal;
+}
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-built_in,
+.hljs-type {
+  color: rgb(var(--code-kw));
+}
+.hljs-string,
+.hljs-meta .hljs-string {
+  color: rgb(var(--code-str));
+}
+.hljs-number,
+.hljs-literal {
+  color: rgb(var(--code-num));
+}
+.hljs-comment {
+  color: rgb(var(--muted));
+  font-style: italic;
+}
+.hljs-title,
+.hljs-title.function_ {
+  color: rgb(var(--code-fn));
+}
+.hljs-meta {
+  color: rgb(var(--code-meta));
+}
+.prose-read .code-block pre.pseudo {
+  font-size: 0.86em;
+  line-height: 1.65;
 }

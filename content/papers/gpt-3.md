@@ -1,6 +1,7 @@
 ---
 id: "paper-gpt-3"
 kind: "paper"
+subject: "ml"
 slug: "gpt-3"
 title: "Just Show It a Few Examples"
 subtitle: "GPT-3: 175 billion parameters, no fine-tuning, and the surprise that a model could learn new tasks from its prompt"

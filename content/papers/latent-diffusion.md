@@ -1,6 +1,7 @@
 ---
 id: "paper-latent-diffusion"
 kind: "paper"
+subject: "ml"
 slug: "latent-diffusion"
 title: "Diffusion in a Smaller World"
 subtitle: "Latent diffusion: compress the image first, dream in the compressed space, and suddenly anyone can generate art on a gaming PC"

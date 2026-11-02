@@ -82,7 +82,7 @@ export default function Import() {
 
   const fix = () => {
     try {
-      setRaw(autoFix(raw, { articleIds, trackId, today: localDay() }));
+      setRaw(autoFix(raw, { articleIds, trackId, today: localDay(), subject: content.trackById.get(trackId)?.subject ?? 'ml' }));
       haptic('light');
       toast('Fixed what could be fixed automatically');
     } catch {

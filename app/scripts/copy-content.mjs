@@ -22,10 +22,11 @@ if (!existsSync(join(src, 'index.json')) || process.env.PAPERSTACK_REBUILD_INDEX
 // Copy in place and remove stale files, instead of deleting the folder, so a running
 // dev server never sees the content disappear.
 mkdirSync(dest, { recursive: true });
-for (const item of ['index.json', 'tracks.json', 'papers', 'primers']) {
+const DIRS = ['papers', 'primers', 'dsa', 'cp', 'famous-algos', 'system-design'];
+for (const item of ['index.json', 'tracks.json', 'subjects.json', 'roadmap.json', ...DIRS]) {
   if (existsSync(join(src, item))) cpSync(join(src, item), join(dest, item), { recursive: true });
 }
-for (const dir of ['papers', 'primers']) {
+for (const dir of DIRS) {
   if (!existsSync(join(dest, dir))) continue;
   for (const f of readdirSync(join(dest, dir))) {
     if (!existsSync(join(src, dir, f))) rmSync(join(dest, dir, f));

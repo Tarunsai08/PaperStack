@@ -1,6 +1,7 @@
 ---
 id: "paper-few-useful-things"
 kind: "paper"
+subject: "ml"
 slug: "few-useful-things"
 title: "The Folk Wisdom Textbooks Forgot to Teach"
 subtitle: "Pedro Domingos' twelve hard-won lessons about what actually makes machine learning work"

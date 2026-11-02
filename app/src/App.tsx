@@ -31,6 +31,7 @@ const Library = lazy(() => import('./pages/Library'));
 const Import = lazy(() => import('./pages/Import'));
 const Settings = lazy(() => import('./pages/Settings'));
 const Onboarding = lazy(() => import('./pages/Onboarding'));
+const Roadmap = lazy(() => import('./pages/Roadmap'));
 
 const TAB_ROOTS = ['/', '/learn', '/search', '/library'];
 
@@ -144,6 +145,7 @@ function Shell() {
               <Route path="/import" element={<Import />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/onboarding" element={<Onboarding />} />
+              <Route path="/roadmap" element={<Roadmap />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </AnimatePresence>

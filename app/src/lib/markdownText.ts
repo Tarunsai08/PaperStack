@@ -18,6 +18,17 @@ export function extractH2(body: string): string[] {
     .map((l) => l.replace(/^##\s+/, '').trim());
 }
 
+/** Every ```cpp fence as { info, code }. Info "partial" marks a snippet CI does not compile. */
+export function cppBlocks(body: string): { info: string; code: string }[] {
+  const out: { info: string; code: string }[] = [];
+  for (const m of body.matchAll(/^```(?:cpp|c\+\+)([^\n]*)\n([\s\S]*?)^```[ \t]*$/gm)) out.push({ info: m[1].trim(), code: m[2] });
+  return out;
+}
+
+export function hasPseudo(body: string): boolean {
+  return /^```pseudo[ \t]*$/m.test(body);
+}
+
 export function hasMermaid(body: string): boolean {
   return /^```mermaid[ \t]*$/m.test(body);
 }

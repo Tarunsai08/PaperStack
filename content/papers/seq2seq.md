@@ -1,6 +1,7 @@
 ---
 id: "paper-seq2seq"
 kind: "paper"
+subject: "ml"
 slug: "seq2seq"
 title: "Read the Whole Sentence, Then Write the Translation"
 subtitle: "Sequence to sequence learning: two LSTMs, one thought vector, and the first neural translator to beat the old guard"

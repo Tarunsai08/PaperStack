@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { CoverArt } from '../components/CoverArt';
+import { ArticleCover, TrackCover } from '../components/ArticleCover';
 import { BackHeader } from '../components/Headers';
 import { Page } from '../components/Page';
 import { ProgressRing } from '../components/ProgressRing';
@@ -7,6 +7,7 @@ import { ListSkeleton } from '../components/Skeleton';
 import { StatusDot } from '../components/StatusDot';
 import { statusOf, trackProgress } from '../lib/progress';
 import { useStore } from '../lib/storage';
+import { kindLabel } from '../lib/subjects';
 import { useContent } from '../lib/useContent';
 
 export default function TrackPage() {
@@ -31,7 +32,7 @@ export default function TrackPage() {
       ) : (
         <div className="mx-auto max-w-read pb-10">
           <div className="relative mx-5 mt-5 overflow-hidden rounded-card">
-            <CoverArt seed={`track-${track.id}`} accent={track.accent} className="aspect-[16/9] w-full" />
+            <TrackCover track={track} className="aspect-[16/9] w-full" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-5 text-white">
               <p className="text-[12px] font-semibold uppercase tracking-[0.1em] opacity-85">
@@ -75,12 +76,12 @@ export default function TrackPage() {
                       <p className="font-serif text-[17px] font-semibold leading-snug">{a.title}</p>
                       <p className="mt-1 line-clamp-2 text-[14px] leading-snug text-muted">{a.subtitle}</p>
                       <p className="mt-1.5 text-[12.5px] font-medium text-muted">
-                        {a.paper_title ? `${a.year} · ` : 'Primer · '}
+                        {a.paper_title ? `${a.year} · ` : `${kindLabel(a.kind)}${a.priority ? ` · ${a.priority}` : ''} · `}
                         {a.read_minutes} min
                         {a.source === 'imported' ? ' · Imported' : ''}
                       </p>
                     </div>
-                    <CoverArt seed={a.cover_seed} accent={track.accent} className="mt-1 h-14 w-14 shrink-0 rounded-xl" />
+                    <ArticleCover article={a} className="mt-1 h-14 w-14 shrink-0 rounded-xl" />
                   </Link>
                 </li>
               );
