@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 114 | 0 | 38 | 152 | 66/72 |
+| dsa | 117 | 0 | 35 | 152 | 68/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **316** | **0** | **357** | **673** | |
+| **All** | **319** | **0** | **354** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -25,16 +25,16 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### dsa
 
-- [ ] `dsa-topological-sort` (P0, pattern, dsa-graphs): Topological Sort: Ordering Tasks With Dependencies
-- [ ] `dsa-dijkstra` (P0, pattern, dsa-graphs): Dijkstra: Shortest Paths With Weights
 - [ ] `dsa-word-ladder` (P0, problem-walkthrough, dsa-graphs): Word Ladder: BFS on Implicit Graphs
+- [ ] `dsa-course-schedule` (P0, problem-walkthrough, dsa-graphs): Course Schedule: Can You Graduate?
 - [ ] `dsa-islands-variants` (P0, problem-walkthrough, dsa-graphs): Number of Islands and Its Many Variants
 - [ ] `dsa-mst` (P1, pattern, dsa-graphs): Minimum Spanning Trees: Kruskal and Prim
 - [ ] `dsa-bipartite` (P1, pattern, dsa-graphs): Bipartite Graphs and Two-Colouring
 - [ ] `dsa-grid-graph-tricks` (P1, pattern, dsa-graphs): Grid Problems as Graphs
+- [ ] `dsa-network-delay` (P1, problem-walkthrough, dsa-graphs): Network Delay Time With Dijkstra
+- [ ] `dsa-cheapest-flights-k-stops` (P1, problem-walkthrough, dsa-graphs): Cheapest Flights With At Most K Stops
 - [ ] `dsa-critical-connections` (P1, problem-walkthrough, dsa-graphs): Critical Connections: Bridges in a Network
 - [ ] `dsa-snakes-ladders-bfs` (P1, problem-walkthrough, dsa-graphs): Snakes and Ladders and Other BFS Puzzles
-- [ ] `dsa-graph-clone-and-copy` (P1, problem-walkthrough, dsa-graphs): Clone Graph and Accounts Merge
 
 ### cp
 
@@ -47,12 +47,13 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `cp-segment-tree-descend` (P1, pattern, cp-ranges): Walking Down a Segment Tree
 - [ ] `cp-mos-algorithm` (P1, pattern, cp-ranges): Mo's Algorithm: Offline Range Queries
 - [ ] `cp-range-sum-queries-cses` (P1, problem-walkthrough, cp-ranges): From Static to Dynamic Range Queries
-- [ ] `cp-dp-with-data-structures` (P1, pattern, cp-dp): DP Sped Up by Segment Trees and BITs
+- [ ] `cp-dp-on-dag` (P1, pattern, cp-dp): DP on DAGs: Longest and Counting Paths
 
 ### famous-algos
 
 - [ ] `famous-algos-myers-diff` (P0, concept, fa-search): Myers' Diff: How Git Shows What Changed
 - [ ] `famous-algos-fft` (P0, concept, fa-signals): The Fast Fourier Transform: Hearing the Notes in a Chord
+- [ ] `famous-algos-a-star` (P0, concept, fa-signals): A* Search: Dijkstra With a Sense of Direction
 - [ ] `famous-algos-counting-bloom-cuckoo` (P1, concept, fa-sketches): Deletable Filters: Counting Bloom and Cuckoo Filters
 - [ ] `famous-algos-heavy-hitters` (P1, concept, fa-sketches): Finding Heavy Hitters in a Stream: Misra-Gries and Space-Saving
 - [ ] `famous-algos-lsh` (P1, concept, fa-sketches): Locality-Sensitive Hashing: Finding Near Neighbours Fast
@@ -60,7 +61,6 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `famous-algos-crdts` (P1, concept, fa-distributed): CRDTs: Data Types That Merge Themselves
 - [ ] `famous-algos-leader-election-leases` (P1, concept, fa-distributed): Leases and Fencing Tokens: Safe Leadership
 - [ ] `famous-algos-sliding-window-limits` (P1, concept, fa-networking): Sliding Window Rate Limiting: Logs and Counters
-- [ ] `famous-algos-skip-lists-practice` (P1, concept, fa-storage): Skip Lists in Practice: Redis Sorted Sets
 
 ### system-design
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 114 written</summary>
+<details><summary>dsa: 117 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -142,7 +142,10 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-bfs` Breadth-First Search: Exploring in Rings
 - [x] `dsa-dfs` Depth-First Search: Going Deep, Then Backing Up
 - [x] `dsa-cycle-detection` Detecting Cycles in Graphs
+- [x] `dsa-topological-sort` Topological Sort: Ordering Tasks With Dependencies
 - [x] `dsa-union-find` Union-Find: Who Is Connected to Whom
+- [x] `dsa-dijkstra` Dijkstra: Shortest Paths With Weights
+- [x] `dsa-bellman-ford-floyd` Bellman-Ford and Floyd-Warshall
 - [x] `dsa-dp-intro` Dynamic Programming Is Just Careful Recursion
 - [x] `dsa-dp-1d` 1D DP: Stairs, Robbers and Decoding
 - [x] `dsa-knapsack-01` 0/1 Knapsack: Take It or Leave It

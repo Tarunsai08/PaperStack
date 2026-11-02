@@ -1,7 +1,7 @@
 {
- "content_version": "c20e18bf0cfeb073",
+ "content_version": "9776337ae36b5d5d",
  "generated_at": "2026-11-02",
- "count": 316,
+ "count": 319,
  "subjects": [
   {
    "id": "ml",
@@ -20304,6 +20304,135 @@
    "excerpt": "A course catalogue says Algorithms needs Data Structures, Data Structures needs Discrete Maths, and Discrete Maths needs Algorithms. Nobody can ever start. A build tool finds that module A imports B, B imports C and C imports A, and refuses to compile. A spreadsheet shows a \"circular reference\"…"
   },
   {
+   "id": "dsa-topological-sort",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "topological-sort",
+   "title": "Socks Before Shoes",
+   "subtitle": "Topological sort two ways, Kahn's indegree queue and reversed DFS finish order, how both detect impossible orders, and the longest-path DP that runs on top of the order",
+   "track": "dsa-graphs",
+   "track_order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-cycle-detection",
+    "dsa-bfs"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 8,
+   "topics": [
+    "graphs",
+    "topological sort",
+    "DAG",
+    "BFS",
+    "DFS"
+   ],
+   "complexity": {
+    "time": "O(V + E)",
+    "space": "O(V + E)"
+   },
+   "practice_problems": [
+    {
+     "name": "Course Schedule II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/course-schedule-ii/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Course Schedule",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1679",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Parallel Courses III",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/parallel-courses-iii/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Find All Possible Recipes from Given Supplies",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-all-possible-recipes-from-given-supplies/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Verifying an Alien Dictionary",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/verifying-an-alien-dictionary/",
+     "difficulty": "Easy"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Topological order",
+     "definition": "An ordering of a directed graph's vertices in which every edge u → v has u before v."
+    },
+    {
+     "term": "DAG",
+     "definition": "A directed acyclic graph: a directed graph with no cycles, which is exactly the kind of graph that has a topological order."
+    },
+    {
+     "term": "Indegree",
+     "definition": "The number of edges pointing into a vertex: how many things must happen before it."
+    },
+    {
+     "term": "Kahn's algorithm",
+     "definition": "Building a topological order by repeatedly removing a vertex of indegree zero and lowering the indegrees of its out-neighbours."
+    },
+    {
+     "term": "Finish order",
+     "definition": "The order in which a DFS completes vertices; a vertex finishes only after everything reachable from it has finished, so the reverse is a topological order."
+    },
+    {
+     "term": "Critical path",
+     "definition": "The longest chain of dependent tasks by total duration, which sets the earliest time everything can be finished when independent tasks run in parallel."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Kahn's algorithm stops with 5 of 7 vertices in its output. What does that mean?",
+     "options": [
+      "The other two vertices are isolated",
+      "The remaining two vertices are on a cycle or depend on one, so no topological order exists",
+      "The graph is disconnected",
+      "The queue was too small"
+     ],
+     "answer": 1,
+     "explain": "Vertices on a cycle never reach indegree zero, because each waits for another on the same cycle. Isolated vertices start at indegree zero and are output immediately."
+    },
+    {
+     "q": "Why does reversing the DFS finish order give a valid topological order?",
+     "options": [
+      "DFS visits vertices in sorted order",
+      "For every edge u → v, v finishes before u in a DAG, so reversing puts u before v",
+      "Because the first vertex has indegree zero",
+      "It does not; DFS order must be used directly"
+     ],
+     "answer": 1,
+     "explain": "When DFS is at u and looks at v, either v is new and finishes inside u's call, or v is already finished. In a DAG v is never 'in progress', so v always finishes first."
+    },
+    {
+     "q": "Each task has a duration, and independent tasks may run at the same time. How is the earliest finish of everything computed?",
+     "options": [
+      "Sum of all durations",
+      "In topological order, finish[v] = duration[v] + max finish of its prerequisites; the answer is the largest finish",
+      "Run Dijkstra",
+      "Count the edges"
+     ],
+     "answer": 1,
+     "explain": "A task can start once its slowest prerequisite is done. Processing in topological order guarantees those finishes are already known. The answer is the length of the critical path."
+    }
+   ],
+   "cover_seed": "topological-sort",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "dsa/topological-sort.md",
+   "hash": "63cf99af1586",
+   "word_count": 1720,
+   "excerpt": "Getting dressed has rules. Socks before shoes, trousers before shoes, trousers and shirt before the belt, the belt before the jacket. The watch can go on whenever you like. Nobody writes these rules down, yet everybody finds an order that works every morning. Build systems, spreadsheets, course…"
+  },
+  {
    "id": "dsa-union-find",
    "kind": "pattern",
    "subject": "dsa",
@@ -20433,6 +20562,247 @@
    "hash": "7cc4c515e093",
    "word_count": 1462,
    "excerpt": "A social app processes a stream of \"A is now friends with B\" events, and after each one it must answer \"are X and Y in the same circle?\" You could rebuild the graph and run a search for every question, but with a hundred thousand events and questions, that is billions of steps. What you need is a…"
+  },
+  {
+   "id": "dsa-dijkstra",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "dijkstra",
+   "title": "Water Racing Through a Network of Pipes",
+   "subtitle": "Dijkstra's algorithm: settle the closest unsettled vertex, relax its edges, skip stale heap entries, and why one negative edge breaks the whole idea",
+   "track": "dsa-graphs",
+   "track_order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-bfs",
+    "dsa-heap-basics"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 8,
+   "topics": [
+    "graphs",
+    "shortest paths",
+    "heap",
+    "greedy"
+   ],
+   "complexity": {
+    "time": "O((V + E) log V) with a binary heap",
+    "space": "O(V + E)"
+   },
+   "practice_problems": [
+    {
+     "name": "Shortest Routes I",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1671",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Network Delay Time",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/network-delay-time/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Path With Minimum Effort",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/path-with-minimum-effort/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Number of Ways to Arrive at Destination",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Relaxation",
+     "definition": "Checking whether going through vertex u gives v a shorter distance, dist[u] + w < dist[v], and if so updating dist[v]."
+    },
+    {
+     "term": "Settled vertex",
+     "definition": "A vertex whose shortest distance is final; Dijkstra settles the unsettled vertex with the smallest tentative distance each step."
+    },
+    {
+     "term": "Tentative distance",
+     "definition": "The best distance to a vertex found so far, which may still go down until the vertex is settled."
+    },
+    {
+     "term": "Stale entry",
+     "definition": "A heap entry (d, v) with d larger than the current dist[v], left behind by an earlier, worse relaxation and skipped when popped."
+    },
+    {
+     "term": "Parent pointer",
+     "definition": "For each vertex, the vertex it was last relaxed from, so the shortest path can be rebuilt by walking back from the target."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why can Dijkstra declare the popped vertex's distance final?",
+     "options": [
+      "Because the heap is sorted",
+      "Every other route must leave through some unsettled vertex whose distance is at least as large, and non-negative edges cannot make it shorter afterwards",
+      "Because it was pushed first",
+      "Because BFS proved it"
+     ],
+     "answer": 1,
+     "explain": "The popped vertex has the smallest tentative distance among all unsettled vertices. Any detour passes through one of them first and then adds non-negative weights, so it cannot beat the popped distance."
+    },
+    {
+     "q": "Edges A → B weight 2, A → C weight 3, C → B weight -2. What does Dijkstra from A report for B, and what is correct?",
+     "options": [
+      "Both 1",
+      "Dijkstra settles B at 2, but A → C → B costs 1",
+      "Both 2",
+      "Dijkstra reports 1, correct is 2"
+     ],
+     "answer": 1,
+     "explain": "B is popped first with 2 and settled. The negative edge found later would lower it, which breaks the guarantee. Negative edges need Bellman-Ford."
+    },
+    {
+     "q": "You pop (9, E) from the heap, but dist[E] is already 7. What should you do?",
+     "options": [
+      "Relax E's edges with 9",
+      "Skip it: it is a stale entry from a worse path",
+      "Push it back",
+      "Stop the algorithm"
+     ],
+     "answer": 1,
+     "explain": "With lazy deletion, old entries stay in the heap. Comparing the popped distance with dist[E] identifies them; processing them again wastes time, and in some variants gives wrong answers."
+    }
+   ],
+   "cover_seed": "dijkstra",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.93,
+   "path": "dsa/dijkstra.md",
+   "hash": "e30443e8b587",
+   "word_count": 1666,
+   "excerpt": "Pour water into one end of a network of pipes. Each pipe takes a different time to fill, depending on its length. The water spreads out, and at every junction, the first water to arrive came along the fastest route. Nobody had to compare routes: the water simply got there first. Breadth-first…"
+  },
+  {
+   "id": "dsa-bellman-ford-floyd",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "bellman-ford-floyd",
+   "title": "A Rumour Spreading Round by Round",
+   "subtitle": "Bellman-Ford relaxes every edge V - 1 times and survives negative weights, a V-th round exposes negative cycles, and Floyd-Warshall gets every pair's distance with three loops in the right order",
+   "track": "dsa-graphs",
+   "track_order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-dijkstra"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 8,
+   "topics": [
+    "graphs",
+    "shortest paths",
+    "negative cycles",
+    "dynamic programming"
+   ],
+   "complexity": {
+    "time": "Bellman-Ford O(V × E); Floyd-Warshall O(V³)",
+    "space": "O(V) and O(V²)"
+   },
+   "practice_problems": [
+    {
+     "name": "Shortest Routes II",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1672",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "High Score",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1673",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Cycle Finding",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1197",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Find the City With the Smallest Number of Neighbors at a Threshold Distance",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Cheapest Flights Within K Stops",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/cheapest-flights-within-k-stops/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Bellman-Ford",
+     "definition": "A single-source shortest-path algorithm that relaxes every edge in V - 1 rounds; it handles negative edge weights."
+    },
+    {
+     "term": "Round",
+     "definition": "One pass of Bellman-Ford over every edge; after round k, every distance is at least as good as the best path using at most k edges."
+    },
+    {
+     "term": "Negative cycle",
+     "definition": "A cycle whose edge weights sum to less than zero, so going around it again always lowers the cost and no shortest path exists through it."
+    },
+    {
+     "term": "Floyd-Warshall",
+     "definition": "An all-pairs shortest-path algorithm that allows intermediate vertices 0, 1, ..., k one at a time, updating every pair with d[i][k] + d[k][j]."
+    },
+    {
+     "term": "Intermediate vertex",
+     "definition": "A vertex on a path other than its two endpoints; Floyd-Warshall's outer loop decides which vertices may be used as intermediates."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does Bellman-Ford need exactly V - 1 rounds in the worst case?",
+     "options": [
+      "Because the heap has V entries",
+      "A shortest path without cycles uses at most V - 1 edges, and each round extends correct paths by at least one more edge",
+      "Because of negative cycles",
+      "It is an arbitrary safety margin"
+     ],
+     "answer": 1,
+     "explain": "After round k, every vertex whose shortest path has at most k edges has its correct distance. A simple path visits at most V vertices, so V - 1 edges, so V - 1 rounds suffice."
+    },
+    {
+     "q": "After V - 1 rounds, a V-th round still lowers some distance. What does that prove?",
+     "options": [
+      "The graph is disconnected",
+      "A negative cycle is reachable from the source",
+      "The source was wrong",
+      "The algorithm needs more rounds"
+     ],
+     "answer": 1,
+     "explain": "Without a reachable negative cycle, all distances are final after V - 1 rounds. Any further improvement means some path keeps getting cheaper by looping."
+    },
+    {
+     "q": "In Floyd-Warshall, why must the loop over k be the outermost?",
+     "options": [
+      "For cache speed only",
+      "The table after step k must hold best paths using intermediates 0..k for every pair before step k + 1 uses them",
+      "Any loop order gives the same result",
+      "Because k is the source"
+     ],
+     "answer": 1,
+     "explain": "Step k combines d[i][k] and d[k][j], which must already be best over intermediates 0..k-1. With k inside, those entries may not be ready yet, and some shortest paths are missed."
+    }
+   ],
+   "cover_seed": "bellman-ford-floyd",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.8,
+   "path": "dsa/bellman-ford-floyd.md",
+   "hash": "5fdf29af5777",
+   "word_count": 1702,
+   "excerpt": "A rumour starts with one person. In the first round, everyone who talks to that person hears it. In the second round, their friends hear it, and so on. After enough rounds, the rumour has reached everyone it can reach, and each person heard it along the shortest chain of conversations. Dijkstra…"
   },
   {
    "id": "dsa-dp-intro",
