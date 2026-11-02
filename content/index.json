@@ -1,5 +1,5 @@
 {
- "content_version": "f1fd60f6d81e1d65",
+ "content_version": "0727a09538546e96",
  "generated_at": "2026-11-02",
  "count": 256,
  "subjects": [
@@ -8852,7 +8852,7 @@
    "subject": "dsa",
    "slug": "prefix-sums",
    "title": "Answering a Million Range Questions Instantly",
-   "subtitle": "Prefix sums: one pass of preparation that turns every range sum into a single subtraction",
+   "subtitle": "Prefix sums: one pass of preparation that turns every range sum into a single subtraction, plus difference arrays, 2D grids and prefix sums with a hash map",
    "track": "dsa-arrays",
    "track_order": 1,
    "priority": "P0",
@@ -8860,11 +8860,12 @@
     "dsa-big-o"
    ],
    "difficulty": "beginner",
-   "read_minutes": 5,
+   "read_minutes": 9,
    "topics": [
     "arrays",
     "prefix sums",
-    "precomputation"
+    "precomputation",
+    "difference array"
    ],
    "complexity": {
     "time": "O(n) build, O(1) per query",
@@ -8884,6 +8885,12 @@
      "difficulty": "Easy"
     },
     {
+     "name": "Find Pivot Index",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-pivot-index/",
+     "difficulty": "Easy"
+    },
+    {
      "name": "Range Sum Query 2D - Immutable",
      "platform": "LeetCode",
      "url": "https://leetcode.com/problems/range-sum-query-2d-immutable/",
@@ -8896,9 +8903,9 @@
      "difficulty": "Medium"
     },
     {
-     "name": "Subarray Sum Equals K",
+     "name": "Subarray Sums Divisible by K",
      "platform": "LeetCode",
-     "url": "https://leetcode.com/problems/subarray-sum-equals-k/",
+     "url": "https://leetcode.com/problems/subarray-sums-divisible-by-k/",
      "difficulty": "Medium"
     }
    ],
@@ -8922,6 +8929,14 @@
     {
      "term": "Sentinel",
      "definition": "An extra value placed at the edge of a data structure, like a leading zero, so edge cases disappear from the code."
+    },
+    {
+     "term": "Inclusion-exclusion",
+     "definition": "Adding and subtracting overlapping regions so each cell is counted exactly once, as in the four-term 2D rectangle formula."
+    },
+    {
+     "term": "Invertible operation",
+     "definition": "An operation whose effect can be undone, like addition (undone by subtraction) or XOR (undone by XOR again). Prefix tricks need one."
     }
    ],
    "quiz": [
@@ -8964,8 +8979,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.9,
    "path": "dsa/prefix-sums.md",
-   "hash": "701656f12c32",
-   "word_count": 1026,
+   "hash": "46b546e901ae",
+   "word_count": 1999,
    "excerpt": "Your interviewer hands you an array of 100,000 numbers and then asks 100,000 questions: \"What is the sum from index 3,120 to index 88,004?\" If you add up each range from scratch, you could be doing ten billion additions. Your program times out before the third coffee. There is a trick that answers…"
   },
   {
@@ -8982,7 +8997,7 @@
     "dsa-big-o"
    ],
    "difficulty": "beginner",
-   "read_minutes": 4,
+   "read_minutes": 7,
    "topics": [
     "arrays",
     "two pointers",
@@ -9021,6 +9036,12 @@
      "name": "Sum of Two Values",
      "platform": "CSES",
      "url": "https://cses.fi/problemset/task/1640",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Merge Sorted Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/merge-sorted-array/",
      "difficulty": "Easy"
     }
    ],
@@ -9086,8 +9107,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.93,
    "path": "dsa/two-pointers.md",
-   "hash": "d88268431499",
-   "word_count": 945,
+   "hash": "d4bfa57e27c8",
+   "word_count": 1636,
    "excerpt": "Two friends are looking for a pair of books on a long, sorted shelf whose prices add up to exactly 500 rupees. One starts at the cheap end, the other at the expensive end. Each time they compare, one of them takes a step inward. Within one walk along the shelf, they either find the pair or prove it…"
   },
   {
@@ -9105,7 +9126,7 @@
     "dsa-hashing-patterns"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 4,
+   "read_minutes": 6,
    "topics": [
     "arrays",
     "strings",
@@ -9139,6 +9160,12 @@
      "name": "Permutation in String",
      "platform": "LeetCode",
      "url": "https://leetcode.com/problems/permutation-in-string/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Minimum Size Subarray Sum",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/minimum-size-subarray-sum/",
      "difficulty": "Medium"
     },
     {
@@ -9210,8 +9237,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.93,
    "path": "dsa/sliding-window.md",
-   "hash": "3bf98cc3daaa",
-   "word_count": 961,
+   "hash": "64755ce8864a",
+   "word_count": 1412,
    "excerpt": "\"Find the longest substring without repeating characters.\" A brute force checks every substring: about n²/2 of them, each checked for repeats. On a string of 100,000 characters, that is billions of steps. There is a way to read the string once, left to right, keeping only a small summary of what is…"
   },
   {

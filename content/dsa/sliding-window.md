@@ -18,6 +18,7 @@ practice_problems:
   - { name: "Longest Substring Without Repeating Characters", platform: "LeetCode", url: "https://leetcode.com/problems/longest-substring-without-repeating-characters/", difficulty: "Medium" }
   - { name: "Max Consecutive Ones III", platform: "LeetCode", url: "https://leetcode.com/problems/max-consecutive-ones-iii/", difficulty: "Medium" }
   - { name: "Permutation in String", platform: "LeetCode", url: "https://leetcode.com/problems/permutation-in-string/", difficulty: "Medium" }
+  - { name: "Minimum Size Subarray Sum", platform: "LeetCode", url: "https://leetcode.com/problems/minimum-size-subarray-sum/", difficulty: "Medium" }
   - { name: "Minimum Window Substring", platform: "LeetCode", url: "https://leetcode.com/problems/minimum-window-substring/", difficulty: "Hard" }
 glossary:
   - term: "Window"
@@ -93,7 +94,22 @@ A sliding window works when validity is monotonic: if a window is invalid, every
 
 ### "Exactly k" is two "at most" windows
 
-Some problems ask for the number of subarrays with **exactly** k distinct values. Exactly-k windows are not monotonic, but at-most-k windows are. The trick: count subarrays with at most k distinct values, subtract those with at most k − 1, and what remains has exactly k. For each right edge, every window ending there with left between `left` and `right` is valid, so you add `right - left + 1` to the count.
+Some problems ask for the number of subarrays with **exactly** k distinct values. Exactly-k windows are not monotonic, but at-most-k windows are. The trick: count subarrays with at most k distinct values, subtract those with at most k − 1, and what remains has exactly k.
+
+For each right edge, every window ending there with its left end anywhere from `left` to `right` is valid, because shrinking a valid window keeps it valid. So you add `right - left + 1` to the count in one step. For `[1, 2, 1, 2, 3]`, there are 12 subarrays with at most 2 distinct values and 5 with at most 1, so 12 − 5 = 7 have exactly 2.
+
+### Choosing the window state
+
+The state is whatever lets you answer "is the window valid?" in O(1) after each change:
+
+| Problem shape | State | Valid when |
+|---|---|---|
+| sum at least or at most a target, non-negative values | running sum | compare the sum |
+| no repeated characters | last index per character, or counts | no count above 1 |
+| at most k zeros, or k replacements | count of the bad elements | count ≤ k |
+| at most k distinct values | hash map of counts plus its size | size ≤ k |
+| window contains every needed character | need counts plus a "missing" counter | missing = 0 |
+| fixed window matching an anagram | 26 counts plus a "matches" counter | all 26 counts agree |
 
 ## Walk through an example
 
@@ -111,6 +127,23 @@ Longest substring without repeating characters in `"abcabcbb"`. State: the last 
 | 7 | b | yes, b at 6 | 7 | b | 3 |
 
 Answer: 3. Notice the shortcut: instead of removing characters one by one, we can jump `left` straight past the previous occurrence, as long as we never move it backward.
+
+### A shortest window: smallest subarray with sum at least 7
+
+For `[2, 3, 1, 2, 4, 3]`, grow the head until the sum reaches 7, then pull in the tail as long as the sum stays at least 7, recording the length each time.
+
+| right | Sum after adding | Valid windows recorded while shrinking | Best |
+|---|---|---|---|
+| 0 to 2 | 2, 5, 6 | none yet | none |
+| 3 | 8 | [2, 3, 1, 2] length 4 | 4 |
+| 4 | 10 | [3, 1, 2, 4] length 4, then [1, 2, 4] length 3 | 3 |
+| 5 | 9 | [2, 4, 3] length 3, then [4, 3] length 2 | 2 |
+
+The answer is 2. The caterpillar stretched to find a valid stretch, then squeezed it as short as it could before stretching again.
+
+### At most k zeros: Max Consecutive Ones III
+
+For `[1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0]` with k = 2, the state is the number of zeros in the window. The window grows to `[1, 1, 1, 0, 0]` (length 5). The third zero at index 5 makes it invalid, so the tail moves past index 3, the first zero. Later the window `[0, 0, 1, 1, 1, 1]` from index 4 to 9 reaches length 6, which is the answer.
 
 :::try-this
 Use a fixed window of size 3 on `[2, 1, 5, 1, 3, 2]` to find the largest sum. Start with 2 + 1 + 5 = 8, then each step add the new number and subtract the one leaving. You should see sums 8, 7, 9, 6, so the answer is 9.
@@ -158,9 +191,52 @@ int maxSumFixed(const vector<int>& a, int k) {
     return (int)best;
 }
 
+int minLenAtLeast(const vector<int>& a, int target) {        // shortest window, non-negative values
+    int best = INT_MAX, left = 0;
+    long long sum = 0;
+    for (int right = 0; right < (int)a.size(); right++) {
+        sum += a[right];
+        while (sum >= target) {                               // record while still valid, then shrink
+            best = min(best, right - left + 1);
+            sum -= a[left++];
+        }
+    }
+    return best == INT_MAX ? 0 : best;
+}
+
+long long atMostKDistinct(const vector<int>& a, int k) {
+    unordered_map<int, int> cnt;
+    long long res = 0;
+    for (int left = 0, right = 0; right < (int)a.size(); right++) {
+        cnt[a[right]]++;
+        while ((int)cnt.size() > k)
+            if (--cnt[a[left++]] == 0) cnt.erase(a[left - 1]);
+        res += right - left + 1;                              // every window ending at right
+    }
+    return res;
+}
+
+string minWindow(const string& s, const string& t) {
+    vector<int> need(128, 0);
+    for (char c : t) need[c]++;
+    int missing = t.size(), left = 0, bestL = 0, bestLen = INT_MAX;
+    for (int right = 0; right < (int)s.size(); right++) {
+        if (need[s[right]]-- > 0) missing--;                  // a needed character arrived
+        while (missing == 0) {
+            if (right - left + 1 < bestLen) bestLen = right - left + 1, bestL = left;
+            if (++need[s[left++]] > 0) missing++;             // a needed character left
+        }
+    }
+    return bestLen == INT_MAX ? "" : s.substr(bestL, bestLen);
+}
+
 int main() {
-    cout << longestWithoutRepeat("abcabcbb") << '\n';     // 3
-    cout << maxSumFixed({2, 1, 5, 1, 3, 2}, 3) << '\n';   // 9
+    cout << longestWithoutRepeat("abcabcbb") << '\n';                          // 3
+    cout << maxSumFixed({2, 1, 5, 1, 3, 2}, 3) << '\n';                        // 9
+    cout << minLenAtLeast({2, 3, 1, 2, 4, 3}, 7) << '\n';                      // 2
+    vector<int> b = {1, 2, 1, 2, 3};
+    cout << atMostKDistinct(b, 2) - atMostKDistinct(b, 1) << '\n';             // 7
+    cout << minWindow("ADOBECODEBANC", "ABC") << '\n';                         // BANC
 }
 ```
 
@@ -179,15 +255,19 @@ Common misconception: "every subarray problem is a sliding window." The pattern 
 - **Moving `left` backward** when jumping past a repeat. Only jump if the repeat is inside the current window (`last[c] >= left`).
 - **Updating the answer at the wrong moment.** For "longest", record after fixing the window; for "shortest", record while it is still valid, before shrinking further.
 - **Forgetting to undo state** when an element leaves: decrement its count, subtract it from the sum.
+- **Rechecking validity by scanning the window,** which makes each step O(k). Keep a counter such as "missing characters" so validity is O(1).
+- **Trying to count "exactly k" directly.** Use at most k minus at most k − 1.
 
 ## Practice problems
 
-Start with *Maximum Average Subarray I* for the fixed window. *Longest Substring Without Repeating Characters* is the walkthrough above. *Max Consecutive Ones III* is "longest window with at most k zeros". *Permutation in String* is a fixed window compared with character counts. *Minimum Window Substring* is the classic shortest-window problem and a favourite at top companies.
+Start with *Maximum Average Subarray I* for the fixed window. *Longest Substring Without Repeating Characters* is the walkthrough above. *Max Consecutive Ones III* is "longest window with at most k zeros". *Permutation in String* is a fixed window compared with character counts. *Minimum Size Subarray Sum* is the shortest-window shape on numbers, traced above.
+
+*Minimum Window Substring* is the classic shortest-window problem on strings and a favourite at top companies; the code above uses a single `missing` counter so validity is checked in O(1). For counting windows, try *Subarrays with K Different Integers* on LeetCode with the at-most trick.
 
 ## Key takeaways
 
 - A sliding window keeps a summary of a contiguous stretch and updates it as elements enter on the right and leave on the left.
-- Fixed windows slide one step at a time; variable windows grow on the right and shrink on the left while the window is invalid.
+- Fixed windows slide one step at a time; variable windows grow on the right and shrink on the left while the window is invalid, or, for shortest windows, while it stays valid.
 - Each element enters once and leaves at most once, so the whole scan is O(n) even with a nested while loop.
 - The pattern needs monotonic validity: if a window is invalid, every larger window containing it is invalid too.
 - Contiguous plus longest, shortest or at most k is the cue; negative numbers are the warning sign to switch to prefix sums.
