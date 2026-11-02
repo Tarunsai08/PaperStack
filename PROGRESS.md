@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 2 | 0 | 150 | 152 | 2/72 |
-| cp | 0 | 0 | 115 | 115 | 0/29 |
+| dsa | 5 | 0 | 147 | 152 | 5/72 |
+| cp | 1 | 0 | 114 | 115 | 1/29 |
 | famous-algos | 0 | 0 | 91 | 91 | 0/32 |
-| system-design | 0 | 0 | 119 | 119 | 0/60 |
+| system-design | 1 | 0 | 118 | 119 | 1/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **85** | **0** | **588** | **673** | |
+| **All** | **90** | **0** | **583** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **31**
 
@@ -25,30 +25,39 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### dsa
 
-- [ ] `dsa-cpp-stl-toolkit` (P0, primer, dsa-start): The C++ STL Toolkit You Will Use Every Day
-- [ ] `dsa-problem-solving-framework` (P0, primer, dsa-start): How to Attack a Problem You Have Never Seen
 - [ ] `dsa-recursion-basics` (P0, primer, dsa-start): Recursion: Trusting the Function You Are Writing
 - [ ] `dsa-two-pointers` (P0, pattern, dsa-arrays): Two Pointers: Squeezing Answers From Both Ends
 - [ ] `dsa-kadane` (P0, pattern, dsa-arrays): Kadane's Algorithm: The Best Subarray in One Pass
+- [ ] `dsa-string-patterns` (P0, pattern, dsa-arrays): Strings: Palindromes, Anagrams and Counting
 - [ ] `dsa-product-except-self` (P0, problem-walkthrough, dsa-arrays): Product of Array Except Self Without Division
+- [ ] `dsa-subarray-sum-k` (P0, problem-walkthrough, dsa-arrays): Counting Subarrays With Sum K
 - [ ] `dsa-binary-search` (P0, pattern, dsa-search-sort): Binary Search, Done Right Every Time
+- [ ] `dsa-sorting-as-tool` (P0, pattern, dsa-search-sort): Sorting as a Superpower
 - [ ] `dsa-gcd-primes` (P0, pattern, dsa-math): GCD, Primes and Divisors for Interviews
-- [ ] `dsa-bit-basics` (P1, primer, dsa-start): Bits and Bytes: Thinking in Binary
-- [ ] `dsa-matrix-traversal` (P1, pattern, dsa-arrays): Walking a Grid: Spirals, Rotations and Boundaries
+- [ ] `dsa-linked-list-basics` (P0, pattern, dsa-linear): Linked Lists: Pointer Surgery Made Safe
 
 ### cp
 
-- [ ] `cp-how-contests-work` (P0, primer, cp-start): How Programming Contests Work
+- [ ] `cp-fast-io-template` (P0, primer, cp-start): Your Contest Template and Fast I/O
+- [ ] `cp-reading-problems-fast` (P0, primer, cp-start): Reading a Problem in Two Minutes
 - [ ] `cp-sqrt-decomposition` (P1, pattern, cp-ranges): Square Root Decomposition
 
 ### famous-algos
 
+- [ ] `famous-algos-bloom-filter` (P0, concept, fa-sketches): Bloom Filters: Saying No Without Looking
+- [ ] `famous-algos-consistent-hashing` (P0, concept, fa-distributed): Consistent Hashing: Adding Servers Without Moving Everything
+- [ ] `famous-algos-cryptographic-hashing` (P0, concept, fa-crypto): Cryptographic Hashes: Fingerprints You Cannot Fake
+- [ ] `famous-algos-inverted-index` (P0, concept, fa-search): Inverted Indexes: How Search Finds Pages in Milliseconds
 - [ ] `famous-algos-kalman-filter` (P0, concept, fa-signals): The Kalman Filter: Blending Guesses With Noisy Measurements
+- [ ] `famous-algos-minhash` (P1, concept, fa-sketches): MinHash: Estimating Similarity Without Comparing Everything
+- [ ] `famous-algos-swiss-tables` (P1, concept, fa-storage): The Hash Table You Use Every Day: Open Addressing and Swiss Tables
+- [ ] `famous-algos-collaborative-filtering` (P1, concept, fa-search): Collaborative Filtering: People Like You Also Liked
 - [ ] `famous-algos-bresenham` (P2, concept, fa-signals): Bresenham's Line: Drawing on a Pixel Grid
 
 ### system-design
 
-_Nothing ready: every planned entry is waiting on a prerequisite, or the subject is complete._
+- [ ] `system-design-back-of-envelope` (P0, primer, sd-fundamentals): Back-of-Envelope Estimates in Five Minutes
+- [ ] `system-design-oop-solid` (P0, lld, sd-lld): Object-Oriented Design and SOLID Principles
 
 ### ml
 
@@ -65,10 +74,25 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ## Written so far
 
-<details><summary>dsa: 2 written</summary>
+<details><summary>dsa: 5 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
+- [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
+- [x] `dsa-problem-solving-framework` How to Attack a Problem You Have Never Seen
 - [x] `dsa-prefix-sums` Prefix Sums: Answering Range Questions Instantly
+- [x] `dsa-hashing-patterns` Hash Maps: Trading Memory for Speed
+
+</details>
+
+<details><summary>cp: 1 written</summary>
+
+- [x] `cp-how-contests-work` How Programming Contests Work
+
+</details>
+
+<details><summary>system-design: 1 written</summary>
+
+- [x] `system-design-interview-framework` How to Answer Any System Design Question
 
 </details>
 

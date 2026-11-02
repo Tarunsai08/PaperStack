@@ -1,7 +1,7 @@
 {
- "content_version": "02c18cc84ed984bc",
+ "content_version": "a92be42421a5ac39",
  "generated_at": "2026-11-02",
- "count": 85,
+ "count": 90,
  "subjects": [
   {
    "id": "ml",
@@ -8353,6 +8353,183 @@
    "excerpt": "Two candidates solve the same interview problem. Both programs are correct. One finishes in a fraction of a second; the other is still running when the interviewer moves on. The difference was decided before either of them typed a single line. The fast candidate read one sentence in the problem, \"n…"
   },
   {
+   "id": "dsa-cpp-stl-toolkit",
+   "kind": "primer",
+   "subject": "dsa",
+   "slug": "cpp-stl-toolkit",
+   "title": "The Toolbox Every Fast Solution Is Built From",
+   "subtitle": "The C++ STL you will use every day, what each tool costs, and when to reach for it",
+   "track": "dsa-start",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "c++",
+    "stl",
+    "containers",
+    "complexity"
+   ],
+   "glossary": [
+    {
+     "term": "Container",
+     "definition": "A standard library object that stores a collection of values, such as a vector, set or map."
+    },
+    {
+     "term": "Iterator",
+     "definition": "A small object that points at a position inside a container, like a bookmark you can move forward and read through."
+    },
+    {
+     "term": "Comparator",
+     "definition": "A function that tells sort or an ordered container which of two values should come first."
+    },
+    {
+     "term": "Hash table",
+     "definition": "A structure that turns each key into a number and uses it to jump straight to a bucket, giving average constant-time lookups."
+    },
+    {
+     "term": "Balanced binary search tree",
+     "definition": "A tree that keeps its keys in sorted order and its height around log n, so searches, inserts and deletes stay fast."
+    },
+    {
+     "term": "Amortised",
+     "definition": "The average cost per operation over a long sequence, even when a few individual operations are expensive."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "You need to know, for each new number, the smallest stored number that is at least as big. Which container fits?",
+     "options": [
+      "unordered_set",
+      "set with lower_bound",
+      "vector with push_back",
+      "stack"
+     ],
+     "answer": 1,
+     "explain": "A set keeps values sorted, and lower_bound finds the first value that is not less than x in O(log n). An unordered_set has no order to search."
+    },
+    {
+     "q": "What does a default std::priority_queue<int> give you from top()?",
+     "options": [
+      "The smallest element",
+      "The largest element",
+      "The most recently pushed element",
+      "A random element"
+     ],
+     "answer": 1,
+     "explain": "The default priority_queue is a max-heap. For a min-heap, use priority_queue<int, vector<int>, greater<int>>."
+    },
+    {
+     "q": "Why can unordered_map be risky in competitive programming?",
+     "options": [
+      "It cannot store strings",
+      "Its keys are always sorted",
+      "Its average O(1) can degrade badly when many keys collide",
+      "It uses more memory than a vector of the same size in every case"
+     ],
+     "answer": 2,
+     "explain": "Lookups are O(1) on average, but carefully chosen inputs can make many keys land in the same bucket, making each lookup slow."
+    }
+   ],
+   "cover_seed": "cpp-stl-toolkit",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.9,
+   "path": "dsa/cpp-stl-toolkit.md",
+   "hash": "b9886decc8c7",
+   "word_count": 1013,
+   "excerpt": "A carpenter does not build a chair by forging their own hammer first. They open a well-organised toolbox, pick the right tool without thinking, and spend their energy on the chair. In interviews and contests, the C++ Standard Template Library is that toolbox. Candidates who know it cold write a…"
+  },
+  {
+   "id": "dsa-problem-solving-framework",
+   "kind": "primer",
+   "subject": "dsa",
+   "slug": "problem-solving-framework",
+   "title": "What to Do When You Have Never Seen the Problem",
+   "subtitle": "A repeatable way to go from a blank page to a working, explained solution",
+   "track": "dsa-start",
+   "track_order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "interview strategy",
+    "problem solving",
+    "patterns"
+   ],
+   "glossary": [
+    {
+     "term": "Brute force",
+     "definition": "The most direct solution that tries every possibility. Usually too slow, but always a correct starting point."
+    },
+    {
+     "term": "Bottleneck",
+     "definition": "The part of a solution that dominates its running time, such as an inner loop that repeats work."
+    },
+    {
+     "term": "Invariant",
+     "definition": "A fact that stays true at every step of an algorithm, which you can rely on when reasoning about it."
+    },
+    {
+     "term": "Pattern",
+     "definition": "A reusable problem-solving technique, like two pointers or binary search on the answer, that fits a family of problems."
+    },
+    {
+     "term": "Edge case",
+     "definition": "An unusual input at the boundaries, such as an empty array, one element, or all values equal, that often breaks code."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What should you do right after restating the problem and trying a small example?",
+     "options": [
+      "Write optimised code immediately",
+      "Describe a brute force and its complexity",
+      "Ask for the answer",
+      "Pick a data structure at random"
+     ],
+     "answer": 1,
+     "explain": "A brute force proves you understand the problem, gives a fallback, and shows exactly where the time goes, which tells you what to optimise."
+    },
+    {
+     "q": "A problem says 'subarray' and all numbers are positive. Which pattern is a strong first guess?",
+     "options": [
+      "Backtracking",
+      "Sliding window",
+      "Topological sort",
+      "Union-find"
+     ],
+     "answer": 1,
+     "explain": "Contiguous ranges plus positive numbers mean the window sum only grows when you extend it and only shrinks when you move the left end, which is exactly what a sliding window needs."
+    },
+    {
+     "q": "Your brute force recomputes the sum of the same ranges again and again. What is the usual fix?",
+     "options": [
+      "Add more loops",
+      "Precompute something once, such as prefix sums, and reuse it",
+      "Use recursion instead",
+      "Sort the output"
+     ],
+     "answer": 1,
+     "explain": "Repeated work is the bottleneck. Storing it once, as prefix sums, a hash map or a DP table, removes the repetition."
+    }
+   ],
+   "cover_seed": "problem-solving-framework",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.9,
+   "path": "dsa/problem-solving-framework.md",
+   "hash": "581ed28a1836",
+   "word_count": 1025,
+   "excerpt": "The interviewer finishes reading the problem. You have never seen it before. The silence starts, and so does the panic: is it DP? A graph? Something you never studied? Strong candidates feel that same jolt. The difference is that they have a routine for the next five minutes, and the routine does…"
+  },
+  {
    "id": "dsa-prefix-sums",
    "kind": "pattern",
    "subject": "dsa",
@@ -8473,6 +8650,309 @@
    "hash": "701656f12c32",
    "word_count": 1026,
    "excerpt": "Your interviewer hands you an array of 100,000 numbers and then asks 100,000 questions: \"What is the sum from index 3,120 to index 88,004?\" If you add up each range from scratch, you could be doing ten billion additions. Your program times out before the third coffee. There is a trick that answers…"
+  },
+  {
+   "id": "dsa-hashing-patterns",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "hashing-patterns",
+   "title": "The Notebook That Turns O(n²) Into O(n)",
+   "subtitle": "Hash map patterns: remember what you have seen, count, and group by a key",
+   "track": "dsa-arrays",
+   "track_order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-cpp-stl-toolkit"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "hashing",
+    "hash map",
+    "arrays",
+    "strings"
+   ],
+   "complexity": {
+    "time": "O(n) average",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Two Sum",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/two-sum/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Contains Duplicate",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/contains-duplicate/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Group Anagrams",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/group-anagrams/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Longest Consecutive Sequence",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/longest-consecutive-sequence/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Subarray Sum Equals K",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/subarray-sum-equals-k/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Hash map",
+     "definition": "A structure that stores key-value pairs and finds a key in constant time on average by turning it into a bucket number."
+    },
+    {
+     "term": "Complement",
+     "definition": "The value you still need to reach a target, such as target minus the current number."
+    },
+    {
+     "term": "Frequency map",
+     "definition": "A hash map from each item to how many times it has appeared."
+    },
+    {
+     "term": "Canonical key",
+     "definition": "A standard form of an item, such as its sorted letters, chosen so that items that belong together get the same key."
+    },
+    {
+     "term": "Collision",
+     "definition": "When two different keys land in the same bucket of a hash table, which slows lookups if it happens a lot."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In Two Sum, when should you insert the current number into the map?",
+     "options": [
+      "Before checking for its complement",
+      "After checking for its complement",
+      "Only at the end",
+      "It does not matter for any input"
+     ],
+     "answer": 1,
+     "explain": "Checking first prevents pairing a number with itself, for example target 8 with a single 4. Inserting afterwards keeps the answer correct."
+    },
+    {
+     "q": "Which canonical key groups 'eat', 'tea' and 'ate' together?",
+     "options": [
+      "The first letter",
+      "The length",
+      "The letters sorted: 'aet'",
+      "The sum of character codes"
+     ],
+     "answer": 2,
+     "explain": "All anagrams have the same letters, so sorting gives the same string. Length or first letter would also group words that are not anagrams."
+    },
+    {
+     "q": "What is the worst-case time of a single unordered_map lookup?",
+     "options": [
+      "O(1) always",
+      "O(log n)",
+      "O(n) when many keys collide",
+      "O(n log n)"
+     ],
+     "answer": 2,
+     "explain": "It is O(1) on average, but if many keys land in the same bucket, a lookup may scan all of them."
+    }
+   ],
+   "cover_seed": "hashing-patterns",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.92,
+   "path": "dsa/hashing-patterns.md",
+   "hash": "c68f845f5598",
+   "word_count": 1026,
+   "excerpt": "Two Sum is probably the most famous interview question in the world. Given a list of numbers, find two that add up to a target. Most people's first answer checks every pair, and with 100,000 numbers that is about five billion checks. The fix is so small it feels like cheating: keep a notebook of…"
+  },
+  {
+   "id": "cp-how-contests-work",
+   "kind": "primer",
+   "subject": "cp",
+   "slug": "how-contests-work",
+   "title": "Two Hours, Six Problems, One Rating",
+   "subtitle": "How programming contests work, what the ratings mean, and why they make you interview-proof",
+   "track": "cp-start",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "competitive programming",
+    "codeforces",
+    "contests"
+   ],
+   "glossary": [
+    {
+     "term": "Online judge",
+     "definition": "A website that runs your code on hidden tests and reports whether it is correct and fast enough."
+    },
+    {
+     "term": "Verdict",
+     "definition": "The judge's result for a submission, such as Accepted, Wrong Answer or Time Limit Exceeded."
+    },
+    {
+     "term": "Rating",
+     "definition": "A number that estimates your contest strength. It goes up or down after each rated contest depending on how you placed against others."
+    },
+    {
+     "term": "Division",
+     "definition": "A contest tier on Codeforces, aimed at a range of ratings. Div. 1 is the hardest; Div. 2, 3 and 4 are progressively easier."
+    },
+    {
+     "term": "Hack",
+     "definition": "On Codeforces, submitting a test case that breaks another contestant's accepted solution during the contest."
+    },
+    {
+     "term": "Upsolving",
+     "definition": "Solving, after the contest ends, the problems you could not solve during it."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Your code passes the samples but the judge says Time Limit Exceeded. What is the most likely cause?",
+     "options": [
+      "A typo in the output format",
+      "The algorithm's complexity is too high for the largest inputs",
+      "The judge is broken",
+      "You forgot to include a header"
+     ],
+     "answer": 1,
+     "explain": "Samples are tiny. The hidden tests include the largest allowed inputs, where an O(n squared) idea on n = 200,000 is far too slow."
+    },
+    {
+     "q": "Which Codeforces division is easiest?",
+     "options": [
+      "Div. 1",
+      "Div. 2",
+      "Div. 3",
+      "Div. 4"
+     ],
+     "answer": 3,
+     "explain": "Div. 4 is aimed at beginners. Div. 1 is for the strongest contestants."
+    },
+    {
+     "q": "Why is upsolving considered so important?",
+     "options": [
+      "It raises your rating directly",
+      "The problems you just failed are exactly at the edge of your skill, which is where learning happens",
+      "It is required to keep your account",
+      "It hides wrong submissions"
+     ],
+     "answer": 1,
+     "explain": "Upsolving does not change your rating, but practising right at the edge of your ability is what makes the next contest go better."
+    }
+   ],
+   "cover_seed": "how-contests-work",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.85,
+   "path": "cp/how-contests-work.md",
+   "hash": "7efb95a6df0d",
+   "word_count": 1020,
+   "excerpt": "At 8:05 pm, twenty thousand people around the world open the same six problems at the same moment. A clock starts counting down from two hours. Somewhere, a student solves problem A in four minutes, problem B in twelve, and then stares at problem C for an hour. By 10:05 pm, every one of them has a…"
+  },
+  {
+   "id": "system-design-interview-framework",
+   "kind": "primer",
+   "subject": "system-design",
+   "slug": "interview-framework",
+   "title": "Forty-Five Minutes to Design Instagram",
+   "subtitle": "A step-by-step framework that turns any open-ended design question into a structured conversation",
+   "track": "sd-fundamentals",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-problem-solving-framework"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "interview strategy",
+    "requirements"
+   ],
+   "glossary": [
+    {
+     "term": "Functional requirement",
+     "definition": "Something the system must do for users, such as post a photo or follow a friend."
+    },
+    {
+     "term": "Non-functional requirement",
+     "definition": "A quality the system must have, such as low latency, high availability, durability or a target scale."
+    },
+    {
+     "term": "Back-of-envelope estimate",
+     "definition": "A quick, rough calculation of load, storage or bandwidth, used to decide which design choices matter."
+    },
+    {
+     "term": "High-level design",
+     "definition": "The big boxes of a system and how requests and data flow between them, before any detail."
+    },
+    {
+     "term": "Deep dive",
+     "definition": "A focused, detailed discussion of one hard part of the design, such as how the feed is built or how data is sharded."
+    },
+    {
+     "term": "Trade-off",
+     "definition": "A choice where gaining one property, like speed, costs you another, like consistency or money."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What should you do first when asked to 'design a chat app'?",
+     "options": [
+      "Draw a database schema",
+      "Pick Kafka or RabbitMQ",
+      "Ask which features and what scale matter",
+      "Start writing API code"
+     ],
+     "answer": 2,
+     "explain": "The question is deliberately vague. Agreeing on features and scale first decides everything else and shows the interviewer you design for real needs."
+    },
+    {
+     "q": "Why do back-of-envelope estimates matter in a design interview?",
+     "options": [
+      "Interviewers check your arithmetic precisely",
+      "They show which parts of the system are under real pressure, which tells you where to spend design effort",
+      "They replace the need for a diagram",
+      "They are only needed for databases"
+     ],
+     "answer": 1,
+     "explain": "Knowing that reads outnumber writes 100 to 1, or that storage grows by terabytes a day, tells you where caching, sharding or queues are actually needed."
+    },
+    {
+     "q": "Which statement best describes a good answer to a design question?",
+     "options": [
+      "One perfect architecture with no weaknesses",
+      "A design that matches the requirements, with trade-offs explained and weaknesses acknowledged",
+      "The architecture of a famous company copied exactly",
+      "As many components as possible"
+     ],
+     "answer": 1,
+     "explain": "There is no perfect design. Interviewers look for designs that fit the stated needs and for honest reasoning about what each choice costs."
+    }
+   ],
+   "cover_seed": "interview-framework",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.92,
+   "path": "system-design/interview-framework.md",
+   "hash": "0d1e3950c0e7",
+   "word_count": 1044,
+   "excerpt": "\"Design Instagram.\" Three words, then silence. There is no input format, no constraints, no expected output. Just a whiteboard and forty-five minutes. Candidates who freeze usually know plenty: caches, queues, databases. What they lack is a route through the conversation. The good news is that one…"
   }
  ]
 }
