@@ -1,7 +1,7 @@
 {
- "content_version": "dc70616d0e287e85",
+ "content_version": "1246055d648d4786",
  "generated_at": "2026-11-02",
- "count": 341,
+ "count": 344,
  "subjects": [
   {
    "id": "ml",
@@ -24600,6 +24600,330 @@
    "hash": "731f4d4383c8",
    "word_count": 1594,
    "excerpt": "A carpenter has a 6-foot plank and a price list: a 1-foot piece sells for 2, a 2-foot piece for 5, a 3-foot piece for 7, up to 14 for the full 6 feet. Selling it whole earns 14. Cutting it into three 2-foot pieces earns 15. Is there anything better? There are 2⁵ = 32 ways to cut a 6-foot plank at…"
+  },
+  {
+   "id": "dsa-longest-common-substring",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "longest-common-substring",
+   "title": "Two Strips of Tape Matched End to End",
+   "subtitle": "Longest common substring resets to zero on a mismatch while longest common subsequence carries the best forward; the same table then gives fewest deletions and the shortest common supersequence",
+   "track": "dsa-dp",
+   "track_order": 21,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-lcs-edit-distance"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "dynamic programming",
+    "strings",
+    "LCS",
+    "substrings"
+   ],
+   "complexity": {
+    "time": "O(n × m)",
+    "space": "O(n × m), or O(m) for lengths only"
+   },
+   "practice_problems": [
+    {
+     "name": "Maximum Length of Repeated Subarray",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/maximum-length-of-repeated-subarray/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Delete Operation for Two Strings",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/delete-operation-for-two-strings/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Shortest Common Supersequence",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/shortest-common-supersequence/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Common substring",
+     "definition": "A contiguous block of characters that appears in both strings."
+    },
+    {
+     "term": "Common subsequence",
+     "definition": "Characters that appear in both strings in the same order, not necessarily next to each other."
+    },
+    {
+     "term": "Run length cell",
+     "definition": "In the substring table, dp[i][j] is the length of the common block ending exactly at a[i-1] and b[j-1], and 0 if those characters differ."
+    },
+    {
+     "term": "Shortest common supersequence",
+     "definition": "The shortest string that contains both given strings as subsequences; its length is n + m - LCS."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In the longest common substring table, what is dp[i][j] when a[i-1] ≠ b[j-1]?",
+     "options": [
+      "max(dp[i-1][j], dp[i][j-1])",
+      "0, because a common block cannot end at two different characters",
+      "dp[i-1][j-1]",
+      "1"
+     ],
+     "answer": 1,
+     "explain": "dp[i][j] means 'common block ending exactly here'. If the last characters differ, no block ends here, so the run resets to 0. That reset is the whole difference from LCS."
+    },
+    {
+     "q": "Where is the answer in the substring table?",
+     "options": [
+      "dp[n][m]",
+      "The largest value anywhere in the table, because the best block can end at any pair of positions",
+      "dp[0][0]",
+      "The last row"
+     ],
+     "answer": 1,
+     "explain": "Each cell describes blocks ending at one pair of positions. The longest block may end in the middle of both strings, so track the maximum while filling."
+    },
+    {
+     "q": "Strings of lengths 5 and 5 have an LCS of 4. How many deletions make them equal, and how long is their shortest common supersequence?",
+     "options": [
+      "1 and 9",
+      "2 deletions (5 + 5 - 2 × 4) and a supersequence of length 6 (5 + 5 - 4)",
+      "4 and 4",
+      "0 and 10"
+     ],
+     "answer": 1,
+     "explain": "Delete everything outside a longest common subsequence from both strings: (5 - 4) + (5 - 4) = 2. A supersequence writes the common part once and everything else once: 10 - 4 = 6."
+    }
+   ],
+   "cover_seed": "longest-common-substring",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "dsa/longest-common-substring.md",
+   "hash": "484723f019db",
+   "word_count": 1345,
+   "excerpt": "Two strips of coloured tape lie side by side. You may slide one along the other, and you want the longest stretch where the colours line up exactly, with no gaps. That is a common substring. Now change the rules: you may skip squares on either strip, as long as the matched squares stay in order.…"
+  },
+  {
+   "id": "dsa-dp-on-subsequences",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "dp-on-subsequences",
+   "title": "Spelling a Word by Crossing Out Letters",
+   "subtitle": "Counting subsequences with DP: how many ways a pattern appears in a text, how many distinct subsequences a string has without double counting repeats, and checking many words at once with waiting lists",
+   "track": "dsa-dp",
+   "track_order": 22,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-lcs-edit-distance"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "dynamic programming",
+    "strings",
+    "subsequences",
+    "counting"
+   ],
+   "complexity": {
+    "time": "O(n × m) for pattern counts, O(n) for distinct subsequences",
+    "space": "O(m) and O(alphabet)"
+   },
+   "practice_problems": [
+    {
+     "name": "Distinct Subsequences",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/distinct-subsequences/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Distinct Subsequences II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/distinct-subsequences-ii/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Number of Matching Subsequences",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/number-of-matching-subsequences/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Occurrence as a subsequence",
+     "definition": "A choice of positions in the text, in increasing order, whose letters spell the pattern; different position sets count as different occurrences."
+    },
+    {
+     "term": "Use or skip",
+     "definition": "The two choices for each text character when counting occurrences: use it to match the next pattern letter, or skip it."
+    },
+    {
+     "term": "Distinct subsequence",
+     "definition": "A different string obtainable by deleting characters; two position sets that spell the same string count once."
+    },
+    {
+     "term": "Ending-with count",
+     "definition": "end[c], the number of distinct non-empty subsequences seen so far whose last letter is c."
+    },
+    {
+     "term": "Waiting list",
+     "definition": "A bucket of words, keyed by the next letter each word still needs, advanced as the text is scanned once."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In counting how many times t appears as a subsequence of s, what is dp[i][j] when s[i-1] = t[j-1]?",
+     "options": [
+      "dp[i-1][j-1]",
+      "dp[i-1][j] + dp[i-1][j-1]: skip s[i-1], or use it to match t[j-1]",
+      "dp[i-1][j] + 1",
+      "max(dp[i-1][j], dp[i-1][j-1])"
+     ],
+     "answer": 1,
+     "explain": "Every occurrence either avoids s[i-1] or uses it as the last matched letter. The two groups do not overlap, so their counts add."
+    },
+    {
+     "q": "For distinct subsequences, why does seeing letter c again replace end[c] instead of adding to it?",
+     "options": [
+      "To save memory",
+      "Every distinct subsequence ending in c that existed before can be rebuilt by extending an earlier subsequence with this new c, so the new count already includes the old ones",
+      "Because c is rare",
+      "It should add"
+     ],
+     "answer": 1,
+     "explain": "Appending the new c to every distinct subsequence so far, plus c alone, produces all subsequences ending in c, including the ones counted before. Adding would count those twice."
+    },
+    {
+     "q": "How can you check 5,000 words against one long text faster than scanning the text once per word?",
+     "options": [
+      "Sort the words",
+      "Put each word in a waiting list under its next needed letter, then scan the text once and advance only the words waiting for the current letter",
+      "Use a hash set of the text",
+      "It cannot be done"
+     ],
+     "answer": 1,
+     "explain": "Each text letter wakes only the words that need it. Total work is the text length plus the total length of all words, instead of words × text length."
+    }
+   ],
+   "cover_seed": "dp-on-subsequences",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.66,
+   "path": "dsa/dp-on-subsequences.md",
+   "hash": "f65952502ebc",
+   "word_count": 1405,
+   "excerpt": "A newspaper headline reads \"ABCABC\". A child with a pencil wants to spell \"ABC\" by crossing out letters, keeping the rest in order. How many different ways can they do it? And a harder question: if they could cross out any letters at all, how many different words could they end up with? Both are…"
+  },
+  {
+   "id": "dsa-dp-grid-advanced",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "dp-grid-advanced",
+   "title": "Two Friends Picking Fruit on One Walk",
+   "subtitle": "Cherry Pickup by moving two walkers in lockstep so a shared cell is counted once, Cherry Pickup II with two robots row by row, and Dungeon Game solved backwards from the goal",
+   "track": "dsa-dp",
+   "track_order": 23,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-grid-dp"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "dynamic programming",
+    "grids",
+    "multi-agent DP"
+   ],
+   "complexity": {
+    "time": "O(n³) for Cherry Pickup, O(R × C² × 9) for Cherry Pickup II",
+    "space": "O(n²) with rolling layers"
+   },
+   "practice_problems": [
+    {
+     "name": "Cherry Pickup",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/cherry-pickup/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Cherry Pickup II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/cherry-pickup-ii/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Dungeon Game",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/dungeon-game/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Lockstep walkers",
+     "definition": "Two walkers moved one step each at the same time, so after t steps both have taken exactly t steps and can only share a cell at the same moment."
+    },
+    {
+     "term": "Step index",
+     "definition": "t = row + column for a walker moving only right or down; knowing t and the row determines the column."
+    },
+    {
+     "term": "Collision rule",
+     "definition": "When both walkers stand on the same cell, its value is counted once."
+    },
+    {
+     "term": "Backward DP",
+     "definition": "Filling a grid table from the goal towards the start, used when a cell's requirement depends on what comes after it, not before."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does Cherry Pickup turn the round trip into two walkers going forward together?",
+     "options": [
+      "It is shorter to code",
+      "The return trip reversed is just another forward path, and moving both paths in lockstep makes shared cells easy to detect and count once",
+      "Because cherries move",
+      "To avoid recursion"
+     ],
+     "answer": 1,
+     "explain": "Going back from the corner along down and right moves reversed is a second path from the start. With both walkers at the same step, they can only overlap by standing on the same cell at the same step."
+    },
+    {
+     "q": "Why is 'take the best single path, remove its cherries, then take the best path again' wrong?",
+     "options": [
+      "It is too slow",
+      "The first path may grab cherries in a way that leaves the second path a poor choice, while a slightly worse first path enables a much better pair",
+      "Because cherries regrow",
+      "It is always right"
+     ],
+     "answer": 1,
+     "explain": "The two paths share a budget of cells. Optimising one at a time ignores how the first path's choices affect the second, so the joint DP is needed."
+    },
+    {
+     "q": "In Dungeon Game, why fill the table from the princess back to the knight?",
+     "options": [
+      "Because of the grid size",
+      "The health needed on entering a cell depends on what happens after it, so the requirement is known at the goal and propagates backwards",
+      "Forward works the same",
+      "To use less memory"
+     ],
+     "answer": 1,
+     "explain": "Going forward, the best path so far by remaining health may not be the one needing the least starting health. Backwards, need[r][c] = max(1, min of the next needs minus the cell's value) is exact."
+    }
+   ],
+   "cover_seed": "dp-grid-advanced",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.62,
+   "path": "dsa/dp-grid-advanced.md",
+   "hash": "5ad40f57e02a",
+   "word_count": 1505,
+   "excerpt": "Two friends walk through an orchard laid out as a grid, from the top-left gate to the bottom-right gate, each stepping only right or down. They want to pick as much fruit as possible between them. Some trees are walled off. If both pass the same tree, the fruit can be picked only once. Planning one…"
   },
   {
    "id": "dsa-tries",
