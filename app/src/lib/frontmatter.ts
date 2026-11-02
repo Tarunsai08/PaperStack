@@ -123,12 +123,13 @@ export const PRIORITIES = ['P0', 'P1', 'P2'] as const;
 export const WORD_LIMITS: Record<Kind, readonly [number, number]> = {
   paper: [1400, 2200],
   primer: [1000, 1600],
-  pattern: [1000, 2000],
-  'problem-walkthrough': [1000, 2000],
-  concept: [1000, 2000],
+  // Code fences are not counted, so code-bearing kinds start a little lower.
+  pattern: [900, 2000],
+  'problem-walkthrough': [900, 2000],
+  concept: [900, 2000],
   'deep-dive': [1100, 2200],
   'case-study': [1100, 2200],
-  lld: [1000, 2000],
+  lld: [900, 2000],
 };
 
 const NEEDS_CODE = new Set<string>(['pattern', 'problem-walkthrough', 'concept', 'lld']);

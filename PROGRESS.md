@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 5 | 0 | 147 | 152 | 5/72 |
-| cp | 1 | 0 | 114 | 115 | 1/29 |
-| famous-algos | 0 | 0 | 91 | 91 | 0/32 |
-| system-design | 1 | 0 | 118 | 119 | 1/60 |
+| dsa | 6 | 0 | 146 | 152 | 6/72 |
+| cp | 2 | 0 | 113 | 115 | 2/29 |
+| famous-algos | 2 | 0 | 89 | 91 | 2/32 |
+| system-design | 2 | 0 | 117 | 119 | 2/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **90** | **0** | **583** | **673** | |
+| **All** | **95** | **0** | **578** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **31**
 
@@ -26,37 +26,41 @@ Planned entries whose prerequisites are already written, by priority then path o
 ### dsa
 
 - [ ] `dsa-recursion-basics` (P0, primer, dsa-start): Recursion: Trusting the Function You Are Writing
-- [ ] `dsa-two-pointers` (P0, pattern, dsa-arrays): Two Pointers: Squeezing Answers From Both Ends
+- [ ] `dsa-sliding-window` (P0, pattern, dsa-arrays): Sliding Windows: One Pass Instead of Two Loops
 - [ ] `dsa-kadane` (P0, pattern, dsa-arrays): Kadane's Algorithm: The Best Subarray in One Pass
 - [ ] `dsa-string-patterns` (P0, pattern, dsa-arrays): Strings: Palindromes, Anagrams and Counting
+- [ ] `dsa-intervals-sweep` (P0, pattern, dsa-arrays): Intervals: Sort, Then Sweep
 - [ ] `dsa-product-except-self` (P0, problem-walkthrough, dsa-arrays): Product of Array Except Self Without Division
 - [ ] `dsa-subarray-sum-k` (P0, problem-walkthrough, dsa-arrays): Counting Subarrays With Sum K
+- [ ] `dsa-dutch-national-flag` (P0, problem-walkthrough, dsa-arrays): Sort Colors: The Dutch National Flag in One Pass
 - [ ] `dsa-binary-search` (P0, pattern, dsa-search-sort): Binary Search, Done Right Every Time
 - [ ] `dsa-sorting-as-tool` (P0, pattern, dsa-search-sort): Sorting as a Superpower
-- [ ] `dsa-gcd-primes` (P0, pattern, dsa-math): GCD, Primes and Divisors for Interviews
-- [ ] `dsa-linked-list-basics` (P0, pattern, dsa-linear): Linked Lists: Pointer Surgery Made Safe
 
 ### cp
 
-- [ ] `cp-fast-io-template` (P0, primer, cp-start): Your Contest Template and Fast I/O
 - [ ] `cp-reading-problems-fast` (P0, primer, cp-start): Reading a Problem in Two Minutes
+- [ ] `cp-stress-testing` (P0, pattern, cp-start): Stress Testing: Catch Wrong Answers Yourself
+- [ ] `cp-weird-algorithm` (P1, problem-walkthrough, cp-start): Your First CSES Problems: Weird Algorithm to Increasing Array
 - [ ] `cp-sqrt-decomposition` (P1, pattern, cp-ranges): Square Root Decomposition
 
 ### famous-algos
 
-- [ ] `famous-algos-bloom-filter` (P0, concept, fa-sketches): Bloom Filters: Saying No Without Looking
-- [ ] `famous-algos-consistent-hashing` (P0, concept, fa-distributed): Consistent Hashing: Adding Servers Without Moving Everything
+- [ ] `famous-algos-count-min-sketch` (P0, concept, fa-sketches): Count-Min Sketch: Counting Billions of Things in Kilobytes
+- [ ] `famous-algos-lamport-clocks` (P0, concept, fa-distributed): Lamport Clocks: Ordering Events Without a Shared Clock
+- [ ] `famous-algos-gossip-protocols` (P0, concept, fa-distributed): Gossip Protocols: How Rumours Keep Clusters in Sync
+- [ ] `famous-algos-power-of-two-choices` (P0, concept, fa-networking): The Power of Two Choices: Smarter Load Balancing
 - [ ] `famous-algos-cryptographic-hashing` (P0, concept, fa-crypto): Cryptographic Hashes: Fingerprints You Cannot Fake
 - [ ] `famous-algos-inverted-index` (P0, concept, fa-search): Inverted Indexes: How Search Finds Pages in Milliseconds
 - [ ] `famous-algos-kalman-filter` (P0, concept, fa-signals): The Kalman Filter: Blending Guesses With Noisy Measurements
+- [ ] `famous-algos-counting-bloom-cuckoo` (P1, concept, fa-sketches): Deletable Filters: Counting Bloom and Cuckoo Filters
 - [ ] `famous-algos-minhash` (P1, concept, fa-sketches): MinHash: Estimating Similarity Without Comparing Everything
 - [ ] `famous-algos-swiss-tables` (P1, concept, fa-storage): The Hash Table You Use Every Day: Open Addressing and Swiss Tables
-- [ ] `famous-algos-collaborative-filtering` (P1, concept, fa-search): Collaborative Filtering: People Like You Also Liked
-- [ ] `famous-algos-bresenham` (P2, concept, fa-signals): Bresenham's Line: Drawing on a Pixel Grid
 
 ### system-design
 
-- [ ] `system-design-back-of-envelope` (P0, primer, sd-fundamentals): Back-of-Envelope Estimates in Five Minutes
+- [ ] `system-design-latency-numbers` (P0, primer, sd-fundamentals): Latency Numbers Every Engineer Should Feel
+- [ ] `system-design-availability-slos` (P0, deep-dive, sd-fundamentals): Availability, Nines and SLOs
+- [ ] `system-design-unique-id-generator` (P0, case-study, sd-cases): Design a Unique ID Generator
 - [ ] `system-design-oop-solid` (P0, lld, sd-lld): Object-Oriented Design and SOLID Principles
 
 ### ml
@@ -74,25 +78,35 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 5 written</summary>
+<details><summary>dsa: 6 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
 - [x] `dsa-problem-solving-framework` How to Attack a Problem You Have Never Seen
 - [x] `dsa-prefix-sums` Prefix Sums: Answering Range Questions Instantly
+- [x] `dsa-two-pointers` Two Pointers: Squeezing Answers From Both Ends
 - [x] `dsa-hashing-patterns` Hash Maps: Trading Memory for Speed
 
 </details>
 
-<details><summary>cp: 1 written</summary>
+<details><summary>cp: 2 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
+- [x] `cp-fast-io-template` Your Contest Template and Fast I/O
 
 </details>
 
-<details><summary>system-design: 1 written</summary>
+<details><summary>famous-algos: 2 written</summary>
+
+- [x] `famous-algos-bloom-filter` Bloom Filters: Saying No Without Looking
+- [x] `famous-algos-consistent-hashing` Consistent Hashing: Adding Servers Without Moving Everything
+
+</details>
+
+<details><summary>system-design: 2 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
+- [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
 
 </details>
 

@@ -1,7 +1,7 @@
 {
- "content_version": "a92be42421a5ac39",
+ "content_version": "247bead3fcd7cab6",
  "generated_at": "2026-11-02",
- "count": 90,
+ "count": 95,
  "subjects": [
   {
    "id": "ml",
@@ -8652,6 +8652,128 @@
    "excerpt": "Your interviewer hands you an array of 100,000 numbers and then asks 100,000 questions: \"What is the sum from index 3,120 to index 88,004?\" If you add up each range from scratch, you could be doing ten billion additions. Your program times out before the third coffee. There is a trick that answers…"
   },
   {
+   "id": "dsa-two-pointers",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "two-pointers",
+   "title": "Two Fingers on a Sorted List",
+   "subtitle": "The two pointers pattern: squeeze from both ends, and prove you never skip the answer",
+   "track": "dsa-arrays",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 4,
+   "topics": [
+    "arrays",
+    "two pointers",
+    "sorting"
+   ],
+   "complexity": {
+    "time": "O(n) after sorting",
+    "space": "O(1)"
+   },
+   "practice_problems": [
+    {
+     "name": "Two Sum II - Input Array Is Sorted",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Valid Palindrome",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/valid-palindrome/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Container With Most Water",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/container-with-most-water/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "3Sum",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/3sum/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Sum of Two Values",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1640",
+     "difficulty": "Easy"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Pointer",
+     "definition": "Here, simply an index into the array that marks a position you are looking at."
+    },
+    {
+     "term": "Opposite-direction pointers",
+     "definition": "Two indices that start at the two ends of an array and move toward each other."
+    },
+    {
+     "term": "Same-direction pointers",
+     "definition": "Two indices that both move left to right, one leading and one following, also called fast and slow pointers."
+    },
+    {
+     "term": "Invariant",
+     "definition": "A fact that stays true at every step of a loop, which is what lets you prove the algorithm is correct."
+    },
+    {
+     "term": "Monotonic",
+     "definition": "Always moving in one direction, never backwards. Both pointers only ever move forward, which bounds the total work."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In a sorted array, the current pair sums to more than the target. Which pointer moves?",
+     "options": [
+      "The left pointer moves right",
+      "The right pointer moves left",
+      "Both move",
+      "Neither; restart from scratch"
+     ],
+     "answer": 1,
+     "explain": "The right value is the largest in play. Pairing it with anything at or after left is still too big, so it can be discarded by moving right leftwards."
+    },
+    {
+     "q": "Why is the two-pointer scan O(n) and not O(n squared)?",
+     "options": [
+      "It uses a hash map",
+      "Each step moves one pointer inward and neither ever moves back, so there are at most n steps",
+      "It stops at the first pair",
+      "It only works on small arrays"
+     ],
+     "answer": 1,
+     "explain": "The gap between the pointers shrinks by one every step, so the loop runs at most n times."
+    },
+    {
+     "q": "In 3Sum, why do we sort first?",
+     "options": [
+      "To remove all duplicates automatically",
+      "So that for each fixed first number, the remaining pair can be found with two pointers and duplicates can be skipped easily",
+      "Because the output must be sorted",
+      "Sorting is not needed"
+     ],
+     "answer": 1,
+     "explain": "Sorting enables the inward squeeze for the remaining two numbers and puts equal values next to each other, so duplicates are easy to skip."
+    }
+   ],
+   "cover_seed": "two-pointers",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.93,
+   "path": "dsa/two-pointers.md",
+   "hash": "d88268431499",
+   "word_count": 945,
+   "excerpt": "Two friends are looking for a pair of books on a long, sorted shelf whose prices add up to exactly 500 rupees. One starts at the cheap end, the other at the expensive end. Each time they compare, one of them takes a step inward. Within one walk along the shelf, they either find the pair or prove it…"
+  },
+  {
    "id": "dsa-hashing-patterns",
    "kind": "pattern",
    "subject": "dsa",
@@ -8865,6 +8987,267 @@
    "excerpt": "At 8:05 pm, twenty thousand people around the world open the same six problems at the same moment. A clock starts counting down from two hours. Somewhere, a student solves problem A in four minutes, problem B in twelve, and then stares at problem C for an hour. By 10:05 pm, every one of them has a…"
   },
   {
+   "id": "cp-fast-io-template",
+   "kind": "primer",
+   "subject": "cp",
+   "slug": "fast-io-template",
+   "title": "The Thirty Lines You Paste Before Every Contest",
+   "subtitle": "A clean contest template, fast input and output, and the habits that prevent silly verdicts",
+   "track": "cp-start",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-how-contests-work",
+    "dsa-cpp-stl-toolkit"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 4,
+   "topics": [
+    "competitive programming",
+    "c++",
+    "fast io",
+    "template"
+   ],
+   "glossary": [
+    {
+     "term": "Template",
+     "definition": "A starter file you paste at the beginning of every contest solution, with includes, settings and a few helpers."
+    },
+    {
+     "term": "Fast I/O",
+     "definition": "Settings that make cin and cout much faster, which matters when reading or writing hundreds of thousands of numbers."
+    },
+    {
+     "term": "Multi-test input",
+     "definition": "An input format where the first number t says how many independent test cases follow."
+    },
+    {
+     "term": "Overflow",
+     "definition": "When a number grows past the largest value its type can hold and wraps around to a wrong value."
+    },
+    {
+     "term": "Flush",
+     "definition": "Forcing buffered output to actually be sent. endl does this every time, which is slow in loops."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What do 'ios::sync_with_stdio(false); cin.tie(nullptr);' do?",
+     "options": [
+      "Make the program multithreaded",
+      "Stop syncing C++ streams with C stdio and stop flushing cout before each cin, making I/O much faster",
+      "Turn on compiler optimisations",
+      "Read input from a file"
+     ],
+     "answer": 1,
+     "explain": "Unsyncing lets C++ streams buffer independently, and untying cin stops a flush before every read. Together they speed up large inputs a lot."
+    },
+    {
+     "q": "A loop prints 200,000 lines with endl and gets Time Limit Exceeded. What is the simplest fix?",
+     "options": [
+      "Use printf",
+      "Print '\\n' instead of endl",
+      "Use recursion",
+      "Read input faster"
+     ],
+     "answer": 1,
+     "explain": "endl flushes the output every line. '\\n' just adds a newline and lets the buffer flush in big chunks."
+    },
+    {
+     "q": "Why use long long by default for sums in contests?",
+     "options": [
+      "It is faster than int",
+      "Sums of up to 200,000 values of up to 10^9 exceed the range of a 32-bit int",
+      "Judges require it",
+      "It uses less memory"
+     ],
+     "answer": 1,
+     "explain": "A 32-bit int holds about 2.1 billion. Even two values near 10^9 can overflow it, and sums of many values certainly will."
+    }
+   ],
+   "cover_seed": "fast-io-template",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.8,
+   "path": "cp/fast-io-template.md",
+   "hash": "206871376bc9",
+   "word_count": 970,
+   "excerpt": "You found the right idea in five minutes. The algorithm is O(n log n). You submit, and the judge says Time Limit Exceeded. You change nothing in the algorithm, swap endl for '\\n', and resubmit. Accepted. Some verdicts have nothing to do with how smart your idea is. A good contest template removes…"
+  },
+  {
+   "id": "famous-algos-bloom-filter",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "bloom-filter",
+   "title": "The Data Structure That Is Allowed to Lie",
+   "subtitle": "Bloom filters answer 'definitely not' or 'probably yes' using a tiny fraction of the memory",
+   "track": "fa-sketches",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-hashing-patterns"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "probabilistic data structures",
+    "hashing",
+    "databases"
+   ],
+   "glossary": [
+    {
+     "term": "Bloom filter",
+     "definition": "A bit array plus several hash functions that can say an item is definitely not in a set, or probably in it."
+    },
+    {
+     "term": "False positive",
+     "definition": "When the filter says 'probably yes' for an item that was never added."
+    },
+    {
+     "term": "False negative",
+     "definition": "When a structure says 'no' for an item that was actually added. A Bloom filter never does this."
+    },
+    {
+     "term": "Hash function",
+     "definition": "A function that turns an item into a number that looks random but is always the same for the same item."
+    },
+    {
+     "term": "Bit array",
+     "definition": "A long row of bits, each either 0 or 1, stored compactly so millions fit in a few megabytes."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A Bloom filter says an item is NOT present. How sure can you be?",
+     "options": [
+      "Not sure at all",
+      "About 99% sure",
+      "Completely sure",
+      "It depends on the item's length"
+     ],
+     "answer": 2,
+     "explain": "If the item had been added, all of its bits would be 1. Finding any 0 bit proves it was never added, so there are no false negatives."
+    },
+    {
+     "q": "Why can you not simply delete an item from a plain Bloom filter by clearing its bits?",
+     "options": [
+      "Bits cannot be changed after creation",
+      "Other items may share those bits, so clearing them would create false negatives",
+      "Deleting is too slow",
+      "It would change the hash functions"
+     ],
+     "answer": 1,
+     "explain": "Bits are shared. Clearing one item's bits could erase part of another item's fingerprint, and then the filter would wrongly say that other item is absent."
+    },
+    {
+     "q": "How does a database like RocksDB use Bloom filters?",
+     "options": [
+      "To encrypt data",
+      "To skip reading files on disk that cannot contain the key",
+      "To sort keys",
+      "To compress values"
+     ],
+     "answer": 1,
+     "explain": "Each on-disk file has a small filter. If it says 'definitely not here', the database skips that file and saves a slow disk read."
+    }
+   ],
+   "cover_seed": "bloom-filter",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.93,
+   "path": "famous-algos/bloom-filter.md",
+   "hash": "baf5ecbda7a5",
+   "word_count": 1047,
+   "excerpt": "Your database holds a billion keys spread across hundreds of files on disk. A request arrives for a key that does not exist. Without help, the database might open file after file, paying for a slow disk read each time, only to answer \"not found\". Now imagine a little helper sitting in memory that…"
+  },
+  {
+   "id": "famous-algos-consistent-hashing",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "consistent-hashing",
+   "title": "Adding a Server Without Moving Everything",
+   "subtitle": "Consistent hashing: the ring that lets caches and databases grow without a mass migration",
+   "track": "fa-distributed",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-hashing-patterns"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 4,
+   "topics": [
+    "distributed systems",
+    "hashing",
+    "sharding",
+    "caching"
+   ],
+   "glossary": [
+    {
+     "term": "Consistent hashing",
+     "definition": "A way of assigning keys to servers so that adding or removing a server moves only a small share of the keys."
+    },
+    {
+     "term": "Hash ring",
+     "definition": "The range of hash values bent into a circle, on which both servers and keys are placed."
+    },
+    {
+     "term": "Virtual node",
+     "definition": "One of many positions a single physical server takes on the ring, used to spread load evenly."
+    },
+    {
+     "term": "Sharding",
+     "definition": "Splitting data across several machines so each one holds only part of it."
+    },
+    {
+     "term": "Rebalancing",
+     "definition": "Moving data between machines after servers are added or removed."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "With plain 'hash(key) mod n' and n going from 4 to 5 servers, roughly how many keys move?",
+     "options": [
+      "About one fifth",
+      "About half",
+      "Most of them, around four fifths",
+      "None"
+     ],
+     "answer": 2,
+     "explain": "A key stays put only if its hash gives the same remainder mod 4 and mod 5, which happens for about one in five keys. The rest move."
+    },
+    {
+     "q": "On a consistent hashing ring, which server owns a key?",
+     "options": [
+      "The server with the smallest id",
+      "The first server clockwise from the key's position",
+      "A random server each time",
+      "The server that was added most recently"
+     ],
+     "answer": 1,
+     "explain": "Walk clockwise from the key's point on the ring; the first server you meet owns it."
+    },
+    {
+     "q": "Why do real systems give each server many virtual nodes?",
+     "options": [
+      "To use more memory",
+      "To spread keys evenly and share the load when a server leaves",
+      "To encrypt the keys",
+      "To make lookups O(1)"
+     ],
+     "answer": 1,
+     "explain": "With one point per server, arcs can be very uneven. Many points per server average out the arc sizes, and a departing server's keys scatter across many others."
+    }
+   ],
+   "cover_seed": "consistent-hashing",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.94,
+   "path": "famous-algos/consistent-hashing.md",
+   "hash": "73d7f607e098",
+   "word_count": 970,
+   "excerpt": "It is the biggest sale of the year, and your cache cluster is struggling. You add a fifth server to the four you have. Within seconds, almost every cache lookup starts missing, the database behind the cache is flooded with requests, and the site slows to a crawl. Adding capacity made things worse.…"
+  },
+  {
    "id": "system-design-interview-framework",
    "kind": "primer",
    "subject": "system-design",
@@ -8953,6 +9336,92 @@
    "hash": "0d1e3950c0e7",
    "word_count": 1044,
    "excerpt": "\"Design Instagram.\" Three words, then silence. There is no input format, no constraints, no expected output. Just a whiteboard and forty-five minutes. Candidates who freeze usually know plenty: caches, queues, databases. What they lack is a route through the conversation. The good news is that one…"
+  },
+  {
+   "id": "system-design-back-of-envelope",
+   "kind": "primer",
+   "subject": "system-design",
+   "slug": "back-of-envelope",
+   "title": "How Much Rice Does a Wedding Need?",
+   "subtitle": "Back-of-envelope estimates: five minutes of rough maths that decide your whole design",
+   "track": "sd-fundamentals",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-interview-framework"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "estimation",
+    "capacity planning"
+   ],
+   "glossary": [
+    {
+     "term": "QPS",
+     "definition": "Queries per second: how many requests a system handles each second."
+    },
+    {
+     "term": "DAU",
+     "definition": "Daily active users: how many distinct people use the product on a given day."
+    },
+    {
+     "term": "Peak load",
+     "definition": "The highest traffic the system sees, often several times the daily average, for example during evenings or sales."
+    },
+    {
+     "term": "Replication factor",
+     "definition": "How many copies of each piece of data are stored, usually for durability; three is common."
+    },
+    {
+     "term": "Bandwidth",
+     "definition": "How much data per second flows in or out of a system, for example megabytes per second."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "About how many seconds are in a day, for quick estimates?",
+     "options": [
+      "About 10,000",
+      "About 100,000",
+      "About 1,000,000",
+      "About 10,000,000"
+     ],
+     "answer": 1,
+     "explain": "A day has 86,400 seconds. Rounding to 100,000 makes the arithmetic easy and is accurate enough for design decisions."
+    },
+    {
+     "q": "10 million uploads a day, 2 MB each, stored with replication factor 3. Roughly how much storage per day?",
+     "options": [
+      "20 GB",
+      "60 GB",
+      "20 TB",
+      "60 TB"
+     ],
+     "answer": 3,
+     "explain": "10 million times 2 MB is 20 TB of raw data. Three copies make about 60 TB per day."
+    },
+    {
+     "q": "Why estimate peak load and not just the daily average?",
+     "options": [
+      "Interviewers prefer bigger numbers",
+      "Systems must survive their busiest moments, which can be several times the average",
+      "Averages are impossible to compute",
+      "Peak load only matters for databases"
+     ],
+     "answer": 1,
+     "explain": "Traffic is uneven. A design sized for the average fails at 8 pm or during a sale, so capacity is planned for the peak."
+    }
+   ],
+   "cover_seed": "back-of-envelope",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.9,
+   "path": "system-design/back-of-envelope.md",
+   "hash": "6d17813ddc6a",
+   "word_count": 1011,
+   "excerpt": "A caterer planning a wedding for 500 guests does not weigh every grain of rice. They think: about 150 grams per guest, so roughly 75 kilograms, round up to 80 for safety. Two seconds of arithmetic, and they know whether to rent one pot or ten. System design works the same way. Before you draw a…"
   }
  ]
 }
