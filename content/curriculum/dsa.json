@@ -110,8 +110,8 @@
    "prerequisites": [
     "dsa-big-o"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Base case and smaller subproblem",
@@ -411,8 +411,8 @@
    "prerequisites": [
     "dsa-two-pointers"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Sort by start",

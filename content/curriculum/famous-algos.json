@@ -539,8 +539,8 @@
    "prerequisites": [
     "dsa-hashing-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Hash leaves, then pairs up to a root",

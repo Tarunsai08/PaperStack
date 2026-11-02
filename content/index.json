@@ -1,7 +1,7 @@
 {
- "content_version": "428ab6aadc689a62",
+ "content_version": "a98ecdca43ba5460",
  "generated_at": "2026-11-02",
- "count": 133,
+ "count": 138,
  "subjects": [
   {
    "id": "ml",
@@ -8557,6 +8557,97 @@
    "excerpt": "The interviewer finishes reading the problem. You have never seen it before. The silence starts, and so does the panic: is it DP? A graph? Something you never studied? Strong candidates feel that same jolt. The difference is that they have a routine for the next five minutes, and the routine does…"
   },
   {
+   "id": "dsa-recursion-basics",
+   "kind": "primer",
+   "subject": "dsa",
+   "slug": "recursion-basics",
+   "title": "Trusting the Function You Are Still Writing",
+   "subtitle": "Recursion explained: base cases, the leap of faith, the call stack, and how to count what it costs",
+   "track": "dsa-start",
+   "track_order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-big-o"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "recursion",
+    "call stack",
+    "divide and conquer",
+    "complexity"
+   ],
+   "glossary": [
+    {
+     "term": "Recursion",
+     "definition": "A function solving a problem by calling itself on a smaller version of the same problem."
+    },
+    {
+     "term": "Base case",
+     "definition": "The smallest version of the problem, answered directly without another recursive call. It stops the recursion."
+    },
+    {
+     "term": "Recursive case",
+     "definition": "The step that reduces the problem to one or more smaller versions and combines their answers."
+    },
+    {
+     "term": "Call stack",
+     "definition": "The memory where the computer keeps each unfinished function call, with its own variables, until it returns."
+    },
+    {
+     "term": "Recursion tree",
+     "definition": "A drawing of every call a recursive function makes, used to count total work."
+    },
+    {
+     "term": "Stack overflow",
+     "definition": "A crash that happens when recursion goes so deep that the call stack runs out of memory."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What happens if a recursive function has no reachable base case?",
+     "options": [
+      "It returns 0",
+      "It keeps calling itself until the call stack runs out of memory and the program crashes",
+      "The compiler adds one",
+      "It runs in O(1)"
+     ],
+     "answer": 1,
+     "explain": "Without a base case the calls never stop, each one using stack memory, until a stack overflow."
+    },
+    {
+     "q": "How many calls does the naive recursive Fibonacci make for fib(5)?",
+     "options": [
+      "5",
+      "9",
+      "15",
+      "32"
+     ],
+     "answer": 2,
+     "explain": "fib(5) calls fib(4) and fib(3), which call further down; drawing the tree gives 15 calls in total, because the same values are recomputed many times."
+    },
+    {
+     "q": "What is the 'leap of faith' in recursion?",
+     "options": [
+      "Hoping the code compiles",
+      "Assuming the recursive call correctly solves the smaller problem, and only checking that you use its answer correctly",
+      "Skipping the base case",
+      "Using global variables"
+     ],
+     "answer": 1,
+     "explain": "You reason about one level at a time: if the smaller call is right, is this level right? Together with a correct base case, that proves the whole function."
+    }
+   ],
+   "cover_seed": "recursion-basics",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.9,
+   "path": "dsa/recursion-basics.md",
+   "hash": "328d1bc2833c",
+   "word_count": 1007,
+   "excerpt": "Ask a beginner to reverse a linked list, list every subset of a set, or walk a tree, and they often reach for loops and get tangled in indices. Ask someone comfortable with recursion, and the solution is often three or four lines that look almost too simple to be right. The difference is not…"
+  },
+  {
    "id": "dsa-bit-basics",
    "kind": "primer",
    "subject": "dsa",
@@ -9249,6 +9340,130 @@
    "hash": "6bd368b06cd7",
    "word_count": 902,
    "excerpt": "A trader looks back at a year of daily profits and losses: up 3, down 7, up 4, up 2, down 1, up 5. What stretch of consecutive days would have made the most money? Checking every start and end day is easy to write and slow to run: about n² stretches. Jon Bentley tells the story of this problem in…"
+  },
+  {
+   "id": "dsa-intervals-sweep",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "intervals-sweep",
+   "title": "A Receptionist Watching the Door",
+   "subtitle": "Interval problems: sort by start to merge, and sweep +1 and -1 events to count overlaps",
+   "track": "dsa-arrays",
+   "track_order": 8,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-two-pointers",
+    "dsa-sorting-as-tool"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 4,
+   "topics": [
+    "intervals",
+    "sorting",
+    "sweep line",
+    "greedy"
+   ],
+   "complexity": {
+    "time": "O(n log n)",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Merge Intervals",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/merge-intervals/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Insert Interval",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/insert-interval/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Car Pooling",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/car-pooling/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Restaurant Customers",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1619",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Interval List Intersections",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/interval-list-intersections/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Interval",
+     "definition": "A range with a start and an end, such as a meeting from 9:00 to 10:30 or an array range from index 3 to 7."
+    },
+    {
+     "term": "Overlap",
+     "definition": "Two intervals overlap when one starts before the other ends."
+    },
+    {
+     "term": "Merge",
+     "definition": "Replacing overlapping intervals with one interval that covers all of them."
+    },
+    {
+     "term": "Sweep line",
+     "definition": "A technique that processes events in sorted order, as if a line moved across the timeline, keeping a running state."
+    },
+    {
+     "term": "Event",
+     "definition": "A point where something changes, such as an interval starting (+1) or ending (-1)."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "After sorting intervals by start, when does the current interval overlap the last merged one?",
+     "options": [
+      "When its end is smaller",
+      "When its start is at most the last merged end",
+      "When their lengths are equal",
+      "Only when they are identical"
+     ],
+     "answer": 1,
+     "explain": "Sorted by start, a new interval overlaps the previous merged block exactly when it starts before (or at) that block's end."
+    },
+    {
+     "q": "To find the maximum number of guests present at once, what do you sort?",
+     "options": [
+      "Guests by name",
+      "All arrival and departure events by time",
+      "Only arrival times",
+      "Intervals by length"
+     ],
+     "answer": 1,
+     "explain": "Turn each guest into a +1 at arrival and a -1 at departure, sort all events, and track the running count."
+    },
+    {
+     "q": "Two events happen at the same time: one departure and one arrival. Which should be processed first if a guest leaving at 5 and one arriving at 5 do not overlap?",
+     "options": [
+      "The arrival",
+      "The departure",
+      "It never matters",
+      "Neither; skip both"
+     ],
+     "answer": 1,
+     "explain": "If touching endpoints do not count as overlapping, process the departure first so the count does not briefly include both guests."
+    }
+   ],
+   "cover_seed": "intervals-sweep",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.9,
+   "path": "dsa/intervals-sweep.md",
+   "hash": "a9027620d00e",
+   "word_count": 902,
+   "excerpt": "A calendar app must show your busy blocks, merging back-to-back and overlapping meetings into single stretches. A restaurant wants to know the most customers it ever had at once. A booking system must check whether a new reservation clashes with existing ones. These sound like different problems.…"
   },
   {
    "id": "dsa-binary-search",
@@ -10809,6 +11024,123 @@
    "excerpt": "Compute 3 to the power 1,000,000,000, modulo 10⁹ + 7. Multiplying by 3 a billion times takes about a billion steps: seconds in C++, too slow when there are a hundred thousand such queries. There is a way that takes about thirty steps. It is one of the oldest algorithms in mathematics, and it shows…"
   },
   {
+   "id": "cp-sieve",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "sieve",
+   "title": "Washing Away Every Multiple",
+   "subtitle": "The Sieve of Eratosthenes, its smallest-prime-factor upgrade, and factorising a million numbers instantly",
+   "track": "cp-math",
+   "track_order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-modular-arithmetic"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 4,
+   "topics": [
+    "number theory",
+    "primes",
+    "sieve",
+    "factorisation"
+   ],
+   "complexity": {
+    "time": "O(n log log n) to build; O(log x) to factorise each x",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Count Primes",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/count-primes/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Counting Divisors",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1713",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Common Divisors",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1081",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Closest Prime Numbers in Range",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/closest-prime-numbers-in-range/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Prime",
+     "definition": "A whole number greater than 1 whose only divisors are 1 and itself, such as 2, 3, 5, 7 and 11."
+    },
+    {
+     "term": "Composite",
+     "definition": "A whole number greater than 1 that is not prime, so it has a divisor other than 1 and itself."
+    },
+    {
+     "term": "Sieve",
+     "definition": "An algorithm that finds all primes up to n by crossing out the multiples of each prime."
+    },
+    {
+     "term": "Smallest prime factor",
+     "definition": "For a number x, the smallest prime that divides it. Storing it for every x lets you factorise any x quickly."
+    },
+    {
+     "term": "Prime factorisation",
+     "definition": "Writing a number as a product of primes, such as 360 = 2^3 × 3^2 × 5."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "When sieving with prime p, why can you start crossing out at p × p?",
+     "options": [
+      "Smaller multiples are prime",
+      "Every smaller multiple k × p with k < p has a smaller prime factor and was already crossed out",
+      "To save memory only",
+      "Because p × p is prime"
+     ],
+     "answer": 1,
+     "explain": "A multiple k × p with k < p has a prime factor of k, which is smaller than p, so an earlier prime already crossed it out."
+    },
+    {
+     "q": "With a smallest-prime-factor table, how do you factorise 360?",
+     "options": [
+      "Try every number up to 360",
+      "Repeatedly divide by spf[x]: 2, 2, 2, 3, 3, 5",
+      "Use binary search",
+      "It cannot be done"
+     ],
+     "answer": 1,
+     "explain": "spf[360] = 2 gives 180, then 90, 45; spf[45] = 3 gives 15, then 5; spf[5] = 5 gives 1. Each step divides by a prime, so there are at most about log2 x steps."
+    },
+    {
+     "q": "Roughly how long does sieving up to 10^7 take in C++?",
+     "options": [
+      "Hours",
+      "A fraction of a second",
+      "Exactly 10^7 seconds",
+      "It is impossible"
+     ],
+     "answer": 1,
+     "explain": "The sieve does about n log log n simple operations, a few times 10^7 for n = 10^7, well under a second, though memory for the array matters."
+    }
+   ],
+   "cover_seed": "sieve",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.86,
+   "path": "cp/sieve.md",
+   "hash": "9954fdbd776d",
+   "word_count": 957,
+   "excerpt": "A problem gives you 100,000 numbers up to a million and asks, for each one, how many divisors it has. Factoring each by trial division up to its square root costs about a thousand steps per number: a hundred million in total, uncomfortably slow. More than two thousand years ago, the Greek scholar…"
+  },
+  {
    "id": "famous-algos-bloom-filter",
    "kind": "concept",
    "subject": "famous-algos",
@@ -11593,6 +11925,94 @@
    "hash": "06a7c40766e5",
    "word_count": 943,
    "excerpt": "In a cluster of a thousand machines, some machine is always having a bad moment: a long garbage collection pause, a saturated network card, a reboot. The cluster must notice real failures quickly, so it can stop routing traffic to dead machines. But if it panics at every hiccup, it will keep…"
+  },
+  {
+   "id": "famous-algos-merkle-trees",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "merkle-trees",
+   "title": "One Fingerprint for a Billion Files",
+   "subtitle": "Merkle trees: hash the pieces, hash the hashes, and prove or find any change with a handful of comparisons",
+   "track": "fa-distributed",
+   "track_order": 9,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-hashing-patterns"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 4,
+   "topics": [
+    "hashing",
+    "distributed systems",
+    "data integrity",
+    "git",
+    "blockchain"
+   ],
+   "glossary": [
+    {
+     "term": "Cryptographic hash",
+     "definition": "A function that turns any data into a short fingerprint, where changing even one bit of the data changes the fingerprint completely."
+    },
+    {
+     "term": "Merkle tree",
+     "definition": "A tree where each leaf holds the hash of a data block and each parent holds the hash of its children's hashes."
+    },
+    {
+     "term": "Root hash",
+     "definition": "The single hash at the top of a Merkle tree, which summarises every block below it."
+    },
+    {
+     "term": "Inclusion proof",
+     "definition": "The short list of sibling hashes needed to show that one block is part of a tree with a known root hash."
+    },
+    {
+     "term": "Anti-entropy",
+     "definition": "A background process where replicas compare their data and repair differences."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "One block in a Merkle tree of 1,024 blocks changes. Which hashes change?",
+     "options": [
+      "Only that block's leaf",
+      "Every hash in the tree",
+      "The leaf and every ancestor up to the root, about 11 hashes",
+      "Only the root"
+     ],
+     "answer": 2,
+     "explain": "A change propagates upward: the leaf, its parent, grandparent and so on. With 1,024 leaves that is about log2 of 1,024 plus one, around 11 hashes."
+    },
+    {
+     "q": "Two replicas each hold a Merkle tree of their data. How do they find which blocks differ?",
+     "options": [
+      "Send all blocks to each other",
+      "Compare root hashes; if different, compare children, and descend only into subtrees whose hashes differ",
+      "Compare file sizes",
+      "Sort the blocks"
+     ],
+     "answer": 1,
+     "explain": "Matching subtrees are skipped entirely. Only the paths to changed blocks are explored."
+    },
+    {
+     "q": "How many hashes does an inclusion proof need for one block among about a million?",
+     "options": [
+      "About a million",
+      "About 1,000",
+      "About 20",
+      "Exactly 1"
+     ],
+     "answer": 2,
+     "explain": "You need one sibling hash per level, and a tree over about 2^20 blocks has about 20 levels."
+    }
+   ],
+   "cover_seed": "merkle-trees",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "famous-algos/merkle-trees.md",
+   "hash": "200d94c20352",
+   "word_count": 953,
+   "excerpt": "Two database replicas in different data centres each hold a billion records. They should be identical, but after a network hiccup some writes may have reached one and not the other. Comparing every record would mean shipping terabytes across the ocean. What if each side could summarise all billion…"
   },
   {
    "id": "famous-algos-raft",
@@ -13133,6 +13553,102 @@
    "hash": "b86a4cc1e360",
    "word_count": 1104,
    "excerpt": "A student in Chennai opens a video site whose servers are in Virginia. Every image, script and video segment would have to cross the Pacific or the Atlantic and back, each request paying a few hundred milliseconds of travel. Multiply by a hundred files per page and a million viewers, and the origin…"
+  },
+  {
+   "id": "system-design-sql-vs-nosql",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "sql-vs-nosql",
+   "title": "Filing Cabinet, Labelled Boxes or Giant Spreadsheet?",
+   "subtitle": "Choosing a database honestly: relational, key-value, document, wide-column and graph stores, and the questions that decide",
+   "track": "sd-blocks",
+   "track_order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-consistency-basics"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "databases",
+    "sql",
+    "nosql",
+    "data modeling"
+   ],
+   "glossary": [
+    {
+     "term": "Relational database",
+     "definition": "A database that stores data in tables with rows and columns, linked by keys, and queried with SQL."
+    },
+    {
+     "term": "Schema",
+     "definition": "The declared structure of data: which tables and columns exist and what types they hold."
+    },
+    {
+     "term": "Join",
+     "definition": "A query that combines rows from two or more tables using a shared key, such as orders with their customers."
+    },
+    {
+     "term": "ACID transaction",
+     "definition": "A group of operations that either all succeed or all fail, with isolation from other transactions and durable results."
+    },
+    {
+     "term": "Key-value store",
+     "definition": "A database that stores values under keys and is optimised for fast get and put by key."
+    },
+    {
+     "term": "Document store",
+     "definition": "A database that stores self-contained documents, often JSON, which can nest related data together."
+    },
+    {
+     "term": "Wide-column store",
+     "definition": "A database that groups data by a partition key and sorts it within each partition, designed to spread huge write volumes across many machines."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Which question most often decides the database choice?",
+     "options": [
+      "Which database is newest",
+      "What the main access patterns and consistency needs are",
+      "Which one has the best logo",
+      "How many servers you have today"
+     ],
+     "answer": 1,
+     "explain": "Databases are optimised for particular ways of reading and writing data. Matching those to your access patterns and consistency needs matters most."
+    },
+    {
+     "q": "Your data has many relationships queried in flexible ways, and transfers between accounts must be atomic. What fits best?",
+     "options": [
+      "A key-value cache",
+      "A relational database with transactions",
+      "A blob store",
+      "A time-series database"
+     ],
+     "answer": 1,
+     "explain": "Relational databases excel at joins across related data and at ACID transactions, which money movement needs."
+    },
+    {
+     "q": "Why do wide-column stores like Cassandra ask you to design tables around queries?",
+     "options": [
+      "They do not support writes",
+      "They spread data by partition key and avoid joins, so each query should read from one partition in a predictable order",
+      "They only store numbers",
+      "To save typing"
+     ],
+     "answer": 1,
+     "explain": "Without joins, the data for a query must already be grouped together. You often store the same data in several tables, one per query pattern."
+    }
+   ],
+   "cover_seed": "sql-vs-nosql",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "system-design/sql-vs-nosql.md",
+   "hash": "dabc98fdc289",
+   "word_count": 1107,
+   "excerpt": "\"Which database would you use?\" is asked in almost every design interview, and the weakest answers are slogans: \"SQL doesn't scale\", \"NoSQL is faster\", \"just use MongoDB\". Real systems at large companies run on relational databases, key-value stores, document stores and wide-column stores, often…"
   }
  ]
 }
