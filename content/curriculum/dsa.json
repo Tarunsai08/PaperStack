@@ -3151,8 +3151,8 @@
    "prerequisites": [
     "dsa-bfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Words as nodes, one-letter changes as edges",
@@ -3182,8 +3182,8 @@
    "prerequisites": [
     "dsa-topological-sort"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Cycle means impossible",
@@ -3215,8 +3215,8 @@
     "dsa-bfs",
     "dsa-union-find"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Flood fill",
