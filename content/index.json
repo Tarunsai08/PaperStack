@@ -1,7 +1,7 @@
 {
- "content_version": "2df0704b4ca644d2",
+ "content_version": "1c59c56f6816387f",
  "generated_at": "2026-11-02",
- "count": 156,
+ "count": 161,
  "subjects": [
   {
    "id": "ml",
@@ -12327,6 +12327,93 @@
    "excerpt": "You want to count, for each number in an array, how many smaller numbers appear after it. A Fenwick tree over values would do it in O(n log n): walk from the right, query \"how many values below x have I seen?\", then add x. There is one problem. Values go up to 10⁹, and an array of a billion…"
   },
   {
+   "id": "cp-practice-plan",
+   "kind": "primer",
+   "subject": "cp",
+   "slug": "practice-plan",
+   "title": "Twelve Weeks From Unrated to Confident",
+   "subtitle": "A week-by-week contest practice plan that fits beside placement preparation, linked to the articles in this subject",
+   "track": "cp-misc",
+   "track_order": 17,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-rating-ladder",
+    "cp-upsolving"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "competitive programming",
+    "practice plan",
+    "placement preparation"
+   ],
+   "glossary": [
+    {
+     "term": "Topic set",
+     "definition": "A group of 5 to 10 problems on one technique, solved in a row to make the technique automatic."
+    },
+    {
+     "term": "Virtual contest",
+     "definition": "A past contest replayed with its original timer and scoreboard, used for realistic practice at any time."
+    },
+    {
+     "term": "Mistakes log",
+     "definition": "A running list of the real causes of your wrong answers, reviewed before contests."
+    },
+    {
+     "term": "Deliberate practice",
+     "definition": "Practising just beyond your current ability, with feedback, on specific weaknesses, rather than repeating what you already do well."
+    },
+    {
+     "term": "Checkpoint",
+     "definition": "A point in the plan where you measure progress and adjust what comes next."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What should most of your practice problems be?",
+     "options": [
+      "Easy ones you can solve quickly",
+      "Problems slightly above your current level, with upsolving afterwards",
+      "The hardest problems available",
+      "Only problems from one topic forever"
+     ],
+     "answer": 1,
+     "explain": "Deliberate practice in the stretch zone, followed by upsolving, builds skill fastest."
+    },
+    {
+     "q": "Why mix topic sets with contests?",
+     "options": [
+      "For variety only",
+      "Topic sets build a technique; contests train recognising which technique a fresh problem needs, under time pressure",
+      "Contests are optional",
+      "Topic sets are faster"
+     ],
+     "answer": 1,
+     "explain": "In a contest, the topic is not labelled. You need both the tool and the skill of choosing it."
+    },
+    {
+     "q": "At a checkpoint you notice most failures are Wrong Answers from edge cases. What should change?",
+     "options": [
+      "Do harder problems",
+      "Add stress testing and an edge-case checklist to every submission",
+      "Stop practising",
+      "Only do topic sets"
+     ],
+     "answer": 1,
+     "explain": "The weakness is verification, not knowledge, so the fix is a testing habit."
+    }
+   ],
+   "cover_seed": "practice-plan",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.82,
+   "path": "cp/practice-plan.md",
+   "hash": "3770658a504b",
+   "word_count": 1022,
+   "excerpt": "You have placements in a few months, a pile of DSA to revise, and a vague plan to \"do some Codeforces\". Without a plan, practice drifts: some days of easy problems, a contest that goes badly, a week off, then guilt. Twelve weeks later, very little has changed. With a plan, the same hours compound.…"
+  },
+  {
    "id": "famous-algos-bloom-filter",
    "kind": "concept",
    "subject": "famous-algos",
@@ -13293,6 +13380,97 @@
    "excerpt": "Kubernetes stores everything it knows about your cluster, every pod, every config, every secret, in etcd. If etcd's servers ever disagreed about what is stored, your cluster would start doing contradictory things. Yet those servers crash, reboot and lose network links all the time. They stay in…"
   },
   {
+   "id": "famous-algos-tcp-congestion-control",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "tcp-congestion-control",
+   "title": "How the Internet Avoids Gridlock",
+   "subtitle": "TCP congestion control: slow start, additive increase, multiplicative decrease, and why every connection backs off together",
+   "track": "fa-networking",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-token-bucket"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "networking",
+    "tcp",
+    "congestion control",
+    "aimd"
+   ],
+   "glossary": [
+    {
+     "term": "Congestion window",
+     "definition": "The number of bytes (or packets) a TCP sender allows to be in flight, unacknowledged, at once. Its size sets the sending rate."
+    },
+    {
+     "term": "Round-trip time",
+     "definition": "The time for a packet to reach the receiver and its acknowledgement to come back, often written RTT."
+    },
+    {
+     "term": "Slow start",
+     "definition": "The start-up phase where the congestion window roughly doubles every round trip to find available bandwidth quickly."
+    },
+    {
+     "term": "AIMD",
+     "definition": "Additive increase, multiplicative decrease: grow the window a little each round trip, and cut it sharply, often by half, when congestion is detected."
+    },
+    {
+     "term": "Packet loss",
+     "definition": "When a packet never arrives, usually because a router's queue was full and it dropped the packet."
+    },
+    {
+     "term": "Flow control",
+     "definition": "A separate TCP mechanism that stops a sender from overwhelming the receiver's buffer, using the receive window."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What does TCP traditionally treat as the main signal of congestion?",
+     "options": [
+      "High CPU on the receiver",
+      "Packet loss, detected through timeouts or duplicate acknowledgements",
+      "A slow DNS lookup",
+      "The size of the web page"
+     ],
+     "answer": 1,
+     "explain": "When router queues overflow, packets are dropped. Classic TCP variants interpret loss as a sign the network is congested and slow down."
+    },
+    {
+     "q": "Why multiplicative decrease rather than subtracting a small fixed amount?",
+     "options": [
+      "It is easier to code",
+      "Halving reacts quickly to congestion, and together with additive increase it pushes competing flows toward a fair share",
+      "It increases throughput",
+      "Routers require it"
+     ],
+     "answer": 1,
+     "explain": "Large cuts relieve congested queues fast, and the combination of gentle increase with proportional decrease makes flows converge to fairness."
+    },
+    {
+     "q": "How is congestion control different from flow control?",
+     "options": [
+      "They are the same",
+      "Flow control protects the receiver's buffer; congestion control protects the network between sender and receiver",
+      "Flow control is for UDP",
+      "Congestion control only applies to Wi-Fi"
+     ],
+     "answer": 1,
+     "explain": "The receiver advertises how much it can accept (flow control); the sender separately estimates how much the network can carry (congestion control) and sends the smaller amount."
+    }
+   ],
+   "cover_seed": "tcp-congestion-control",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "famous-algos/tcp-congestion-control.md",
+   "hash": "46285d2822a6",
+   "word_count": 1038,
+   "excerpt": "In October 1986, the link between Lawrence Berkeley Laboratory and UC Berkeley, a few hundred metres apart, saw its throughput fall from 32 kilobits per second to about 40 bits per second. The network was not broken. It was so full of retransmitted packets that almost nothing useful got through: a…"
+  },
+  {
    "id": "famous-algos-token-bucket",
    "kind": "concept",
    "subject": "famous-algos",
@@ -13738,6 +13916,97 @@
    "hash": "79b8e8adee5e",
    "word_count": 957,
    "excerpt": "A bank's database is halfway through moving money: it has subtracted ₹5,000 from your account, but not yet added it to your friend's. Then the power fails. When the machine restarts, did the money vanish? In a well-built database, no. Before touching the real data, it wrote one line in an…"
+  },
+  {
+   "id": "famous-algos-mvcc",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "mvcc",
+   "title": "Readers Never Wait for Writers",
+   "subtitle": "Multi-version concurrency control: keep old versions, give every transaction a consistent snapshot, and clean up later",
+   "track": "fa-storage",
+   "track_order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-write-ahead-log"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 4,
+   "topics": [
+    "databases",
+    "concurrency control",
+    "transactions",
+    "snapshot isolation"
+   ],
+   "glossary": [
+    {
+     "term": "MVCC",
+     "definition": "Multi-version concurrency control: storing several versions of each row so readers can see a consistent past version while writers create new ones."
+    },
+    {
+     "term": "Snapshot",
+     "definition": "The consistent view of the database a transaction sees, as of a particular moment, ignoring changes committed later."
+    },
+    {
+     "term": "Transaction id",
+     "definition": "A number given to each transaction, used to decide which row versions it is allowed to see."
+    },
+    {
+     "term": "Snapshot isolation",
+     "definition": "An isolation level where each transaction reads from its own snapshot and a write fails if another transaction already changed the same row."
+    },
+    {
+     "term": "Write skew",
+     "definition": "An anomaly under snapshot isolation where two transactions read overlapping data, each writes different rows, and together they break a rule neither would break alone."
+    },
+    {
+     "term": "Garbage collection",
+     "definition": "Removing old row versions that no running transaction can still see, called vacuum in PostgreSQL."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is the main benefit of MVCC compared with locking every row a reader touches?",
+     "options": [
+      "Less disk space",
+      "Readers see a consistent snapshot without blocking writers, and writers do not block readers",
+      "No need for transactions",
+      "Faster deletes"
+     ],
+     "answer": 1,
+     "explain": "Because old versions stay around, a reader can keep seeing the version that existed when it started while a writer creates a new one."
+    },
+    {
+     "q": "A transaction started at time 100. Row R has versions committed at 90 and 120. Which version does it see?",
+     "options": [
+      "The one from 120",
+      "The one from 90",
+      "Both",
+      "Neither"
+     ],
+     "answer": 1,
+     "explain": "Its snapshot includes only changes committed before it started, so it sees the version from 90."
+    },
+    {
+     "q": "Why does MVCC need garbage collection?",
+     "options": [
+      "To defragment indexes",
+      "Old versions pile up; once no running transaction can see them, they must be removed to reclaim space",
+      "To compress data",
+      "It does not"
+     ],
+     "answer": 1,
+     "explain": "Every update leaves an old version behind. A long-running transaction can keep old versions alive, causing bloat."
+    }
+   ],
+   "cover_seed": "mvcc",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.84,
+   "path": "famous-algos/mvcc.md",
+   "hash": "0bf4d42bdd7c",
+   "word_count": 952,
+   "excerpt": "An analyst starts a report that reads every order from the last year, which takes ten minutes. Meanwhile, the shop keeps selling: thousands of new orders and refunds per minute. If the report locked every row it read, the shop would freeze for ten minutes. If it read rows without any protection, it…"
   },
   {
    "id": "famous-algos-cryptographic-hashing",
@@ -15563,6 +15832,192 @@
    "hash": "4992f6df6c52",
    "word_count": 1148,
    "excerpt": "Your app runs on fifty servers. Each one keeps a little in-memory cache of user profiles. A user changes their photo; one server updates its copy, and the other forty-nine keep showing the old one until their entries expire. After every deploy, all fifty caches start empty and hammer the database…"
+  },
+  {
+   "id": "system-design-url-shortener",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "url-shortener",
+   "title": "Design a URL Shortener",
+   "subtitle": "The classic warm-up case study done properly: key generation, a read-heavy redirect path, caching, analytics and failure handling",
+   "track": "sd-cases",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-back-of-envelope",
+    "system-design-caching"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "system design",
+    "case study",
+    "key generation",
+    "caching",
+    "base62"
+   ],
+   "glossary": [
+    {
+     "term": "Short code",
+     "definition": "The few characters after the domain in a short link, such as aB3xY9k in sho.rt/aB3xY9k, that identify the long URL."
+    },
+    {
+     "term": "Base62",
+     "definition": "Writing numbers with 62 symbols (0-9, a-z, A-Z), so a 7-character code can represent about 3.5 trillion values."
+    },
+    {
+     "term": "Key generation service",
+     "definition": "A component that hands out unique short codes, often by assigning blocks of numeric ids to each application server."
+    },
+    {
+     "term": "301 vs 302 redirect",
+     "definition": "HTTP status codes for redirects: 301 means moved permanently and browsers may cache it; 302 means temporary, so every click reaches the server."
+    },
+    {
+     "term": "Collision",
+     "definition": "Two different long URLs being assigned the same short code."
+    },
+    {
+     "term": "Read-heavy",
+     "definition": "A workload where reads vastly outnumber writes, which makes caching extremely effective."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why is a counter encoded in Base62 a popular way to generate codes?",
+     "options": [
+      "It produces random-looking codes automatically",
+      "Every id is unique by construction, so there are no collisions to check, and 7 characters cover trillions of ids",
+      "It needs no database",
+      "It hides the number of links"
+     ],
+     "answer": 1,
+     "explain": "A unique counter guarantees unique codes. Base62 keeps them short. Predictability is the downside, which can be addressed by shuffling or using ranges."
+    },
+    {
+     "q": "Why might a shortener with click analytics choose 302 over 301?",
+     "options": [
+      "302 is faster",
+      "With 301, browsers may cache the redirect and skip the server on later clicks, so those clicks are never counted",
+      "301 is not supported",
+      "302 uses less bandwidth"
+     ],
+     "answer": 1,
+     "explain": "A permanent redirect can be cached by the browser. A temporary one sends every click through the service, where it can be counted."
+    },
+    {
+     "q": "What is the main reason caching works so well here?",
+     "options": [
+      "Links are small",
+      "The workload is read-heavy and popular links are requested over and over",
+      "Caches never fail",
+      "Writes are expensive"
+     ],
+     "answer": 1,
+     "explain": "With about 100 reads per write and skewed popularity, a cache of hot links absorbs most redirects."
+    }
+   ],
+   "cover_seed": "url-shortener",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.92,
+   "path": "system-design/url-shortener.md",
+   "hash": "f3adc9d145c1",
+   "word_count": 1530,
+   "excerpt": "A marketing team pastes a 300-character link into a campaign and gets back sho.rt/aB3xY9k. It looks like a trivial service: store a mapping, redirect on click. Then the link goes viral, receives millions of clicks an hour, and must keep working for years. The URL shortener is the most common…"
+  },
+  {
+   "id": "system-design-rate-limiter",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "rate-limiter",
+   "title": "Design a Rate Limiter",
+   "subtitle": "Protecting an API from floods: choosing an algorithm, where to enforce it, keeping counts consistent across servers, and failing safely",
+   "track": "sd-cases",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-token-bucket",
+    "system-design-distributed-cache"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "system design",
+    "case study",
+    "rate limiting",
+    "redis",
+    "api gateway"
+   ],
+   "glossary": [
+    {
+     "term": "Rate limiter",
+     "definition": "A component that caps how many requests a client may make in a time period and rejects or delays the rest."
+    },
+    {
+     "term": "Limit key",
+     "definition": "What a limit is counted against, such as a user id, an API key, an IP address, or a combination with an endpoint."
+    },
+    {
+     "term": "Fixed window counter",
+     "definition": "Counting requests per calendar window, such as per minute, and resetting the count when the window changes."
+    },
+    {
+     "term": "Sliding window",
+     "definition": "Counting requests over the last N seconds at every moment, which avoids bursts at window boundaries."
+    },
+    {
+     "term": "Fail open",
+     "definition": "When the limiter itself is broken, allowing requests through rather than blocking everyone."
+    },
+    {
+     "term": "Atomic operation",
+     "definition": "An operation that completes as one indivisible step, so concurrent requests cannot interleave and corrupt the count."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is the problem with a fixed window limit of 100 per minute?",
+     "options": [
+      "It uses too much memory",
+      "A client can send 100 requests at 12:00:59 and 100 more at 12:01:00, getting 200 in two seconds",
+      "It never resets",
+      "It cannot count"
+     ],
+     "answer": 1,
+     "explain": "Resetting at window boundaries allows double bursts across the edge. Sliding windows and token buckets avoid this."
+    },
+    {
+     "q": "Why must the check-and-increment be atomic in a shared store like Redis?",
+     "options": [
+      "For speed only",
+      "Two servers could both read 99, both allow the request, and both write 100, letting the client exceed the limit",
+      "Redis requires it",
+      "It is not necessary"
+     ],
+     "answer": 1,
+     "explain": "Without atomicity, concurrent requests race. INCR, Lua scripts or transactions make the check and update a single step."
+    },
+    {
+     "q": "Should a payment API's rate limiter fail open or closed if Redis is down?",
+     "options": [
+      "Always open",
+      "It depends: many APIs fail open to stay available, but abuse-sensitive endpoints such as login may fail closed or fall back to local limits",
+      "Always closed",
+      "Neither; crash the server"
+     ],
+     "answer": 1,
+     "explain": "Failing open keeps service available but drops protection; failing closed protects but blocks everyone. Choose per endpoint, often with a local fallback."
+    }
+   ],
+   "cover_seed": "rate-limiter",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.9,
+   "path": "system-design/rate-limiter.md",
+   "hash": "38eb1aa8fbe7",
+   "word_count": 1321,
+   "excerpt": "A public API serves 50,000 developers. One of them deploys a script with a bug and starts sending 20,000 requests per second. Within minutes, database connections are exhausted, latencies spike for everyone, and the on-call engineer's phone starts ringing. A rate limiter would have rejected that…"
   }
  ]
 }

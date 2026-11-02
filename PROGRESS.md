@@ -10,12 +10,12 @@ Read `HANDOFF.md` first if you are picking this project up.
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
 | dsa | 20 | 0 | 132 | 152 | 19/72 |
-| cp | 17 | 0 | 98 | 115 | 14/29 |
-| famous-algos | 18 | 0 | 73 | 91 | 16/32 |
-| system-design | 18 | 0 | 101 | 119 | 18/60 |
+| cp | 18 | 0 | 97 | 115 | 15/29 |
+| famous-algos | 20 | 0 | 71 | 91 | 18/32 |
+| system-design | 20 | 0 | 99 | 119 | 20/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **156** | **0** | **517** | **673** | |
+| **All** | **161** | **0** | **512** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **23**
 
@@ -38,7 +38,6 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### cp
 
-- [ ] `cp-practice-plan` (P0, primer, cp-misc): A 12-Week Contest Practice Plan
 - [ ] `cp-weird-algorithm` (P1, problem-walkthrough, cp-start): Your First CSES Problems: Weird Algorithm to Increasing Array
 - [ ] `cp-implementation-skills` (P1, primer, cp-start): Implementation Problems: Getting the Details Right
 - [ ] `cp-inclusion-exclusion` (P1, pattern, cp-math): Inclusion-Exclusion: Counting by Correcting Overcounts
@@ -48,11 +47,10 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `cp-matrix-exponentiation` (P1, pattern, cp-math): Matrix Exponentiation for Linear Recurrences
 - [ ] `cp-counting-divisors` (P1, problem-walkthrough, cp-math): Counting Divisors for a Million Numbers
 - [ ] `cp-creating-strings-ii` (P1, problem-walkthrough, cp-math): Counting Arrangements of a Word
+- [ ] `cp-exponentiation-ii` (P1, problem-walkthrough, cp-math): a^(b^c) mod p: Fermat to the Rescue
 
 ### famous-algos
 
-- [ ] `famous-algos-tcp-congestion-control` (P0, concept, fa-networking): TCP Congestion Control: How the Internet Avoids Gridlock
-- [ ] `famous-algos-mvcc` (P0, concept, fa-storage): MVCC: Readers Never Block Writers
 - [ ] `famous-algos-geohash` (P0, concept, fa-storage): Geohash: Turning a Map Into a String
 - [ ] `famous-algos-lz77` (P0, concept, fa-coding): Lempel-Ziv: How ZIP Files Shrink Your Data
 - [ ] `famous-algos-diffie-hellman` (P0, concept, fa-crypto): Diffie-Hellman: Agreeing on a Secret in Public
@@ -61,6 +59,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `famous-algos-kalman-filter` (P0, concept, fa-signals): The Kalman Filter: Blending Guesses With Noisy Measurements
 - [ ] `famous-algos-counting-bloom-cuckoo` (P1, concept, fa-sketches): Deletable Filters: Counting Bloom and Cuckoo Filters
 - [ ] `famous-algos-heavy-hitters` (P1, concept, fa-sketches): Finding Heavy Hitters in a Stream: Misra-Gries and Space-Saving
+- [ ] `famous-algos-lsh` (P1, concept, fa-sketches): Locality-Sensitive Hashing: Finding Near Neighbours Fast
+- [ ] `famous-algos-paxos` (P1, concept, fa-distributed): Paxos: The Original Consensus Algorithm
 
 ### system-design
 
@@ -69,11 +69,11 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `system-design-scaling-journey` (P0, deep-dive, sd-scaling): From One Server to a Million Users
 - [ ] `system-design-cache-problems` (P0, deep-dive, sd-scaling): When Caches Hurt: Stampedes, Hot Keys and Invalidation
 - [ ] `system-design-async-processing` (P0, deep-dive, sd-scaling): Doing Work Later: Queues, Workers and Background Jobs
-- [ ] `system-design-url-shortener` (P0, case-study, sd-cases): Design a URL Shortener
-- [ ] `system-design-rate-limiter` (P0, case-study, sd-cases): Design a Rate Limiter
 - [ ] `system-design-unique-id-generator` (P0, case-study, sd-cases): Design a Unique ID Generator
 - [ ] `system-design-chat-system` (P0, case-study, sd-cases): Design a Chat System Like WhatsApp
 - [ ] `system-design-notification-system` (P0, case-study, sd-cases): Design a Notification System
+- [ ] `system-design-oop-solid` (P0, lld, sd-lld): Object-Oriented Design and SOLID Principles
+- [ ] `system-design-consistency-models` (P0, deep-dive, sd-distributed): Consistency Models: Linearizable to Eventual
 
 ### ml
 
@@ -115,7 +115,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 </details>
 
-<details><summary>cp: 17 written</summary>
+<details><summary>cp: 18 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -134,10 +134,11 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `cp-coordinate-compression` Coordinate Compression
 - [x] `cp-contest-strategy` Contest Strategy: Order, Time and Nerves
 - [x] `cp-invariants-observations` Invariants and Observations: The Heart of Div 2
+- [x] `cp-practice-plan` A 12-Week Contest Practice Plan
 
 </details>
 
-<details><summary>famous-algos: 18 written</summary>
+<details><summary>famous-algos: 20 written</summary>
 
 - [x] `famous-algos-bloom-filter` Bloom Filters: Saying No Without Looking
 - [x] `famous-algos-count-min-sketch` Count-Min Sketch: Counting Billions of Things in Kilobytes
@@ -150,17 +151,19 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `famous-algos-swim-failure-detection` SWIM: Detecting Dead Machines Politely
 - [x] `famous-algos-merkle-trees` Merkle Trees: Proving Data Is Intact With One Hash
 - [x] `famous-algos-raft` Raft: Consensus You Can Actually Understand
+- [x] `famous-algos-tcp-congestion-control` TCP Congestion Control: How the Internet Avoids Gridlock
 - [x] `famous-algos-token-bucket` Token Bucket: Rate Limiting With Room for Bursts
 - [x] `famous-algos-exponential-backoff` Exponential Backoff With Jitter: Retrying Without a Stampede
 - [x] `famous-algos-power-of-two-choices` The Power of Two Choices: Smarter Load Balancing
 - [x] `famous-algos-lsm-trees` LSM Trees: Why Modern Databases Write So Fast
 - [x] `famous-algos-write-ahead-log` Write-Ahead Logging: Never Lose a Committed Write
+- [x] `famous-algos-mvcc` MVCC: Readers Never Block Writers
 - [x] `famous-algos-cryptographic-hashing` Cryptographic Hashes: Fingerprints You Cannot Fake
 - [x] `famous-algos-password-hashing` Storing Passwords Safely: Salts, bcrypt and Argon2
 
 </details>
 
-<details><summary>system-design: 18 written</summary>
+<details><summary>system-design: 20 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -180,6 +183,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `system-design-database-indexing` Database Indexes: Why Some Queries Are Instant
 - [x] `system-design-message-queues` Message Queues and Pub-Sub: Decoupling With Kafka and Friends
 - [x] `system-design-distributed-cache` Redis and Distributed Caches
+- [x] `system-design-url-shortener` Design a URL Shortener
+- [x] `system-design-rate-limiter` Design a Rate Limiter
 
 </details>
 
