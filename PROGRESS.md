@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 142 | 0 | 10 | 152 | 72/72 |
+| dsa | 145 | 0 | 7 | 152 | 72/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **344** | **0** | **329** | **673** | |
+| **All** | **347** | **0** | **326** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -25,12 +25,12 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### dsa
 
-- [ ] `dsa-fenwick-tree` (P1, pattern, dsa-advanced): Fenwick Trees: Prefix Sums That Change
-- [ ] `dsa-bit-manipulation-tricks` (P1, pattern, dsa-advanced): Bit Manipulation Tricks Interviewers Love
 - [ ] `dsa-string-matching-basics` (P1, pattern, dsa-advanced): Pattern Matching: From Brute Force to Rolling Hash
 - [ ] `dsa-design-data-structures` (P1, pattern, dsa-advanced): Designing Data Structures in Interviews
+- [ ] `dsa-max-xor-trie` (P1, problem-walkthrough, dsa-advanced): Maximum XOR With a Bitwise Trie
 - [ ] `dsa-lfu-cache` (P1, problem-walkthrough, dsa-advanced): Designing an LFU Cache
 - [ ] `dsa-monotonic-queue-dp` (P2, pattern, dsa-advanced): Optimising DP With a Monotonic Deque
+- [ ] `dsa-sparse-table-rmq` (P2, pattern, dsa-advanced): Sparse Tables: Range Minimum in O(1)
 
 ### cp
 
@@ -42,8 +42,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `cp-binary-lifting` (P0, pattern, cp-graphs): Binary Lifting and LCA in log n
 - [ ] `cp-weird-algorithm` (P1, problem-walkthrough, cp-start): Your First CSES Problems: Weird Algorithm to Increasing Array
 - [ ] `cp-implementation-skills` (P1, primer, cp-start): Implementation Problems: Getting the Details Right
-- [ ] `cp-segment-tree-descend` (P1, pattern, cp-ranges): Walking Down a Segment Tree
-- [ ] `cp-mos-algorithm` (P1, pattern, cp-ranges): Mo's Algorithm: Offline Range Queries
+- [ ] `cp-prefix-xor-tricks` (P1, pattern, cp-start): Prefix XOR and Subarray Tricks
+- [ ] `cp-fenwick-advanced` (P1, pattern, cp-ranges): Fenwick Tree Tricks: Range Updates and 2D
 
 ### famous-algos
 
@@ -86,7 +86,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 142 written</summary>
+<details><summary>dsa: 145 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -157,6 +157,9 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-state-machine-dp` State Machine DP: Stock Trading Problems
 - [x] `dsa-bitmask-dp-intro` Bitmask DP: Subsets as Numbers
 - [x] `dsa-tries` Tries: Autocomplete in Your Pocket
+- [x] `dsa-fenwick-tree` Fenwick Trees: Prefix Sums That Change
+- [x] `dsa-segment-tree-basics` Segment Trees: Range Queries With Updates
+- [x] `dsa-bit-manipulation-tricks` Bit Manipulation Tricks Interviewers Love
 - [x] `dsa-product-except-self` Product of Array Except Self Without Division
 - [x] `dsa-trapping-rain-water` Trapping Rain Water Three Ways
 - [x] `dsa-majority-vote` Boyer-Moore Majority Vote

@@ -1,7 +1,7 @@
 {
- "content_version": "d4e977d3c3af7b8f",
+ "content_version": "44a2be83221d70c7",
  "generated_at": "2026-11-02",
- "count": 344,
+ "count": 347,
  "subjects": [
   {
    "id": "ml",
@@ -25048,6 +25048,354 @@
    "hash": "f33d5cbd2298",
    "word_count": 1203,
    "excerpt": "You type \"ca\" into a search box and suggestions appear instantly: car, card, care, cat. The dictionary behind it might hold a million words. Checking each one for the prefix \"ca\" on every keystroke would be far too slow, and a hash set cannot help, because it only answers \"is this exact string…"
+  },
+  {
+   "id": "dsa-fenwick-tree",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "fenwick-tree",
+   "title": "A Pyramid of Savings Jars",
+   "subtitle": "Fenwick trees (binary indexed trees): prefix sums that survive updates, built on the lowest set bit, with point updates and prefix queries in O(log n), and counting smaller elements to the right",
+   "track": "dsa-advanced",
+   "track_order": 2,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-prefix-sums",
+    "dsa-bit-basics"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "Fenwick tree",
+    "binary indexed tree",
+    "prefix sums",
+    "bit manipulation",
+    "inversions"
+   ],
+   "complexity": {
+    "time": "O(log n) per update and per prefix query, O(n) to build",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Range Sum Query - Mutable",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/range-sum-query-mutable/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Dynamic Range Sum Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1648",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Count of Smaller Numbers After Self",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/count-of-smaller-numbers-after-self/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Fenwick tree",
+     "definition": "An array tree[1..n] where tree[i] stores the sum of a block of the original array ending at i, of length equal to the lowest set bit of i; also called a binary indexed tree."
+    },
+    {
+     "term": "Lowest set bit",
+     "definition": "The value of the rightmost 1 bit of i, computed as i & -i; for 12 (binary 1100) it is 4."
+    },
+    {
+     "term": "Responsibility range",
+     "definition": "The block (i - lowbit(i), i] whose sum tree[i] stores."
+    },
+    {
+     "term": "Prefix query",
+     "definition": "The sum of a[1..i], found by adding tree[i] and repeatedly stripping the lowest set bit from i."
+    },
+    {
+     "term": "Point update",
+     "definition": "Adding a value to one element a[i], which changes tree[i] and every later entry whose range covers i, found by repeatedly adding the lowest set bit."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Which entries does the query sum(7) add up in a Fenwick tree?",
+     "options": [
+      "tree[1] to tree[7]",
+      "tree[7], tree[6] and tree[4], stripping the lowest set bit each time",
+      "tree[7] and tree[8]",
+      "Only tree[7]"
+     ],
+     "answer": 1,
+     "explain": "7 is 111 in binary. tree[7] covers (6, 7], tree[6] covers (4, 6], tree[4] covers (0, 4]. Together they cover 1 to 7 with no overlap."
+    },
+    {
+     "q": "Updating a[3] changes which entries in an array of 8?",
+     "options": [
+      "Only tree[3]",
+      "tree[3], tree[4] and tree[8], adding the lowest set bit each time",
+      "tree[1] to tree[3]",
+      "All eight"
+     ],
+     "answer": 1,
+     "explain": "3 → 3 + 1 = 4 → 4 + 4 = 8. Those are exactly the entries whose responsibility ranges contain position 3."
+    },
+    {
+     "q": "Why is a Fenwick tree usually indexed from 1?",
+     "options": [
+      "Convention only",
+      "Index 0 has no set bits, so i & -i is 0 and the update loop i += i & -i would never move",
+      "Because C++ arrays start at 1",
+      "To save memory"
+     ],
+     "answer": 1,
+     "explain": "The structure depends on the lowest set bit. Zero has none, so 0-based indices must be shifted by one before entering the tree."
+    }
+   ],
+   "cover_seed": "fenwick-tree",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.78,
+   "path": "dsa/fenwick-tree.md",
+   "hash": "60da4424bfa8",
+   "word_count": 1462,
+   "excerpt": "A shopkeeper records each day's takings and is constantly asked, \"how much did we make from day 1 to day d?\". A running total answers that instantly, until an old entry is corrected. Then every running total after it must be rewritten, which for a year of records is hundreds of updates for a single…"
+  },
+  {
+   "id": "dsa-segment-tree-basics",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "segment-tree-basics",
+   "title": "Asking a Bracket Who Won Any Stretch",
+   "subtitle": "Segment trees for interviews: a binary tree over halves of the array, point updates and range queries in O(log n) for sum, min or max, why the array needs 4n slots, and walking down the tree to find the first slot that fits",
+   "track": "dsa-advanced",
+   "track_order": 3,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-fenwick-tree",
+    "dsa-divide-and-conquer"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "segment tree",
+    "range queries",
+    "divide and conquer",
+    "trees"
+   ],
+   "complexity": {
+    "time": "O(log n) per update and query, O(n) to build",
+    "space": "O(n), allocated as 4n"
+   },
+   "practice_problems": [
+    {
+     "name": "Range Sum Query - Mutable",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/range-sum-query-mutable/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Dynamic Range Minimum Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1649",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Hotel Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1143",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Segment tree",
+     "definition": "A binary tree where each node stores a summary, such as the sum or minimum, of one contiguous segment of the array, with the root covering everything and leaves covering single elements."
+    },
+    {
+     "term": "Node segment",
+     "definition": "The range [l, r] of array indices a node is responsible for; its children cover [l, mid] and [mid + 1, r]."
+    },
+    {
+     "term": "Combine function",
+     "definition": "The operation that merges two children's summaries into their parent's, such as +, min or max; it must be associative."
+    },
+    {
+     "term": "Canonical decomposition",
+     "definition": "The set of at most about 2 log n nodes whose segments exactly tile a query range."
+    },
+    {
+     "term": "Tree descent",
+     "definition": "Walking from the root to a leaf, choosing a child at each level by looking at the stored summaries, to find a position with some property."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does a recursive segment tree usually allocate 4n nodes?",
+     "options": [
+      "To store four values per element",
+      "With heap-style indexing (children 2v and 2v + 1), the largest index used can exceed 2n when n is not a power of two, and 4n is a safe bound",
+      "Because queries need extra space",
+      "It needs exactly 2n - 1"
+     ],
+     "answer": 1,
+     "explain": "There are 2n - 1 real nodes, but heap numbering leaves gaps when the tree is not perfect. Indices stay below 4n for every n, so 4n is the standard safe size."
+    },
+    {
+     "q": "A range minimum query on [1, 6] in an array of 8 visits which kinds of node?",
+     "options": [
+      "Every node",
+      "Nodes fully inside the range contribute their stored min and stop; nodes fully outside return immediately; only partially overlapping nodes recurse",
+      "Only leaves",
+      "Only the root"
+     ],
+     "answer": 1,
+     "explain": "The query splits into the canonical nodes [1, 1], [2, 3], [4, 5] and [6, 6]. At most two partially covered nodes per level keep recursing, which bounds the work at O(log n)."
+    },
+    {
+     "q": "In CSES Hotel Queries, how do you find the first hotel with at least x free rooms in O(log n)?",
+     "options": [
+      "Scan the hotels",
+      "Store the maximum free rooms per segment and walk down from the root, going left whenever the left child's maximum is at least x",
+      "Binary search on prefix sums",
+      "Sort the hotels"
+     ],
+     "answer": 1,
+     "explain": "If the left half has any hotel with enough rooms, the first one is there; otherwise it is in the right half. One root-to-leaf descent finds it, then the update fixes the maxima on the way back up."
+    }
+   ],
+   "cover_seed": "segment-tree-basics",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.8,
+   "path": "dsa/segment-tree-basics.md",
+   "hash": "1e2da48cd136",
+   "word_count": 1376,
+   "excerpt": "A league of eight teams plays a knockout bracket. The bracket records not just the champion, but the winner of every sub-bracket: the left four, the right four, each pair. Now a journalist asks: of teams 2 through 7, who is strongest? The answer can be read from a handful of sub-bracket winners,…"
+  },
+  {
+   "id": "dsa-bit-manipulation-tricks",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "bit-manipulation-tricks",
+   "title": "Flip a Switch Twice and Nothing Happened",
+   "subtitle": "The bit tricks interviewers reach for: XOR cancelling pairs, splitting two singles by one differing bit, counting bits modulo 3, Brian Kernighan's n & (n - 1), the Counting Bits DP, and addition without +",
+   "track": "dsa-advanced",
+   "track_order": 4,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-bit-basics"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "bit manipulation",
+    "XOR",
+    "popcount",
+    "arrays"
+   ],
+   "complexity": {
+    "time": "O(n) or O(n × bits)",
+    "space": "O(1)"
+   },
+   "practice_problems": [
+    {
+     "name": "Single Number",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/single-number/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Single Number III",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/single-number-iii/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Number of 1 Bits",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/number-of-1-bits/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Counting Bits",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/counting-bits/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Sum of Two Integers",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sum-of-two-integers/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "XOR cancellation",
+     "definition": "The facts x ^ x = 0 and x ^ 0 = x, so XOR-ing a list removes every value that appears an even number of times."
+    },
+    {
+     "term": "Differing bit",
+     "definition": "A bit position where two numbers differ; the lowest set bit of a ^ b is one, and it splits a list into two groups that separate a from b."
+    },
+    {
+     "term": "Kernighan's trick",
+     "definition": "n & (n - 1) clears the lowest set bit of n, so repeating it counts the 1 bits in as many steps as there are ones."
+    },
+    {
+     "term": "Carry bits",
+     "definition": "(a & b) << 1, the positions where both inputs have a 1 and a carry moves one place left during addition."
+    },
+    {
+     "term": "Arithmetic shift",
+     "definition": "A right shift of a signed negative number that copies the sign bit into the top, so the value stays negative."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Every number in a list appears twice except one. Why does XOR-ing all of them give the single one?",
+     "options": [
+      "XOR sorts the numbers",
+      "XOR is commutative and associative, each pair cancels to 0, and 0 ^ x = x",
+      "Because the single one is the largest",
+      "It only works for small numbers"
+     ],
+     "answer": 1,
+     "explain": "Rearrange the XOR so each pair sits together: x ^ x = 0 for each pair, leaving 0 ^ single = single. No extra memory is needed."
+    },
+    {
+     "q": "How many times does the loop n = n & (n - 1) run for n = 44 (binary 101100)?",
+     "options": [
+      "6",
+      "3, once per 1 bit",
+      "44",
+      "5"
+     ],
+     "answer": 1,
+     "explain": "Each step clears the lowest 1: 101100 → 101000 → 100000 → 0. Three ones, three steps, regardless of the number of bit positions."
+    },
+    {
+     "q": "Two numbers appear once and all others twice. After computing x = XOR of everything, how do you separate the two?",
+     "options": [
+      "Sort the list",
+      "Pick a bit where they differ, such as x & -x, and XOR the two groups of numbers that have and do not have that bit separately",
+      "Divide x by 2",
+      "It cannot be done in O(1) space"
+     ],
+     "answer": 1,
+     "explain": "x = a ^ b is nonzero, so some bit is 1 in exactly one of a and b. Splitting by that bit puts a and b in different groups, while each pair stays together and cancels."
+    }
+   ],
+   "cover_seed": "bit-manipulation-tricks",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "dsa/bit-manipulation-tricks.md",
+   "hash": "ab7b769caae7",
+   "word_count": 1502,
+   "excerpt": "A hotel corridor has a panel of light switches. A cleaner walks through and flips switches for every room they visit, and one guest visits twice, flipping the same switch back. At the end, only the rooms visited an odd number of times are lit. Nobody counted anything; the panel itself did the…"
   },
   {
    "id": "dsa-interview-dsa-revision",
