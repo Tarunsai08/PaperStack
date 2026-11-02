@@ -1553,8 +1553,8 @@
     "dsa-tries",
     "system-design-caching"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Trie with top-k at nodes",
@@ -1648,8 +1648,8 @@
     "system-design-stateless-idempotency",
     "system-design-sagas"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Idempotency keys",
@@ -3159,8 +3159,8 @@
    "prerequisites": [
     "system-design-isolation-levels"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Prepare and commit",
@@ -3188,8 +3188,8 @@
    "prerequisites": [
     "system-design-two-phase-commit"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Local transactions plus compensations",
@@ -3221,8 +3221,8 @@
     "system-design-sagas",
     "system-design-message-queues"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Dual-write problem",
@@ -3250,8 +3250,8 @@
    "prerequisites": [
     "system-design-outbox-cdc"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "At-most, at-least, exactly once",
