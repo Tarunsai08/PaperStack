@@ -89,7 +89,7 @@ A [[composite index]] on (user_id, created_at) is sorted by user_id, then by cre
 - `WHERE user_id = 5`: works, using the first column.
 - `WHERE created_at > yesterday` alone: cannot use the index efficiently, just as a phone book sorted by surname cannot find everyone named "Priya".
 
-The rule: put equality-filtered columns first, then the range or sort column.
+The rule: put equality-filtered columns first, then the range or sort column. Getting that order wrong is one of the most common indexing mistakes in real systems.
 
 ### Covering indexes
 

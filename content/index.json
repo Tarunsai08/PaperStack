@@ -1,7 +1,7 @@
 {
- "content_version": "a98ecdca43ba5460",
+ "content_version": "10afdf57d59f9c08",
  "generated_at": "2026-11-02",
- "count": 138,
+ "count": 143,
  "subjects": [
   {
    "id": "ml",
@@ -9342,6 +9342,131 @@
    "excerpt": "A trader looks back at a year of daily profits and losses: up 3, down 7, up 4, up 2, down 1, up 5. What stretch of consecutive days would have made the most money? Checking every start and end day is easy to write and slow to run: about n² stretches. Jon Bentley tells the story of this problem in…"
   },
   {
+   "id": "dsa-string-patterns",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "string-patterns",
+   "title": "Mirrors, Anagrams and Letter Counts",
+   "subtitle": "String patterns for interviews: count arrays of 26, expand around the centre, and build strings without hidden quadratic costs",
+   "track": "dsa-arrays",
+   "track_order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-hashing-patterns",
+    "dsa-two-pointers"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 4,
+   "topics": [
+    "strings",
+    "palindromes",
+    "anagrams",
+    "two pointers",
+    "counting"
+   ],
+   "complexity": {
+    "time": "O(n) for counting and two-pointer checks; O(n^2) for expand-around-centre",
+    "space": "O(1) with a fixed alphabet"
+   },
+   "practice_problems": [
+    {
+     "name": "Valid Anagram",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/valid-anagram/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Valid Palindrome",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/valid-palindrome/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Longest Palindromic Substring",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/longest-palindromic-substring/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Palindromic Substrings",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/palindromic-substrings/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Longest Repeating Character Replacement",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/longest-repeating-character-replacement/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Frequency array",
+     "definition": "An array of 26 counters, one per lowercase letter, used instead of a hash map when the alphabet is small and fixed."
+    },
+    {
+     "term": "Anagram",
+     "definition": "A word formed by rearranging all the letters of another, like 'listen' and 'silent'."
+    },
+    {
+     "term": "Palindrome",
+     "definition": "A string that reads the same forwards and backwards, like 'racecar' or 'abba'."
+    },
+    {
+     "term": "Expand around centre",
+     "definition": "Finding palindromes by starting from each possible middle and growing outwards while both ends match."
+    },
+    {
+     "term": "Immutable string",
+     "definition": "A string that cannot be changed in place, so every 'change' creates a new copy. In C++ std::string is mutable, but s = s + c still builds a new string."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How do you check if two lowercase strings are anagrams in O(n)?",
+     "options": [
+      "Sort both and compare in O(n)",
+      "Count letters with one array of 26: add for the first string, subtract for the second, and check all zero",
+      "Compare the first letters",
+      "Use nested loops"
+     ],
+     "answer": 1,
+     "explain": "Anagrams have identical letter counts. One frequency array, incremented for one string and decremented for the other, ends at all zeros exactly when they match."
+    },
+    {
+     "q": "How many centres does expand-around-centre try for a string of length n?",
+     "options": [
+      "n",
+      "2n − 1, because even-length palindromes have a centre between two characters",
+      "n squared",
+      "log n"
+     ],
+     "answer": 1,
+     "explain": "Each character is an odd-length centre, and each gap between neighbours is an even-length centre: n + (n − 1) centres."
+    },
+    {
+     "q": "Why is s = s + c inside a loop over n characters slow?",
+     "options": [
+      "It is not slow",
+      "Each step copies the whole string built so far, so the total work is O(n squared)",
+      "Characters cannot be added",
+      "It uses recursion"
+     ],
+     "answer": 1,
+     "explain": "s + c creates a new string of the current length each time. Use s += c or push_back, which append in amortised O(1)."
+    }
+   ],
+   "cover_seed": "string-patterns",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "dsa/string-patterns.md",
+   "hash": "24963093eea2",
+   "word_count": 904,
+   "excerpt": "String questions look endless: anagrams, palindromes, \"longest substring with at most k changes\", \"group words that are rearrangements of each other\". Then you notice something. Almost all of them reduce to two tools you already know: counting letters, and two pointers moving in from the ends or…"
+  },
+  {
    "id": "dsa-intervals-sweep",
    "kind": "pattern",
    "subject": "dsa",
@@ -9832,6 +9957,129 @@
    "hash": "390ebf7a4ffa",
    "word_count": 935,
    "excerpt": "\"Find the two numbers in this list that are closest together.\" The brute force compares every pair: about n²/2 comparisons. Now sort the list first. The closest pair is suddenly sitting side by side, and one pass finds it. You rarely need to write a sorting algorithm in an interview. What you need…"
+  },
+  {
+   "id": "dsa-linked-list-basics",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "linked-list-basics",
+   "title": "Pointer Surgery Without Losing the Patient",
+   "subtitle": "Linked lists: dummy heads, three-pointer reversal, merging, and drawing before you code",
+   "track": "dsa-linear",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-cpp-stl-toolkit"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 4,
+   "topics": [
+    "linked lists",
+    "pointers",
+    "reversal",
+    "merging"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(1) for iterative versions"
+   },
+   "practice_problems": [
+    {
+     "name": "Reverse Linked List",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/reverse-linked-list/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Merge Two Sorted Lists",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/merge-two-sorted-lists/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Remove Nth Node From End of List",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Reorder List",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/reorder-list/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Reverse Linked List II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/reverse-linked-list-ii/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Node",
+     "definition": "One element of a linked list, holding a value and a pointer to the next node."
+    },
+    {
+     "term": "Head",
+     "definition": "The first node of a linked list. Losing the head means losing the whole list."
+    },
+    {
+     "term": "Dummy node",
+     "definition": "An extra node placed before the head so that edits at the front work exactly like edits in the middle."
+    },
+    {
+     "term": "Null pointer",
+     "definition": "A pointer that points nowhere, marking the end of a list. Following it crashes the program."
+    },
+    {
+     "term": "In-place",
+     "definition": "Rearranging the existing nodes by changing their pointers, without creating new nodes or copying values."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "When reversing a list, why must you save next before changing curr->next?",
+     "options": [
+      "To save memory",
+      "Because changing curr->next loses the only link to the rest of the list",
+      "Because next is null",
+      "It is not necessary"
+     ],
+     "answer": 1,
+     "explain": "Once curr->next points backwards, nothing points to the remaining nodes. Saving next first keeps the rest of the list reachable."
+    },
+    {
+     "q": "What does a dummy node simplify?",
+     "options": [
+      "Sorting",
+      "Edits at the head, such as deleting the first node or building a new list, which then need no special case",
+      "Finding the length",
+      "Memory usage"
+     ],
+     "answer": 1,
+     "explain": "With a dummy before the head, every real node has a predecessor, so inserting or deleting at the front uses the same code as anywhere else."
+    },
+    {
+     "q": "How do you remove the 2nd node from the end in one pass?",
+     "options": [
+      "Count the length twice",
+      "Move a fast pointer 2 steps ahead, then move fast and slow together until fast reaches the end; slow is just before the target",
+      "Reverse the list",
+      "Use recursion only"
+     ],
+     "answer": 1,
+     "explain": "Keeping a gap of n between two pointers means that when the leader reaches the end, the follower is exactly n nodes from it."
+    }
+   ],
+   "cover_seed": "linked-list-basics",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "dsa/linked-list-basics.md",
+   "hash": "4d3a8db4308a",
+   "word_count": 903,
+   "excerpt": "Linked list questions are short to state and easy to get wrong. \"Reverse this list.\" Five lines of code, and half of candidates either lose the rest of the list, create a cycle, or crash on an empty input. The problems are not hard. They are fragile. A few habits make them safe every time: draw the…"
   },
   {
    "id": "cp-how-contests-work",
@@ -11141,6 +11389,123 @@
    "excerpt": "A problem gives you 100,000 numbers up to a million and asks, for each one, how many divisors it has. Factoring each by trial division up to its square root costs about a thousand steps per number: a hundred million in total, uncomfortably slow. More than two thousand years ago, the Greek scholar…"
   },
   {
+   "id": "cp-gcd-lcm",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "gcd-lcm",
+   "title": "The Largest Tile That Fits the Floor",
+   "subtitle": "GCD, LCM and Euclid's algorithm, plus the extended version that finds the numbers behind the answer",
+   "track": "cp-math",
+   "track_order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-modular-arithmetic"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 4,
+   "topics": [
+    "number theory",
+    "gcd",
+    "lcm",
+    "euclidean algorithm"
+   ],
+   "complexity": {
+    "time": "O(log min(a, b))",
+    "space": "O(1)"
+   },
+   "practice_problems": [
+    {
+     "name": "Find Greatest Common Divisor of Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-greatest-common-divisor-of-array/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Greatest Common Divisor of Strings",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/greatest-common-divisor-of-strings/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Common Divisors",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1081",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Number of Subarrays With LCM Equal to K",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/number-of-subarrays-with-lcm-equal-to-k/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "GCD",
+     "definition": "Greatest common divisor: the largest number that divides both a and b exactly."
+    },
+    {
+     "term": "LCM",
+     "definition": "Least common multiple: the smallest positive number that both a and b divide exactly."
+    },
+    {
+     "term": "Euclidean algorithm",
+     "definition": "A method that finds the GCD by repeatedly replacing (a, b) with (b, a mod b) until b becomes 0."
+    },
+    {
+     "term": "Bezout coefficients",
+     "definition": "Integers x and y with a·x + b·y = gcd(a, b). They always exist and are found by the extended Euclidean algorithm."
+    },
+    {
+     "term": "Coprime",
+     "definition": "Two numbers are coprime when their GCD is 1, meaning they share no prime factor."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does gcd(a, b) equal gcd(b, a mod b)?",
+     "options": [
+      "By coincidence",
+      "Any number dividing both a and b also divides a − kb, which is a mod b, and vice versa, so both pairs have the same common divisors",
+      "Because a mod b is prime",
+      "It only works for primes"
+     ],
+     "answer": 1,
+     "explain": "a mod b is a minus a multiple of b. Subtracting multiples of b does not change which numbers divide both, so the GCD is unchanged."
+    },
+    {
+     "q": "How should you compute lcm(a, b) safely?",
+     "options": [
+      "a × b / gcd(a, b)",
+      "a / gcd(a, b) × b",
+      "a + b",
+      "gcd(a, b) × a"
+     ],
+     "answer": 1,
+     "explain": "Both formulas are equal mathematically, but a × b can overflow before the division. Dividing first keeps intermediate values smaller."
+    },
+    {
+     "q": "Roughly how many steps does Euclid's algorithm take for numbers up to 10^18?",
+     "options": [
+      "About 10^18",
+      "About 10^9",
+      "On the order of 90 at most",
+      "Exactly 2"
+     ],
+     "answer": 2,
+     "explain": "The numbers shrink at least as fast as Fibonacci numbers grow backwards, so the step count is logarithmic, under about 90 for 64-bit inputs."
+    }
+   ],
+   "cover_seed": "gcd-lcm",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.84,
+   "path": "cp/gcd-lcm.md",
+   "hash": "a1340a83be8b",
+   "word_count": 902,
+   "excerpt": "A room is 1,071 cm by 462 cm, and you want to tile it with identical square tiles, no cutting. What is the largest tile size that fits exactly? You could try every size from 462 downward. Or you could use an algorithm written down by Euclid more than two thousand years ago, which answers in a…"
+  },
+  {
    "id": "famous-algos-bloom-filter",
    "kind": "concept",
    "subject": "famous-algos",
@@ -12369,6 +12734,98 @@
    "hash": "32eab7d9cffa",
    "word_count": 919,
    "excerpt": "You are at a supermarket with twenty checkout lines. Choosing a line at random works badly: sometimes you land behind three full trolleys while the next line is empty. Checking all twenty lines works well but takes ages, and everyone rushes to the same \"shortest\" line. Now try something lazy:…"
+  },
+  {
+   "id": "famous-algos-lsm-trees",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "lsm-trees",
+   "title": "Why Modern Databases Write So Fast",
+   "subtitle": "LSM trees: buffer writes in memory, flush sorted files, merge them in the background, and use Bloom filters to keep reads quick",
+   "track": "fa-storage",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-bloom-filter",
+    "dsa-sorting-as-tool"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 4,
+   "topics": [
+    "databases",
+    "storage engines",
+    "lsm trees",
+    "write optimisation"
+   ],
+   "glossary": [
+    {
+     "term": "LSM tree",
+     "definition": "Log-structured merge tree: a storage design that buffers writes in memory and writes them to disk as sorted, immutable files that are merged over time."
+    },
+    {
+     "term": "Memtable",
+     "definition": "The in-memory sorted structure where new writes land first."
+    },
+    {
+     "term": "SSTable",
+     "definition": "Sorted string table: an immutable file on disk containing key-value pairs sorted by key."
+    },
+    {
+     "term": "Compaction",
+     "definition": "A background process that merges SSTables, keeping the newest value for each key and dropping deleted or overwritten data."
+    },
+    {
+     "term": "Tombstone",
+     "definition": "A special marker written to record that a key was deleted, since immutable files cannot be edited in place."
+    },
+    {
+     "term": "Write amplification",
+     "definition": "How many bytes the storage engine writes to disk for each byte the user writes, because data is rewritten during compaction."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why are LSM trees fast for writes?",
+     "options": [
+      "They skip writing to disk",
+      "Writes go to memory and are later written to disk in large sequential batches, avoiding random in-place updates",
+      "They compress everything",
+      "They only allow one write per second"
+     ],
+     "answer": 1,
+     "explain": "Appending sorted batches is sequential I/O, which disks and SSDs handle far better than many small random updates."
+    },
+    {
+     "q": "How does an LSM tree delete a key?",
+     "options": [
+      "It erases it from every file immediately",
+      "It writes a tombstone; compaction later removes the key and the tombstone",
+      "It cannot delete keys",
+      "It rewrites the whole database"
+     ],
+     "answer": 1,
+     "explain": "Files are immutable, so a delete is a new record saying 'this key is gone'. Reads that see the tombstone treat the key as missing."
+    },
+    {
+     "q": "What keeps reads from checking every SSTable for a missing key?",
+     "options": [
+      "Nothing",
+      "A Bloom filter per SSTable that says 'definitely not here' for most files",
+      "Sorting the memtable",
+      "A bigger disk"
+     ],
+     "answer": 1,
+     "explain": "Each file's small Bloom filter rules it out without a disk read, so a lookup only opens files that might contain the key."
+    }
+   ],
+   "cover_seed": "lsm-trees",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.92,
+   "path": "famous-algos/lsm-trees.md",
+   "hash": "108c768859ce",
+   "word_count": 958,
+   "excerpt": "A messaging app stores billions of messages, and every second hundreds of thousands more arrive. A storage engine that updates records in place, seeking to the right spot on disk for every write, would spend most of its time jumping around. Many modern databases take a different approach: never…"
   },
   {
    "id": "system-design-interview-framework",
@@ -13649,6 +14106,98 @@
    "hash": "dabc98fdc289",
    "word_count": 1107,
    "excerpt": "\"Which database would you use?\" is asked in almost every design interview, and the weakest answers are slogans: \"SQL doesn't scale\", \"NoSQL is faster\", \"just use MongoDB\". Real systems at large companies run on relational databases, key-value stores, document stores and wide-column stores, often…"
+  },
+  {
+   "id": "system-design-database-indexing",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "database-indexing",
+   "title": "Why Some Queries Are Instant and Others Take Minutes",
+   "subtitle": "Database indexes: B+ trees, composite column order, covering indexes, and what every index costs on writes",
+   "track": "sd-blocks",
+   "track_order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-sql-vs-nosql"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "databases",
+    "indexing",
+    "b-trees",
+    "query performance"
+   ],
+   "glossary": [
+    {
+     "term": "Index",
+     "definition": "An extra data structure that lets a database find rows by a column's value without scanning the whole table."
+    },
+    {
+     "term": "Full table scan",
+     "definition": "Reading every row of a table to find the matching ones. Fine for small tables, very slow for large ones."
+    },
+    {
+     "term": "B+ tree",
+     "definition": "A balanced tree with many keys per node, used by most relational databases for indexes. Leaves are linked, which makes range scans fast."
+    },
+    {
+     "term": "Composite index",
+     "definition": "An index on several columns in a specific order, such as (user_id, created_at)."
+    },
+    {
+     "term": "Covering index",
+     "definition": "An index that contains every column a query needs, so the database never has to visit the table rows."
+    },
+    {
+     "term": "Selectivity",
+     "definition": "How well a condition narrows down rows. A condition matching 0.1% of rows is highly selective; one matching 50% is not."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A composite index is on (user_id, created_at). Which query can use it fully?",
+     "options": [
+      "WHERE created_at > X",
+      "WHERE user_id = 5 ORDER BY created_at",
+      "WHERE status = 'paid'",
+      "WHERE created_at = X OR user_id = 5"
+     ],
+     "answer": 1,
+     "explain": "The index is sorted by user_id first, then created_at within each user. Filtering on user_id and ordering by created_at follows that order exactly."
+    },
+    {
+     "q": "Why does every extra index slow down writes?",
+     "options": [
+      "It does not",
+      "Each insert, update or delete must also update every index on the affected columns",
+      "Indexes lock the whole table",
+      "Indexes are stored in memory only"
+     ],
+     "answer": 1,
+     "explain": "An index is a separate sorted structure. Changing a row means changing its entry in each relevant index too."
+    },
+    {
+     "q": "About how many levels does a B+ tree need to index a billion rows if each node holds a few hundred keys?",
+     "options": [
+      "About 30",
+      "About 4",
+      "About 1,000",
+      "About a billion"
+     ],
+     "answer": 1,
+     "explain": "With a fan-out of a few hundred, each level multiplies capacity by hundreds: three to four levels reach a billion."
+    }
+   ],
+   "cover_seed": "database-indexing",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.9,
+   "path": "system-design/database-indexing.md",
+   "hash": "0dfd6e546c5e",
+   "word_count": 1110,
+   "excerpt": "A query that took 3 milliseconds yesterday takes 40 seconds today. The code did not change. The table grew from ten thousand rows to fifty million, and the query was quietly reading every one of them. One line, CREATE INDEX, brings it back to milliseconds. Indexes are the most powerful performance…"
   }
  ]
 }

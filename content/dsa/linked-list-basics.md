@@ -77,7 +77,7 @@ To reverse [[in-place]], walk the list with three pointers: `prev` (the already-
 2. `curr->next = prev` (rewrite the clue to point backwards)
 3. `prev = curr`, `curr = next` (step forward)
 
-When `curr` becomes null, `prev` is the new head.
+When `curr` becomes null, `prev` is the new head. Three assignments per node, no extra memory.
 
 ```mermaid
 flowchart TD
