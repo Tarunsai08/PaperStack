@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 104 | 0 | 48 | 152 | 62/72 |
+| dsa | 107 | 0 | 45 | 152 | 64/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **306** | **0** | **367** | **673** | |
+| **All** | **309** | **0** | **364** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -25,16 +25,16 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### dsa
 
-- [ ] `dsa-greedy-exchange` (P0, pattern, dsa-heaps-greedy): Greedy Algorithms and the Exchange Argument
 - [ ] `dsa-meeting-rooms` (P0, problem-walkthrough, dsa-heaps-greedy): How Many Meeting Rooms Do You Need?
+- [ ] `dsa-jump-game` (P0, problem-walkthrough, dsa-heaps-greedy): Jump Game: Greedy Reach
 - [ ] `dsa-topological-sort` (P0, pattern, dsa-graphs): Topological Sort: Ordering Tasks With Dependencies
 - [ ] `dsa-dijkstra` (P0, pattern, dsa-graphs): Dijkstra: Shortest Paths With Weights
 - [ ] `dsa-word-ladder` (P0, problem-walkthrough, dsa-graphs): Word Ladder: BFS on Implicit Graphs
 - [ ] `dsa-islands-variants` (P0, problem-walkthrough, dsa-graphs): Number of Islands and Its Many Variants
-- [ ] `dsa-mst` (P1, pattern, dsa-graphs): Minimum Spanning Trees: Kruskal and Prim
-- [ ] `dsa-bipartite` (P1, pattern, dsa-graphs): Bipartite Graphs and Two-Colouring
-- [ ] `dsa-grid-graph-tricks` (P1, pattern, dsa-graphs): Grid Problems as Graphs
-- [ ] `dsa-critical-connections` (P1, problem-walkthrough, dsa-graphs): Critical Connections: Bridges in a Network
+- [ ] `dsa-gas-station` (P1, problem-walkthrough, dsa-heaps-greedy): Gas Station: A Greedy Proof in One Pass
+- [ ] `dsa-fractional-knapsack-jobs` (P1, problem-walkthrough, dsa-heaps-greedy): Fractional Knapsack and Job Sequencing
+- [ ] `dsa-candy-and-two-pass` (P1, problem-walkthrough, dsa-heaps-greedy): Two-Pass Greedy: Candy and Friends
+- [ ] `dsa-heap-scheduling` (P1, problem-walkthrough, dsa-heaps-greedy): Scheduling With Heaps: CPU Tasks and IPO
 
 ### cp
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 104 written</summary>
+<details><summary>dsa: 107 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -134,6 +134,9 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-top-k-pattern` Top K: The Heap of Size K Trick
 - [x] `dsa-two-heaps` Two Heaps: The Running Median
 - [x] `dsa-k-way-merge` Merging K Sorted Lists
+- [x] `dsa-greedy-exchange` Greedy Algorithms and the Exchange Argument
+- [x] `dsa-interval-scheduling` Interval Scheduling: Pick the Earliest Finisher
+- [x] `dsa-task-scheduling` Task Scheduler: Greedy With a Heap
 - [x] `dsa-graph-representation` Graphs: Modelling Problems as Nodes and Edges
 - [x] `dsa-bfs` Breadth-First Search: Exploring in Rings
 - [x] `dsa-dfs` Depth-First Search: Going Deep, Then Backing Up

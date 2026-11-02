@@ -1,7 +1,7 @@
 {
- "content_version": "aa57c48e2f33a7de",
+ "content_version": "a92c675a72eba9ba",
  "generated_at": "2026-11-02",
- "count": 306,
+ "count": 309,
  "subjects": [
   {
    "id": "ml",
@@ -18616,6 +18616,365 @@
    "hash": "341723eeda81",
    "word_count": 1437,
    "excerpt": "At closing time, five cashiers each hold a stack of receipts already sorted by time. The manager wants one list of every sale in time order. She does not shuffle all the receipts together and sort them. She looks at the top receipt of each stack, takes the earliest, and repeats. With five stacks,…"
+  },
+  {
+   "id": "dsa-greedy-exchange",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "greedy-exchange",
+   "title": "A Bus Conductor Who Never Reseats Anyone",
+   "subtitle": "Greedy algorithms make the best-looking choice and never look back; the exchange argument is how you prove that is safe, and a small counterexample is how you learn when it is not",
+   "track": "dsa-heaps-greedy",
+   "track_order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-sorting-as-tool"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 9,
+   "topics": [
+    "greedy",
+    "exchange argument",
+    "sorting",
+    "proof"
+   ],
+   "complexity": {
+    "time": "Usually O(n log n), dominated by the sort",
+    "space": "O(1) to O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Assign Cookies",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/assign-cookies/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Movie Festival",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1629",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Largest Number",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/largest-number/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Jump Game",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/jump-game/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Gas Station",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/gas-station/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Greedy choice",
+     "definition": "The single decision a greedy algorithm makes at each step by a fixed local rule, without trying alternatives or undoing it later."
+    },
+    {
+     "term": "Exchange argument",
+     "definition": "A proof that takes any optimal solution, swaps one of its choices for the greedy choice, and shows the result is still valid and no worse, so greedy can be optimal too."
+    },
+    {
+     "term": "Stays ahead",
+     "definition": "A proof style showing that after every step, the greedy partial solution is at least as good as any other partial solution with the same number of steps."
+    },
+    {
+     "term": "Adjacent swap",
+     "definition": "Comparing two neighbouring items in an order, A then B against B then A, to find the rule that decides which should come first."
+    },
+    {
+     "term": "Counterexample",
+     "definition": "A small, concrete input on which a proposed greedy rule gives a worse answer than the true optimum, which proves the rule wrong."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Coins are 1, 3 and 4, and the amount is 6. What does 'take the biggest coin that fits' give, and what is optimal?",
+     "options": [
+      "Both give 2 coins",
+      "Greedy gives 3 coins (4 + 1 + 1), optimal is 2 coins (3 + 3)",
+      "Greedy gives 2, optimal gives 3",
+      "Greedy cannot finish"
+     ],
+     "answer": 1,
+     "explain": "Greedy grabs the 4 and is left with 2, which needs two 1s. Taking 3 + 3 uses only two coins. One small counterexample is enough to rule out the greedy rule for these coins."
+    },
+    {
+     "q": "In an exchange argument for picking the most non-overlapping movies, why can the first movie of an optimal schedule be replaced by the movie that ends earliest?",
+     "options": [
+      "Because it is shorter",
+      "Because it ends no later than the optimal first movie, so it cannot clash with anything the optimal schedule watches afterwards",
+      "Because optimal schedules are unique",
+      "Because sorting by start time guarantees it"
+     ],
+     "answer": 1,
+     "explain": "Everything after the first movie in the optimal schedule starts at or after that movie's end. The earliest-ending movie ends no later, so all of those still fit. The count is unchanged."
+    },
+    {
+     "q": "Jobs with durations 3, 1 and 2 run one after another. Which order minimises the sum of finishing times?",
+     "options": [
+      "3, 2, 1",
+      "1, 2, 3",
+      "2, 1, 3",
+      "Any order gives the same sum"
+     ],
+     "answer": 1,
+     "explain": "Running the shortest job first gives finishing times 1, 3, 6 with sum 10. An adjacent swap argument shows a longer job placed before a shorter one always raises the sum."
+    }
+   ],
+   "cover_seed": "greedy-exchange",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.86,
+   "path": "dsa/greedy-exchange.md",
+   "hash": "95772170241c",
+   "word_count": 1901,
+   "excerpt": "A bus pulls into a crowded stop with thirty seconds to spare, so the conductor seats each passenger by one simple rule, never asking anyone to move again. Sometimes that rule fills the bus as well as any genius planner could. Sometimes it leaves an empty seat that a cleverer plan would have filled.…"
+  },
+  {
+   "id": "dsa-interval-scheduling",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "interval-scheduling",
+   "title": "Choosing Talks at a Busy Conference",
+   "subtitle": "Sort by end time and keep the earliest finisher: the proof, the counterexamples for every other order, minimum arrows, k parallel viewers, and why weights turn it into DP",
+   "track": "dsa-heaps-greedy",
+   "track_order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-greedy-exchange",
+    "dsa-intervals-sweep"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 9,
+   "topics": [
+    "greedy",
+    "intervals",
+    "sorting",
+    "exchange argument"
+   ],
+   "complexity": {
+    "time": "O(n log n)",
+    "space": "O(1) beyond the sort, O(k) for k viewers"
+   },
+   "practice_problems": [
+    {
+     "name": "Non-overlapping Intervals",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/non-overlapping-intervals/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Minimum Number of Arrows to Burst Balloons",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Movie Festival",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1629",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Movie Festival II",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1632",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Maximum Profit in Job Scheduling",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/maximum-profit-in-job-scheduling/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Interval scheduling",
+     "definition": "Choosing the largest number of intervals from a list so that no two chosen intervals overlap."
+    },
+    {
+     "term": "Earliest finish rule",
+     "definition": "The greedy rule for interval scheduling: sort by end time and take each interval that starts after the last one taken has ended."
+    },
+    {
+     "term": "Stabbing point",
+     "definition": "A single point on the line that lies inside several intervals at once, such as one arrow bursting every balloon it passes through."
+    },
+    {
+     "term": "Touching intervals",
+     "definition": "Two intervals where one ends exactly where the next begins; each problem states whether they count as overlapping."
+    },
+    {
+     "term": "Weighted interval scheduling",
+     "definition": "The version where each interval has a value and you maximise total value instead of count, which needs dynamic programming rather than greedy."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Talks are [1, 10], [2, 3] and [4, 5]. Which talk does 'sort by start time' pick first, and why is that bad?",
+     "options": [
+      "[2, 3], which is optimal",
+      "[1, 10], which blocks both other talks and gives 1 instead of 2",
+      "[4, 5], which is optimal",
+      "Sorting by start always matches sorting by end"
+     ],
+     "answer": 1,
+     "explain": "The earliest starter runs until 10 and overlaps both others. The earliest finisher, [2, 3], leaves room for [4, 5], giving 2."
+    },
+    {
+     "q": "Why is the minimum number of intervals to remove (Non-overlapping Intervals) equal to n minus the maximum number you can keep?",
+     "options": [
+      "It is a coincidence of the examples",
+      "Removing a set leaves a non-overlapping set, so fewest removals means most kept",
+      "Because sorting by end removes duplicates",
+      "It only holds when no intervals touch"
+     ],
+     "answer": 1,
+     "explain": "Every valid removal leaves a non-overlapping subset, and every non-overlapping subset corresponds to removing the rest. Minimising one maximises the other."
+    },
+    {
+     "q": "Balloons are [1, 6], [2, 8], [7, 12]. Where should the first arrow go?",
+     "options": [
+      "At 1, the earliest start",
+      "At 6, the earliest end, which bursts both [1, 6] and [2, 8]",
+      "At 7",
+      "At 12"
+     ],
+     "answer": 1,
+     "explain": "Some arrow must hit [1, 6] by time 6. Shooting at exactly 6 hits every balloon that has started by then, which is as many as any point in [1, 6] can reach."
+    }
+   ],
+   "cover_seed": "interval-scheduling",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.84,
+   "path": "dsa/interval-scheduling.md",
+   "hash": "d76d2e4fffc0",
+   "word_count": 1930,
+   "excerpt": "You arrive at a conference with a printed schedule. Talks run in parallel rooms all day, and you want to sit through as many complete talks as you can. The keynote starts first and sounds important, but it runs for three hours. Two short talks fit in that same slot. Which rule picks the most talks:…"
+  },
+  {
+   "id": "dsa-task-scheduling",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "task-scheduling",
+   "title": "A Chef Rotating Dishes So None Burns",
+   "subtitle": "Task Scheduler with a cooldown: the frame built by the most frequent task, the counting formula, the heap simulation that jumps over idle time, and its cousins Reorganize String and Course Schedule III",
+   "track": "dsa-heaps-greedy",
+   "track_order": 7,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-greedy-exchange",
+    "dsa-heap-basics"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 8,
+   "topics": [
+    "greedy",
+    "heap",
+    "counting",
+    "scheduling"
+   ],
+   "complexity": {
+    "time": "O(n) for the formula, O(T log 26) for the simulation over T slots",
+    "space": "O(1) for 26 letters"
+   },
+   "practice_problems": [
+    {
+     "name": "Task Scheduler",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/task-scheduler/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Reorganize String",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/reorganize-string/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Course Schedule III",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/course-schedule-iii/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Cooldown",
+     "definition": "The number of time slots that must pass between two runs of the same task, which is n in Task Scheduler."
+    },
+    {
+     "term": "Idle slot",
+     "definition": "A time slot in which no task runs because every remaining task is still cooling down."
+    },
+    {
+     "term": "Frame",
+     "definition": "The skeleton built by the most frequent task: its copies placed n + 1 slots apart, with the gaps between them waiting to be filled."
+    },
+    {
+     "term": "Most frequent first",
+     "definition": "The greedy rule of always running, among tasks that are ready, the one with the most copies left."
+    },
+    {
+     "term": "Regret heap",
+     "definition": "A max-heap of choices already made, used to undo the worst one when a constraint breaks, as in Course Schedule III."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Tasks A A A B B C with cooldown 2. What does the formula (maxFreq - 1) × (n + 1) + countMax give, and is that the answer?",
+     "options": [
+      "6, the number of tasks",
+      "7, and since 7 is at least 6 tasks, the answer is 7",
+      "9",
+      "8"
+     ],
+     "answer": 1,
+     "explain": "maxFreq is 3 (A), n + 1 is 3, countMax is 1, so 2 × 3 + 1 = 7. One schedule is A B C A B idle A."
+    },
+    {
+     "q": "When is the answer simply the number of tasks?",
+     "options": [
+      "Never",
+      "When the other tasks are plentiful enough to fill every gap in the frame, so no idle slot is needed",
+      "Only when n is 0",
+      "Only when all tasks are different"
+     ],
+     "answer": 1,
+     "explain": "If tasks overflow the frame, you can widen the rows and still keep equal tasks n apart, so no slot is wasted. The answer is the larger of the frame size and the task count."
+    },
+    {
+     "q": "In Course Schedule III, after adding a course pushes the total time past its deadline, which course do you drop?",
+     "options": [
+      "The one just added",
+      "The longest course taken so far, from a max-heap",
+      "The course with the earliest deadline",
+      "Any course at random"
+     ],
+     "answer": 1,
+     "explain": "Dropping any one course loses exactly one from the count, so drop the one that frees the most time. That keeps the count the same as dropping the newcomer but leaves the schedule as roomy as possible."
+    }
+   ],
+   "cover_seed": "task-scheduling",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.74,
+   "path": "dsa/task-scheduling.md",
+   "hash": "27fccf4dc840",
+   "word_count": 1667,
+   "excerpt": "A chef works a single stove with a stack of orders. Each pan, once used, must cool before it can go back on the flame, or the next dish in it burns. The chef cannot sit idle while a pan cools if another dish is ready, but sometimes every remaining pan is still hot and there is nothing to do except…"
   },
   {
    "id": "dsa-graph-representation",

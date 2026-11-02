@@ -1386,8 +1386,8 @@
    "prerequisites": [
     "dsa-sorting-as-tool"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Make the locally best choice",
@@ -1419,8 +1419,8 @@
     "dsa-greedy-exchange",
     "dsa-intervals-sweep"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Sort by end time",
@@ -1452,8 +1452,8 @@
     "dsa-greedy-exchange",
     "dsa-heap-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Most frequent task first",
