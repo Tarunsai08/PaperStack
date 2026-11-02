@@ -1,5 +1,5 @@
 {
- "content_version": "945ba9bc9877e2e1",
+ "content_version": "a1e2381786694629",
  "generated_at": "2026-11-02",
  "count": 277,
  "subjects": [
@@ -13115,7 +13115,7 @@
     "dsa-cpp-stl-toolkit"
    ],
    "difficulty": "beginner",
-   "read_minutes": 4,
+   "read_minutes": 6,
    "topics": [
     "linked lists",
     "pointers",
@@ -13156,6 +13156,12 @@
      "platform": "LeetCode",
      "url": "https://leetcode.com/problems/reverse-linked-list-ii/",
      "difficulty": "Medium"
+    },
+    {
+     "name": "Remove Linked List Elements",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/remove-linked-list-elements/",
+     "difficulty": "Easy"
     }
    ],
    "glossary": [
@@ -13220,8 +13226,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "dsa/linked-list-basics.md",
-   "hash": "4d3a8db4308a",
-   "word_count": 903,
+   "hash": "a70868cf03f9",
+   "word_count": 1334,
    "excerpt": "Linked list questions are short to state and easy to get wrong. \"Reverse this list.\" Five lines of code, and half of candidates either lose the rest of the list, create a cycle, or crash on an empty input. The problems are not hard. They are fragile. A few habits make them safe every time: draw the…"
   },
   {
@@ -13361,7 +13367,7 @@
     "dsa-cpp-stl-toolkit"
    ],
    "difficulty": "beginner",
-   "read_minutes": 4,
+   "read_minutes": 5,
    "topics": [
     "stacks",
     "parsing",
@@ -13402,6 +13408,12 @@
      "platform": "LeetCode",
      "url": "https://leetcode.com/problems/simplify-path/",
      "difficulty": "Medium"
+    },
+    {
+     "name": "Longest Valid Parentheses",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/longest-valid-parentheses/",
+     "difficulty": "Hard"
     }
    ],
    "glossary": [
@@ -13466,8 +13478,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "dsa/stack-patterns.md",
-   "hash": "0ecfff616137",
-   "word_count": 900,
+   "hash": "9ed506aa6b78",
+   "word_count": 1126,
    "excerpt": "Your code editor knows instantly when a bracket is missing. A calculator app turns \"2 + 3 × 4\" into 14, not 20. The undo button in every editor steps back through your changes in reverse order. Different features, one data structure underneath: the stack. Stacks are simple enough to explain in a…"
   },
   {
