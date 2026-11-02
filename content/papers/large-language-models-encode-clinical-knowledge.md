@@ -1,244 +1,180 @@
 ---
-id: paper-large-language-models-encode-clinical-knowledge
-kind: paper
+id: "paper-large-language-models-encode-clinical-knowledge"
+kind: "paper"
 subject: "ml"
-slug: large-language-models-encode-clinical-knowledge
-title: Can Language Models Safely Practice Medicine?
-subtitle: How clinician-guided prompt tuning turned raw LLM scale into clinical reliability
+slug: "large-language-models-encode-clinical-knowledge"
+title: "Passing the Medical Exam Is Not Being a Doctor"
+subtitle: "How Med-PaLM aced exam questions, failed the bedside test, and learned clinical manners from a handful of examples"
 track: "useful-llms"
 track_order: 8
-prerequisites:
-- paper-chain-of-thought
-- paper-instructgpt
-difficulty: intermediate
+prerequisites: ["paper-chain-of-thought", "paper-instructgpt"]
+difficulty: "intermediate"
 read_minutes: 8
-topics:
-- medical ai
-- prompt tuning
-- safety alignment
-- clinical evaluation
-paper_title: Large language models encode clinical knowledge
-authors:
-- K. Singhal
-- Shekoofeh Azizi
-- Tao Tu
-- et al.
-year: 2022
-venue: Nature
-paper_url: https://arxiv.org/abs/2212.13138
+topics: ["medical ai", "prompt tuning", "evaluation", "ai safety"]
+paper_title: "Large language models encode clinical knowledge"
+authors: ["Karan Singhal", "Shekoofeh Azizi", "Tao Tu", "et al."]
+year: 2023
+venue: "Nature"
+paper_url: "https://arxiv.org/abs/2212.13138"
 glossary:
-- term: MultiMedQA
-  definition: A benchmark combining six existing medical QA datasets and a newly curated consumer query dataset to test clinical knowledge.
-- term: Instruction Prompt Tuning
-  definition: An alignment method that learns soft prompt vectors prepended to human-written task instructions and exemplars.
-- term: Self-Consistency Prompting
-  definition: A decoding technique that generates multiple reasoning chains and chooses the final answer by majority vote.
-- term: Selective Prediction
-  definition: A framework where a model refuses to answer when its internal confidence or decoding agreement falls below a safe threshold.
-- term: Soft Prompt
-  definition: A set of continuous, learnable vectors prepended to the input sequence while model weights remain frozen.
+  - term: "MultiMedQA"
+    definition: "The paper's benchmark: six existing medical question-answering datasets plus one new one, covering licensing exams, research questions and everyday health questions."
+  - term: "HealthSearchQA"
+    definition: "A new dataset from the paper made of medical questions that people commonly search for online, answered in free text rather than by picking an option."
+  - term: "Self-consistency"
+    definition: "Asking a model to reason through the same question several times with some randomness, then taking a majority vote over the final answers."
+  - term: "Soft prompt"
+    definition: "A short sequence of learned vectors placed in front of a model's input. Unlike written words, the vectors are tuned by gradient descent while the model itself stays frozen."
+  - term: "Instruction prompt tuning"
+    definition: "The paper's method: learn a soft prompt that sits in front of a written instruction and a few clinician-written example answers, adapting a frozen model to medicine cheaply."
+  - term: "Human evaluation"
+    definition: "Having people, here clinicians and lay users, rate model answers on qualities such as agreement with medical consensus, possible harm, bias and helpfulness."
 quiz:
-- q: What primary benchmark result did Flan-PaLM 540B achieve on the MedQA USMLE four-choice dataset?
-  options:
-  - 50.3% accuracy, matching specialized biomedical models
-  - 67.6% accuracy, beating the prior state-of-the-art by over 17%
-  - 92.9% accuracy, matching human expert clinicians
-  - 79.0% accuracy, matching the PubMedQA single-rater ceiling
-  answer: 1
-  explain: Flan-PaLM 540B achieved 67.6% on MedQA four-choice questions, beating the prior best result of 50.3% by more than 17 percentage points.
-- q: How does instruction prompt tuning differ from standard soft prompt tuning?
-  options:
-  - It updates every parameter in the 540B model using reinforcement learning
-  - It replaces text prompts entirely with random discrete tokens
-  - It prepends learned soft prompt vectors to human instructions and clinical exemplars
-  - It is applied exclusively during pretraining on PubMed abstracts
-  answer: 2
-  explain: Instruction prompt tuning learns soft prompt vector prefixes that precede human-crafted instructions and few-shot exemplars, creating a hybrid prompt.
-- q: On which metric did Med-PaLM unexpectedly perform worse than Flan-PaLM during clinician review?
-  options:
-  - Alignment with scientific consensus
-  - Reduction of potential harm likelihood
-  - Presence of inappropriate or incorrect content
-  - Omission of clinically important information
-  answer: 2
-  explain: Med-PaLM gave longer, more thorough answers, which cut down omitted information but raised the rate of incorrect or inappropriate content from 16.1% to 18.7%.
-cover_seed: large-language-models-encode-clinical-knowledge
-generated_by: gemini-gemini-flash-latest
-generated_at: '2026-10-23'
+  - q: "Why was a high score on multiple-choice medical exams not enough for the authors?"
+    options: ["Exams are too easy for any model", "Choosing an option says little about whether a free-text answer to a real person is accurate, complete and safe", "Exam questions were leaked into training data", "Doctors do not take multiple-choice exams"]
+    answer: 1
+    explain: "Flan-PaLM reached state-of-the-art exam scores, but clinicians reading its long answers found key gaps. That is why the paper built a human evaluation framework."
+  - q: "What does instruction prompt tuning train?"
+    options: ["All 540 billion weights of PaLM", "Only a small soft prompt placed in front of written instructions and examples, with the model frozen", "A separate medical search engine", "A new tokenizer for medical words"]
+    answer: 1
+    explain: "The large model stays frozen. Only a few learned prompt vectors change, guided by a small set of clinician-written examples."
+  - q: "How did Med-PaLM compare with clinicians in the paper's human evaluation?"
+    options: ["It clearly beat them on every axis", "It performed encouragingly but remained inferior to clinicians", "It was rated worse than the untuned Flan-PaLM", "Clinicians did not take part"]
+    answer: 1
+    explain: "The abstract is direct: Med-PaLM performs encouragingly, but remains inferior to clinicians."
+cover_seed: "large-language-models-encode-clinical-knowledge"
+generated_by: "claude-revised"
+generated_at: "2026-11-02"
 importance_score: 0.74
 ---
 
 ## The hook
 
-If an artificial intelligence model passes a US medical licensing examination, would you trust it to tell a worried parent whether their newborn baby's jaundice needs emergency care? In late 2022, giant language models proved they could ace multiple-choice questions designed for graduating doctors. Yet when asked open-ended consumer health questions, those same systems hallucinated treatments, omitted critical caveats, and gave advice that real doctors warned could cause severe injury.
+A medical student can memorise every textbook and still freeze on the ward. The patient does not offer four options labelled A to D. They describe a rash, ask whether they should worry, and need an answer that is correct, complete and safe.
 
-:::analogy
-A raw large language model is like a brilliant university graduate who spent four years speed-reading every medical textbook on the internet. They can pass written exams with flying colors, but place them in front of a patient without hospital training, and they might suggest an ungrounded remedy with complete confidence. [[Instruction Prompt Tuning]] acts like a focused residency orientation, training that graduate to follow clinical norms: pause, state risks clearly, prioritize safety, and remain grounded in medical consensus.
-:::
+In late 2022, a Google team found that a giant language model could beat every earlier system on medical exam questions. Then they asked real doctors to read its answers to ordinary health questions, and the doctors found serious problems. This paper is the story of both results, and of the small fix in between.
 
 ## Before you start
 
-To get the most out of this piece, you should be familiar with step-by-step reasoning prompts in [Show Your Working: The Prompt That Unlocked Reasoning](article:paper-chain-of-thought) and how base predictors are turned into helpful assistants in [How a Text Predictor Learned to Be Helpful](article:paper-instructgpt).
+You should know how asking a model to reason step by step improves answers, from [chain-of-thought prompting](article:paper-chain-of-thought). It helps to know how [InstructGPT](article:paper-instructgpt) turned a raw text predictor into an assistant that follows instructions. No medical knowledge is needed.
 
 ## The world before this paper
 
-Until 2022, natural language processing for medicine relied on domain-specific transformers like PubMedBERT and BioGPT. Researchers trained these models directly on biomedical abstracts and papers. While these models excelled at finding entity names or classifying short excerpts, their scale was modest—typically hundreds of millions of parameters, occasionally a few billion. They struggled with complex clinical vignettes that required multi-step deduction across symptoms, lab tests, and disease pathways.
+Medical language models were usually judged by automated scores on a few benchmarks: pick the right option, or match a reference answer word for word. Each team chose its own tests, and nobody had a standard way to judge whether a free-text answer was safe.
 
-Then came general-purpose giants. Massive models like Google's PaLM (540 billion parameters) and its instruction-tuned sibling Flan-PaLM proved that general language models could absorb massive amounts of knowledge. But applying them to medicine hit two walls:
-
-1. **Benchmark myopia:** The field measured progress with multiple-choice tests (such as MedQA or MedMCQA) or automated text metrics like BLEU. Neither told you whether an answer was dangerous to a patient.
-2. **Alignment hazards:** A generic model aims to please the user and keep talking. In medicine, being overly confident or omitting a rare differential diagnosis can lead to catastrophe.
+Meanwhile, general models had grown huge. Google's PaLM had 540 billion parameters, and Flan-PaLM was a version further trained to follow instructions. Could a model like that, never built for medicine, hold real clinical knowledge? And how would you even tell?
 
 :::history
-When researchers tried to adapt 540-billion-parameter models to medicine, full fine-tuning was off the table. Updating half a trillion weights for every clinical subfield would require immense supercomputing resources. Worse, collecting tens of thousands of expert-written medical answers to run standard supervised tuning was impossible because doctor time is scarce and expensive. The authors needed a method that could steer a massive model using only a tiny handful of high-quality clinical demonstrations.
+Karan Singhal, Shekoofeh Azizi, Tao Tu and colleagues at Google Research and DeepMind posted the paper in December 2022; it was published in Nature in 2023. Their abstract opens with the problem: the quality bar for medical uses is high, and current evaluations "typically rely on automated evaluations on limited benchmarks".
 :::
 
 ## The big idea
 
-The research team recognized that passing board exams is only half the battle; clinical communication requires deep safety alignment. They proposed a two-step approach:
+:::analogy
+Think of a brilliant medical student. Their written exam score tells you they know facts. Before they treat anyone, senior doctors watch them on ward rounds and judge how they talk to patients: do they agree with accepted practice, miss anything important, or say something that could hurt someone? A student who aces the exam can still fail the ward round. The fix is not to send them back to medical school; it is a short orientation from senior staff, with a few model answers, on how this hospital expects them to speak.
+:::
 
-First, build a comprehensive testing arena called [[MultiMedQA]]. It paired established exam datasets with real-world consumer questions, audited along clinical dimensions like scientific consensus, likelihood of harm, bias, and missing information.
+The paper has three parts that follow the student's journey.
 
-Second, align the model using **[[Instruction Prompt Tuning]]**. Instead of altering the frozen 540-billion-parameter model or relying only on text prompts, they trained a compact set of continuous vectors—a [[Soft Prompt]]—prepended directly to clinician-crafted instructions and exemplars. With just 40 expert-crafted question-answer pairs, they transformed Flan-PaLM into **Med-PaLM**, cutting potentially harmful responses by more than four-fifths.
-
-```mermaid
-flowchart TD
-    A[Pretrained PaLM 540B] --> B[Flan Instruction Tuning]
-    B --> C[Flan-PaLM 540B]
-    C --> D[MultiMedQA Multiple-Choice Evaluation]
-    C --> E[Instruction Prompt Tuning with 40 Clinician Exemplars]
-    E --> F[Med-PaLM]
-    F --> G[Human Clinician and Lay User Clinical Auditing]
-    G --> H[Safety, Consensus, and Harm Analysis]
-```
+- **The written exam.** [[MultiMedQA]], a benchmark combining six existing medical question sets with a new one, [[HealthSearchQA]].
+- **The ward round.** A [[human evaluation]] framework in which clinicians rate long answers along several axes, including factuality, precision, possible harm and bias.
+- **The orientation.** [[Instruction prompt tuning]], a cheap way to adapt the frozen model using a few clinician-written examples. The result is called Med-PaLM.
 
 ## How it works
 
-Let us walk through the pieces that take an instruction-tuned model and turn it into a medically aligned system.
+### Step 1: the written exam
 
-### Step 1: The MultiMedQA benchmark
+MultiMedQA mixes three kinds of questions:
 
-The authors brought together six existing datasets and created a seventh:
+- **Professional exams**, such as MedQA (questions in the style of the US Medical Licensing Examination) and MedMCQA (Indian medical entrance exams).
+- **Research questions**, such as PubMedQA, answered yes, no or maybe from a study's abstract.
+- **Everyday questions** from the public: LiveQA, MedicationQA, and the new HealthSearchQA, built from medical questions people commonly search online.
 
-- **MedQA:** US Medical Licensing Examination (USMLE) questions.
-- **MedMCQA:** Questions from Indian medical entrance exams (AIIMS/NEET).
-- **PubMedQA:** Biomedical research questions with yes/no/maybe answers drawn from abstracts.
-- **MMLU clinical topics:** Subsets covering anatomy, clinical knowledge, genetics, and professional medicine.
-- **LiveQA and MedicationQA:** Consumer health questions submitted to medical libraries.
-- **HealthSearchQA:** A new dataset of 3,375 commonly searched consumer health queries.
+The paper also used the clinical topics of the MMLU benchmark. The multiple-choice sets can be scored automatically. The everyday questions need free-text answers, and only people can judge those well.
 
-### Step 2: Prompting for reasoning and consistency
+### Step 2: prompting for the exam
 
-To tackle multiple-choice exams, the authors combined three strategies:
+To get the best exam scores from Flan-PaLM, the authors combined three prompting strategies: a few worked examples in the prompt, [chain-of-thought](article:paper-chain-of-thought) reasoning, and [[self-consistency]], where the model reasons several times and the answers are put to a vote.
 
-1. **Few-shot prompting:** Giving the model a few input-output pairs inside the prompt.
-2. **Chain-of-thought (CoT):** Asking the model to write out clinical rationales before producing an option letter.
-3. **[[Self-Consistency Prompting]]:** Sampling multiple distinct chain-of-thought solutions from the model and taking a majority vote.
+Here is a toy vote. Seven sampled reasoning paths end in these answers:
 
-Because medical reasoning paths can branch, a single generation might stumble into an incorrect conclusion. By sampling $K$ paths (the paper used $K = 11$) and selecting the option that receives the most votes, the model cancels out spurious errors.
+| Path | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|---|---|---|---|---|---|---|---|
+| Answer | B | A | B | B | C | B | B |
+
+B wins with 5 of 7 votes, an agreement of about 0.71. One unlucky reasoning path no longer decides the answer. In our analogy, it is like asking the student to work through the case several times and trusting the conclusion they keep reaching.
 
 :::try-this
-Imagine a diagnostic puzzle where a patient's lab results could suggest either Condition A or Condition B. If you ask a language model once at temperature $T = 0.7$, it might flip a coin and argue for Condition B. If you sample 11 distinct runs, 8 runs might identify a subtle clue pointing to Condition A, while only 3 pick Condition B. Voting across all 11 runs filters out the noisy paths.
+Another question's seven paths give B, A, C, B, C, A, B. What does the vote return, and how much do the paths agree? Should a careful system answer this one? (B wins with only 3 of 7 votes, an agreement of about 0.43. Low agreement is a warning sign, and the paper explored using it as a signal for when a model should defer to a human instead of answering.)
 :::
 
-### Step 3: Deferring uncertain answers
+### Step 3: the ward round
 
-What should a medical model do when its confidence is low? The team introduced a [[Selective Prediction]] mechanism using self-consistency.
-
-Let $N$ be the total number of sampled reasoning decodes, and let $N_{\text{majority}}$ be the count of decodes backing the winning answer. We define model agreement as:
-
-$$C = \frac{N_{\text{majority}}}{N}$$
-
-Where:
-- $C$ is the agreement score between 0 and 1.
-- $N_{\text{majority}}$ is the number of decodes agreeing on the most common answer.
-- $N$ is the total number of decodes sampled.
-
-If you generate $N = 41$ decodes, and 37 pick option (B), then:
-
-$$C = \frac{37}{41} \approx 0.902$$
-
-If only 18 pick option (B), $C = 18 / 41 \approx 0.439$. By choosing a threshold $\theta$, the model only answers if $C \ge \theta$. If $C < \theta$, the system defers the question to a human doctor. As the deferral rate rose to 45% of questions, the model's accuracy on the remaining queries jumped to 82.5%.
+For free-text answers, clinicians rated responses on axes such as agreement with scientific consensus, signs of incorrect reasoning or recall, missing information, the extent and likelihood of possible harm, and bias. Lay users rated whether answers were helpful and addressed the question. Clinician-written answers were rated the same way, as a reference.
 
 ```mermaid
 flowchart TD
-    Q[Input Medical Vignette] --> Decodes[Sample 41 CoT Decodes]
-    Decodes --> Agreement[Calculate Agreement C = N_majority / N]
-    Agreement --> Check{Is C >= Threshold?}
-    Check -- Yes --> Out[Output Majority Answer]
-    Check -- No --> Defer[Defer to Human Physician]
+  A[PaLM 540B] --> B[Flan-PaLM, instruction tuned]
+  B --> C[Exam questions in MultiMedQA]
+  C --> D[State of the art accuracy]
+  B --> E[Clinicians read long answers]
+  E --> F[Key gaps found]
+  F --> G[Instruction prompt tuning]
+  G --> H[Med-PaLM]
+  H --> I[Rated again by clinicians]
 ```
 
-### Step 4: Instruction prompt tuning
+### Step 4: the orientation
 
-When doctors evaluated Flan-PaLM on free-form consumer questions, the model often gave answers that were vague, out of step with guidelines, or potentially hazardous. Full fine-tuning was too expensive, and plain text prompting could not reliably enforce clinical caution.
+Retraining 540 billion parameters for medicine would be very expensive, and expert-written answers are scarce, since doctors' time is precious. So the authors used a [[soft prompt]]: a short run of learned vectors placed in front of the input. The model stays frozen; only those vectors are trained.
 
-The authors turned to parameter-efficient tuning. In standard prompt tuning, you attach a sequence of learnable vector tokens $P = [p_1, p_2, \dots, p_l]$ to the front of tokenized input text $X$, training only $P$ while freezing the transformer:
+Instruction prompt tuning goes one step further. The learned vectors sit in front of a written instruction and a few example answers written by clinicians, then the user's question. The written part says what good answers look like; the learned part adapts the model's behaviour in ways that are hard to put into words. That is the orientation from the analogy: written guidance plus a few model answers, while the student's years of knowledge stay untouched.
 
-$$\hat{Y} = \text{LLM}([P; X])$$
+### How small is the change?
 
-Instruction prompt tuning takes this a step further. Instead of replacing the human instruction, the learned [[Soft Prompt]] vectors are prepended to a *structured prompt* that already contains a system instruction, domain guidelines, and few-shot clinician demonstrations:
+PaLM 540B represents each token as a vector of 18,432 numbers. Take an illustrative soft prompt of 100 vectors:
 
-$$\hat{Y} = \text{LLM}([P; \text{Instruction}; \text{Exemplars}; \text{User Question}])$$
+$$100 \times 18{,}432 = 1{,}843{,}200 \text{ trainable numbers}$$
+
+Compared with 540 billion frozen parameters, that is about 0.0000034 of the model, roughly one trainable number for every 293,000 frozen ones. The orientation is tiny next to the medical school.
 
 :::insight
-Instruction prompt tuning creates a hybrid prompt: continuous vectors learn general domain adaptation through gradient descent, while human-readable text supplies task-specific rules and demonstrations. This allowed the authors to align a 540-billion-parameter giant using just 40 expert-curated answers.
+Knowing facts and communicating them safely are different skills. A frozen model can hold a lot of medical knowledge, and a very small amount of tuning, guided by experts, can change how it uses that knowledge.
 :::
 
 ## What they found
 
-The paper delivered two major findings: raw scale enables exam performance, but prompt alignment is what delivers clinical safety.
+The abstract reports these results.
 
-### 1. Crushing medical licensing exams
+- **State-of-the-art exam accuracy.** Flan-PaLM, with the combined prompting strategies, reached state-of-the-art accuracy on every MultiMedQA multiple-choice dataset: MedQA, MedMCQA, PubMedQA and the MMLU clinical topics.
+- **67.6% on MedQA.** On the US licensing-style questions, Flan-PaLM scored 67.6%, beating the previous best by over 17%. With four options, random guessing would get about 25%.
+- **Key gaps at the bedside.** Human evaluation of Flan-PaLM's long answers revealed key gaps, which is exactly why the authors did not stop at the exam.
+- **Med-PaLM helped, but not enough.** After instruction prompt tuning, Med-PaLM "performs encouragingly, but remains inferior to clinicians".
+- **Scale and tuning both matter.** Comprehension, recall of knowledge and medical reasoning improved with model size and with instruction prompt tuning.
 
-Flan-PaLM 540B reached state-of-the-art results across every multiple-choice dataset in MultiMedQA:
-
-- On **MedQA (USMLE 4-option)**, Flan-PaLM reached **67.6%**, beating the prior best model (PubMedGPT at 50.3%) by **17.3 percentage points**.
-- On **MedMCQA**, it achieved **57.6%**, beating Galactica (52.9%).
-- On **PubMedQA**, it scored **79.0%**, slightly exceeding the measured single-rater human benchmark of 78.0%.
-- On **MMLU clinical topics**, it scored over 80% across clinical knowledge and professional medicine.
-
-Scaling from 8 billion to 540 billion parameters doubled exam performance across multiple datasets.
-
-### 2. Closing the clinical safety gap
-
-When expert doctors conducted double-blind evaluations of long-form answers to consumer queries, raw Flan-PaLM showed alarming gaps. But Med-PaLM closed those gaps across several safety dimensions:
-
-| Clinical evaluation axis | Flan-PaLM 540B | Med-PaLM 540B | Clinicians |
-| :--- | :--- | :--- | :--- |
-| **Aligned with scientific consensus** | 61.9% | **92.6%** | 92.9% |
-| **Potential to cause harm** | 29.7% | **5.8%** | 6.5% |
-| **Evidence of incorrect retrieval** | 23.1% | **16.9%** | 3.6% |
-| **Omission of important information** | 47.2% | **15.1%** | 11.1% |
-| **Demonstrated demographic bias** | 7.9% | **0.8%** | 1.4% |
-
-By spending gradient updates on just 40 clinician exemplars, Med-PaLM brought consensus alignment from 61.9% up to 92.6%—matching practicing physicians. Potential harm plummeted from nearly 30% down to under 6%.
+:::warning
+Common misconception: "a model that passes medical exams is ready to give medical advice." The paper's own evidence says otherwise. The exam score was state of the art, yet clinicians found key gaps in free-text answers, and even after tuning the model remained below clinicians. Passing the written exam is not passing the ward round.
+:::
 
 ## What it got wrong (or left open)
 
-Despite the dramatic improvements, the authors were careful to point out serious unresolved issues:
+The authors were open about the limits.
 
-:::warning
-Passing medical board exams does not make a model a doctor. Med-PaLM generated answers that clinicians judged to contain incorrect or inappropriate content in **18.7%** of cases—a rate slightly higher than Flan-PaLM (16.1%) and far worse than real clinicians (1.4%).
-:::
-
-Why did Med-PaLM have more factual slips than Flan-PaLM? Because instruction prompt tuning taught the model to produce much longer and more comprehensive explanations. While that reduced omitted details (dropping missing information from 47.2% to 15.1%), writing longer answers created more opportunities for factual misstatements.
-
-Other critical limitations included:
-
-- **English-only evaluation:** MultiMedQA was entirely in English, leaving open how these models behave in global healthcare systems with diverse languages and health literacies.
-- **Static parametric knowledge:** The models relied entirely on memorized weights. Because medical consensus evolves as new trials conclude, static models risk serving outdated guidance unless paired with external search tools.
-- **Rater subjectivity:** Long-form answers were reviewed by single clinicians rather than consensus panels, and judging "harm" in open-ended text is inherently subjective.
+- **Human evaluation is small and subjective.** A limited panel of raters judged a limited set of answers; different raters, countries or specialties could judge differently.
+- **Clinicians answering in a test setting are not clinicians at work.** The comparison answers were written without a real patient, history or follow-up.
+- **Benchmarks miss real care.** Questions in English, from a few sources, cannot cover the variety of real patients, languages and settings.
+- **Safety and fairness need much more work.** The paper treats its bias and harm checks as a starting point, not proof that the model is safe to deploy.
 
 ## What happened next
 
-This paper marked a turning point in medical AI. It showed the community that biomedical NLP needed to move beyond classification and entity extraction toward conversational alignment audited by medical professionals.
+The same group followed up in 2023 with Med-PaLM 2, built on a newer base model, which reported large further gains on licensing-style questions and was again tested with physician ratings. The evaluation idea mattered as much as the model: later medical AI work commonly reports human ratings for harm, completeness and consensus, not just multiple-choice accuracy.
 
-Shortly after this work, the authors introduced Med-PaLM 2, which pushed USMLE accuracy past 85%—well into expert physician territory. The evaluation methodology established here—combining MultiMedQA with clinical audits of consensus, harm, and bias—became the standard playbook for evaluating subsequent foundation models in medicine, including Med-Gemini. Furthermore, the hybrid combination of soft prompts with structured instruction tuning helped validate parameter-efficient tuning methods like [Fine-Tune a Giant by Training a Tiny Add-On](article:paper-lora) for sensitive domains where full model retraining is impractical.
+On the method side, voting over reasoning paths connects to [self-consistency](article:paper-self-consistency-improves-chain-of-thought-reasoning-in-lang), and adapting a frozen model with a few trainable parameters belongs to the same family as [LoRA](article:paper-lora). The ward-round lesson stayed: you judge a medical model by how it answers people, not only by how it picks options.
 
 ## Key takeaways
 
-- General-purpose language models scaled to hundreds of billions of parameters can master medical licensing examinations without task-specific pretraining.
-- Multiple-choice exam accuracy is a misleading proxy for clinical safety, as models with high exam scores can still recommend harmful treatments in free-form conversation.
-- Instruction prompt tuning aligns massive language models to complex, safety-critical domains using only a few dozen expert-crafted examples.
-- Self-consistency voting allows models to gauge their own uncertainty, enabling selective prediction where ambiguous clinical queries are safely deferred to human doctors.
+- The paper built MultiMedQA, combining six existing medical question sets with the new HealthSearchQA, and a human evaluation framework for free-text answers.
+- Flan-PaLM reached state-of-the-art accuracy on every MultiMedQA multiple-choice dataset, including 67.6% on MedQA.
+- Clinicians reading Flan-PaLM's long answers still found key gaps, showing that exam scores do not measure safe communication.
+- Instruction prompt tuning trains only a small soft prompt in front of written instructions and clinician examples, leaving the huge model frozen.
+- The resulting Med-PaLM performed encouragingly but remained inferior to clinicians, so the paper argues for better evaluation as much as better models.

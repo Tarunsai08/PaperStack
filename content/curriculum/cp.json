@@ -691,8 +691,8 @@
    "prerequisites": [
     "dsa-prefix-sums"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Iterative and recursive versions",
@@ -873,8 +873,8 @@
    "prerequisites": [
     "dsa-prefix-sums"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Blocks of size sqrt n",
@@ -1716,8 +1716,8 @@
     "dsa-string-patterns",
     "cp-modular-arithmetic"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Rolling hash",
@@ -2268,8 +2268,8 @@
    "prerequisites": [
     "cp-rating-ladder"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Find a candidate rule from small cases",
