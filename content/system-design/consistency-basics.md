@@ -90,7 +90,7 @@ Most users do not need the whole world to be perfectly up to date. They need the
 
 ### How read-your-writes is built in practice
 
-A common technique uses version tokens. When a write succeeds, the leader returns the position of that write in its replication log, say version 1,042. The client keeps this token, often in a cookie or in the app's memory. On its next read, it sends the token along, and the system routes the read to any replica that has applied at least version 1,042, or to the leader if none has. Other users, who carry no token, read from any replica. The author sees their change immediately, and everyone else still gets fast local reads.
+A common technique uses version tokens. When a write succeeds, the leader returns the position of that write in its replication log, say version 1,042. The client keeps this token, often in a cookie or in the app's memory. On its next read, it sends the token along, and the system routes the read to any replica that has applied at least version 1,042, or to the leader if none has. Other users, who carry no token, read from any replica. The author sees their change immediately, and everyone else still gets fast local reads from whichever replica is closest.
 
 ### Choosing per piece of data
 

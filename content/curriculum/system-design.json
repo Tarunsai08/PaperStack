@@ -233,8 +233,8 @@
    "prerequisites": [
     "system-design-consistency-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Partitions force a choice",

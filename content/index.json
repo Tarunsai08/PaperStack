@@ -1,7 +1,7 @@
 {
- "content_version": "4e7f51a24c591ecd",
+ "content_version": "81fd8c8c28acb955",
  "generated_at": "2026-11-02",
- "count": 115,
+ "count": 118,
  "subjects": [
   {
    "id": "ml",
@@ -9845,6 +9845,92 @@
    "excerpt": "Wrong answer on test 7. You reread your code three times. It looks right. The samples pass. You cannot see test 7. Twenty minutes slip by while you stare at the screen, trying to imagine what the judge could possibly be feeding it. Experienced contestants do something different. In about five…"
   },
   {
+   "id": "cp-debugging-in-contest",
+   "kind": "primer",
+   "subject": "cp",
+   "slug": "debugging-in-contest",
+   "title": "Wrong Answer on Test 4, Twelve Minutes Left",
+   "subtitle": "A calm, fast checklist for finding bugs when the clock is running and the test is hidden",
+   "track": "cp-start",
+   "track_order": 6,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-stress-testing"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "competitive programming",
+    "debugging",
+    "verdicts"
+   ],
+   "glossary": [
+    {
+     "term": "Verdict",
+     "definition": "The judge's result for a submission, such as Wrong Answer, Time Limit Exceeded or Runtime Error."
+    },
+    {
+     "term": "Undefined behaviour",
+     "definition": "C++ code whose result the language does not define, like reading past the end of an array, which may work locally and fail on the judge."
+    },
+    {
+     "term": "Sanitizer",
+     "definition": "A compiler option that adds checks at run time and stops the program at the exact line of memory or overflow errors."
+    },
+    {
+     "term": "Rubber duck debugging",
+     "definition": "Explaining your code line by line, out loud or in writing, which often reveals the bug as you say it."
+    },
+    {
+     "term": "Hypothesis",
+     "definition": "A specific guess about the bug that you can test quickly, such as 'it overflows when all values are 10 to the 9'."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Your code gets Runtime Error on the judge but runs fine on your laptop. What is a likely cause?",
+     "options": [
+      "The judge's computer is slower",
+      "Undefined behaviour such as an out-of-bounds index or a stack overflow from deep recursion",
+      "Wrong output format",
+      "Using long long"
+     ],
+     "answer": 1,
+     "explain": "Undefined behaviour can appear to work locally and crash elsewhere. Sanitizers and checking array sizes catch it."
+    },
+    {
+     "q": "You get Time Limit Exceeded on test 15 of 40. Which check comes first?",
+     "options": [
+      "Change variable names",
+      "Estimate your complexity on the maximum input and check for endl, missing fast I/O or resetting large arrays per test",
+      "Add more comments",
+      "Resubmit the same code"
+     ],
+     "answer": 1,
+     "explain": "TLE usually means the complexity is too high for the largest tests, or I/O and per-test overhead are wasting time."
+    },
+    {
+     "q": "Why change one thing at a time when debugging?",
+     "options": [
+      "It looks neater",
+      "So each test tells you whether that specific hypothesis was right",
+      "Judges reject multiple changes",
+      "It is faster to type"
+     ],
+     "answer": 1,
+     "explain": "Changing several things at once means a pass or fail tells you nothing about which change mattered."
+    }
+   ],
+   "cover_seed": "debugging-in-contest",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "cp/debugging-in-contest.md",
+   "hash": "68375727788f",
+   "word_count": 1007,
+   "excerpt": "The red text appears: Wrong Answer on test 4. Your heart rate jumps. You start changing things: < to <=, int to long long, a +1 here, a -1 there, resubmitting each time. Each attempt costs penalty, and none of them is aimed at anything. Debugging under pressure feels like panic, but it can be a…"
+  },
+  {
    "id": "cp-invariants-observations",
    "kind": "pattern",
    "subject": "cp",
@@ -10662,6 +10748,98 @@
    "excerpt": "In an office of five hundred people, nobody sends an email to announce that the manager is leaving. Yet by lunch, everyone knows. Each person mentions it to a couple of colleagues at the coffee machine, those colleagues tell a couple more, and the news races through the building with no one in…"
   },
   {
+   "id": "famous-algos-raft",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "raft",
+   "title": "How Five Servers Agree on One Truth",
+   "subtitle": "Raft: leader election, log replication and the majority rule behind etcd, Consul and modern Kafka",
+   "track": "fa-distributed",
+   "track_order": 10,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-lamport-clocks"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 5,
+   "topics": [
+    "distributed systems",
+    "consensus",
+    "raft",
+    "replication",
+    "leader election"
+   ],
+   "glossary": [
+    {
+     "term": "Consensus",
+     "definition": "Getting a group of machines to agree on the same value or the same sequence of commands, even if some of them fail."
+    },
+    {
+     "term": "Leader",
+     "definition": "The one server in Raft that accepts client commands and tells the others what to append to their logs."
+    },
+    {
+     "term": "Term",
+     "definition": "A numbered period of time in Raft that starts with an election. Terms only increase and act like a logical clock."
+    },
+    {
+     "term": "Log",
+     "definition": "An ordered list of commands that every server keeps. If all servers apply the same log in the same order, they end in the same state."
+    },
+    {
+     "term": "Majority quorum",
+     "definition": "More than half of the servers, such as 3 of 5. Any two majorities share at least one server."
+    },
+    {
+     "term": "Committed",
+     "definition": "An entry is committed once the leader has stored it on a majority. Committed entries are never lost and can be applied safely."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A five-server Raft cluster can keep working with how many failed servers?",
+     "options": [
+      "0",
+      "1",
+      "2",
+      "4"
+     ],
+     "answer": 2,
+     "explain": "It needs a majority, 3 of 5, to elect a leader and commit entries. So up to 2 servers can fail."
+    },
+    {
+     "q": "Why are election timeouts randomised?",
+     "options": [
+      "To save power",
+      "So that usually one follower times out first and wins, instead of many splitting the vote forever",
+      "To confuse attackers",
+      "Because clocks are inaccurate"
+     ],
+     "answer": 1,
+     "explain": "If everyone timed out together, they would all become candidates and split the votes. Random timeouts make simultaneous candidacies rare."
+    },
+    {
+     "q": "When does a Raft leader consider a log entry committed?",
+     "options": [
+      "As soon as it writes it locally",
+      "When a majority of servers have stored it",
+      "When every server has stored it",
+      "After one second"
+     ],
+     "answer": 1,
+     "explain": "A majority is enough: any future leader must win votes from a majority, and that majority overlaps with the one holding the entry, so the entry cannot be lost."
+    }
+   ],
+   "cover_seed": "raft",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.94,
+   "path": "famous-algos/raft.md",
+   "hash": "e99f5dca5cb1",
+   "word_count": 1148,
+   "excerpt": "Kubernetes stores everything it knows about your cluster, every pod, every config, every secret, in etcd. If etcd's servers ever disagreed about what is stored, your cluster would start doing contradictory things. Yet those servers crash, reboot and lose network links all the time. They stay in…"
+  },
+  {
    "id": "system-design-interview-framework",
    "kind": "primer",
    "subject": "system-design",
@@ -11290,6 +11468,98 @@
    "excerpt": "HTTP was designed for asking: the client requests, the server replies, the conversation ends. But a chat message, a driver's location or a cricket score is something the server learns first. How does the server tell you, when you did not ask? There are four answers, from crude to elegant, and every…"
   },
   {
+   "id": "system-design-cap-pacelc",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "cap-pacelc",
+   "title": "When the Phone Line Between Branches Goes Dead",
+   "subtitle": "CAP and PACELC without the myths: what you really give up during partitions, and every other day",
+   "track": "sd-fundamentals",
+   "track_order": 8,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-consistency-basics"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "cap theorem",
+    "pacelc",
+    "consistency",
+    "availability"
+   ],
+   "glossary": [
+    {
+     "term": "Network partition",
+     "definition": "A failure where some machines can no longer reach others, splitting the system into groups that cannot communicate."
+    },
+    {
+     "term": "Linearizable",
+     "definition": "The strongest everyday consistency: the system behaves as if there were one copy of the data and every operation happened at a single instant."
+    },
+    {
+     "term": "Availability",
+     "definition": "In CAP, every request to a working node gets a non-error response, even during a partition."
+    },
+    {
+     "term": "CP system",
+     "definition": "A system that, during a partition, refuses some requests rather than return possibly inconsistent data."
+    },
+    {
+     "term": "AP system",
+     "definition": "A system that, during a partition, keeps answering on both sides, accepting that answers may be inconsistent."
+    },
+    {
+     "term": "PACELC",
+     "definition": "An extension of CAP: if there is a Partition, choose Availability or Consistency; Else, choose Latency or Consistency."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What does CAP actually force you to choose?",
+     "options": [
+      "Any two of three properties at design time",
+      "During a network partition, between staying available and staying consistent",
+      "Between SQL and NoSQL",
+      "Between speed and durability"
+     ],
+     "answer": 1,
+     "explain": "Partitions are not optional in real networks. When one happens, a system must either refuse some requests or risk inconsistent answers."
+    },
+    {
+     "q": "Why does PACELC add the 'Else' part?",
+     "options": [
+      "Partitions never happen",
+      "Even without partitions, stronger consistency usually costs latency, which is a choice systems make every day",
+      "To add a fifth property",
+      "Because CAP is false"
+     ],
+     "answer": 1,
+     "explain": "Partitions are rare, but waiting for replicas or a distant leader on every request is a constant cost. PACELC names that everyday trade-off."
+    },
+    {
+     "q": "A bank ledger and a social media like counter: which pair of choices is most sensible during a partition?",
+     "options": [
+      "Both AP",
+      "Both CP",
+      "Ledger CP, likes AP",
+      "Ledger AP, likes CP"
+     ],
+     "answer": 2,
+     "explain": "Money must not diverge, so the ledger refuses risky writes. A like counter can keep accepting likes and reconcile later."
+    }
+   ],
+   "cover_seed": "cap-pacelc",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.87,
+   "path": "system-design/cap-pacelc.md",
+   "hash": "866cdfc72a6b",
+   "word_count": 1088,
+   "excerpt": "\"CAP theorem: consistency, availability, partition tolerance. Pick two.\" It is the most quoted line in system design interviews, and in its popular form it is misleading. You do not get to pick \"CA\" for a distributed system, and you are not making the choice once at design time. The real statement…"
+  },
+  {
    "id": "system-design-consistency-basics",
    "kind": "deep-dive",
    "subject": "system-design",
@@ -11376,8 +11646,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "system-design/consistency-basics.md",
-   "hash": "280b64999a89",
-   "word_count": 1091,
+   "hash": "7893841b4c48",
+   "word_count": 1096,
    "excerpt": "You like a friend's photo. The heart turns red. You refresh, and the like count drops by one. You refresh again, and it is back. Nothing is broken. You just watched two copies of the same data disagree for a moment. Every large system keeps several copies of its data, and copies take time to agree.…"
   }
  ]
