@@ -993,8 +993,8 @@
    "prerequisites": [
     "dsa-dp-intro"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Position, tight flag, state",
@@ -1054,8 +1054,8 @@
     "cp-probability-expectation",
     "dsa-dp-intro"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "States with probabilities",
@@ -1083,8 +1083,8 @@
    "prerequisites": [
     "dsa-knapsack-01"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Bounded knapsack with binary splitting",
@@ -1172,8 +1172,8 @@
    "prerequisites": [
     "dsa-dp-1d"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Transitions as lines",
@@ -1899,8 +1899,8 @@
    "prerequisites": [
     "dsa-dp-intro"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Positions as win or lose",
@@ -2618,8 +2618,8 @@
    "prerequisites": [
     "cp-digit-dp"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "State: position, previous digit, tight, started"
