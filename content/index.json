@@ -1,7 +1,7 @@
 {
- "content_version": "376807d6aa0d8081",
+ "content_version": "8a5fd88daa6063b7",
  "generated_at": "2026-11-02",
- "count": 292,
+ "count": 294,
  "subjects": [
   {
    "id": "ml",
@@ -16901,6 +16901,217 @@
    "hash": "28e11e4230e0",
    "word_count": 1385,
    "excerpt": "An archivist finds two lists of the same family. One was written by a clerk who always noted a parent before their children, oldest child first. The other was written left to right across a family portrait. Neither list alone shows who is whose child. Together, they pin down the whole family tree.…"
+  },
+  {
+   "id": "dsa-tree-paths",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "tree-paths",
+   "title": "Following Hiking Trails Down From the Summit",
+   "subtitle": "Path problems on trees: root-to-leaf paths with a backtracked path list, numbers built digit by digit, and downward paths of any start using prefix sums that are removed on the way back",
+   "track": "dsa-trees",
+   "track_order": 6,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-tree-recursion",
+    "dsa-prefix-sums"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "binary tree",
+    "paths",
+    "prefix sums",
+    "backtracking"
+   ],
+   "complexity": {
+    "time": "O(n) for counting, O(n · h) to list every path",
+    "space": "O(h) for the path and recursion"
+   },
+   "practice_problems": [
+    {
+     "name": "Path Sum",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/path-sum/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Binary Tree Paths",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/binary-tree-paths/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Path Sum II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/path-sum-ii/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Sum Root to Leaf Numbers",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sum-root-to-leaf-numbers/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Path Sum III",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/path-sum-iii/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Root-to-leaf path",
+     "definition": "A path that starts at the root and ends at a leaf, a node with no children."
+    },
+    {
+     "term": "Downward path",
+     "definition": "A path that starts at any node and only moves from parents to children, ending at any node below it."
+    },
+    {
+     "term": "Running sum",
+     "definition": "The sum of the values from the root down to the current node, passed down the recursion."
+    },
+    {
+     "term": "Prefix-sum counter",
+     "definition": "A hash map from running sums seen on the current root-to-node path to how many times each appeared, used to count downward paths with a target sum."
+    },
+    {
+     "term": "Path state",
+     "definition": "Whatever describes the path from the root to the current node, such as a list of values or a counter of running sums, which must be undone when the recursion returns."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In Path Sum II, why pop the current value from the path list before returning?",
+     "options": [
+      "To save memory",
+      "The list is shared; the sibling subtree must see the path up to the parent, not through this node",
+      "To sort the path",
+      "It is not needed"
+     ],
+     "answer": 1,
+     "explain": "The same list is reused for every branch. Leaving the value in place would put this node into the paths of its sibling's subtree."
+    },
+    {
+     "q": "In Path Sum III, a node's running sum is 7 and the target is 3. Which earlier running sums give paths ending here?",
+     "options": [
+      "Any sum of 3",
+      "Running sums equal to 7 − 3 = 4 on the path above",
+      "Only the root's sum",
+      "Sums greater than 7"
+     ],
+     "answer": 1,
+     "explain": "A downward path from just below an ancestor to here has sum current − ancestor's running sum. That equals 3 when the ancestor's running sum is 4."
+    },
+    {
+     "q": "Why must Path Sum III decrement its counter for the current running sum on the way back?",
+     "options": [
+      "To avoid overflow",
+      "Running sums from one branch are not ancestors of nodes in another branch, so leaving them would count paths that jump between branches",
+      "To sort the counts",
+      "It improves speed only"
+     ],
+     "answer": 1,
+     "explain": "The counter must describe only the current root-to-node path. When the recursion leaves a node, its running sum is no longer on the path."
+    }
+   ],
+   "cover_seed": "tree-paths",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.75,
+   "path": "dsa/tree-paths.md",
+   "hash": "b60d09145d73",
+   "word_count": 1412,
+   "excerpt": "A hiker stands on a summit with a map of trails that branch downhill, and a notebook. Down each trail she writes the height change of every stretch. At the bottom of a trail she checks the total. When she climbs back up to a fork to try another branch, she rubs out the stretches she has just…"
+  },
+  {
+   "id": "dsa-balanced-trees-intuition",
+   "kind": "primer",
+   "subject": "dsa",
+   "slug": "balanced-trees-intuition",
+   "title": "Rebalancing a Mobile Hanging From the Ceiling",
+   "subtitle": "Why a binary search tree can collapse into a list, how rotations fix it without breaking the order, and what AVL and red-black trees promise, in plain words",
+   "track": "dsa-trees",
+   "track_order": 7,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-bst-operations"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "balanced bst",
+    "avl tree",
+    "red-black tree",
+    "rotations"
+   ],
+   "glossary": [
+    {
+     "term": "Skewed tree",
+     "definition": "A binary search tree in which almost every node has only one child, so it behaves like a linked list with height close to n."
+    },
+    {
+     "term": "Balance factor",
+     "definition": "For a node, the height of its left subtree minus the height of its right subtree."
+    },
+    {
+     "term": "Rotation",
+     "definition": "A local rearrangement of a parent and child that changes the tree's shape while keeping the inorder order of keys the same."
+    },
+    {
+     "term": "AVL tree",
+     "definition": "A self-balancing binary search tree in which every node's balance factor is −1, 0 or 1, restored by rotations after each insert or delete."
+    },
+    {
+     "term": "Red-black tree",
+     "definition": "A self-balancing binary search tree that colours nodes red or black and enforces colour rules that keep the longest root-to-leaf path at most about twice the shortest."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "You insert 1, 2, 3, ..., 1000 into a plain BST. What is its height?",
+     "options": [
+      "About 10",
+      "About 20",
+      "1000",
+      "500"
+     ],
+     "answer": 2,
+     "explain": "Each new key is larger than all before it, so it always becomes the right child of the previous one. The tree is a chain of 1000 nodes."
+    },
+    {
+     "q": "What does a rotation never change?",
+     "options": [
+      "The root",
+      "The heights",
+      "The inorder order of the keys, so the tree stays a valid BST",
+      "The number of leaves"
+     ],
+     "answer": 2,
+     "explain": "A rotation only moves one subtree from one parent to another in a way that keeps every key between the same neighbours in sorted order."
+    },
+    {
+     "q": "Which statement about C++'s std::map is accurate?",
+     "options": [
+      "It is a hash table",
+      "Common implementations use a red-black tree, so operations are O(log n) in the worst case",
+      "It is a sorted array",
+      "It is an AVL tree by the standard"
+     ],
+     "answer": 1,
+     "explain": "The standard requires logarithmic operations and sorted order; the widely used implementations meet that with a red-black tree."
+    }
+   ],
+   "cover_seed": "balanced-trees-intuition",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.62,
+   "path": "dsa/balanced-trees-intuition.md",
+   "hash": "2dd4693247c1",
+   "word_count": 1395,
+   "excerpt": "A binary search tree promises O(log n) search, insert and delete. Then someone inserts the keys in sorted order: 1, 2, 3, and so on up to a million. Every new key goes to the right of the last one, and the \"tree\" is a long chain. Searching for the largest key now walks a million nodes, the same as…"
   },
   {
    "id": "dsa-heap-basics",

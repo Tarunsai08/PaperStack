@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 90 | 0 | 62 | 152 | 58/72 |
+| dsa | 92 | 0 | 60 | 152 | 58/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **292** | **0** | **381** | **673** | |
+| **All** | **294** | **0** | **379** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -34,7 +34,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-dijkstra` (P0, pattern, dsa-graphs): Dijkstra: Shortest Paths With Weights
 - [ ] `dsa-word-ladder` (P0, problem-walkthrough, dsa-graphs): Word Ladder: BFS on Implicit Graphs
 - [ ] `dsa-islands-variants` (P0, problem-walkthrough, dsa-graphs): Number of Islands and Its Many Variants
-- [ ] `dsa-tree-paths` (P1, pattern, dsa-trees): Path Problems on Trees
+- [ ] `dsa-serialize-tree` (P1, problem-walkthrough, dsa-trees): Serialising and Deserialising a Binary Tree
 
 ### cp
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 90 written</summary>
+<details><summary>dsa: 92 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -128,6 +128,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-bst-operations` Binary Search Trees: Order as a Superpower
 - [x] `dsa-lca` Lowest Common Ancestor
 - [x] `dsa-tree-construction` Building Trees From Traversals and Serialising Them
+- [x] `dsa-tree-paths` Path Problems on Trees
+- [x] `dsa-balanced-trees-intuition` Why Balanced Trees Matter: AVL and Red-Black in Plain Words
 - [x] `dsa-heap-basics` Heaps: Always Know the Smallest
 - [x] `dsa-graph-representation` Graphs: Modelling Problems as Nodes and Edges
 - [x] `dsa-bfs` Breadth-First Search: Exploring in Rings
