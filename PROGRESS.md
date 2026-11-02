@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 17 | 0 | 135 | 152 | 16/72 |
-| cp | 15 | 0 | 100 | 115 | 12/29 |
-| famous-algos | 16 | 0 | 75 | 91 | 14/32 |
-| system-design | 16 | 0 | 103 | 119 | 16/60 |
+| dsa | 19 | 0 | 133 | 152 | 18/72 |
+| cp | 16 | 0 | 99 | 115 | 13/29 |
+| famous-algos | 17 | 0 | 74 | 91 | 15/32 |
+| system-design | 17 | 0 | 102 | 119 | 17/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **147** | **0** | **526** | **673** | |
+| **All** | **152** | **0** | **521** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **23**
 
@@ -25,8 +25,6 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### dsa
 
-- [ ] `dsa-product-except-self` (P0, problem-walkthrough, dsa-arrays): Product of Array Except Self Without Division
-- [ ] `dsa-subarray-sum-k` (P0, problem-walkthrough, dsa-arrays): Counting Subarrays With Sum K
 - [ ] `dsa-dutch-national-flag` (P0, problem-walkthrough, dsa-arrays): Sort Colors: The Dutch National Flag in One Pass
 - [ ] `dsa-rotated-array-search` (P0, problem-walkthrough, dsa-search-sort): Searching a Rotated Sorted Array
 - [ ] `dsa-gcd-primes` (P0, pattern, dsa-math): GCD, Primes and Divisors for Interviews
@@ -35,19 +33,21 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-lru-cache` (P0, problem-walkthrough, dsa-linear): Designing an LRU Cache
 - [ ] `dsa-subsets-permutations` (P0, pattern, dsa-recursion): Generating Subsets and Permutations
 - [ ] `dsa-tree-traversals` (P0, pattern, dsa-trees): Tree Traversals: Pre, In, Post and Level Order
+- [ ] `dsa-heap-basics` (P0, pattern, dsa-heaps-greedy): Heaps: Always Know the Smallest
+- [ ] `dsa-greedy-exchange` (P0, pattern, dsa-heaps-greedy): Greedy Algorithms and the Exchange Argument
 
 ### cp
 
-- [ ] `cp-binomial-coefficients` (P0, pattern, cp-math): Binomial Coefficients Fast
 - [ ] `cp-coordinate-compression` (P0, pattern, cp-ranges): Coordinate Compression
 - [ ] `cp-practice-plan` (P0, primer, cp-misc): A 12-Week Contest Practice Plan
 - [ ] `cp-weird-algorithm` (P1, problem-walkthrough, cp-start): Your First CSES Problems: Weird Algorithm to Increasing Array
 - [ ] `cp-implementation-skills` (P1, primer, cp-start): Implementation Problems: Getting the Details Right
+- [ ] `cp-inclusion-exclusion` (P1, pattern, cp-math): Inclusion-Exclusion: Counting by Correcting Overcounts
 - [ ] `cp-euler-totient` (P1, pattern, cp-math): Euler's Totient Function
 - [ ] `cp-chinese-remainder` (P1, pattern, cp-math): The Chinese Remainder Theorem
+- [ ] `cp-counting-techniques` (P1, pattern, cp-math): Counting Without Listing: Combinatorics Toolkit
 - [ ] `cp-matrix-exponentiation` (P1, pattern, cp-math): Matrix Exponentiation for Linear Recurrences
 - [ ] `cp-counting-divisors` (P1, problem-walkthrough, cp-math): Counting Divisors for a Million Numbers
-- [ ] `cp-exponentiation-ii` (P1, problem-walkthrough, cp-math): a^(b^c) mod p: Fermat to the Rescue
 
 ### famous-algos
 
@@ -55,19 +55,19 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `famous-algos-mvcc` (P0, concept, fa-storage): MVCC: Readers Never Block Writers
 - [ ] `famous-algos-geohash` (P0, concept, fa-storage): Geohash: Turning a Map Into a String
 - [ ] `famous-algos-lz77` (P0, concept, fa-coding): Lempel-Ziv: How ZIP Files Shrink Your Data
-- [ ] `famous-algos-cryptographic-hashing` (P0, concept, fa-crypto): Cryptographic Hashes: Fingerprints You Cannot Fake
+- [ ] `famous-algos-password-hashing` (P0, concept, fa-crypto): Storing Passwords Safely: Salts, bcrypt and Argon2
 - [ ] `famous-algos-diffie-hellman` (P0, concept, fa-crypto): Diffie-Hellman: Agreeing on a Secret in Public
 - [ ] `famous-algos-inverted-index` (P0, concept, fa-search): Inverted Indexes: How Search Finds Pages in Milliseconds
+- [ ] `famous-algos-rsync-rolling-checksum` (P0, concept, fa-search): rsync: Copying Only What Changed
 - [ ] `famous-algos-kalman-filter` (P0, concept, fa-signals): The Kalman Filter: Blending Guesses With Noisy Measurements
 - [ ] `famous-algos-counting-bloom-cuckoo` (P1, concept, fa-sketches): Deletable Filters: Counting Bloom and Cuckoo Filters
-- [ ] `famous-algos-heavy-hitters` (P1, concept, fa-sketches): Finding Heavy Hitters in a Stream: Misra-Gries and Space-Saving
 
 ### system-design
 
 - [ ] `system-design-auth-basics` (P0, deep-dive, sd-fundamentals): Authentication and Authorisation: Sessions, JWT and OAuth
-- [ ] `system-design-load-balancers` (P0, deep-dive, sd-blocks): Load Balancers: L4, L7 and the Algorithms Inside
 - [ ] `system-design-blob-storage` (P0, deep-dive, sd-blocks): Blob Storage: How S3-Style Systems Store Files
 - [ ] `system-design-distributed-cache` (P0, deep-dive, sd-blocks): Redis and Distributed Caches
+- [ ] `system-design-scaling-journey` (P0, deep-dive, sd-scaling): From One Server to a Million Users
 - [ ] `system-design-cache-problems` (P0, deep-dive, sd-scaling): When Caches Hurt: Stampedes, Hot Keys and Invalidation
 - [ ] `system-design-async-processing` (P0, deep-dive, sd-scaling): Doing Work Later: Queues, Workers and Background Jobs
 - [ ] `system-design-url-shortener` (P0, case-study, sd-cases): Design a URL Shortener
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 17 written</summary>
+<details><summary>dsa: 19 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -109,10 +109,12 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-sorting-as-tool` Sorting as a Superpower
 - [x] `dsa-linked-list-basics` Linked Lists: Pointer Surgery Made Safe
 - [x] `dsa-stack-patterns` Stacks: Matching, Undo and Expression Parsing
+- [x] `dsa-product-except-self` Product of Array Except Self Without Division
+- [x] `dsa-subarray-sum-k` Counting Subarrays With Sum K
 
 </details>
 
-<details><summary>cp: 15 written</summary>
+<details><summary>cp: 16 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -127,12 +129,13 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `cp-sieve` The Sieve of Eratosthenes
 - [x] `cp-gcd-lcm` GCD, LCM and the Euclidean Algorithm
 - [x] `cp-modular-inverse` Modular Inverse: Dividing Under a Modulus
+- [x] `cp-binomial-coefficients` Binomial Coefficients Fast
 - [x] `cp-contest-strategy` Contest Strategy: Order, Time and Nerves
 - [x] `cp-invariants-observations` Invariants and Observations: The Heart of Div 2
 
 </details>
 
-<details><summary>famous-algos: 16 written</summary>
+<details><summary>famous-algos: 17 written</summary>
 
 - [x] `famous-algos-bloom-filter` Bloom Filters: Saying No Without Looking
 - [x] `famous-algos-count-min-sketch` Count-Min Sketch: Counting Billions of Things in Kilobytes
@@ -150,10 +153,11 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `famous-algos-power-of-two-choices` The Power of Two Choices: Smarter Load Balancing
 - [x] `famous-algos-lsm-trees` LSM Trees: Why Modern Databases Write So Fast
 - [x] `famous-algos-write-ahead-log` Write-Ahead Logging: Never Lose a Committed Write
+- [x] `famous-algos-cryptographic-hashing` Cryptographic Hashes: Fingerprints You Cannot Fake
 
 </details>
 
-<details><summary>system-design: 16 written</summary>
+<details><summary>system-design: 17 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -166,6 +170,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `system-design-consistency-basics` Strong vs Eventual Consistency, Plainly
 - [x] `system-design-availability-slos` Availability, Nines and SLOs
 - [x] `system-design-stateless-idempotency` Stateless Services and Idempotent APIs
+- [x] `system-design-load-balancers` Load Balancers: L4, L7 and the Algorithms Inside
 - [x] `system-design-caching` Caching: Cache-Aside, Write-Through and Friends
 - [x] `system-design-cdn` CDNs: Moving Content Closer to Users
 - [x] `system-design-sql-vs-nosql` SQL vs NoSQL: Choosing a Database Honestly
