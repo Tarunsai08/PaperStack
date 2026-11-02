@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 23 | 0 | 129 | 152 | 22/72 |
-| cp | 21 | 0 | 94 | 115 | 15/29 |
-| famous-algos | 22 | 0 | 69 | 91 | 20/32 |
-| system-design | 22 | 0 | 97 | 119 | 22/60 |
+| dsa | 25 | 0 | 127 | 152 | 24/72 |
+| cp | 22 | 0 | 93 | 115 | 15/29 |
+| famous-algos | 23 | 0 | 68 | 91 | 21/32 |
+| system-design | 23 | 0 | 96 | 119 | 23/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **171** | **0** | **502** | **673** | |
+| **All** | **176** | **0** | **497** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **23**
 
@@ -28,19 +28,18 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `dsa-trapping-rain-water` (P0, problem-walkthrough, dsa-arrays): Trapping Rain Water Three Ways
 - [ ] `dsa-gcd-primes` (P0, pattern, dsa-math): GCD, Primes and Divisors for Interviews
 - [ ] `dsa-queue-deque` (P0, pattern, dsa-linear): Queues and Deques: Sliding Window Maximum
-- [ ] `dsa-lru-cache` (P0, problem-walkthrough, dsa-linear): Designing an LRU Cache
 - [ ] `dsa-largest-rectangle` (P0, problem-walkthrough, dsa-linear): Largest Rectangle in a Histogram
 - [ ] `dsa-linked-list-classics` (P0, problem-walkthrough, dsa-linear): Linked List Classics: Intersection, Palindrome and Add Two Numbers
 - [ ] `dsa-subsets-permutations` (P0, pattern, dsa-recursion): Generating Subsets and Permutations
-- [ ] `dsa-tree-traversals` (P0, pattern, dsa-trees): Tree Traversals: Pre, In, Post and Level Order
+- [ ] `dsa-tree-recursion` (P0, pattern, dsa-trees): Thinking Recursively About Trees
 - [ ] `dsa-heap-basics` (P0, pattern, dsa-heaps-greedy): Heaps: Always Know the Smallest
 - [ ] `dsa-greedy-exchange` (P0, pattern, dsa-heaps-greedy): Greedy Algorithms and the Exchange Argument
+- [ ] `dsa-graph-representation` (P0, primer, dsa-graphs): Graphs: Modelling Problems as Nodes and Edges
 
 ### cp
 
 - [ ] `cp-weird-algorithm` (P1, problem-walkthrough, cp-start): Your First CSES Problems: Weird Algorithm to Increasing Array
 - [ ] `cp-implementation-skills` (P1, primer, cp-start): Implementation Problems: Getting the Details Right
-- [ ] `cp-chinese-remainder` (P1, pattern, cp-math): The Chinese Remainder Theorem
 - [ ] `cp-counting-techniques` (P1, pattern, cp-math): Counting Without Listing: Combinatorics Toolkit
 - [ ] `cp-counting-divisors` (P1, problem-walkthrough, cp-math): Counting Divisors for a Million Numbers
 - [ ] `cp-creating-strings-ii` (P1, problem-walkthrough, cp-math): Counting Arrangements of a Word
@@ -48,12 +47,13 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `cp-sqrt-decomposition` (P1, pattern, cp-ranges): Square Root Decomposition
 - [ ] `cp-pbds-ordered-set` (P1, pattern, cp-ranges): Ordered Sets With Rank: Policy-Based Data Structures
 - [ ] `cp-geometry-basics` (P1, pattern, cp-misc): Geometry Basics: Cross Products Solve Everything
+- [ ] `cp-interactive-problems` (P1, primer, cp-misc): Interactive Problems: Talking to the Judge
 
 ### famous-algos
 
 - [ ] `famous-algos-lz77` (P0, concept, fa-coding): Lempel-Ziv: How ZIP Files Shrink Your Data
 - [ ] `famous-algos-rsa` (P0, concept, fa-crypto): RSA: Locks Anyone Can Close but Only You Can Open
-- [ ] `famous-algos-inverted-index` (P0, concept, fa-search): Inverted Indexes: How Search Finds Pages in Milliseconds
+- [ ] `famous-algos-tf-idf-bm25` (P0, concept, fa-search): TF-IDF and BM25: Ranking by Relevance
 - [ ] `famous-algos-rsync-rolling-checksum` (P0, concept, fa-search): rsync: Copying Only What Changed
 - [ ] `famous-algos-kalman-filter` (P0, concept, fa-signals): The Kalman Filter: Blending Guesses With Noisy Measurements
 - [ ] `famous-algos-counting-bloom-cuckoo` (P1, concept, fa-sketches): Deletable Filters: Counting Bloom and Cuckoo Filters
@@ -68,12 +68,12 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `system-design-blob-storage` (P0, deep-dive, sd-blocks): Blob Storage: How S3-Style Systems Store Files
 - [ ] `system-design-scaling-journey` (P0, deep-dive, sd-scaling): From One Server to a Million Users
 - [ ] `system-design-async-processing` (P0, deep-dive, sd-scaling): Doing Work Later: Queues, Workers and Background Jobs
-- [ ] `system-design-chat-system` (P0, case-study, sd-cases): Design a Chat System Like WhatsApp
 - [ ] `system-design-notification-system` (P0, case-study, sd-cases): Design a Notification System
 - [ ] `system-design-ride-sharing` (P0, case-study, sd-cases): Design a Ride-Sharing App Like Uber
 - [ ] `system-design-oop-solid` (P0, lld, sd-lld): Object-Oriented Design and SOLID Principles
 - [ ] `system-design-consistency-models` (P0, deep-dive, sd-distributed): Consistency Models: Linearizable to Eventual
 - [ ] `system-design-networking-essentials` (P1, deep-dive, sd-fundamentals): TCP, UDP and QUIC for System Designers
+- [ ] `system-design-proxies` (P1, deep-dive, sd-fundamentals): Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere
 
 ### ml
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 23 written</summary>
+<details><summary>dsa: 25 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -111,6 +111,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-fast-slow-pointers` Fast and Slow Pointers: The Tortoise and the Hare
 - [x] `dsa-stack-patterns` Stacks: Matching, Undo and Expression Parsing
 - [x] `dsa-monotonic-stack` Monotonic Stacks: Next Greater Element and Friends
+- [x] `dsa-lru-cache` Designing an LRU Cache
+- [x] `dsa-tree-traversals` Tree Traversals: Pre, In, Post and Level Order
 - [x] `dsa-product-except-self` Product of Array Except Self Without Division
 - [x] `dsa-subarray-sum-k` Counting Subarrays With Sum K
 - [x] `dsa-rotated-array-search` Searching a Rotated Sorted Array
@@ -118,7 +120,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 </details>
 
-<details><summary>cp: 21 written</summary>
+<details><summary>cp: 22 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -136,6 +138,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `cp-binomial-coefficients` Binomial Coefficients Fast
 - [x] `cp-inclusion-exclusion` Inclusion-Exclusion: Counting by Correcting Overcounts
 - [x] `cp-euler-totient` Euler's Totient Function
+- [x] `cp-chinese-remainder` The Chinese Remainder Theorem
 - [x] `cp-matrix-exponentiation` Matrix Exponentiation for Linear Recurrences
 - [x] `cp-coordinate-compression` Coordinate Compression
 - [x] `cp-contest-strategy` Contest Strategy: Order, Time and Nerves
@@ -144,7 +147,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 </details>
 
-<details><summary>famous-algos: 22 written</summary>
+<details><summary>famous-algos: 23 written</summary>
 
 - [x] `famous-algos-bloom-filter` Bloom Filters: Saying No Without Looking
 - [x] `famous-algos-count-min-sketch` Count-Min Sketch: Counting Billions of Things in Kilobytes
@@ -168,10 +171,11 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `famous-algos-cryptographic-hashing` Cryptographic Hashes: Fingerprints You Cannot Fake
 - [x] `famous-algos-password-hashing` Storing Passwords Safely: Salts, bcrypt and Argon2
 - [x] `famous-algos-diffie-hellman` Diffie-Hellman: Agreeing on a Secret in Public
+- [x] `famous-algos-inverted-index` Inverted Indexes: How Search Finds Pages in Milliseconds
 
 </details>
 
-<details><summary>system-design: 22 written</summary>
+<details><summary>system-design: 23 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -195,6 +199,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `system-design-url-shortener` Design a URL Shortener
 - [x] `system-design-rate-limiter` Design a Rate Limiter
 - [x] `system-design-unique-id-generator` Design a Unique ID Generator
+- [x] `system-design-chat-system` Design a Chat System Like WhatsApp
 
 </details>
 

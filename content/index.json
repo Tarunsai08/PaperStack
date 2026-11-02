@@ -1,7 +1,7 @@
 {
- "content_version": "1ab6f3c4be4b9113",
+ "content_version": "95c939c5f2e5cc3d",
  "generated_at": "2026-11-02",
- "count": 171,
+ "count": 176,
  "subjects": [
   {
    "id": "ml",
@@ -10908,6 +10908,252 @@
    "excerpt": "You have a list of daily temperatures, and for each day you want to know how many days you must wait for a warmer one. The obvious method scans forward from every day, which is O(n²): fine for 100 days, hopeless for 100,000. A surprising number of interview problems have this shape: for each…"
   },
   {
+   "id": "dsa-lru-cache",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "lru-cache",
+   "title": "The Desk That Keeps Your Latest Books on Top",
+   "subtitle": "Designing an LRU cache with O(1) get and put by pairing a hash map with a doubly linked list",
+   "track": "dsa-linear",
+   "track_order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-linked-list-basics",
+    "dsa-hashing-patterns"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "design",
+    "hash map",
+    "doubly linked list",
+    "caching"
+   ],
+   "complexity": {
+    "time": "O(1) per get and put",
+    "space": "O(capacity)"
+   },
+   "practice_problems": [
+    {
+     "name": "LRU Cache",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/lru-cache/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Design Twitter",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/design-twitter/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "All O`one Data Structure",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/all-oone-data-structure/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "LFU Cache",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/lfu-cache/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "LRU (least recently used)",
+     "definition": "An eviction policy that, when the cache is full, removes the entry that was accessed longest ago."
+    },
+    {
+     "term": "Eviction",
+     "definition": "Removing an entry from a full cache to make room for a new one."
+    },
+    {
+     "term": "Doubly linked list",
+     "definition": "A list where each node points to both its next and previous node, so a node can be unlinked in O(1) once you hold a pointer to it."
+    },
+    {
+     "term": "Sentinel node",
+     "definition": "A dummy head or tail node that is always present, so insertions and removals never need special cases for an empty list."
+    },
+    {
+     "term": "Recency order",
+     "definition": "The order of entries from most recently used to least recently used."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does an LRU cache need a doubly linked list and not a singly linked list?",
+     "options": [
+      "To save memory",
+      "To remove a node from the middle in O(1), which needs a pointer to its previous node",
+      "To sort the keys",
+      "Singly linked lists cannot store values"
+     ],
+     "answer": 1,
+     "explain": "On every access the node moves to the front, which means unlinking it from wherever it is. With only next pointers, finding its predecessor takes O(n)."
+    },
+    {
+     "q": "Capacity 2. Operations: put(1), put(2), get(1), put(3). Which key is evicted?",
+     "options": [
+      "1",
+      "2",
+      "3",
+      "None"
+     ],
+     "answer": 1,
+     "explain": "get(1) made key 1 the most recent, so key 2 is the least recently used when key 3 arrives."
+    },
+    {
+     "q": "What is the most common bug when evicting?",
+     "options": [
+      "Evicting the head instead of the tail",
+      "Removing the node from the list but forgetting to erase its key from the hash map",
+      "Using a vector",
+      "Updating the value"
+     ],
+     "answer": 1,
+     "explain": "The map would then point to a deleted node, so a later get returns garbage or crashes. Store the key in each node so you can erase it from the map on eviction."
+    }
+   ],
+   "cover_seed": "lru-cache",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.92,
+   "path": "dsa/lru-cache.md",
+   "hash": "1fa8a6a599a0",
+   "word_count": 1052,
+   "excerpt": "\"Design an LRU cache\" is one of the most frequently asked interview questions at product companies, and for good reason. It is short to state, it has a clean optimal answer, and getting there tests whether you can combine two data structures so that each covers the other's weakness. It is also real…"
+  },
+  {
+   "id": "dsa-tree-traversals",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "tree-traversals",
+   "title": "Four Ways to Tour a Family Tree",
+   "subtitle": "Preorder, inorder, postorder and level order: what each visit order means, and how to run them recursively, with a stack, or with a queue",
+   "track": "dsa-trees",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-recursion-basics"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "trees",
+    "binary tree",
+    "dfs",
+    "bfs",
+    "traversal"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(h) for depth-first, O(w) for level order"
+   },
+   "practice_problems": [
+    {
+     "name": "Binary Tree Inorder Traversal",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/binary-tree-inorder-traversal/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Binary Tree Level Order Traversal",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Binary Tree Right Side View",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/binary-tree-right-side-view/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Binary Tree Zigzag Level Order Traversal",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Binary Tree Postorder Traversal",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/binary-tree-postorder-traversal/",
+     "difficulty": "Easy"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Binary tree",
+     "definition": "A tree where every node has at most two children, called left and right."
+    },
+    {
+     "term": "Depth-first search (DFS)",
+     "definition": "Exploring a tree by going as deep as possible down one branch before backing up. Preorder, inorder and postorder are all depth-first."
+    },
+    {
+     "term": "Breadth-first search (BFS)",
+     "definition": "Exploring a tree level by level, nearest nodes first, using a queue. Level order traversal is BFS on a tree."
+    },
+    {
+     "term": "Height",
+     "definition": "The number of levels on the longest path from the root to a leaf. It bounds the recursion depth of DFS."
+    },
+    {
+     "term": "Width",
+     "definition": "The largest number of nodes on any single level. It bounds the queue size of BFS."
+    },
+    {
+     "term": "Binary search tree (BST)",
+     "definition": "A binary tree where every node's left subtree holds smaller keys and its right subtree holds larger keys."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Which traversal of a binary search tree outputs the keys in sorted order?",
+     "options": [
+      "Preorder",
+      "Inorder",
+      "Postorder",
+      "Level order"
+     ],
+     "answer": 1,
+     "explain": "Inorder visits the left subtree (all smaller keys), then the node, then the right subtree (all larger keys)."
+    },
+    {
+     "q": "To delete a whole tree safely, freeing children before their parent, which order fits?",
+     "options": [
+      "Preorder",
+      "Inorder",
+      "Postorder",
+      "Level order"
+     ],
+     "answer": 2,
+     "explain": "Postorder processes both children before the node itself, so nothing is freed while still needed."
+    },
+    {
+     "q": "In level order traversal, how do you know where one level ends?",
+     "options": [
+      "Count nodes globally",
+      "Record the queue size at the start of the level and pop exactly that many nodes",
+      "Use a stack",
+      "Check if a node is a leaf"
+     ],
+     "answer": 1,
+     "explain": "At the start of a level the queue holds exactly that level's nodes, so its size tells you how many to process before the next level begins."
+    }
+   ],
+   "cover_seed": "tree-traversals",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.92,
+   "path": "dsa/tree-traversals.md",
+   "hash": "e6dff8415fe1",
+   "word_count": 1108,
+   "excerpt": "Almost every tree problem in an interview, from \"maximum depth\" to \"serialize a tree\" to \"lowest common ancestor\", is a traversal with a small twist. The twist is usually when you do the work at each node: before visiting the children, between them, after them, or level by level. Get the four…"
+  },
+  {
    "id": "cp-how-contests-work",
    "kind": "primer",
    "subject": "cp",
@@ -12800,6 +13046,123 @@
    "hash": "677fdfef25bb",
    "word_count": 978,
    "excerpt": "A clock has 12 positions. You start at 0 and jump forward by the same step each time. With a step of 5 you visit every position before returning to 0; with a step of 4 you only ever visit 0, 4 and 8. The steps that visit every position are exactly those that share no factor with 12: 1, 5, 7 and 11.…"
+  },
+  {
+   "id": "cp-chinese-remainder",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "chinese-remainder",
+   "title": "Three Clocks That Agree Only Once",
+   "subtitle": "The Chinese remainder theorem: combine congruences into one, constructively for coprime moduli and with extended GCD when they are not",
+   "track": "cp-math",
+   "track_order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-modular-inverse"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 5,
+   "topics": [
+    "number theory",
+    "chinese remainder theorem",
+    "congruences",
+    "extended gcd"
+   ],
+   "complexity": {
+    "time": "O(k log M) for k congruences",
+    "space": "O(1)"
+   },
+   "practice_problems": [
+    {
+     "name": "Chinese Remainder",
+     "platform": "Kattis",
+     "url": "https://open.kattis.com/problems/chineseremainder",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "General Chinese Remainder",
+     "platform": "Kattis",
+     "url": "https://open.kattis.com/problems/generalchineseremainder",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Remainders Game",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/687/B",
+     "difficulty": "1800"
+    },
+    {
+     "name": "GCD Table",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/338/D",
+     "difficulty": "2900"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Congruence",
+     "definition": "A statement x ≡ r (mod m), meaning x leaves remainder r when divided by m."
+    },
+    {
+     "term": "Chinese remainder theorem (CRT)",
+     "definition": "If the moduli are pairwise coprime, a system of congruences has exactly one solution modulo the product of the moduli."
+    },
+    {
+     "term": "Pairwise coprime",
+     "definition": "Every pair of numbers in a set has greatest common divisor 1, such as 3, 5 and 7."
+    },
+    {
+     "term": "Extended Euclidean algorithm",
+     "definition": "An extension of Euclid's gcd algorithm that also finds integers p and q with a·p + b·q = gcd(a, b)."
+    },
+    {
+     "term": "LCM",
+     "definition": "Least common multiple: the smallest positive number divisible by each of the given numbers."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Which x in [0, 15) satisfies x ≡ 2 (mod 3) and x ≡ 3 (mod 5)?",
+     "options": [
+      "2",
+      "8",
+      "11",
+      "13"
+     ],
+     "answer": 1,
+     "explain": "8 = 2·3 + 2 and 8 = 1·5 + 3. Since 3 and 5 are coprime, it is the only solution in [0, 15)."
+    },
+    {
+     "q": "Does x ≡ 3 (mod 4), x ≡ 4 (mod 6) have a solution?",
+     "options": [
+      "Yes, x = 7",
+      "Yes, x = 10",
+      "No, because 4 − 3 is not divisible by gcd(4, 6) = 2",
+      "Always yes"
+     ],
+     "answer": 2,
+     "explain": "The first says x is odd, the second says x is even. In general a solution exists only if the remainders agree modulo the gcd of the moduli."
+    },
+    {
+     "q": "When combining x ≡ r1 (mod m1) with x ≡ r2 (mod m2) for non-coprime moduli, what is the modulus of the result?",
+     "options": [
+      "m1 · m2",
+      "lcm(m1, m2)",
+      "gcd(m1, m2)",
+      "m1 + m2"
+     ],
+     "answer": 1,
+     "explain": "Solutions repeat every lcm(m1, m2). Only for coprime moduli is that equal to the product."
+    }
+   ],
+   "cover_seed": "chinese-remainder",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.68,
+   "path": "cp/chinese-remainder.md",
+   "hash": "63c6e7fc9653",
+   "word_count": 1048,
+   "excerpt": "There is a number. Divided by 3 it leaves 2, divided by 5 it leaves 3, divided by 7 it leaves 2. What is it? This puzzle comes from an ancient Chinese mathematical text, the Sunzi Suanjing, and its answer, 23, can be found by a method that still powers contest solutions and real systems today. In…"
   },
   {
    "id": "cp-matrix-exponentiation",
@@ -15079,6 +15442,101 @@
    "excerpt": "You open a website you have never visited. Within a fraction of a second, your browser and a server on another continent agree on a secret key that encrypts everything you send. They have never met, they share no password, and every message they exchanged to agree on that key crossed networks where…"
   },
   {
+   "id": "famous-algos-inverted-index",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "inverted-index",
+   "title": "The Index at the Back of Every Search Engine",
+   "subtitle": "Inverted indexes: map each word to the documents that contain it, intersect sorted lists to answer queries, and compress them to fit",
+   "track": "fa-search",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-hashing-patterns"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "search",
+    "information retrieval",
+    "indexing",
+    "posting lists"
+   ],
+   "glossary": [
+    {
+     "term": "Inverted index",
+     "definition": "A map from each term to the list of documents that contain it, the reverse of storing each document's list of words."
+    },
+    {
+     "term": "Posting list",
+     "definition": "The sorted list of document ids (and optionally positions or counts) stored for one term."
+    },
+    {
+     "term": "Tokenisation",
+     "definition": "Splitting text into terms, usually by lowercasing and breaking on spaces and punctuation."
+    },
+    {
+     "term": "Stemming",
+     "definition": "Reducing words to a common root, such as 'running' and 'runs' to 'run', so they match each other."
+    },
+    {
+     "term": "Stop words",
+     "definition": "Very common words such as 'the' or 'and' that appear in almost every document and carry little meaning on their own."
+    },
+    {
+     "term": "Gap encoding",
+     "definition": "Storing differences between consecutive sorted ids instead of the ids themselves, so the numbers are small and compress well."
+    },
+    {
+     "term": "TF-IDF",
+     "definition": "A relevance score that grows with how often a term appears in a document and shrinks with how many documents contain it."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Postings: cat → [1, 3], dog → [2, 3]. Which documents match 'cat AND dog'?",
+     "options": [
+      "[1, 2, 3]",
+      "[3]",
+      "[1]",
+      "None"
+     ],
+     "answer": 1,
+     "explain": "AND is the intersection of the two posting lists: only document 3 appears in both."
+    },
+    {
+     "q": "Why are posting lists kept sorted by document id?",
+     "options": [
+      "For display",
+      "So intersections and unions can be done with a linear merge, and gaps between ids are small for compression",
+      "Because hash maps require it",
+      "To rank results"
+     ],
+     "answer": 1,
+     "explain": "Sorted lists allow two-pointer merging in O(m + n) and make gap encoding effective."
+    },
+    {
+     "q": "What is the cost of removing stop words from the index?",
+     "options": [
+      "None",
+      "Queries that depend on them, such as exact phrases like 'to be or not to be', can no longer be answered precisely",
+      "The index grows",
+      "Stemming stops working"
+     ],
+     "answer": 1,
+     "explain": "Stop words carry little meaning alone but matter in phrases, so modern engines usually keep them and handle them at query time."
+    }
+   ],
+   "cover_seed": "inverted-index",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "famous-algos/inverted-index.md",
+   "hash": "7148c03da126",
+   "word_count": 1052,
+   "excerpt": "Type three words into a search box and results from billions of pages appear in a fraction of a second. Reading every page for those words would take far longer than that, even for a huge data centre. The search engine is not reading pages when you search. It did the reading long before, and built…"
+  },
+  {
    "id": "system-design-interview-framework",
    "kind": "primer",
    "subject": "system-design",
@@ -17098,6 +17556,103 @@
    "hash": "fc80e2e1b102",
    "word_count": 1186,
    "excerpt": "Every tweet, order, message and payment needs an id. In a small app, the database's auto-increment column hands out 1, 2, 3 and nobody thinks about it. At thousands of writes per second across many database shards and data centres, that single counter becomes a bottleneck, a single point of…"
+  },
+  {
+   "id": "system-design-chat-system",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "chat-system",
+   "title": "Design a Chat System",
+   "subtitle": "One-to-one and group messaging with WebSocket gateways, ordered message storage, delivery receipts, presence and offline delivery",
+   "track": "sd-cases",
+   "track_order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-realtime-communication",
+    "system-design-message-queues"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "system design",
+    "case study",
+    "chat",
+    "websockets",
+    "messaging"
+   ],
+   "glossary": [
+    {
+     "term": "WebSocket gateway",
+     "definition": "A server that holds long-lived WebSocket connections to clients and relays messages between them and backend services."
+    },
+    {
+     "term": "Session registry",
+     "definition": "A fast store mapping each online user (and device) to the gateway server holding their connection."
+    },
+    {
+     "term": "Fan-out",
+     "definition": "Delivering one message to many recipients, such as every member of a group."
+    },
+    {
+     "term": "Delivery receipt",
+     "definition": "An acknowledgement that a message reached the recipient's device (delivered) or was opened (read)."
+    },
+    {
+     "term": "Presence",
+     "definition": "Whether a user is currently online, and when they were last seen."
+    },
+    {
+     "term": "Inbox (sync) pointer",
+     "definition": "The id of the last message a device has received in a conversation, used to fetch anything it missed."
+    },
+    {
+     "term": "Idempotency key",
+     "definition": "A client-generated id attached to a message so that retries do not create duplicates."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Bob is online, connected to gateway G7. How does the chat service find where to push Alice's message?",
+     "options": [
+      "Broadcast to all gateways",
+      "Look up Bob in the session registry, which maps users to gateways",
+      "Ask Bob's phone to poll",
+      "Store it and wait"
+     ],
+     "answer": 1,
+     "explain": "The registry, usually an in-memory store, says which gateway holds Bob's connection, so the message is routed straight there."
+    },
+    {
+     "q": "Why does each message carry a client-generated id?",
+     "options": [
+      "For display",
+      "So a resend after a timeout is recognised as a duplicate instead of stored twice",
+      "To encrypt it",
+      "To sort it"
+     ],
+     "answer": 1,
+     "explain": "Networks drop acknowledgements. The id acts as an idempotency key, making retries safe."
+    },
+    {
+     "q": "How should messages be ordered within one conversation?",
+     "options": [
+      "By each client's local clock",
+      "By a per-conversation sequence number or time-ordered id assigned by the server",
+      "By message length",
+      "They need no order"
+     ],
+     "answer": 1,
+     "explain": "Device clocks disagree. A server-assigned, per-conversation increasing id gives every device the same order."
+    }
+   ],
+   "cover_seed": "chat-system",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.92,
+   "path": "system-design/chat-system.md",
+   "hash": "57a527c87c59",
+   "word_count": 1357,
+   "excerpt": "You send \"on my way\" and, a moment later, two grey ticks turn blue. Behind those ticks, your message travelled over a connection your phone kept open, through a server that knew which machine your friend's phone was connected to, into durable storage, onto their screen, and back as a receipt. If…"
   }
  ]
 }

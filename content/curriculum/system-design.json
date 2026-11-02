@@ -1457,8 +1457,8 @@
     "system-design-realtime-communication",
     "system-design-message-queues"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "WebSocket gateways",
