@@ -1,7 +1,7 @@
 {
- "content_version": "3e9faab92f84ae42",
+ "content_version": "63079a857c915e53",
  "generated_at": "2026-11-02",
- "count": 279,
+ "count": 281,
  "subjects": [
   {
    "id": "ml",
@@ -15258,6 +15258,245 @@
    "hash": "8e45ea13e583",
    "word_count": 1246,
    "excerpt": "A host is seating eight guests at a square banquet laid out like a chessboard, and every guest is a rival of every other. Two rivals must never be able to see each other: not along a row, not along a column and not along a diagonal. How many ways are there to seat them? That is the eight queens…"
+  },
+  {
+   "id": "dsa-sudoku-constraints",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "sudoku-constraints",
+   "title": "Fill the Clue With the Fewest Options First",
+   "subtitle": "Sudoku with backtracking and constraint bookkeeping: bitmasks for rows, columns and boxes, and the most-constrained-cell rule that cut one search from 1,010 calls to 70",
+   "track": "dsa-recursion",
+   "track_order": 4,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-backtracking-template"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "backtracking",
+    "constraint satisfaction",
+    "bitmask",
+    "heuristics"
+   ],
+   "complexity": {
+    "time": "Exponential in the worst case, fast in practice with pruning",
+    "space": "O(1) for a 9 by 9 board"
+   },
+   "practice_problems": [
+    {
+     "name": "Valid Sudoku",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/valid-sudoku/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Sudoku Solver",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sudoku-solver/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Word Search II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/word-search-ii/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Constraint satisfaction",
+     "definition": "Problems where you assign values to variables, here digits to cells, so that every rule holds at once."
+    },
+    {
+     "term": "Candidate set",
+     "definition": "The digits still allowed in an empty cell: those not already used in its row, column or box."
+    },
+    {
+     "term": "Box index",
+     "definition": "For cell (r, c) of a 9 by 9 Sudoku, (r / 3) × 3 + c / 3, numbering the nine 3 by 3 boxes from 0 to 8."
+    },
+    {
+     "term": "Most constrained cell",
+     "definition": "The empty cell with the fewest candidates, filled first so that dead ends are discovered as early as possible."
+    },
+    {
+     "term": "Forced move",
+     "definition": "An empty cell with exactly one candidate, which must take that digit."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Which box does cell (4, 7) belong to?",
+     "options": [
+      "Box 3",
+      "Box 5",
+      "Box 7",
+      "Box 8"
+     ],
+     "answer": 1,
+     "explain": "(4 / 3) × 3 + 7 / 3 = 1 × 3 + 2 = 5, using integer division."
+    },
+    {
+     "q": "Why fill the cell with the fewest candidates first?",
+     "options": [
+      "It is required by the rules",
+      "A cell with few options either forces a move or fails quickly, so wrong choices are caught near the top of the search tree",
+      "It always has exactly one candidate",
+      "It makes the board valid"
+     ],
+     "answer": 1,
+     "explain": "Branching on a cell with 1 or 2 options keeps the tree narrow. If a cell has 0 candidates, the current partial board is already impossible and the branch ends at once."
+    },
+    {
+     "q": "With masks rowM, colM and boxM, how do you get the candidates for (r, c)?",
+     "options": [
+      "rowM[r] & colM[c] & boxM[b]",
+      "The bits that are set in none of them: ~(rowM[r] | colM[c] | boxM[b]), restricted to digits 1 to 9",
+      "rowM[r] + colM[c]",
+      "boxM[b] only"
+     ],
+     "answer": 1,
+     "explain": "A digit is allowed if it is used in none of the three groups, which is the complement of their union."
+    }
+   ],
+   "cover_seed": "sudoku-constraints",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.6,
+   "path": "dsa/sudoku-constraints.md",
+   "hash": "c6705cb01d18",
+   "word_count": 1285,
+   "excerpt": "When you solve a crossword, you do not start at 1 Across and grind through the clues in order. You start with the clue where you have the most letters filled in, the one with the fewest possible answers. A sure answer there gives you letters in the crossing clues, which narrows those down in turn.…"
+  },
+  {
+   "id": "dsa-divide-and-conquer",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "divide-and-conquer",
+   "title": "Splitting a Big Job Between Two Teams, Again and Again",
+   "subtitle": "Divide and conquer: split into independent parts, solve each recursively, and put the real thinking into the combine step; plus how to read the running time from the recurrence",
+   "track": "dsa-recursion",
+   "track_order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-recursion-basics",
+    "dsa-merge-sort-inversions"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "divide and conquer",
+    "recursion",
+    "recurrences",
+    "master theorem"
+   ],
+   "complexity": {
+    "time": "Given by the recurrence, often O(n log n) or O(log n)",
+    "space": "O(recursion depth) plus any buffers"
+   },
+   "practice_problems": [
+    {
+     "name": "Sort an Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sort-an-array/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Majority Element",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/majority-element/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Maximum Subarray",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/maximum-subarray/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Different Ways to Add Parentheses",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/different-ways-to-add-parentheses/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Pow(x, n)",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/powx-n/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Divide and conquer",
+     "definition": "Solving a problem by splitting it into smaller independent subproblems of the same kind, solving them recursively and combining their answers."
+    },
+    {
+     "term": "Combine step",
+     "definition": "The work done after the recursive calls return, merging the sub-answers into the answer for the whole problem."
+    },
+    {
+     "term": "Crossing case",
+     "definition": "An answer that spans the boundary between the two halves and so is found by neither recursive call; the combine step must handle it."
+    },
+    {
+     "term": "Recurrence",
+     "definition": "An equation for the running time in terms of smaller inputs, such as T(n) = 2T(n/2) + n."
+    },
+    {
+     "term": "Master theorem",
+     "definition": "A rule for solving recurrences of the form T(n) = aT(n/b) + f(n) by comparing the combine cost f(n) with the number of leaves n^(log_b a)."
+    },
+    {
+     "term": "Overlapping subproblems",
+     "definition": "When different branches of the recursion solve the same smaller problem again and again, a sign that memoisation or dynamic programming is needed."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is the running time of T(n) = 2T(n/2) + O(n)?",
+     "options": [
+      "O(n)",
+      "O(n log n)",
+      "O(n²)",
+      "O(log n)"
+     ],
+     "answer": 1,
+     "explain": "There are log n levels and each level does O(n) total work, as in merge sort."
+    },
+    {
+     "q": "In divide-and-conquer Maximum Subarray, what does the combine step compute?",
+     "options": [
+      "The sum of the whole array",
+      "The best subarray that crosses the middle: the best suffix of the left half plus the best prefix of the right half",
+      "The maximum element",
+      "Nothing, it returns the larger half"
+     ],
+     "answer": 1,
+     "explain": "A subarray is either entirely in one half, which the recursive calls find, or crosses the middle, which only the combine step can find."
+    },
+    {
+     "q": "Naive recursive Fibonacci splits fib(n) into fib(n − 1) and fib(n − 2). Why is it not good divide and conquer?",
+     "options": [
+      "It is too short",
+      "The subproblems overlap heavily, so the same values are recomputed exponentially many times",
+      "It cannot be written recursively",
+      "Its combine step is too slow"
+     ],
+     "answer": 1,
+     "explain": "fib(n − 1) itself computes fib(n − 2) again. Subproblems that overlap call for memoisation or a bottom-up DP, not plain recursion."
+    }
+   ],
+   "cover_seed": "divide-and-conquer",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.75,
+   "path": "dsa/divide-and-conquer.md",
+   "hash": "269b6910cd4b",
+   "word_count": 1403,
+   "excerpt": "A manager has a stack of ten thousand forms to check and two assistants. She splits the stack in half, gives each assistant one half and tells them to do the same with their own assistants. When the halves come back checked, she only has to combine the two reports into one. Merge sort, binary…"
   },
   {
    "id": "dsa-tree-traversals",

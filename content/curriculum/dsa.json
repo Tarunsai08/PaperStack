@@ -973,8 +973,8 @@
    "prerequisites": [
     "dsa-backtracking-template"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Try candidates in empty cells",
@@ -1005,8 +1005,8 @@
     "dsa-recursion-basics",
     "dsa-merge-sort-inversions"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Split into independent halves",

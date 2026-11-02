@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 77 | 0 | 75 | 152 | 53/72 |
+| dsa | 79 | 0 | 73 | 152 | 53/72 |
 | cp | 45 | 0 | 70 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **279** | **0** | **394** | **673** | |
+| **All** | **281** | **0** | **392** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -52,6 +52,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 ### famous-algos
 
 - [ ] `famous-algos-myers-diff` (P0, concept, fa-search): Myers' Diff: How Git Shows What Changed
+- [ ] `famous-algos-fft` (P0, concept, fa-signals): The Fast Fourier Transform: Hearing the Notes in a Chord
 - [ ] `famous-algos-counting-bloom-cuckoo` (P1, concept, fa-sketches): Deletable Filters: Counting Bloom and Cuckoo Filters
 - [ ] `famous-algos-heavy-hitters` (P1, concept, fa-sketches): Finding Heavy Hitters in a Stream: Misra-Gries and Space-Saving
 - [ ] `famous-algos-lsh` (P1, concept, fa-sketches): Locality-Sensitive Hashing: Finding Near Neighbours Fast
@@ -60,7 +61,6 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `famous-algos-leader-election-leases` (P1, concept, fa-distributed): Leases and Fencing Tokens: Safe Leadership
 - [ ] `famous-algos-sliding-window-limits` (P1, concept, fa-networking): Sliding Window Rate Limiting: Logs and Counters
 - [ ] `famous-algos-skip-lists-practice` (P1, concept, fa-storage): Skip Lists in Practice: Redis Sorted Sets
-- [ ] `famous-algos-swiss-tables` (P1, concept, fa-storage): The Hash Table You Use Every Day: Open Addressing and Swiss Tables
 
 ### system-design
 
@@ -90,7 +90,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 77 written</summary>
+<details><summary>dsa: 79 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -121,6 +121,8 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-subsets-permutations` Generating Subsets and Permutations
 - [x] `dsa-backtracking-template` Backtracking: Explore, Undo, Repeat
 - [x] `dsa-n-queens` N-Queens: Backtracking With Smart Bookkeeping
+- [x] `dsa-sudoku-constraints` Solving Sudoku With Constraints
+- [x] `dsa-divide-and-conquer` Divide and Conquer: Split, Solve, Combine
 - [x] `dsa-tree-traversals` Tree Traversals: Pre, In, Post and Level Order
 - [x] `dsa-heap-basics` Heaps: Always Know the Smallest
 - [x] `dsa-graph-representation` Graphs: Modelling Problems as Nodes and Edges
