@@ -56,7 +56,7 @@ The real statement is narrower and more useful: when the network breaks, you mus
 Picture a bank with two branches that share account balances over a phone line. One afternoon the line goes dead. A customer walks into branch A wanting to withdraw money. Branch A can refuse until the line is back, so the balances can never disagree, or it can pay out and hope branch B does not also pay out the same money. There is no third option that is both always open and always correct.
 :::
 
-The dead phone line is a [[network partition]]. Refusing is choosing consistency; paying out is choosing [[availability]]. And even on normal days, phoning the other branch before every withdrawal makes customers wait, which is the latency side of the story.
+The dead phone line is a [[network partition]], and it can last seconds or hours. Refusing is choosing consistency; paying out is choosing [[availability]]. And even on normal days, phoning the other branch before every withdrawal makes customers wait, which is the latency side of the story.
 
 ## How it works
 
@@ -85,7 +85,7 @@ A [[CP system]], like a Raft-replicated store, refuses writes on the minority si
 
 Partitions are rare. Latency is constant. [[PACELC]], proposed by Daniel Abadi, reads: if **P**artition, choose **A** or **C**; **E**lse, choose **L**atency or **C**onsistency.
 
-On a normal day, a strongly consistent read may have to contact a leader in another region or wait for a quorum. A latency-first read just asks the nearest replica. Most of the design decisions you actually make, like "can this read come from a local replica?", are on the ELC side.
+On a normal day, a strongly consistent read may have to contact a leader in another region or wait for a quorum. A latency-first read just asks the nearest replica. That cost is paid on every request, not just on bad days. Most of the design decisions you actually make, like "can this read come from a local replica?", are on the ELC side.
 
 :::insight
 CAP describes the rare bad day; PACELC adds the everyday cost. A useful habit is to label each piece of data with both choices, for example "PC/EC" for a payment ledger and "PA/EL" for a like counter.

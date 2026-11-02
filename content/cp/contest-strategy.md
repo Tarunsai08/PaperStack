@@ -101,6 +101,10 @@ When a submission fails, do not change random things and resubmit. Instead:
 
 This checklist finds most bugs faster than staring.
 
+### Hacks and re-reading
+
+In Codeforces rounds with hacking, once your own problems are done, you may lock a solution and read others' code to find a test that breaks it. It is a skill in itself, but for most contestants below about 1900, solving one more problem is worth far more than hunting for hacks. Use any spare minutes first to re-read the statements of problems you solved, line by line, looking for a constraint you skimmed. Many solutions that pass pretests fail the final tests because of a single word, such as "not necessarily distinct", noticed only after the contest ends.
+
 ### The last fifteen minutes
 
 Do not start a brand-new hard problem unless it looks quick. Use the time to test submitted solutions against large inputs, especially for time limits, because on Codeforces passing [[pretests]] does not guarantee passing the final system tests.

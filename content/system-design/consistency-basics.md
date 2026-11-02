@@ -56,7 +56,7 @@ Every large system keeps several copies of its data, and copies take time to agr
 Picture a college with a main notice board in the office and copies pinned up in every hostel. When the office changes the exam date, a runner carries the update to each hostel board, one by one. For a few minutes, some boards show the new date and some the old. A student in a fast-updated hostel and a student in a slow one can disagree, both reading an "official" notice.
 :::
 
-Each notice board is a [[replica]]. The runner's delay is [[replication lag]]. The question is what the college promises students while the runner is still on the way.
+Each notice board is a [[replica]] of the original notice. The runner's delay is [[replication lag]]. The question is what the college promises students while the runner is still on the way.
 
 ## How it works
 
