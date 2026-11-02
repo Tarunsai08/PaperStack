@@ -779,8 +779,8 @@
    "prerequisites": [
     "dsa-stack-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Keep the stack sorted",
@@ -2657,8 +2657,8 @@
    "prerequisites": [
     "dsa-binary-search"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "One half is always sorted",

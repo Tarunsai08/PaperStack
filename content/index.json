@@ -1,7 +1,7 @@
 {
- "content_version": "e61f9b92769f7a0c",
+ "content_version": "1ab6f3c4be4b9113",
  "generated_at": "2026-11-02",
- "count": 166,
+ "count": 171,
  "subjects": [
   {
    "id": "ml",
@@ -10304,6 +10304,118 @@
    "excerpt": "\"Find the two numbers in this list that are closest together.\" The brute force compares every pair: about n²/2 comparisons. Now sort the list first. The closest pair is suddenly sitting side by side, and one pass finds it. You rarely need to write a sorting algorithm in an interview. What you need…"
   },
   {
+   "id": "dsa-rotated-array-search",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "rotated-array-search",
+   "title": "Binary Search on a Clock Whose 12 Moved",
+   "subtitle": "Searching a rotated sorted array in O(log n): one half is always sorted, so you always know which way to go",
+   "track": "dsa-search-sort",
+   "track_order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-binary-search"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "binary search",
+    "arrays",
+    "rotated array"
+   ],
+   "complexity": {
+    "time": "O(log n), O(n) worst case with duplicates",
+    "space": "O(1)"
+   },
+   "practice_problems": [
+    {
+     "name": "Search in Rotated Sorted Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/search-in-rotated-sorted-array/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Find Minimum in Rotated Sorted Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Search in Rotated Sorted Array II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/search-in-rotated-sorted-array-ii/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Find Minimum in Rotated Sorted Array II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Rotated sorted array",
+     "definition": "A sorted array that has been cut at some point and the two pieces swapped, such as [15, 18, 22, 3, 6, 9, 12]."
+    },
+    {
+     "term": "Pivot",
+     "definition": "The position of the smallest element, where the rotation happened and the order 'wraps around'."
+    },
+    {
+     "term": "Sorted half",
+     "definition": "Of the two halves around the middle index, the one that contains no pivot and is therefore in normal increasing order."
+    },
+    {
+     "term": "Search space",
+     "definition": "The range of indices [lo, hi] that might still contain the answer."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In a rotated sorted array with distinct values, why is at least one of [lo..mid] or [mid..hi] always sorted?",
+     "options": [
+      "Because the array is short",
+      "The rotation creates only one break point, and it can lie in at most one of the two halves",
+      "Because mid is always the pivot",
+      "It is not always true"
+     ],
+     "answer": 1,
+     "explain": "There is exactly one place where the order wraps around. Whichever half avoids it is sorted."
+    },
+    {
+     "q": "For [15, 18, 22, 3, 6, 9, 12], lo = 0, hi = 6, mid = 3 (value 3). Which half is sorted?",
+     "options": [
+      "Left half [15, 18, 22, 3]",
+      "Right half [3, 6, 9, 12]",
+      "Both",
+      "Neither"
+     ],
+     "answer": 1,
+     "explain": "a[lo] = 15 > a[mid] = 3, so the left half contains the wrap. The right half from 3 to 12 is sorted."
+    },
+    {
+     "q": "Why do duplicates break the O(log n) guarantee?",
+     "options": [
+      "They do not",
+      "When a[lo], a[mid] and a[hi] are all equal you cannot tell which half is sorted, so you can only shrink by one",
+      "Binary search cannot compare equal values",
+      "They make the array unsorted"
+     ],
+     "answer": 1,
+     "explain": "For example [2, 2, 2, 3, 2] and [2, 3, 2, 2, 2] look the same at lo, mid and hi. Shrinking lo and hi by one is safe but can take O(n) steps."
+    }
+   ],
+   "cover_seed": "rotated-array-search",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.86,
+   "path": "dsa/rotated-array-search.md",
+   "hash": "8211dfec958d",
+   "word_count": 1105,
+   "excerpt": "A sorted list of ticket numbers was stored in a circular buffer, and now it starts in the middle: [15, 18, 22, 3, 6, 9, 12]. You need to find 6, and you are told to do it in O(log n), not by scanning. Plain binary search fails here: comparing 6 with the middle value no longer tells you which side…"
+  },
+  {
    "id": "dsa-linked-list-basics",
    "kind": "pattern",
    "subject": "dsa",
@@ -10671,6 +10783,129 @@
    "hash": "0ecfff616137",
    "word_count": 900,
    "excerpt": "Your code editor knows instantly when a bracket is missing. A calculator app turns \"2 + 3 × 4\" into 14, not 20. The undo button in every editor steps back through your changes in reverse order. Different features, one data structure underneath: the stack. Stacks are simple enough to explain in a…"
+  },
+  {
+   "id": "dsa-monotonic-stack",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "monotonic-stack",
+   "title": "Who Can See Over the Crowd",
+   "subtitle": "The monotonic stack: next greater element, previous smaller element and the largest rectangle, each in one linear pass",
+   "track": "dsa-linear",
+   "track_order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-stack-patterns"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "stack",
+    "monotonic stack",
+    "arrays",
+    "next greater element"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Daily Temperatures",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/daily-temperatures/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Next Greater Element II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/next-greater-element-ii/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Online Stock Span",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/online-stock-span/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Largest Rectangle in Histogram",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/largest-rectangle-in-histogram/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Trapping Rain Water",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/trapping-rain-water/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Monotonic stack",
+     "definition": "A stack whose elements are always kept in sorted order, increasing or decreasing from bottom to top, by popping anything that would break the order before pushing."
+    },
+    {
+     "term": "Next greater element",
+     "definition": "For position i, the first position to its right holding a strictly larger value."
+    },
+    {
+     "term": "Previous smaller element",
+     "definition": "For position i, the nearest position to its left holding a smaller value."
+    },
+    {
+     "term": "Amortised analysis",
+     "definition": "Bounding the total cost of many operations together, here by noting each element is pushed once and popped at most once."
+    },
+    {
+     "term": "Span",
+     "definition": "How far an element's influence reaches before something blocks it, such as the width over which a bar is the shortest."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In the next-greater-element pass, when is an element's answer decided?",
+     "options": [
+      "When it is pushed",
+      "When it is popped by a larger element arriving from the right",
+      "At the end of the array only",
+      "When the stack is empty"
+     ],
+     "answer": 1,
+     "explain": "An element waits on the stack until the first larger value arrives; that arrival pops it and is its answer. Elements never popped have no greater element."
+    },
+    {
+     "q": "Why is the monotonic stack O(n) even though there is a while loop inside the for loop?",
+     "options": [
+      "The while loop runs at most once",
+      "Every index is pushed once and popped at most once, so total pops are at most n",
+      "The stack is small",
+      "It is actually O(n log n)"
+     ],
+     "answer": 1,
+     "explain": "Counting pops across the whole run, not per iteration, gives at most n. This is amortised analysis."
+    },
+    {
+     "q": "For the largest rectangle in a histogram, what does popping a bar tell you?",
+     "options": [
+      "Nothing",
+      "Both the first smaller bar on its right (the current bar) and on its left (the new stack top), so its maximal width is known",
+      "Its height doubles",
+      "The answer is final"
+     ],
+     "answer": 1,
+     "explain": "The popped bar is the shortest across the gap between those two smaller bars, so its rectangle's width is fixed at that moment."
+    }
+   ],
+   "cover_seed": "monotonic-stack",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.9,
+   "path": "dsa/monotonic-stack.md",
+   "hash": "11b77e7579f9",
+   "word_count": 1274,
+   "excerpt": "You have a list of daily temperatures, and for each day you want to know how many days you must wait for a warmer one. The obvious method scans forward from every day, which is O(n²): fine for 100 days, hopeless for 100,000. A surprising number of interview problems have this shape: for each…"
   },
   {
    "id": "cp-how-contests-work",
@@ -12565,6 +12800,123 @@
    "hash": "677fdfef25bb",
    "word_count": 978,
    "excerpt": "A clock has 12 positions. You start at 0 and jump forward by the same step each time. With a step of 5 you visit every position before returning to 0; with a step of 4 you only ever visit 0, 4 and 8. The steps that visit every position are exactly those that share no factor with 12: 1, 5, 7 and 11.…"
+  },
+  {
+   "id": "cp-matrix-exponentiation",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "matrix-exponentiation",
+   "title": "Jumping a Billion Steps Ahead in a Recurrence",
+   "subtitle": "Matrix exponentiation: write a linear recurrence as a matrix, raise it to the n-th power in O(k³ log n), and count paths in graphs the same way",
+   "track": "cp-math",
+   "track_order": 12,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-binary-exponentiation"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 5,
+   "topics": [
+    "matrix exponentiation",
+    "linear recurrences",
+    "fibonacci",
+    "graph paths"
+   ],
+   "complexity": {
+    "time": "O(k^3 log n) for a k × k matrix",
+    "space": "O(k^2)"
+   },
+   "practice_problems": [
+    {
+     "name": "Fibonacci Numbers",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1722",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Throwing Dice",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1096",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Graph Paths I",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1723",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Graph Paths II",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1724",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Linear recurrence",
+     "definition": "A sequence where each term is a fixed weighted sum of a fixed number of previous terms, such as F(n) = F(n−1) + F(n−2)."
+    },
+    {
+     "term": "State vector",
+     "definition": "The last k terms of a sequence stacked into a column, enough to compute the next term."
+    },
+    {
+     "term": "Transition matrix",
+     "definition": "The k × k matrix that turns the state vector at step n into the state vector at step n + 1."
+    },
+    {
+     "term": "Identity matrix",
+     "definition": "The matrix with ones on the diagonal and zeros elsewhere; multiplying by it changes nothing, like multiplying by 1."
+    },
+    {
+     "term": "Adjacency matrix",
+     "definition": "A matrix where entry (i, j) is the number of edges from vertex i to vertex j."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "To compute F(n) for n = 10^18 with a 2 × 2 matrix, roughly how many matrix multiplications are needed?",
+     "options": [
+      "10^18",
+      "About 60 to 120",
+      "About 10^9",
+      "Exactly 2"
+     ],
+     "answer": 1,
+     "explain": "Binary exponentiation needs about log2(10^18) ≈ 60 squarings plus up to 60 extra multiplications."
+    },
+    {
+     "q": "For the recurrence f(n) = f(n−1) + f(n−2) + ... + f(n−6), what size is the transition matrix?",
+     "options": [
+      "2 × 2",
+      "6 × 6",
+      "7 × 7",
+      "n × n"
+     ],
+     "answer": 1,
+     "explain": "The state needs the last 6 terms, so the matrix is 6 × 6: one row computes the new term, five rows shift the others down."
+    },
+    {
+     "q": "If A is a graph's adjacency matrix, what does entry (i, j) of A^k count?",
+     "options": [
+      "Shortest paths",
+      "Walks of exactly k edges from i to j",
+      "Edges between i and j",
+      "Cycles of length k"
+     ],
+     "answer": 1,
+     "explain": "Each multiplication extends every walk by one edge, summing over the middle vertex."
+    }
+   ],
+   "cover_seed": "matrix-exponentiation",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "cp/matrix-exponentiation.md",
+   "hash": "76a622952958",
+   "word_count": 1052,
+   "excerpt": "Compute the 10¹⁸-th Fibonacci number modulo 10⁹ + 7. A loop that adds the last two terms needs 10¹⁸ steps, which would take decades. Yet the answer comes back in microseconds with a trick built from two things you already know: the recurrence, and fast exponentiation from Raising to the Power of a…"
   },
   {
    "id": "cp-coordinate-compression",
@@ -14636,6 +14988,97 @@
    "excerpt": "Every few months, some company announces that its user database was stolen. The question that decides how bad it is: how were the passwords stored? If they were plain text, every account is open immediately. If they were hashed with a fast hash, most weak and common passwords are cracked within…"
   },
   {
+   "id": "famous-algos-diffie-hellman",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "diffie-hellman",
+   "title": "Agreeing on a Secret While Everyone Listens",
+   "subtitle": "Diffie-Hellman key exchange: two strangers build a shared key over a public channel using modular exponentiation",
+   "track": "fa-crypto",
+   "track_order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-binary-exponentiation"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "cryptography",
+    "key exchange",
+    "modular arithmetic",
+    "tls"
+   ],
+   "glossary": [
+    {
+     "term": "Key exchange",
+     "definition": "A protocol by which two parties end up with the same secret key, which they then use to encrypt their conversation."
+    },
+    {
+     "term": "Public channel",
+     "definition": "A communication path where an eavesdropper can read every message, such as the open internet."
+    },
+    {
+     "term": "Generator",
+     "definition": "A number g whose powers modulo a prime p produce many different values, ideally all of 1 to p − 1."
+    },
+    {
+     "term": "Discrete logarithm problem",
+     "definition": "Given g, p and g^a mod p, find a. Believed to be infeasible for well-chosen large primes, and the basis of Diffie-Hellman's security."
+    },
+    {
+     "term": "Man-in-the-middle attack",
+     "definition": "An attacker sits between two parties, pretending to each to be the other, and runs a separate key exchange with each."
+    },
+    {
+     "term": "Forward secrecy",
+     "definition": "A property where stealing a long-term key later does not reveal past conversations, achieved by using fresh Diffie-Hellman keys per session."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "With p = 23, g = 5, Alice's secret a = 4 and Bob's secret b = 3, what is the shared secret?",
+     "options": [
+      "4",
+      "10",
+      "18",
+      "23"
+     ],
+     "answer": 2,
+     "explain": "A = 5^4 mod 23 = 4, B = 5^3 mod 23 = 10. Alice computes 10^4 mod 23 = 18, Bob computes 4^3 mod 23 = 18."
+    },
+    {
+     "q": "What does an eavesdropper need to solve to recover the shared secret from g, p, A and B?",
+     "options": [
+      "Factor p",
+      "Essentially a discrete logarithm: find a from g^a mod p",
+      "Compute a modular inverse",
+      "Nothing, it is public"
+     ],
+     "answer": 1,
+     "explain": "Computing g^a mod p is fast, but undoing it to find a is believed infeasible for large well-chosen parameters."
+    },
+    {
+     "q": "Why is plain Diffie-Hellman vulnerable to a man-in-the-middle attack?",
+     "options": [
+      "The math is weak",
+      "Nothing proves who sent A and B, so an attacker can substitute their own values",
+      "The prime is too small",
+      "It uses symmetric keys"
+     ],
+     "answer": 1,
+     "explain": "Diffie-Hellman gives secrecy against listeners, not authentication. TLS adds certificates and signatures so each side knows whose public value it received."
+    }
+   ],
+   "cover_seed": "diffie-hellman",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "famous-algos/diffie-hellman.md",
+   "hash": "20ec13a28295",
+   "word_count": 1191,
+   "excerpt": "You open a website you have never visited. Within a fraction of a second, your browser and a server on another continent agree on a secret key that encrypts everything you send. They have never met, they share no password, and every message they exchanged to agree on that key crossed networks where…"
+  },
+  {
    "id": "system-design-interview-framework",
    "kind": "primer",
    "subject": "system-design",
@@ -16281,6 +16724,102 @@
    "hash": "4992f6df6c52",
    "word_count": 1148,
    "excerpt": "Your app runs on fifty servers. Each one keeps a little in-memory cache of user profiles. A user changes their photo; one server updates its copy, and the other forty-nine keep showing the old one until their entries expire. After every deploy, all fifty caches start empty and hammer the database…"
+  },
+  {
+   "id": "system-design-cache-problems",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "cache-problems",
+   "title": "When the Bakery Reopens",
+   "subtitle": "Cache stampedes, hot keys, penetration and stale data: the failures caches cause and the standard fixes for each",
+   "track": "sd-scaling",
+   "track_order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-caching"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "system design",
+    "caching",
+    "thundering herd",
+    "hot keys",
+    "invalidation"
+   ],
+   "glossary": [
+    {
+     "term": "Cache stampede",
+     "definition": "Many requests miss the cache for the same key at once and all hit the database together. Also called a thundering herd or dog-piling."
+    },
+    {
+     "term": "Request coalescing",
+     "definition": "Letting only one request rebuild a missing cache entry while others wait for its result, also called single-flight."
+    },
+    {
+     "term": "Hot key",
+     "definition": "A single cache key receiving a huge share of traffic, overloading the one cache node that owns it."
+    },
+    {
+     "term": "Cache penetration",
+     "definition": "Repeated requests for keys that do not exist anywhere, so every request misses the cache and hits the database."
+    },
+    {
+     "term": "Negative caching",
+     "definition": "Caching the fact that something does not exist, for a short time, so repeated lookups do not reach the database."
+    },
+    {
+     "term": "TTL jitter",
+     "definition": "Adding a small random amount to each expiry time so many keys do not expire at the same moment."
+    },
+    {
+     "term": "Lease",
+     "definition": "A token the cache gives one client on a miss, granting it the right to fill that key, used to coalesce rebuilds and reject stale writes."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A popular key expires and 5,000 requests miss at once. Which fix stops all of them reaching the database?",
+     "options": [
+      "A longer TTL",
+      "Request coalescing: one request rebuilds the value while the others wait for it",
+      "More cache memory",
+      "Negative caching"
+     ],
+     "answer": 1,
+     "explain": "A longer TTL only postpones the stampede. Coalescing ensures one database query per missing key regardless of how many requests arrive."
+    },
+    {
+     "q": "Attackers request random user ids that do not exist. What protects the database?",
+     "options": [
+      "Cache warming",
+      "Negative caching or a Bloom filter in front of the cache",
+      "Hot key replication",
+      "Write-through caching"
+     ],
+     "answer": 1,
+     "explain": "Non-existent keys always miss. Caching 'not found' briefly, or checking a Bloom filter of valid ids, stops them reaching the database."
+    },
+    {
+     "q": "Why add random jitter to TTLs when warming a cache with a million keys?",
+     "options": [
+      "To save memory",
+      "So the keys do not all expire at the same moment and cause a mass miss",
+      "To improve hit ratio for hot keys only",
+      "It is required by Redis"
+     ],
+     "answer": 1,
+     "explain": "Keys loaded together with the same TTL expire together. Jitter spreads their expiry over time."
+    }
+   ],
+   "cover_seed": "cache-problems",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.88,
+   "path": "system-design/cache-problems.md",
+   "hash": "d14374359802",
+   "word_count": 1464,
+   "excerpt": "Your product page is served from a cache with a 99% hit ratio, and the database is relaxed at 2% CPU. Then, at exactly 12:00:00, the cached entry for the homepage's top product expires. In the next 50 milliseconds, 4,000 requests miss, and all 4,000 run the same expensive query. The database goes…"
   },
   {
    "id": "system-design-url-shortener",
