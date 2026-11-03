@@ -1,7 +1,7 @@
 {
- "content_version": "17de563817cd6f63",
+ "content_version": "b18a303f4935a6ba",
  "generated_at": "2026-11-03",
- "count": 545,
+ "count": 547,
  "subjects": [
   {
    "id": "ml",
@@ -56141,6 +56141,94 @@
    "excerpt": "A college database has two students named Priya Sharma in the same year. The exam cell enters marks by name. You can guess what happens: one Priya gets the other's grades. People's names are not identifiers. Roll numbers, email addresses and Aadhaar numbers are. Databases make this idea precise…"
   },
   {
+   "id": "cs-core-relational-algebra",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "relational-algebra",
+   "title": "Recipes for Combining Tables",
+   "subtitle": "Relational algebra in plain words: select, project, rename, union, difference, Cartesian product, joins and division, each worked on one small college database and matched to its SQL",
+   "track": "cs-dbms",
+   "track_order": 4,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-relational-keys"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "dbms",
+    "relational algebra",
+    "division",
+    "joins",
+    "query languages"
+   ],
+   "glossary": [
+    {
+     "term": "Relational algebra",
+     "definition": "A small set of operations that take tables as input and produce a table as output; the mathematical core beneath SQL."
+    },
+    {
+     "term": "Selection",
+     "definition": "σ (sigma): keeps the rows that satisfy a condition, like WHERE."
+    },
+    {
+     "term": "Projection",
+     "definition": "π (pi): keeps chosen columns and removes duplicate rows, like SELECT DISTINCT."
+    },
+    {
+     "term": "Natural join",
+     "definition": "⋈: combines rows from two tables that agree on all columns with the same name, keeping one copy of those columns."
+    },
+    {
+     "term": "Division",
+     "definition": "÷: finds values in one table that are paired with every value of another table, answering 'for all' questions."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Student has 4 rows and Enrol has 6. How many rows does Student × Enrol have?",
+     "options": [
+      "10",
+      "24",
+      "6",
+      "4"
+     ],
+     "answer": 1,
+     "explain": "A Cartesian product pairs every row with every row: 4 × 6 = 24."
+    },
+    {
+     "q": "Which operation answers 'students enrolled in every core course'?",
+     "options": [
+      "Union",
+      "Division",
+      "Projection",
+      "Selection"
+     ],
+     "answer": 1,
+     "explain": "'Every' questions are division: Enrol ÷ Core keeps rolls paired with all core courses."
+    },
+    {
+     "q": "How does relational algebra's projection differ from a plain SQL SELECT of the same columns?",
+     "options": [
+      "It does not",
+      "Projection removes duplicate rows, because relations are sets; SQL keeps duplicates unless you write DISTINCT",
+      "Projection sorts the rows",
+      "Projection can only pick one column"
+     ],
+     "answer": 1,
+     "explain": "Relational algebra works on sets. SQL works on multisets (bags) for speed."
+    }
+   ],
+   "cover_seed": "relational-algebra",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.72,
+   "path": "cs-core/relational-algebra.md",
+   "hash": "a49623ba005a",
+   "word_count": 1074,
+   "excerpt": "\"Find the students who have taken every core course.\" Try writing that in SQL right now. Most people get stuck: SQL has no FOR ALL keyword, and the standard answer uses a double NOT EXISTS that looks like a riddle. In relational algebra the same question is one symbol: ÷. Relational algebra is the…"
+  },
+  {
    "id": "cs-core-sql-basics",
    "kind": "deep-dive",
    "subject": "cs-core",
@@ -57260,6 +57348,90 @@
    "hash": "169e2ec8a696",
    "word_count": 1279,
    "excerpt": "You write one line of SQL: names of employees in department d7 earning more than 800. You never said how to find them. Should the database read all 100,000 employees and check each? Start from the 100 departments? Use an index, and which one? On a test table built for this article, the same query…"
+  },
+  {
+   "id": "cs-core-views-triggers-procedures",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "views-triggers-procedures",
+   "title": "Saved Searches and Automatic Alarms",
+   "subtitle": "Views, materialised views, stored procedures and triggers: what each one is, a working audit-log trigger, when logic belongs in the database, and the pitfalls that make teams regret it",
+   "track": "cs-dbms",
+   "track_order": 17,
+   "priority": "P2",
+   "prerequisites": [
+    "cs-core-sql-advanced"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "dbms",
+    "views",
+    "triggers",
+    "stored procedures",
+    "materialized views"
+   ],
+   "glossary": [
+    {
+     "term": "View",
+     "definition": "A named, stored query that behaves like a virtual table; its rows are computed from the base tables whenever it is queried."
+    },
+    {
+     "term": "Materialised view",
+     "definition": "A view whose result is stored physically and refreshed on demand or on a schedule, trading freshness for fast reads."
+    },
+    {
+     "term": "Stored procedure",
+     "definition": "A named program stored in the database and run there with a CALL, often containing several statements, variables and control flow."
+    },
+    {
+     "term": "Trigger",
+     "definition": "Code the database runs automatically before or after an INSERT, UPDATE or DELETE on a table."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A view dept_pay averages salaries per department. Engineering salaries are raised by 10. What does the next SELECT from dept_pay show?",
+     "options": [
+      "The old averages until the view is refreshed",
+      "The new averages, because a normal view re-runs its query each time",
+      "An error",
+      "Nothing"
+     ],
+     "answer": 1,
+     "explain": "Running this in SQLite, the Eng average went from 105 to 115 immediately. Only materialised views need a refresh."
+    },
+    {
+     "q": "Which is the main risk of putting business rules in triggers?",
+     "options": [
+      "They are slow to write",
+      "Hidden side effects: an innocent UPDATE silently does extra work, which surprises developers and complicates debugging",
+      "They cannot read data",
+      "They only run once a day"
+     ],
+     "answer": 1,
+     "explain": "Triggers run invisibly. Chains of triggers make behaviour hard to follow and test."
+    },
+    {
+     "q": "Why can a view improve security?",
+     "options": [
+      "It encrypts data",
+      "Users can be granted access to the view but not the base table, so they see only chosen columns and rows",
+      "It blocks SQL injection",
+      "It hides the database name"
+     ],
+     "answer": 1,
+     "explain": "A view exposing name and dept but not salary lets a team query employees without seeing pay."
+    }
+   ],
+   "cover_seed": "views-triggers-procedures",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.65,
+   "path": "cs-core/views-triggers-procedures.md",
+   "hash": "8894574ba6d1",
+   "word_count": 1047,
+   "excerpt": "HR wants three things from the employee database. A dashboard of headcount and average pay per department that is always current. A record of every salary change, who earned what before and after, that nobody can forget to write. And for interns, access to names and departments, but never salaries.…"
   }
  ]
 }

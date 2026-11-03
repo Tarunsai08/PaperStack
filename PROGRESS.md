@@ -14,8 +14,8 @@ Read `HANDOFF.md` first if you are picking this project up.
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core | 31 | 0 | 48 | 79 | 26/47 |
-| **All** | **545** | **0** | **138** | **683** | |
+| cs-core | 33 | 0 | 46 | 79 | 26/47 |
+| **All** | **547** | **0** | **136** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -70,7 +70,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `cs-core-thrashing` (P1, deep-dive, cs-os): Thrashing and the Working Set
 - [ ] `cs-core-io-interrupts-dma` (P1, deep-dive, cs-os): I/O: Polling, Interrupts and DMA
 - [ ] `cs-core-threading-models` (P1, deep-dive, cs-os): User Threads, Kernel Threads and Thread Pools
-- [ ] `cs-core-relational-algebra` (P1, deep-dive, cs-dbms): Relational Algebra in Plain Words
 - [ ] `cs-core-nosql-overview` (P1, deep-dive, cs-dbms): NoSQL Families for DBMS Interviews
 - [ ] `cs-core-booting` (P2, deep-dive, cs-os): What Happens When a Computer Boots
 
@@ -615,7 +614,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cs-core: 31 written</summary>
+<details><summary>cs-core: 33 written</summary>
 
 - [x] `cs-core-what-an-os-does` What an Operating System Actually Does
 - [x] `cs-core-processes-threads` Processes vs Threads
@@ -636,6 +635,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cs-core-dbms-intro` Why Databases Exist
 - [x] `cs-core-er-model` ER Modelling: Entities, Relationships and Cardinality
 - [x] `cs-core-relational-keys` The Relational Model and Keys
+- [x] `cs-core-relational-algebra` Relational Algebra in Plain Words
 - [x] `cs-core-sql-basics` SQL Essentials: SELECT to GROUP BY
 - [x] `cs-core-sql-joins` SQL Joins Without Confusion
 - [x] `cs-core-sql-advanced` Subqueries, CTEs and Window Functions
@@ -648,5 +648,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cs-core-db-recovery` Crash Recovery: Logs, Checkpoints and ARIES
 - [x] `cs-core-db-indexing-cs` Indexing: B+ Trees and Hash Indexes
 - [x] `cs-core-query-optimization` How a Query Runs: Parsing, Planning, Executing
+- [x] `cs-core-views-triggers-procedures` Views, Stored Procedures and Triggers
 
 </details>
