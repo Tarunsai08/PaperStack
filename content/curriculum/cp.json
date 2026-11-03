@@ -2791,8 +2791,8 @@
    "prerequisites": [
     "cp-max-flow"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Model as flow network",
@@ -3300,8 +3300,8 @@
     "cp-dsu-advanced",
     "dsa-tree-recursion"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Merge smaller sets into larger",

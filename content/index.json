@@ -1,7 +1,7 @@
 {
- "content_version": "3b8f3a93c9edb6ee",
+ "content_version": "0a22c77657bd6167",
  "generated_at": "2026-11-02",
- "count": 402,
+ "count": 404,
  "subjects": [
   {
    "id": "ml",
@@ -35706,6 +35706,231 @@
    "hash": "ff2a1f7b4c90",
    "word_count": 1555,
    "excerpt": "A company has a general director, and every other employee has exactly one direct boss. Two kinds of questions arrive by the hundred thousand: \"who is employee x's boss k levels up?\" and \"who is the lowest boss that both a and b report to?\". In a deep company, walking up boss by boss is far too…"
+  },
+  {
+   "id": "cp-download-speed",
+   "kind": "problem-walkthrough",
+   "subject": "cp",
+   "slug": "download-speed",
+   "title": "Bandwidth Through a Mesh of Routers",
+   "subtitle": "CSES Download Speed end to end, with Dinic's algorithm: modelling routers as a flow network, parallel links, level graphs and blocking flows, the current-edge pointer that keeps each phase fast, 64-bit totals, and Police Chase as the minimum cut of the same machinery",
+   "track": "cp-graphs",
+   "track_order": 16,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-max-flow"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "graphs",
+    "maximum flow",
+    "Dinic",
+    "minimum cut",
+    "CSES"
+   ],
+   "complexity": {
+    "time": "O(V²·E) Dinic",
+    "space": "O(V + E)"
+   },
+   "practice_problems": [
+    {
+     "name": "Download Speed",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1694",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Police Chase",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1695",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "School Dance",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1696",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Level graph",
+     "definition": "The residual edges u → v with level[v] = level[u] + 1, where level is the BFS distance from the source; every path in it is a shortest augmenting path."
+    },
+    {
+     "term": "Blocking flow",
+     "definition": "A flow in the level graph after which no source-to-sink path in that level graph has spare capacity."
+    },
+    {
+     "term": "Phase",
+     "definition": "One BFS to build the level graph followed by one blocking flow; the sink's distance grows strictly from phase to phase."
+    },
+    {
+     "term": "Current-edge pointer",
+     "definition": "ptr[u], the first edge of u not yet known to be useless in this phase; the DFS resumes from it instead of rescanning."
+    },
+    {
+     "term": "Parallel links",
+     "definition": "Several separate connections between the same two routers; in a flow network they are separate edges, and their capacities simply add up."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does Dinic's DFS only follow edges from level L to level L + 1?",
+     "options": [
+      "To use less memory",
+      "Those edges form the level graph, where every path is a shortest augmenting path; restricting to them guarantees the sink's distance increases after each phase, which bounds the number of phases by V",
+      "Because other edges have no capacity",
+      "It is a heuristic with no guarantee"
+     ],
+     "answer": 1,
+     "explain": "After a blocking flow, every shortest path is blocked, so the next BFS finds the sink farther away. Distance is at most V − 1, so there are at most V phases."
+    },
+    {
+     "q": "What does the current-edge pointer prevent?",
+     "options": [
+      "Overflow",
+      "Re-examining edges already found useless in this phase, which would make one phase quadratic in the number of edges",
+      "Using reverse edges",
+      "Infinite loops in BFS"
+     ],
+     "answer": 1,
+     "explain": "An edge is skipped once it is saturated or leads to a dead end. Within a phase it can never become useful again, so the pointer moves past it for good."
+    },
+    {
+     "q": "Why must the total flow be a 64-bit integer in Download Speed?",
+     "options": [
+      "CSES requires it",
+      "Each link can carry up to 10⁹ and the total is a sum over many links, which can pass the 32-bit limit of about 2.1·10⁹; the example's answer is 2.8·10⁹",
+      "Dinic uses division",
+      "Capacities are negative"
+     ],
+     "answer": 1,
+     "explain": "Three links of 10⁹ into the sink already exceed 2³¹ − 1. Any capacity variable that can hold a sum must be long long."
+    }
+   ],
+   "cover_seed": "cp-download-speed",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.55,
+   "path": "cp/download-speed.md",
+   "hash": "6bd06dfacec5",
+   "word_count": 1502,
+   "excerpt": "You are downloading a file from a server through a mesh of routers. Each link between two routers has a bandwidth limit, data may split and merge freely, and you want the largest total speed. That is a maximum flow, exactly the model of Water Pipes From a Reservoir to a City. The walkthrough here…"
+  },
+  {
+   "id": "cp-small-to-large",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "small-to-large",
+   "title": "Smaller Families Moving Into the Bigger House",
+   "subtitle": "Small-to-large merging for contests: why always pouring the smaller collection into the larger moves each item only O(log n) times, distinct colours in every subtree, most frequent colours with running counts, the O(1) container swap, and the bug of reading an answer after it was swapped away",
+   "track": "cp-graphs",
+   "track_order": 17,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-dsu-advanced",
+    "dsa-tree-recursion"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "trees",
+    "small-to-large",
+    "merging",
+    "subtree queries",
+    "amortised analysis"
+   ],
+   "complexity": {
+    "time": "O(n log² n) with std::map, O(n log n) moves",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Distinct Colors",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1139",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Lomsat gelral",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/600/E",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Dominant Indices",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/1009/F",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Small-to-large merging",
+     "definition": "Combining two collections by inserting every item of the smaller one into the larger one, so the larger one is reused."
+    },
+    {
+     "term": "Token",
+     "definition": "One original vertex counted in a collection; comparing token counts decides which side is smaller."
+    },
+    {
+     "term": "Doubling argument",
+     "definition": "Each time a token's collection is the smaller side of a merge, the collection it ends up in has at least twice as many tokens, which can happen only about log₂ n times."
+    },
+    {
+     "term": "Container swap",
+     "definition": "Exchanging two std::map or std::set objects with swap, which takes O(1) time because only internal pointers move."
+    },
+    {
+     "term": "Working state",
+     "definition": "The per-vertex container and counters that get swapped and merged; answers must be copied out before a parent takes them over."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does small-to-large move each vertex's data only O(log n) times?",
+     "options": [
+      "Because maps are balanced",
+      "A token moves only when its side is the smaller one, and then it lands in a collection with at least twice as many tokens; doubling past n is impossible after about log₂ n moves",
+      "Because each merge is O(1)",
+      "Because the tree has depth log n"
+     ],
+     "answer": 1,
+     "explain": "If a has at most as many tokens as b, the merged collection has a + b ≥ 2a tokens. A token's collection size at least doubles each time it moves."
+    },
+    {
+     "q": "What happens on a path of n vertices if the child's collection is always poured into the parent's, regardless of size?",
+     "options": [
+      "Still O(n log n)",
+      "Each parent receives everything below it, so the work is 1 + 2 + ... + (n − 1), about n²/2; the program measures 1,999,000 moves for n = 2000 against 1,999 with small-to-large",
+      "It becomes O(n)",
+      "It crashes"
+     ],
+     "answer": 1,
+     "explain": "Pouring large into small repeats the same items at every level. Swapping first makes the parent keep the big collection and receive only its own single colour."
+    },
+    {
+     "q": "Why must a vertex's answer be recorded as soon as the vertex is finished?",
+     "options": [
+      "For speed",
+      "Its parent may swap containers and counters with it, after which the child's slots hold the parent's old data",
+      "Because maps are freed automatically",
+      "It need not be"
+     ],
+     "answer": 1,
+     "explain": "The swap is what makes the method fast, but it reuses the child's storage. Answers belong in separate arrays written once, before the parent touches anything."
+    }
+   ],
+   "cover_seed": "cp-small-to-large",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.64,
+   "path": "cp/small-to-large.md",
+   "hash": "2436f66bc172",
+   "word_count": 1553,
+   "excerpt": "Every vertex of a tree has a colour, and for every vertex you must report how many distinct colours appear in its subtree. Collecting the colours of each subtree separately costs the subtree's size, and on a path that adds up to n²/2: about 2·10¹⁰ steps for 2·10⁵ vertices. Yet the subtree of a…"
   },
   {
    "id": "cp-string-hashing",
