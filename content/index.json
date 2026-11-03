@@ -1,7 +1,7 @@
 {
- "content_version": "88ffdfe699b72110",
+ "content_version": "ed3dcb131ae6a77b",
  "generated_at": "2026-11-02",
- "count": 350,
+ "count": 354,
  "subjects": [
   {
    "id": "ml",
@@ -25736,6 +25736,442 @@
    "hash": "50eb16239daf",
    "word_count": 1609,
    "excerpt": "A recruiter keeps a shortlist of candidates who applied in the last month and always wants to know the strongest one still eligible. When a new, stronger applicant arrives, every older, weaker candidate on the list is hopeless: they will expire sooner and never beat the newcomer. So the recruiter…"
+  },
+  {
+   "id": "dsa-sparse-table-rmq",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "sparse-table-rmq",
+   "title": "Two Overlapping Lookouts, One Answer",
+   "subtitle": "Sparse tables: precompute the minimum of every power-of-two block in O(n log n), then answer any range minimum in O(1) with two overlapping blocks, and why the trick works for min and max but not for sums",
+   "track": "dsa-advanced",
+   "track_order": 8,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-segment-tree-basics"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "sparse table",
+    "range minimum query",
+    "precomputation",
+    "doubling"
+   ],
+   "complexity": {
+    "time": "O(n log n) to build, O(1) per query",
+    "space": "O(n log n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Static Range Minimum Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1647",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Sliding Window Maximum",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sliding-window-maximum/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Static Range Sum Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1646",
+     "difficulty": "Easy"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Sparse table",
+     "definition": "A table st[k][i] holding the answer, such as the minimum, for the block of length 2^k starting at i, for every k up to log₂ n."
+    },
+    {
+     "term": "Doubling",
+     "definition": "Building answers for blocks of length 2^k from two blocks of length 2^(k-1), so each level takes O(n)."
+    },
+    {
+     "term": "Idempotent operation",
+     "definition": "An operation where combining a value with itself changes nothing, such as min(x, x) = x; overlapping parts of a range can then be counted twice safely."
+    },
+    {
+     "term": "Floor log",
+     "definition": "k = ⌊log₂(length)⌋, the largest power of two that fits in the query range, precomputed for every length."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How does a sparse table answer min(a[l..r]) in O(1)?",
+     "options": [
+      "By scanning the range",
+      "Take k = ⌊log₂(r - l + 1)⌋ and return min(st[k][l], st[k][r - 2^k + 1]), two blocks of length 2^k that together cover the range",
+      "By binary search",
+      "By walking a tree"
+     ],
+     "answer": 1,
+     "explain": "Two blocks of the largest power-of-two length that fits, one starting at l and one ending at r, always cover the whole range, possibly overlapping in the middle."
+    },
+    {
+     "q": "Why does the overlap not matter for minimum but does for sum?",
+     "options": [
+      "It matters for both",
+      "min is idempotent, so counting a middle element twice leaves the minimum unchanged, while a sum would add it twice",
+      "Sums are not associative",
+      "Minimum has no identity"
+     ],
+     "answer": 1,
+     "explain": "min(x, x) = x, so double coverage is harmless. For sums, overlapping blocks double-count; a sparse table can still do sums, but with O(log n) disjoint blocks instead of two."
+    },
+    {
+     "q": "When should you prefer a segment tree over a sparse table?",
+     "options": [
+      "Never",
+      "When the array changes, since a sparse table must be rebuilt in O(n log n) after any update",
+      "When n is small",
+      "When queries ask for minimum"
+     ],
+     "answer": 1,
+     "explain": "A sparse table is static. With updates, a segment tree gives O(log n) per update and query, while a sparse table would need a full rebuild."
+    }
+   ],
+   "cover_seed": "sparse-table-rmq",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.6,
+   "path": "dsa/sparse-table-rmq.md",
+   "hash": "0c42a02462b2",
+   "word_count": 1254,
+   "excerpt": "A long coastline is watched by lookouts, each covering a stretch of a fixed length. A ship's captain asks, \"what is the lowest cliff between mile 1 and mile 6?\". Two lookouts happen to cover miles 1 to 4 and miles 3 to 6. Each reports the lowest cliff on its stretch, and the lower of the two…"
+  },
+  {
+   "id": "dsa-max-xor-trie",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "max-xor-trie",
+   "title": "Taking the Opposite Turn at Every Fork",
+   "subtitle": "Maximum XOR of two numbers with a bitwise trie: insert numbers from the highest bit down, greedily follow the opposite bit, and answer XOR queries with a value limit by sorting them offline",
+   "track": "dsa-advanced",
+   "track_order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-tries",
+    "dsa-bit-manipulation-tricks"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "trie",
+    "XOR",
+    "bit manipulation",
+    "greedy",
+    "offline queries"
+   ],
+   "complexity": {
+    "time": "O(n × B) for B bits per number",
+    "space": "O(n × B) trie nodes"
+   },
+   "practice_problems": [
+    {
+     "name": "Maximum XOR of Two Numbers in an Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Maximum XOR With an Element From Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/maximum-xor-with-an-element-from-array/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Maximum Xor Subarray",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1655",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Bitwise trie",
+     "definition": "A binary trie where each number is stored as a path of its bits from the most significant to the least, with a 0-child and a 1-child at every node."
+    },
+    {
+     "term": "Opposite-bit greedy",
+     "definition": "When querying with x, at each level follow the child whose bit differs from x's bit if it exists, because a differing high bit is worth more than all lower bits together."
+    },
+    {
+     "term": "Bit width",
+     "definition": "The fixed number of bits B used for every number, such as 31 for values below 2³¹; all numbers must be inserted and queried with the same width."
+    },
+    {
+     "term": "Offline queries",
+     "definition": "Answering queries after reordering them, here by their limit, so the data structure can be grown in the same order."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does the greedy choose the opposite bit at the highest level first?",
+     "options": [
+      "It is arbitrary",
+      "A 1 in bit position b of the XOR is worth 2^b, more than all lower positions combined (2^b - 1), so securing higher bits first is always right",
+      "Because tries are sorted",
+      "Because the lowest bit is the most important"
+     ],
+     "answer": 1,
+     "explain": "Any XOR with a 1 in the highest available position beats every XOR with a 0 there. So at each level, take the differing bit if possible and only then worry about lower bits."
+    },
+    {
+     "q": "What goes wrong if some numbers are inserted with 31 bits and the query walks only 4 bits?",
+     "options": [
+      "Nothing",
+      "The query starts at the wrong depth, comparing the wrong bit positions, so the result is meaningless",
+      "It is faster",
+      "It returns 0"
+     ],
+     "answer": 1,
+     "explain": "Every path must represent the same bit positions. Insert and query with one fixed width, from bit B - 1 down to bit 0."
+    },
+    {
+     "q": "In Maximum XOR With an Element From Array, each query (x, m) may only use values ≤ m. How do you handle the limit?",
+     "options": [
+      "Delete large values from the trie",
+      "Sort queries by m and the numbers ascending, insert numbers while they are ≤ the current m, then query the trie",
+      "Rebuild the trie per query",
+      "Ignore the limit"
+     ],
+     "answer": 1,
+     "explain": "As m grows, more numbers become allowed. Processing queries in increasing m lets the trie only ever grow, so each number is inserted once."
+    }
+   ],
+   "cover_seed": "max-xor-trie",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.62,
+   "path": "dsa/max-xor-trie.md",
+   "hash": "44b93c968ff8",
+   "word_count": 1358,
+   "excerpt": "You stand at the start of a maze where every junction splits into a left path and a right path, and your goal is to end up as far as possible from a friend who has already walked through. At every fork, the smart move is to go the opposite way from your friend, if that path exists. A difference…"
+  },
+  {
+   "id": "dsa-kmp-for-interviews",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "kmp-for-interviews",
+   "title": "A Reader Who Remembers What Still Matches",
+   "subtitle": "KMP string matching for interviews: the prefix function that records the longest border of every prefix, matching in O(n + m) without ever stepping back in the text, and two neat uses for repeated patterns and shortest palindromes",
+   "track": "dsa-advanced",
+   "track_order": 10,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-string-matching-basics"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "strings",
+    "KMP",
+    "prefix function",
+    "pattern matching"
+   ],
+   "complexity": {
+    "time": "O(n + m)",
+    "space": "O(m)"
+   },
+   "practice_problems": [
+    {
+     "name": "Find the Index of the First Occurrence in a String",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Repeated Substring Pattern",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/repeated-substring-pattern/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Shortest Palindrome",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/shortest-palindrome/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "String Matching",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1753",
+     "difficulty": "Easy"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Border",
+     "definition": "A string that is both a proper prefix and a suffix of another string; \"aba\" is a border of \"abacaba\"."
+    },
+    {
+     "term": "Prefix function",
+     "definition": "π[i], the length of the longest border of the pattern's prefix p[0..i]; also called the failure function."
+    },
+    {
+     "term": "Fallback",
+     "definition": "On a mismatch after j matched characters, continuing as if only π[j - 1] characters had matched, without moving back in the text."
+    },
+    {
+     "term": "Period",
+     "definition": "The smallest p > 0 such that s[i] = s[i + p] for every valid i; it equals n - π[n - 1]."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is π for the pattern \"abacabab\"?",
+     "options": [
+      "0 0 0 0 0 0 0 0",
+      "0 0 1 0 1 2 3 2",
+      "0 1 2 3 4 5 6 7",
+      "0 0 1 1 2 2 3 3"
+     ],
+     "answer": 1,
+     "explain": "For example π[6] = 3 because \"abacaba\" starts and ends with \"aba\", and π[7] = 2 because \"abacabab\" starts and ends with \"ab\"."
+    },
+    {
+     "q": "Why does KMP never move backwards in the text?",
+     "options": [
+      "It does, sometimes",
+      "On a mismatch, the prefix function says how much of the pattern is still known to match the text just read, so only the pattern position j moves back",
+      "Because the text is sorted",
+      "Because it uses hashing"
+     ],
+     "answer": 1,
+     "explain": "The last j text characters equal p[0..j). Their longest border is also a prefix of the pattern, so the match can continue from length π[j - 1] at the same text position."
+    },
+    {
+     "q": "How does the prefix function decide Repeated Substring Pattern?",
+     "options": [
+      "Check π[0]",
+      "s is a repetition of a smaller block exactly when L = π[n - 1] > 0 and n is divisible by n - L",
+      "Count distinct characters",
+      "It cannot"
+     ],
+     "answer": 1,
+     "explain": "n - L is the period of s. If the period divides n and is smaller than n, s is that block repeated n / (n - L) times."
+    }
+   ],
+   "cover_seed": "kmp-for-interviews",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "dsa/kmp-for-interviews.md",
+   "hash": "a233df76e7ad",
+   "word_count": 1372,
+   "excerpt": "Someone reads a long document aloud while you listen for a particular phrase. Halfway through a near-match, the reader says a word that breaks it. A naive listener rewinds the tape and starts again one word later. An experienced listener thinks: \"the last few words I heard are themselves the start…"
+  },
+  {
+   "id": "dsa-lfu-cache",
+   "kind": "problem-walkthrough",
+   "subject": "dsa",
+   "slug": "lfu-cache",
+   "title": "A Shop Shelf Sorted by Sales",
+   "subtitle": "Designing an LFU cache with O(1) get and put: frequency buckets of recency-ordered lists, a key map pointing into them, and the one subtle variable, the minimum frequency, that decides what to evict",
+   "track": "dsa-advanced",
+   "track_order": 11,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-lru-cache"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "design",
+    "hash maps",
+    "linked lists",
+    "caching"
+   ],
+   "complexity": {
+    "time": "O(1) average per get and put",
+    "space": "O(capacity)"
+   },
+   "practice_problems": [
+    {
+     "name": "LFU Cache",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/lfu-cache/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "All O`one Data Structure",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/all-oone-data-structure/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "LRU Cache",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/lru-cache/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "LFU eviction",
+     "definition": "When the cache is full, remove the key used the fewest times; among keys tied on that count, remove the least recently used."
+    },
+    {
+     "term": "Use count",
+     "definition": "How many times a key has been inserted or accessed with get or put since it entered the cache."
+    },
+    {
+     "term": "Frequency bucket",
+     "definition": "A list holding every key with the same use count, ordered from most recently used to least recently used."
+    },
+    {
+     "term": "Minimum frequency",
+     "definition": "The smallest use count among keys in the cache, which names the bucket an eviction takes from."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "When the cache is full and several keys share the smallest use count, which one does LFU evict?",
+     "options": [
+      "The one with the largest key",
+      "The least recently used of them",
+      "A random one",
+      "The most recently used of them"
+     ],
+     "answer": 1,
+     "explain": "LFU breaks ties by recency. Keeping each frequency bucket ordered by recency makes the tie-breaker the back of the minimum bucket."
+    },
+    {
+     "q": "After a get moves key k from frequency f to f + 1, when must minFreq change?",
+     "options": [
+      "Always",
+      "Only if bucket f is now empty and f was the minimum frequency; then minFreq becomes f + 1",
+      "Never",
+      "Only on put"
+     ],
+     "answer": 1,
+     "explain": "Moving one key up can only empty the bucket it left. If that was the minimum bucket, the new minimum is f + 1, where the key just went."
+    },
+    {
+     "q": "What is minFreq right after inserting a brand-new key?",
+     "options": [
+      "Unchanged",
+      "1, because the new key has been used exactly once",
+      "0",
+      "The old minimum plus one"
+     ],
+     "answer": 1,
+     "explain": "A new key enters with use count 1, which is the smallest possible, so it becomes the minimum regardless of what was there before."
+    }
+   ],
+   "cover_seed": "lfu-cache",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.7,
+   "path": "dsa/lfu-cache.md",
+   "hash": "531998e6d246",
+   "word_count": 1382,
+   "excerpt": "A small corner shop has one shelf with room for only three products. When a new product arrives and the shelf is full, the owner removes the item that has sold the fewest times. If two items have sold equally rarely, the one that has gone longest without a sale goes first. That is a least…"
   },
   {
    "id": "dsa-interview-dsa-revision",

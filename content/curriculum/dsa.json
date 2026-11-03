@@ -2465,8 +2465,8 @@
    "prerequisites": [
     "dsa-segment-tree-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Precompute powers-of-two ranges",
@@ -4771,8 +4771,8 @@
     "dsa-tries",
     "dsa-bit-manipulation-tricks"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Insert numbers bit by bit",
@@ -4800,8 +4800,8 @@
    "prerequisites": [
     "dsa-string-matching-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Prefix function idea",
@@ -4834,8 +4834,8 @@
    "prerequisites": [
     "dsa-lru-cache"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Frequency buckets of linked lists",
