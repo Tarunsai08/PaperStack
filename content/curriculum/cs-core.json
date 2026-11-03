@@ -2087,8 +2087,8 @@
     ]
    },
    "subject": "cs-core",
-   "status": "planned",
-   "written_by": null
+   "status": "written",
+   "written_by": "claude-seed"
   },
   {
    "id": "cs-core-pointers-output-questions",

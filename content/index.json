@@ -1,7 +1,7 @@
 {
- "content_version": "154e647626c7bc5b",
+ "content_version": "3234509383dbbed6",
  "generated_at": "2026-11-03",
- "count": 564,
+ "count": 565,
  "subjects": [
   {
    "id": "ml",
@@ -58975,6 +58975,98 @@
    "hash": "a2b10c6b82b4",
    "word_count": 1379,
    "excerpt": "\"What happens when you type a URL into the browser and press Enter?\" It may be the most famous interview question in computing, because there is no bottom to it. A fresher answer says \"DNS, then HTTP\". A strong answer walks every layer: caches, DNS, ARP, NAT, routing, TCP, TLS, HTTP, the server,…"
+  },
+  {
+   "id": "cs-core-sliding-window-protocols",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "sliding-window-protocols",
+   "title": "Sending Numbered Parcels and Getting Receipts Back",
+   "subtitle": "Stop-and-wait, Go-Back-N and Selective Repeat: why waiting for each ACK wastes the link, the utilisation formula with a worked number, one lost frame traced through both protocols, and the window-size limits OAs love",
+   "track": "cs-networks",
+   "track_order": 15,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-tcp-deep-dive"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "computer networks",
+    "sliding window",
+    "go-back-n",
+    "selective repeat",
+    "link utilisation"
+   ],
+   "glossary": [
+    {
+     "term": "Transmission time",
+     "definition": "Tt: the time to push all bits of a frame onto the link, frame size divided by bandwidth."
+    },
+    {
+     "term": "Propagation delay",
+     "definition": "Tp: the time for a bit to travel from sender to receiver over the medium."
+    },
+    {
+     "term": "Window size",
+     "definition": "The number of frames the sender may have sent but not yet had acknowledged."
+    },
+    {
+     "term": "Go-Back-N",
+     "definition": "A sliding-window protocol whose receiver accepts frames only in order; after a loss, the sender resends the lost frame and everything after it."
+    },
+    {
+     "term": "Selective Repeat",
+     "definition": "A sliding-window protocol whose receiver buffers out-of-order frames; the sender resends only the frames that were lost."
+    },
+    {
+     "term": "Utilisation",
+     "definition": "The fraction of time the link is busy sending useful frames; for window W, it is min(1, W / (1 + 2a)) where a = Tp / Tt."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A 1 Mbps link carries 1000-byte frames with a 20 ms propagation delay. What is the utilisation of stop-and-wait?",
+     "options": [
+      "About 50%",
+      "About 16.7%",
+      "About 2.5%",
+      "100%"
+     ],
+     "answer": 1,
+     "explain": "Tt = 8000 bits / 1 Mbps = 8 ms, a = 20 / 8 = 2.5, and 1 / (1 + 2a) = 1/6 ≈ 16.7%."
+    },
+    {
+     "q": "With 3-bit sequence numbers, what is the largest window for Go-Back-N and for Selective Repeat?",
+     "options": [
+      "8 and 8",
+      "7 and 4",
+      "4 and 7",
+      "3 and 3"
+     ],
+     "answer": 1,
+     "explain": "Go-Back-N allows 2^k − 1 = 7; Selective Repeat allows 2^(k−1) = 4, so old and new frames cannot be confused."
+    },
+    {
+     "q": "Window 4, seven frames, frame 2 lost once, and frames 3 to 5 are sent before frame 2's timer expires. How many transmissions in total for Go-Back-N and Selective Repeat?",
+     "options": [
+      "8 and 8",
+      "11 and 8",
+      "14 and 11",
+      "7 and 7"
+     ],
+     "answer": 1,
+     "explain": "Go-Back-N resends 2, 3, 4 and 5 (4 extra); Selective Repeat resends only 2 (1 extra). 7 + 4 = 11 versus 7 + 1 = 8."
+    }
+   ],
+   "cover_seed": "sliding-window-protocols",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.8,
+   "path": "cs-core/sliding-window-protocols.md",
+   "hash": "660c3c7adeae",
+   "word_count": 1266,
+   "excerpt": "A satellite link can carry data very fast, but a signal takes a long time to reach the satellite and come back. Send one frame, then wait for its acknowledgement before sending the next, and the link sits idle almost all the time: the frame is out in a few milliseconds, and then everyone waits for…"
   }
  ]
 }
