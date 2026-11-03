@@ -1,5 +1,5 @@
 {
- "content_version": "070a3d010fd69c8c",
+ "content_version": "d1a30bb87f98b92b",
  "generated_at": "2026-11-02",
  "count": 422,
  "subjects": [
@@ -8575,8 +8575,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.9,
    "path": "dsa/cpp-stl-toolkit.md",
-   "hash": "b9886decc8c7",
-   "word_count": 1013,
+   "hash": "2ac4af7ac678",
+   "word_count": 1118,
    "excerpt": "A carpenter does not build a chair by forging their own hammer first. They open a well-organised toolbox, pick the right tool without thinking, and spend their energy on the chair. In interviews and contests, the C++ Standard Template Library is that toolbox. Candidates who know it cold write a…"
   },
   {
@@ -8752,8 +8752,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.9,
    "path": "dsa/recursion-basics.md",
-   "hash": "328d1bc2833c",
-   "word_count": 1007,
+   "hash": "9c5915f13d90",
+   "word_count": 1135,
    "excerpt": "Ask a beginner to reverse a linked list, list every subset of a set, or walk a tree, and they often reach for loops and get tangled in indices. Ask someone comfortable with recursion, and the solution is often three or four lines that look almost too simple to be right. The difference is not…"
   },
   {
@@ -13367,7 +13367,7 @@
     "dsa-cpp-stl-toolkit"
    ],
    "difficulty": "beginner",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "stacks",
     "parsing",
@@ -13478,8 +13478,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "dsa/stack-patterns.md",
-   "hash": "18f936d0ab45",
-   "word_count": 1148,
+   "hash": "ce75878ece09",
+   "word_count": 1265,
    "excerpt": "Your code editor knows instantly when a bracket is missing. A calculator app turns \"2 + 3 × 4\" into 14, not 20. The undo button in every editor steps back through your changes in reverse order. Different features, one data structure underneath: the stack. Stacks are simple enough to explain in a…"
   },
   {
@@ -15717,8 +15717,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.82,
    "path": "dsa/generate-parentheses.md",
-   "hash": "dc1cc1b5b6f4",
-   "word_count": 1214,
+   "hash": "71be144564c0",
+   "word_count": 1315,
    "excerpt": "List every valid way to arrange three pairs of brackets: ((())), (()()), and so on. One way is to write all 64 strings of six brackets and throw away the ones that do not balance. Five survive. The other way never writes an invalid string at all, and it makes 22 recursive calls in total. Generate…"
   },
   {
@@ -17337,8 +17337,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.85,
    "path": "dsa/max-path-sum.md",
-   "hash": "557653a22958",
-   "word_count": 1242,
+   "hash": "38adc5758582",
+   "word_count": 1340,
    "excerpt": "A hiker looks at a mountain range drawn as a tree of ridges, each point marked with how pleasant it is to walk past, some negative where the ridge is rocky. She wants the single best walk: start anywhere, end anywhere, never retrace a step. The best walk might climb up one ridge to a peak and come…"
   },
   {
@@ -17560,8 +17560,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.82,
    "path": "dsa/tree-views-boundary.md",
-   "hash": "0d4433e58483",
-   "word_count": 1247,
+   "hash": "fcfcde53e882",
+   "word_count": 1342,
    "excerpt": "A photographer walks around a tree in a park and takes four pictures: from the left, from the right, from directly above and from below. Each photo shows only some of the branches; the rest are hidden behind the ones in front. Then she traces the outline of the tree with her finger, down the left…"
   },
   {
@@ -17579,7 +17579,7 @@
     "dsa-bfs"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "binary tree",
     "bfs",
@@ -17672,8 +17672,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.82,
    "path": "dsa/nodes-at-distance-k.md",
-   "hash": "adcaf404e98e",
-   "word_count": 1163,
+   "hash": "67c4bfd08112",
+   "word_count": 1290,
    "excerpt": "A rumour starts with one cousin in a big family and spreads one generation per day, to parents, children, everyone directly related. Who hears it on day two? How long until the whole family knows? In a tree drawn on paper you would just spread outwards in rings. But in code, a tree node only knows…"
   },
   {
@@ -22872,7 +22872,7 @@
     "dsa-dp-intro"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "dynamic programming",
     "strings",
@@ -22978,8 +22978,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.9,
    "path": "dsa/lcs-edit-distance.md",
-   "hash": "5629203e6cb1",
-   "word_count": 1188,
+   "hash": "26bd4b959100",
+   "word_count": 1296,
    "excerpt": "Your phone suggests \"receive\" when you type \"recieve\", git diff shows exactly which lines changed between two versions of a file, and a biologist compares a mouse gene with the same human gene. All three ask the same question: how do two sequences line up? Two classic DPs answer it. The longest…"
   },
   {
@@ -23107,8 +23107,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.86,
    "path": "dsa/grid-dp.md",
-   "hash": "f2c6a516866a",
-   "word_count": 1237,
+   "hash": "2c5f05ff9ed4",
+   "word_count": 1358,
    "excerpt": "A warehouse robot starts in the top-left corner of a floor laid out as a grid and must reach the bottom-right corner. It can only move right or down. How many different routes are there? Which route picks up the least dust? What if some cells are blocked by shelves? Grid problems like these are…"
   },
   {
@@ -24940,7 +24940,7 @@
     "dsa-tree-traversals"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "trie",
     "prefix tree",
@@ -25045,8 +25045,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "dsa/tries.md",
-   "hash": "f33d5cbd2298",
-   "word_count": 1203,
+   "hash": "fa9f28b3a390",
+   "word_count": 1318,
    "excerpt": "You type \"ca\" into a search box and suggestions appear instantly: car, card, care, cat. The dictionary behind it might hold a million words. Checking each one for the prefix \"ca\" on every keystroke would be far too slow, and a hash set cannot help, because it only answers \"is this exact string…"
   },
   {

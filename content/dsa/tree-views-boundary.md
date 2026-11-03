@@ -265,6 +265,14 @@ The boundary starts with the root only if it is not itself a leaf, so a single-n
 - **Forgetting to reverse the right edge,** which makes the outline jump instead of going up.
 - **Missing a level's leftmost node** that hangs from a right child, when an edge walk is used instead of BFS for the views.
 
+### Interview follow-ups
+
+**"Right view without BFS?"** DFS visiting the right child first, tracking depth: the first node you reach at each new depth is visible from the right. Same O(n) time, O(h) extra space.
+
+**"Top view versus vertical order traversal?"** Both group nodes by column. The top view keeps only the first node per column by level; vertical order keeps all of them, sorted by level and then by value.
+
+**"Zigzag level order?"** Same BFS by levels, but reverse every other level (or fill each level's list from the back) before adding it.
+
 ## Practice problems
 
 *Binary Tree Right Side View* is the right view; solve it once with BFS and once with a right-first DFS that records a node when its depth equals the size of the answer so far. *Find Largest Value in Each Tree Row* uses the same level loop with a different choice per level. *Vertical Order Traversal of a Binary Tree* gives the column machinery behind the top and bottom views. The boundary traversal itself is a premium LeetCode problem, so practise it on the example above and on a tree whose left edge must step right, such as a root whose left child has only a right child.

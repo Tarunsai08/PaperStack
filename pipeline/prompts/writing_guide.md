@@ -26,7 +26,7 @@ The reader is a smart computer-science student who has never studied AI or machi
 **Short is not bad, long is not good.** An article that explains the concept correctly and completely is good at any length; one that does not is not good at any length. Never judge, expand or rewrite an article because of its word count.
 There is **no minimum and no maximum length**. An article is finished only when it passes the **completeness test**: a smart beginner who reads it could (a) explain the idea to a friend and (b) solve a fresh problem of this type, or reason about a fresh scenario for system design.
 
-Completeness checklist: why this exists, intuition, the formal idea, a fully traced example, edge cases, variants, complexity or trade-offs, common mistakes, interview follow-ups, and how it connects to other articles.
+Completeness checklist (add an `### Interview follow-ups` subsection with 3-5 questions and worked answers at the end of the mistakes or limits section): why this exists, intuition, the formal idea, a fully traced example, edge cases, variants, complexity or trade-offs, common mistakes, interview follow-ups, and how it connects to other articles.
 
 Length must come from substance. Every paragraph must teach something or pull the reader forward. The validator lints for filler phrases and repeated paragraphs instead of counting words. Long articles stay easy to move around with `###` sub-headings; `read_minutes` is computed from the real word count.
 

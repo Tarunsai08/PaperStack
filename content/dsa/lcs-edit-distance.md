@@ -226,6 +226,14 @@ Common misconception: "dp[i][j] compares a[i] with b[j]." With the empty-prefix 
 - **Confusing subsequence with substring**: the substring version resets to 0 on a mismatch.
 - **Rolling rows and the diagonal**: when updating a single array in place, the old diagonal value is overwritten; save it in a variable first.
 
+### Interview follow-ups
+
+**"Can you reduce the space to O(min(m, n))?"** Yes: each row needs only the previous row (and, in edit distance, the diagonal value saved in a variable). Iterate over the longer string in the outer loop. You lose the ability to rebuild the alignment unless you use Hirschberg's divide-and-conquer trick.
+
+**"How is this used in real tools?"** Diff tools and version control show line-level differences with LCS-style algorithms, and spell checkers rank suggestions by edit distance.
+
+**"What if only insertions and deletions are allowed?"** Then the edit distance is m + n − 2·LCS(a, b), because the characters you keep form a common subsequence.
+
 ## Practice problems
 
 *Longest Common Subsequence* and *Edit Distance* are the two templates; *Edit Distance* on CSES is the same with larger strings. *Delete Operation for Two Strings* is n + m − 2·LCS, or a small variant of edit distance with only deletions. *Distinct Subsequences* switches from max or min to counting.

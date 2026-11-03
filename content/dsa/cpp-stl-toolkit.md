@@ -162,6 +162,14 @@ Change the question to "how many times has each score appeared?" Which container
 
 Almost every article in this subject uses these tools. The hash map powers [hashing patterns](article:dsa-hashing-patterns), sorted containers power interval and sweep-line problems, and `priority_queue` is the engine behind Dijkstra and every top-k problem. Keep the price list handy, and combine it with your [Big-O budget](article:dsa-big-o) to check an idea before you write it.
 
+### Interview follow-ups
+
+**"map or unordered_map?"** unordered_map is average O(1) per operation but unordered and can degrade with many collisions; map is O(log n) but keeps keys sorted, which you need for ranges, floor and ceiling queries (lower_bound).
+
+**"Why use emplace_back or reserve?"** reserve(n) allocates once so a growing vector does not reallocate and copy repeatedly. emplace_back builds the element in place; for simple types the difference is small, so clarity wins.
+
+**"How do you make a min-heap of pairs?"** priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>>. Pairs compare by first, then second, so put the priority first.
+
 ## Key takeaways
 
 - Choose a container by the operations your problem repeats most, then check the total cost against the input size.

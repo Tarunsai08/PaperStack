@@ -221,6 +221,14 @@ The answers are sorted only to make the output easy to compare; the problem acce
 - **Returning an empty list incorrectly** when K is larger than the start node's eccentricity; that is correct, but make sure the code does not crash reading a level that does not exist.
 - **Using DFS** for distance levels without tracking depth carefully; BFS gives rings directly.
 
+### Interview follow-ups
+
+**"Can you do it without building parent pointers?"** Yes, with one DFS that returns the distance from each node to the target (or −1). If the target lies in one child's subtree and the current node is d edges from it, the current node is an answer when d = k; otherwise collect the nodes k − d − 1 levels below the other child.
+
+**"What if the tree is a general graph?"** Then it already has neighbours in both directions: just BFS from the target with a visited set and stop at level k.
+
+**"What changes for Amount of Time for Binary Tree to Be Infected?"** The same BFS from the start node, but run it to the end and report the number of levels minus one.
+
 ## Practice problems
 
 *All Nodes Distance K in Binary Tree* is the walkthrough. *Amount of Time for Binary Tree to Be Infected* runs the same BFS to the end; there the start is given as a value, so find its node during the parent-map traversal. *Rotting Oranges* is the same spreading process on a grid with several starting points at once, a good check that the idea is "BFS on whatever the neighbours are", not something specific to trees.
