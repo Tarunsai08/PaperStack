@@ -14,7 +14,7 @@ Read `HANDOFF.md` first if you are picking this project up.
 | famous-algos | 36 | 0 | 55 | 91 | 29/32 |
 | system-design | 50 | 0 | 69 | 119 | 49/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core (coming soon) | 8 | 0 | 71 | 79 | 7/47 |
+| cs-core | 8 | 0 | 71 | 79 | 7/47 |
 | **All** | **452** | **0** | **231** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
@@ -69,6 +69,19 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `paper-dcgan` (P2, paper, generative): Unsupervised Representation Learning with Deep Convolutional GANs
 - [ ] `paper-cyclegan` (P2, paper, generative): Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks
 - [ ] `paper-wavenet` (P2, paper, generative): WaveNet: A Generative Model for Raw Audio
+
+### cs-core
+
+- [ ] `cs-core-classic-sync-problems` (P0, deep-dive, cs-os): Producer-Consumer, Readers-Writers and Dining Philosophers
+- [ ] `cs-core-memory-basics` (P0, deep-dive, cs-os): Memory Management: Allocation and Fragmentation
+- [ ] `cs-core-file-systems` (P0, deep-dive, cs-os): File Systems: Inodes, Directories and Allocation
+- [ ] `cs-core-dbms-intro` (P0, primer, cs-dbms): Why Databases Exist
+- [ ] `cs-core-osi-tcpip` (P0, primer, cs-networks): The OSI and TCP/IP Models
+- [ ] `cs-core-classes-objects` (P0, primer, cs-oop): Classes and Objects in C++
+- [ ] `cs-core-memory-hierarchy` (P0, deep-dive, cs-architecture): The Memory Hierarchy and CPU Caches
+- [ ] `cs-core-monitors-condition-variables` (P1, deep-dive, cs-os): Monitors and Condition Variables
+- [ ] `cs-core-io-interrupts-dma` (P1, deep-dive, cs-os): I/O: Polling, Interrupts and DMA
+- [ ] `cs-core-threading-models` (P1, deep-dive, cs-os): User Threads, Kernel Threads and Thread Pools
 
 ## Written so far
 

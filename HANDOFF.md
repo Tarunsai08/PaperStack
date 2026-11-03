@@ -17,7 +17,7 @@ You are continuing a project another Claude session started. Everything you need
 | famous-algos | 36 | 0 | 55 | 91 | 29/32 |
 | system-design | 50 | 0 | 69 | 119 | 49/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core (coming soon) | 8 | 0 | 71 | 79 | 7/47 |
+| cs-core | 8 | 0 | 71 | 79 | 7/47 |
 | **All** | **452** | **0** | **231** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
@@ -50,6 +50,13 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `paper-vgg` (P2, paper, deep-learning): Very Deep Convolutional Networks for Large-Scale Image Recognition
 - [ ] `paper-faster-r-cnn` (P2, paper, deep-learning): Faster R-CNN: Towards Real-Time Object Detection
 - [ ] `paper-yolo` (P2, paper, deep-learning): You Only Look Once: Unified, Real-Time Object Detection
+
+#### cs-core
+- [ ] `cs-core-classic-sync-problems` (P0, deep-dive, cs-os): Producer-Consumer, Readers-Writers and Dining Philosophers
+- [ ] `cs-core-memory-basics` (P0, deep-dive, cs-os): Memory Management: Allocation and Fragmentation
+- [ ] `cs-core-file-systems` (P0, deep-dive, cs-os): File Systems: Inodes, Directories and Allocation
+- [ ] `cs-core-dbms-intro` (P0, primer, cs-dbms): Why Databases Exist
+- [ ] `cs-core-osi-tcpip` (P0, primer, cs-networks): The OSI and TCP/IP Models
 <!-- status:end -->
 
 ## UI review status: approved
