@@ -15,10 +15,10 @@ You are continuing a project another Claude session started. Everything you need
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
-| system-design | 66 | 0 | 53 | 119 | 60/60 |
+| system-design | 68 | 0 | 51 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 8 | 0 | 71 | 79 | 7/47 |
-| **All** | **469** | **0** | **214** | **683** | |
+| **All** | **471** | **0** | **212** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -38,7 +38,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `famous-algos-paxos` (P1, concept, fa-distributed): Paxos: The Original Consensus Algorithm
 
 #### system-design
-- [ ] `system-design-olap-warehouses` (P1, deep-dive, sd-blocks): Columnar Storage and Data Warehouses
+- [ ] `system-design-stream-processing` (P1, deep-dive, sd-blocks): Stream Processing: Windows, Watermarks and Late Data
 - [ ] `system-design-backpressure-load-shedding` (P1, deep-dive, sd-scaling): Backpressure and Load Shedding
 - [ ] `system-design-observability` (P1, deep-dive, sd-scaling): Observability: Logs, Metrics and Traces
 - [ ] `system-design-multi-region` (P1, deep-dive, sd-scaling): Multi-Region Architectures and Disaster Recovery
@@ -56,7 +56,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `cs-core-deadlocks` (P0, deep-dive, cs-os): Deadlocks: Conditions, Prevention, Avoidance, Detection
 - [ ] `cs-core-memory-basics` (P0, deep-dive, cs-os): Memory Management: Allocation and Fragmentation
 - [ ] `cs-core-paging-tlb` (P0, deep-dive, cs-os): Paging, Page Tables and the TLB
-- [ ] `cs-core-file-systems` (P0, deep-dive, cs-os): File Systems: Inodes, Directories and Allocation
+- [ ] `cs-core-virtual-memory` (P0, deep-dive, cs-os): Virtual Memory and Demand Paging
 <!-- status:end -->
 
 ## UI review status: approved
