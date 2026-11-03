@@ -1939,8 +1939,8 @@
    "order": 1,
    "priority": "P0",
    "prerequisites": [],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Registers, caches, RAM, disk",
@@ -1966,8 +1966,8 @@
    "prerequisites": [
     "cs-core-memory-hierarchy"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Two's complement",

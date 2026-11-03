@@ -14,8 +14,8 @@ Read `HANDOFF.md` first if you are picking this project up.
 | famous-algos | 39 | 0 | 52 | 91 | 32/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core | 74 | 0 | 5 | 79 | 45/47 |
-| **All** | **590** | **0** | **93** | **683** | |
+| cs-core | 76 | 0 | 3 | 79 | 47/47 |
+| **All** | **592** | **0** | **91** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -63,7 +63,9 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### cs-core
 
-- [ ] `cs-core-memory-hierarchy` (P0, deep-dive, cs-architecture): The Memory Hierarchy and CPU Caches
+- [ ] `cs-core-compile-link-load` (P1, deep-dive, cs-architecture): From Source to Running Program: Compile, Link, Load
+- [ ] `cs-core-pipelining` (P2, deep-dive, cs-architecture): Instruction Pipelining and Hazards
+- [ ] `cs-core-cache-coherence` (P2, deep-dive, cs-architecture): Cache Coherence and False Sharing
 
 ## Written so far
 
@@ -608,7 +610,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cs-core: 74 written</summary>
+<details><summary>cs-core: 76 written</summary>
 
 - [x] `cs-core-what-an-os-does` What an Operating System Actually Does
 - [x] `cs-core-processes-threads` Processes vs Threads
@@ -682,6 +684,8 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cs-core-memory-model-cpp` Stack vs Heap and Object Lifetimes
 - [x] `cs-core-stl-internals` STL Internals Interviewers Ask About
 - [x] `cs-core-oop-interview-questions` OOP Interview Questions, Answered Simply
+- [x] `cs-core-memory-hierarchy` The Memory Hierarchy and CPU Caches
+- [x] `cs-core-number-representation` Numbers in Hardware: Two's Complement, Floating Point, Endianness
 - [x] `cs-core-sliding-window-protocols` Stop-and-Wait, Go-Back-N and Selective Repeat
 - [x] `cs-core-pointers-output-questions` Pointers, References and Predict-the-Output Questions
 

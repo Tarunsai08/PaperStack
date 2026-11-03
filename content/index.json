@@ -1,7 +1,7 @@
 {
- "content_version": "1ab7733b6792568f",
+ "content_version": "513a91fe1a31e791",
  "generated_at": "2026-11-03",
- "count": 590,
+ "count": 592,
  "subjects": [
   {
    "id": "ml",
@@ -61308,6 +61308,185 @@
    "hash": "63010f95311f",
    "word_count": 1091,
    "excerpt": "An online assessment shows six lines of C++ and four possible outputs. You have ninety seconds. The code is full of p++, an array passed to a function, and a comparison between an int and an unsigned. Two of the options look right. One of them is the trap. These questions test whether you know what…"
+  },
+  {
+   "id": "cs-core-memory-hierarchy",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "memory-hierarchy",
+   "title": "Tools on Your Belt, on the Bench and in the Shed",
+   "subtitle": "The memory hierarchy: registers, caches, RAM and disk, temporal and spatial locality, cache lines and mapping, hit ratios and the AMAT formula worked out, and a loop that ran five times slower only because of its order",
+   "track": "cs-architecture",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "computer architecture",
+    "memory hierarchy",
+    "cache",
+    "locality",
+    "amat"
+   ],
+   "glossary": [
+    {
+     "term": "Cache",
+     "definition": "A small, fast memory that keeps copies of recently or nearby used data from a slower, larger level."
+    },
+    {
+     "term": "Cache line",
+     "definition": "The fixed-size block (commonly 64 bytes) in which data moves between memory and cache."
+    },
+    {
+     "term": "Temporal locality",
+     "definition": "Data used recently is likely to be used again soon."
+    },
+    {
+     "term": "Spatial locality",
+     "definition": "Data near recently used data is likely to be used soon."
+    },
+    {
+     "term": "Hit ratio",
+     "definition": "The fraction of accesses found in a given cache level; the miss rate is one minus the hit ratio."
+    },
+    {
+     "term": "AMAT",
+     "definition": "Average memory access time: hit time plus miss rate times miss penalty, applied level by level."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "L1 hit time 1 ns, L1 miss rate 5%, L2 hit time 10 ns, L2 local miss rate 20%, memory 100 ns. What is the AMAT?",
+     "options": [
+      "1 ns",
+      "2.5 ns",
+      "6 ns",
+      "11 ns"
+     ],
+     "answer": 1,
+     "explain": "AMAT = 1 + 0.05 × (10 + 0.2 × 100) = 1 + 0.05 × 30 = 2.5 ns."
+    },
+    {
+     "q": "A 4096 × 4096 int array stored row by row is summed twice, once row by row and once column by column. Why was column order about five times slower on the test machine?",
+     "options": [
+      "More additions",
+      "Column order jumps 16 KB between consecutive accesses, so each 64-byte line brought in is used for only one int before being evicted",
+      "The compiler skipped rows",
+      "Integer overflow"
+     ],
+     "answer": 1,
+     "explain": "Row order uses all 16 ints of each line (spatial locality); column order wastes most of every line."
+    },
+    {
+     "q": "Which kind of cache miss happens the first time a block is ever accessed, no matter how big the cache is?",
+     "options": [
+      "Conflict miss",
+      "Compulsory (cold) miss",
+      "Capacity miss",
+      "Coherence miss"
+     ],
+     "answer": 1,
+     "explain": "Capacity misses come from a too-small cache, conflict misses from mapping collisions; compulsory misses happen on first touch."
+    }
+   ],
+   "cover_seed": "memory-hierarchy",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.86,
+   "path": "cs-core/memory-hierarchy.md",
+   "hash": "3283f30ab785",
+   "word_count": 1268,
+   "excerpt": "Two loops add up the same 16.7 million integers and produce the same sum. The only difference is the order: one walks the grid row by row, the other column by column. On the machine used for this article, the first took about 33 ms and the second about 170 ms. Same work, same answer, five times the…"
+  },
+  {
+   "id": "cs-core-number-representation",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "number-representation",
+   "title": "Writing Numbers on a Fixed Number of Tiles",
+   "subtitle": "How computers store numbers: unsigned binary, two's complement and why it wins, overflow, IEEE 754 floating point decoded bit by bit, why 0.1 + 0.2 is not 0.3, and big- versus little-endian byte order",
+   "track": "cs-architecture",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-memory-hierarchy"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "computer architecture",
+    "two's complement",
+    "ieee 754",
+    "floating point",
+    "endianness",
+    "overflow"
+   ],
+   "glossary": [
+    {
+     "term": "Two's complement",
+     "definition": "The standard way to store signed integers: a negative number −x is stored as 2ⁿ − x, which lets addition hardware work unchanged for signed values."
+    },
+    {
+     "term": "Overflow",
+     "definition": "A result too large or too small for the number of bits available."
+    },
+    {
+     "term": "IEEE 754",
+     "definition": "The standard for floating-point numbers: a sign bit, a biased exponent and a fraction, representing ±1.fraction × 2^exponent."
+    },
+    {
+     "term": "Machine epsilon",
+     "definition": "The gap between 1.0 and the next representable floating-point number, about 2.2 × 10⁻¹⁶ for doubles."
+    },
+    {
+     "term": "Endianness",
+     "definition": "The order in which a multi-byte value's bytes are stored in memory: little-endian stores the least significant byte first, big-endian the most significant."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is −5 in 8-bit two's complement?",
+     "options": [
+      "10000101",
+      "11111011",
+      "11111010",
+      "00000101"
+     ],
+     "answer": 1,
+     "explain": "Invert 00000101 to get 11111010, then add 1: 11111011. Equivalently, 256 − 5 = 251."
+    },
+    {
+     "q": "Why does 0.1 + 0.2 == 0.3 evaluate to false with doubles?",
+     "options": [
+      "A compiler bug",
+      "0.1, 0.2 and 0.3 have no exact binary representation, and the rounded sum 0.30000000000000004 differs from the rounded 0.3",
+      "Floating point cannot add",
+      "== is not defined for doubles"
+     ],
+     "answer": 1,
+     "explain": "Compare with a tolerance instead: |a − b| < ε."
+    },
+    {
+     "q": "The 32-bit value 0x12345678 is stored on a little-endian machine. What are the bytes in memory, from the lowest address?",
+     "options": [
+      "12 34 56 78",
+      "78 56 34 12",
+      "87 65 43 21",
+      "21 43 65 87"
+     ],
+     "answer": 1,
+     "explain": "Little-endian stores the least significant byte first. x86 and most ARM systems are little-endian; network byte order is big-endian."
+    }
+   ],
+   "cover_seed": "number-representation",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.82,
+   "path": "cs-core/number-representation.md",
+   "hash": "b57ab608d76d",
+   "word_count": 1283,
+   "excerpt": "Type 0.1 + 0.2 into almost any programming language and you get 0.30000000000000004. A shopping cart that adds prices in floating point can be off by a paisa. In 1996, a European rocket was destroyed shortly after launch partly because a 64-bit floating-point value was converted to a 16-bit integer…"
   }
  ]
 }
