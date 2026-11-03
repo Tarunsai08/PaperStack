@@ -10,12 +10,12 @@ Read `HANDOFF.md` first if you are picking this project up.
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
 | dsa | 152 | 0 | 0 | 152 | 72/72 |
-| cp | 56 | 0 | 59 | 115 | 22/29 |
+| cp | 59 | 0 | 56 | 115 | 22/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **365** | **0** | **308** | **673** | |
+| **All** | **368** | **0** | **305** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -35,10 +35,10 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `cp-bridges-articulation` (P0, pattern, cp-graphs): Bridges and Articulation Points
 - [ ] `cp-binary-lifting` (P0, pattern, cp-graphs): Binary Lifting and LCA in log n
 - [ ] `cp-prefix-function` (P0, pattern, cp-strings): The Prefix Function and KMP
-- [ ] `cp-segment-tree-descend` (P1, pattern, cp-ranges): Walking Down a Segment Tree
-- [ ] `cp-mos-algorithm` (P1, pattern, cp-ranges): Mo's Algorithm: Offline Range Queries
 - [ ] `cp-range-sum-queries-cses` (P1, problem-walkthrough, cp-ranges): From Static to Dynamic Range Queries
+- [ ] `cp-hotel-queries` (P1, problem-walkthrough, cp-ranges): Hotel Queries: Descending a Max Segment Tree
 - [ ] `cp-salary-queries` (P1, problem-walkthrough, cp-ranges): Salary Queries: Compression Meets Fenwick
+- [ ] `cp-distinct-values-queries` (P1, problem-walkthrough, cp-ranges): Distinct Values in a Range, Offline
 
 ### famous-algos
 
@@ -238,7 +238,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cp: 56 written</summary>
+<details><summary>cp: 59 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -266,7 +266,10 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cp-lazy-propagation` Lazy Propagation: Range Updates in log n
 - [x] `cp-fenwick-advanced` Fenwick Tree Tricks: Range Updates and 2D
 - [x] `cp-coordinate-compression` Coordinate Compression
+- [x] `cp-segment-tree-descend` Walking Down a Segment Tree
+- [x] `cp-merge-sort-tree` Merge Sort Trees and Persistent Ideas
 - [x] `cp-sqrt-decomposition` Square Root Decomposition
+- [x] `cp-mos-algorithm` Mo's Algorithm: Offline Range Queries
 - [x] `cp-digit-dp` Digit DP: Counting Numbers With Properties
 - [x] `cp-dp-probability` DP With Probabilities and Expected Values
 - [x] `cp-knapsack-variants` Knapsack Variants in Contests

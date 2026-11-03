@@ -1,7 +1,7 @@
 {
- "content_version": "746428edf1f60303",
+ "content_version": "09eec2a9457ffbb0",
  "generated_at": "2026-11-02",
- "count": 365,
+ "count": 368,
  "subjects": [
   {
    "id": "ml",
@@ -30552,6 +30552,220 @@
    "excerpt": "You want to count, for each number in an array, how many smaller numbers appear after it. A Fenwick tree over values would do it in O(n log n): walk from the right, query \"how many values below x have I seen?\", then add x. There is one problem. Values go up to 10⁹, and an array of a billion…"
   },
   {
+   "id": "cp-segment-tree-descend",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "segment-tree-descend",
+   "title": "A Librarian Walking Down to the Right Shelf",
+   "subtitle": "Descending a segment tree in O(log n): finding the k-th remaining element with a count tree, the first index at or after a position whose value reaches x, and why this beats binary search over range queries",
+   "track": "cp-ranges",
+   "track_order": 6,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-segment-tree"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "segment tree",
+    "tree descent",
+    "order statistics",
+    "binary search"
+   ],
+   "complexity": {
+    "time": "O(log n) per descent",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "List Removals",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1749",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Hotel Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1143",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Josephus Problem II",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2163",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Tree descent",
+     "definition": "Walking from the root to a leaf, choosing one child per level by reading stored summaries, to locate a position with some property in O(log n)."
+    },
+    {
+     "term": "Count tree",
+     "definition": "A segment tree whose leaves are 1 for present elements and 0 for removed ones, so each node stores how many elements remain in its segment."
+    },
+    {
+     "term": "k-th one",
+     "definition": "The position of the k-th leaf equal to 1, found by going left when the left child holds at least k ones, otherwise going right with k reduced."
+    },
+    {
+     "term": "Bounded descent",
+     "definition": "A descent restricted to positions at or after a given index, which skips subtrees entirely to the left of that index."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In a count tree, the left child holds 3 ones and you want the 5th one. Where do you go?",
+     "options": [
+      "Left, looking for the 5th",
+      "Right, looking for the 2nd, because the first 3 ones are on the left",
+      "Stop",
+      "Right, looking for the 5th"
+     ],
+     "answer": 1,
+     "explain": "The left child accounts for ones 1 to 3. The 5th one overall is the 2nd one inside the right child."
+    },
+    {
+     "q": "Why is a descent faster than binary searching with a range query at each step?",
+     "options": [
+      "It is not",
+      "Binary search costs O(log n) steps of an O(log n) query, O(log² n); a descent reads each needed summary once on the way down, O(log n)",
+      "Because descents skip the root",
+      "Because queries are slow"
+     ],
+     "answer": 1,
+     "explain": "A descent uses the summaries already stored at each node to decide the direction immediately, so it never recomputes a prefix from scratch."
+    },
+    {
+     "q": "For 'first index at or after p with value ≥ x', why can the descent still be O(log n)?",
+     "options": [
+      "It is O(n)",
+      "Subtrees entirely before p are skipped, subtrees with maximum below x are skipped, and only one subtree is ever entered and fully explored, so the work stays logarithmic",
+      "Because the array is sorted",
+      "Because p is small"
+     ],
+     "answer": 1,
+     "explain": "At most O(log n) nodes straddle the boundary p. Among the nodes after p, the first whose maximum reaches x is descended into, and inside it the answer is found in one root-to-leaf walk."
+    }
+   ],
+   "cover_seed": "segment-tree-descend",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.68,
+   "path": "cp/segment-tree-descend.md",
+   "hash": "3c600302059d",
+   "word_count": 1437,
+   "excerpt": "A librarian is asked for the 500th book still on the shelves, in shelf order, after many books have been borrowed. They could walk along every shelf counting. Instead, they look at the sign on each wing of the library, \"this wing holds 312 books\", and know immediately the book is not in the first…"
+  },
+  {
+   "id": "cp-merge-sort-tree",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "merge-sort-tree",
+   "title": "A Sorted Card Box on Every Shelf",
+   "subtitle": "Merge sort trees: a segment tree whose nodes keep their segment sorted, answering 'how many values in a[l..r] are at most x' in O(log² n), the next-occurrence trick for distinct counts, and k-th smallest by binary search",
+   "track": "cp-ranges",
+   "track_order": 7,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-segment-tree"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "segment tree",
+    "merge sort",
+    "range counting",
+    "binary search"
+   ],
+   "complexity": {
+    "time": "O(n log n) build, O(log² n) per counting query",
+    "space": "O(n log n)"
+   },
+   "practice_problems": [
+    {
+     "name": "K-query",
+     "platform": "SPOJ",
+     "url": "https://www.spoj.com/problems/KQUERY/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "K-th Number",
+     "platform": "SPOJ",
+     "url": "https://www.spoj.com/problems/MKTHNUM/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Distinct Values Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1734",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Merge sort tree",
+     "definition": "A segment tree in which every node stores the elements of its segment in sorted order, exactly the lists merge sort produces at each level."
+    },
+    {
+     "term": "Range rank query",
+     "definition": "Counting how many elements of a[l..r] are at most x, answered by binary searching the sorted list of each covering node."
+    },
+    {
+     "term": "Next-occurrence array",
+     "definition": "next[i], the index of the next position after i holding the same value as a[i], or n if there is none."
+    },
+    {
+     "term": "Static structure",
+     "definition": "A structure built once that supports queries but not updates; a merge sort tree is static unless extra machinery is added."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How does a merge sort tree count elements ≤ x in a[l..r]?",
+     "options": [
+      "By scanning the range",
+      "Split [l, r] into O(log n) covering nodes and, in each node's sorted list, count elements ≤ x with upper_bound; add the counts",
+      "By sorting the range each time",
+      "By a heap"
+     ],
+     "answer": 1,
+     "explain": "Each covering node's list is sorted, so one binary search gives its count. With O(log n) nodes, each costing O(log n), the query is O(log² n)."
+    },
+    {
+     "q": "Why does the tree use O(n log n) memory?",
+     "options": [
+      "It stores pointers",
+      "Every element appears in one node per level, and there are about log n levels",
+      "Because of recursion",
+      "It uses O(n)"
+     ],
+     "answer": 1,
+     "explain": "Each level of the tree holds a full copy of the array split into sorted pieces, so the total is n per level times log n levels."
+    },
+    {
+     "q": "How does the next-occurrence trick count distinct values in a[l..r]?",
+     "options": [
+      "By hashing the range",
+      "A value is counted once if we pick its last occurrence in the range, which is exactly the positions i in [l, r] with next[i] > r",
+      "By sorting the range",
+      "It cannot"
+     ],
+     "answer": 1,
+     "explain": "For each distinct value in [l, r], exactly one occurrence has no later copy inside the range. Counting positions with next[i] > r is a range rank query on the next array."
+    }
+   ],
+   "cover_seed": "merge-sort-tree",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.56,
+   "path": "cp/merge-sort-tree.md",
+   "hash": "c35244eb0116",
+   "word_count": 1254,
+   "excerpt": "A library keeps a sorted index-card box on every shelf, every bookcase and every room, each listing the books it holds by publication year. Asked \"how many books in rooms 3 to 5 were published before 1990?\", a librarian does not scan the books: they pick the few boxes that cover exactly those rooms…"
+  },
+  {
    "id": "cp-sqrt-decomposition",
    "kind": "pattern",
    "subject": "cp",
@@ -30673,6 +30887,117 @@
    "hash": "a68dd5487a62",
    "word_count": 1630,
    "excerpt": "A problem gives you 200,000 numbers and asks two kinds of questions: add a value to a range, and sum a range. A plain loop is O(n) per operation, which means billions of steps. Prefix sums answer sums instantly but must be rebuilt after every change. A segment tree solves this in O(log n), but…"
+  },
+  {
+   "id": "cp-mos-algorithm",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "mos-algorithm",
+   "title": "A Tour Guide Who Orders the Stops",
+   "subtitle": "Mo's algorithm: answer offline range queries by sorting them into blocks so a sliding window moves only O((n + q)√n) steps in total, with add and remove functions, the odd-even trick, and the ordering bugs to avoid",
+   "track": "cp-ranges",
+   "track_order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-sqrt-decomposition"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "Mo's algorithm",
+    "offline queries",
+    "sqrt decomposition",
+    "two pointers"
+   ],
+   "complexity": {
+    "time": "O((n + q)√n × cost of add/remove)",
+    "space": "O(n + q)"
+   },
+   "practice_problems": [
+    {
+     "name": "Distinct Values Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1734",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "D-query",
+     "platform": "SPOJ",
+     "url": "https://www.spoj.com/problems/DQUERY/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Powerful array",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/86/D",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Mo's algorithm",
+     "definition": "An offline method that sorts range queries by block of the left end and then by right end, and answers them by moving one window whose two ends shift one step at a time."
+    },
+    {
+     "term": "Window state",
+     "definition": "The information kept about the current range [L, R], such as value counts and the number of distinct values, updated by add and remove."
+    },
+    {
+     "term": "Add and remove",
+     "definition": "The two O(1) (or cheap) functions that update the window state when one element enters or leaves the window."
+    },
+    {
+     "term": "Block size",
+     "definition": "The width B used to group left ends; about n / √q, often simply √n, balances the movement of both pointers."
+    },
+    {
+     "term": "Odd-even ordering",
+     "definition": "Sorting right ends ascending in even blocks and descending in odd blocks, so the right pointer sweeps back and forth instead of resetting."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why are queries sorted by the block of their left end, then by their right end?",
+     "options": [
+      "To answer them in input order",
+      "Within a block the right end only moves forward, O(n) per block, and the left end moves at most B per query, which together give O((n + q)√n)",
+      "Because the left end does not matter",
+      "To use binary search"
+     ],
+     "answer": 1,
+     "explain": "With n / B blocks and O(n) right-pointer movement per block, plus O(B) left-pointer movement per query, choosing B ≈ √n makes the total about (n + q)√n."
+    },
+    {
+     "q": "Moving from window [L, R] to [l, r], why extend before shrinking?",
+     "options": [
+      "It is faster",
+      "Shrinking first can make L > R + 1 and remove elements that were never added, corrupting the counts",
+      "It does not matter",
+      "Because remove is expensive"
+     ],
+     "answer": 1,
+     "explain": "Expanding to cover the new range first keeps the window valid throughout. Then shrinking removes only elements that are really inside it."
+    },
+    {
+     "q": "What property must the queried quantity have for Mo's algorithm?",
+     "options": [
+      "It must be a sum",
+      "The window state must be updatable in small steps when one element is added or removed at either end",
+      "It must be idempotent",
+      "The array must be sorted"
+     ],
+     "answer": 1,
+     "explain": "Mo's algorithm never recomputes from scratch; it only adds or removes single elements. Distinct counts, frequency-based sums and similar quantities fit; minimums are awkward because removal is hard."
+    }
+   ],
+   "cover_seed": "mos-algorithm",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.68,
+   "path": "cp/mos-algorithm.md",
+   "hash": "1d9e591bfdc3",
+   "word_count": 1280,
+   "excerpt": "A tour guide has twenty groups, each wanting to see a different stretch of a long street of shops. Visiting the stretches in the order they were booked sends the guide marching up and down the whole street again and again. Sorting the bookings cleverly, so the next stretch overlaps the last one as…"
   },
   {
    "id": "cp-pbds-ordered-set",
