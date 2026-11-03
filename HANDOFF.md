@@ -7,6 +7,9 @@ You are continuing a project another Claude session started. Everything you need
 2. Run `python tools/progress.py` and open `PROGRESS.md`: per-subject counts and the **next 10 entries to write** for each subject.
 3. Skim the exemplars below for the subject you will write.
 
+## UI review status: pending feedback
+Branch `claude/ui-reorg` (Home and Learn reorganised; Article, Settings and Library unchanged because the owner said they are good). See `docs/ui-review/README.md` on that branch. Do not change the UI again until the owner replies; apply `docs/ui-review/FEEDBACK.md` if it appears. Do not merge until approved.
+
 ## 2. Where the v2 plan stands
 The owner's v2 brief, in execution order. Tick boxes reflect the repo at the last commit.
 
