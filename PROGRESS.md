@@ -10,12 +10,12 @@ Read `HANDOFF.md` first if you are picking this project up.
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
 | dsa | 152 | 0 | 0 | 152 | 72/72 |
-| cp | 45 | 0 | 70 | 115 | 20/29 |
+| cp | 48 | 0 | 67 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **354** | **0** | **319** | **673** | |
+| **All** | **357** | **0** | **316** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -37,8 +37,8 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `cp-bridges-articulation` (P0, pattern, cp-graphs): Bridges and Articulation Points
 - [ ] `cp-binary-lifting` (P0, pattern, cp-graphs): Binary Lifting and LCA in log n
 - [ ] `cp-prefix-function` (P0, pattern, cp-strings): The Prefix Function and KMP
-- [ ] `cp-weird-algorithm` (P1, problem-walkthrough, cp-start): Your First CSES Problems: Weird Algorithm to Increasing Array
-- [ ] `cp-implementation-skills` (P1, primer, cp-start): Implementation Problems: Getting the Details Right
+- [ ] `cp-fenwick-advanced` (P1, pattern, cp-ranges): Fenwick Tree Tricks: Range Updates and 2D
+- [ ] `cp-segment-tree-descend` (P1, pattern, cp-ranges): Walking Down a Segment Tree
 
 ### famous-algos
 
@@ -238,7 +238,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cp: 45 written</summary>
+<details><summary>cp: 48 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -275,7 +275,9 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cp-interactive-problems` Interactive Problems: Talking to the Judge
 - [x] `cp-two-pointer-cp` Two Pointers and Monotonicity in Contests
 - [x] `cp-contest-strategy` Contest Strategy: Order, Time and Nerves
+- [x] `cp-weird-algorithm` Your First CSES Problems: Weird Algorithm to Increasing Array
 - [x] `cp-greedy-in-contests` Greedy in Contests: Guess, Prove, Submit
+- [x] `cp-implementation-skills` Implementation Problems: Getting the Details Right
 - [x] `cp-counting-divisors` Counting Divisors for a Million Numbers
 - [x] `cp-creating-strings-ii` Counting Arrangements of a Word
 - [x] `cp-exponentiation-ii` a^(b^c) mod p: Fermat to the Rescue
@@ -283,6 +285,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cp-projects-dp` Projects: Weighted Interval Scheduling
 - [x] `cp-nim-games` Nim and Its Variants
 - [x] `cp-invariants-observations` Invariants and Observations: The Heart of Div 2
+- [x] `cp-prefix-xor-tricks` Prefix XOR and Subarray Tricks
 - [x] `cp-pbds-ordered-set` Ordered Sets With Rank: Policy-Based Data Structures
 - [x] `cp-practice-plan` A 12-Week Contest Practice Plan
 

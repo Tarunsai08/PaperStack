@@ -1,7 +1,7 @@
 {
- "content_version": "ed3dcb131ae6a77b",
+ "content_version": "5f47b205394eaaa2",
  "generated_at": "2026-11-02",
- "count": 354,
+ "count": 357,
  "subjects": [
   {
    "id": "ml",
@@ -27016,6 +27016,119 @@
    "excerpt": "\"Print a permutation of 1 to n where no two neighbours differ by exactly 1, or say NO SOLUTION.\" There are n! permutations; for n = 10⁶ you cannot search them. And there is no formula to look up. You have to invent an arrangement. Problems like this make up a big share of Codeforces rounds between…"
   },
   {
+   "id": "cp-weird-algorithm",
+   "kind": "problem-walkthrough",
+   "subject": "cp",
+   "slug": "weird-algorithm",
+   "title": "Warm-Up Laps Before the Race",
+   "subtitle": "Your first four CSES problems, Weird Algorithm, Missing Number, Repetitions and Increasing Array, solved carefully: simulating exactly, spotting 64-bit overflow before it bites, and reading input fast",
+   "track": "cp-start",
+   "track_order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-fast-io-template"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 6,
+   "topics": [
+    "simulation",
+    "overflow",
+    "implementation",
+    "CSES"
+   ],
+   "complexity": {
+    "time": "O(n) for each problem, O(steps) for Weird Algorithm",
+    "space": "O(1) beyond the input"
+   },
+   "practice_problems": [
+    {
+     "name": "Weird Algorithm",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1068",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Missing Number",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1083",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Repetitions",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1069",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Increasing Array",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1094",
+     "difficulty": "Easy"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Simulation",
+     "definition": "Solving a problem by carrying out exactly the process it describes, step by step, when the number of steps is small enough."
+    },
+    {
+     "term": "Overflow",
+     "definition": "A result too large for its integer type, which in C++ silently wraps around for unsigned types and is undefined for signed ones."
+    },
+    {
+     "term": "Running maximum",
+     "definition": "The largest value seen so far in a left-to-right scan, which is the floor every later value must reach in Increasing Array."
+    },
+    {
+     "term": "Run",
+     "definition": "A maximal block of equal consecutive characters, such as the TTTT in ACGTTTTA."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In Weird Algorithm, why must n be stored as long long even though the input is at most 10⁶?",
+     "options": [
+      "For speed",
+      "Intermediate values of 3n + 1 grow far beyond 2³¹; a program checking every start below 10⁶ finds peaks above 5 × 10¹⁰",
+      "Because the output is long",
+      "It need not be"
+     ],
+     "answer": 1,
+     "explain": "The input bound says nothing about the values reached along the way. Checking every start up to 10⁶ shows the largest value reached is 56,991,483,520, far past the 32-bit limit."
+    },
+    {
+     "q": "Missing Number gives 1..n with one value missing. Why compute n(n + 1) / 2 in 64-bit?",
+     "options": [
+      "It is never needed",
+      "With n up to 2 × 10⁵, n(n + 1) / 2 is about 2 × 10¹⁰, which overflows a 32-bit int",
+      "To avoid division",
+      "Because the numbers are negative"
+     ],
+     "answer": 1,
+     "explain": "2 × 10⁵ × (2 × 10⁵ + 1) / 2 is about 2 × 10¹⁰. Use long long, or the XOR trick, which never grows past the largest value."
+    },
+    {
+     "q": "In Increasing Array, after raising a[i] to the running maximum, why is that always optimal?",
+     "options": [
+      "It is not",
+      "Raising a[i] any higher would only force later elements higher too, so the smallest legal value, the running maximum, is the cheapest choice",
+      "Because the array is sorted",
+      "Because moves are free"
+     ],
+     "answer": 1,
+     "explain": "Each element must be at least the one before it. Raising it exactly to that bound costs the least now and leaves the lowest floor for the rest."
+    }
+   ],
+   "cover_seed": "weird-algorithm",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.62,
+   "path": "cp/weird-algorithm.md",
+   "hash": "fc6a4813b24c",
+   "word_count": 1370,
+   "excerpt": "Before a race, runners do warm-up laps. Nobody wins anything on them, but they reveal a stiff knee or a loose shoelace while it is still cheap to fix. The first problems on CSES are warm-up laps for competitive programming: each is a few lines of code, and each hides one small trap that catches…"
+  },
+  {
    "id": "cp-greedy-in-contests",
    "kind": "pattern",
    "subject": "cp",
@@ -27150,6 +27263,93 @@
    "excerpt": "Eight minutes into a contest you read problem B. A rule jumps out: sort, then pair the biggest with the smallest. It passes the samples. You submit, and the verdict comes back: wrong answer on test 7. Greedy ideas are the fastest solutions to write and the easiest to get wrong. Strong contestants…"
   },
   {
+   "id": "cp-implementation-skills",
+   "kind": "primer",
+   "subject": "cp",
+   "slug": "implementation-skills",
+   "title": "A Recipe Followed to the Gram",
+   "subtitle": "Implementation problems have no clever trick, only rules to follow exactly: modelling the state, choosing indices once, writing small helper functions, and testing the edges before the judge does",
+   "track": "cp-start",
+   "track_order": 11,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-reading-problems-fast"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 6,
+   "topics": [
+    "implementation",
+    "simulation",
+    "debugging",
+    "competitive programming"
+   ],
+   "glossary": [
+    {
+     "term": "Implementation problem",
+     "definition": "A problem whose difficulty lies in following detailed rules exactly rather than in finding an algorithmic idea."
+    },
+    {
+     "term": "State",
+     "definition": "The complete set of values that describes the situation at one moment, such as a robot's row, column and facing direction."
+    },
+    {
+     "term": "Indexing convention",
+     "definition": "A single decision, such as 0-based rows and columns, applied everywhere in the program so that no conversion is forgotten."
+    },
+    {
+     "term": "Helper function",
+     "definition": "A small, named function for one rule, such as inside(r, c) or turnLeft(d), which keeps the main loop short and each rule testable."
+    },
+    {
+     "term": "Edge case",
+     "definition": "An input at the boundary of what the statement allows, such as n = 1, an empty string or a value at its maximum."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Directions are numbered 0 to 3. Why write a left turn as (d + 3) % 4 instead of (d - 1) % 4?",
+     "options": [
+      "It is faster",
+      "In C++, (-1) % 4 is -1, so turning left from 0 would give an invalid direction; adding 3 keeps the value non-negative",
+      "Because 3 is prime",
+      "They are always equal"
+     ],
+     "answer": 1,
+     "explain": "C++ keeps the sign of the left operand in %, so (0 - 1) % 4 = -1. Adding 3 is the same turn modulo 4 and never goes negative."
+    },
+    {
+     "q": "What is the main benefit of giving each rule its own helper function?",
+     "options": [
+      "Shorter compile times",
+      "The main loop reads like the statement, and each rule can be checked or fixed in isolation",
+      "It is required by judges",
+      "It makes code run faster"
+     ],
+     "answer": 1,
+     "explain": "When a simulation is wrong, a small named function per rule narrows the search to one place, and the loop itself becomes easy to compare with the statement."
+    },
+    {
+     "q": "Your simulation passes the samples. Which extra test is most likely to expose a bug?",
+     "options": [
+      "Running the samples again",
+      "Small inputs that hit each special rule, such as moving into a wall or off the board, plus one maximum-size input",
+      "A random input of size 3 only",
+      "None, samples are enough"
+     ],
+     "answer": 1,
+     "explain": "Samples rarely cover every rule or the largest limits. Targeted edge cases test each rule, and a maximum-size input tests speed and overflow."
+    }
+   ],
+   "cover_seed": "implementation-skills",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.6,
+   "path": "cp/implementation-skills.md",
+   "hash": "acf1a08763a1",
+   "word_count": 1251,
+   "excerpt": "A pastry chef follows a recipe to the gram. Not because the steps are hard, mixing and folding are easy, but because 5 grams too much baking soda ruins the whole batch, and the chef only finds out an hour later. The skill is not creativity; it is doing every simple step exactly as written. Many…"
+  },
+  {
    "id": "cp-invariants-observations",
    "kind": "pattern",
    "subject": "cp",
@@ -27266,6 +27466,120 @@
    "hash": "a007b1b4348b",
    "word_count": 993,
    "excerpt": "A chessboard has two opposite corners cut off, leaving 62 squares. Can you cover it exactly with 31 dominoes? People try for minutes, shuffling dominoes around in their heads. Then someone notices the colours: every domino covers one black and one white square, but the two removed corners are the…"
+  },
+  {
+   "id": "cp-prefix-xor-tricks",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "prefix-xor-tricks",
+   "title": "An Odometer That Counts in XOR",
+   "subtitle": "Prefix XOR for range queries in O(1), counting subarrays with XOR k using a hash map of earlier prefixes, and turning 'two halves with equal XOR' into 'a subarray with XOR zero'",
+   "track": "cp-start",
+   "track_order": 13,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-prefix-sums",
+    "dsa-bit-manipulation-tricks"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "prefix sums",
+    "XOR",
+    "hash maps",
+    "counting"
+   ],
+   "complexity": {
+    "time": "O(n) to build, O(1) per query, O(n) to count subarrays",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Range Xor Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1650",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "XOR Queries of a Subarray",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/xor-queries-of-a-subarray/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Count Triplets That Can Form Two Arrays of Equal XOR",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/count-triplets-that-can-form-two-arrays-of-equal-xor/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Count the Number of Beautiful Subarrays",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/count-the-number-of-beautiful-subarrays/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Prefix XOR",
+     "definition": "P[i] = a[0] ^ a[1] ^ ... ^ a[i - 1], with P[0] = 0, the XOR of the first i elements."
+    },
+    {
+     "term": "Range XOR",
+     "definition": "The XOR of a[l..r], equal to P[r + 1] ^ P[l], because the common prefix cancels."
+    },
+    {
+     "term": "Prefix pair counting",
+     "definition": "Counting subarrays with a property by counting pairs of prefix positions i < j that satisfy a matching condition, using a hash map of earlier prefixes."
+    },
+    {
+     "term": "Zero-XOR subarray",
+     "definition": "A subarray whose XOR is 0, which happens exactly when two prefix XORs are equal."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How is the XOR of a[l..r] computed from prefix XORs?",
+     "options": [
+      "P[r] - P[l]",
+      "P[r + 1] ^ P[l], since the first l elements appear in both and cancel",
+      "P[r] ^ P[l - 1] + 1",
+      "P[r + 1] + P[l]"
+     ],
+     "answer": 1,
+     "explain": "P[r + 1] is the XOR of a[0..r] and P[l] of a[0..l-1]. XOR-ing them cancels a[0..l-1], leaving a[l..r]. XOR is its own inverse, so no subtraction is needed."
+    },
+    {
+     "q": "Why must the hash map of prefix counts start with P[0] = 0 counted once?",
+     "options": [
+      "For speed",
+      "Subarrays starting at index 0 pair with the empty prefix; without it, they are never counted",
+      "Because XOR of nothing is 1",
+      "It must not"
+     ],
+     "answer": 1,
+     "explain": "The subarray a[0..j-1] has XOR P[j] ^ P[0]. If P[0] is missing from the map, every valid subarray that starts at the beginning is skipped."
+    },
+    {
+     "q": "For i < j ≤ k, the XOR of a[i..j-1] equals the XOR of a[j..k]. What does that say about a[i..k]?",
+     "options": [
+      "Nothing",
+      "Its XOR is 0, because two equal values XOR to 0; conversely, every zero-XOR subarray of length L gives L - 1 valid split points j",
+      "It has even length",
+      "It is sorted"
+     ],
+     "answer": 1,
+     "explain": "x ^ x = 0, so the whole range XORs to zero. Any split point j inside a zero-XOR range makes the two sides equal, so each such range contributes k - i triplets."
+    }
+   ],
+   "cover_seed": "prefix-xor-tricks",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.66,
+   "path": "cp/prefix-xor-tricks.md",
+   "hash": "7c96bc9d03e8",
+   "word_count": 1340,
+   "excerpt": "A car's odometer tells you how far you have driven since the factory. To know how far you drove between two cities, you do not need a separate trip meter: read the odometer at both, and subtract. Prefix sums are that odometer for arrays. XOR has its own odometer, and it is even neater: instead of…"
   },
   {
    "id": "cp-contest-strategy",
