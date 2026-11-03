@@ -10,12 +10,12 @@ Read `HANDOFF.md` first if you are picking this project up.
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
 | dsa | 152 | 0 | 0 | 152 | 72/72 |
-| cp | 65 | 0 | 50 | 115 | 22/29 |
+| cp | 68 | 0 | 47 | 115 | 22/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **374** | **0** | **299** | **673** | |
+| **All** | **377** | **0** | **296** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -35,10 +35,10 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `cp-bridges-articulation` (P0, pattern, cp-graphs): Bridges and Articulation Points
 - [ ] `cp-binary-lifting` (P0, pattern, cp-graphs): Binary Lifting and LCA in log n
 - [ ] `cp-prefix-function` (P0, pattern, cp-strings): The Prefix Function and KMP
-- [ ] `cp-offline-queries` (P1, pattern, cp-ranges): Offline Thinking: Sort the Queries, Not Just the Data
 - [ ] `cp-dp-on-dag` (P1, pattern, cp-dp): DP on DAGs: Longest and Counting Paths
 - [ ] `cp-removal-game` (P1, problem-walkthrough, cp-dp): Removal Game: Interval DP for Two Players
 - [ ] `cp-dp-with-data-structures` (P1, pattern, cp-dp): DP Sped Up by Segment Trees and BITs
+- [ ] `cp-dsu-advanced` (P1, pattern, cp-graphs): DSU Tricks: Rollback, Parity and Offline
 
 ### famous-algos
 
@@ -238,7 +238,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cp: 65 written</summary>
+<details><summary>cp: 68 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -304,6 +304,9 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cp-mobius-inversion` Mobius Function and Counting Coprime Pairs
 - [x] `cp-fft-ntt` FFT and NTT for Polynomial Multiplication
 - [x] `cp-pbds-ordered-set` Ordered Sets With Rank: Policy-Based Data Structures
+- [x] `cp-persistent-segment-tree` Persistent Segment Trees: Querying the Past
+- [x] `cp-treap` Treaps: Randomised Balanced Trees
+- [x] `cp-offline-queries` Offline Thinking: Sort the Queries, Not Just the Data
 - [x] `cp-practice-plan` A 12-Week Contest Practice Plan
 
 </details>

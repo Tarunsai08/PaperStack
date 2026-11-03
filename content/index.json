@@ -1,7 +1,7 @@
 {
- "content_version": "5313634aa2820a8d",
+ "content_version": "1968d41e3d8856d0",
  "generated_at": "2026-11-02",
- "count": 374,
+ "count": 377,
  "subjects": [
   {
    "id": "ml",
@@ -31780,6 +31780,338 @@
    "hash": "a379f5ed5e75",
    "word_count": 2460,
    "excerpt": "You are reading numbers one at a time, and after each one you must say how many earlier numbers were smaller. Or children stand in a circle, and you must repeatedly remove the child k places ahead, among those still standing. Both questions ask about positions in a sorted order that keeps changing.…"
+  },
+  {
+   "id": "cp-persistent-segment-tree",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "persistent-segment-tree",
+   "title": "Saving Every Version by Storing Only the Changes",
+   "subtitle": "Persistent segment trees: copy only the O(log n) nodes on an update's path, keep one root per version, answer queries on any past version, and find the k-th smallest in a range by subtracting two prefix versions",
+   "track": "cp-ranges",
+   "track_order": 17,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-segment-tree"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "persistent data structures",
+    "segment tree",
+    "path copying",
+    "order statistics"
+   ],
+   "complexity": {
+    "time": "O(log n) per update and query",
+    "space": "O(n + u log n) nodes for u updates"
+   },
+   "practice_problems": [
+    {
+     "name": "Range Queries and Copies",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1737",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "K-th Number",
+     "platform": "SPOJ",
+     "url": "https://www.spoj.com/problems/MKTHNUM/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "K-query Online",
+     "platform": "SPOJ",
+     "url": "https://www.spoj.com/problems/KQUERYO/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Persistence",
+     "definition": "Keeping every earlier version of a data structure available for queries after it is modified."
+    },
+    {
+     "term": "Path copying",
+     "definition": "Updating a tree by creating new copies of only the nodes on the path from the root to the changed leaf, while all other nodes are shared with the old version."
+    },
+    {
+     "term": "Version root",
+     "definition": "The root node of one version; different versions are different roots pointing into a shared pool of nodes."
+    },
+    {
+     "term": "Node pool",
+     "definition": "Preallocated arrays of left child, right child and value, where new nodes are appended and never freed."
+    },
+    {
+     "term": "Prefix versions",
+     "definition": "Versions built by inserting a[0], then a[1], and so on, so version i counts values among the first i elements; subtracting two versions gives counts for a range."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How many new nodes does one point update create in a persistent segment tree over n elements?",
+     "options": [
+      "n",
+      "About log₂ n + 1, one per level on the path to the leaf",
+      "1",
+      "2n"
+     ],
+     "answer": 1,
+     "explain": "Only the nodes whose segment contains the changed position need new values. There is one such node per level, and every other child pointer is reused from the old version."
+    },
+    {
+     "q": "In CSES Range Queries and Copies, what does 'copy array k' cost?",
+     "options": [
+      "O(n) to copy all values",
+      "O(1): the new array's root is the same node as array k's root",
+      "O(log n)",
+      "O(n log n)"
+     ],
+     "answer": 1,
+     "explain": "Because no version is ever modified in place, two arrays can share the same root until one of them is updated, at which point path copying gives it its own nodes."
+    },
+    {
+     "q": "How does a persistent tree find the k-th smallest value in a[l..r]?",
+     "options": [
+      "By sorting the range",
+      "Descend version r and version l - 1 of a count tree over values together; the left child's count difference says whether the k-th value is on the left or right",
+      "By binary search on the original array",
+      "It cannot"
+     ],
+     "answer": 1,
+     "explain": "Version i counts values among a[0..i-1]. Subtracting version l from version r + 1 gives counts for the range, node by node, and a descent like the k-th one finds the answer in O(log n)."
+    }
+   ],
+   "cover_seed": "persistent-segment-tree",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.6,
+   "path": "cp/persistent-segment-tree.md",
+   "hash": "d9a52bf0d8a6",
+   "word_count": 1318,
+   "excerpt": "A writer saves every draft of a long document. Copying the whole file for each save would fill the disk; good version control instead stores only what changed and points to the previous version for everything else. Any old draft can still be opened in full. A persistent segment tree is version…"
+  },
+  {
+   "id": "cp-treap",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "treap",
+   "title": "Shuffling a Deck So the Tree Stays Bushy",
+   "subtitle": "Treaps: a binary search tree by key and a heap by random priority, kept balanced in expectation, with split and merge as the only two operations, and implicit keys that turn the treap into an array supporting cut, paste and reverse in O(log n)",
+   "track": "cp-ranges",
+   "track_order": 18,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-segment-tree"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "treap",
+    "balanced BST",
+    "randomisation",
+    "implicit keys",
+    "lazy propagation"
+   ],
+   "complexity": {
+    "time": "O(log n) expected per split, merge and operation",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Cut and Paste",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2072",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Substring Reversals",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2073",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Reversals and Sums",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2074",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Treap",
+     "definition": "A binary tree that is a binary search tree by key and a max-heap by a random priority assigned to each node."
+    },
+    {
+     "term": "Split",
+     "definition": "Cutting a treap into two treaps: one with the first k elements (or keys below a value) and one with the rest."
+    },
+    {
+     "term": "Merge",
+     "definition": "Joining two treaps where every element of the first comes before every element of the second, choosing the root by higher priority."
+    },
+    {
+     "term": "Implicit key",
+     "definition": "Using a node's position in the in-order sequence as its key, computed from subtree sizes, so the treap represents an array."
+    },
+    {
+     "term": "Reverse flag",
+     "definition": "A lazy tag meaning 'this subtree's order is reversed', applied by swapping children when pushed down."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does a treap stay balanced without rotations rules like AVL or red-black trees?",
+     "options": [
+      "It does not",
+      "Priorities are random, so the tree has the same shape as a BST built by inserting keys in random order, which has O(log n) expected depth",
+      "Because keys are sorted",
+      "Because merge rebalances"
+     ],
+     "answer": 1,
+     "explain": "The node with the highest priority is the root, and so on recursively. With random priorities, every key is equally likely to be chosen at each level, exactly like a random insertion order."
+    },
+    {
+     "q": "With implicit keys, how does split(t, k) decide where the k-th element is?",
+     "options": [
+      "By comparing stored keys",
+      "By the size of the left subtree: if it is at least k, the cut is inside the left subtree; otherwise inside the right, with k reduced by size(left) + 1",
+      "By priorities",
+      "By binary search on an array"
+     ],
+     "answer": 1,
+     "explain": "Positions are not stored. The left subtree holds the first size(left) elements, so sizes tell you which side the k-th element falls on."
+    },
+    {
+     "q": "How is 'reverse the substring [a, b]' done in O(log n)?",
+     "options": [
+      "Swap characters one by one",
+      "Split into before, middle and after; toggle the middle treap's reverse flag; merge back. The flag swaps children lazily when pushed",
+      "Rebuild the treap",
+      "It cannot be done in O(log n)"
+     ],
+     "answer": 1,
+     "explain": "Reversing a whole subtree means swapping left and right everywhere inside it. A lazy flag records that, and children are swapped only when an operation descends into them."
+    }
+   ],
+   "cover_seed": "treap",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.58,
+   "path": "cp/treap.md",
+   "hash": "67d48ca7ba90",
+   "word_count": 1249,
+   "excerpt": "Insert the numbers 1 to 100,000 in order into a plain binary search tree and you get a long chain: every operation becomes O(n). Shuffle the numbers first, and the same tree comes out bushy, with depth around 40. A treap gets that shuffle for free: each node draws a random priority, and the tree…"
+  },
+  {
+   "id": "cp-offline-queries",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "offline-queries",
+   "title": "Grading in the Easiest Order, Returning in Roll Order",
+   "subtitle": "Offline query techniques: read every query first, answer them in whatever order makes the data structure simple, sort by threshold and sweep with a Fenwick tree, and turn deletions into additions by running time backwards with union-find",
+   "track": "cp-ranges",
+   "track_order": 19,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-coordinate-compression",
+    "cp-fenwick-advanced"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "offline queries",
+    "sweep line",
+    "Fenwick tree",
+    "union-find",
+    "sorting"
+   ],
+   "complexity": {
+    "time": "O((n + q) log(n + q)) for sort-and-sweep, near-linear for reverse-time DSU",
+    "space": "O(n + q)"
+   },
+   "practice_problems": [
+    {
+     "name": "K-query",
+     "platform": "SPOJ",
+     "url": "https://www.spoj.com/problems/KQUERY/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Checking Existence of Edge Length Limited Paths",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/checking-existence-of-edge-length-limited-paths/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Nested Ranges Check",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2168",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Offline query",
+     "definition": "A query that may be answered after all queries are read, in any order, as long as answers are reported in the original order."
+    },
+    {
+     "term": "Threshold sweep",
+     "definition": "Sorting queries by a parameter such as a value limit, and adding data items in the same order, so each query sees exactly the items below its threshold."
+    },
+    {
+     "term": "Reverse time",
+     "definition": "Processing a sequence of deletions backwards, so that each step becomes an addition, which structures like union-find handle easily."
+    },
+    {
+     "term": "Answer slot",
+     "definition": "The original index stored with each query, used to place its answer back in input order after reordering."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why can sorting queries make a problem easier?",
+     "options": [
+      "Sorting is free",
+      "In a good order, the data structure only ever grows, or the sweep only moves forward, so each query is answered with simple, cheap updates",
+      "Because answers become sorted",
+      "It cannot"
+     ],
+     "answer": 1,
+     "explain": "Many queries are hard in input order because they need old and new states mixed. Reordering so the state changes monotonically, then restoring order with answer slots, removes that difficulty."
+    },
+    {
+     "q": "To count values greater than k in a[l..r] offline, how are queries and elements ordered?",
+     "options": [
+      "Both by position",
+      "Queries by k descending and elements by value descending; insert elements with value > k into a Fenwick tree by position, then sum [l, r]",
+      "Queries by l",
+      "Elements randomly"
+     ],
+     "answer": 1,
+     "explain": "When a query with threshold k is reached, exactly the elements larger than k have been inserted at their positions, so a range sum over positions counts them."
+    },
+    {
+     "q": "Edges are deleted one by one, and after each deletion you must report the number of components. Why process the deletions in reverse?",
+     "options": [
+      "It is faster to read backwards",
+      "Union-find supports adding edges but not removing them; in reverse, each deletion becomes an addition",
+      "To sort the edges",
+      "Because components only grow"
+     ],
+     "answer": 1,
+     "explain": "Start from the final graph, after all deletions, and add edges back in reverse order. Each answer is read just before the corresponding edge is re-added, then the answers are reversed into input order."
+    }
+   ],
+   "cover_seed": "offline-queries",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "cp/offline-queries.md",
+   "hash": "656db78759fd",
+   "word_count": 1342,
+   "excerpt": "A teacher collects a stack of exams and grades them in whatever order is fastest: all the question-1 answers together, then all question 2, so the marking scheme stays in their head. Then they sort the papers back into roll-call order before handing them out. Nobody in the class can tell the…"
   },
   {
    "id": "cp-digit-dp",
