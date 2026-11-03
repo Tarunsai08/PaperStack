@@ -11,11 +11,11 @@ Read `HANDOFF.md` first if you are picking this project up.
 |---|---|---|---|---|---|
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
-| famous-algos | 37 | 0 | 54 | 91 | 30/32 |
+| famous-algos | 38 | 0 | 53 | 91 | 31/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 34 | 0 | 45 | 79 | 26/47 |
-| **All** | **548** | **0** | **135** | **683** | |
+| **All** | **549** | **0** | **134** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -33,7 +33,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### famous-algos
 
-- [ ] `famous-algos-fft` (P0, concept, fa-signals): The Fast Fourier Transform: Hearing the Notes in a Chord
 - [ ] `famous-algos-counting-bloom-cuckoo` (P1, concept, fa-sketches): Deletable Filters: Counting Bloom and Cuckoo Filters
 - [ ] `famous-algos-heavy-hitters` (P1, concept, fa-sketches): Finding Heavy Hitters in a Stream: Misra-Gries and Space-Saving
 - [ ] `famous-algos-lsh` (P1, concept, fa-sketches): Locality-Sensitive Hashing: Finding Near Neighbours Fast
@@ -43,6 +42,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `famous-algos-sliding-window-limits` (P1, concept, fa-networking): Sliding Window Rate Limiting: Logs and Counters
 - [ ] `famous-algos-skip-lists-practice` (P1, concept, fa-storage): Skip Lists in Practice: Redis Sorted Sets
 - [ ] `famous-algos-swiss-tables` (P1, concept, fa-storage): The Hash Table You Use Every Day: Open Addressing and Swiss Tables
+- [ ] `famous-algos-quadtrees-rtrees` (P1, concept, fa-storage): Quadtrees and R-Trees: Spatial Indexes
 
 ### system-design
 
@@ -359,7 +359,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>famous-algos: 37 written</summary>
+<details><summary>famous-algos: 38 written</summary>
 
 - [x] `famous-algos-bloom-filter` Bloom Filters: Saying No Without Looking
 - [x] `famous-algos-count-min-sketch` Count-Min Sketch: Counting Billions of Things in Kilobytes
@@ -396,6 +396,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `famous-algos-tf-idf-bm25` TF-IDF and BM25: Ranking by Relevance
 - [x] `famous-algos-myers-diff` Myers' Diff: How Git Shows What Changed
 - [x] `famous-algos-rsync-rolling-checksum` rsync: Copying Only What Changed
+- [x] `famous-algos-fft` The Fast Fourier Transform: Hearing the Notes in a Chord
 - [x] `famous-algos-kalman-filter` The Kalman Filter: Blending Guesses With Noisy Measurements
 - [x] `famous-algos-a-star` A* Search: Dijkstra With a Sense of Direction
 

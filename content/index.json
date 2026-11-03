@@ -1,7 +1,7 @@
 {
- "content_version": "e34bb048089cf43d",
+ "content_version": "8d8e6a41eb3909f5",
  "generated_at": "2026-11-03",
- "count": 548,
+ "count": 549,
  "subjects": [
   {
    "id": "ml",
@@ -43283,6 +43283,94 @@
    "hash": "9add98e43f45",
    "word_count": 1346,
    "excerpt": "You have a 2 GB database backup on a remote server, and today's version on your laptop differs from yesterday's in a few scattered places. Uploading 2 GB again over a slow link takes an hour. If both machines could somehow agree on which parts are the same, you would send a few megabytes instead.…"
+  },
+  {
+   "id": "famous-algos-fft",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "fft",
+   "title": "Hearing the Notes Inside a Chord",
+   "subtitle": "The Fast Fourier Transform: signals as sums of waves, the even–odd split that turns n² work into n log n, a four-sample example done by hand, and multiplying big numbers with it",
+   "track": "fa-signals",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-divide-and-conquer"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "fft",
+    "fourier transform",
+    "divide and conquer",
+    "signal processing",
+    "polynomial multiplication"
+   ],
+   "glossary": [
+    {
+     "term": "Discrete Fourier transform",
+     "definition": "DFT: converts n samples of a signal into n numbers saying how much of each of n evenly spaced frequencies the signal contains."
+    },
+    {
+     "term": "Frequency domain",
+     "definition": "Describing a signal by how strong each frequency is, instead of by its value at each moment (the time domain)."
+    },
+    {
+     "term": "Root of unity",
+     "definition": "A complex number w with wⁿ = 1; the n-th roots of unity are n equally spaced points on the unit circle, and the DFT evaluates at them."
+    },
+    {
+     "term": "Twiddle factor",
+     "definition": "The root of unity wᵏ that multiplies the odd half's result when the FFT combines the two halves."
+    },
+    {
+     "term": "Convolution",
+     "definition": "The operation behind polynomial multiplication and filtering; the FFT turns it into simple element-by-element multiplication."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How many operations, roughly, does a direct DFT of n = 1,048,576 samples need compared with an FFT?",
+     "options": [
+      "About the same",
+      "About n² ≈ 1.1 × 10¹² versus n log₂ n ≈ 2.1 × 10⁷, about 50,000 times fewer",
+      "Twice as many",
+      "The FFT is slower for large n"
+     ],
+     "answer": 1,
+     "explain": "n² / (n log₂ n) = n / log₂ n = 1,048,576 / 20 ≈ 52,429."
+    },
+    {
+     "q": "What is the key step that makes the FFT fast?",
+     "options": [
+      "Sorting the samples",
+      "Splitting the samples into even and odd positions, transforming each half, and combining with one multiply per pair",
+      "Rounding to integers",
+      "Skipping high frequencies"
+     ],
+     "answer": 1,
+     "explain": "Two half-size DFTs plus n/2 butterfly steps give T(n) = 2T(n/2) + O(n) = O(n log n)."
+    },
+    {
+     "q": "How does the FFT speed up multiplying two polynomials of degree n?",
+     "options": [
+      "It cannot",
+      "Transform both, multiply the values pointwise, transform back: O(n log n) instead of O(n²)",
+      "It sorts the coefficients",
+      "It uses Karatsuba"
+     ],
+     "answer": 1,
+     "explain": "Multiplication is a convolution of coefficients, which is pointwise multiplication in the frequency domain."
+    }
+   ],
+   "cover_seed": "fft",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.88,
+   "path": "famous-algos/fft.md",
+   "hash": "5f69a8daef68",
+   "word_count": 1339,
+   "excerpt": "A pianist presses three keys at once. Your ear receives one wobbly pressure wave, a single number changing over time, yet you hear three separate notes. Somewhere between the eardrum and the brain, that one wave was split into the pure tones it is made of. Computers do the same split millions of…"
   },
   {
    "id": "famous-algos-kalman-filter",

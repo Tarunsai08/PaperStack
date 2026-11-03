@@ -14,11 +14,11 @@ You are continuing a project another Claude session started. Everything you need
 |---|---|---|---|---|---|
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
-| famous-algos | 37 | 0 | 54 | 91 | 30/32 |
+| famous-algos | 38 | 0 | 53 | 91 | 31/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 34 | 0 | 45 | 79 | 26/47 |
-| **All** | **548** | **0** | **135** | **683** | |
+| **All** | **549** | **0** | **134** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -31,11 +31,11 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 _Nothing ready: every planned entry is waiting on a prerequisite, or the subject is complete._
 
 #### famous-algos
-- [ ] `famous-algos-fft` (P0, concept, fa-signals): The Fast Fourier Transform: Hearing the Notes in a Chord
 - [ ] `famous-algos-counting-bloom-cuckoo` (P1, concept, fa-sketches): Deletable Filters: Counting Bloom and Cuckoo Filters
 - [ ] `famous-algos-heavy-hitters` (P1, concept, fa-sketches): Finding Heavy Hitters in a Stream: Misra-Gries and Space-Saving
 - [ ] `famous-algos-lsh` (P1, concept, fa-sketches): Locality-Sensitive Hashing: Finding Near Neighbours Fast
 - [ ] `famous-algos-paxos` (P1, concept, fa-distributed): Paxos: The Original Consensus Algorithm
+- [ ] `famous-algos-crdts` (P1, concept, fa-distributed): CRDTs: Data Types That Merge Themselves
 
 #### system-design
 _Nothing ready: every planned entry is waiting on a prerequisite, or the subject is complete._
