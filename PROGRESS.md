@@ -12,10 +12,10 @@ Read `HANDOFF.md` first if you are picking this project up.
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
-| system-design | 77 | 0 | 42 | 119 | 60/60 |
+| system-design | 79 | 0 | 40 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 16 | 0 | 63 | 79 | 13/47 |
-| **All** | **488** | **0** | **195** | **683** | |
+| **All** | **490** | **0** | **193** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -411,7 +411,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>system-design: 77 written</summary>
+<details><summary>system-design: 79 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -490,6 +490,8 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-exactly-once` Exactly-Once Delivery Is a Myth; Exactly-Once Processing Is Not
 - [x] `system-design-consensus-overview` Consensus in Practice: Raft, Paxos, etcd and ZooKeeper
 - [x] `system-design-distributed-locks-sd` Distributed Locks and Leader Election
+- [x] `system-design-time-ordering` Time and Ordering in Distributed Systems
+- [x] `system-design-failure-detection` Failures, Partitions and Split Brain
 
 </details>
 
@@ -612,3 +614,4 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - system-design-rate-limiter-lld has an article but is still marked planned
 - system-design-pub-sub-lld has an article but is still marked planned
 - system-design-shopping-cart-lld has an article but is still marked planned
+- system-design-concurrency-lld has an article but is still marked planned

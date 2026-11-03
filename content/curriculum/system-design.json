@@ -3338,8 +3338,8 @@
    "prerequisites": [
     "famous-algos-lamport-clocks"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Clock skew",
@@ -3367,8 +3367,8 @@
    "prerequisites": [
     "system-design-consensus-overview"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Timeouts are guesses",
