@@ -12,10 +12,10 @@ Read `HANDOFF.md` first if you are picking this project up.
 | dsa | 152 | 0 | 0 | 152 | 72/72 |
 | cp | 113 | 0 | 2 | 115 | 29/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
-| system-design | 39 | 0 | 80 | 119 | 39/60 |
+| system-design | 41 | 0 | 78 | 119 | 41/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **422** | **0** | **251** | **673** | |
+| **All** | **424** | **0** | **249** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -47,8 +47,9 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### system-design
 
-- [ ] `system-design-vertical-horizontal` (P0, deep-dive, sd-scaling): Vertical vs Horizontal Scaling
-- [ ] `system-design-oop-solid` (P0, lld, sd-lld): Object-Oriented Design and SOLID Principles
+- [ ] `system-design-read-replicas` (P0, deep-dive, sd-scaling): Read Replicas and Replication Lag
+- [ ] `system-design-creational-patterns` (P0, lld, sd-lld): Creational Patterns: Factory, Builder and Singleton
+- [ ] `system-design-partitioning` (P0, deep-dive, sd-distributed): Partitioning: Splitting Data Across Machines
 - [ ] `system-design-networking-essentials` (P1, deep-dive, sd-fundamentals): TCP, UDP and QUIC for System Designers
 - [ ] `system-design-proxies` (P1, deep-dive, sd-fundamentals): Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere
 - [ ] `system-design-search-systems` (P1, deep-dive, sd-blocks): Search Systems: Elasticsearch and Inverted Indexes
@@ -56,7 +57,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `system-design-storage-types` (P1, deep-dive, sd-blocks): Block, File and Object Storage
 - [ ] `system-design-olap-warehouses` (P1, deep-dive, sd-blocks): Columnar Storage and Data Warehouses
 - [ ] `system-design-data-modeling-scale` (P1, deep-dive, sd-scaling): Data Modelling for Scale: Denormalisation and Access Patterns
-- [ ] `system-design-web-crawler` (P1, case-study, sd-cases): Design a Web Crawler
 
 ### ml
 
@@ -388,7 +388,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>system-design: 39 written</summary>
+<details><summary>system-design: 41 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -411,6 +411,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-blob-storage` Blob Storage: How S3-Style Systems Store Files
 - [x] `system-design-distributed-cache` Redis and Distributed Caches
 - [x] `system-design-scaling-journey` From One Server to a Million Users
+- [x] `system-design-vertical-horizontal` Vertical vs Horizontal Scaling
 - [x] `system-design-cache-problems` When Caches Hurt: Stampedes, Hot Keys and Invalidation
 - [x] `system-design-async-processing` Doing Work Later: Queues, Workers and Background Jobs
 - [x] `system-design-url-shortener` Design a URL Shortener
@@ -423,6 +424,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-video-streaming` Design a Video Streaming Platform Like YouTube
 - [x] `system-design-ride-sharing` Design a Ride-Sharing App Like Uber
 - [x] `system-design-payments` Design a Payment System
+- [x] `system-design-oop-solid` Object-Oriented Design and SOLID Principles
 - [x] `system-design-consistency-models` Consistency Models: Linearizable to Eventual
 - [x] `system-design-isolation-levels` Transaction Isolation Levels and Anomalies
 - [x] `system-design-two-phase-commit` Two-Phase Commit and Its Weak Spot

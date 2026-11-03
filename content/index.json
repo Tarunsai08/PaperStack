@@ -1,7 +1,7 @@
 {
- "content_version": "d1a30bb87f98b92b",
- "generated_at": "2026-11-02",
- "count": 422,
+ "content_version": "57bc5536a26bb322",
+ "generated_at": "2026-11-03",
+ "count": 424,
  "subjects": [
   {
    "id": "ml",
@@ -44157,6 +44157,98 @@
    "excerpt": "Your side project goes viral on a Tuesday night. At 9 pm the single server that runs your web app and its database is at 20% CPU. At 10 pm it is at 100%, pages take eight seconds, and the database starts refusing connections. You could buy a bigger server, and for a while that works. Then it stops…"
   },
   {
+   "id": "system-design-vertical-horizontal",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "vertical-horizontal",
+   "title": "One Stronger Horse or a Team of Horses?",
+   "subtitle": "Vertical vs horizontal scaling: what each buys you, where each hits a wall, and why going wide demands stateless servers",
+   "track": "sd-scaling",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-scaling-journey"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 8,
+   "topics": [
+    "system design",
+    "scaling",
+    "vertical scaling",
+    "horizontal scaling",
+    "stateless"
+   ],
+   "glossary": [
+    {
+     "term": "Vertical scaling",
+     "definition": "Making one machine bigger: more CPU cores, more memory, faster disks. Also called scaling up."
+    },
+    {
+     "term": "Horizontal scaling",
+     "definition": "Adding more machines that share the work, usually behind a load balancer. Also called scaling out."
+    },
+    {
+     "term": "Stateless server",
+     "definition": "A server that keeps no per-user data between requests, so any server can handle any request."
+    },
+    {
+     "term": "Coordination cost",
+     "definition": "The extra work machines spend agreeing with each other: locks, network calls, consensus, cache invalidation. It grows as you add machines."
+    },
+    {
+     "term": "Amdahl's law",
+     "definition": "The speed-up from adding workers is limited by the fraction of work that cannot be split: with a serial fraction s, the speed-up can never exceed 1/s."
+    },
+    {
+     "term": "Single point of failure",
+     "definition": "A component whose failure takes the whole system down because nothing can take over its work."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Your app keeps each user's shopping cart in the memory of the server that handled their login. What breaks when you add a second server behind a load balancer?",
+     "options": [
+      "Nothing, load balancers copy memory between servers",
+      "Requests that land on the other server cannot see the cart, so users randomly lose it",
+      "The database gets slower",
+      "TLS stops working"
+     ],
+     "answer": 1,
+     "explain": "In-memory state ties a user to one machine. Horizontal scaling needs stateless servers: move the cart to a shared store such as Redis or the database."
+    },
+    {
+     "q": "5% of every request's work runs under one global lock. By Amdahl's law, what is the most speed-up you can ever get by adding servers?",
+     "options": [
+      "5x",
+      "20x",
+      "95x",
+      "Unlimited"
+     ],
+     "answer": 1,
+     "explain": "The serial part does not shrink as you add machines. The speed-up is at most 1/0.05 = 20x, and 64 servers give only about 15.4x."
+    },
+    {
+     "q": "Which workload is the strongest case for scaling up first?",
+     "options": [
+      "A stateless web tier serving 50,000 requests per second",
+      "A relational database with complex joins and transactions that fits on one large machine",
+      "Image thumbnail workers reading from a queue",
+      "A CDN"
+     ],
+     "answer": 1,
+     "explain": "Splitting a transactional database across machines is hard and adds coordination. A bigger box is simpler until it runs out of headroom. Stateless tiers and queue workers scale out easily."
+    }
+   ],
+   "cover_seed": "vertical-horizontal",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.9,
+   "path": "system-design/vertical-horizontal.md",
+   "hash": "0272b25d403e",
+   "word_count": 1855,
+   "excerpt": "It is 9:58 on result day. Your exam-results site normally sees a few hundred visitors a minute. In two minutes, every student in the state will press refresh at once. You have two levers. You can rent a monster machine with ten times the cores and memory. Or you can rent ten ordinary machines and…"
+  },
+  {
    "id": "system-design-cache-problems",
    "kind": "deep-dive",
    "subject": "system-design",
@@ -45287,6 +45379,98 @@
    "hash": "bbc3e29e920f",
    "word_count": 1425,
    "excerpt": "A customer taps \"Pay ₹1,000\". Their phone's connection drops for two seconds. The app retries. Did the first attempt go through? If you guess wrong in one direction, the customer is charged twice and posts an angry screenshot. Guess wrong in the other, and the merchant ships goods for free. Now…"
+  },
+  {
+   "id": "system-design-oop-solid",
+   "kind": "lld",
+   "subject": "system-design",
+   "slug": "oop-solid",
+   "title": "Lego Bricks With Standard Studs",
+   "subtitle": "Object-oriented design and the five SOLID principles, learned by fixing one messy checkout class step by step",
+   "track": "sd-lld",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-interview-framework"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 7,
+   "topics": [
+    "low-level design",
+    "object-oriented design",
+    "SOLID",
+    "interfaces",
+    "composition"
+   ],
+   "glossary": [
+    {
+     "term": "Encapsulation",
+     "definition": "Keeping an object's data private and exposing only methods that keep it valid, so nobody outside can put it into a broken state."
+    },
+    {
+     "term": "Abstraction",
+     "definition": "Showing what something does through a simple interface while hiding how it does it."
+    },
+    {
+     "term": "Polymorphism",
+     "definition": "Calling the same method on different objects and letting each respond in its own way, for example pay() on a card or a UPI payment."
+    },
+    {
+     "term": "Interface",
+     "definition": "A contract listing methods a class promises to provide, with no implementation. Code that depends on the interface works with any class that fulfils it."
+    },
+    {
+     "term": "Composition",
+     "definition": "Building an object out of other objects it holds (has-a), instead of inheriting from a parent class (is-a)."
+    },
+    {
+     "term": "Dependency injection",
+     "definition": "Passing an object the things it depends on from outside, usually through its constructor, instead of letting it create them itself."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Adding a new payment method forces you to edit a long if-else chain inside CheckoutService. Which principle is being broken?",
+     "options": [
+      "Liskov substitution",
+      "Open/closed: the class should be extendable with a new PaymentMethod without modifying it",
+      "Interface segregation",
+      "Encapsulation"
+     ],
+     "answer": 1,
+     "explain": "Open/closed means new behaviour arrives as new classes behind an interface. An if-else on the payment type has to be edited every time, which is exactly what the principle avoids."
+    },
+    {
+     "q": "A Penguin class inherits from Bird, and Bird has fly(). Penguin.fly() throws an error. What is wrong?",
+     "options": [
+      "Nothing, exceptions are normal",
+      "It breaks Liskov substitution: code written for Bird crashes when given a Penguin",
+      "It breaks single responsibility",
+      "Penguin should be an interface"
+     ],
+     "answer": 1,
+     "explain": "A subclass must be usable anywhere its parent is expected. If it cannot honour the parent's promises, the hierarchy is wrong: split Bird into flying and non-flying capabilities."
+    },
+    {
+     "q": "Why does CheckoutService take a PaymentGateway in its constructor instead of creating RazorpayGateway inside?",
+     "options": [
+      "It is faster",
+      "Dependency inversion: high-level code depends on an abstraction, so you can swap providers or pass a fake in tests",
+      "Constructors must take arguments",
+      "To save memory"
+     ],
+     "answer": 1,
+     "explain": "Creating the concrete class inside welds the two together. Injecting an interface lets the same checkout code work with any gateway, including a fake one in unit tests."
+    }
+   ],
+   "cover_seed": "oop-solid",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.9,
+   "path": "system-design/oop-solid.md",
+   "hash": "8c75389302df",
+   "word_count": 1539,
+   "excerpt": "Here is a real-looking class from a food-delivery app. It is 400 lines long, and every product meeting adds to it. Tomorrow the business wants pay-later, WhatsApp notifications and a new coupon type. Predict how many places in this class you would have to touch, and how many existing features you…"
   },
   {
    "id": "system-design-consistency-models",

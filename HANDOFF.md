@@ -15,10 +15,10 @@ You are continuing a project another Claude session started. Everything you need
 | dsa | 152 | 0 | 0 | 152 | 72/72 |
 | cp | 113 | 0 | 2 | 115 | 29/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
-| system-design | 39 | 0 | 80 | 119 | 39/60 |
+| system-design | 41 | 0 | 78 | 119 | 41/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **422** | **0** | **251** | **673** | |
+| **All** | **424** | **0** | **249** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -39,11 +39,11 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `famous-algos-heavy-hitters` (P1, concept, fa-sketches): Finding Heavy Hitters in a Stream: Misra-Gries and Space-Saving
 
 #### system-design
-- [ ] `system-design-vertical-horizontal` (P0, deep-dive, sd-scaling): Vertical vs Horizontal Scaling
-- [ ] `system-design-oop-solid` (P0, lld, sd-lld): Object-Oriented Design and SOLID Principles
+- [ ] `system-design-read-replicas` (P0, deep-dive, sd-scaling): Read Replicas and Replication Lag
+- [ ] `system-design-creational-patterns` (P0, lld, sd-lld): Creational Patterns: Factory, Builder and Singleton
+- [ ] `system-design-partitioning` (P0, deep-dive, sd-distributed): Partitioning: Splitting Data Across Machines
 - [ ] `system-design-networking-essentials` (P1, deep-dive, sd-fundamentals): TCP, UDP and QUIC for System Designers
 - [ ] `system-design-proxies` (P1, deep-dive, sd-fundamentals): Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere
-- [ ] `system-design-search-systems` (P1, deep-dive, sd-blocks): Search Systems: Elasticsearch and Inverted Indexes
 
 #### ml
 - [ ] `paper-layer-normalization` (P2, paper, deep-learning): Layer Normalization
