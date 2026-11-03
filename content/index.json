@@ -1,7 +1,7 @@
 {
- "content_version": "75453d54e3bf9306",
+ "content_version": "d2562bb64c7236e8",
  "generated_at": "2026-11-02",
- "count": 360,
+ "count": 362,
  "subjects": [
   {
    "id": "ml",
@@ -29750,6 +29750,231 @@
    "hash": "d842432ca8c0",
    "word_count": 1264,
    "excerpt": "Most binomial coefficient problems use a big prime such as 10⁹ + 7, and precomputed factorials do the rest. Then a problem asks for C(n, r) modulo 7, or modulo 10, with n up to 10¹⁸. Factorials are useless: 7! is already 0 modulo 7, and dividing by 0 is not an option. Édouard Lucas found the way…"
+  },
+  {
+   "id": "cp-mobius-inversion",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "mobius-inversion",
+   "title": "Inclusion-Exclusion That Runs Itself",
+   "subtitle": "The Möbius function as automatic inclusion-exclusion over divisors: computing μ with a sieve, counting coprime pairs from 'how many are divisible by d', and the identity that turns gcd = 1 into a sum you can evaluate",
+   "track": "cp-math",
+   "track_order": 19,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-euler-totient",
+    "cp-inclusion-exclusion"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "number theory",
+    "Möbius function",
+    "inclusion-exclusion",
+    "gcd",
+    "sieve"
+   ],
+   "complexity": {
+    "time": "O(M log M) for M the largest value",
+    "space": "O(M)"
+   },
+   "practice_problems": [
+    {
+     "name": "Counting Coprime Pairs",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2417",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Number of Different Subsequences GCDs",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/number-of-different-subsequences-gcds/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Count Array Pairs Divisible by K",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/count-array-pairs-divisible-by-k/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Möbius function",
+     "definition": "μ(1) = 1; μ(n) = (-1)^k if n is a product of k distinct primes; μ(n) = 0 if any prime divides n more than once."
+    },
+    {
+     "term": "Square-free",
+     "definition": "A number not divisible by any square greater than 1, such as 6 or 10; only square-free numbers have nonzero μ."
+    },
+    {
+     "term": "Divisor-sum identity",
+     "definition": "The fact that the sum of μ(d) over the divisors d of n is 1 when n = 1 and 0 otherwise."
+    },
+    {
+     "term": "Möbius inversion",
+     "definition": "If g(n) is the sum of f(d) over divisors d of n, then f(n) is the sum of μ(d) × g(n / d); more generally, counts over multiples can be inverted the same way."
+    },
+    {
+     "term": "Multiple count",
+     "definition": "cnt[d], the number of input values divisible by d, computed for every d with a harmonic sieve over multiples."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What are μ(6), μ(12) and μ(30)?",
+     "options": [
+      "1, 0 and -1",
+      "1, -1 and 1",
+      "-1, 0 and 1",
+      "0, 0 and 0"
+     ],
+     "answer": 0,
+     "explain": "6 = 2 × 3 has two distinct primes, so μ = 1. 12 = 2² × 3 has a squared prime, so μ = 0. 30 = 2 × 3 × 5 has three, so μ = -1."
+    },
+    {
+     "q": "Why does Σ μ(d) × C(cnt[d], 2) count coprime pairs?",
+     "options": [
+      "It counts all pairs",
+      "For a pair with gcd g, its contribution is Σ μ(d) over the divisors d of g, which is 1 if g = 1 and 0 otherwise",
+      "Because μ is always positive",
+      "It is an approximation"
+     ],
+     "answer": 1,
+     "explain": "A pair is counted in C(cnt[d], 2) exactly when d divides both numbers, that is d divides their gcd g. Summing μ over the divisors of g gives 1 only for g = 1."
+    },
+    {
+     "q": "Why is the sum over d of μ(d) ⌊n / d⌋² the number of coprime pairs (x, y) with 1 ≤ x, y ≤ n?",
+     "options": [
+      "It is the totient",
+      "⌊n / d⌋² counts pairs with d dividing both, and μ performs inclusion-exclusion over the common divisors, leaving only gcd = 1",
+      "Because squares are coprime",
+      "It is not"
+     ],
+     "answer": 1,
+     "explain": "This is the same identity as for arrays: pairs where d divides both coordinates number ⌊n / d⌋ × ⌊n / d⌋, and weighting by μ(d) cancels every pair whose gcd is above 1."
+    }
+   ],
+   "cover_seed": "mobius-inversion",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.5,
+   "path": "cp/mobius-inversion.md",
+   "hash": "a50eb88dfb6f",
+   "word_count": 1392,
+   "excerpt": "How many pairs of numbers in a list share no common factor? Checking every pair with gcd is O(n²), and with 10⁵ numbers that is 5 × 10⁹ gcd calls. Counting the opposite is tempting: pairs both even, pairs both multiples of 3, and so on, but pairs that are both multiples of 6 got subtracted twice,…"
+  },
+  {
+   "id": "cp-fft-ntt",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "fft-ntt",
+   "title": "Mixing Every Pair of Ingredients at Once",
+   "subtitle": "Convolution as polynomial multiplication, computed in O(n log n) by evaluating at roots of unity: the FFT idea, why contests use the exact number theoretic transform modulo 998244353, and counting sums with frequency arrays",
+   "track": "cp-math",
+   "track_order": 20,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-matrix-exponentiation"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "FFT",
+    "NTT",
+    "convolution",
+    "polynomials",
+    "modular arithmetic"
+   ],
+   "complexity": {
+    "time": "O(n log n)",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Signal Processing",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2111",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Apples and Bananas",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2112",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Multiply Strings",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/multiply-strings/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Convolution",
+     "definition": "The sequence c with c[k] = Σ a[i] × b[k - i], which is exactly the coefficient list of the product of the polynomials with coefficients a and b."
+    },
+    {
+     "term": "Point-value form",
+     "definition": "Describing a polynomial of degree below n by its values at n distinct points; two polynomials multiply pointwise in this form."
+    },
+    {
+     "term": "Root of unity",
+     "definition": "A number w with wⁿ = 1; the n powers of a primitive one are the special points that make evaluation recursive and fast."
+    },
+    {
+     "term": "Number theoretic transform",
+     "definition": "The FFT carried out in modular arithmetic, using a number g with g^n ≡ 1 instead of a complex root of unity, so every step is exact."
+    },
+    {
+     "term": "Butterfly",
+     "definition": "The basic FFT step that combines two half-size results u and v into u + w × v and u - w × v."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does multiplying polynomials compute a convolution?",
+     "options": [
+      "It does not",
+      "The coefficient of x^k in A(x) × B(x) collects every product a[i] × b[j] with i + j = k, which is the definition of c[k]",
+      "Because polynomials are sorted",
+      "Because of roots of unity"
+     ],
+     "answer": 1,
+     "explain": "Expanding the product term by term, each a[i] x^i times b[j] x^j lands on x^(i + j). Grouping by k = i + j gives exactly c[k] = Σ a[i] b[k - i]."
+    },
+    {
+     "q": "Why do contest solutions often prefer NTT modulo 998244353 to FFT with doubles?",
+     "options": [
+      "NTT is simpler to prove",
+      "NTT is exact, while double-precision FFT can round wrongly when coefficients or lengths are large; 998244353 = 119 × 2²³ + 1 supports transform lengths up to 2²³",
+      "Doubles are not allowed",
+      "NTT is O(n)"
+     ],
+     "answer": 1,
+     "explain": "Rounding errors in complex FFT grow with value size and length. Modular arithmetic has no rounding, and the special form of 998244353 guarantees the needed roots of unity exist."
+    },
+    {
+     "q": "How does convolution count the ways to pick one apple and one banana with total weight w?",
+     "options": [
+      "It cannot",
+      "Let A[x] and B[y] count apples and bananas of each weight; the convolution's entry w is Σ A[x] × B[w - x], the number of pairs with total w",
+      "By sorting",
+      "By binary search"
+     ],
+     "answer": 1,
+     "explain": "Every pair with weights x and w - x contributes A[x] × B[w - x] ways. That sum over x is entry w of the convolution of the two frequency arrays."
+    }
+   ],
+   "cover_seed": "fft-ntt",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.5,
+   "path": "cp/fft-ntt.md",
+   "hash": "5c8ecd4f0b93",
+   "word_count": 1385,
+   "excerpt": "A café combines one of its cakes with one of its drinks into a set menu, and the price of a set is the cake's price plus the drink's. With 200,000 cakes and 200,000 drinks, how many set menus are there at every possible total price? Pairing everything is 4 × 10¹⁰ combinations, far too many. This…"
   },
   {
    "id": "cp-segment-tree",

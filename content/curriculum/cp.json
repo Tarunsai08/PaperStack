@@ -3085,8 +3085,8 @@
     "cp-euler-totient",
     "cp-inclusion-exclusion"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Mobius function from primes",
@@ -3114,8 +3114,8 @@
    "prerequisites": [
     "cp-matrix-exponentiation"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Convolution as polynomial product",
