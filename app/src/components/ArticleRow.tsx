@@ -6,15 +6,16 @@ import type { Article } from '../lib/types';
 import { StatusDot } from './StatusDot';
 
 /** Compact list row: status icon, title, kind · read time, priority badge. Used on Home and Learn. */
-export function ArticleRow({ article, index, accent, showTrack }: { article: Article; index: number; accent: string; showTrack?: string }) {
+export function ArticleRow({ article, index, accent, showTrack, small, isNext }: { article: Article; index: number; accent: string; showTrack?: string; small?: boolean; isNext?: boolean }) {
   const progress = useStore('progress')[article.id];
   const st = statusOf(progress);
   return (
-    <Link to={`/article/${article.id}`} className="press flex items-center gap-3 py-3">
-      <StatusDot status={st} accent={accent} index={index} pct={progress?.scrollPct ?? 0} />
+    <Link to={`/article/${article.id}`} className={`press flex items-center ${small ? 'gap-2.5 py-2.5' : 'gap-3 py-3'}`}>
+      <StatusDot status={st} accent={accent} index={index} pct={progress?.scrollPct ?? 0} small={small} />
       <div className="min-w-0 flex-1">
-        <p className={`line-clamp-2 text-[15px] font-medium leading-snug ${st === 'completed' ? 'text-muted' : ''}`}>{article.title}</p>
+        <p className={`line-clamp-2 ${small ? 'text-[14.5px]' : 'text-[15px]'} font-medium leading-snug ${st === 'completed' ? 'text-muted' : ''}`}>{article.title}</p>
         <p className="mt-0.5 truncate text-[12.5px] text-muted">
+          {isNext && <span className="font-semibold" style={{ color: accent }}>Up next · </span>}
           {showTrack ? `${showTrack} · ` : ''}
           {article.paper_title ? article.year : kindLabel(article.kind)} · {article.read_minutes} min
         </p>

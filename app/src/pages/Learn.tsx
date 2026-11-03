@@ -1,8 +1,9 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Check, ChevronDown, Clock3, Map as MapIcon } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { ArticleRow, ProgressBar } from '../components/ArticleRow';
+import { ProgressRing } from '../components/ProgressRing';
 import { CoverArt, subjectMotif } from '../components/CoverArt';
 import { EmptyState, TabHeader } from '../components/Headers';
 import { Page } from '../components/Page';
@@ -185,90 +186,91 @@ function SubjectRoadmap({ subject }: { subject: Subject }) {
             </div>
           </section>
 
-          <ol className="relative mx-5 mt-6 pb-8">
-            {/* the road: one vertical line joining every stop */}
-            <span className="absolute bottom-8 left-[19px] top-5 w-0.5 bg-line" aria-hidden />
-            {tracks.map((t, i) => {
-              const articles = content.articlesInTrack(t.id);
-              const p = trackProgress(articles, progress);
-              const isOpen = openId === t.id;
-              const complete = p.total > 0 && p.done === p.total;
-              const current = next?.track === t.id;
-              const mins = articles.reduce((m, a) => m + a.read_minutes, 0);
-              return (
-                <li key={t.id} className="relative pb-4 pl-[52px]">
-                  <span
-                    className={`absolute left-0 top-3 flex h-10 w-10 items-center justify-center rounded-full text-[14px] font-bold ${
-                      complete ? 'text-white' : current ? 'bg-bg' : 'border-2 border-line bg-bg text-muted'
-                    }`}
-                    style={complete ? { background: t.accent } : current ? { border: `2.5px solid ${t.accent}`, color: t.accent } : undefined}
-                    aria-hidden
-                  >
-                    {complete ? <Check size={18} strokeWidth={3} /> : t.id === 'my-additions' ? '+' : i + 1}
-                  </span>
-                  <div
-                    className={`overflow-hidden rounded-card border bg-surface ${current ? 'shadow-card' : ''}`}
-                    style={{ borderColor: current ? t.accent : 'rgb(var(--border))' }}
-                  >
-                    <button
-                      onClick={() => articles.length && setOpen(isOpen ? '' : t.id)}
-                      className={`chrome flex w-full items-start gap-3 p-3.5 text-left ${articles.length ? '' : 'cursor-default opacity-60'}`}
-                      aria-expanded={articles.length ? isOpen : undefined}
-                    >
-                      <div className="min-w-0 flex-1">
-                        {current && (
-                          <p className="mb-0.5 text-[11px] font-bold uppercase tracking-[0.08em]" style={{ color: t.accent }}>
-                            You are here
-                          </p>
-                        )}
-                        <p className="text-[15.5px] font-semibold leading-snug">{t.title}</p>
-                        <p className="mt-0.5 line-clamp-2 text-[13px] leading-snug text-muted">{t.subtitle}</p>
-                        {articles.length > 0 ? (
-                          <div className="mt-2.5 flex items-center gap-2.5">
-                            <div className="flex-1">
-                              <ProgressBar pct={p.pct} color={t.accent} />
-                            </div>
-                            <span className="shrink-0 text-[12px] font-medium text-muted">
-                              {p.done}/{p.total} · {mins} min
-                            </span>
-                          </div>
-                        ) : (
-                          <p className="mt-1 text-[12px] font-medium text-muted">Coming soon</p>
-                        )}
-                      </div>
-                      {articles.length > 0 && (
-                        <ChevronDown size={18} className={`mt-1 shrink-0 text-muted transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-                      )}
-                    </button>
-                    <AnimatePresence initial={false}>
-                      {isOpen && articles.length > 0 && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                          className="overflow-hidden border-t border-line"
-                        >
-                          <ol className="divide-y divide-line px-3.5">
-                            {articles.map((a, j) => (
-                              <li key={a.id}>
-                                <ArticleRow article={a} index={j + 1} accent={t.accent} />
-                              </li>
-                            ))}
-                          </ol>
-                          <Link to={`/track/${t.id}`} className="press flex h-11 items-center gap-1 border-t border-line px-3.5 text-[13.5px] font-semibold text-brand-ink">
-                            About this part <ArrowRight size={15} />
-                          </Link>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                </li>
-              );
-            })}
+          <ol className="mx-5 mt-5 space-y-3 pb-8">
+            {tracks.map((t, i) => (
+              <TrackUnit
+                key={t.id}
+                index={i}
+                trackId={t.id}
+                open={openId === t.id}
+                current={next?.track === t.id}
+                nextId={next?.id}
+                onToggle={() => setOpen(openId === t.id ? '' : t.id)}
+              />
+            ))}
           </ol>
         </>
       )}
     </Page>
+  );
+}
+
+/** One part of a subject roadmap: a tinted unit banner that opens into a metro line of articles. */
+function TrackUnit({ index, trackId, open, current, nextId, onToggle }: { index: number; trackId: string; open: boolean; current: boolean; nextId?: string; onToggle: () => void }) {
+  const content = useContent();
+  const progress = useStore('progress');
+  const t = content.trackById.get(trackId)!;
+  const articles = content.articlesInTrack(t.id);
+  const p = trackProgress(articles, progress);
+  const complete = p.total > 0 && p.done === p.total;
+  const mins = articles.reduce((m, a) => m + a.read_minutes, 0);
+  const ref = useRef<HTMLLIElement>(null);
+  // Land on the part you are in, so you never scroll to find your place.
+  useEffect(() => {
+    if (current && index > 0 && ref.current) ref.current.scrollIntoView({ block: 'start' });
+  }, [current, index]);
+
+  return (
+    <li ref={ref} className="scroll-mt-20 overflow-hidden rounded-card border bg-surface" style={{ borderColor: current ? t.accent : 'rgb(var(--border))' }}>
+      <button
+        onClick={() => articles.length && onToggle()}
+        className={`chrome relative flex w-full items-center gap-3 p-3.5 text-left ${articles.length ? '' : 'cursor-default opacity-60'}`}
+        style={{ background: `linear-gradient(120deg, ${t.accent}29, ${t.accent}0A 70%)` }}
+        aria-expanded={articles.length ? open : undefined}
+      >
+        <span className="absolute inset-y-0 left-0 w-1" style={{ background: t.accent }} aria-hidden />
+        <div className="min-w-0 flex-1">
+          <p className="text-[11px] font-bold uppercase tracking-[0.1em]" style={{ color: t.accent }}>
+            Part {t.id === 'my-additions' ? '+' : index + 1}
+            {current ? ' · You are here' : complete ? ' · Done' : ''}
+          </p>
+          <p className="mt-0.5 text-[16px] font-bold leading-snug">{t.title}</p>
+          <p className="mt-0.5 line-clamp-1 text-[12.5px] text-muted">
+            {articles.length ? `${p.done}/${p.total} read · ${mins} min · ${t.subtitle}` : 'Coming soon'}
+          </p>
+        </div>
+        {articles.length > 0 && (
+          <ProgressRing pct={p.pct} size={40} stroke={3.5} color={t.accent} label={`${t.title} progress`}>
+            {complete ? (
+              <Check size={16} strokeWidth={3} style={{ color: t.accent }} />
+            ) : (
+              <ChevronDown size={16} className={`text-muted transition-transform ${open ? 'rotate-180' : ''}`} />
+            )}
+          </ProgressRing>
+        )}
+      </button>
+      <AnimatePresence initial={false}>
+        {open && articles.length > 0 && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden"
+          >
+            <ol className="divide-y divide-line border-t border-line px-3.5">
+              {articles.map((a, j) => (
+                <li key={a.id}>
+                  <ArticleRow article={a} index={j + 1} accent={t.accent} small isNext={a.id === nextId} />
+                </li>
+              ))}
+            </ol>
+            <Link to={`/track/${t.id}`} className="press flex h-11 items-center gap-1 border-t border-line px-3.5 text-[13.5px] font-semibold text-brand-ink">
+              About this part <ArrowRight size={15} />
+            </Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </li>
   );
 }

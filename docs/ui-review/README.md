@@ -1,6 +1,6 @@
 # UI review: organisation pass
 
-Branch: `claude/ui-reorg`. Status: **pending feedback**. Write feedback in `docs/ui-review/FEEDBACK.md` (or in chat) and the next session applies it.
+Branch: `claude/ui-reorg`. Status: **approved** (owner, 2026-11-03: "the design is good").
 
 - `overview.png`: before and after side by side (light). `overview-dark.png`: after, dark theme.
 - `before/` and `after/`: every screen at 390x844, light and dark (`npm run screenshots`).
@@ -18,7 +18,7 @@ Article, Settings and Library are unchanged on purpose (owner: "those are good")
 
 ### Learn (round 2, redesigned)
 1. **Learn now opens on big subject cards** (cover art, title, progress %, read count, "Open roadmap").
-2. **Tapping a subject opens its roadmap**: a header card with your progress and the next article, then the subject's parts drawn as a **path**. Each stop is numbered, finished parts turn into a tick, and the part you are in is highlighted as "You are here".
+2. **Tapping a subject opens its roadmap**: a header card with your progress and the next article, then the subject's parts shown as **colour banner cards** (tinted card, accent strip, "PART 2 · You are here", read count, progress ring). The page opens at the part you are in. Approved by the owner.
 3. **Tap any part** to expand its articles as compact rows (status, read time, P0/P1/P2 badge).
 4. Back arrow returns to the subject cards. The Placement Roadmap (all subjects mixed) is linked at the bottom of the cards.
 
