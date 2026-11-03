@@ -56,7 +56,7 @@ Nobody crashed. Every component did exactly what it was programmed to do. Predic
 In a storm, the radio between the bridge and the engine room fails. The captain on the bridge thinks the first officer has been washed overboard and keeps command. The first officer thinks the captain is lost and takes command too. Now there are **two captains, each thinking they command the ship**, giving opposite orders to the same crew.
 :::
 
-That is **[[split brain]]**, and its cause is not a crash but a **[[network partition]]**: everyone is alive, they just cannot hear each other. The lesson: silence does not mean death.
+That is **[[split brain]]**, and there's a catch in how it starts that we'll see why in a minute: its cause is not a crash but a **[[network partition]]**: everyone is alive, they just cannot hear each other. The lesson: silence does not mean death.
 
 ## How it works
 
@@ -70,6 +70,8 @@ A **[[failure detector]]** usually works by heartbeats: if a node is not heard f
 | Node paused (garbage collection, VM migration) | No heartbeat |
 | Node overloaded, responding very slowly | No heartbeat in time |
 | Network between them failed | No heartbeat |
+
+Take a guess before reading the table: a node goes silent for 12 seconds during a 10-second timeout. What are the odds it actually crashed? You cannot say, and that is the point.
 
 Short timeouts detect real crashes fast but produce false alarms. Long timeouts avoid false alarms but leave a dead node unnoticed longer. Adaptive detectors adjust to the observed delays, and gossip-based ones ask several peers before suspecting, as in [Is That Server Dead, or Just Slow?](article:famous-algos-swim-failure-detection). None can be certain.
 
@@ -91,7 +93,7 @@ Wait, what about the old leader on the minority side, which still thinks it is i
 
 ### Fencing: making sure the old leader stops
 
-Quorums stop a minority from making *new* decisions. But a paused old leader that wakes up may still try to write to shared resources (a disk, storage, a payment API). So systems also **fence** it:
+Here is the catch we promised to come back to. Quorums stop a minority from making *new* decisions. But a paused old leader that wakes up may still try to write to shared resources (a disk, storage, a payment API). So systems also **fence** it:
 
 - **Fencing tokens**: every leader term gets a higher number, and resources reject writes with an older number, as in [One Key to the Shared Room, With a Numbered Tag](article:system-design-distributed-locks-sd).
 - **[[STONITH]]** ("shoot the other node in the head"): power it off through a management interface, or revoke its access to shared storage, before promoting the replacement.
