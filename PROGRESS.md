@@ -14,8 +14,8 @@ Read `HANDOFF.md` first if you are picking this project up.
 | famous-algos | 39 | 0 | 52 | 91 | 32/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core | 78 | 0 | 1 | 79 | 47/47 |
-| **All** | **594** | **0** | **89** | **683** | |
+| cs-core | 79 | 0 | 0 | 79 | 47/47 |
+| **All** | **595** | **0** | **88** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -63,7 +63,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### cs-core
 
-- [ ] `cs-core-cache-coherence` (P2, deep-dive, cs-architecture): Cache Coherence and False Sharing
+_Nothing ready: every planned entry is waiting on a prerequisite, or the subject is complete._
 
 ## Written so far
 
@@ -608,7 +608,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cs-core: 78 written</summary>
+<details><summary>cs-core: 79 written</summary>
 
 - [x] `cs-core-what-an-os-does` What an Operating System Actually Does
 - [x] `cs-core-processes-threads` Processes vs Threads
@@ -686,6 +686,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cs-core-number-representation` Numbers in Hardware: Two's Complement, Floating Point, Endianness
 - [x] `cs-core-compile-link-load` From Source to Running Program: Compile, Link, Load
 - [x] `cs-core-pipelining` Instruction Pipelining and Hazards
+- [x] `cs-core-cache-coherence` Cache Coherence and False Sharing
 - [x] `cs-core-sliding-window-protocols` Stop-and-Wait, Go-Back-N and Selective Repeat
 - [x] `cs-core-pointers-output-questions` Pointers, References and Predict-the-Output Questions
 

@@ -17,8 +17,8 @@ You are continuing a project another Claude session started. Everything you need
 | famous-algos | 39 | 0 | 52 | 91 | 32/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core | 78 | 0 | 1 | 79 | 47/47 |
-| **All** | **594** | **0** | **89** | **683** | |
+| cs-core | 79 | 0 | 0 | 79 | 47/47 |
+| **All** | **595** | **0** | **88** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -48,7 +48,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `paper-yolo` (P2, paper, deep-learning): You Only Look Once: Unified, Real-Time Object Detection
 
 #### cs-core
-- [ ] `cs-core-cache-coherence` (P2, deep-dive, cs-architecture): Cache Coherence and False Sharing
+_Nothing ready: every planned entry is waiting on a prerequisite, or the subject is complete._
 <!-- status:end -->
 
 ## UI review status: approved
