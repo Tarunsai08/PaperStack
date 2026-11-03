@@ -14,8 +14,8 @@ Read `HANDOFF.md` first if you are picking this project up.
 | famous-algos | 38 | 0 | 53 | 91 | 31/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core | 36 | 0 | 43 | 79 | 27/47 |
-| **All** | **551** | **0** | **132** | **683** | |
+| cs-core | 38 | 0 | 41 | 79 | 27/47 |
+| **All** | **553** | **0** | **130** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -66,8 +66,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `cs-core-osi-tcpip` (P0, primer, cs-networks): The OSI and TCP/IP Models
 - [ ] `cs-core-classes-objects` (P0, primer, cs-oop): Classes and Objects in C++
 - [ ] `cs-core-memory-hierarchy` (P0, deep-dive, cs-architecture): The Memory Hierarchy and CPU Caches
-- [ ] `cs-core-thrashing` (P1, deep-dive, cs-os): Thrashing and the Working Set
-- [ ] `cs-core-raid` (P1, deep-dive, cs-os): RAID Levels Explained
 - [ ] `cs-core-io-interrupts-dma` (P1, deep-dive, cs-os): I/O: Polling, Interrupts and DMA
 - [ ] `cs-core-threading-models` (P1, deep-dive, cs-os): User Threads, Kernel Threads and Thread Pools
 - [ ] `cs-core-linux-essentials` (P1, primer, cs-os): Linux Essentials for Interviews
@@ -615,7 +613,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cs-core: 36 written</summary>
+<details><summary>cs-core: 38 written</summary>
 
 - [x] `cs-core-what-an-os-does` What an Operating System Actually Does
 - [x] `cs-core-processes-threads` Processes vs Threads
@@ -633,8 +631,10 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cs-core-segmentation` Segmentation and Segmented Paging
 - [x] `cs-core-virtual-memory` Virtual Memory and Demand Paging
 - [x] `cs-core-page-replacement` Page Replacement: FIFO, LRU, Optimal and CLOCK
+- [x] `cs-core-thrashing` Thrashing and the Working Set
 - [x] `cs-core-file-systems` File Systems: Inodes, Directories and Allocation
 - [x] `cs-core-disk-scheduling` Disk Scheduling: FCFS, SSTF, SCAN, C-SCAN, LOOK
+- [x] `cs-core-raid` RAID Levels Explained
 - [x] `cs-core-dbms-intro` Why Databases Exist
 - [x] `cs-core-er-model` ER Modelling: Entities, Relationships and Cardinality
 - [x] `cs-core-relational-keys` The Relational Model and Keys

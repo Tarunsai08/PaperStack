@@ -1,7 +1,7 @@
 {
- "content_version": "d6cb68cff0504197",
+ "content_version": "fe561f7870c827fd",
  "generated_at": "2026-11-03",
- "count": 551,
+ "count": 553,
  "subjects": [
   {
    "id": "ml",
@@ -55959,6 +55959,94 @@
    "excerpt": "A puzzle first, one that surprised the people who first ran into it. A program runs with 3 frames of memory and causes 9 page faults. You give it 4 frames, a third more memory, and run exactly the same program on exactly the same input. It now causes 10 page faults. More memory, more disk trips. No…"
   },
   {
+   "id": "cs-core-thrashing",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "thrashing",
+   "title": "A Juggler With Too Many Balls Drops All of Them",
+   "subtitle": "Thrashing: the cliff where one missing frame turns 5 page faults into 100, the feedback loop that makes it worse, working-set and page-fault-frequency control, and what Linux does when memory runs out",
+   "track": "cs-os",
+   "track_order": 17,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-page-replacement"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "operating systems",
+    "thrashing",
+    "working set",
+    "page fault frequency",
+    "memory pressure"
+   ],
+   "glossary": [
+    {
+     "term": "Thrashing",
+     "definition": "A state where the system spends most of its time servicing page faults instead of running programs, because active pages do not fit in memory."
+    },
+    {
+     "term": "Degree of multiprogramming",
+     "definition": "The number of processes kept in memory at once."
+    },
+    {
+     "term": "Working-set model",
+     "definition": "Giving each process enough frames for the distinct pages it used in its last Δ references, and suspending processes when the total does not fit."
+    },
+    {
+     "term": "Page-fault frequency",
+     "definition": "PFF: a control scheme that gives a process more frames when its fault rate is above an upper bound and takes frames away when it is below a lower bound."
+    },
+    {
+     "term": "Local replacement",
+     "definition": "A policy where a faulting process may evict only its own pages, so one process's thrashing cannot steal frames from others."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A process loops over pages 1, 2, 3, 4, 5 twenty times under LRU. How many faults with 5 frames, and with 4?",
+     "options": [
+      "5 and 6",
+      "5 and 100",
+      "5 and 20",
+      "20 and 100"
+     ],
+     "answer": 1,
+     "explain": "With 5 frames, only the first touch of each page faults. With 4, LRU always evicts exactly the page needed next, so all 100 references fault; the simulation confirmed both numbers."
+    },
+    {
+     "q": "CPU utilisation drops and the disk is constantly busy with paging. What should the OS do?",
+     "options": [
+      "Admit more processes",
+      "Reduce the degree of multiprogramming by suspending processes",
+      "Lower the page size",
+      "Disable swapping"
+     ],
+     "answer": 1,
+     "explain": "Fewer processes means more frames for each, so working sets fit again and faults fall."
+    },
+    {
+     "q": "What does the page-fault-frequency scheme do when a process's fault rate falls below the lower bound?",
+     "options": [
+      "Suspends it",
+      "Takes frames away from it, since it has more than it needs",
+      "Gives it more frames",
+      "Nothing"
+     ],
+     "answer": 1,
+     "explain": "Frames are moved from processes that fault rarely to processes that fault often."
+    }
+   ],
+   "cover_seed": "thrashing",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.72,
+   "path": "cs-core/thrashing.md",
+   "hash": "0a0461982004",
+   "word_count": 1238,
+   "excerpt": "A laptop with too many browser tabs open suddenly takes ten seconds to switch windows. The CPU monitor shows the processor mostly idle. The disk activity light is on solid. Nothing useful is happening, and yet the machine is working flat out. That is thrashing, and the strange part is how sudden it…"
+  },
+  {
    "id": "cs-core-file-systems",
    "kind": "deep-dive",
    "subject": "cs-core",
@@ -56142,6 +56230,94 @@
    "hash": "43ebd678d00b",
    "word_count": 980,
    "excerpt": "A hard disk can transfer a block in a tiny fraction of a millisecond once its head is in place. Getting the head there, a mechanical arm swinging across the platter, takes several milliseconds. When a hundred requests are waiting, the order in which you serve them can decide whether the disk spends…"
+  },
+  {
+   "id": "cs-core-raid",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "raid",
+   "title": "Spreading a Book Across Shelves, With Backup Pages",
+   "subtitle": "RAID 0, 1, 5, 6 and 10: striping, mirroring and XOR parity worked bit by bit, usable capacity and failures tolerated, the small-write penalty, and why RAID is not a backup",
+   "track": "cs-os",
+   "track_order": 20,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-disk-scheduling"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "operating systems",
+    "storage",
+    "raid",
+    "parity",
+    "redundancy"
+   ],
+   "glossary": [
+    {
+     "term": "Striping",
+     "definition": "Splitting data into chunks spread across several disks so they can be read or written in parallel."
+    },
+    {
+     "term": "Mirroring",
+     "definition": "Writing identical copies of data to two or more disks."
+    },
+    {
+     "term": "Parity",
+     "definition": "An extra block computed as the XOR of data blocks, from which any one missing block can be recomputed."
+    },
+    {
+     "term": "Rebuild",
+     "definition": "Reconstructing a failed disk's contents onto a replacement disk from the surviving disks."
+    },
+    {
+     "term": "Write penalty",
+     "definition": "The extra disk operations a RAID level needs per logical write, such as reading and rewriting parity in RAID 5."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Four 2 TB disks in RAID 5. What is the usable capacity?",
+     "options": [
+      "8 TB",
+      "6 TB",
+      "4 TB",
+      "2 TB"
+     ],
+     "answer": 1,
+     "explain": "One disk's worth of space holds parity: (4 − 1) × 2 TB = 6 TB."
+    },
+    {
+     "q": "Data blocks 0110, 1011, 1100 have parity 0001. The disk holding 1011 fails. How is it rebuilt?",
+     "options": [
+      "It cannot be",
+      "XOR the survivors: 0110 ⊕ 1100 ⊕ 0001 = 1011",
+      "Copy the parity block",
+      "Average the other blocks"
+     ],
+     "answer": 1,
+     "explain": "XOR of all blocks including parity is zero, so the missing one equals the XOR of the rest."
+    },
+    {
+     "q": "Why is RAID not a backup?",
+     "options": [
+      "It is",
+      "It faithfully copies deletions, corruption and ransomware encryption to every disk at once",
+      "It is too slow",
+      "It only works on SSDs"
+     ],
+     "answer": 1,
+     "explain": "RAID protects against disk failure, not against mistakes or attacks. Backups keep older versions elsewhere."
+    }
+   ],
+   "cover_seed": "raid",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.7,
+   "path": "cs-core/raid.md",
+   "hash": "2bce094d9be4",
+   "word_count": 1154,
+   "excerpt": "Disks fail. In a server with dozens of them, a failure is not a question of if but of when. When one fails, two things can go wrong: the data on it is gone, and every program waiting on it stops. RAID (redundant array of independent disks) combines several disks so that one failure loses nothing…"
   },
   {
    "id": "cs-core-dbms-intro",
