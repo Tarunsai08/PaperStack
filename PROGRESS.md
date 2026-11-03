@@ -12,10 +12,10 @@ Read `HANDOFF.md` first if you are picking this project up.
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
-| system-design | 108 | 0 | 11 | 119 | 60/60 |
+| system-design | 110 | 0 | 9 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 16 | 0 | 63 | 79 | 13/47 |
-| **All** | **519** | **0** | **164** | **683** | |
+| **All** | **521** | **0** | **162** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -46,8 +46,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### system-design
 
-- [ ] `system-design-metrics-monitoring` (P1, case-study, sd-cases): Design a Metrics and Alerting System
-- [ ] `system-design-distributed-cache-design` (P1, case-study, sd-cases): Design a Distributed Cache
 - [ ] `system-design-stock-exchange` (P2, case-study, sd-cases): Design a Stock Exchange
 - [ ] `system-design-ad-click-aggregation` (P2, case-study, sd-cases): Design an Ad Click Aggregator
 - [ ] `system-design-pastebin` (P2, case-study, sd-cases): Design Pastebin
@@ -411,7 +409,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>system-design: 108 written</summary>
+<details><summary>system-design: 110 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -479,6 +477,8 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-ecommerce-checkout` Design an E-Commerce Checkout
 - [x] `system-design-food-delivery` Design a Food Delivery App Like Swiggy or Zomato
 - [x] `system-design-distributed-message-queue` Design a Distributed Message Queue Like Kafka
+- [x] `system-design-metrics-monitoring` Design a Metrics and Alerting System
+- [x] `system-design-distributed-cache-design` Design a Distributed Cache
 - [x] `system-design-oop-solid` Object-Oriented Design and SOLID Principles
 - [x] `system-design-creational-patterns` Creational Patterns: Factory, Builder and Singleton
 - [x] `system-design-structural-patterns` Structural Patterns: Adapter, Decorator, Facade, Proxy

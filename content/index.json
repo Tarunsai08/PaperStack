@@ -1,7 +1,7 @@
 {
- "content_version": "091c6f715d09c5df",
+ "content_version": "cc0ff9b0b70898a5",
  "generated_at": "2026-11-03",
- "count": 519,
+ "count": 521,
  "subjects": [
   {
    "id": "ml",
@@ -49538,6 +49538,186 @@
    "hash": "fef50e3bad29",
    "word_count": 1230,
    "excerpt": "Every click, order, payment and log line at a large company becomes an event. Dozens of systems want them: search wants new products, fraud detection wants payments, analytics wants everything, and each of them reads at a different speed. Some are down for an hour and need to catch up. A classic…"
+  },
+  {
+   "id": "system-design-metrics-monitoring",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "metrics-monitoring",
+   "title": "Design a Metrics and Alerting System",
+   "subtitle": "A hospital monitor for every server: collection, ingestion, time-series storage, queries and alert rules, and keeping the monitor alive when production is not",
+   "track": "sd-cases",
+   "track_order": 24,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-time-series-db",
+    "system-design-stream-processing"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "monitoring",
+    "metrics",
+    "alerting",
+    "time series",
+    "observability"
+   ],
+   "glossary": [
+    {
+     "term": "Collection agent",
+     "definition": "A small process on each host or alongside each service that gathers metrics and sends them to the monitoring system, or exposes them to be scraped."
+    },
+    {
+     "term": "Scrape",
+     "definition": "A pull model where the monitoring system periodically fetches metrics from each target's HTTP endpoint."
+    },
+    {
+     "term": "Alert rule",
+     "definition": "A condition evaluated regularly over recent metrics, such as 'error rate above 2% for 5 minutes', that fires a notification when true."
+    },
+    {
+     "term": "Alert deduplication",
+     "definition": "Grouping many firings of the same or related alerts into one notification so on-call engineers are not flooded."
+    },
+    {
+     "term": "Meta-monitoring",
+     "definition": "Monitoring the monitoring system itself, ideally from separate infrastructure, so its failure is noticed."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "10,000 hosts each expose 500 metrics, collected every 10 seconds. How many data points per second arrive?",
+     "options": [
+      "50,000",
+      "500,000",
+      "5,000,000",
+      "5,000"
+     ],
+     "answer": 1,
+     "explain": "10,000 × 500 ÷ 10 = 500,000 points per second, from 5 million distinct series."
+    },
+    {
+     "q": "Why should alert evaluation not depend on the same database cluster as the production system it monitors?",
+     "options": [
+      "It is cheaper",
+      "If they share failure, the outage also takes down the alerts about the outage; monitoring must survive what it watches",
+      "Alert rules need SQL",
+      "It is faster"
+     ],
+     "answer": 1,
+     "explain": "Monitoring is most needed when production is broken, so it must not share production's failure modes."
+    },
+    {
+     "q": "A disk fills on 300 hosts at once and each host's alert fires. What should on-call receive?",
+     "options": [
+      "300 pages",
+      "One grouped notification listing the affected hosts, thanks to deduplication and grouping",
+      "Nothing",
+      "One page per minute per host"
+     ],
+     "answer": 1,
+     "explain": "Grouping by alert name and cluster turns a storm into one actionable notification."
+    }
+   ],
+   "cover_seed": "metrics-monitoring",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.75,
+   "path": "system-design/metrics-monitoring.md",
+   "hash": "cb81acb581d9",
+   "word_count": 1183,
+   "excerpt": "In a hospital, every patient in intensive care is attached to a monitor: heart rate, oxygen, blood pressure, sampled every few seconds, with an alarm that sounds when something crosses a threshold. Nurses do not stare at every screen; the alarms find them. A company with 10,000 servers needs the…"
+  },
+  {
+   "id": "system-design-distributed-cache-design",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "distributed-cache-design",
+   "title": "Design a Distributed Cache",
+   "subtitle": "Many small fridges instead of one giant one: sharding, replication, eviction, hot keys, client libraries, and protecting the database when a cache node dies",
+   "track": "sd-cases",
+   "track_order": 25,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-distributed-cache",
+    "system-design-consistent-hashing-sd"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "distributed cache",
+    "sharding",
+    "replication",
+    "eviction",
+    "hot keys"
+   ],
+   "glossary": [
+    {
+     "term": "Cache node",
+     "definition": "One server holding a share of the cached keys in memory."
+    },
+    {
+     "term": "Smart client",
+     "definition": "A client library that knows the cluster layout and sends each key directly to the node that owns it."
+    },
+    {
+     "term": "Eviction policy",
+     "definition": "The rule for choosing which keys to remove when memory is full, such as least recently used (LRU)."
+    },
+    {
+     "term": "Hot key",
+     "definition": "A key read so often that the one node owning it becomes a bottleneck."
+    },
+    {
+     "term": "Request coalescing",
+     "definition": "When many requests miss on the same key at once, letting only one of them load it from the database while the others wait for that result."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A cluster of 32 cache nodes serves 1 million reads per second at a 95% hit rate. One node dies. Roughly how much does database load rise?",
+     "options": [
+      "Not at all",
+      "From about 50,000 to about 80,000 reads per second, about 60% more",
+      "It doubles exactly",
+      "By 1 million"
+     ],
+     "answer": 1,
+     "explain": "Normally 5% of 1 million reach the database. The dead node's 1/32 share (about 31,000 per second) now misses too, adding roughly 30,000 per second."
+    },
+    {
+     "q": "Why do cache clusters use consistent hashing (or hash slots) instead of hash(key) mod N?",
+     "options": [
+      "It is faster to compute",
+      "Adding or removing a node moves only that node's share of keys instead of reshuffling almost everything, which would empty the cache",
+      "It uses less memory",
+      "It encrypts keys"
+     ],
+     "answer": 1,
+     "explain": "With mod N, changing N remaps most keys, causing a near-total miss storm. Consistent schemes move about 1/N of keys."
+    },
+    {
+     "q": "One product page key receives 200,000 reads per second, more than any single node can serve. What helps?",
+     "options": [
+      "A bigger eviction policy",
+      "Replicate the hot key to several nodes or add a small in-process cache in the application servers",
+      "Delete the key",
+      "Use mod N hashing"
+     ],
+     "answer": 1,
+     "explain": "A hot key lives on one node by design. Spreading reads across replicas or caching it locally for a second or two removes the bottleneck."
+    }
+   ],
+   "cover_seed": "distributed-cache-design",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.78,
+   "path": "system-design/distributed-cache-design.md",
+   "hash": "7c29af2163b4",
+   "word_count": 1176,
+   "excerpt": "Your database can serve about 60,000 reads per second before it struggles. Your product serves 1 million. The difference is a cache cluster answering 95% of reads from memory. That makes the cache not an optimisation but a load-bearing wall. Now picture one of its 32 nodes failing at peak. Predict…"
   },
   {
    "id": "system-design-oop-solid",
