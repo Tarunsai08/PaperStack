@@ -1993,8 +1993,8 @@
    "prerequisites": [
     "cs-core-number-representation"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Preprocessing, compilation, assembly, linking",
@@ -2019,8 +2019,8 @@
    "prerequisites": [
     "cs-core-memory-hierarchy"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Stages",

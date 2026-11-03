@@ -1,7 +1,7 @@
 {
- "content_version": "513a91fe1a31e791",
+ "content_version": "61c91e52d6f872de",
  "generated_at": "2026-11-03",
- "count": 592,
+ "count": 594,
  "subjects": [
   {
    "id": "ml",
@@ -61487,6 +61487,187 @@
    "hash": "b57ab608d76d",
    "word_count": 1283,
    "excerpt": "Type 0.1 + 0.2 into almost any programming language and you get 0.30000000000000004. A shopping cart that adds prices in floating point can be off by a paisa. In 1996, a European rocket was destroyed shortly after launch partly because a 64-bit floating-point value was converted to a 16-bit integer…"
+  },
+  {
+   "id": "cs-core-compile-link-load",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "compile-link-load",
+   "title": "Writing a Book, Binding It and Shelving It",
+   "subtitle": "From source code to a running program: preprocessing, compiling, assembling, linking and loading, traced on a two-file program, with symbols, 'undefined reference' errors, and static versus dynamic libraries",
+   "track": "cs-architecture",
+   "track_order": 3,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-number-representation"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "compilers",
+    "linker",
+    "loader",
+    "static library",
+    "dynamic library",
+    "build process"
+   ],
+   "glossary": [
+    {
+     "term": "Preprocessor",
+     "definition": "The first stage, which handles #include, #define and conditional compilation by plain text substitution."
+    },
+    {
+     "term": "Object file",
+     "definition": "The machine code for one source file (.o), with a symbol table listing what it defines and what it still needs."
+    },
+    {
+     "term": "Linker",
+     "definition": "The tool that combines object files and libraries, resolving each undefined symbol to a definition, and produces an executable."
+    },
+    {
+     "term": "Static library",
+     "definition": "An archive of object files (.a) whose needed parts are copied into the executable at link time."
+    },
+    {
+     "term": "Shared library",
+     "definition": "A library (.so on Linux, .dll on Windows) loaded at run time and shared between programs, so the executable only records that it needs it."
+    },
+    {
+     "term": "Loader",
+     "definition": "The part of the operating system that maps an executable into memory, loads its shared libraries, resolves their symbols and starts it."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "main.cpp calls cube(3), declared in a header, but you link only main.o. What error do you get, and from which stage?",
+     "options": [
+      "Compile error: cube not declared",
+      "Linker error: undefined reference to cube(int)",
+      "Runtime crash",
+      "Preprocessor error"
+     ],
+     "answer": 1,
+     "explain": "The header's declaration satisfied the compiler; the definition was missing at link time. g++ printed: undefined reference to `cube(int)'."
+    },
+    {
+     "q": "#define SQUARE(x) ((x) * (x)) is used as SQUARE(4). When is it replaced, and by what?",
+     "options": [
+      "At run time by a function call",
+      "By the preprocessor, before compilation, with the text ((4) * (4))",
+      "By the linker",
+      "Never"
+     ],
+     "answer": 1,
+     "explain": "g++ -E showed the expanded line containing ((4) * (4))."
+    },
+    {
+     "q": "A program linked against a shared library fails to start with 'cannot open shared object file'. Which component is complaining?",
+     "options": [
+      "The compiler",
+      "The dynamic loader, at program start",
+      "The preprocessor",
+      "The assembler"
+     ],
+     "answer": 1,
+     "explain": "The executable built fine; the loader could not find libmathx.so until LD_LIBRARY_PATH pointed at it."
+    }
+   ],
+   "cover_seed": "compile-link-load",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.68,
+   "path": "cs-core/compile-link-load.md",
+   "hash": "0cd0e9317819",
+   "word_count": 1225,
+   "excerpt": "You type g++ main.cpp mathx.cpp -o app and a program appears. That one command actually ran four different tools in a row, and when something goes wrong, the error message comes from one of them. \"Undefined reference\" and \"cannot open shared object file\" are two of the most common errors new C++…"
+  },
+  {
+   "id": "cs-core-pipelining",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "pipelining",
+   "title": "An Assembly Line for Instructions",
+   "subtitle": "Instruction pipelining: the five classic stages, the speed-up formula worked out, data, control and structural hazards, forwarding and the load-use stall traced cycle by cycle, and branch prediction",
+   "track": "cs-architecture",
+   "track_order": 4,
+   "priority": "P2",
+   "prerequisites": [
+    "cs-core-memory-hierarchy"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "computer architecture",
+    "pipelining",
+    "hazards",
+    "forwarding",
+    "branch prediction"
+   ],
+   "glossary": [
+    {
+     "term": "Pipeline stage",
+     "definition": "One step of instruction execution, such as fetch or execute, done by a dedicated part of the processor in one clock cycle."
+    },
+    {
+     "term": "Hazard",
+     "definition": "A situation that stops the next instruction from entering its stage in the next cycle: data, control or structural."
+    },
+    {
+     "term": "Stall",
+     "definition": "A bubble deliberately inserted into the pipeline, delaying an instruction by a cycle until a hazard clears."
+    },
+    {
+     "term": "Forwarding",
+     "definition": "Sending a result directly from a later pipeline stage to an earlier one that needs it, without waiting for it to be written to the register file."
+    },
+    {
+     "term": "Branch prediction",
+     "definition": "Guessing the outcome of a branch so the pipeline can keep fetching, and discarding the wrongly fetched instructions if the guess was wrong."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A 5-stage pipeline runs 100 instructions with no hazards. How many cycles, and what is the speed-up over a non-pipelined design that takes 5 cycles per instruction?",
+     "options": [
+      "100 cycles, 5x",
+      "104 cycles, about 4.8x",
+      "500 cycles, 1x",
+      "105 cycles, 4.76x"
+     ],
+     "answer": 1,
+     "explain": "Pipelined: k + n − 1 = 5 + 99 = 104 cycles. Non-pipelined: 5 × 100 = 500. 500 / 104 ≈ 4.81."
+    },
+    {
+     "q": "LW R1, 0(R2) is followed immediately by ADD R3, R1, R4. With full forwarding, how many stall cycles are needed?",
+     "options": [
+      "0",
+      "1",
+      "2",
+      "3"
+     ],
+     "answer": 1,
+     "explain": "A load's value is ready only after the memory stage, one cycle too late for the ADD's execute stage even with forwarding: the load-use stall."
+    },
+    {
+     "q": "What does a branch misprediction cost?",
+     "options": [
+      "Nothing",
+      "The instructions fetched down the wrong path are discarded, wasting the cycles they occupied",
+      "The program restarts",
+      "A cache miss"
+     ],
+     "answer": 1,
+     "explain": "Deep pipelines make mispredictions expensive, which is why predictors are highly accurate."
+    }
+   ],
+   "cover_seed": "pipelining",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.6,
+   "path": "cs-core/pipelining.md",
+   "hash": "2194de7b8d41",
+   "word_count": 1163,
+   "excerpt": "A laundry has a washer, a dryer and a folding table. Doing one load completely before starting the next leaves two machines idle at any moment. Start the second wash while the first is drying, and the third while the second dries and the first is folded, and three loads are in progress at once. No…"
   }
  ]
 }
