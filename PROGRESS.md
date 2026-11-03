@@ -12,10 +12,10 @@ Read `HANDOFF.md` first if you are picking this project up.
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
-| system-design | 72 | 0 | 47 | 119 | 60/60 |
+| system-design | 74 | 0 | 45 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 8 | 0 | 71 | 79 | 7/47 |
-| **All** | **475** | **0** | **208** | **683** | |
+| **All** | **477** | **0** | **206** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -46,8 +46,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### system-design
 
-- [ ] `system-design-deployments` (P1, deep-dive, sd-scaling): Shipping Safely: Blue-Green, Canary and Feature Flags
-- [ ] `system-design-multi-region` (P1, deep-dive, sd-scaling): Multi-Region Architectures and Disaster Recovery
 - [ ] `system-design-autoscaling` (P1, deep-dive, sd-scaling): Autoscaling: Matching Capacity to Demand
 - [ ] `system-design-data-modeling-scale` (P1, deep-dive, sd-scaling): Data Modelling for Scale: Denormalisation and Access Patterns
 - [ ] `system-design-web-crawler` (P1, case-study, sd-cases): Design a Web Crawler
@@ -56,6 +54,8 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `system-design-job-scheduler` (P1, case-study, sd-cases): Design a Distributed Job Scheduler
 - [ ] `system-design-photo-sharing` (P1, case-study, sd-cases): Design Instagram
 - [ ] `system-design-proximity-service` (P1, case-study, sd-cases): Design a Nearby Places Service Like Yelp
+- [ ] `system-design-hotel-reservation` (P1, case-study, sd-cases): Design a Hotel Reservation System
+- [ ] `system-design-ecommerce-checkout` (P1, case-study, sd-cases): Design an E-Commerce Checkout
 
 ### ml
 
@@ -412,7 +412,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>system-design: 72 written</summary>
+<details><summary>system-design: 74 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -452,6 +452,8 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-resilience-patterns` Timeouts, Retries and Circuit Breakers
 - [x] `system-design-backpressure-load-shedding` Backpressure and Load Shedding
 - [x] `system-design-observability` Observability: Logs, Metrics and Traces
+- [x] `system-design-deployments` Shipping Safely: Blue-Green, Canary and Feature Flags
+- [x] `system-design-multi-region` Multi-Region Architectures and Disaster Recovery
 - [x] `system-design-url-shortener` Design a URL Shortener
 - [x] `system-design-rate-limiter` Design a Rate Limiter
 - [x] `system-design-unique-id-generator` Design a Unique ID Generator
@@ -598,6 +600,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - system-design-logger-lld has an article but is still marked planned
 - system-design-cache-lld has an article but is still marked planned
 - system-design-rate-limiter-lld has an article but is still marked planned
+- system-design-pub-sub-lld has an article but is still marked planned
 - cs-core-monitors-condition-variables has an article but is still marked planned
 - cs-core-classic-sync-problems has an article but is still marked planned
 - cs-core-deadlocks has an article but is still marked planned
@@ -605,3 +608,4 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - cs-core-paging-tlb has an article but is still marked planned
 - cs-core-segmentation has an article but is still marked planned
 - cs-core-virtual-memory has an article but is still marked planned
+- cs-core-page-replacement has an article but is still marked planned
