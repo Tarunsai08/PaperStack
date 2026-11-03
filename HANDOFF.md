@@ -12,23 +12,20 @@ You are continuing a project another Claude session started. Everything you need
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 154 | 0 | 4 | 158 | 74/74 |
+| dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 114 | 0 | 3 | 117 | 29/29 |
 | famous-algos | 36 | 0 | 55 | 91 | 29/32 |
 | system-design | 45 | 0 | 74 | 119 | 45/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 79 | 79 | 0/47 |
-| **All** | **432** | **0** | **251** | **683** | |
+| **All** | **436** | **0** | **247** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
 ### Next to write (top 5 per subject; full list in PROGRESS.md)
 
 #### dsa
-- [ ] `dsa-counting-pairs` (P1, pattern, dsa-search-sort): Counting Pairs: Sort, Two Pointers and Fenwick Trees
-- [ ] `dsa-state-space-search` (P1, pattern, dsa-graphs): Shortest Paths Over States: Keys, Fuel and Stops
-- [ ] `dsa-counting-dp-strings` (P1, pattern, dsa-dp): Counting Valid Strings With DP and a Modulo
-- [ ] `dsa-debugging-unfamiliar-code` (P2, primer, dsa-start): Finding the Bug in Code You Did Not Write
+_Nothing ready: every planned entry is waiting on a prerequisite, or the subject is complete._
 
 #### cp
 - [ ] `cp-xor-basis` (P2, pattern, cp-math): XOR Basis: Linear Algebra Over Bits
@@ -44,10 +41,10 @@ Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
 #### system-design
 - [ ] `system-design-behavioural-patterns` (P0, lld, sd-lld): Behavioural Patterns: Strategy, Observer, State and Command
-- [ ] `system-design-consistent-hashing-sd` (P0, deep-dive, sd-distributed): Consistent Hashing in System Design Interviews
-- [ ] `system-design-consensus-overview` (P0, deep-dive, sd-distributed): Consensus in Practice: Raft, Paxos, etcd and ZooKeeper
-- [ ] `system-design-networking-essentials` (P1, deep-dive, sd-fundamentals): TCP, UDP and QUIC for System Designers
-- [ ] `system-design-proxies` (P1, deep-dive, sd-fundamentals): Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere
+- [ ] `system-design-machine-coding-approach` (P0, lld, sd-lld): How to Ace a Machine Coding Round
+- [ ] `system-design-parking-lot` (P0, lld, sd-lld): Design a Parking Lot
+- [ ] `system-design-elevator-system` (P0, lld, sd-lld): Design an Elevator System
+- [ ] `system-design-vending-machine` (P0, lld, sd-lld): Design a Vending Machine With the State Pattern
 
 #### ml
 - [ ] `paper-layer-normalization` (P2, paper, deep-learning): Layer Normalization

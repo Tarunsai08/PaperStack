@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 154 | 0 | 4 | 158 | 74/74 |
+| dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 114 | 0 | 3 | 117 | 29/29 |
 | famous-algos | 36 | 0 | 55 | 91 | 29/32 |
 | system-design | 45 | 0 | 74 | 119 | 45/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 79 | 79 | 0/47 |
-| **All** | **432** | **0** | **251** | **683** | |
+| **All** | **436** | **0** | **247** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -25,10 +25,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### dsa
 
-- [ ] `dsa-counting-pairs` (P1, pattern, dsa-search-sort): Counting Pairs: Sort, Two Pointers and Fenwick Trees
-- [ ] `dsa-state-space-search` (P1, pattern, dsa-graphs): Shortest Paths Over States: Keys, Fuel and Stops
-- [ ] `dsa-counting-dp-strings` (P1, pattern, dsa-dp): Counting Valid Strings With DP and a Modulo
-- [ ] `dsa-debugging-unfamiliar-code` (P2, primer, dsa-start): Finding the Bug in Code You Did Not Write
+_Nothing ready: every planned entry is waiting on a prerequisite, or the subject is complete._
 
 ### cp
 
@@ -52,15 +49,15 @@ Planned entries whose prerequisites are already written, by priority then path o
 ### system-design
 
 - [ ] `system-design-behavioural-patterns` (P0, lld, sd-lld): Behavioural Patterns: Strategy, Observer, State and Command
+- [ ] `system-design-machine-coding-approach` (P0, lld, sd-lld): How to Ace a Machine Coding Round
+- [ ] `system-design-parking-lot` (P0, lld, sd-lld): Design a Parking Lot
+- [ ] `system-design-elevator-system` (P0, lld, sd-lld): Design an Elevator System
+- [ ] `system-design-vending-machine` (P0, lld, sd-lld): Design a Vending Machine With the State Pattern
+- [ ] `system-design-splitwise` (P0, lld, sd-lld): Design Splitwise
 - [ ] `system-design-consistent-hashing-sd` (P0, deep-dive, sd-distributed): Consistent Hashing in System Design Interviews
 - [ ] `system-design-consensus-overview` (P0, deep-dive, sd-distributed): Consensus in Practice: Raft, Paxos, etcd and ZooKeeper
 - [ ] `system-design-networking-essentials` (P1, deep-dive, sd-fundamentals): TCP, UDP and QUIC for System Designers
 - [ ] `system-design-proxies` (P1, deep-dive, sd-fundamentals): Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere
-- [ ] `system-design-search-systems` (P1, deep-dive, sd-blocks): Search Systems: Elasticsearch and Inverted Indexes
-- [ ] `system-design-api-gateway` (P1, deep-dive, sd-blocks): API Gateways and Service Discovery
-- [ ] `system-design-storage-types` (P1, deep-dive, sd-blocks): Block, File and Object Storage
-- [ ] `system-design-olap-warehouses` (P1, deep-dive, sd-blocks): Columnar Storage and Data Warehouses
-- [ ] `system-design-multi-region` (P1, deep-dive, sd-scaling): Multi-Region Architectures and Disaster Recovery
 
 ### ml
 
@@ -77,7 +74,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 154 written</summary>
+<details><summary>dsa: 158 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -232,7 +229,11 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-lfu-cache` Designing an LFU Cache
 - [x] `dsa-interview-dsa-revision` The Night-Before Revision Sheet
 - [x] `dsa-oa-strategy` Cracking Online Assessments: Time, Partial Scores and Hidden Tests
+- [x] `dsa-debugging-unfamiliar-code` Finding the Bug in Code You Did Not Write
+- [x] `dsa-counting-pairs` Counting Pairs: Sort, Two Pointers and Fenwick Trees
 - [x] `dsa-contribution-technique` The Contribution Technique: Counting Each Element's Share
+- [x] `dsa-state-space-search` Shortest Paths Over States: Keys, Fuel and Stops
+- [x] `dsa-counting-dp-strings` Counting Valid Strings With DP and a Modulo
 
 </details>
 
@@ -533,3 +534,11 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `paper-the-llama-3-herd-of-models` The Engineering Playbook of Llama 3
 
 </details>
+
+## Mismatches to fix
+
+- system-design-behavioural-patterns has an article but is still marked planned
+- system-design-machine-coding-approach has an article but is still marked planned
+- cs-core-what-an-os-does has an article but is still marked planned
+- cs-core-processes-threads has an article but is still marked planned
+- cs-core-process-states has an article but is still marked planned
