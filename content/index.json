@@ -1,5 +1,5 @@
 {
- "content_version": "cccdf50e7936db0b",
+ "content_version": "e58ac4780e9acb5d",
  "generated_at": "2026-11-02",
  "count": 422,
  "subjects": [
@@ -39095,7 +39095,7 @@
     "dsa-hashing-patterns"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "probabilistic data structures",
     "hashing",
@@ -39163,8 +39163,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.93,
    "path": "famous-algos/bloom-filter.md",
-   "hash": "baf5ecbda7a5",
-   "word_count": 1047,
+   "hash": "0bb7933c1841",
+   "word_count": 1307,
    "excerpt": "Your database holds a billion keys spread across hundreds of files on disk. A request arrives for a key that does not exist. Without help, the database might open file after file, paying for a slow disk read each time, only to answer \"not found\". Now imagine a little helper sitting in memory that…"
   },
   {
@@ -39181,7 +39181,7 @@
     "famous-algos-bloom-filter"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "probabilistic data structures",
     "streaming",
@@ -39250,8 +39250,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.86,
    "path": "famous-algos/count-min-sketch.md",
-   "hash": "10cc9c0588f4",
-   "word_count": 1050,
+   "hash": "03c255d4031b",
+   "word_count": 1233,
    "excerpt": "Every second, a busy network router sees hundreds of thousands of packets from countless IP addresses. Somewhere in that flood, one address is sending far more than its share: maybe a misconfigured server, maybe an attack. The router has a few megabytes of fast memory and no time to keep a full…"
   },
   {
@@ -39337,8 +39337,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "famous-algos/hyperloglog.md",
-   "hash": "a4027cc89c36",
-   "word_count": 999,
+   "hash": "7480dfac239c",
+   "word_count": 1167,
    "excerpt": "A news site wants to show \"1.2 million people read this today.\" Counting page views is easy: add one per view. Counting distinct readers is not. The obvious way is to keep a set of every reader ID seen today, and for a popular site that set has millions of entries, for every article, every day.…"
   },
   {
@@ -39424,8 +39424,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.78,
    "path": "famous-algos/minhash.md",
-   "hash": "63e407e35fff",
-   "word_count": 993,
+   "hash": "281891d1127a",
+   "word_count": 1136,
    "excerpt": "A search engine crawls billions of pages and finds that many are almost copies of each other: the same news story syndicated across hundreds of sites, product pages differing only in a header, mirrored documentation. Showing ten copies of one article in the results is useless. But comparing every…"
   },
   {
@@ -39442,7 +39442,7 @@
     "dsa-hashing-patterns"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 4,
+   "read_minutes": 5,
    "topics": [
     "distributed systems",
     "hashing",
@@ -39511,8 +39511,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.94,
    "path": "famous-algos/consistent-hashing.md",
-   "hash": "73d7f607e098",
-   "word_count": 970,
+   "hash": "6030c11a4aac",
+   "word_count": 1205,
    "excerpt": "It is the biggest sale of the year, and your cache cluster is struggling. You add a fifth server to the four you have. Within seconds, almost every cache lookup starts missing, the database behind the cache is flooded with requests, and the site slows to a crawl. Adding capacity made things worse.…"
   },
   {
@@ -39529,7 +39529,7 @@
     "famous-algos-consistent-hashing"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 4,
+   "read_minutes": 5,
    "topics": [
     "distributed systems",
     "logical clocks",
@@ -39598,8 +39598,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "famous-algos/lamport-clocks.md",
-   "hash": "16a14e9d2239",
-   "word_count": 980,
+   "hash": "8209630c21fd",
+   "word_count": 1127,
    "excerpt": "Two servers record events with their own clocks. Server A logs \"user deleted the file\" at 10:00:00.120. Server B logs \"user edited the file\" at 10:00:00.100. So the edit came first? Not necessarily: B's clock might run 50 milliseconds fast. Physical clocks on different machines never agree exactly,…"
   },
   {
@@ -39685,8 +39685,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.85,
    "path": "famous-algos/vector-clocks.md",
-   "hash": "4832f7347f13",
-   "word_count": 998,
+   "hash": "35322e32da63",
+   "word_count": 1204,
    "excerpt": "You add a book to your shopping cart on your phone. A moment later, on your laptop, you add headphones. Both requests reach different replicas of the cart service during a brief network hiccup. When the replicas sync, which cart is right? If the system simply keeps the \"latest\" write, one of your…"
   },
   {
@@ -39703,7 +39703,7 @@
     "famous-algos-consistent-hashing"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 4,
+   "read_minutes": 5,
    "topics": [
     "distributed systems",
     "gossip",
@@ -39776,8 +39776,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.84,
    "path": "famous-algos/gossip-protocols.md",
-   "hash": "cc145da44767",
-   "word_count": 913,
+   "hash": "9c61d95f1b6b",
+   "word_count": 1074,
    "excerpt": "In an office of five hundred people, nobody sends an email to announce that the manager is leaving. Yet by lunch, everyone knows. Each person mentions it to a couple of colleagues at the coffee machine, those colleagues tell a couple more, and the news races through the building with no one in…"
   },
   {
@@ -39794,7 +39794,7 @@
     "famous-algos-gossip-protocols"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 4,
+   "read_minutes": 5,
    "topics": [
     "distributed systems",
     "failure detection",
@@ -39863,8 +39863,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.76,
    "path": "famous-algos/swim-failure-detection.md",
-   "hash": "06a7c40766e5",
-   "word_count": 943,
+   "hash": "0f36da21c202",
+   "word_count": 1094,
    "excerpt": "In a cluster of a thousand machines, some machine is always having a bad moment: a long garbage collection pause, a saturated network card, a reboot. The cluster must notice real failures quickly, so it can stop routing traffic to dead machines. But if it panics at every hiccup, it will keep…"
   },
   {
@@ -39881,7 +39881,7 @@
     "dsa-hashing-patterns"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 4,
+   "read_minutes": 5,
    "topics": [
     "hashing",
     "distributed systems",
@@ -39951,8 +39951,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "famous-algos/merkle-trees.md",
-   "hash": "200d94c20352",
-   "word_count": 953,
+   "hash": "ad55cfce7364",
+   "word_count": 1136,
    "excerpt": "Two database replicas in different data centres each hold a billion records. They should be identical, but after a network hiccup some writes may have reached one and not the other. Comparing every record would mean shipping terabytes across the ocean. What if each side could summarise all billion…"
   },
   {
@@ -39969,7 +39969,7 @@
     "famous-algos-lamport-clocks"
    ],
    "difficulty": "advanced",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "distributed systems",
     "consensus",
@@ -40043,8 +40043,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.94,
    "path": "famous-algos/raft.md",
-   "hash": "e99f5dca5cb1",
-   "word_count": 1148,
+   "hash": "de1bbea6b680",
+   "word_count": 1368,
    "excerpt": "Kubernetes stores everything it knows about your cluster, every pod, every config, every secret, in etcd. If etcd's servers ever disagreed about what is stored, your cluster would start doing contradictory things. Yet those servers crash, reboot and lose network links all the time. They stay in…"
   },
   {
@@ -40134,8 +40134,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "famous-algos/tcp-congestion-control.md",
-   "hash": "46285d2822a6",
-   "word_count": 1038,
+   "hash": "df5c6c85c0e2",
+   "word_count": 1198,
    "excerpt": "In October 1986, the link between Lawrence Berkeley Laboratory and UC Berkeley, a few hundred metres apart, saw its throughput fall from 32 kilobits per second to about 40 bits per second. The network was not broken. It was so full of retransmitted packets that almost nothing useful got through: a…"
   },
   {
@@ -40152,7 +40152,7 @@
     "dsa-big-o"
    ],
    "difficulty": "beginner",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "rate limiting",
     "networking",
@@ -40225,8 +40225,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.9,
    "path": "famous-algos/token-bucket.md",
-   "hash": "3ac6eacc78c5",
-   "word_count": 1060,
+   "hash": "5e21c74b2bad",
+   "word_count": 1255,
    "excerpt": "A popular API serves millions of developers. One of them writes a loop with a bug and starts sending ten thousand requests a second. Without a limit, that one script can slow the service for everyone else. But most real clients are bursty, not abusive: an app opening a screen fires twenty requests…"
   },
   {
@@ -40243,7 +40243,7 @@
     "famous-algos-token-bucket"
    ],
    "difficulty": "beginner",
-   "read_minutes": 4,
+   "read_minutes": 5,
    "topics": [
     "retries",
     "networking",
@@ -40312,8 +40312,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.86,
    "path": "famous-algos/exponential-backoff.md",
-   "hash": "50004edf9797",
-   "word_count": 927,
+   "hash": "05fae6035ca5",
+   "word_count": 1107,
    "excerpt": "A database hiccups for two seconds. Ten thousand app servers see errors and immediately retry. Then retry again. And again. The database comes back to find not its normal load but several times it, all arriving in the same instant, and falls over again. A two-second blip becomes a twenty-minute…"
   },
   {
@@ -40330,7 +40330,7 @@
     "famous-algos-consistent-hashing"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 4,
+   "read_minutes": 5,
    "topics": [
     "load balancing",
     "randomised algorithms",
@@ -40398,8 +40398,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.84,
    "path": "famous-algos/power-of-two-choices.md",
-   "hash": "32eab7d9cffa",
-   "word_count": 919,
+   "hash": "2cc256775c9b",
+   "word_count": 1106,
    "excerpt": "You are at a supermarket with twenty checkout lines. Choosing a line at random works badly: sometimes you land behind three full trolleys while the next line is empty. Checking all twenty lines works well but takes ages, and everyone rushes to the same \"shortest\" line. Now try something lazy:…"
   },
   {
@@ -40417,7 +40417,7 @@
     "dsa-sorting-as-tool"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 4,
+   "read_minutes": 5,
    "topics": [
     "databases",
     "storage engines",
@@ -40490,8 +40490,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.92,
    "path": "famous-algos/lsm-trees.md",
-   "hash": "108c768859ce",
-   "word_count": 958,
+   "hash": "99cce0e8a8e0",
+   "word_count": 1134,
    "excerpt": "A messaging app stores billions of messages, and every second hundreds of thousands more arrive. A storage engine that updates records in place, seeking to the right spot on disk for every write, would spend most of its time jumping around. Many modern databases take a different approach: never…"
   },
   {
@@ -40508,7 +40508,7 @@
     "famous-algos-lsm-trees"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 4,
+   "read_minutes": 5,
    "topics": [
     "databases",
     "durability",
@@ -40581,8 +40581,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "famous-algos/write-ahead-log.md",
-   "hash": "79b8e8adee5e",
-   "word_count": 957,
+   "hash": "91fcb7a9cf90",
+   "word_count": 1124,
    "excerpt": "A bank's database is halfway through moving money: it has subtracted ₹5,000 from your account, but not yet added it to your friend's. Then the power fails. When the machine restarts, did the money vanish? In a well-built database, no. Before touching the real data, it wrote one line in an…"
   },
   {
@@ -40599,7 +40599,7 @@
     "famous-algos-write-ahead-log"
    ],
    "difficulty": "advanced",
-   "read_minutes": 4,
+   "read_minutes": 5,
    "topics": [
     "databases",
     "concurrency control",
@@ -40672,8 +40672,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.84,
    "path": "famous-algos/mvcc.md",
-   "hash": "0bf4d42bdd7c",
-   "word_count": 952,
+   "hash": "72051d276feb",
+   "word_count": 1145,
    "excerpt": "An analyst starts a report that reads every order from the last year, which takes ten minutes. Meanwhile, the shop keeps selling: thousands of new orders and refunds per minute. If the report locked every row it read, the shop would freeze for ten minutes. If it read rows without any protection, it…"
   },
   {
@@ -40690,7 +40690,7 @@
     "dsa-binary-search"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "geospatial",
     "indexing",
@@ -40763,8 +40763,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.86,
    "path": "famous-algos/geohash.md",
-   "hash": "504386217fbf",
-   "word_count": 1073,
+   "hash": "4f2bbae90af1",
+   "word_count": 1289,
    "excerpt": "A food delivery app has 300,000 restaurants and a hungry user at a particular latitude and longitude. \"Show restaurants within 3 km\" sounds easy, but computing the distance to all 300,000 for every search, thousands of times a second, is wasteful. And a normal database index sorts by one number at…"
   },
   {
@@ -40781,7 +40781,7 @@
     "dsa-sliding-window"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "compression",
     "lz77",
@@ -40854,8 +40854,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.86,
    "path": "famous-algos/lz77.md",
-   "hash": "664bc2847869",
-   "word_count": 1195,
+   "hash": "edfa406e6519",
+   "word_count": 1336,
    "excerpt": "Open a web page and the HTML, CSS and JavaScript usually arrive compressed, often to a fraction of their size. Download a ZIP file, save a PNG, or look at a server log archived as .gz, and the same trick is at work. Text, code and logs repeat themselves constantly: the same tags, the same variable…"
   },
   {
@@ -40946,8 +40946,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.74,
    "path": "famous-algos/deflate.md",
-   "hash": "28d09e2cd9be",
-   "word_count": 1293,
+   "hash": "c96d9bd97ed4",
+   "word_count": 1404,
    "excerpt": "Every time a web page loads, there is a good chance its HTML, CSS and JavaScript travelled across the network squeezed by gzip. Every ZIP file you have opened, and every PNG image on your screen, used the same compressor inside. It was designed in the early 1990s by Phil Katz for his PKZIP program…"
   },
   {
@@ -40964,7 +40964,7 @@
     "famous-algos-lz77"
    ],
    "difficulty": "advanced",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "compression",
     "burrows-wheeler",
@@ -41033,8 +41033,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.68,
    "path": "famous-algos/burrows-wheeler.md",
-   "hash": "5aaaef0dcd6b",
-   "word_count": 1197,
+   "hash": "29bc81de5ae8",
+   "word_count": 1333,
    "excerpt": "Some ideas look like magic tricks. Take a text, write down every way of rotating it, sort those rotations alphabetically, and keep only the last letter of each. You get a scrambled string with the same letters as before, except that equal letters now tend to sit together. Stranger still, from that…"
   },
   {
@@ -41051,7 +41051,7 @@
     "dsa-bit-basics"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "encoding",
     "varint",
@@ -41121,8 +41121,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.66,
    "path": "famous-algos/varints-delta.md",
-   "hash": "0a757d6831a5",
-   "word_count": 1096,
+   "hash": "e7dc1819438c",
+   "word_count": 1223,
    "excerpt": "A typical int64 field takes 8 bytes. But most numbers that real systems send are small: a count of 3, a status of 1, an age of 27, a field number of 5. Spending 8 bytes on the number 3 means seven of them are zeros, sent over the network, written to disk and read back millions of times a second.…"
   },
   {
@@ -41139,7 +41139,7 @@
     "dsa-bit-basics"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "error detection",
     "crc",
@@ -41208,8 +41208,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.68,
    "path": "famous-algos/crc.md",
-   "hash": "e3f320ac02b8",
-   "word_count": 1198,
+   "hash": "b36001497c2d",
+   "word_count": 1326,
    "excerpt": "Every Ethernet frame your computer sends ends with 4 extra bytes. They contain no data at all. They exist so that the receiving network card can tell, almost for free, whether any of the preceding bits were flipped by electrical noise on the way. If the check fails, the frame is silently dropped…"
   },
   {
@@ -41295,8 +41295,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.68,
    "path": "famous-algos/hamming-codes.md",
-   "hash": "aa114d46f454",
-   "word_count": 1254,
+   "hash": "c59cc0bc30c5",
+   "word_count": 1384,
    "excerpt": "As Richard Hamming later told the story, in the late 1940s he was using relay computers at Bell Labs that could detect certain errors but not fix them. When the machine detected an error it simply stopped, and over a weekend his job would sit unfinished until someone restarted it. His frustration…"
   },
   {
@@ -41313,7 +41313,7 @@
     "famous-algos-hamming-codes"
    ],
    "difficulty": "advanced",
-   "read_minutes": 6,
+   "read_minutes": 7,
    "topics": [
     "error correction",
     "reed-solomon",
@@ -41387,8 +41387,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.84,
    "path": "famous-algos/reed-solomon.md",
-   "hash": "aef13c1701b3",
-   "word_count": 1399,
+   "hash": "96a0933a4b16",
+   "word_count": 1551,
    "excerpt": "Spill coffee on a QR code, tear off a corner, or print a logo in the middle of it, and your phone still scans it. Scratch a CD and the music still plays. Lose three disks at once in a large storage cluster, and nobody loses a file. All three survive damage for the same reason: their data is…"
   },
   {
@@ -41405,7 +41405,7 @@
     "dsa-hashing-patterns"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "cryptography",
     "hashing",
@@ -41474,8 +41474,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "famous-algos/cryptographic-hashing.md",
-   "hash": "0895a3193228",
-   "word_count": 1050,
+   "hash": "fcaa9e50d411",
+   "word_count": 1225,
    "excerpt": "Type \"PaperStack\" into a SHA-256 calculator and you get 64 hexadecimal characters. Change one letter to \"paperStack\" and the output looks completely unrelated. Not a little different: about half of its bits flip, with no visible pattern. That strange property, plus the fact that nobody can work…"
   },
   {
@@ -41492,7 +41492,7 @@
     "famous-algos-cryptographic-hashing"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "security",
     "passwords",
@@ -41565,8 +41565,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.86,
    "path": "famous-algos/password-hashing.md",
-   "hash": "3fb7b19f47c9",
-   "word_count": 1053,
+   "hash": "7f0d30ab890f",
+   "word_count": 1241,
    "excerpt": "Every few months, some company announces that its user database was stolen. The question that decides how bad it is: how were the passwords stored? If they were plain text, every account is open immediately. If they were hashed with a fast hash, most weak and common passwords are cracked within…"
   },
   {
@@ -41583,7 +41583,7 @@
     "cp-binary-exponentiation"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "cryptography",
     "key exchange",
@@ -41656,8 +41656,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "famous-algos/diffie-hellman.md",
-   "hash": "20ec13a28295",
-   "word_count": 1191,
+   "hash": "c3aad3e9ce04",
+   "word_count": 1364,
    "excerpt": "You open a website you have never visited. Within a fraction of a second, your browser and a server on another continent agree on a secret key that encrypts everything you send. They have never met, they share no password, and every message they exchanged to agree on that key crossed networks where…"
   },
   {
@@ -41747,8 +41747,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.9,
    "path": "famous-algos/rsa.md",
-   "hash": "cdb3d911ede9",
-   "word_count": 1237,
+   "hash": "b18c0a821f1f",
+   "word_count": 1425,
    "excerpt": "Diffie-Hellman showed in 1976 that two strangers can agree on a secret in public. But it left an obvious question open: could you publish one thing, once, so that anyone in the world could send you a secret message, or check that a message really came from you, without ever talking to you first? A…"
   },
   {
@@ -41839,8 +41839,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "famous-algos/digital-signatures.md",
-   "hash": "edc61e884a58",
-   "word_count": 1235,
+   "hash": "b7fab850b23c",
+   "word_count": 1425,
    "excerpt": "You type your bank's address and a padlock appears. Your browser has never met this server, and the network in between could be a café's Wi-Fi run by anyone. Yet within a fraction of a second it decided: this really is the bank, not someone pretending. That decision rests on two ideas. A digital…"
   },
   {
@@ -41857,7 +41857,7 @@
     "dsa-hashing-patterns"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "search",
     "information retrieval",
@@ -41934,8 +41934,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "famous-algos/inverted-index.md",
-   "hash": "7148c03da126",
-   "word_count": 1052,
+   "hash": "2e9007db93a6",
+   "word_count": 1227,
    "excerpt": "Type three words into a search box and results from billions of pages appear in a fraction of a second. Reading every page for those words would take far longer than that, even for a huge data centre. The search engine is not reading pages when you search. It did the reading long before, and built…"
   },
   {
@@ -41952,7 +41952,7 @@
     "famous-algos-inverted-index"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "search",
     "ranking",
@@ -42026,8 +42026,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.86,
    "path": "famous-algos/tf-idf-bm25.md",
-   "hash": "324c414ed4c0",
-   "word_count": 1158,
+   "hash": "c6d23a4de3e5",
+   "word_count": 1284,
    "excerpt": "You search a recipe site for \"tomato pasta\". A lookup in an inverted index, as in The Index at the Back of Every Search Engine, instantly finds every document containing either word: a pasta recipe, a soup page that says \"tomato\" three times, an essay on the history of tomatoes, a quick pasta…"
   },
   {
@@ -42114,8 +42114,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.82,
    "path": "famous-algos/rsync-rolling-checksum.md",
-   "hash": "f08af8f05720",
-   "word_count": 1210,
+   "hash": "9add98e43f45",
+   "word_count": 1346,
    "excerpt": "You have a 2 GB database backup on a remote server, and today's version on your laptop differs from yesterday's in a few scattered places. Uploading 2 GB again over a slow link takes an hour. If both machines could somehow agree on which parts are the same, you would send a few megabytes instead.…"
   },
   {
@@ -42132,7 +42132,7 @@
     "dsa-big-o"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "kalman filter",
     "estimation",
@@ -42210,8 +42210,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.84,
    "path": "famous-algos/kalman-filter.md",
-   "hash": "26cd78ea2cef",
-   "word_count": 1166,
+   "hash": "febccf1a4422",
+   "word_count": 1302,
    "excerpt": "The blue dot on your phone's map moves smoothly as you walk, even though the GPS reading behind it jumps around by several metres, and even when it drops out under a flyover. Your phone is not trusting any single source. It combines a prediction from the phone's motion sensors with each noisy GPS…"
   },
   {

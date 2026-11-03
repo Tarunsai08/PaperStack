@@ -178,6 +178,16 @@ Common misconception: "Diffie-Hellman makes the connection secure by itself." It
 - **Quantum computers**: Shor's algorithm would solve discrete logarithms efficiently, so post-quantum key exchanges are being deployed alongside or in place of classic Diffie-Hellman.
 - **It only creates a key**: actual encryption uses a symmetric cipher such as AES with that key.
 
+### Interview follow-ups
+
+**"What is forward secrecy and how does Diffie-Hellman give it?"** Forward secrecy means stealing a server's long-term key later does not unlock past recorded sessions. Use a fresh (ephemeral) Diffie-Hellman key pair per session and throw it away; the long-term key only signs the exchange. TLS 1.3 key exchange is always ephemeral.
+
+**"How does a man-in-the-middle attack work here?"** The attacker runs one exchange with Alice and another with Bob, posing as each to the other, and relays traffic while reading it. The fix is authentication: the server signs its Diffie-Hellman share and the client checks the signature against a certificate.
+
+**"Why do modern systems prefer elliptic curves?"** ECDH reaches similar security with far smaller keys and faster maths, so handshakes are cheaper. X25519 is a widely used choice.
+
+**"Diffie-Hellman versus RSA key transport?"** With RSA key transport, the client encrypts a secret to the server's long-term key, so stealing that key later decrypts old sessions. Ephemeral Diffie-Hellman avoids this, which is why TLS 1.3 removed RSA key transport.
+
 ## Key takeaways
 
 - Diffie-Hellman lets two parties create a shared secret over a public channel without any prior shared key.

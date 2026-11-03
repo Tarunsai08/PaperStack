@@ -152,6 +152,16 @@ Common misconception: "Count-Min Sketch is accurate for every item." The error i
 - **Only overestimates with additions.** If you also subtract counts, the one-sided guarantee weakens, and variants are needed.
 - **Error grows with total volume.** Long-running sketches are often reset or decayed over time windows.
 
+### Interview follow-ups
+
+**"Size a sketch so the error is at most 0.1% of the stream with 99% confidence."** Width w = ⌈e/ε⌉ = ⌈2.718/0.001⌉ = 2,719 and depth d = ⌈ln(1/δ)⌉ = ⌈ln 100⌉ = 5. That is 13,595 counters, about 54 KB with 4-byte counters, whatever the number of distinct items.
+
+**"Find the top 10 hashtags in a stream with this."** Keep the sketch for counts plus a min-heap of size 10 holding candidate names. For each arrival, update the sketch, read the estimate, and push it into the heap if it beats the heap's minimum. The sketch counts; the heap remembers names.
+
+**"Why take the minimum across rows?"** Every row overestimates, because collisions only add. The smallest estimate has the least collision noise, so it is the tightest upper bound.
+
+**"How do you count over the last hour only?"** Keep one sketch per time bucket, for example per minute, add new buckets and drop old ones. Sketches with the same shape and hashes merge by adding counters cell by cell, so the hour is the sum of 60 small sketches.
+
 ## Key takeaways
 
 - A Count-Min Sketch counts items in a stream using a fixed grid of counters, one hash function per row.

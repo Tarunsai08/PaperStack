@@ -153,6 +153,16 @@ Common misconception: "LSM trees are strictly better than B-trees." They trade r
 - **Space amplification**: old versions and tombstones occupy space until compaction removes them.
 - **Tuning is complex**: leveled versus size-tiered compaction trade read, write and space costs differently.
 
+### Interview follow-ups
+
+**"Walk through a read for a key that does not exist."** Check the memtable, then each on-disk file from newest to oldest. A per-file Bloom filter answers "definitely not here" for most files, so most of them are skipped without touching disk.
+
+**"How does a delete work if files are immutable?"** Write a tombstone, a record that says "this key is deleted". Reads that hit the tombstone stop and return not found. Compaction later drops the tombstone together with the older values it hides.
+
+**"Leveled or size-tiered compaction?"** Leveled compaction keeps each level's key ranges non-overlapping, so a read checks few files, at the cost of more rewriting: better for reads and space. Size-tiered merges similar-sized files, rewriting less: better for heavy writes, but reads may check more files and space usage is higher.
+
+**"When would you pick a B-tree instead?"** When reads dominate, data is updated in place often, and predictable read latency matters more than ingest speed. Many relational databases use B-trees; write-heavy stores such as Cassandra and RocksDB use LSM trees.
+
 ## Key takeaways
 
 - An LSM tree buffers writes in an in-memory memtable and flushes them as immutable, sorted SSTables.

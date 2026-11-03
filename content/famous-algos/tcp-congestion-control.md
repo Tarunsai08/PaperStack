@@ -158,6 +158,14 @@ Common misconception: "packet loss always means congestion." On wireless links, 
 - **Long, fast paths**: linear growth of one packet per round trip is too slow to fill high-bandwidth, long-distance links, which is why variants like CUBIC grow faster.
 - **Not all traffic cooperates**: applications that open many connections or use aggressive UDP protocols can take more than a fair share.
 
+### Interview follow-ups
+
+**"Describe slow start and AIMD."** Slow start doubles the congestion window every round trip until it hits a threshold or sees loss. Then congestion avoidance adds about one segment per round trip (additive increase) and cuts the window, roughly in half, on loss (multiplicative decrease). The sawtooth that results shares bandwidth fairly between flows.
+
+**"Why is a long, fast link hard to fill?"** The window must cover the bandwidth-delay product. At 100 Mbit/s with a 100 ms round trip, that is 100,000,000 × 0.1 / 8 = 1.25 MB in flight. Growing by one segment per round trip takes a very long time to get there, which motivated faster-growing algorithms such as CUBIC.
+
+**"How is congestion control different from flow control?"** Flow control protects the receiver: it advertises how much buffer it has. Congestion control protects the network: the sender guesses how much the path can carry. The sender uses the smaller of the two windows.
+
 ## Key takeaways
 
 - TCP congestion control adjusts a congestion window, the amount of unacknowledged data in flight, to match what the network can carry.

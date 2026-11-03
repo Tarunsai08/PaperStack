@@ -150,6 +150,16 @@ Common misconception: "vector clocks resolve conflicts." They only detect them. 
 - **Siblings push complexity to clients.** Applications must handle multiple values on read, which many developers find surprising.
 - **Last-write-wins is simpler**, and many systems choose it instead, accepting that some concurrent writes are lost.
 
+### Interview follow-ups
+
+**"Compare [2,1,0] and [1,2,0]."** Neither is less than or equal to the other in every position (2 > 1 in the first, 1 < 2 in the second), so the events are concurrent: a conflict. Compare [1,1,0] with [2,1,0] instead and the first happened before the second, because every entry is ≤ and at least one is <.
+
+**"Two users edit the same shopping cart on different replicas. What happens?"** The replicas end up with concurrent versions. The store keeps both as siblings and returns both on the next read. The application merges them, for a cart typically by taking the union of items, and writes back a version whose clock dominates both.
+
+**"Why do many systems use last-write-wins instead?"** It is simple: one value, no siblings, no client merge code. The price is silently losing one of two concurrent writes, which is acceptable for some data (a profile picture) and not for others (a cart or a counter).
+
+**"How do CRDTs relate?"** A CRDT is a data type designed so concurrent updates always merge automatically and deterministically, for example a counter that keeps one sub-count per replica. Vector clocks detect concurrency; CRDTs remove the need for a human-written merge.
+
 ## Key takeaways
 
 - A vector clock keeps one counter per machine, so it records how much of every machine's history a version has seen.

@@ -183,6 +183,14 @@ Common misconception: "splitting both files into fixed blocks and comparing hash
 - **CPU cost on the sender** grows with file size, even when nothing changed.
 - **The weak checksum is easy to collide deliberately**, which is why the strong hash must always confirm a match.
 
+### Interview follow-ups
+
+**"Why two checksums, a weak and a strong one?"** The weak rolling checksum can slide one byte in O(1), so it can be checked at every offset; it has many false matches. Only when the weak one matches is the expensive strong hash computed to confirm. Cheap filter first, expensive check rarely.
+
+**"Who computes what?"** The receiver, which has the old file, sends checksums of its blocks. The sender, which has the new file, rolls over every offset, finds matches, and sends back "copy block 7" or literal bytes. Only the differences travel.
+
+**"Where else does content-defined chunking or rolling hashing show up?"** Backup and deduplication tools use rolling hashes to cut files into chunks at content-dependent boundaries, so an insertion shifts only nearby chunks. Rabin-Karp string matching uses the same rolling idea.
+
 ## Key takeaways
 
 - rsync sends only the differences between an old and a new file, without either side holding both copies.

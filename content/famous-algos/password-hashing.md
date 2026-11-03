@@ -150,6 +150,16 @@ Common misconception: "we encrypt our passwords, so they are safe." Encryption i
 - **Too slow hurts you.** A huge work factor makes logins slow and turns your login endpoint into a denial-of-service target; tune it to your hardware.
 - **Online guessing is a separate problem**, handled by rate limits, lockouts and CAPTCHAs, not by the hash.
 
+### Interview follow-ups
+
+**"Why salt, and must the salt be secret?"** A unique random salt per user means identical passwords hash differently, so attackers cannot use precomputed tables or crack every "123456" at once. The salt is stored next to the hash in plain sight; its job is uniqueness, not secrecy.
+
+**"bcrypt, scrypt or Argon2?"** All three are deliberately slow. bcrypt is long established; scrypt and Argon2 are also memory-hard, which makes GPU and custom-hardware attacks much more expensive. Argon2id is a common modern recommendation. Pick a cost that takes a noticeable fraction of a second on your servers and raise it as hardware improves.
+
+**"What is a pepper?"** An extra secret mixed into every hash and stored outside the database, for example in a secrets manager. A database leak alone then is not enough to start guessing.
+
+**"How do you upgrade from an old, fast hash without asking users to reset?"** On each successful login you have the plaintext for a moment: verify against the old hash, then rehash with the new function and store it. Optionally wrap the remaining old hashes inside the new function right away.
+
 ## Key takeaways
 
 - Never store passwords in plain text or with fast hashes; store a salted, deliberately slow hash.

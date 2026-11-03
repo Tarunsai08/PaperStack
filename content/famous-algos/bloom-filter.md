@@ -153,6 +153,18 @@ Common misconception: "you can delete from a Bloom filter by clearing bits." Bit
 - **It fills up.** As more items are added than it was sized for, the false positive rate climbs. You must estimate n up front or rebuild a bigger filter.
 - **"Probably yes" still needs a real check**, so it only helps when "no" is the common answer.
 
+### Interview follow-ups
+
+**"Size a filter for 1 million keys at a 1% false positive rate."** Use m = −n·ln p / (ln 2)² ≈ 9.6 million bits, about 1.2 MB, and k = (m/n)·ln 2 ≈ 6.6, so 7 hash functions. Say the rule of thumb out loud too: about 10 bits per key buys roughly 1%, and every extra ~5 bits per key cuts the rate by about 10x.
+
+**"What happens if you insert 3 million keys into that filter?"** Nothing crashes, but more bits turn to 1 and the false positive rate climbs steeply. Fixes: size for the expected peak, rebuild a larger filter, or use a scalable Bloom filter that adds new, larger layers as it fills.
+
+**"How do you merge two filters, say from two shards?"** If both use the same m, k and hash functions, take the bitwise OR. The result is exactly the filter you would get by inserting both sets. The intersection via AND is only approximate.
+
+**"Where would you put one in a system design?"** In front of anything slow where "no" is the common answer: per-file filters in an LSM-tree database, "has this user seen this item" checks in a feed, or "is this username taken" before a database query. Always name what happens on a false positive: one wasted lookup, never a wrong answer.
+
+**"Can it ever say no for an item you inserted?"** No, unless bits are cleared or the filter is rebuilt without the item. That one-sided guarantee is the whole reason it is safe to use.
+
 ## Key takeaways
 
 - A Bloom filter answers set membership with "definitely not" or "probably yes", using only a bit array and a few hash functions.

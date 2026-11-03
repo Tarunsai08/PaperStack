@@ -148,6 +148,16 @@ Common misconception: "writing to a file means the data is on disk." Operating s
 - **Logs grow** until checkpoints let them be recycled; slow checkpoints mean long recovery times.
 - **Disks can lie**: some storage devices acknowledge writes before they are truly persistent, which undermines the guarantee unless configured carefully.
 
+### Interview follow-ups
+
+**"Why is appending to a log faster than updating the data pages?"** An append is one sequential write to the end of one file. Updating pages means random writes scattered across the data file. The log makes the commit durable; the pages can be updated lazily later.
+
+**"How does recovery work after a crash?"** Start from the last checkpoint and replay (redo) every logged change after it. Changes from transactions that never committed are skipped or undone. Checkpoints exist so replay starts near the end instead of at the beginning of time.
+
+**"fsync on every commit is slow. What do databases do?"** Group commit: wait a moment, gather many transactions' log records, and fsync once for all of them. Each commit waits slightly longer, but throughput rises a lot.
+
+**"How does the WAL help replication?"** The log is an ordered list of every change, so replicas can apply the same stream. Streaming replication and change data capture tools read the log instead of querying tables.
+
 ## Key takeaways
 
 - A write-ahead log records every change in an append-only file before the main data is updated.

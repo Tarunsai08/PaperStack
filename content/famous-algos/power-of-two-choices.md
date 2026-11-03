@@ -140,6 +140,16 @@ Common misconception: "more samples are always better, so check ten servers." Ga
 - **Different server capacities** need weighting; comparing raw counts on a big and a small server is misleading.
 - **Sticky requirements** such as session affinity or cache locality, where a request must go to a particular server, need consistent hashing instead, as in [Adding a Server Without Moving Everything](article:famous-algos-consistent-hashing).
 
+### Interview follow-ups
+
+**"What does sampling two servers actually buy you?"** Throwing n balls into n bins at random, the fullest bin ends up with about log n / log log n balls. Letting each ball pick the less loaded of two random bins drops that to about log log n / log 2: an exponential improvement from one extra sample.
+
+**"Why not just send every request to the least loaded server?"** Load information is always a little stale. If every balancer sees the same "idle" server, they all send to it at once and overload it, then all move to the next one. Two random samples keep choices spread out.
+
+**"What load signal would you use?"** Something cheap and current: in-flight requests per server is common. Latency-weighted signals help when servers differ in speed. Weight by capacity if machines are of different sizes.
+
+**"Where would you mention it in a design interview?"** When describing the load balancer: "for each request, pick two backends at random and send to the one with fewer active requests". It is simple, needs no global coordination, and handles skew much better than round robin.
+
 ## Key takeaways
 
 - The power of two choices samples two random servers and sends work to the less loaded of the two.

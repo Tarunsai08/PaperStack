@@ -196,6 +196,14 @@ Common misconception: "Reed-Solomon can always fix up to n − k damaged symbols
 - **Length limit**: over the 256-element field a codeword is at most 255 symbols, so large data is split into many codewords and often interleaved.
 - **Errors beyond capacity** may go undetected; systems pair Reed-Solomon with checksums such as a CRC, as in [The Remainder That Notices Smudges](article:famous-algos-crc).
 
+### Interview follow-ups
+
+**"Compare 3x replication with a 6 + 3 Reed-Solomon code for storage."** Replication stores 3 bytes per byte of data and survives the loss of 2 copies. A 6 + 3 code stores 9 pieces for 6 pieces of data, 1.5 bytes per byte, and survives the loss of any 3 pieces. The price is repair cost and CPU: rebuilding one lost piece reads 6 others.
+
+**"Erasure versus error?"** An erasure is a missing piece at a known position, like a dead disk; an error is a wrong value somewhere unknown, like a smudged QR module. With n − k parity symbols you can recover n − k erasures but only ⌊(n − k)/2⌋ errors.
+
+**"When would you still choose replication?"** For hot data that needs fast reads and cheap repair, and for small objects where splitting into pieces adds overhead. Many storage systems replicate new or hot data and erasure-code cold data.
+
 ## Key takeaways
 
 - Reed-Solomon codes encode k data symbols as a polynomial of degree below k and store its values at n points.

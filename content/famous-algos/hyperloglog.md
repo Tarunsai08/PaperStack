@@ -154,6 +154,16 @@ Common misconception: "HyperLogLog can tell you whether a specific user visited.
 - **No deletions.** You cannot remove an item, because registers only remember maximums.
 - **Intersections are weak.** Unions merge perfectly, but estimating "users in both A and B" by subtraction adds up the errors and can be very inaccurate for small overlaps.
 
+### Interview follow-ups
+
+**"How accurate is it, and how much memory?"** Standard error is about 1.04/√m for m registers. With m = 16,384 registers of 6 bits that is about 0.81% error in 12,288 bytes, which is where the famous 12 KB comes from. Quadrupling memory halves the error.
+
+**"Daily unique users are stored per day. How do you get weekly uniques?"** Merge the 7 daily sketches by taking the register-wise maximum, then estimate. You cannot add the 7 daily counts, because a user active on 3 days would be counted 3 times. Mergeability is the reason HyperLogLog wins this question.
+
+**"Why does it need a good hash?"** The whole method reads leading zeros of hashed values as random coin flips. A biased hash makes some patterns too common and the estimate drifts.
+
+**"What about very small counts?"** The raw estimator is biased when many registers are still zero, so implementations switch to linear counting (estimating from the number of empty registers) for small cardinalities.
+
 ## Key takeaways
 
 - HyperLogLog estimates the number of distinct items using only a small array of registers, independent of how many items arrive.

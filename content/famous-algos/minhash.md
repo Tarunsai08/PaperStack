@@ -155,6 +155,14 @@ Common misconception: "MinHash finds similar pairs among n documents quickly on 
 - **Shingle choice matters.** Too short and unrelated documents look similar; too long and small edits break many shingles.
 - **Small signatures are noisy.** Thresholds need enough hash functions to separate "near-duplicate" from "somewhat related" reliably.
 
+### Interview follow-ups
+
+**"Why does the probability that two MinHash values match equal Jaccard similarity?"** Under a random permutation, the first element of A ∪ B to appear is equally likely to be any element of the union. Both sets share the same minimum exactly when that element is in A ∩ B, so the probability is |A ∩ B| / |A ∪ B|.
+
+**"How does banding (LSH) find candidate pairs?"** Split each signature into b bands of r rows; two documents become candidates if any band matches exactly. With b = 20 and r = 5, a pair with similarity 0.8 becomes a candidate with probability 1 − (1 − 0.8⁵)²⁰ ≈ 0.9996, while a pair at 0.3 does so only about 4.7% of the time.
+
+**"Where is it used?"** Near-duplicate detection for web crawling and search, deduplicating training data for language models, and plagiarism or similar-item detection.
+
 ## Key takeaways
 
 - Jaccard similarity measures how much two sets overlap, and documents become sets of shingles.

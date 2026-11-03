@@ -208,6 +208,14 @@ Common misconception: "the BWT compresses data." It is a permutation: the output
 - **Needs a terminator or index**: without the end marker or the original row number, inversion is ambiguous.
 - **Gains depend on context**: text and DNA cluster well; random or already compressed data gains nothing.
 
+### Interview follow-ups
+
+**"How does the BWT help search, not just compression?"** The FM-index stores the BWT plus small rank tables and can count occurrences of a pattern by stepping backwards through it, in time proportional to the pattern length, using little more space than the compressed text. DNA read aligners rely on this.
+
+**"How is the transform inverted?"** The last column is the output; sorting it gives the first column. The k-th occurrence of a letter in the last column is the same text position as the k-th occurrence in the first column, so you can walk backwards through the original text from the end marker.
+
+**"Why sort rotations instead of building them all?"** Building n rotations of length n costs O(n²) memory. Real implementations sort suffixes with a suffix array, never materialising the rotations.
+
 ## Key takeaways
 
 - The Burrows-Wheeler transform sorts all rotations of the text and outputs the last column, which groups letters that precede similar contexts.

@@ -200,6 +200,14 @@ Common misconception: "one stage does all the compressing." LZ77 alone leaves ev
 - **Already compressed data** (JPEG, MP4, ZIP) does not shrink further; DEFLATE falls back to stored blocks.
 - **Compression can be slow** at high levels, because finding the best matches takes search effort; decompression stays fast.
 
+### Interview follow-ups
+
+**"Where would you meet DEFLATE in a system?"** gzip on HTTP responses, ZIP archives and PNG images all use it. For an API, compressing JSON responses often cuts their size several times over at modest CPU cost.
+
+**"gzip, Brotli or Zstandard for a new service?"** gzip is supported everywhere. Brotli usually compresses web text better and is widely supported by browsers. Zstandard offers a wide speed-ratio range and fast decompression, popular for internal storage and logs. Measure on your own data.
+
+**"When should you not compress?"** For already compressed media such as JPEG or MP4, for tiny payloads where headers dominate, and when CPU, not bandwidth, is the bottleneck.
+
 ## Key takeaways
 
 - DEFLATE chains LZ77, which replaces repeated phrases with back-references, and Huffman coding, which gives frequent symbols shorter codes.

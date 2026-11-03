@@ -145,6 +145,16 @@ Common misconception: "hashing is encryption." Encryption is reversible with a k
 - **The trusted digest must itself be trusted.** If an attacker can replace the published digest along with the file, the check proves nothing.
 - **Length extension**: with Merkle-Damgård hashes like SHA-256, hash(secret + message) can be extended without knowing the secret, which is why HMAC exists.
 
+### Interview follow-ups
+
+**"How hard is finding a collision for SHA-256?"** The birthday bound says about 2^(n/2) tries for an n-bit hash, so about 2^128 for SHA-256, far beyond any computer. Finding a second input matching a given hash (second preimage) is about 2^256.
+
+**"Is SHA-256(secret + message) a safe way to authenticate a message?"** No. SHA-256 is vulnerable to length extension: knowing the hash of secret + message lets an attacker compute the hash of secret + message + extra without the secret. Use HMAC, which is built to avoid this.
+
+**"Hash table hash versus cryptographic hash?"** A hash table needs speed and good spreading; a cryptographic hash needs to be infeasible to invert or collide, even against an attacker. Using a fast non-cryptographic hash on attacker-controlled keys can enable collision floods; some languages randomise their table hashes for this reason.
+
+**"Where do you use one in system design?"** Content addressing and deduplication (store a blob under its hash), integrity checks on downloads, Merkle trees, and idempotency or cache keys built from request contents.
+
 ## Key takeaways
 
 - A cryptographic hash maps any input to a fixed-size digest that is practically impossible to reverse or to collide on purpose.

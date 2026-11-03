@@ -191,6 +191,14 @@ Common misconception: "BM25 has fixed, correct constants." k₁ and b are tunabl
 - **No quality signals**: a relevant but low-quality page can outrank a better one, so real engines add freshness, popularity and learned re-ranking on top.
 - **Query terms are treated independently**, ignoring how words combine.
 
+### Interview follow-ups
+
+**"Why does BM25 beat plain TF-IDF?"** Two fixes. Term-frequency saturation: the 20th occurrence of a word adds far less than the 2nd, controlled by k₁. Length normalisation: a long document gets less credit per occurrence, controlled by b. Both match how relevance actually behaves.
+
+**"Search results feel wrong for synonyms. What do you add?"** Keyword scoring only matches exact terms. Add synonym expansion, or combine BM25 with vector (embedding) search in a hybrid ranker, and then often a learned re-ranker on the top results.
+
+**"Where does BM25 sit in a modern search stack?"** As a fast first stage: retrieve the top few hundred candidates with an inverted index and BM25, then re-rank them with heavier signals such as freshness, popularity or a machine-learned model.
+
 ## Key takeaways
 
 - TF-IDF scores a document by multiplying how often a query term appears by how rare the term is across the collection.

@@ -200,6 +200,16 @@ Common misconception: "RSA is just c = m^e mod n." That textbook form is insecur
 - **Bad randomness breaks it**: if two keys share a prime because of a weak random generator, computing a GCD of their moduli reveals it.
 - **Quantum risk**: Shor's algorithm would factor n efficiently on a large quantum computer, so post-quantum signatures are being introduced.
 
+### Interview follow-ups
+
+**"Why does HTTPS not encrypt the page with RSA?"** RSA is slow and can only encrypt a message smaller than its key. Systems use public-key cryptography to authenticate and agree on a key, then switch to a fast symmetric cipher such as AES for the data.
+
+**"Encrypting versus signing with RSA?"** Encrypt with the recipient's public key so only their private key can decrypt. Sign a hash with your own private key so anyone can verify with your public key. Different padding schemes are used for each: OAEP for encryption, PSS for signatures.
+
+**"Why is RSA secure, and what breaks it?"** Recovering the private key from n is believed to require factoring n into its two primes, which is infeasible for 2048-bit and larger keys with classical computers. Weak random number generation for the primes, missing padding, or a large quantum computer running Shor's algorithm would break it.
+
+**"Why is e usually 65537?"** It is prime and has only two 1 bits in binary, so public-key operations (encryption and signature verification) are fast, while being large enough to avoid the attacks that affect very small exponents.
+
 ## Key takeaways
 
 - RSA publishes n = p × q and an exponent e, while keeping the primes and the private exponent d secret.

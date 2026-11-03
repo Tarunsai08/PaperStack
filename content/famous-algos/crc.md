@@ -199,6 +199,14 @@ Common misconception: "a CRC protects data from tampering." CRCs are linear and 
 - **Limited by length**: very large files can contain undetected errors with probability about 2⁻³², which is why storage systems also use stronger hashes end to end.
 - **Variants differ**: initial value, bit order and final XOR vary between standards, so two "CRC-32" implementations can disagree unless every parameter matches.
 
+### Interview follow-ups
+
+**"What errors is CRC-32 guaranteed to catch?"** All single-bit errors and every burst error of length 32 or less, among others. Random larger corruption slips through with probability about 2⁻³². That is why it suits accidental noise in network frames and files.
+
+**"CRC or SHA-256 for checking a downloaded file?"** Against accidental corruption, CRC is enough and much faster. Against an attacker who can change the file, only a cryptographic hash from a trusted source (or a signature) works, because a CRC can be recomputed or forced to match.
+
+**"Why is CRC so fast in hardware?"** It is polynomial division with XOR and no carries, which maps onto a shift register with a few XOR gates. Software uses lookup tables or CPU instructions built for it.
+
 ## Key takeaways
 
 - A CRC treats data as a polynomial over bits and sends the remainder of dividing it by a fixed generator polynomial.
