@@ -1,7 +1,7 @@
 {
- "content_version": "fd21cb87a1604f3c",
+ "content_version": "8b297e903b6c655e",
  "generated_at": "2026-11-03",
- "count": 539,
+ "count": 541,
  "subjects": [
   {
    "id": "ml",
@@ -56714,6 +56714,191 @@
    "hash": "681145516147",
    "word_count": 1345,
    "excerpt": "Back to the exam cell's sheet from the last article: roll, name, course, instructor, instructor's department, grade, all in one table. It looks convenient. Then three things happen in one week. Asha's name is corrected in three of her five rows (an update anomaly). A new course with an assigned…"
+  },
+  {
+   "id": "cs-core-transactions-acid",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "transactions-acid",
+   "title": "A Bank Transfer That Happens Completely or Not at All",
+   "subtitle": "Transactions and ACID: what each letter promises, which part of the database keeps that promise, the transaction state diagram, and the anomalies that interleaving causes",
+   "track": "cs-dbms",
+   "track_order": 11,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-dbms-intro"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "dbms",
+    "transactions",
+    "acid",
+    "isolation",
+    "durability",
+    "schedules"
+   ],
+   "glossary": [
+    {
+     "term": "Transaction",
+     "definition": "A sequence of reads and writes that the database treats as one logical unit of work, ending in commit or abort."
+    },
+    {
+     "term": "Atomicity",
+     "definition": "All of a transaction's changes happen, or none do; a failure part-way undoes the partial changes."
+    },
+    {
+     "term": "Isolation",
+     "definition": "Concurrent transactions do not see each other's half-finished work; the result matches some one-at-a-time order, to the degree the isolation level promises."
+    },
+    {
+     "term": "Durability",
+     "definition": "Once a transaction commits, its changes survive crashes, because they are recorded on stable storage first."
+    },
+    {
+     "term": "Schedule",
+     "definition": "The order in which the operations of several concurrent transactions are actually executed."
+    },
+    {
+     "term": "Lost update",
+     "definition": "An anomaly where two transactions read the same value, both write, and one write silently overwrites the other."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A transfer credits B and then fails while debiting A. What does atomicity guarantee?",
+     "options": [
+      "B keeps the credit",
+      "The credit to B is undone, so neither balance changes",
+      "A is debited later",
+      "The database crashes"
+     ],
+     "answer": 1,
+     "explain": "Running this in SQLite with a CHECK on balance: the failed debit made the whole transaction roll back, and both balances stayed as before."
+    },
+    {
+     "q": "Which component mainly provides durability?",
+     "options": [
+      "The query optimiser",
+      "The write-ahead log forced to disk at commit, used by recovery",
+      "Foreign keys",
+      "Indexes"
+     ],
+     "answer": 1,
+     "explain": "Commit returns only after the log records describing the changes are on stable storage, so recovery can redo them after a crash."
+    },
+    {
+     "q": "Two transactions both read a balance of 100; one adds 10, the other adds 20, and both write. The final balance is 120. What happened?",
+     "options": [
+      "A dirty read",
+      "A lost update",
+      "A phantom",
+      "Nothing wrong"
+     ],
+     "answer": 1,
+     "explain": "The correct one-at-a-time result is 130. The second write overwrote the first, losing its +10."
+    }
+   ],
+   "cover_seed": "transactions-acid",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.92,
+   "path": "cs-core/transactions-acid.md",
+   "hash": "fdee01c06c8b",
+   "word_count": 1145,
+   "excerpt": "You send ₹30 to a friend. The bank's database does two writes: take 30 from your account, add 30 to theirs. Now imagine the server loses power exactly between the two writes. If the debit happened and the credit did not, ₹30 has vanished. If the credit happened first and the debit did not, the bank…"
+  },
+  {
+   "id": "cs-core-serializability",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "serializability",
+   "title": "Did the Interleaved Cooks Still Make the Right Dish?",
+   "subtitle": "Schedules and serializability: conflicting operations, precedence graphs, conflict versus view serializability, and recoverable, cascadeless and strict schedules",
+   "track": "cs-dbms",
+   "track_order": 12,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-transactions-acid"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "dbms",
+    "transactions",
+    "serializability",
+    "precedence graph",
+    "recoverability"
+   ],
+   "glossary": [
+    {
+     "term": "Conflicting operations",
+     "definition": "Two operations from different transactions on the same item where at least one is a write; swapping them can change the result."
+    },
+    {
+     "term": "Conflict serializable",
+     "definition": "A schedule that can be turned into a serial one by swapping adjacent non-conflicting operations; tested with a precedence graph."
+    },
+    {
+     "term": "Precedence graph",
+     "definition": "A graph with one node per transaction and an edge Ti → Tj when an operation of Ti conflicts with and comes before an operation of Tj."
+    },
+    {
+     "term": "View serializable",
+     "definition": "A schedule where every read sees the same writer and the final writes are the same as in some serial schedule; a weaker, harder-to-test condition."
+    },
+    {
+     "term": "Recoverable schedule",
+     "definition": "A schedule where a transaction commits only after every transaction it read data from has committed."
+    },
+    {
+     "term": "Cascadeless schedule",
+     "definition": "A schedule where transactions read only committed data, so one abort never forces others to abort."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Schedule R1(A) R2(A) W1(A) W2(A). Is it conflict serializable?",
+     "options": [
+      "Yes, as T1 then T2",
+      "No: R1(A) before W2(A) gives T1 → T2, and R2(A) before W1(A) gives T2 → T1, a cycle",
+      "Yes, as T2 then T1",
+      "Only if A is indexed"
+     ],
+     "answer": 1,
+     "explain": "A cycle in the precedence graph means no serial order matches. This schedule is exactly the lost update."
+    },
+    {
+     "q": "Which pair of operations does NOT conflict?",
+     "options": [
+      "W1(A), R2(A)",
+      "R1(A), R2(A)",
+      "R1(A), W2(A)",
+      "W1(A), W2(A)"
+     ],
+     "answer": 1,
+     "explain": "Two reads never conflict: swapping them cannot change any value."
+    },
+    {
+     "q": "T2 reads A written by T1, then T2 commits, then T1 aborts. What is wrong?",
+     "options": [
+      "Nothing",
+      "The schedule is not recoverable: T2 committed a result based on data that never officially existed",
+      "It is a phantom",
+      "It is a deadlock"
+     ],
+     "answer": 1,
+     "explain": "To be recoverable, T2 must commit only after T1 commits. Cascadeless schedules avoid the problem entirely by not reading uncommitted data."
+    }
+   ],
+   "cover_seed": "serializability",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.86,
+   "path": "cs-core/serializability.md",
+   "hash": "c5bcff77aac8",
+   "word_count": 1219,
+   "excerpt": "In the last article, two transactions each read a balance of 100, added 10 and 20, and the result was 120 instead of 130. Running them one after the other would have been correct. Running them interleaved was fast, and wrong. But not every interleaving is wrong. Most of the time, a database…"
   }
  ]
 }
