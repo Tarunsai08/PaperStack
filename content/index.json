@@ -1,7 +1,7 @@
 {
- "content_version": "22dce3c3c165f6d0",
+ "content_version": "35eda5d4a4756f2e",
  "generated_at": "2026-11-03",
- "count": 583,
+ "count": 584,
  "subjects": [
   {
    "id": "ml",
@@ -60414,6 +60414,90 @@
    "hash": "a4443dee7252",
    "word_count": 966,
    "excerpt": "A food-delivery app's checkout code charges customers by calling a UPI library directly. Then the business adds cards. Then wallets. Then \"pay later\". Each addition means editing checkout, re-testing it, and hoping nothing broke. And testing checkout at all is painful, because every test run tries…"
+  },
+  {
+   "id": "cs-core-diamond-problem",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "diamond-problem",
+   "title": "Two Parents Inheriting From the Same Grandparent",
+   "subtitle": "The diamond problem in C++: why a Copier that is both a Scanner and a Printer ends up with two Device objects inside, the ambiguity error, virtual inheritance as the fix, and who constructs the shared base",
+   "track": "cs-oop",
+   "track_order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-inheritance"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 4,
+   "topics": [
+    "oop",
+    "c++",
+    "multiple inheritance",
+    "diamond problem",
+    "virtual inheritance"
+   ],
+   "glossary": [
+    {
+     "term": "Multiple inheritance",
+     "definition": "A class deriving directly from more than one base class."
+    },
+    {
+     "term": "Diamond problem",
+     "definition": "When two base classes share a common base, the most-derived class inherits two copies of it, making its members ambiguous."
+    },
+    {
+     "term": "Virtual inheritance",
+     "definition": "Declaring a base as virtual (class B : virtual A) so that all paths to A in a hierarchy share a single A subobject."
+    },
+    {
+     "term": "Subobject",
+     "definition": "The part of a derived object that holds a particular base class's members."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Copier derives from Scanner and Printer, which both derive from Device normally. How many Device subobjects does a Copier contain?",
+     "options": [
+      "One",
+      "Two",
+      "Three",
+      "None"
+     ],
+     "answer": 1,
+     "explain": "One through Scanner and one through Printer. The test program printed 'Device' twice when constructing a Copier."
+    },
+    {
+     "q": "Without virtual inheritance, what does `copier.id = 5;` do?",
+     "options": [
+      "Sets both ids",
+      "Fails to compile: the member is ambiguous",
+      "Sets the Scanner one",
+      "Sets the Printer one"
+     ],
+     "answer": 1,
+     "explain": "g++ reported: request for member 'id' is ambiguous. You must qualify it as copier.Scanner::id."
+    },
+    {
+     "q": "With virtual inheritance, Scanner's constructor passes 1 to Device and Printer's passes 2, while Copier's passes 7. Which value does the shared Device get?",
+     "options": [
+      "1",
+      "2",
+      "7",
+      "0"
+     ],
+     "answer": 2,
+     "explain": "The most-derived class constructs a virtual base; the intermediate classes' initialisers for it are ignored. The program printed Device(7)."
+    }
+   ],
+   "cover_seed": "diamond-problem",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.68,
+   "path": "cs-core/diamond-problem.md",
+   "hash": "24ce1ee3d4e2",
+   "word_count": 860,
+   "excerpt": "An office machine is both a scanner and a printer. In code, that looks natural: class Copier : public Scanner, public Printer. Both Scanner and Printer are kinds of Device, each with a device id. Now ask the copier for its id. The compiler refuses: which id? The inheritance diagram has the shape of…"
   },
   {
    "id": "cs-core-copy-move-semantics",
