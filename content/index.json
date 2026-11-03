@@ -1,7 +1,7 @@
 {
- "content_version": "99eb36722019da42",
+ "content_version": "334ceeb55fd266ea",
  "generated_at": "2026-11-03",
- "count": 529,
+ "count": 530,
  "subjects": [
   {
    "id": "ml",
@@ -52175,6 +52175,90 @@
    "hash": "c76e4f18b61b",
    "word_count": 2388,
    "excerpt": "Your machine coding solution passes every test you wrote. The interviewer nods, then asks one question: \"What happens if two users call book() at the same time?\" You look at your code. There is a if (seat.isFree()) on one line and a seat.book(user) on the next. You already know the answer, and so…"
+  },
+  {
+   "id": "system-design-cab-booking-lld",
+   "kind": "lld",
+   "subject": "system-design",
+   "slug": "cab-booking-lld",
+   "title": "Design a Cab Booking Service (Low-Level)",
+   "subtitle": "A dispatcher's board of drivers and requests: riders, drivers and trips as objects, trip states, and matching and pricing as pluggable strategies",
+   "track": "sd-lld",
+   "track_order": 21,
+   "priority": "P2",
+   "prerequisites": [
+    "system-design-parking-lot"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 4,
+   "topics": [
+    "low-level design",
+    "cab booking",
+    "strategy pattern",
+    "state machine",
+    "machine coding"
+   ],
+   "glossary": [
+    {
+     "term": "Matching strategy",
+     "definition": "An interchangeable rule for choosing a driver for a request, such as nearest available or best rated within a radius."
+    },
+    {
+     "term": "Pricing strategy",
+     "definition": "An interchangeable rule for computing a fare from distance and time, such as standard rates or surge pricing."
+    },
+    {
+     "term": "Trip state",
+     "definition": "The stage of a trip: requested, driver assigned, in progress, completed or cancelled, with only certain transitions allowed."
+    },
+    {
+     "term": "Decorator",
+     "definition": "A wrapper with the same interface that adds behaviour, here surge pricing wrapping standard pricing."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Product wants 'women riders can choose women drivers at night'. With strategies, what changes?",
+     "options": [
+      "The BookingService rewrite",
+      "Add a new matching strategy (or filter) and select it for those requests; BookingService and pricing stay untouched",
+      "Change the Driver class only",
+      "Nothing can be done"
+     ],
+     "answer": 1,
+     "explain": "Matching is a strategy behind an interface. New rules are new classes chosen at runtime."
+    },
+    {
+     "q": "Fare rules: ₹50 base + ₹12 per km + ₹1.5 per minute, with 1.5× surge. What is the fare for 6 km and 25 minutes?",
+     "options": [
+      "₹159.50",
+      "₹239.25",
+      "₹225",
+      "₹250"
+     ],
+     "answer": 1,
+     "explain": "Base fare 50 + 72 + 37.5 = 159.5; times 1.5 is 239.25."
+    },
+    {
+     "q": "Two requests pick the same nearest driver at the same moment. What prevents a double assignment?",
+     "options": [
+      "Nothing",
+      "Assigning a driver is an atomic compare-and-set from Available to OnTrip; the loser picks the next driver",
+      "Faster servers",
+      "Sorting drivers"
+     ],
+     "answer": 1,
+     "explain": "Only one request can flip the driver's state. In memory that is a lock or atomic; in a database, a conditional update."
+    }
+   ],
+   "cover_seed": "cab-booking-lld",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.6,
+   "path": "system-design/cab-booking-lld.md",
+   "hash": "3f7d5cba4f46",
+   "word_count": 926,
+   "excerpt": "A machine-coding prompt: \"Design the core of a cab booking app: riders request rides, drivers get assigned, trips are priced.\" Most candidates write a bookRide method with distance calculations, driver search and fare formulas all inside it. It works. Then the follow-ups arrive: \"Add surge pricing.…"
   },
   {
    "id": "system-design-replication",
