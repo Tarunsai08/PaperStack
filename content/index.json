@@ -1,7 +1,7 @@
 {
- "content_version": "ae1dac8a7b203f0e",
+ "content_version": "091c6f715d09c5df",
  "generated_at": "2026-11-03",
- "count": 517,
+ "count": 519,
  "subjects": [
   {
    "id": "ml",
@@ -49446,6 +49446,100 @@
    "excerpt": "You order biryani at 8 pm. The app promises 35 minutes. Over the next half hour it tells you the restaurant accepted, the food is being prepared, a delivery partner named Ravi is on the way to the restaurant, he picked it up, and he is two minutes away. Behind that friendly timeline are three…"
   },
   {
+   "id": "system-design-distributed-message-queue",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "distributed-message-queue",
+   "title": "Design a Distributed Message Queue",
+   "subtitle": "A row of numbered notebooks readers follow at their own pace: partitioned append-only logs, offsets, consumer groups, replication and retention",
+   "track": "sd-cases",
+   "track_order": 23,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-message-queues",
+    "system-design-replication"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "system design",
+    "message queue",
+    "kafka",
+    "log",
+    "partitions",
+    "replication"
+   ],
+   "glossary": [
+    {
+     "term": "Topic",
+     "definition": "A named stream of messages, such as 'orders', split into partitions."
+    },
+    {
+     "term": "Partition",
+     "definition": "An ordered, append-only log that is one slice of a topic; messages within a partition keep their order and are numbered by offset."
+    },
+    {
+     "term": "Offset",
+     "definition": "A message's position in its partition's log. Consumers track the offset they have processed up to."
+    },
+    {
+     "term": "Consumer group",
+     "definition": "A set of consumers sharing the work of a topic: each partition is read by exactly one consumer in the group at a time."
+    },
+    {
+     "term": "Retention",
+     "definition": "How long (or how much) data the log keeps before deleting old segments, independent of whether consumers have read it."
+    },
+    {
+     "term": "In-sync replicas",
+     "definition": "The replicas of a partition that are fully caught up with the leader; a write counts as committed once they all have it."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A topic has 12 partitions. A consumer group has 20 consumers. How many consumers are actually reading?",
+     "options": [
+      "20",
+      "12, because each partition is assigned to one consumer in the group; 8 sit idle",
+      "1",
+      "24"
+     ],
+     "answer": 1,
+     "explain": "Partitions are the unit of parallelism within a group. More consumers than partitions adds no throughput."
+    },
+    {
+     "q": "Why can many different services read the same topic without interfering?",
+     "options": [
+      "They copy the data",
+      "Messages are not deleted when read; each consumer group tracks its own offsets, so each reads at its own pace",
+      "They take turns",
+      "Each service gets a different partition only"
+     ],
+     "answer": 1,
+     "explain": "The log is shared and retained for a period. Reading only moves a group's own offset."
+    },
+    {
+     "q": "How do you keep all events for one customer in order?",
+     "options": [
+      "Use one topic per customer",
+      "Use the customer id as the message key, so all their messages hash to the same partition",
+      "Use timestamps",
+      "Use a single consumer for the whole topic"
+     ],
+     "answer": 1,
+     "explain": "Order is guaranteed only within a partition. Keying by customer id keeps each customer's events together and ordered."
+    }
+   ],
+   "cover_seed": "distributed-message-queue",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.8,
+   "path": "system-design/distributed-message-queue.md",
+   "hash": "fef50e3bad29",
+   "word_count": 1230,
+   "excerpt": "Every click, order, payment and log line at a large company becomes an event. Dozens of systems want them: search wants new products, fraud detection wants payments, analytics wants everything, and each of them reads at a different speed. Some are down for an hour and need to catch up. A classic…"
+  },
+  {
    "id": "system-design-oop-solid",
    "kind": "lld",
    "subject": "system-design",
@@ -53011,6 +53105,100 @@
    "hash": "c771dbb95849",
    "word_count": 1122,
    "excerpt": "In the early 2000s, Google needed to store and crawl the web: files of many gigabytes, written by many machines at once, read sequentially by batch jobs, on thousands of cheap disks that failed every day. No existing file system fit. So they built the Google File System, described by Ghemawat,…"
+  },
+  {
+   "id": "system-design-kafka-internals",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "kafka-internals",
+   "title": "Numbered Notebooks Copied by Trusted Clerks",
+   "subtitle": "Inside Kafka: segment files and indexes, leaders and in-sync replicas, the high watermark, acks settings, and where consumer offsets live",
+   "track": "sd-distributed",
+   "track_order": 21,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-distributed-message-queue",
+    "system-design-replication"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "system design",
+    "kafka",
+    "replication",
+    "isr",
+    "acks",
+    "log segments"
+   ],
+   "glossary": [
+    {
+     "term": "Segment",
+     "definition": "One file of a partition's log, plus small index files that map offsets and timestamps to positions in it; old segments are deleted or compacted whole."
+    },
+    {
+     "term": "ISR",
+     "definition": "In-sync replica set: the leader plus followers that are caught up within a configured lag; only they are eligible to become leader cleanly."
+    },
+    {
+     "term": "High watermark",
+     "definition": "The offset up to which all in-sync replicas have copied the data; consumers only see messages below it."
+    },
+    {
+     "term": "acks",
+     "definition": "The producer setting for how many replicas must confirm a write: 0 (none), 1 (the leader) or all (every in-sync replica)."
+    },
+    {
+     "term": "min.insync.replicas",
+     "definition": "The minimum number of in-sync replicas required for an acks=all write to succeed; below it, writes are rejected rather than accepted unsafely."
+    },
+    {
+     "term": "Log compaction",
+     "definition": "A retention mode that keeps at least the latest message for each key and removes older ones, turning a topic into a durable changelog."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A producer uses acks=1. The leader writes a message, acknowledges it, and crashes before any follower copies it. A follower becomes leader. What happens to the message?",
+     "options": [
+      "It is safe",
+      "It is lost: it existed only on the old leader, which is no longer in charge",
+      "The new leader fetches it",
+      "It is duplicated"
+     ],
+     "answer": 1,
+     "explain": "acks=1 means only the leader had it when the producer was told 'done'. Use acks=all with min.insync.replicas ≥ 2 for data you cannot lose."
+    },
+    {
+     "q": "Why can consumers not read messages above the high watermark?",
+     "options": [
+      "They are encrypted",
+      "Those messages are not yet on every in-sync replica; if the leader failed, they might disappear, and consumers would have seen data that no longer exists",
+      "Disks are slow",
+      "Offsets are not assigned yet"
+     ],
+     "answer": 1,
+     "explain": "Exposing only fully replicated data means consumers never act on messages that a leader failover could erase."
+    },
+    {
+     "q": "Replication factor 3, min.insync.replicas = 2, acks=all. Two brokers holding replicas go down. What happens to writes for that partition?",
+     "options": [
+      "They succeed",
+      "They are rejected, because only one in-sync replica remains, below the minimum of 2",
+      "They go to another topic",
+      "They are buffered forever"
+     ],
+     "answer": 1,
+     "explain": "Kafka chooses consistency: it refuses writes it cannot replicate safely rather than accepting data that lives on one machine."
+    }
+   ],
+   "cover_seed": "kafka-internals",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.72,
+   "path": "system-design/kafka-internals.md",
+   "hash": "ba368c57a06e",
+   "word_count": 1237,
+   "excerpt": "A payments team sends every transaction event to Kafka with the producer setting acks=1, because it is faster, and the documentation said Kafka is replicated. One night a broker's disk controller dies mid-write. Kafka elects a new leader within seconds, exactly as designed. The next morning, a few…"
   },
   {
    "id": "system-design-bigtable",
