@@ -1,7 +1,7 @@
 {
- "content_version": "393a8e2ae2ead8f8",
+ "content_version": "b871a3b831931600",
  "generated_at": "2026-11-03",
- "count": 533,
+ "count": 535,
  "subjects": [
   {
    "id": "ml",
@@ -56139,6 +56139,184 @@
    "hash": "1f0203067584",
    "word_count": 1008,
    "excerpt": "A college database has two students named Priya Sharma in the same year. The exam cell enters marks by name. You can guess what happens: one Priya gets the other's grades. People's names are not identifiers. Roll numbers, email addresses and Aadhaar numbers are. Databases make this idea precise…"
+  },
+  {
+   "id": "cs-core-sql-basics",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "sql-basics",
+   "title": "Asking a Well-Organised Spreadsheet Questions",
+   "subtitle": "SQL essentials from SELECT to GROUP BY: filtering, aggregates, HAVING versus WHERE, NULL traps, sorting, and the order a query is really evaluated in",
+   "track": "cs-dbms",
+   "track_order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-relational-keys"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 4,
+   "topics": [
+    "dbms",
+    "sql",
+    "group by",
+    "having",
+    "aggregates",
+    "null"
+   ],
+   "glossary": [
+    {
+     "term": "Aggregate function",
+     "definition": "A function that combines many rows into one value, such as COUNT, SUM, AVG, MIN or MAX."
+    },
+    {
+     "term": "GROUP BY",
+     "definition": "A clause that splits rows into groups sharing the same values in some columns, so aggregates are computed per group."
+    },
+    {
+     "term": "HAVING",
+     "definition": "A filter applied to groups after aggregation, for conditions on aggregates such as AVG(salary) > 80."
+    },
+    {
+     "term": "NULL",
+     "definition": "A marker for a missing or unknown value; comparisons with NULL are neither true nor false but unknown."
+    },
+    {
+     "term": "Logical query order",
+     "definition": "The order in which a SELECT is conceptually evaluated: FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Which query returns departments whose average salary exceeds 80?",
+     "options": [
+      "SELECT dept FROM emp WHERE AVG(salary) > 80 GROUP BY dept",
+      "SELECT dept FROM emp GROUP BY dept HAVING AVG(salary) > 80",
+      "SELECT dept FROM emp ORDER BY AVG(salary) > 80",
+      "SELECT dept FROM emp WHERE salary > 80"
+     ],
+     "answer": 1,
+     "explain": "WHERE runs before grouping, so it cannot use aggregates. HAVING filters the groups after aggregates are computed."
+    },
+    {
+     "q": "A table has 6 rows; the bonus column is NULL in 3 of them. What does SELECT COUNT(*), COUNT(bonus) return?",
+     "options": [
+      "6, 6",
+      "6, 3",
+      "3, 3",
+      "3, 6"
+     ],
+     "answer": 1,
+     "explain": "COUNT(*) counts rows; COUNT(column) counts non-NULL values. Aggregates such as SUM and AVG also skip NULLs."
+    },
+    {
+     "q": "Why does WHERE bonus = NULL return no rows?",
+     "options": [
+      "It is a syntax error",
+      "Any comparison with NULL is unknown, never true; use IS NULL",
+      "NULL is stored as zero",
+      "Because of indexes"
+     ],
+     "answer": 1,
+     "explain": "SQL uses three-valued logic. bonus = NULL is unknown for every row, so WHERE keeps nothing."
+    }
+   ],
+   "cover_seed": "sql-basics",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.88,
+   "path": "cs-core/sql-basics.md",
+   "hash": "e0326b45803e",
+   "word_count": 963,
+   "excerpt": "An interviewer slides over a table of employees and asks three quick questions: who in engineering earns more than 100? What is the average salary per department? Which departments average more than 80? The first two are easy. On the third, about half of candidates write WHERE AVG(salary) 80 and…"
+  },
+  {
+   "id": "cs-core-sql-joins",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "sql-joins",
+   "title": "Matching Guest Lists From Two Parties",
+   "subtitle": "SQL joins without Venn diagrams: inner, left, right, full, cross and self joins, semi and anti joins, and the NOT IN trap that silently returns nothing",
+   "track": "cs-dbms",
+   "track_order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-sql-basics"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "dbms",
+    "sql",
+    "joins",
+    "outer join",
+    "anti join",
+    "self join"
+   ],
+   "glossary": [
+    {
+     "term": "Inner join",
+     "definition": "Returns only row pairs from both tables that satisfy the join condition."
+    },
+    {
+     "term": "Outer join",
+     "definition": "A left, right or full join that also keeps rows without a match, filling the missing side with NULLs."
+    },
+    {
+     "term": "Self join",
+     "definition": "Joining a table to itself under two aliases, for example employees to their managers."
+    },
+    {
+     "term": "Semi join",
+     "definition": "Keeping rows of one table that have at least one match in another, without duplicating them; written with EXISTS or IN."
+    },
+    {
+     "term": "Anti join",
+     "definition": "Keeping rows of one table that have no match in another; written with NOT EXISTS or a LEFT JOIN filtered on NULL."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "4 employees (one with no department) and 3 departments (one with no employees). How many rows does a LEFT JOIN from employees to departments return?",
+     "options": [
+      "3",
+      "4: every employee, with NULL department for the one without",
+      "5",
+      "12"
+     ],
+     "answer": 1,
+     "explain": "A left join keeps every row of the left table. Matching rows get the department; the unmatched employee gets NULLs."
+    },
+    {
+     "q": "One employee has dept_id NULL. What does SELECT name FROM dept WHERE id NOT IN (SELECT dept_id FROM emp) return?",
+     "options": [
+      "The departments with no employees",
+      "No rows at all, because comparing with the NULL makes NOT IN unknown for every department",
+      "An error",
+      "All departments"
+     ],
+     "answer": 1,
+     "explain": "x NOT IN (…, NULL) is never true. NOT EXISTS (or a LEFT JOIN … IS NULL) handles NULLs correctly."
+    },
+    {
+     "q": "How many rows does a CROSS JOIN of a 4-row and a 3-row table produce?",
+     "options": [
+      "7",
+      "12",
+      "4",
+      "3"
+     ],
+     "answer": 1,
+     "explain": "A cross join pairs every row with every row: 4 × 3 = 12."
+    }
+   ],
+   "cover_seed": "sql-joins",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.88,
+   "path": "cs-core/sql-joins.md",
+   "hash": "6e06fdbbb8f0",
+   "word_count": 1021,
+   "excerpt": "\"List every department and how many employees it has, including empty departments.\" You write an inner join with GROUP BY. HR, which has nobody yet, simply vanishes from the result. The interviewer waits. \"Now list departments with no employees.\" You write WHERE id NOT IN (SELECT deptid FROM emp).…"
   }
  ]
 }

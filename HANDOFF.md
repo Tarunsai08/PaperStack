@@ -17,8 +17,8 @@ You are continuing a project another Claude session started. Everything you need
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core | 19 | 0 | 60 | 79 | 16/47 |
-| **All** | **533** | **0** | **150** | **683** | |
+| cs-core | 21 | 0 | 58 | 79 | 18/47 |
+| **All** | **535** | **0** | **148** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -49,10 +49,10 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 #### cs-core
 - [ ] `cs-core-file-systems` (P0, deep-dive, cs-os): File Systems: Inodes, Directories and Allocation
-- [ ] `cs-core-sql-basics` (P0, deep-dive, cs-dbms): SQL Essentials: SELECT to GROUP BY
+- [ ] `cs-core-sql-advanced` (P0, deep-dive, cs-dbms): Subqueries, CTEs and Window Functions
 - [ ] `cs-core-functional-dependencies` (P0, deep-dive, cs-dbms): Functional Dependencies and Closures
 - [ ] `cs-core-transactions-acid` (P0, deep-dive, cs-dbms): Transactions and ACID
-- [ ] `cs-core-osi-tcpip` (P0, primer, cs-networks): The OSI and TCP/IP Models
+- [ ] `cs-core-db-indexing-cs` (P0, deep-dive, cs-dbms): Indexing: B+ Trees and Hash Indexes
 <!-- status:end -->
 
 ## UI review status: approved

@@ -772,8 +772,8 @@
    "prerequisites": [
     "cs-core-relational-keys"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Filtering",
@@ -802,8 +802,8 @@
    "prerequisites": [
     "cs-core-sql-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Inner, left, right, full, cross, self joins",
