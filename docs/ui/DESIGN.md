@@ -28,12 +28,15 @@ The owner's feedback: "everything is everywhere". The fix is **organisation, not
 - `ProgressBar` (new): the single progress bar.
 - `PrimaryCard` and `SubjectTile` (Home only): the one primary card, and the 2-column subject grid tile.
 - `Label` (Home): section label with an optional action link.
+- `RecommendCard` (Home): card in the horizontal recommendations row.
+- `SubjectBigCard` and `SubjectRoadmap` (Learn): subject cards and the per-subject path.
 - Removed: `SubjectCard` (horizontal carousel cards with cover art), the "Today's pick" card and the large "Up next" cover card.
 - Unchanged: `TabBar` (4 items: Home, Learn, Search, Library), Article, Settings, Library, Search, Roadmap, Track screens.
 
 ## Screen structure
-- **Home:** header (logo, streak, settings) → greeting → one primary card → subject grid (2 columns) → "Up next in <subject>" (3 rows, for the subject last opened on Learn) → Placement Roadmap row → "Recently added" (3 rows).
-- **Learn:** title → sticky subject chips → one summary strip (read count, problems solved, bar, Continue) → tracks as a divided list; tapping a track expands its articles as compact rows with status, read time and priority.
+- **Home:** header (logo, streak, settings) → greeting → one primary card → "Recommended for you" (horizontal row, one next article per active subject) → subject grid (2 columns) → "Up next in <subject>" (3 rows, skipping recommended ones) → Placement Roadmap row → "Recently added" (3 rows).
+- **Learn, level 1 (`/learn`):** big subject cards (cover art, progress, "Open roadmap") → Placement Roadmap link.
+- **Learn, level 2 (`/learn?subject=<id>`):** back header → roadmap hero (progress, problems solved, next article) → the subject's tracks as a vertical path with numbered stops (tick when complete, accent ring and "You are here" for the current one); each stop expands into compact article rows.
 
 ## Tooling
 - `npm run screenshots` (in `app/`): builds, serves, seeds realistic state and saves 390x844 PNGs in light and dark. Options: `--out <dir>`, `--no-build`, `--only home,learn-dsa`.

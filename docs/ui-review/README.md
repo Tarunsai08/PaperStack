@@ -9,19 +9,18 @@ Article, Settings and Library are unchanged on purpose (owner: "those are good")
 
 ## What changed, in plain words
 
-### Home
-1. **One main card instead of three.** "Continue reading", the big "Up next" card and "Today's pick" are now a single card: continue the article you are reading, or start the next one. It has a progress bar and one button.
-2. **Subjects are a 2-column grid** instead of a sideways carousel, so you see all six at once with their progress.
-3. **"Up next in DSA"** shows just the next 3 articles of the subject you last opened on Learn, as compact rows with P0/P1/P2 badges.
-4. **Placement Roadmap** is one slim row.
-5. **"Recently added"** is 3 compact rows instead of 4 rows with large images.
+### Home (round 2, after your feedback)
+1. **One main card**: continue the article you are reading, or start the next one.
+2. **"Recommended for you"**: a horizontal row with one next article from each subject (ML, DSA, CP, Famous, System Design), with cover art. Swipe sideways.
+3. **Subjects grid** (2 columns) with progress for all six at once.
+4. **"Up next in DSA"**: the next 3 articles of the subject you last opened (never repeating the recommended one).
+5. **Placement Roadmap** row and **Recently added** (3 compact rows).
 
-### Learn
-1. **Subject chips stick to the top** while you scroll.
-2. **One slim summary strip** (read count, problems solved, progress bar, Continue) replaces the large progress-ring card.
-3. **Tracks are a clean divided list**, not stacked cards. Each shows "x/y read · total minutes". Tap to expand.
-4. **Article rows show a priority badge** (P0 highlighted), the kind and read time.
-5. **Removed duplicated buttons**: each open track used to show its own Start and "About this part" buttons; now there is one Continue for the subject and a small "About this part" link.
+### Learn (round 2, redesigned)
+1. **Learn now opens on big subject cards** (cover art, title, progress %, read count, "Open roadmap").
+2. **Tapping a subject opens its roadmap**: a header card with your progress and the next article, then the subject's parts drawn as a **path**. Each stop is numbered, finished parts turn into a tick, and the part you are in is highlighted as "You are here".
+3. **Tap any part** to expand its articles as compact rows (status, read time, P0/P1/P2 badge).
+4. Back arrow returns to the subject cards. The Placement Roadmap (all subjects mixed) is linked at the bottom of the cards.
 
 ### System
 - One spacing scale, one section-label style, one progress bar style, at most two levels of cards. Details in `docs/ui/DESIGN.md`.
