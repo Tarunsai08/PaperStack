@@ -180,7 +180,14 @@ Change Climbing Stairs so you may climb 1, 2 or 3 steps at a time. What are the 
 
 ## Where you'll see this again
 
-The same three questions drive every DP in this track. 1D problems such as House Robber and Coin Change look back a fixed number of steps. Knapsack adds a second dimension for capacity. Grid paths, longest common subsequence and edit distance use two indices into two sequences. Interval DP, bitmask DP and DP on trees change what a state means, but never the method. When a problem asks for a count of ways, a minimum cost or a maximum value, and choices at each step affect later ones, reach for this checklist.
+The same three questions drive every DP in this track:
+
+- 1D problems such as House Robber and Coin Change look back a fixed number of steps;
+- knapsack adds a second dimension for capacity;
+- grid paths, longest common subsequence and edit distance use two indices into two sequences;
+- interval DP, bitmask DP and DP on trees change what a state means, but never the method.
+
+When a problem asks for a count of ways, a minimum cost or a maximum value, and choices at each step affect later ones, reach for this checklist.
 
 ## Key takeaways
 

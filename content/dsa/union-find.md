@@ -65,7 +65,12 @@ What you need is a structure that merges groups in an instant and answers "same 
 Picture a party where guests arrive alone. Every friend group has one host, and each guest remembers only who introduced them, a person who knows the host or the host directly. To check whether two guests are in the same group, each follows "who introduced me?" up the chain until reaching a host, and you compare hosts. When two groups decide to merge, only the hosts talk: the host of the smaller group agrees to report to the host of the larger one. And whenever a guest walks up a long chain to find their host, everyone on that chain learns to go straight to the host next time.
 :::
 
-That party is [[union-find]]. Each group is a tree, the host is its root, the [[representative]]. "Who introduced me?" is the parent pointer. Merging through hosts is union. The smaller group joining the larger is [[union by size]]. Learning to skip the chain is [[path compression]].
+That party is [[union-find]]:
+
+- each group is a tree, and the host is its root, the [[representative]];
+- "who introduced me?" is the parent pointer, and merging through hosts is union;
+- the smaller group joining the larger is [[union by size]];
+- learning to skip the chain is [[path compression]].
 
 ## How it works
 

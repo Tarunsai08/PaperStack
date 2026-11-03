@@ -64,8 +64,8 @@ def score(data: dict, body: str) -> dict[str, float]:
     s["glossary"] = min(10, (5 if 3 <= len(gl) <= 8 else 0) + refs)
     s["quiz"] = 10 if len(data.get("quiz") or []) == 3 else 0
     words = bi.word_count(body)
-    lo, hi = bi.WORD_LIMITS.get(kind, (1000, 2200))
-    s["length"] = 10 if lo <= words <= hi else max(0, 10 - abs(words - (lo if words < lo else hi)) // 50)
+    lo = bi.WORD_MIN.get(kind, 1000)
+    s["length"] = 10 if words >= lo else max(0, 10 - (lo - words) // 50)
     filler = sum(low.count(f) for f in FILLER)
     s["no_filler"] = max(0, 10 - 2 * filler)
     s["overall"] = round(sum(s.values()) / len(s), 1)

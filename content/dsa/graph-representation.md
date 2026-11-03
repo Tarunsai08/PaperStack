@@ -52,9 +52,9 @@ importance_score: 0.92
 
 ## The hook
 
-A maps app finds a route across a city. A social network suggests "people you may know". A university checks that you took the prerequisites before a course. A puzzle asks for the fewest moves to open a lock. These look like four unrelated problems.
+A maps app finds a route across a city, a social network suggests "people you may know", a university checks your prerequisites, and a puzzle asks for the fewest moves to open a lock. These look like four unrelated problems.
 
-They are all the same shape: things, and connections between things. Once you see that shape, a whole toolbox of algorithms opens up. But before any algorithm can run, you must write the connections down in memory. Choose badly and your program runs out of memory before it starts. How do you store a graph so that the one question every algorithm asks, "who are my neighbours?", is cheap?
+They are all the same shape: things, and connections between things. Once you see that shape, a whole toolbox of algorithms opens up, but first you must write the connections down in memory, and a bad choice runs out of memory before the program starts. How do you store a graph so that the one question every algorithm asks, "who are my neighbours?", is cheap?
 
 ## The intuition
 
@@ -211,7 +211,14 @@ Two more input details catch people. Many judges number vertices from 1, so eith
 
 ## Where you'll see this again
 
-Every graph article builds on this one. [Going Deep With a Ball of String](article:dsa-dfs) walks the signposts as deep as it can before backing up. [When the Rumour Comes Back to You](article:dsa-cycle-detection) uses the same lists to find loops. [Friend Groups That Merge at a Party](article:dsa-union-find) works directly from the edge list and answers "are these two connected?" without ever building signposts. Breadth-first search, shortest paths and minimum spanning trees follow in this track. Trees are graphs too: a tree with n vertices has exactly n − 1 edges and no loops, which is why [Four Ways to Tour a Family Tree](article:dsa-tree-traversals) feels like a special case of what comes next.
+Every graph article builds on this one:
+
+- [Going Deep With a Ball of String](article:dsa-dfs) walks the signposts as deep as it can before backing up;
+- [When the Rumour Comes Back to You](article:dsa-cycle-detection) uses the same lists to find loops;
+- [Friend Groups That Merge at a Party](article:dsa-union-find) works directly from the edge list and answers "are these two connected?" without ever building signposts;
+- breadth-first search, shortest paths and minimum spanning trees follow in this track.
+
+Trees are graphs too: a tree with n vertices has exactly n − 1 edges and no loops, which is why [Four Ways to Tour a Family Tree](article:dsa-tree-traversals) feels like a special case of what comes next.
 
 ## Key takeaways
 

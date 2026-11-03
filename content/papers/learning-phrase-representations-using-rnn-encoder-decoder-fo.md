@@ -1,287 +1,200 @@
 ---
-id: paper-learning-phrase-representations-using-rnn-encoder-decoder-fo
-kind: paper
+id: "paper-learning-phrase-representations-using-rnn-encoder-decoder-fo"
+kind: "paper"
 subject: "ml"
-slug: learning-phrase-representations-using-rnn-encoder-decoder-fo
-title: 'Compress, Then Translate: The First Encoder-Decoder'
-subtitle: How two recurrent networks teamed up to rewrite machine translation
+slug: "learning-phrase-representations-using-rnn-encoder-decoder-fo"
+title: "Read It, Summarise It, Say It in French"
+subtitle: "The paper that paired two recurrent networks into an encoder-decoder and quietly introduced the GRU"
 track: "sequences-language"
 track_order: 6
-prerequisites:
-- paper-lstm
-- paper-word2vec
-difficulty: intermediate
+prerequisites: ["paper-lstm", "paper-word2vec"]
+difficulty: "intermediate"
 read_minutes: 9
-topics:
-- recurrent neural networks
-- encoder-decoder
-- machine translation
-- gru
-paper_title: Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation
-authors:
-- Kyunghyun Cho
-- Bart van Merriënboer
-- Çaglar Gülçehre
-- et al.
+topics: ["recurrent neural networks", "encoder-decoder", "machine translation", "gru"]
+paper_title: "Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation"
+authors: ["Kyunghyun Cho", "Bart van Merriënboer", "Caglar Gulcehre", "Dzmitry Bahdanau", "Fethi Bougares", "Holger Schwenk", "Yoshua Bengio"]
 year: 2014
-venue: Conference on Empirical Methods in Natural Language Processing
-paper_url: https://arxiv.org/abs/1406.1078
+venue: "EMNLP"
+paper_url: "https://arxiv.org/abs/1406.1078"
 glossary:
-- term: RNN Encoder-Decoder
-  definition: 'A neural network architecture consisting of two RNNs: one that reads an input sequence into a fixed-length summary vector, and another that unrolls the vector into an output sequence.'
-- term: Reset Gate
-  definition: A gating mechanism in the GRU that determines whether the hidden state should ignore the previous hidden state and rely only on the current input.
-- term: Update Gate
-  definition: A gating mechanism in the GRU that controls how much information from the previous hidden state carries over into the current hidden state.
-- term: Phrase-based SMT
-  definition: A statistical machine translation approach that translates sentences by dividing them into sub-sequences of words evaluated via a log-linear model.
-- term: CSLM
-  definition: Continuous Space Language Model, a neural network-based language model trained to estimate word sequence probabilities in a continuous vector space.
-- term: BLEU
-  definition: Bilingual Evaluation Understudy, an automated metric measuring the n-gram overlap between machine-generated translations and human reference translations.
+  - term: "Encoder-decoder"
+    definition: "Two networks working in sequence: the encoder reads an input sequence into a fixed-size vector, and the decoder generates an output sequence from that vector."
+  - term: "Summary vector"
+    definition: "The single fixed-size vector the encoder produces after reading the whole input, often written c. It is the only thing the decoder knows about the input."
+  - term: "Update gate"
+    definition: "A number between 0 and 1 per hidden unit that decides how much of the old hidden state to keep and how much to replace with the new proposal."
+  - term: "Reset gate"
+    definition: "A number between 0 and 1 per hidden unit that decides how much of the old hidden state to use when drafting the new proposal."
+  - term: "Phrase-based SMT"
+    definition: "Statistical machine translation that cuts a sentence into short phrases, looks up translations for each in a phrase table, and picks the combination a weighted scoring formula likes best."
+  - term: "Log-linear model"
+    definition: "A scoring formula that adds up several feature scores, each multiplied by a tuned weight, to rank candidate translations."
+  - term: "BLEU"
+    definition: "An automatic translation metric that measures how many word sequences in the machine output also appear in human reference translations."
 quiz:
-- q: What two gates comprise the new recurrent hidden unit introduced in this paper?
-  options:
-  - Input gate and output gate
-  - Reset gate and update gate
-  - Forget gate and cell gate
-  - Read gate and write gate
-  answer: 1
-  explain: 'The paper proposed a simplified alternative to the LSTM unit containing only two gates: a reset gate and an update gate.'
-- q: How was the trained RNN Encoder-Decoder evaluated in the main machine translation experiment?
-  options:
-  - As an end-to-end standalone translator replacing the entire pipeline
-  - As a speech-to-text acoustic decoder
-  - By scoring phrase pairs in an existing phrase table as an additional feature in a log-linear model
-  - Exclusively as a target-side language model without reading source phrases
-  answer: 2
-  explain: Due to the computational expense of generating target phrases from scratch, the authors added conditional phrase-pair probabilities computed by the model as an extra feature in a standard Moses SMT system.
-- q: Why were phrase frequencies ignored when training the RNN Encoder-Decoder on phrase pairs?
-  options:
-  - To prevent the model from merely memorizing phrase counts instead of learning linguistic regularities
-  - Because frequency data was missing from the WMT corpora
-  - Because the GPU implementation did not support integer counts
-  - To intentionally reduce BLEU score variance
-  answer: 0
-  explain: The authors ignored frequencies to ensure the model used its capacity to distinguish plausible from implausible translations rather than fitting raw occurrence frequencies.
-cover_seed: learning-phrase-representations-using-rnn-encoder-decoder-fo
-generated_by: gemini-gemini-flash-latest
-generated_at: '2026-10-15'
+  - q: "In this paper's main experiment, how was the encoder-decoder used?"
+    options: ["As a complete translator that replaced the whole pipeline", "To score existing phrase pairs, added as one more feature in a phrase-based system", "Only as a language model over French sentences", "To align words between the two languages"]
+    answer: 1
+    explain: "The network scored each English-French phrase pair in the phrase table, and that score became an extra feature in the existing log-linear model."
+  - q: "In the paper's gated unit, what happens when the update gate is close to 1?"
+    options: ["The old hidden state is wiped", "The new proposal replaces the old state", "The old hidden state is carried forward almost unchanged", "The unit outputs zero"]
+    answer: 2
+    explain: "The new state is z times the old state plus (1 - z) times the proposal, so z near 1 keeps the old state."
+  - q: "Why did later work add attention to this design?"
+    options: ["The decoder could not handle French", "Squeezing a whole long sentence into one fixed-size vector loses detail", "Gated units were too slow to train", "BLEU could not measure the output"]
+    answer: 1
+    explain: "Every input, short or long, had to fit into the same fixed-size summary vector. Attention lets the decoder look back at all encoder states instead."
+cover_seed: "learning-phrase-representations-using-rnn-encoder-decoder-fo"
+generated_by: "claude-revised"
+generated_at: "2026-11-02"
 importance_score: 0.9
 ---
 
 ## The hook
 
-Translating a sentence from English to French is not a word-by-word swap. Word orders swap, single words blossom into three, and entire idioms collapse into single phrases. How can a machine take five words, understand their meaning, and emit seven completely different words in another language? 
+A phrase like "a cup of tea" becomes "une tasse de thé" in French. The words line up nicely. But "I miss you" becomes "tu me manques", where the subject and object swap places. No word-for-word lookup gets that right.
 
-In 2014, Kyunghyun Cho and his colleagues proposed a radically simple answer: use two neural networks working as a team. One squashes the input sentence into a compact summary vector, and the second unfolds that vector into a fluent translation.
+In 2014, translation systems handled this with huge tables of memorised phrase pairs and a pile of hand-tuned scores. A group in Montreal asked a different question: could one neural network read a phrase, boil it down to a single list of numbers, and let a second network write the translation from that list alone?
 
 ## Before you start
 
-Before jumping in, make sure you are comfortable with:
-- How words become vectors, covered in [Word2Vec](article:paper-word2vec).
-- How recurrent networks update hidden states across time, covered in [LSTM](article:paper-lstm).
+You should know how [recurrent networks keep a memory across steps](article:paper-lstm), including why plain recurrent networks forget, and how [words become vectors](article:paper-word2vec). Matrix-vector products and the sigmoid function are enough maths.
 
 ## The world before this paper
 
-In 2014, machine translation was dominated by [[Phrase-based SMT]]. These statistical systems were marvels of engineering, but they were held together by duct tape and enormous lookup tables. 
+Machine translation in 2014 meant [[Phrase-based SMT]]. A system cut the English sentence into short phrases, looked each one up in a phrase table built by counting how often phrases lined up in translated documents, and tried many combinations. A [[log-linear model]] ranked the candidates: a weighted sum of features such as "how often did this phrase pair appear" and "how fluent does the French look".
 
-A standard SMT system chopped sentences into small chunks of words, matched them against a giant dictionary of pre-calculated phrase pairs, and glued the pieces together using heuristic scoring equations. If a phrase appeared often in the training data, the system knew how to score it. If a phrase was rare or novel, the system had no idea what to do.
+That worked, but the phrase table was noisy. Rare phrases had unreliable counts, and frequent junk pairs scored well just because they were frequent. Neural networks had started to help, mostly as language models that judged French fluency. Feedforward networks needed a fixed number of input words, though, and plain recurrent networks struggled to remember the start of a phrase by its end.
 
-Researchers tried bringing neural networks into the mix, but traditional neural architectures were rigid. Standard feedforward networks required a fixed input size, like a strict window of seven words zero-padded at the edges. Other systems treated phrases as unordered bags of words, completely blind to grammar. Standard recurrent networks could process variable-length text, but standard recurrent units struggled to hold onto information across multiple steps without exploding or vanishing gradients.
-
-Translation needed an architecture that could accept any number of incoming words, preserve their order, and emit a brand new sequence of arbitrary length.
-
-:::analogy
-Think of the system as an expert bilingual conference interpreter. 
-
-The interpreter listens quietly while a speaker finishes an entire sentence in English. Instead of translating each word out loud as it arrives, the interpreter lets the words settle into a single clear thought scribbled on an index card. Looking at that compact conceptual note, the interpreter begins speaking fluent French, unfolding the thought word by word until the thought is complete.
+:::history
+Kyunghyun Cho, Bart van Merriënboer, Caglar Gulcehre, Dzmitry Bahdanau, Fethi Bougares, Holger Schwenk and Yoshua Bengio posted the paper in June 2014, and it appeared at EMNLP that year. Schwenk's group had built the continuous-space language models that phrase-based systems already used. The team wanted a network that took the source phrase into account, not just the French side.
 :::
 
 ## The big idea
 
-The authors introduced the [[RNN Encoder-Decoder]]. 
-
-The model splits sequence processing into two distinct phases. The first network, called the encoder, processes a sequence of words one step at a time. When it reaches the end of the input, its final hidden state holds a single fixed-size numerical vector that acts as a summary of the entire sequence.
-
-The second network, called the decoder, takes that summary vector and runs in reverse. At each step, it predicts the next output word based on the summary vector, the word it just generated, and its own hidden memory.
-
-To make this architecture train reliably, the paper introduced a streamlined recurrent cell: the Gated Recurrent Unit, or GRU. Unlike the complex LSTM, which required three separate gates and a distinct memory cell, this new unit handled long-term memory with just two gates: an [[Update Gate]] and a [[Reset Gate]].
-
-:::history
-In early 2014, Yoshua Bengio's lab at the Université de Montréal was searching for a cleaner way to handle sequence memory. LSTMs worked well, but their internal mechanics felt overly baroque to many researchers. Kyunghyun Cho and the team stripped away the separate cell state, merged the input and forget concepts into a unified update gate, and designed a unit that was computationally lighter yet equally capable of catching long-range patterns.
+:::analogy
+Picture a conference interpreter who cannot see the slides. She listens to the whole English phrase, then writes one short note on an index card. The card has fixed space, whatever the length of the phrase. Then she puts the speaker out of her mind and speaks French, using only the card and what she has already said.
 :::
+
+That is the [[encoder-decoder]]. The encoder is the listening interpreter: a recurrent network that reads the phrase one word at a time and updates its hidden state. Its final hidden state is the index card, a [[summary vector]] called $c$. The decoder is the speaking interpreter: a second recurrent network that generates the French words one by one, looking at $c$ at every step.
+
+```mermaid
+flowchart TD
+  A[English words one at a time] --> B[Encoder RNN]
+  B --> C[Summary vector c]
+  C --> D[Decoder RNN]
+  D --> E[French words one at a time]
+  E --> D
+```
+
+The paper made a second contribution that ended up even more widely used. To make the interpreter good at deciding what to keep on the card, the authors designed a new recurrent unit with two gates. It was later named the gated recurrent unit, or GRU.
 
 ## How it works
 
-Let's break down the pipeline into the encoder, the gating mechanics, and the decoder.
+### The encoder writes the card
 
-```mermaid
-flowchart TD
-    subgraph Encoder
-        X1[Source Word 1] --> H1[Encoder Hidden 1]
-        X2[Source Word 2] --> H2[Encoder Hidden 2]
-        H1 --> H2
-        X3[Source Word 3] --> H3[Encoder Hidden 3]
-        H2 --> H3
-    end
-    
-    H3 --> C[Summary Vector c]
-    
-    subgraph Decoder
-        C --> D1[Decoder Hidden 1]
-        D1 --> Y1[Target Word 1]
-        Y1 --> D2[Decoder Hidden 2]
-        C --> D2
-        D1 --> D2
-        D2 --> Y2[Target Word 2]
-    end
-```
+The encoder reads words $x_1, \dots, x_T$. At each step it combines the previous hidden state with the current word:
 
-### 1. The Encoder
+$$h_t = f(h_{t-1}, x_t)$$
 
-The encoder reads an input sequence $(x_1, x_2, \dots, x_T)$. At each step $t$, the hidden state updates based on the previous state and the current word:
+Here $h_t$ is the hidden state after reading word $t$, a vector of numbers, and $f$ is the recurrent unit. After the last word, the card is simply $c = h_T$.
 
-$$h^{\langle t \rangle} = f(h^{\langle t-1 \rangle}, x_t)$$
+### The decoder speaks from the card
 
-Once the final word and the end-of-sequence symbol are processed, the last hidden state becomes the summary vector:
+The decoder has its own hidden state, which depends on its previous state, the word it just produced and the card:
 
-$$c = h^{\langle T \rangle}$$
+$$s_t = f(s_{t-1}, y_{t-1}, c)$$
 
-This vector $c$ is a dense representation of the entire source phrase.
+Then it turns $s_t$, $y_{t-1}$ and $c$ into a probability for every French word in the vocabulary, using a softmax. Training pushes up the probability of the correct French phrase given the English one, over many phrase pairs. Because $c$ feeds every decoder step, the interpreter keeps glancing at the card the whole time she speaks.
 
-### 2. The Gated Recurrent Unit (GRU)
+### The gated unit: an eraser and a pencil
 
-What happens inside the activation function $f$? A naive recurrent unit replaces its entire memory at every step with a hyperbolic tangent activation:
+A plain recurrent unit rewrites its whole state at every step: $h_t = \tanh(W x_t + U h_{t-1})$. On the index card, that is like rewriting the entire note after every word. After a few filler words, the important word from the start has faded.
 
-$$h^{\langle t \rangle} = \tanh(W x_t + U h^{\langle t-1 \rangle})$$
+The new unit gives the interpreter two controls. The [[reset gate]] $r$ decides how much of the old note to look at while drafting a new one. The [[update gate]] $z$ decides whether to keep the old note or swap in the draft:
 
-This quickly overwrites early information. The GRU fixes this with two gates.
+$$r = \sigma(W_r x_t + U_r h_{t-1}) \qquad z = \sigma(W_z x_t + U_z h_{t-1})$$
 
-First, the [[Reset Gate]] ($r_t$) decides how much of the past memory to drop:
+$$\tilde{h} = \tanh\big(W x_t + U (r \odot h_{t-1})\big)$$
 
-$$r_t = \sigma(W_r x_t + U_r h^{\langle t-1 \rangle})$$
+$$h_t = z \odot h_{t-1} + (1 - z) \odot \tilde{h}$$
 
-Here, $\sigma$ is the sigmoid function, squashing values between $0$ and $1$. $W_r$ and $U_r$ are learnable weight matrices. When $r_t$ is close to $0$, the unit acts as if it just started reading a brand-new sequence.
+In plain words: $\sigma$ squashes any number into the range 0 to 1, so both gates act like dials. $W$ and $U$ matrices are learned weights for the current word and the old state. $\odot$ multiplies two vectors entry by entry.
 
-Next, the candidate hidden state $\tilde{h}^{\langle t \rangle}$ computes a proposed new memory:
-
-$$\tilde{h}^{\langle t \rangle} = \tanh(W x_t + U (r_t \odot h^{\langle t-1 \rangle}))$$
-
-The symbol $\odot$ denotes element-wise multiplication. Notice that $r_t$ directly scales $h^{\langle t-1 \rangle}$. If $r_t$ is zero, the past hidden state is completely wiped clean before computing the new proposal.
-
-Finally, the [[Update Gate]] ($z_t$) acts as a blend slider between the old state and the candidate state:
-
-$$z_t = \sigma(W_z x_t + U_z h^{\langle t-1 \rangle})$$
-
-$$h^{\langle t \rangle} = z_t \odot h^{\langle t-1 \rangle} + (1 - z_t) \odot \tilde{h}^{\langle t \rangle}$$
-
-If $z_t$ is close to $1$, the unit ignores the new candidate and carries the old state forward intact. This allows signals to travel across many steps without vanishing.
-
-```mermaid
-flowchart TD
-    X[Input x] --> R[Reset Gate r]
-    Hprev[Previous State h] --> R
-    X --> Z[Update Gate z]
-    Hprev --> Z
-    
-    R --> Mult[Scale Previous State]
-    Hprev --> Mult
-    Mult --> Cand[Candidate State]
-    X --> Cand
-    
-    Cand --> Blend[Interpolate]
-    Hprev --> Blend
-    Z --> Blend
-    Blend --> Hnext[New State h]
-```
-
-### A tiny numerical walkthrough
-
-Imagine a GRU with a single hidden unit (1 dimension):
-- Previous hidden state: $h^{\langle t-1 \rangle} = 0.80$
-- New input creates raw gate values such that $r_t = 0.0$ and $z_t = 0.70$.
-- Because $r_t = 0.0$, the candidate calculation ignores $h^{\langle t-1 \rangle}$. Suppose the candidate calculates to $\tilde{h}^{\langle t \rangle} = -0.50$.
-
-Now compute the new state:
-
-$$h^{\langle t \rangle} = (0.70 \times 0.80) + ((1 - 0.70) \times -0.50)$$
-$$h^{\langle t \rangle} = 0.56 - 0.15 = 0.41$$
-
-The unit retained $70\%$ of its previous identity while letting a small amount of new information slip in.
-
-:::try-this
-Suppose you encounter a period or punctuation mark indicating the start of an independent clause. Should the network's reset gate $r_t$ evaluate closer to $0.0$ or $1.0$? 
-
-*Answer:* Closer to $0.0$. Setting $r_t$ near zero clears out irrelevant syntactic history from the previous sentence so the hidden state can focus on the new clause.
-:::
-
-### 3. The Decoder
-
-The decoder generates the target translation $(y_1, y_2, \dots, y_{T'})$ one token at a time. 
-
-At each target timestep $t$, its hidden state updates by looking at three signals: its own previous state $h^{\langle t-1 \rangle}$, the word it generated at the previous step $y_{t-1}$, and the static source summary vector $c$:
-
-$$h^{\langle t \rangle} = f(h^{\langle t-1 \rangle}, y_{t-1}, c)$$
-
-The probability of emitting any particular vocabulary word at step $t$ is calculated by passing those same signals through an output projection and a softmax layer:
-
-$$P(y_t \mid y_{<t}, c) = \text{softmax}(g(h^{\langle t \rangle}, y_{t-1}, c))$$
-
-During training, the objective is to maximize the conditional log-likelihood of all correct target sequences given their source inputs across the entire training set.
+$\tilde{h}$ is the draft note. The last line blends old note and draft: $z$ near 1 keeps the old note, $z$ near 0 takes the draft. Each hidden unit has its own gates, so some units learn to hold long-term facts while others react to the latest word.
 
 :::insight
-The decoder does not just look at the summary vector once at the start. It conditions on $c$ at every single decoding step, keeping the source meaning fresh in its mind throughout generation.
+The update gate lets a unit copy its state forward almost unchanged. That copying path is what lets information, and the training signal, survive many steps.
 :::
 
-### Scoring phrase tables without frequencies
+### A worked example
 
-Rather than replacing existing translation software overnight, the authors plugged the model into an established phrase-based translation pipeline. 
+Take a single hidden unit with $W = 1.5$ and $U = 1$. Inputs are one number per word: 1.0 for an important word, 0.0 for two filler words, then −1.0 for a new important word. Suppose the learned gates come out as in the table. The draft and new state follow from the formulas above, starting at $h_0 = 0$.
 
-Existing phrase tables relied on counting raw co-occurrences. If a pair appeared ten thousand times, it received a high score, regardless of grammatical quality. When training their RNN Encoder-Decoder, Cho and the team deliberately ignored occurrence counts, presenting every unique phrase pair with equal weight. 
+| Step | Input $x$ | $z$ | $r$ | $r \cdot h_{t-1}$ | Draft $\tilde{h}$ | New $h_t$ |
+|---|---|---|---|---|---|---|
+| 1 | 1.0 | 0.1 | 0.5 | 0.000 | 0.905 | 0.815 |
+| 2 | 0.0 | 0.9 | 0.9 | 0.733 | 0.625 | 0.796 |
+| 3 | 0.0 | 0.9 | 0.9 | 0.716 | 0.614 | 0.778 |
+| 4 | −1.0 | 0.2 | 0.0 | 0.000 | −0.905 | −0.569 |
 
-Why? Because the baseline system already had raw count statistics. By stripping frequency away, the neural network was forced to spend all of its parameters learning syntax, semantics, and linguistic plausibility rather than memorizing which corporate phrases appeared most often in European parliamentary transcripts.
+At step 1 the update gate is low, so the card takes the draft. During the filler words the update gate is high, so the note barely changes: 0.815, then 0.796, then 0.778. At step 4 the reset gate is 0, so the draft ignores the old note entirely, and the low update gate lets the new word take over.
+
+Compare a plain recurrent unit with the same $W$ and $U$: it goes 0.905, 0.719, 0.616, −0.708. It loses about a third of the first word's signal in two filler steps, because it has no way to say "keep this".
+
+:::try-this
+In the table, suppose the update gate were exactly 1.0 at steps 2 and 3 instead of 0.9. What is $h_3$? (It stays 0.815. With $z = 1$, the new state is just the old state, so the note is copied forward untouched.)
+:::
+
+### Plugging the network into a real translator
+
+Generating full translations with a network was slow in 2014, so the authors used the encoder-decoder in a cheaper way. They trained it on the phrase pairs from the phrase table, then asked it to score every pair: how likely is this French phrase given this English one? That score became one more feature in the log-linear model.
+
+Here is an illustrative example of why one more feature can matter. Suppose two candidate translations have these log scores, with weights 1, 1 and 0.3:
+
+| Candidate | Phrase-table score | Fluency score | Network score | Total without network | Total with network |
+|---|---|---|---|---|---|
+| A, frequent but sloppy | −0.5 | −4.0 | −6.0 | −4.5 | −6.3 |
+| B, clean and faithful | −1.2 | −3.6 | −2.5 | −4.8 | −5.55 |
+
+Without the network, A wins on its high count. With it, B wins, because the network thinks B is a much better translation of the source.
+
+One training detail is clever. The authors ignored how often each phrase pair appeared and treated every unique pair equally. The phrase table already had count-based scores, and they wanted the network to learn which translations make sense, not which ones are common.
+
+:::warning
+Common misconception: "This paper built the first end-to-end neural translator." It did not. In the main experiment the network only rescored phrase pairs inside a traditional phrase-based system. Full sentence-to-sentence neural translation came in later papers.
+:::
 
 ## What they found
 
-The authors tested their architecture on an English-to-French translation task from the WMT'14 benchmark. They evaluated results using [[BLEU]], an automated metric scoring n-gram overlap with professional human translations.
+The test was English to French translation from the WMT 2014 shared task, measured with [[BLEU]]. Adding the encoder-decoder's phrase scores to the baseline phrase-based system improved BLEU. The gain also added on top of a neural language model, which suggests the two neural pieces captured different things: the language model judged French fluency, while the encoder-decoder judged whether a French phrase matched the English one.
 
-| Model Pipeline | Dev BLEU | Test BLEU |
-| :--- | :--- | :--- |
-| Baseline Moses SMT | 30.64 | 33.30 |
-| Baseline + RNN Encoder-Decoder | 31.20 | 33.87 |
-| Baseline + CSLM + RNN Encoder-Decoder | **31.48** | **34.64** |
-| Baseline + CSLM + RNN Encoder-Decoder + Word Penalty | 31.50 | 34.54 |
+Qualitatively, the paper reports two findings:
 
-Adding the RNN phrase scores improved test performance from 33.30 to 33.87 BLEU. When combined with a [[CSLM]] (a continuous-space target language model), the score reached 34.64 BLEU—an improvement of over 1.3 points over the baseline.
+- **Cleaner phrase choices.** For a given English phrase, the network's top-ranked French phrases tended to be sensible translations, while the count-based table's favourites were often noisy.
+- **Meaningful cards.** When the summary vectors of many phrases were projected into two dimensions, phrases with similar meaning or similar grammatical structure landed near each other. The interpreter's index cards had organised themselves by meaning, without being told to.
 
-Qualitative inspection of the phrase tables showed that the neural model consistently preferred clean, grammatically complete translations over the fragmented, noisy translations favored by count-based tables.
-
-Furthermore, projecting the encoder's 1000-dimensional summary vectors into 2D space revealed that the network naturally clustered semantically related phrases together. Phrases describing temporal durations landed in one neighborhood, while phrases detailing geopolitical entities formed another.
-
-:::warning
-The model was not evaluated as a free-standing, end-to-end translation engine in this paper. Instead, it was used as an offline rescorer to re-rank candidate phrase pairs generated by an existing Moses SMT table.
-:::
+The models were modest by later standards: 1000 hidden units, and a vocabulary limited to the 15,000 most common words in each language.
 
 ## What it got wrong (or left open)
 
-While the paper was a landmark, it had noticeable constraints:
-
-1. **The fixed-length bottleneck:** Squeezing a sentence into a single 1000-dimensional vector works well for short phrases. But as sentences grow past twenty or thirty words, that single vector becomes an impossible information funnel. Fine details at the start of a sentence inevitably blur by the time the encoder finishes reading.
-2. **Restricted vocabulary:** Training limitations forced the team to limit the vocabulary to the 15,000 most frequent words in English and French. Any word outside this list was converted to an unknown token (`[UNK]`). Because `[UNK]` aggregated thousands of rare words, the network frequently overestimated its probability, hurting translation precision.
-3. **Inability to decode independently:** Generating open-ended translations word by word was computationally slow. As a result, the authors did not run standalone end-to-end neural translations, relying instead on scoring existing phrase pairs inside a traditional SMT framework.
+- **The card has fixed space.** Every input, three words or thirty, had to fit into one fixed-size vector. That suits short phrases. For long sentences the interpreter's index card fills up and early details blur.
+- **No full translation yet.** The network rescored a table built the old way. It could not translate a phrase the table had never seen, at least not in the reported system. The authors pointed to replacing parts of the phrase table as future work.
+- **Small vocabulary.** Rare words all collapsed into one "unknown" token, which hurts any real translator.
+- **Gates were proposed, not dissected.** The paper showed the unit worked here, but a careful comparison with the LSTM came in later studies.
 
 ## What happened next
 
-The summer of 2014 was a turning point for language processing. A few months after this paper appeared, Ilya Sutskever and his team published [Sequence to Sequence](article:paper-seq2seq), showing that a multi-layered LSTM encoder-decoder could handle end-to-end translation directly on entire sentences without relying on traditional SMT phrase tables.
+Within months, the index-card idea went end to end. [Read the Whole Sentence, Then Write the Translation](article:paper-seq2seq) by Sutskever and colleagues used deep LSTMs to translate whole sentences directly, with no phrase table.
 
-Meanwhile, researchers immediately recognized the fatal flaw of the architecture: the fixed-size vector bottleneck. Dzmitry Bahdanau, a co-author on this paper, solved it later that year by inventing additive attention in [Bahdanau Attention](article:paper-bahdanau-attention). Instead of forcing the encoder to compress everything into a single index card, attention allowed the decoder to look back over every individual encoder hidden state at every generation step.
+The fixed-size card was fixed next. Bahdanau, a co-author here, worked with Cho and Bengio on [The First Time a Network Learned Where to Look](article:paper-bahdanau-attention), which lets the decoder look back at every encoder hidden state instead of only the last one. In the analogy, the interpreter keeps her full notes instead of a single card. Attention later became the core of [the Transformer](article:paper-attention-is-all-you-need).
 
-That attention mechanism eventually evolved into the self-attention of [Attention Is All You Need](article:paper-attention-is-all-you-need), eliminating recurrence altogether. Yet the foundational concept introduced here—separating a sequence problem into an encoding phase that builds meaning and a decoding phase that generates output—remains the blueprint for modern language models.
+The gated unit got its name, GRU, in follow-up work from the same lab, and it became a standard alternative to the LSTM: fewer gates, no separate memory cell, often similar accuracy.
 
 ## Key takeaways
 
-- The RNN Encoder-Decoder architecture proved that one recurrent network can compress an arbitrary sequence into a vector and another can unfold it into a new sequence.
-- The Gated Recurrent Unit (GRU) provided a simpler, two-gate alternative to the LSTM that effectively prevented vanishing gradients during sequence modeling.
-- Training on unique phrase pairs without frequency weighting forced the neural network to learn semantic and grammatical validity rather than raw occurrence statistics.
-- The information bottleneck of cramming an entire sentence into one fixed-size vector directly prompted the invention of neural attention.
+- An encoder-decoder uses one recurrent network to read an input into a fixed-size summary vector and a second to generate the output from that vector.
+- The paper's gated unit, later called the GRU, uses a reset gate to choose how much of the old state shapes the new draft and an update gate to choose between keeping the old state and taking the draft.
+- An update gate near 1 copies the hidden state forward almost unchanged, which helps information survive across many steps.
+- In this paper the network scored phrase pairs as an extra feature in a phrase-based translator, rather than translating end to end.
+- Forcing a whole sentence through one fixed-size vector became the bottleneck that attention was invented to remove.

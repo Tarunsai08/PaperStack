@@ -27,6 +27,8 @@ glossary:
     definition: "Scanning an array once from the left and once from the right, combining what each pass learned."
   - term: "Output array"
     definition: "The array you must return. Problems often say it does not count as extra space, which allows reusing it as a workspace."
+  - term: "Identity element"
+    definition: "The value that leaves anything unchanged when combined with it: 1 for products, 0 for sums and GCD, minus infinity for max."
 quiz:
   - q: "For index i, the answer equals..."
     options: ["The total product divided by nums[i]", "The product of everything left of i times the product of everything right of i", "nums[i] squared", "The sum of the array"]
@@ -120,6 +122,35 @@ Result: `[24, 12, 8, 6]`, with no division and only one extra variable.
 Run both passes on `[2, 0, 3]`. (Pass 1 gives [1, 2, 0]. Pass 2: i = 2 keeps 0 × 1 = 0, suffix becomes 3; i = 1 gives 2 × 3 = 6, suffix becomes 0; i = 0 gives 1 × 0 = 0. Answer: [0, 6, 0]. The zero is handled naturally.)
 :::
 
+### Why this works for operations you cannot undo
+
+Prefix sums answer "sum of a range" by subtraction, which needs an operation you can undo. Here nothing is ever undone: each answer is built by combining a left part and a right part. So the same two passes work for operations that have no inverse at all, like maximum or greatest common divisor.
+
+For `[12, 18, 8, 6]`, the GCD of everything except each position:
+
+| i | GCD of everything before | GCD of everything after | Answer |
+|---|---|---|---|
+| 0 | none, treated as 0 | gcd(18, 8, 6) = 2 | 2 |
+| 1 | 12 | gcd(8, 6) = 2 | 2 |
+| 2 | gcd(12, 18) = 6 | 6 | 6 |
+| 3 | gcd(12, 18, 8) = 2 | none, treated as 0 | 2 |
+
+The value 0 plays the role that 1 plays for products: gcd(0, x) = x, so it is the "nothing here yet" value, the [[identity element]] for GCD. Swap in max with minus infinity, or min with plus infinity, and the same queue-whispering works.
+
+### The same shape with constraints: Candy
+
+*Candy* gives each child a rating. Every child gets at least one candy, and a child with a higher rating than a neighbour must get more than that neighbour. Constraints come from both sides, so handle each side in its own pass:
+
+- Left to right: if a child beats the left neighbour, give one more than that neighbour.
+- Right to left: if a child beats the right neighbour, make sure they have at least one more than that neighbour, keeping the larger value.
+
+| Ratings | After the left pass | After the right pass | Total |
+|---|---|---|---|
+| 1 0 2 | 1 1 2 | 2 1 2 | 5 |
+| 1 2 2 | 1 2 1 | 1 2 1 | 4 |
+
+In the first row, the left pass cannot see that the first child beats the second; the right pass fixes it. Neither pass alone is enough, just as neither the prefix nor the suffix alone gives the product of everyone else.
+
 ### Why the brute force is a trap in interviews
 
 Interviewers often wait to see whether you reach for division. Mentioning it, then explaining why it fails with zeros and why the rules forbid it, shows you understand the problem's edges. Then propose the two-array version, with a separate prefix array and suffix array, and finally compress it into the output array. Walking through that progression out loud, from O(n²) to O(n) with O(n) space to O(n) with O(1) extra space, is exactly the reasoning the question is designed to test.
@@ -156,11 +187,34 @@ vector<int> productExceptSelf(const vector<int>& nums) {
     return ans;
 }
 
+vector<int> gcdExceptSelf(const vector<int>& a) {         // same passes, no inverse needed
+    int n = a.size();
+    vector<int> ans(n, 0);
+    for (int i = 1; i < n; i++) ans[i] = gcd(ans[i - 1], a[i - 1]);
+    int suffix = 0;                                       // gcd(0, x) = x
+    for (int i = n - 1; i >= 0; i--) {
+        ans[i] = gcd(ans[i], suffix);
+        suffix = gcd(suffix, a[i]);
+    }
+    return ans;
+}
+
+int candy(const vector<int>& r) {
+    int n = r.size();
+    vector<int> c(n, 1);
+    for (int i = 1; i < n; i++) if (r[i] > r[i - 1]) c[i] = c[i - 1] + 1;
+    for (int i = n - 2; i >= 0; i--) if (r[i] > r[i + 1]) c[i] = max(c[i], c[i + 1] + 1);
+    return accumulate(c.begin(), c.end(), 0);
+}
+
 int main() {
     for (int x : productExceptSelf({1, 2, 3, 4})) cout << x << ' ';  // 24 12 8 6
     cout << '\n';
     for (int x : productExceptSelf({2, 0, 3})) cout << x << ' ';     // 0 6 0
     cout << '\n';
+    for (int x : gcdExceptSelf({12, 18, 8, 6})) cout << x << ' ';    // 2 2 6 2
+    cout << '\n';
+    cout << candy({1, 0, 2}) << ' ' << candy({1, 2, 2}) << '\n';     // 5 4
 }
 ```
 
@@ -178,6 +232,8 @@ Common misconception: "handle zeros by counting them and dividing carefully." Th
 - **Including nums[i] in its own prefix**: the prefix for i must stop at i − 1, so initialise answer[0] = 1.
 - **Updating the suffix before using it**: multiply answer[i] by the suffix first, then fold nums[i] into it.
 - **Overflow** when the problem does not guarantee small products; use long long or a modulus.
+- **Using the wrong "nothing yet" value** for other operations: 1 for products, 0 for sums and GCD, minus infinity for max, plus infinity for min.
+- **Taking the right pass's value without a max** in Candy, which can undo what the left pass established.
 
 ## Practice problems
 
@@ -189,4 +245,4 @@ Common misconception: "handle zeros by counting them and dividing carefully." Th
 - Compute prefix products in a left-to-right pass and suffix products in a right-to-left pass, then multiply.
 - Storing prefixes in the output array and carrying the suffix in one variable gives O(1) extra space.
 - The method needs no division, so zeros need no special handling.
-- The same two-pass left-and-right idea solves pivot index, trapping rain water and candy distribution.
+- Because nothing is undone, the same two passes work for operations with no inverse, such as GCD and maximum, and they solve pivot index, trapping rain water and Candy.

@@ -14,13 +14,22 @@ The owner's v2 brief, in execution order. Tick boxes reflect the repo at the las
 - [x] Curricula for every subject in `content/curriculum/` (ML 119, DSA 152, CP 115, Famous Algorithms 91, System Design 119, CS Core 77 planned). They are designed for completeness for placements, not to hit a count.
 - [x] App: subject cards on Home, subject-scoped Learn, Placement Roadmap (`/roadmap`), practice-problem checklists with per-subject solved counts, pseudocode and C++ blocks with copy and offline highlighting, subject filters in Search and Library.
 - [x] `CLAUDE.md`, this file, `tools/progress.py`, `tools/check_cpp.py` (in CI).
-- [ ] **Seed articles**: owner paused at DSA 45, CP 44, Famous Algorithms 35, System Design 45 (see PROGRESS.md). Next, by placement value: CP `cp-pbds-ordered-set` (planned, prerequisites already relaxed); DSA backtracking (`dsa-subsets-permutations`, `dsa-backtracking-template`), tree recursion, BST operations, topological sort, Dijkstra. Writers follow `pipeline/prompts/claude_writer_brief.md`.
-- [ ] **Review and rewrite the 31 Gemini-generated ML articles**: 26 done, 5 pending (rows marked pending in REVIEW_LOG.md). Keep `id`, `slug`, `paper_url`; set `generated_by: "claude-revised"`; log before/after scores.
+- [ ] **Seed articles** (owner's rules, 2026-11-02): go **track by track in order** and finish each track completely (all P0, P1 and P2 entries) before starting the next, so the owner can read a topic end to end. Subject priority: **DSA first, then CP, then System Design**, then Famous Algorithms, ML planned entries, CS Core. **No maximum length**: write until the topic is fully understood, using tables, diagrams and traced states generously. Done so far (2026-11-02 session): `cp-pbds-ordered-set`, `dsa-subsets-permutations`; tracks **`dsa-arrays` (19/19)**, **`dsa-search-sort` (9/9)**, **`dsa-math` (6/6)**, **`dsa-linear` (15/15)** and **`dsa-recursion` (12/12)** **`dsa-trees` (16/16)**, **`dsa-heaps-greedy` (14/14)**, **`dsa-graphs` (21/21)**, **`dsa-dp` (23/23)** and **`dsa-advanced` (12/12)** complete, so **every DSA track is done**, and their older short articles expanded. CP: **`cp-start` (14/14)**, **`cp-math` (20/20)**, **`cp-ranges` (19/19)**, **`cp-dp` (16/16)**, **`cp-graphs` (19/19)** and **`cp-strings` (11/11)** complete. Next: `cp-misc` (the last CP track), then System Design; after each track, expand its older articles (most older DSA articles are only about 900-1,000 words). Run the snippet in section 3 to list missing entries per track.
+- [x] **Review and rewrite the 31 Gemini-generated ML articles**: all 31 done (REVIEW_LOG.md has no pending rows).
+- [ ] **Expand older articles that were trimmed to fit the old length cap** (owner's request): after each finished track, re-read its older articles and expand any that feel underwritten (missing variants, edge cases, follow-ups or a traced example). Keep ids and slugs.
 - [x] **Curriculum-driven daily pipeline** (done: `pipeline/curriculum_generate.py`, plan/draft/critic/revise, quality contract, lint gate, kind-matched exemplars): replace Semantic Scholar discovery with the curriculum queue; per-subject prompts in `pipeline/prompts/<subject>.md`; draft, critic, revise passes; quality gate (validator + C++ check + score threshold); `needs_review` on failure; Gemini retry at most 2 times then Groq; `timeout-minutes: 30`; `[content]` commits that also update curriculum status and `PROGRESS.md`.
 - [ ] Final pass: performance, accessibility, tests, README, screenshots of every screen in all themes at phone width.
 
 ## 3. How to write one article
-1. Pick the next entry from `PROGRESS.md` (prerequisites are already written).
+List the missing entries per track, in track order:
+```bash
+python3 -c "import json;T=json.load(open('content/tracks.json'));T=T['tracks'] if isinstance(T,dict) else T
+for s in ['dsa','cp','system-design']:
+  E=json.load(open(f'content/curriculum/{s}.json'))['entries']
+  for t in [t['id'] for t in T if t.get('subject')==s]:
+    print(t,[e['id'] for e in sorted(E,key=lambda e:e['order']) if e['track']==t and e['status']!='written'])"
+```
+1. Pick the first missing entry of the current track (relax a prerequisite in the curriculum JSON if the article can explain that idea itself).
 2. Read its `brief` in `content/curriculum/<subject>.json`: key points, analogy, what to include, traps, exact facts.
 3. Write `content/<subject>/<slug>.md` with `id` = the curriculum id, the exact sections for its `kind` (see `pipeline/prompts/format.md`), `generated_by: "claude-seed"`, today's date, `track` and `track_order` from the curriculum (`order`).
 4. Set the entry's `status` to `"written"` and `written_by` to `"claude-seed"`.
@@ -35,12 +44,12 @@ Only link (`[text](article:<id>)`) and list prerequisites that **already exist a
 - **CP:** `content/cp/stress-testing.md` (pattern), `content/cp/how-contests-work.md`, `content/cp/fast-io-template.md` (primers).
 - **Famous Algorithms:** `content/famous-algos/bloom-filter.md`, `content/famous-algos/consistent-hashing.md`, `content/famous-algos/hyperloglog.md`.
 - **System Design:** `content/system-design/client-server-http.md`, `content/system-design/dns-deep-dive.md` (deep dives), `content/system-design/back-of-envelope.md` (primer). Case study: `content/system-design/url-shortener.md`, `content/system-design/rate-limiter.md`. Add the first LLD article here once written.
-- **Length tip:** first drafts tend to land 5-15% short of the minimum; aim for the middle of the range.
+- **Length:** no upper limit. Completeness of understanding is the goal: cover intuition, a traced example, edge cases, variants, interview follow-ups and pitfalls, using tables, diagrams and code wherever they help.
 
 ## 5. Common pitfalls
 - A `[[Term]]` that is not in the glossary fails validation. So does an `article:` link to an id that does not exist yet.
 - Exactly 3 quiz questions with exactly 4 options and `answer` as 0-3.
-- Word counts exclude code fences. Patterns, walkthroughs, concepts and LLD aim for 900-2,000 prose words (code excluded); primers 1,000-1,600; deep dives and case studies 1,100-2,200; `--strict` fails outside the range.
+- Word counts exclude code fences. **There is no maximum length** (owner's rule, 2026-11-02): write until the reader understands the topic completely, with no padding. `--strict` only fails below the minimum: 900 prose words for patterns, walkthroughs, concepts and LLD; 1,000 for primers; 1,100 for deep dives and case studies; 1,400 for papers.
 - `practice_problems` URLs must be real (LeetCode slug pages, `https://cses.fi/problemset/task/<id>`, `https://codeforces.com/problemset/problem/<contest>/<letter>`). If you are not certain a link exists, choose a problem you are certain about.
 - System design numbers must be labelled as estimates.
 - Mermaid labels: short, no quotes, parentheses, colons or brackets.

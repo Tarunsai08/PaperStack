@@ -105,6 +105,20 @@ flowchart TD
 Every traversal visits each node once; what changes is the moment of the visit. Preorder acts before the children, so information flows down. Postorder acts after them, so information flows up. Level order trades the stack for a queue to go by distance from the root.
 :::
 
+### One walk, three moments
+
+Picture a depth-first walk that traces around the outside of the tree, keeping the tree on its left. It passes every node three times: on the way down, between the two subtrees, and on the way back up. Preorder records a node at the first pass, inorder at the second and postorder at the third. That is why the three orders are the same walk with the visit line moved, and why iterative versions differ only in when they emit a node.
+
+| Node of the example below | First pass (preorder) | Second pass (inorder) | Third pass (postorder) |
+|---|---|---|---|
+| 8 | 1st emitted | 6th | 9th |
+| 3 | 2nd | 2nd | 5th |
+| 1 | 3rd | 1st | 1st |
+
+### Iterative postorder with one stack
+
+Reversing a modified preorder is easy but uses an extra list. A true one-stack postorder keeps the last visited node: walk left pushing nodes; look at the top; if it has a right child that was not just visited, go right; otherwise pop and visit it. The "was the right child just visited?" check is what tells the first return from the second.
+
 ### Choosing the right one
 
 - Need values from children to compute the parent (height, diameter, balanced check)? **Postorder.**
@@ -116,7 +130,7 @@ Every traversal visits each node once; what changes is the moment of the visit. 
 
 Tree:
 
-```pseudo
+```text
         8
       /   \
      3     10
@@ -135,7 +149,17 @@ Tree:
 
 This is a BST, so the inorder output is sorted. The right side view, the last node of each level, is 8, 10, 14, 13.
 
-Iterative inorder trace: push 8, 3, 1 going left. Pop 1, visit; it has no right child. Pop 3, visit; move to 6 and push 6, 4. Pop 4, visit. Pop 6, visit; move to 7, push, pop, visit. Pop 8, visit; move to 10, and so on.
+Iterative inorder trace:
+
+| Step | Action | Stack after (bottom to top) | Visited |
+|---|---|---|---|
+| 1 | walk left from 8, pushing 8, 3, 1 | 8 3 1 | |
+| 2 | pop 1, visit; no right child | 8 3 | 1 |
+| 3 | pop 3, visit; go right to 6 and walk left, pushing 6, 4 | 8 6 4 | 1 3 |
+| 4 | pop 4, visit | 8 6 | 1 3 4 |
+| 5 | pop 6, visit; go right to 7, push it | 8 7 | 1 3 4 6 |
+| 6 | pop 7, visit | 8 | 1 3 4 6 7 |
+| 7 | pop 8, visit; go right to 10, and so on | 10 | 1 3 4 6 7 8 |
 
 :::try-this
 For the same tree, what is the zigzag level order, where levels alternate left-to-right and right-to-left? ([8], [10, 3], [1, 6, 14], [13, 7, 4]. Run normal level order and reverse every second level.)
@@ -184,6 +208,30 @@ vector<int> inorderIter(Node* root) {
     return out;
 }
 
+vector<int> preorderIter(Node* root) {
+    vector<int> out; stack<Node*> st;
+    if (root) st.push(root);
+    while (!st.empty()) {
+        Node* n = st.top(); st.pop();
+        out.push_back(n->val);
+        if (n->right) st.push(n->right);          // right first, so left is processed first
+        if (n->left) st.push(n->left);
+    }
+    return out;
+}
+
+vector<int> postorderIter(Node* root) {           // one stack plus the last visited node
+    vector<int> out; stack<Node*> st;
+    Node *cur = root, *last = nullptr;
+    while (cur || !st.empty()) {
+        while (cur) { st.push(cur); cur = cur->left; }
+        Node* top = st.top();
+        if (top->right && top->right != last) cur = top->right;   // right side not done yet
+        else { out.push_back(top->val); last = top; st.pop(); }
+    }
+    return out;
+}
+
 vector<vector<int>> levelOrder(Node* root) {
     vector<vector<int>> levels;
     if (!root) return levels;
@@ -201,15 +249,22 @@ vector<vector<int>> levelOrder(Node* root) {
     return levels;
 }
 
+void print(const vector<int>& v) { for (int x : v) cout << x << ' '; cout << '\n'; }
+
 int main() {
     Node* r = new Node(8);
     r->left = new Node(3); r->right = new Node(10);
     r->left->left = new Node(1); r->left->right = new Node(6);
     r->left->right->left = new Node(4); r->left->right->right = new Node(7);
     r->right->right = new Node(14); r->right->right->left = new Node(13);
-    for (int x : inorderIter(r)) cout << x << ' ';            // 1 3 4 6 7 8 10 13 14
+    print(preorderIter(r));                                  // 8 3 1 6 4 7 10 14 13
+    print(inorderIter(r));                                   // 1 3 4 6 7 8 10 13 14
+    print(postorderIter(r));                                 // 1 4 7 6 3 13 14 10 8
+    auto levels = levelOrder(r);
+    for (auto& lv : levels) cout << lv.back() << ' ';        // right side view: 8 10 14 13
     cout << '\n';
-    for (auto& lv : levelOrder(r)) cout << lv.back() << ' ';  // right side view: 8 10 14 13
+    for (size_t i = 1; i < levels.size(); i += 2) reverse(levels[i].begin(), levels[i].end());
+    for (auto& lv : levels) for (int x : lv) cout << x << ' ';   // zigzag: 8 10 3 1 6 14 13 7 4
     cout << '\n';
 }
 ```

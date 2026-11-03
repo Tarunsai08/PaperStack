@@ -1,249 +1,183 @@
 ---
-id: paper-thumbs-up-sentiment-classification-using-machine-learning-te
-kind: paper
+id: "paper-thumbs-up-sentiment-classification-using-machine-learning-te"
+kind: "paper"
 subject: "ml"
-slug: thumbs-up-sentiment-classification-using-machine-learning-te
-title: Thumbs Up? How Machines Learned to Read Reviews
-subtitle: Why human word lists failed and simple statistics conquered sentiment analysis
+slug: "thumbs-up-sentiment-classification-using-machine-learning-te"
+title: "Can a Computer Tell If You Liked the Movie?"
+subtitle: "The 2002 study that showed learned classifiers beat hand-picked word lists at reading opinions, and where they still fail"
 track: "foundations"
 track_order: 7
-prerequisites:
-- primer-classification
-- paper-support-vector-networks
-- primer-data-features-labels
-difficulty: intermediate
+prerequisites: ["primer-classification", "paper-support-vector-networks", "primer-data-features-labels"]
+difficulty: "intermediate"
 read_minutes: 8
-topics:
-- sentiment analysis
-- natural language processing
-- text classification
-- support vector machines
-paper_title: Thumbs up? Sentiment Classification using Machine Learning Techniques
-authors:
-- B. Pang
-- Lillian Lee
-- S. Vaithyanathan
+topics: ["sentiment analysis", "natural language processing", "text classification", "support vector machines"]
+paper_title: "Thumbs up? Sentiment Classification using Machine Learning Techniques"
+authors: ["Bo Pang", "Lillian Lee", "Shivakumar Vaithyanathan"]
 year: 2002
-venue: Conference on Empirical Methods in Natural Language Processing
-paper_url: https://arxiv.org/abs/cs/0205070
+venue: "EMNLP"
+paper_url: "https://arxiv.org/abs/cs/0205070"
 glossary:
-- term: Sentiment Classification
-  definition: The task of identifying whether an opinionated text expresses an overall positive or negative attitude.
-- term: Bag-of-Features
-  definition: A document representation that counts or notes the presence of individual tokens while ignoring sentence structure and word order.
-- term: Maximum Entropy (MaxEnt)
-  definition: A probabilistic classifier that chooses feature weights to maximize uncertainty while satisfying observed data averages.
-- term: Support Vector Machine (SVM)
-  definition: A classifier that finds a boundary line or plane maximizing the margin between two opposing classes.
-- term: Negation Tagging
-  definition: A simple text modification adding a marker to every word between a negative word like not and the next punctuation mark.
-- term: Thwarted Expectations
-  definition: A rhetorical setup where an author lists praise or background details before delivering an opposite verdict.
+  - term: "Sentiment classification"
+    definition: "Deciding whether a piece of text expresses an overall positive or negative opinion."
+  - term: "Bag of words"
+    definition: "Representing a document only by which words it contains, or how often, ignoring their order."
+  - term: "Unigram"
+    definition: "A single word used as a feature. A bigram is a pair of adjacent words."
+  - term: "Feature presence"
+    definition: "A feature value of 1 if the word appears in the document at least once and 0 otherwise, ignoring how many times."
+  - term: "Negation tagging"
+    definition: "Marking every word between a negation word such as not and the next punctuation mark, so not good becomes a different feature from good."
+  - term: "Thwarted expectations"
+    definition: "A review that builds up one impression, often with many positive words, and then reverses it in the final verdict."
 quiz:
-- q: What counterintuitive finding did the authors discover about feature representation in sentiment classification?
-  options:
-  - Raw word frequencies decisively beat binary presence indicators.
-  - Binary feature presence outperformed raw word frequencies across models.
-  - Using bigrams alone beat using unigrams by a wide margin.
-  - Restricting vocabularies to adjectives produced peak accuracy.
-  answer: 1
-  explain: Simply marking whether a word appeared at least once worked better than counting how many times it was repeated.
-- q: How did machine learning models compare against human-selected word lists on movie reviews?
-  options:
-  - Human intuition crushed machine learning models because humans grasp sarcasm.
-  - Human word lists tied with Naive Bayes but lost to Support Vector Machines.
-  - Machine learning algorithms decisively outperformed the human-crafted word lists.
-  - All methods failed to beat the random guessing baseline of 50 percent.
-  answer: 2
-  explain: Human lists only scored between 58% and 64% accuracy with massive tie rates, while ML models crossed 80%.
-- q: Why do thwarted expectations pose a major hurdle for bag-of-words classifiers?
-  options:
-  - They make the vocabulary matrix too wide for computers to invert.
-  - Positive words in background exposition can outnumber the actual negative verdict.
-  - They cause the Maximum Entropy training loop to produce infinite weights.
-  - They force the tokenizer to delete punctuation marks like question marks.
-  answer: 1
-  explain: A reviewer praising the cast or premise before concluding the movie is terrible supplies too many opposing words for simple counts.
-cover_seed: thumbs-up-sentiment-classification-using-machine-learning-te
-generated_by: gemini-gemini-flash-latest
-generated_at: '2026-10-16'
+  - q: "Which representation worked better for the classifiers in this paper?"
+    options: ["Counting how many times each word appears", "Recording only whether each word appears", "Using adjectives only", "Using word order"]
+    answer: 1
+    explain: "Feature presence beat term frequency. For the SVM with single words, accuracy rose from 72.8% with counts to 82.9% with presence."
+  - q: "Why did the hand-picked word lists perform poorly?"
+    options: ["The lists were too long", "Many reviews contained none of the chosen words or equal numbers of each kind, so the method had to guess", "The words were in the wrong language", "Computers could not count words in 2002"]
+    answer: 1
+    explain: "With short intuitive lists, many reviews ended up as ties. On top of that, people's intuitions missed many useful words."
+  - q: "What does a thwarted-expectations review do to a bag-of-words classifier?"
+    options: ["It crashes the classifier", "Its many positive words in the build-up can outvote the short negative verdict", "It has no words at all", "It makes training slower"]
+    answer: 1
+    explain: "The classifier sees which words appear, not that the last sentence reverses everything before it."
+cover_seed: "thumbs-up-sentiment-classification-using-machine-learning-te"
+generated_by: "claude-revised"
+generated_at: "2026-11-02"
 importance_score: 0.76
 ---
 
 ## The hook
 
-If you want a computer to know whether an article is about sports or politics, you just look for words like "touchdown" or "senator". Topic classification is easy because the subject dictates the vocabulary. But what happens when you ask an algorithm whether a movie review is a glowing recommendation or a savage pan? 
+By 2002, computers could already sort news into sport or politics: a story full of "wicket" and "innings" is about cricket. But a film review can say "brilliant", "stunning" and "talented" and still end with "it is a mess". The words give away the topic, not the verdict.
 
-A reviewer can spend three paragraphs praising the lead actor's sparkling eyes, the gorgeous Italian scenery, and the brilliant soundtrack, only to finish with: "Yet the script ruins it completely." To a naive word-counter, that review looks overwhelmingly positive. In 2002, three computer scientists set out to discover whether computers could read between the lines, launching modern computational sentiment analysis.
+So should you tell the computer which words are positive, or let it learn from examples? And when it learns, what should it look at?
 
 ## Before you start
 
-Before jumping in, make sure you are comfortable with basic categorization in [Yes or No? How Machines Make Decisions](article:primer-classification) and the role of inputs and outputs in [What Machines Actually Learn From](article:primer-data-features-labels). It also helps to know how max-margin boundaries operate from [Draw the Widest Road Between Two Crowds](article:paper-support-vector-networks).
+You should know what a classifier does from [Yes or No? How Machines Make Decisions](article:primer-classification), what features and labels are from [What Machines Actually Learn From](article:primer-data-features-labels), and the idea of a maximum-margin boundary from [Draw the Widest Road Between Two Crowds](article:paper-support-vector-networks).
 
 ## The world before this paper
 
-In the early 2000s, natural language processing had scored real victories in topic classification. Algorithms sorted wire stories into "Finance" or "Sports" with over 90% accuracy. Because topics have distinct signatures, basic keyword matching did most of the heavy lifting.
+Text classification was well studied for topics. Opinions were newer ground. Much earlier work on opinions relied on lists of positive and negative words, either chosen by hand or grown from a few seed words like "excellent" and "poor". Count the good words, count the bad words, and see which side wins.
 
-Categorizing opinions was another beast entirely. 
-
-Linguists and computer scientists mostly tackled opinion mining using hand-crafted dictionaries. If you wanted to know if a text was cheerful or critical, you hired experts to curate lists of "good" and "bad" words. A computer would tally up the score. If positive tallies beat negative tallies, you gave it a green light.
+That seems reasonable. The question nobody had settled was whether standard machine learning, trained on labelled reviews, would do better on [[sentiment classification]] than people's intuitions about which words matter.
 
 :::history
-Bo Pang and Lillian Lee at Cornell University, teaming up with Shivakumar Vaithyanathan at IBM Almaden, grew skeptical of this manual approach. Why spend hundreds of hours hand-crafting lexicons that miss everyday slang, sarcasm, and subtle rhetorical turns? They decided to pit statistical machine learning algorithms against human intuition.
-:::
-
-Other researchers had tried unsupervised methods using search engines to check if words co-occurred near anchors like "excellent" or "poor". But on messy domains like movie critiques, those systems struggled, barely crawling past random guessing. Pang, Lee, and Vaithyanathan wanted to see if standard supervised classifiers could figure out human sentiment on their own.
-
-:::analogy
-Imagine judging whether someone enjoyed a dinner party purely by scanning their diary for adjectives. A guest writes about "delicious" appetizers, "magnificent" chandeliers, and "gorgeous" music, before wrapping up: "Yet the steak arrived burned and stone cold." 
-
-A static keyword checklist gets dazzled by the lavish praise in the backstory. A supervised learning algorithm looks at every clue in the room and figures out which patterns actually predict a happy guest.
+Bo Pang and Lillian Lee at Cornell and Shivakumar Vaithyanathan at IBM Almaden published the paper at EMNLP 2002. They built a corpus of film reviews from the rec.arts.movies.reviews newsgroup archive on IMDb and used each reviewer's own rating to label reviews positive or negative, so no one had to label them by hand.
 :::
 
 ## The big idea
 
-The researchers made a bold bet: **you do not need a hand-crafted dictionary of emotional adjectives to classify sentiment.**
+:::analogy
+Imagine cutting a review into single-word slips and dropping them into a jar. You can shake the jar, pull out slips and see which words are there, but the order is gone. "Not" and "good" are both in the jar, with nothing saying they were next to each other. Now you must decide, from the jar alone, whether the reviewer liked the film.
+:::
 
-Instead, you can treat [[Sentiment Classification]] as a data-driven [[Bag-of-Features]] task. Collect thousands of real reviews, let the reviewer's own star ratings serve as labels, and let statistical classifiers figure out which tokens matter. 
+That jar is a [[bag of words]]. The paper's bet was that you should not decide in advance which slips matter. Give a classifier hundreds of labelled jars, and let it learn which slips lean positive and which lean negative.
 
-Even better, they discovered that tracking whether a word appears at all matters far more than counting how many times someone repeats it.
-
-```mermaid
-flowchart TD
-    A[Raw IMDb Reviews] --> B[Strip Numeric Star Ratings]
-    B --> C[Apply Negation Tagging]
-    C --> D[Extract Binary Unigram Presence]
-    D --> E[Train Classifiers: NB, MaxEnt, SVM]
-    E --> F[Predict Positive vs Negative Sentiment]
-```
+The paper then asked a second, quieter question: when you look in the jar, should you count how many slips say "great", or only note that "great" is in there? The answer surprised people.
 
 ## How it works
 
-The team designed a systematic pipeline to test algorithms against human baselines.
+### The data
 
-### 1. Building the benchmark dataset
-Supervised learning needs labeled data. Rather than reading thousands of reviews by hand, the authors scraped reviews from the IMDb archive on the `rec.arts.movies.reviews` Usenet group. 
+The authors kept reviews with a clear rating, converted the rating into a positive or negative label, and removed the rating from the text so a classifier could not just read it. To stop a few prolific reviewers from dominating, they limited how many reviews each author could contribute. The final set had 700 positive and 700 negative reviews.
 
-Reviewers often left clear signposts like "4 out of 5 stars" or "grade: F". The authors parsed these explicit scores to assign ground-truth labels: positive or negative. To ensure no single critic biased the test, they capped each author at no more than 20 reviews per sentiment category. This left a balanced pool of 700 positive and 700 negative reviews. Finally, they scrubbed out the star ratings from the raw text so the algorithms could not cheat.
+### First, the human baseline
 
-### 2. Handling negation
-Human language twists meaning with tiny words. "Good" is positive; "not good" is negative. 
+Two graduate students were asked to list words that suggest positive and negative reviews. A review was labelled by which list matched more words, and a tie meant guessing. These lists scored 58% and 64% accuracy, where 50% is a coin flip. The main problem was ties: many reviews contained none of the listed words, or equal numbers from each side.
 
-To give their models a fighting chance without building a full syntactic parser, the authors implemented [[Negation Tagging]]. Whenever they encountered a negative word ("not", "isn't", "never"), they appended a `NOT_` prefix to every subsequent word until reaching the next punctuation mark:
+### Then, three learned classifiers
 
-- Raw text: `"I did not like this boring film."`
-- Transformed: `"I did not NOT_like NOT_this NOT_boring film."`
+Each review became a vector of [[unigram]] features: one entry per word in the vocabulary. The authors trained three standard classifiers on these vectors:
 
-Now, `NOT_like` and `NOT_boring` acted as distinct tokens in the vocabulary.
+- **Naive Bayes** treats each word as independent evidence and multiplies the evidence for each class.
+- **Maximum entropy**, the same model as logistic regression here, learns a weight for each word and class and turns the weighted sum into a probability.
+- **Support vector machines** find the boundary between positive and negative reviews with the widest margin.
 
-### 3. Representing text as features
-The authors converted each review into a vector of features $\vec{d}$. They compared two styles of representation:
+They evaluated with three-fold cross-validation and tried several feature sets: single words, word pairs, words with part-of-speech tags, adjectives only, and words tagged with their position in the review.
 
-- **Term Frequency:** Count how many times each token appears in the review.
-- **Binary Presence:** Mark $1$ if the word appears at least once, and $0$ if it is absent.
+### Two small but important tricks
 
-### 4. The three contenders
-They trained three foundational machine learning algorithms using balanced 3-fold cross-validation:
+[[Negation tagging]] gives the jar back a little of the lost order. Every word after a negation word, up to the next punctuation mark, gets a `NOT_` prefix:
 
-1. **Naive Bayes:** Calculates the probability that a review belongs to class $c$ (positive or negative) assuming each word appears independently:
+| Original | After tagging |
+|---|---|
+| I did not like this boring film. | I did not NOT_like NOT_this NOT_boring NOT_film . |
+| The songs are good, not great. | The songs are good , not NOT_great . |
 
-$$P(c \mid d) \propto P(c) \prod_{i=1}^{m} P(f_i \mid c)^{n_i(d)}$$
+Now "NOT_like" is a separate slip from "like", and the classifier can learn opposite weights for them.
 
-Here, $P(c)$ is the base probability of a class (50% in a balanced set), $f_i$ is a feature (a word), and $n_i(d)$ is whether that feature is present.
+[[Feature presence]] means each word's feature is 1 if it appears at all and 0 otherwise, instead of a count.
 
-2. **[[Maximum Entropy (MaxEnt)|Maximum Entropy]]:** Also known as multinomial logistic regression. Unlike Naive Bayes, MaxEnt does not assume features are independent. It fits weights $\lambda_{i,c}$ by choosing the smoothest, most uniform probability distribution that matches the training data:
+### A worked example: why counting can mislead
 
-$$P(c \mid d) = \frac{1}{Z(d)} \exp\left( \sum_{i} \lambda_{i,c} F_{i,c}(d, c) \right)$$
+Here is an illustrative linear scorer, the kind of model an SVM or maximum-entropy classifier learns, with made-up weights: great +1.0, funny +0.8, boring −1.2, waste −1.5. A positive total means positive.
 
-Here, $Z(d)$ is a normalizer that ensures probabilities sum to 1, and $F_{i,c}(d, c)$ is an indicator that turns on when feature $f_i$ occurs in a review evaluated for class $c$.
+The review summarises the plot first: "the hero is a great swordsman, a great leader and a great friend". Then the verdict: "the film is boring and a waste of time".
 
-3. **[[Support Vector Machine (SVM)|Support Vector Machines]]:** Instead of calculating probabilities, an SVM views each review as a point in a high-dimensional space and slices a clean geometric boundary between the two classes:
+| Word | Weight | Count | Count × weight | Present | Present × weight |
+|---|---|---|---|---|---|
+| great | +1.0 | 3 | +3.0 | 1 | +1.0 |
+| boring | −1.2 | 1 | −1.2 | 1 | −1.2 |
+| waste | −1.5 | 1 | −1.5 | 1 | −1.5 |
+| **Total** | | | **+0.3, positive** | | **−1.7, negative** |
 
-$$\vec{w} = \sum_{j} \alpha_j c_j \vec{d}_j$$
-
-Here, $\vec{w}$ defines the dividing line, $\vec{d}_j$ is the vector of a training review, $c_j \in \{-1, +1\}$ is its label, and $\alpha_j$ is a weight learned during optimization. The reviews sitting right on the boundary are the support vectors.
+Counting lets one word repeated in the plot summary outvote the verdict. Presence caps each word at one vote, and the review is correctly negative. In the jar picture: three "great" slips do not mean the reviewer was three times as pleased.
 
 :::try-this
-Suppose you have a vocabulary of two words: `["brilliant", "disaster"]`. 
-A review has vector $[1, 0]$ (contains "brilliant", no "disaster").
-If an SVM learns weights $w = [1.8, -2.1]$ with a threshold of $0$, what is the score?
-$1 \times 1.8 + 0 \times (-2.1) = +1.8$. Since $+1.8 > 0$, the model classifies it as positive!
+Apply negation tagging to "The jokes are not funny, but the music is lovely." Which words get the NOT_ prefix? (Only "funny". Tagging stops at the comma, so "but the music is lovely" is untouched.)
 :::
 
 ## What they found
 
-Before training their models, the authors set up human baselines. They asked two graduate students to draft lists of obvious sentiment words. 
-
-- Student 1 picked words like *dazzling*, *brilliant*, *terrible*, and *suck*. 
-- Student 2 chose words like *gripping*, *mesmerizing*, *boring*, and *slow*.
-
-When tested on the 1,400 reviews, the human lists floundered. Student 1 reached only 58% accuracy; Student 2 managed 64%. The biggest problem? **Ties.** In 75% of reviews, Student 1's chosen words appeared zero times for both positive and negative, forcing a coin flip!
+The learned classifiers beat the human word lists clearly. With unigram presence features, Naive Bayes reached 81.0%, maximum entropy 80.4% and the SVM 82.9%.
 
 ```mermaid
 flowchart TD
-    subgraph HumanBaselines [Human Word Lists]
-        H1[Student Intuition: 58%]
-        H2[Student Intuition: 64%]
-        H3[Stats-Assisted 14 Words: 69%]
-    end
-    subgraph MachineLearning [Machine Learning Unigram Presence]
-        NB[Naive Bayes: 81.0%]
-        ME[MaxEnt: 80.4%]
-        SVM[SVM: 82.9%]
-    end
+  A[Human word lists 58 to 64 percent] --> B[Learned classifiers about 80 to 83 percent]
+  B --> C[Presence beats counts]
+  C --> D[Plain unigrams hard to beat]
 ```
 
-Then, the algorithms took the field.
+The other findings were just as useful:
 
-### 1. Algorithms crushed human intuition
-Every machine learning model outperformed the human word lists by a huge margin. Naive Bayes reached **81.0%**, Maximum Entropy achieved **80.4%**, and Support Vector Machines won top honors at **82.9%**.
-
-### 2. Presence beat frequency
-This was the paper's most famous surprise. In standard topic classification, counting how many times a word repeats usually helps. If an article mentions "cricket" eight times, it is definitely about sports. 
-
-In sentiment classification, counting hurt. For SVMs, switching from raw word frequencies to simple binary presence jumped accuracy from **72.8% to 82.9%**! 
+- **Presence beat frequency.** For the SVM with unigrams, counts gave 72.8% and presence gave 82.9%. This differed from what people expected from topic classification, where counts are often useful.
+- **Fancier features did not clearly help.** Adding word pairs, part-of-speech tags or position information did not beat plain unigrams by any meaningful margin, and restricting features to adjectives did worse. Nouns and verbs such as "masterpiece" or "wasted" carry opinion too.
+- **Sentiment was harder than topic.** The same methods did noticeably worse here than they typically do on topic classification.
 
 :::insight
-In sentiment analysis, mentioning a positive word once tells you the author likes something. Repeating that same word four times often just reflects stylistic emphasis or plot summary, not four times the positive emotion. Binary presence stops verbose descriptions from hijacking the prediction.
+For opinions, whether a word appears matters more than how often it appears. One "brilliant" signals a view; three of them are often just the reviewer describing the plot.
 :::
 
-### 3. More complex features did not help
-The researchers tried adding bigrams (pairs of words), part-of-speech tags, and tracking where words appeared in the review (beginning, middle, or end). 
-
-None of it beat plain single words (unigrams). In fact, isolating only adjectives dropped accuracy down to **75.1% - 77.7%**. Verbs ("hated", "loved") and nouns ("masterpiece", "trash") carried just as much emotional weight as adjectives.
+:::warning
+Common misconception: "Experts know which words carry sentiment, so a hand-built list should win." People missed many useful words and their short lists produced many ties. A classifier that learns weights from labelled reviews finds signals people do not think of, including plain words that are not adjectives.
+:::
 
 ## What it got wrong (or left open)
 
-While 82.9% was a breakthrough for 2002, the authors noticed something humbling: in topic categorization, the exact same algorithms routinely scored 90% or higher. Why was sentiment so much harder?
+The authors studied the errors and named the hardest pattern: [[thwarted expectations]]. A reviewer lists everything that should have made the film great, then delivers a negative verdict in a sentence or two. The jar holds many positive slips and only a few negative ones, and the bag-of-words model votes positive. Order, and words like "but" and "however", matter, and the jar throws order away.
 
-The authors looked closely at the errors and identified rhetorical traps that bag-of-words models simply cannot handle.
+Related problems:
 
-:::warning
-Counting words ignores narrative flow. When authors deploy rhetorical tricks, word-counters fall right into the trap.
-:::
-
-The primary culprit was **[[Thwarted Expectations]]**. Reviewers love setting up contrasts:
-
-> *"This film should be brilliant. The plot sounds fantastic, the actors are first-rate, and the supporting cast is talented. However, it can't hold up."*
-
-A human immediately understands that "However" negates the premise. But to an SVM or a Naive Bayes model, that review contains four positive words (*brilliant*, *fantastic*, *first-rate*, *talented*) and only one mild criticism. The algorithm votes positive, completely missing the punchline.
-
-Similarly, reviewers frequently praise individual parts of bad projects: a great actress stuck in an unwatchable movie. Bag-of-features classifiers cannot distinguish between the subject of praise and the reviewer's verdict on the overall work.
+- **Praise for parts, verdict on the whole.** "The lead actor is wonderful in a dreadful film" mixes opinions about different things.
+- **Negation is only patched.** Tagging up to the next punctuation mark is a rough rule. It misses negation that spans clauses and over-tags in some sentences.
+- **One domain.** All the data were film reviews. Words that signal sentiment in films may not transfer to, say, product reviews.
+- **Binary labels only.** The study handled positive versus negative, not ratings or mixed opinions.
 
 ## What happened next
 
-This paper opened the floodgates for computational sentiment analysis. By publicly releasing their curated IMDb dataset, Pang and Lee gave the natural language processing community its first standard benchmark. For the next decade, nearly every new NLP text categorization paper compared its scores against Pang and Lee's movie reviews.
+The film-review data became a standard benchmark for sentiment classification. The authors released it publicly, and an expanded version became widely used in later work.
 
-Researchers quickly built on their findings:
-- Later work introduced sentence-level subjectivity filters to strip out neutral plot summaries before feeding reviews to classifiers.
-- As neural approaches emerged, dense vector representations described in [King Minus Man Plus Woman Equals Queen](article:paper-word2vec) helped models associate words with similar emotional polarity.
-- Modern architectures like [Fill in the Blanks, Understand Everything](article:paper-bert) finally conquered the "thwarted expectations" problem by looking at entire sentence structures with self-attention.
+Follow-up work tried to fix the jar's blindness to structure. Pang and Lee themselves later separated subjective sentences from plot summary before classifying, which targets thwarted expectations directly. Dense word vectors like those in [King Minus Man Plus Woman Equals Queen](article:paper-word2vec) let models share what they learn across similar words. Models such as [BERT](article:paper-bert), which read whole sentences in context, finally handle order and contrast much better than any bag of words.
 
-Yet the core takeaway from this 2002 milestone remains true: human intuition about language is notoriously incomplete. Let the data do the talking.
+Simple bag-of-words classifiers with presence features remain a strong, fast baseline for text classification today, which is a sign of how well this paper's lessons have lasted.
 
 ## Key takeaways
 
-- Hand-crafted sentiment dictionaries fail because human intuition misses common indicators and suffers from crippling tie rates.
-- Treating sentiment classification as a supervised bag-of-features task decisively beats human word lists.
-- Binary feature presence outperforms term frequency for sentiment categorization, because repeating an opinion word does not scale its emotional polarity linearly.
-- Rhetorical structures like thwarted expectations place an upper ceiling on bag-of-words models, demanding full syntactic and contextual understanding.
+- Treating sentiment as supervised classification over word features beat hand-picked positive and negative word lists by a wide margin.
+- With unigram features, Naive Bayes, maximum entropy and SVMs all reached about 80 to 83% accuracy on balanced film reviews, with the SVM best at 82.9%.
+- Recording whether a word appears worked much better than counting it, because repeated words often come from plot summary rather than opinion.
+- Richer features such as word pairs or part-of-speech tags did not clearly beat plain single words, and adjectives alone did worse.
+- Bag-of-words models fail on thwarted expectations, where a long positive build-up is reversed by a short verdict, because they ignore word order.

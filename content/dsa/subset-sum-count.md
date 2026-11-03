@@ -50,9 +50,9 @@ importance_score: 0.86
 
 ## The hook
 
-Five friends' dishes arrive on one bill, and two of them are paying. Each dish goes on one person's tab or the other's. One of them says, "I'll pay exactly ₹5 of this." How many different ways can the dishes be assigned so that works out?
+Five friends' dishes arrive on one bill, and two of them are paying, with each dish going on one tab or the other. One says, "I'll pay exactly ₹5 of this": how many different ways can the dishes be assigned so that works out?
 
-Then someone points at the free glass of water on the bill, priced ₹0. Does it matter which tab it goes on? For the total, no. For the *number of ways*, it doubles the answer. That one detail, a zero that silently doubles a count, is where most solutions to this family break. How do you count the splits without missing it?
+Then someone points at the free glass of water on the bill, priced ₹0. It changes nothing about the total, but it doubles the *number of ways*, because it can go on either tab. That one detail, a zero that silently doubles a count, is where most solutions to this family break. How do you count the splits without missing it?
 
 ## The problem
 

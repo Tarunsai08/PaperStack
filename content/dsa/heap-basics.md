@@ -56,9 +56,9 @@ importance_score: 0.9
 
 ## The hook
 
-A hospital emergency room on a busy night. Patients arrive in any order: a sprained ankle, then a chest pain, then a cut finger, then a child with a high fever. Nobody is seen in arrival order. The triage nurse always knows who is most urgent right now, and when that patient goes in, she knows who is next within seconds.
+A hospital emergency room on a busy night takes patients in any order: a sprained ankle, a chest pain, a cut finger, a child with a high fever. Nobody is seen in arrival order. The triage nurse always knows who is most urgent right now, and when that patient goes in, knows who is next within seconds.
 
-She does not keep everyone in a perfectly sorted list; re-sorting the whole room after every arrival would be far too slow. She keeps just enough order to answer one question fast: who is most urgent? That partial order is a heap, and it powers Dijkstra's shortest paths, merging sorted lists, task schedulers and every "top k" interview question. So how do you keep "just enough" order in an array, and why is it cheap?
+Re-sorting the whole room after every arrival would be far too slow, so the nurse keeps just enough order to answer one question fast: who is most urgent? That partial order is a heap, and it powers Dijkstra's shortest paths, merging sorted lists, task schedulers and every "top k" interview question. How do you keep "just enough" order in an array, and why is it cheap?
 
 ## The intuition
 
@@ -115,7 +115,13 @@ A heap is not sorted, and that is the point. It keeps only the order needed to f
 
 Given an unsorted array, you could push items one at a time for O(n log n). [[Heapify]] does better. Every leaf is already a valid one-item heap, so start at the last non-leaf, index n / 2 − 1, and sift down each index back to 0.
 
-Why O(n)? Think of the triage board again. Half the patients are on the bottom row and never move. A quarter are one row up and slide down at most one step. An eighth slide at most two steps. The total is n/4 × 1 + n/8 × 2 + n/16 × 3 + ..., which adds up to less than n. For a full heap of 1,023 nodes, heapify does at most 1,013 swaps, while pushing the same 1,023 items one by one can take up to 8,194.
+Why O(n)? Think of the triage board again:
+
+- half the patients are on the bottom row and never move;
+- a quarter are one row up and slide down at most one step;
+- an eighth slide at most two steps, and so on.
+
+The total is n/4 × 1 + n/8 × 2 + n/16 × 3 + ..., which adds up to less than n. For a full heap of 1,023 nodes, heapify does at most 1,013 swaps, while pushing the same 1,023 items one by one can take up to 8,194.
 
 ### priority_queue in C++
 

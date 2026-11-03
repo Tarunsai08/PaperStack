@@ -97,7 +97,18 @@ flowchart TD
 
 ### Finding the middle
 
-Without a cycle, when fast reaches the end, slow has gone half as far: it is at the middle. For an even-length list, the exact middle chosen depends on the loop condition, which interview problems specify.
+Without a cycle, when fast reaches the end, slow has gone half as far: it is at the middle. For an even-length list there are two middles, and the starting position of fast decides which one you get:
+
+| Start | Loop condition | List 1 2 3 4 5 | List 1 2 3 4 |
+|---|---|---|---|
+| slow = fast = head | while fast and fast.next | 3 | 3, the second middle |
+| slow = head, fast = head.next | while fast and fast.next | 3 | 2, the first middle |
+
+*Middle of the Linked List* wants the second middle. Splitting a list into halves for merge sort or for a palindrome check usually wants the first middle, so the left half is never longer than the right one.
+
+### Measuring the cycle
+
+Once slow and fast meet inside the loop, keep one pointer still and walk the other around until it returns. The number of steps is the loop length L. In the example below, walking from the meeting node 5 back to 5 takes 4 steps: 6, 3, 4, 5.
 
 :::insight
 Two pointers moving at different speeds turn questions about the shape of a structure, "does it loop?", "where is the middle?", into questions about distance, which you can answer with simple arithmetic and O(1) memory.
@@ -128,6 +139,21 @@ They meet at node 5. Now move one pointer to the head:
 | 2 | 3 | 3 |
 
 They meet at node 3, the entry. Check the formula: b = 2 (3 → 4 → 5), L = 4, and a = L − b = 2. ✓
+
+### Find the Duplicate Number on [1, 3, 4, 2, 2]
+
+Treat index i as a node whose next is nums[i]. Starting at index 0, the walk goes 0 → 1 → 3 → 2 → 4 → 2 → 4 ..., a cycle that two indices, 3 and 4, both lead into, because the value 2 appears twice. The duplicate value is the cycle's entry.
+
+| Phase | slow | fast |
+|---|---|---|
+| start | nums[0] = 1 | nums[0] = 1 |
+| step 1 | 3 | 2 |
+| step 2 | 2 | 2, meet |
+| reset slow to nums[0] | 1 | 2 |
+| step | 3 | 4 |
+| step | 2 | 2, the entry |
+
+The duplicate is 2, found with O(1) extra memory and without modifying the array, which is what the problem demands. On the circular track, two different gates lead onto the same lap, and the gate where the paths merge is the duplicated value.
 
 :::try-this
 For the list 1 → 2 → 3 → 4 → 5 with no cycle, trace slow and fast until fast cannot move two steps. Where is slow? (slow: 1, 2, 3; fast: 1, 3, 5, then fast's next is null. Slow is at 3, the middle.)
@@ -173,13 +199,46 @@ Node* cycleEntry(Node* head) {
     return nullptr;  // no cycle
 }
 
+int cycleLength(Node* head) {
+    Node *slow = head, *fast = head;
+    while (fast && fast->next) {
+        slow = slow->next, fast = fast->next->next;
+        if (slow == fast) {
+            int len = 1;
+            for (Node* p = slow->next; p != slow; p = p->next) len++;   // one lap
+            return len;
+        }
+    }
+    return 0;
+}
+
+Node* middle(Node* head, bool second) {          // second middle, or first middle for even lengths
+    Node *slow = head, *fast = second ? head : head->next;
+    while (fast && fast->next) slow = slow->next, fast = fast->next->next;
+    return slow;
+}
+
+int findDuplicate(const vector<int>& a) {        // values are next pointers
+    int slow = a[0], fast = a[0];
+    do { slow = a[slow]; fast = a[a[fast]]; } while (slow != fast);
+    slow = a[0];
+    while (slow != fast) slow = a[slow], fast = a[fast];
+    return slow;
+}
+
 int main() {
     vector<Node*> n;
     for (int i = 1; i <= 6; i++) n.push_back(new Node(i));
     for (int i = 0; i < 5; i++) n[i]->next = n[i + 1];
     n[5]->next = n[2];                       // 6 -> 3
     Node* e = cycleEntry(n[0]);
-    cout << (e ? e->val : -1) << '\n';       // 3
+    cout << (e ? e->val : -1) << ' ' << cycleLength(n[0]) << '\n';   // 3 4
+
+    vector<Node*> m;
+    for (int i = 1; i <= 4; i++) m.push_back(new Node(i));
+    for (int i = 0; i < 3; i++) m[i]->next = m[i + 1];
+    cout << middle(m[0], true)->val << ' ' << middle(m[0], false)->val << '\n';   // 3 2
+    cout << findDuplicate({1, 3, 4, 2, 2}) << '\n';                             // 2
 }
 ```
 

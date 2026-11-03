@@ -377,8 +377,8 @@
    "prerequisites": [
     "dsa-big-o"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Row and column bounds",
@@ -445,8 +445,8 @@
    "prerequisites": [
     "dsa-big-o"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Numbers in range 1..n",
@@ -580,8 +580,8 @@
     "dsa-sorting-as-tool",
     "dsa-recursion-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Divide, sort halves, merge",
@@ -612,8 +612,8 @@
    "prerequisites": [
     "dsa-sorting-as-tool"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Partition around a pivot",
@@ -645,8 +645,8 @@
    "prerequisites": [
     "dsa-sorting-as-tool"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Small value ranges allow counting",
@@ -813,8 +813,8 @@
     "dsa-monotonic-stack",
     "dsa-sliding-window"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "FIFO for processing order",
@@ -876,8 +876,8 @@
    "prerequisites": [
     "dsa-recursion-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Choose or skip",
@@ -909,8 +909,8 @@
    "prerequisites": [
     "dsa-subsets-permutations"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Choose, explore, unchoose",
@@ -942,8 +942,8 @@
    "prerequisites": [
     "dsa-backtracking-template"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Place row by row",
@@ -973,8 +973,8 @@
    "prerequisites": [
     "dsa-backtracking-template"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Try candidates in empty cells",
@@ -1005,8 +1005,8 @@
     "dsa-recursion-basics",
     "dsa-merge-sort-inversions"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Split into independent halves",
@@ -1069,8 +1069,8 @@
    "prerequisites": [
     "dsa-tree-traversals"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Return info from children",
@@ -1102,8 +1102,8 @@
     "dsa-tree-recursion",
     "dsa-binary-search"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "BST invariant",
@@ -1135,8 +1135,8 @@
    "prerequisites": [
     "dsa-tree-recursion"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Recursive LCA in binary trees",
@@ -1166,8 +1166,8 @@
    "prerequisites": [
     "dsa-tree-traversals"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Preorder plus inorder reconstruct",
@@ -1198,8 +1198,8 @@
     "dsa-tree-recursion",
     "dsa-prefix-sums"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Root-to-leaf paths",
@@ -1229,8 +1229,8 @@
    "prerequisites": [
     "dsa-bst-operations"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Skewed BST becomes a list",
@@ -1293,8 +1293,8 @@
    "prerequisites": [
     "dsa-heap-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Keep a min-heap of size k",
@@ -1324,8 +1324,8 @@
    "prerequisites": [
     "dsa-heap-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Max-heap for the lower half, min-heap for the upper",
@@ -1355,8 +1355,8 @@
     "dsa-heap-basics",
     "dsa-linked-list-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Heap of current heads",
@@ -1386,8 +1386,8 @@
    "prerequisites": [
     "dsa-sorting-as-tool"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Make the locally best choice",
@@ -1419,8 +1419,8 @@
     "dsa-greedy-exchange",
     "dsa-intervals-sweep"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Sort by end time",
@@ -1452,8 +1452,8 @@
     "dsa-greedy-exchange",
     "dsa-heap-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Most frequent task first",
@@ -1484,8 +1484,8 @@
     "dsa-heap-basics",
     "dsa-greedy-exchange"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Merge the two rarest symbols",
@@ -1647,8 +1647,8 @@
     "dsa-cycle-detection",
     "dsa-bfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Kahn's algorithm with indegrees",
@@ -1714,8 +1714,8 @@
     "dsa-bfs",
     "dsa-heap-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Greedy settle the closest node",
@@ -1750,8 +1750,8 @@
    "prerequisites": [
     "dsa-dijkstra"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Relax all edges n-1 times",
@@ -1783,8 +1783,8 @@
     "dsa-union-find",
     "dsa-heap-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Cut property",
@@ -1816,8 +1816,8 @@
     "dsa-bfs",
     "dsa-dfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Colour with BFS or DFS",
@@ -1848,8 +1848,8 @@
     "dsa-bfs",
     "dsa-dfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Direction arrays",
@@ -2105,8 +2105,8 @@
    "prerequisites": [
     "dsa-lcs-edit-distance"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "dp[l][r] over subarrays",
@@ -2138,8 +2138,8 @@
     "dsa-tree-recursion",
     "dsa-dp-1d"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Each node returns a small state",
@@ -2169,8 +2169,8 @@
    "prerequisites": [
     "dsa-dp-1d"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "States like holding or not holding",
@@ -2202,8 +2202,8 @@
     "dsa-dp-intro",
     "dsa-bit-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Represent a set with bits",
@@ -2268,8 +2268,8 @@
     "dsa-prefix-sums",
     "dsa-bit-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Lowest set bit trick",
@@ -2303,8 +2303,8 @@
     "dsa-fenwick-tree",
     "dsa-divide-and-conquer"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Tree over array halves",
@@ -2334,8 +2334,8 @@
    "prerequisites": [
     "dsa-bit-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "XOR cancels pairs",
@@ -2368,8 +2368,8 @@
     "dsa-string-patterns",
     "dsa-hashing-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Naive O(nm)",
@@ -2401,8 +2401,8 @@
     "dsa-lru-cache",
     "dsa-heap-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Pick operations first",
@@ -2435,8 +2435,8 @@
     "dsa-queue-deque",
     "dsa-dp-1d"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Window max inside a DP transition",
@@ -2465,8 +2465,8 @@
    "prerequisites": [
     "dsa-segment-tree-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Precompute powers-of-two ranges",
@@ -2559,8 +2559,8 @@
    "prerequisites": [
     "dsa-hashing-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Cancel pairs of different elements",
@@ -2593,8 +2593,8 @@
    "prerequisites": [
     "dsa-two-pointers"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Find the first descent from the right",
@@ -2687,8 +2687,8 @@
    "prerequisites": [
     "dsa-binary-search"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Binary search a partition",
@@ -2718,8 +2718,8 @@
    "prerequisites": [
     "dsa-binary-search"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Compare mid with neighbour",
@@ -2749,8 +2749,8 @@
    "prerequisites": [
     "dsa-linked-list-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Count k nodes ahead",
@@ -2781,8 +2781,8 @@
     "dsa-linked-list-basics",
     "dsa-hashing-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Hash map old to new",
@@ -2810,8 +2810,8 @@
    "prerequisites": [
     "dsa-monotonic-stack"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Previous and next smaller",
@@ -2841,8 +2841,8 @@
    "prerequisites": [
     "dsa-stack-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Signs and parentheses",
@@ -2874,8 +2874,8 @@
     "dsa-backtracking-template",
     "dsa-dfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Mark visited in place",
@@ -2905,8 +2905,8 @@
    "prerequisites": [
     "dsa-backtracking-template"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Open and close counts",
@@ -2936,8 +2936,8 @@
    "prerequisites": [
     "dsa-subsets-permutations"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Start index prevents reorderings",
@@ -2967,8 +2967,8 @@
    "prerequisites": [
     "dsa-tree-construction"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Preorder with null markers",
@@ -2997,8 +2997,8 @@
    "prerequisites": [
     "dsa-tree-recursion"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Return best downward path",
@@ -3028,8 +3028,8 @@
    "prerequisites": [
     "dsa-tree-traversals"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Column and row coordinates",
@@ -3059,8 +3059,8 @@
     "dsa-intervals-sweep",
     "dsa-heap-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Min-heap of end times",
@@ -3091,8 +3091,8 @@
    "prerequisites": [
     "dsa-greedy-exchange"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Track farthest reachable",
@@ -3121,8 +3121,8 @@
    "prerequisites": [
     "dsa-greedy-exchange"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Total fuel check",
@@ -3151,8 +3151,8 @@
    "prerequisites": [
     "dsa-bfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Words as nodes, one-letter changes as edges",
@@ -3182,8 +3182,8 @@
    "prerequisites": [
     "dsa-topological-sort"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Cycle means impossible",
@@ -3215,8 +3215,8 @@
     "dsa-bfs",
     "dsa-union-find"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Flood fill",
@@ -3248,8 +3248,8 @@
    "prerequisites": [
     "dsa-dijkstra"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Directed weighted graph",
@@ -3280,8 +3280,8 @@
     "dsa-bellman-ford-floyd",
     "dsa-bfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Bellman-Ford limited rounds",
@@ -3375,8 +3375,8 @@
     "dsa-interval-dp",
     "dsa-lcs-edit-distance"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "dp over l and r",
@@ -3405,8 +3405,8 @@
    "prerequisites": [
     "dsa-lcs-edit-distance"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Star means zero or more",
@@ -3466,8 +3466,8 @@
    "prerequisites": [
     "dsa-big-o"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Euclid's algorithm",
@@ -3503,8 +3503,8 @@
     "dsa-gcd-primes",
     "dsa-bit-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Why answers are taken mod 1e9+7",
@@ -3535,8 +3535,8 @@
    "prerequisites": [
     "dsa-modular-fast-power"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Permutations vs combinations",
@@ -3568,8 +3568,8 @@
    "prerequisites": [
     "dsa-big-o"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Reverse digits safely",
@@ -3602,8 +3602,8 @@
    "prerequisites": [
     "dsa-big-o"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Fisher-Yates shuffle",
@@ -3638,8 +3638,8 @@
    "prerequisites": [
     "dsa-number-tricks"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Distance, slopes with gcd",
@@ -3704,8 +3704,8 @@
     "dsa-two-pointers",
     "dsa-cyclic-sort"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Rotate array by reversal",
@@ -3736,8 +3736,8 @@
     "dsa-sliding-window",
     "dsa-cpp-stl-toolkit"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "multiset for window min and max",
@@ -3767,8 +3767,8 @@
    "prerequisites": [
     "dsa-hashing-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Only start counting at sequence beginnings",
@@ -3797,8 +3797,8 @@
    "prerequisites": [
     "dsa-string-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Run-length encoding",
@@ -3829,8 +3829,8 @@
    "prerequisites": [
     "dsa-fast-slow-pointers"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Two pointers that switch heads",
@@ -3862,8 +3862,8 @@
     "dsa-linked-list-basics",
     "dsa-merge-sort-inversions"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Split with slow and fast",
@@ -3894,8 +3894,8 @@
     "dsa-linked-list-basics",
     "dsa-stack-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "DFS with a stack",
@@ -3926,8 +3926,8 @@
     "dsa-stack-patterns",
     "dsa-queue-deque"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Two stacks with lazy transfer",
@@ -3956,8 +3956,8 @@
    "prerequisites": [
     "dsa-monotonic-stack"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Simulate collisions",
@@ -3988,8 +3988,8 @@
    "prerequisites": [
     "dsa-backtracking-template"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Four directions",
@@ -4020,8 +4020,8 @@
     "dsa-backtracking-template",
     "dsa-graph-representation"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Assign colours one vertex at a time",
@@ -4050,8 +4050,8 @@
    "prerequisites": [
     "dsa-recursion-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Move n-1, move one, move n-1 again",
@@ -4081,8 +4081,8 @@
    "prerequisites": [
     "dsa-backtracking-template"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Palindrome partitioning",
@@ -4113,8 +4113,8 @@
     "dsa-tree-traversals",
     "dsa-vertical-order"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Level order for left and right views",
@@ -4146,8 +4146,8 @@
     "dsa-tree-recursion",
     "dsa-bfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Add parent pointers",
@@ -4179,8 +4179,8 @@
     "dsa-bst-operations",
     "dsa-stack-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Controlled inorder with a stack",
@@ -4210,8 +4210,8 @@
     "dsa-bst-operations",
     "dsa-divide-and-conquer"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Middle element as root",
@@ -4241,8 +4241,8 @@
    "prerequisites": [
     "dsa-tree-traversals"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Index nodes like a heap",
@@ -4273,8 +4273,8 @@
    "prerequisites": [
     "dsa-tree-traversals"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Threaded links to the predecessor",
@@ -4306,8 +4306,8 @@
    "prerequisites": [
     "dsa-greedy-exchange"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Sort by value per weight",
@@ -4337,8 +4337,8 @@
    "prerequisites": [
     "dsa-greedy-exchange"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Left-to-right then right-to-left constraints",
@@ -4368,8 +4368,8 @@
     "dsa-heap-basics",
     "dsa-greedy-exchange"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Sort by availability, heap by priority",
@@ -4399,8 +4399,8 @@
    "prerequisites": [
     "dsa-dfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Discovery time and low-link",
@@ -4431,8 +4431,8 @@
    "prerequisites": [
     "dsa-topological-sort"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Kosaraju's two passes",
@@ -4460,8 +4460,8 @@
    "prerequisites": [
     "dsa-bfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Board cells as nodes",
@@ -4492,8 +4492,8 @@
    "prerequisites": [
     "dsa-topological-sort"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Relax edges in topological order",
@@ -4524,8 +4524,8 @@
     "dsa-bfs",
     "dsa-union-find"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Map old node to new",
@@ -4554,8 +4554,8 @@
    "prerequisites": [
     "dsa-interval-dp"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "dp[i][j] = best split k",
@@ -4586,8 +4586,8 @@
     "dsa-dp-intro",
     "dsa-binary-search"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "dp over eggs and moves",
@@ -4647,8 +4647,8 @@
    "prerequisites": [
     "dsa-unbounded-knapsack"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Each length reusable",
@@ -4678,8 +4678,8 @@
    "prerequisites": [
     "dsa-lcs-edit-distance"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Reset to zero on mismatch",
@@ -4709,8 +4709,8 @@
    "prerequisites": [
     "dsa-lcs-edit-distance"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Distinct subsequences",
@@ -4740,8 +4740,8 @@
    "prerequisites": [
     "dsa-grid-dp"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Move both walkers together",
@@ -4771,8 +4771,8 @@
     "dsa-tries",
     "dsa-bit-manipulation-tricks"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Insert numbers bit by bit",
@@ -4800,8 +4800,8 @@
    "prerequisites": [
     "dsa-string-matching-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Prefix function idea",
@@ -4834,8 +4834,8 @@
    "prerequisites": [
     "dsa-lru-cache"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Frequency buckets of linked lists",

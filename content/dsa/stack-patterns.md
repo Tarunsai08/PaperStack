@@ -19,6 +19,7 @@ practice_problems:
   - { name: "Evaluate Reverse Polish Notation", platform: "LeetCode", url: "https://leetcode.com/problems/evaluate-reverse-polish-notation/", difficulty: "Medium" }
   - { name: "Decode String", platform: "LeetCode", url: "https://leetcode.com/problems/decode-string/", difficulty: "Medium" }
   - { name: "Simplify Path", platform: "LeetCode", url: "https://leetcode.com/problems/simplify-path/", difficulty: "Medium" }
+  - { name: "Longest Valid Parentheses", platform: "LeetCode", url: "https://leetcode.com/problems/longest-valid-parentheses/", difficulty: "Hard" }
 glossary:
   - term: "Stack"
     definition: "A collection where the last item added is the first one removed (last in, first out)."
@@ -128,6 +129,32 @@ A stack is the right tool when the most recently opened thing must be dealt with
 | push 7 | (5,5) (3,3) (7,3) | 3 |
 | pop | (5,5) (3,3) | 3 |
 
+**Simplify Path** for `"/a/./b/../../c/"`: split on slashes and treat folder names as a stack. Skip empty parts and ".", push a name, and pop on "..":
+
+| Part | Action | Stack after |
+|---|---|---|
+| a | push | a |
+| . | stay | a |
+| b | push | a b |
+| .. | pop | a |
+| .. | pop | (empty) |
+| c | push | c |
+
+Joining the stack gives "/c". Each ".." takes the top plate off the pile, the folder you entered most recently. A ".." on an empty stack stays at the root, because you cannot go above "/".
+
+**Longest Valid Parentheses** for `")()())"` pushes **indices**, starting with −1 as a base. Push the index of each "(". On ")", pop; if the stack is now empty, push the current index as the new base; otherwise the valid stretch ending here runs from just after the new top to the current index.
+
+| i | Char | Stack after (indices) | Valid length ending here | Best |
+|---|---|---|---|---|
+| 0 | ) | 0 (new base) | | 0 |
+| 1 | ( | 0 1 | | 0 |
+| 2 | ) | 0 | 2 − 0 = 2 | 2 |
+| 3 | ( | 0 3 | | 2 |
+| 4 | ) | 0 | 4 − 0 = 4 | 4 |
+| 5 | ) | 5 (new base) | | 4 |
+
+The answer is 4, for "()()". Like writing a number on each canteen plate, storing indices instead of characters is what lets the stack measure lengths, the same reason monotonic stacks store indices.
+
 :::try-this
 Evaluate the RPN expression `5 1 2 + 4 * + 3 -` with a stack. (Push 5, 1, 2; + gives 3; push 4; * gives 12; + gives 17; push 3; − gives 14.)
 :::
@@ -171,11 +198,52 @@ struct MinStack {
     int getMin() const { return st.back().second; }
 };
 
+long long evalRPN(const vector<string>& tokens) {
+    vector<long long> st;
+    for (const string& t : tokens) {
+        if (t.size() == 1 && string("+-*/").find(t[0]) != string::npos) {
+            long long b = st.back(); st.pop_back();               // popped first: the right operand
+            long long a = st.back(); st.pop_back();
+            st.push_back(t[0] == '+' ? a + b : t[0] == '-' ? a - b : t[0] == '*' ? a * b : a / b);
+        } else st.push_back(stoll(t));
+    }
+    return st.back();
+}
+
+string simplifyPath(const string& path) {
+    vector<string> st;
+    stringstream ss(path);
+    string part;
+    while (getline(ss, part, '/')) {
+        if (part.empty() || part == ".") continue;
+        if (part == "..") { if (!st.empty()) st.pop_back(); }   // cannot go above the root
+        else st.push_back(part);
+    }
+    string out;
+    for (auto& p : st) out += "/" + p;
+    return out.empty() ? "/" : out;
+}
+
+int longestValidParentheses(const string& s) {
+    vector<int> st = {-1};                                     // base index
+    int best = 0;
+    for (int i = 0; i < (int)s.size(); i++) {
+        if (s[i] == '(') { st.push_back(i); continue; }
+        st.pop_back();
+        if (st.empty()) st.push_back(i);                      // unmatched ')': new base
+        else best = max(best, i - st.back());
+    }
+    return best;
+}
+
 int main() {
-    cout << isValid("{[()]}") << isValid("{[()]}(") << '\n';  // 10
+    cout << isValid("{[()]}") << isValid("{[()]}(") << '\n';                         // 10
     MinStack m;
     m.push(5); m.push(3); m.push(7); m.pop();
-    cout << m.getMin() << '\n';                                // 3
+    cout << m.getMin() << '\n';                                                      // 3
+    cout << evalRPN({"5", "1", "2", "+", "4", "*", "+", "3", "-"}) << '\n';           // 14
+    cout << simplifyPath("/a/./b/../../c/") << ' ' << simplifyPath("/../") << '\n';  // /c /
+    cout << longestValidParentheses(")()())") << ' ' << longestValidParentheses("(()") << '\n';   // 4 2
 }
 ```
 
@@ -194,10 +262,16 @@ Common misconception: "count the brackets: if opens equal closes, it is valid." 
 - **Forgetting the final empty check**, which accepts strings with unclosed openers.
 - **Operand order in RPN**: for "a b −", the first popped value is b; compute a − b, not b − a.
 - **Using recursion for deep nesting** where an explicit stack avoids stack overflow on very deep inputs.
+- **Storing characters when you need lengths,** as in Longest Valid Parentheses; store indices and keep a base index below them.
+- **Popping on ".." at the root** in Simplify Path, which must simply stay at "/".
 
 ## Practice problems
 
-*Valid Parentheses* is pattern 1 directly. *Evaluate Reverse Polish Notation* is pattern 2. *Decode String* pushes the current count and string before each `[` and pops after `]`. *Simplify Path* treats folders as a stack, popping on "..". *Min Stack* is pattern 4. Next comes the monotonic stack, which uses the same structure to answer "next greater element" questions in linear time.
+*Valid Parentheses* is pattern 1 directly.
+
+*Evaluate Reverse Polish Notation* is pattern 2. *Decode String* pushes the current count and string before each `[` and pops after `]`.
+
+*Simplify Path* treats folders as a stack, popping on "..". *Min Stack* is pattern 4. *Longest Valid Parentheses* is the hard version of pattern 1, with an index stack. Next comes the monotonic stack, which uses the same structure to answer "next greater element" questions in linear time.
 
 ## Key takeaways
 

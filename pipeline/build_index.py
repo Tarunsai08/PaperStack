@@ -6,7 +6,7 @@ shared fixtures in tests/fixtures (see cases.json).
 
 Usage:
     python pipeline/build_index.py            # validate + write index (CI)
-    python pipeline/build_index.py --strict   # also fail on warnings (length, title)
+    python pipeline/build_index.py --strict   # also fail on warnings (too short, title)
     python pipeline/build_index.py --partial  # unresolved cross references are warnings
     python pipeline/build_index.py --check    # validate only, do not write
 """
@@ -125,16 +125,18 @@ DIFFICULTIES = ["beginner", "intermediate", "advanced"]
 KINDS = list(SECTIONS)
 SUBJECTS = ["ml", "dsa", "cp", "famous-algos", "system-design", "cs-core"]
 PRIORITIES = ["P0", "P1", "P2"]
-WORD_LIMITS = {
-    "paper": (1400, 2200),
-    "primer": (1000, 1600),
+# Minimum prose words per kind (a depth floor). There is deliberately no maximum:
+# an article is as long as complete understanding of the topic needs (owner's rule).
+WORD_MIN = {
+    "paper": 1400,
+    "primer": 1000,
     # Code fences are not counted, so code-bearing kinds start a little lower.
-    "pattern": (900, 2000),
-    "problem-walkthrough": (900, 2000),
-    "concept": (900, 2000),
-    "deep-dive": (1100, 2200),
-    "case-study": (1100, 2200),
-    "lld": (900, 2000),
+    "pattern": 900,
+    "problem-walkthrough": 900,
+    "concept": 900,
+    "deep-dive": 1100,
+    "case-study": 1100,
+    "lld": 900,
 }
 # Kinds that must show code (pseudocode or C++), a diagram, or practice problems.
 NEEDS_CODE = {"pattern", "problem-walkthrough", "concept", "lld"}
@@ -477,11 +479,9 @@ def validate_article(
         if kind in NEEDS_CODE and not (cpp_blocks(body) or has_pseudo(body)):
             err("code_missing", f"{kind} articles need a ```pseudo or ```cpp block in The code.")
         words = word_count(body)
-        lo, hi = WORD_LIMITS[kind]
+        lo = WORD_MIN[kind]
         if words < lo:
-            warn("length_short", f"Body is {words} words; aim for {lo}-{hi}.")
-        if words > hi:
-            warn("length_long", f"Body is {words} words; aim for {lo}-{hi}.")
+            warn("length_short", f"Body is {words} words; aim for at least {lo}.")
 
     for name in directive_names(body):
         if name not in DIRECTIVES:

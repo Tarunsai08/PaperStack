@@ -16,7 +16,7 @@ A Substack-style learning app (React + Capacitor APK + GitHub Pages PWA) for a C
 ## Commands (from the repo root)
 ```bash
 python pipeline/build_index.py           # validate all content + curricula, write index.json and roadmap.json
-python pipeline/build_index.py --strict  # also fail on length warnings (CI uses this on branches)
+python pipeline/build_index.py --strict  # also fail on warnings such as too-short articles (no maximum length; CI uses this on branches)
 python tools/check_cpp.py                # compile every runnable C++ block (g++ -std=c++17)
 python tools/progress.py                 # regenerate PROGRESS.md (run before every commit)
 python -m pytest -q pipeline/tests       # pipeline + validator tests

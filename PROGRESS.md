@@ -9,15 +9,15 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 45 | 0 | 107 | 152 | 44/72 |
-| cp | 44 | 0 | 71 | 115 | 20/29 |
+| dsa | 152 | 0 | 0 | 152 | 72/72 |
+| cp | 113 | 0 | 2 | 115 | 29/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **246** | **0** | **427** | **673** | |
+| **All** | **422** | **0** | **251** | **673** | |
 
-Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **5**
+Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
 ## Next to write
 
@@ -25,33 +25,18 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ### dsa
 
-- [ ] `dsa-gcd-primes` (P0, pattern, dsa-math): GCD, Primes and Divisors for Interviews
-- [ ] `dsa-queue-deque` (P0, pattern, dsa-linear): Queues and Deques: Sliding Window Maximum
-- [ ] `dsa-largest-rectangle` (P0, problem-walkthrough, dsa-linear): Largest Rectangle in a Histogram
-- [ ] `dsa-linked-list-classics` (P0, problem-walkthrough, dsa-linear): Linked List Classics: Intersection, Palindrome and Add Two Numbers
-- [ ] `dsa-subsets-permutations` (P0, pattern, dsa-recursion): Generating Subsets and Permutations
-- [ ] `dsa-tree-recursion` (P0, pattern, dsa-trees): Thinking Recursively About Trees
-- [ ] `dsa-top-k-pattern` (P0, pattern, dsa-heaps-greedy): Top K: The Heap of Size K Trick
-- [ ] `dsa-greedy-exchange` (P0, pattern, dsa-heaps-greedy): Greedy Algorithms and the Exchange Argument
-- [ ] `dsa-meeting-rooms` (P0, problem-walkthrough, dsa-heaps-greedy): How Many Meeting Rooms Do You Need?
-- [ ] `dsa-topological-sort` (P0, pattern, dsa-graphs): Topological Sort: Ordering Tasks With Dependencies
+_Nothing ready: every planned entry is waiting on a prerequisite, or the subject is complete._
 
 ### cp
 
-- [ ] `cp-lazy-propagation` (P0, pattern, cp-ranges): Lazy Propagation: Range Updates in log n
-- [ ] `cp-scc` (P0, pattern, cp-graphs): Strongly Connected Components
-- [ ] `cp-bridges-articulation` (P0, pattern, cp-graphs): Bridges and Articulation Points
-- [ ] `cp-weird-algorithm` (P1, problem-walkthrough, cp-start): Your First CSES Problems: Weird Algorithm to Increasing Array
-- [ ] `cp-implementation-skills` (P1, primer, cp-start): Implementation Problems: Getting the Details Right
-- [ ] `cp-segment-tree-descend` (P1, pattern, cp-ranges): Walking Down a Segment Tree
-- [ ] `cp-mos-algorithm` (P1, pattern, cp-ranges): Mo's Algorithm: Offline Range Queries
-- [ ] `cp-range-sum-queries-cses` (P1, problem-walkthrough, cp-ranges): From Static to Dynamic Range Queries
-- [ ] `cp-pbds-ordered-set` (P1, pattern, cp-ranges): Ordered Sets With Rank: Policy-Based Data Structures
-- [ ] `cp-dp-with-data-structures` (P1, pattern, cp-dp): DP Sped Up by Segment Trees and BITs
+- [ ] `cp-sweep-line-geometry` (P2, pattern, cp-misc): Sweep Line: Closest Pair and Intersections
+- [ ] `cp-bitset-optimisation` (P2, pattern, cp-misc): Bitsets: Dividing by 64 for Free
 
 ### famous-algos
 
 - [ ] `famous-algos-myers-diff` (P0, concept, fa-search): Myers' Diff: How Git Shows What Changed
+- [ ] `famous-algos-fft` (P0, concept, fa-signals): The Fast Fourier Transform: Hearing the Notes in a Chord
+- [ ] `famous-algos-a-star` (P0, concept, fa-signals): A* Search: Dijkstra With a Sense of Direction
 - [ ] `famous-algos-counting-bloom-cuckoo` (P1, concept, fa-sketches): Deletable Filters: Counting Bloom and Cuckoo Filters
 - [ ] `famous-algos-heavy-hitters` (P1, concept, fa-sketches): Finding Heavy Hitters in a Stream: Misra-Gries and Space-Saving
 - [ ] `famous-algos-lsh` (P1, concept, fa-sketches): Locality-Sensitive Hashing: Finding Near Neighbours Fast
@@ -59,8 +44,6 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [ ] `famous-algos-crdts` (P1, concept, fa-distributed): CRDTs: Data Types That Merge Themselves
 - [ ] `famous-algos-leader-election-leases` (P1, concept, fa-distributed): Leases and Fencing Tokens: Safe Leadership
 - [ ] `famous-algos-sliding-window-limits` (P1, concept, fa-networking): Sliding Window Rate Limiting: Logs and Counters
-- [ ] `famous-algos-skip-lists-practice` (P1, concept, fa-storage): Skip Lists in Practice: Redis Sorted Sets
-- [ ] `famous-algos-swiss-tables` (P1, concept, fa-storage): The Hash Table You Use Every Day: Open Addressing and Swiss Tables
 
 ### system-design
 
@@ -90,7 +73,7 @@ Planned entries whose prerequisites are already written, by priority then path o
 
 ## Written so far
 
-<details><summary>dsa: 45 written</summary>
+<details><summary>dsa: 152 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -103,22 +86,52 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-hashing-patterns` Hash Maps: Trading Memory for Speed
 - [x] `dsa-kadane` Kadane's Algorithm: The Best Subarray in One Pass
 - [x] `dsa-string-patterns` Strings: Palindromes, Anagrams and Counting
+- [x] `dsa-matrix-traversal` Walking a Grid: Spirals, Rotations and Boundaries
 - [x] `dsa-intervals-sweep` Intervals: Sort, Then Sweep
+- [x] `dsa-cyclic-sort` Cyclic Sort: When Values Tell You Their Home
 - [x] `dsa-binary-search` Binary Search, Done Right Every Time
 - [x] `dsa-binary-search-answer` Binary Search on the Answer
 - [x] `dsa-sorting-as-tool` Sorting as a Superpower
+- [x] `dsa-merge-sort-inversions` Merge Sort and Counting Inversions
+- [x] `dsa-quickselect` Quickselect: The k-th Element Without Sorting Everything
+- [x] `dsa-counting-bucket-sort` Counting and Bucket Sort: Beating n log n
 - [x] `dsa-linked-list-basics` Linked Lists: Pointer Surgery Made Safe
 - [x] `dsa-fast-slow-pointers` Fast and Slow Pointers: The Tortoise and the Hare
 - [x] `dsa-stack-patterns` Stacks: Matching, Undo and Expression Parsing
 - [x] `dsa-monotonic-stack` Monotonic Stacks: Next Greater Element and Friends
+- [x] `dsa-queue-deque` Queues and Deques: Sliding Window Maximum
 - [x] `dsa-lru-cache` Designing an LRU Cache
+- [x] `dsa-subsets-permutations` Generating Subsets and Permutations
+- [x] `dsa-backtracking-template` Backtracking: Explore, Undo, Repeat
+- [x] `dsa-n-queens` N-Queens: Backtracking With Smart Bookkeeping
+- [x] `dsa-sudoku-constraints` Solving Sudoku With Constraints
+- [x] `dsa-divide-and-conquer` Divide and Conquer: Split, Solve, Combine
 - [x] `dsa-tree-traversals` Tree Traversals: Pre, In, Post and Level Order
+- [x] `dsa-tree-recursion` Thinking Recursively About Trees
+- [x] `dsa-bst-operations` Binary Search Trees: Order as a Superpower
+- [x] `dsa-lca` Lowest Common Ancestor
+- [x] `dsa-tree-construction` Building Trees From Traversals and Serialising Them
+- [x] `dsa-tree-paths` Path Problems on Trees
+- [x] `dsa-balanced-trees-intuition` Why Balanced Trees Matter: AVL and Red-Black in Plain Words
 - [x] `dsa-heap-basics` Heaps: Always Know the Smallest
+- [x] `dsa-top-k-pattern` Top K: The Heap of Size K Trick
+- [x] `dsa-two-heaps` Two Heaps: The Running Median
+- [x] `dsa-k-way-merge` Merging K Sorted Lists
+- [x] `dsa-greedy-exchange` Greedy Algorithms and the Exchange Argument
+- [x] `dsa-interval-scheduling` Interval Scheduling: Pick the Earliest Finisher
+- [x] `dsa-task-scheduling` Task Scheduler: Greedy With a Heap
+- [x] `dsa-huffman-coding` Huffman Coding: Greedy Compression
 - [x] `dsa-graph-representation` Graphs: Modelling Problems as Nodes and Edges
 - [x] `dsa-bfs` Breadth-First Search: Exploring in Rings
 - [x] `dsa-dfs` Depth-First Search: Going Deep, Then Backing Up
 - [x] `dsa-cycle-detection` Detecting Cycles in Graphs
+- [x] `dsa-topological-sort` Topological Sort: Ordering Tasks With Dependencies
 - [x] `dsa-union-find` Union-Find: Who Is Connected to Whom
+- [x] `dsa-dijkstra` Dijkstra: Shortest Paths With Weights
+- [x] `dsa-bellman-ford-floyd` Bellman-Ford and Floyd-Warshall
+- [x] `dsa-mst` Minimum Spanning Trees: Kruskal and Prim
+- [x] `dsa-bipartite` Bipartite Graphs and Two-Colouring
+- [x] `dsa-grid-graph-tricks` Grid Problems as Graphs
 - [x] `dsa-dp-intro` Dynamic Programming Is Just Careful Recursion
 - [x] `dsa-dp-1d` 1D DP: Stairs, Robbers and Decoding
 - [x] `dsa-knapsack-01` 0/1 Knapsack: Take It or Leave It
@@ -126,21 +139,98 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `dsa-lis` Longest Increasing Subsequence
 - [x] `dsa-lcs-edit-distance` LCS and Edit Distance: Comparing Two Strings
 - [x] `dsa-grid-dp` Grid DP: Counting and Optimising Paths
+- [x] `dsa-interval-dp` Interval DP: Solving From the Inside Out
+- [x] `dsa-dp-on-trees` DP on Trees
+- [x] `dsa-state-machine-dp` State Machine DP: Stock Trading Problems
+- [x] `dsa-bitmask-dp-intro` Bitmask DP: Subsets as Numbers
 - [x] `dsa-tries` Tries: Autocomplete in Your Pocket
+- [x] `dsa-fenwick-tree` Fenwick Trees: Prefix Sums That Change
+- [x] `dsa-segment-tree-basics` Segment Trees: Range Queries With Updates
+- [x] `dsa-bit-manipulation-tricks` Bit Manipulation Tricks Interviewers Love
+- [x] `dsa-string-matching-basics` Pattern Matching: From Brute Force to Rolling Hash
+- [x] `dsa-design-data-structures` Designing Data Structures in Interviews
+- [x] `dsa-monotonic-queue-dp` Optimising DP With a Monotonic Deque
+- [x] `dsa-sparse-table-rmq` Sparse Tables: Range Minimum in O(1)
 - [x] `dsa-product-except-self` Product of Array Except Self Without Division
 - [x] `dsa-trapping-rain-water` Trapping Rain Water Three Ways
+- [x] `dsa-majority-vote` Boyer-Moore Majority Vote
+- [x] `dsa-next-permutation` Next Permutation by Hand
 - [x] `dsa-subarray-sum-k` Counting Subarrays With Sum K
 - [x] `dsa-rotated-array-search` Searching a Rotated Sorted Array
+- [x] `dsa-median-two-arrays` Median of Two Sorted Arrays
+- [x] `dsa-peak-element` Finding a Peak With Binary Search
+- [x] `dsa-reverse-k-group` Reversing Nodes in k-Groups
+- [x] `dsa-copy-random-list` Copying a List With Random Pointers
+- [x] `dsa-largest-rectangle` Largest Rectangle in a Histogram
+- [x] `dsa-basic-calculator` Building a Calculator With Stacks
+- [x] `dsa-word-search` Word Search: Backtracking on a Grid
+- [x] `dsa-generate-parentheses` Generating Valid Parentheses
+- [x] `dsa-combination-sum` Combination Sum and Avoiding Duplicate Combinations
+- [x] `dsa-serialize-tree` Serialising and Deserialising a Binary Tree
+- [x] `dsa-max-path-sum` Binary Tree Maximum Path Sum
+- [x] `dsa-vertical-order` Vertical Order Traversal
+- [x] `dsa-meeting-rooms` How Many Meeting Rooms Do You Need?
+- [x] `dsa-jump-game` Jump Game: Greedy Reach
+- [x] `dsa-gas-station` Gas Station: A Greedy Proof in One Pass
+- [x] `dsa-word-ladder` Word Ladder: BFS on Implicit Graphs
+- [x] `dsa-course-schedule` Course Schedule: Can You Graduate?
+- [x] `dsa-islands-variants` Number of Islands and Its Many Variants
+- [x] `dsa-network-delay` Network Delay Time With Dijkstra
+- [x] `dsa-cheapest-flights-k-stops` Cheapest Flights With At Most K Stops
 - [x] `dsa-coin-change` Coin Change: Minimum Coins and Number of Ways
 - [x] `dsa-word-break` Word Break: DP Over Prefixes
+- [x] `dsa-longest-palindromic-subsequence` Longest Palindromic Subsequence
+- [x] `dsa-regex-matching` Regular Expression and Wildcard Matching
 - [x] `dsa-house-robber-variants` House Robber and Its Variants
+- [x] `dsa-gcd-primes` GCD, Primes and Divisors for Interviews
+- [x] `dsa-modular-fast-power` Modular Arithmetic and Fast Power
+- [x] `dsa-combinatorics-basics` Counting Basics: nCr, Pascal and Catalan
+- [x] `dsa-number-tricks` Number Tricks: Digits, Bases and Overflow
+- [x] `dsa-random-sampling` Randomness in Interviews: Shuffles and Reservoir Sampling
+- [x] `dsa-geometry-interview` Geometry That Shows Up in Interviews
 - [x] `dsa-dutch-national-flag` Sort Colors: The Dutch National Flag in One Pass
+- [x] `dsa-majority-and-rearrange` Rearranging Arrays In Place
+- [x] `dsa-ordered-set-windows` Ordered Sets in Sliding Windows
+- [x] `dsa-longest-consecutive` Longest Consecutive Sequence in Linear Time
+- [x] `dsa-string-compression-parsing` String Parsing: Compression, Splitting and Validation
+- [x] `dsa-linked-list-classics` Linked List Classics: Intersection, Palindrome and Add Two Numbers
+- [x] `dsa-sort-linked-list` Sorting a Linked List With Merge Sort
+- [x] `dsa-flatten-lists` Flattening Multilevel and Nested Lists
+- [x] `dsa-queue-via-stacks` Building Queues From Stacks and Stacks From Queues
+- [x] `dsa-stack-simulations` Stack Simulations: Asteroids, Stock Span and Removing Digits
+- [x] `dsa-rat-in-maze` Rat in a Maze and Path Enumeration
+- [x] `dsa-m-coloring` Graph Colouring by Backtracking
+- [x] `dsa-tower-of-hanoi` Tower of Hanoi: Trusting Recursion Completely
+- [x] `dsa-recursion-on-strings` Recursion on Strings: Partitions and Expressions
+- [x] `dsa-tree-views-boundary` Tree Views: Left, Right, Top, Bottom and Boundary
+- [x] `dsa-nodes-at-distance-k` Nodes at Distance K and Burning a Tree
+- [x] `dsa-bst-iterator-two-sum` BST Iterators and Two Sum in a BST
+- [x] `dsa-build-bst` Building Balanced BSTs From Sorted Data
+- [x] `dsa-tree-width-and-structure` Maximum Width, Symmetry and Identical Trees
+- [x] `dsa-morris-traversal` Morris Traversal: Inorder With O(1) Space
+- [x] `dsa-fractional-knapsack-jobs` Fractional Knapsack and Job Sequencing
+- [x] `dsa-candy-and-two-pass` Two-Pass Greedy: Candy and Friends
+- [x] `dsa-heap-scheduling` Scheduling With Heaps: CPU Tasks and IPO
+- [x] `dsa-critical-connections` Critical Connections: Bridges in a Network
+- [x] `dsa-scc-for-interviews` Strongly Connected Components for Interviews
+- [x] `dsa-snakes-ladders-bfs` Snakes and Ladders and Other BFS Puzzles
+- [x] `dsa-shortest-path-dag` Shortest and Longest Paths in DAGs
+- [x] `dsa-graph-clone-and-copy` Clone Graph and Accounts Merge
+- [x] `dsa-matrix-chain` Matrix Chain Multiplication: The Partition DP Template
+- [x] `dsa-egg-drop` Egg Drop: Thinking About the Worst Case
 - [x] `dsa-subset-sum-count` Counting Subsets: Target Sum and Partitions
+- [x] `dsa-rod-cutting` Rod Cutting and Integer Break
+- [x] `dsa-longest-common-substring` Longest Common Substring vs Subsequence
+- [x] `dsa-dp-on-subsequences` Counting Subsequences With DP
+- [x] `dsa-dp-grid-advanced` Cherry Pickup: Two Walkers in One DP
+- [x] `dsa-max-xor-trie` Maximum XOR With a Bitwise Trie
+- [x] `dsa-kmp-for-interviews` KMP for Interviews: Matching Without Going Back
+- [x] `dsa-lfu-cache` Designing an LFU Cache
 - [x] `dsa-interview-dsa-revision` The Night-Before Revision Sheet
 
 </details>
 
-<details><summary>cp: 44 written</summary>
+<details><summary>cp: 113 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -162,29 +252,98 @@ Planned entries whose prerequisites are already written, by priority then path o
 - [x] `cp-counting-techniques` Counting Without Listing: Combinatorics Toolkit
 - [x] `cp-probability-expectation` Expected Value and Linearity of Expectation
 - [x] `cp-matrix-exponentiation` Matrix Exponentiation for Linear Recurrences
+- [x] `cp-number-theory-tricks` Divisor Sums and Floor Division Blocks
+- [x] `cp-sparse-table` Sparse Tables: O(1) Range Minimum
 - [x] `cp-segment-tree` Segment Trees From Scratch
+- [x] `cp-lazy-propagation` Lazy Propagation: Range Updates in log n
+- [x] `cp-fenwick-advanced` Fenwick Tree Tricks: Range Updates and 2D
 - [x] `cp-coordinate-compression` Coordinate Compression
+- [x] `cp-segment-tree-descend` Walking Down a Segment Tree
+- [x] `cp-merge-sort-tree` Merge Sort Trees and Persistent Ideas
 - [x] `cp-sqrt-decomposition` Square Root Decomposition
+- [x] `cp-mos-algorithm` Mo's Algorithm: Offline Range Queries
+- [x] `cp-segment-tree-beats` Segment Tree Patterns: Max Subarray and Beyond
+- [x] `cp-bitmask-dp` Bitmask DP for Contests
 - [x] `cp-digit-dp` Digit DP: Counting Numbers With Properties
+- [x] `cp-dp-on-trees-advanced` Tree DP and Rerooting
 - [x] `cp-dp-probability` DP With Probabilities and Expected Values
 - [x] `cp-knapsack-variants` Knapsack Variants in Contests
+- [x] `cp-dp-on-dag` DP on DAGs: Longest and Counting Paths
+- [x] `cp-broken-profile-dp` Broken Profile DP: Tiling Grids
 - [x] `cp-convex-hull-trick` The Convex Hull Trick
+- [x] `cp-divide-conquer-dp` Divide and Conquer DP Optimisation
+- [x] `cp-knuth-optimization` Knuth's Optimisation for Interval DP
+- [x] `cp-sos-dp` Sum Over Subsets DP
+- [x] `cp-scc` Strongly Connected Components
+- [x] `cp-bridges-articulation` Bridges and Articulation Points
+- [x] `cp-two-sat` 2-SAT: Logic Puzzles as Graphs
+- [x] `cp-binary-lifting` Binary Lifting and LCA in log n
+- [x] `cp-euler-tour` Euler Tour: Turning Subtrees Into Ranges
+- [x] `cp-hld` Heavy-Light Decomposition
+- [x] `cp-centroid-decomposition` Centroid Decomposition
+- [x] `cp-dsu-advanced` DSU Tricks: Rollback, Parity and Offline
+- [x] `cp-max-flow` Maximum Flow: Edmonds-Karp and Dinic
+- [x] `cp-bipartite-matching` Bipartite Matching
+- [x] `cp-shortest-path-tricks` Shortest Path Tricks: 0-1 BFS, Multi-State, Potentials
+- [x] `cp-euler-path` Eulerian Paths and Circuits
+- [x] `cp-prefix-function` The Prefix Function and KMP
+- [x] `cp-z-function` The Z-Function
 - [x] `cp-string-hashing` Polynomial String Hashing
+- [x] `cp-suffix-array` Suffix Arrays and LCP
+- [x] `cp-aho-corasick` Aho-Corasick: Many Patterns at Once
+- [x] `cp-manacher` Manacher's Algorithm: All Palindromes in Linear Time
+- [x] `cp-palindromic-tree` Palindromic Tree (Eertree)
+- [x] `cp-suffix-automaton` Suffix Automaton
 - [x] `cp-game-theory` Game Theory: Winning and Losing Positions
 - [x] `cp-sprague-grundy` Sprague-Grundy: Adding Games Together
 - [x] `cp-geometry-basics` Geometry Basics: Cross Products Solve Everything
 - [x] `cp-convex-hull` Convex Hull: The Rubber Band Algorithm
+- [x] `cp-meet-in-the-middle` Meet in the Middle
+- [x] `cp-randomized-techniques` Randomised Techniques in Contests
 - [x] `cp-interactive-problems` Interactive Problems: Talking to the Judge
+- [x] `cp-bitwise-tricks-cp` Bitwise Tricks for Contests
+- [x] `cp-ternary-search` Ternary Search on Unimodal Functions
 - [x] `cp-two-pointer-cp` Two Pointers and Monotonicity in Contests
 - [x] `cp-contest-strategy` Contest Strategy: Order, Time and Nerves
+- [x] `cp-weird-algorithm` Your First CSES Problems: Weird Algorithm to Increasing Array
 - [x] `cp-greedy-in-contests` Greedy in Contests: Guess, Prove, Submit
+- [x] `cp-implementation-skills` Implementation Problems: Getting the Details Right
 - [x] `cp-counting-divisors` Counting Divisors for a Million Numbers
 - [x] `cp-creating-strings-ii` Counting Arrangements of a Word
 - [x] `cp-exponentiation-ii` a^(b^c) mod p: Fermat to the Rescue
+- [x] `cp-bracket-sequences` Counting Bracket Sequences With Catalan Numbers
+- [x] `cp-range-sum-queries-cses` From Static to Dynamic Range Queries
+- [x] `cp-hotel-queries` Hotel Queries: Descending a Max Segment Tree
+- [x] `cp-salary-queries` Salary Queries: Compression Meets Fenwick
+- [x] `cp-distinct-values-queries` Distinct Values in a Range, Offline
+- [x] `cp-subarray-sum-queries` Maximum Subarray Sum With Updates
+- [x] `cp-elevator-rides` Elevator Rides: Bitmask DP With Pairs
 - [x] `cp-counting-numbers` Counting Numbers With No Equal Adjacent Digits
+- [x] `cp-removal-game` Removal Game: Interval DP for Two Players
 - [x] `cp-projects-dp` Projects: Weighted Interval Scheduling
+- [x] `cp-planets-and-kingdoms` Planets and Kingdoms: SCCs in Practice
+- [x] `cp-high-score` High Score: Positive Cycles and Bellman-Ford
+- [x] `cp-company-queries` Company Queries: Binary Lifting by Example
+- [x] `cp-download-speed` Download Speed: Max Flow in Practice
+- [x] `cp-finding-borders` Finding Borders With the Prefix Function
+- [x] `cp-longest-palindrome-cses` Longest Palindrome in Linear Time
+- [x] `cp-minimal-rotation` Minimal Rotation of a String
 - [x] `cp-nim-games` Nim and Its Variants
+- [x] `cp-polygon-area` Polygon Area With the Shoelace Formula
+- [x] `cp-apple-division` Apple Division: Brute Force Done Right
 - [x] `cp-invariants-observations` Invariants and Observations: The Heart of Div 2
+- [x] `cp-prefix-xor-tricks` Prefix XOR and Subarray Tricks
+- [x] `cp-lucas-theorem` Lucas' Theorem: nCr Mod a Small Prime
+- [x] `cp-mobius-inversion` Mobius Function and Counting Coprime Pairs
+- [x] `cp-fft-ntt` FFT and NTT for Polynomial Multiplication
+- [x] `cp-pbds-ordered-set` Ordered Sets With Rank: Policy-Based Data Structures
+- [x] `cp-persistent-segment-tree` Persistent Segment Trees: Querying the Past
+- [x] `cp-treap` Treaps: Randomised Balanced Trees
+- [x] `cp-offline-queries` Offline Thinking: Sort the Queries, Not Just the Data
+- [x] `cp-dp-with-data-structures` DP Sped Up by Segment Trees and BITs
+- [x] `cp-small-to-large` Small-to-Large Merging (DSU on Tree)
+- [x] `cp-min-cost-flow` Minimum Cost Flow
+- [x] `cp-implicit-graphs` Modelling: When the Graph Is Hidden
 - [x] `cp-practice-plan` A 12-Week Contest Practice Plan
 
 </details>

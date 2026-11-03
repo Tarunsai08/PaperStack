@@ -114,3 +114,13 @@ def test_build_rejects_slug_mismatch(tmp_path):
 def test_strict_mode_fails_on_length_warnings(tmp_path):
     content = make_content(tmp_path)
     assert bi.build(content, strict=True, write=False) == 1
+
+
+def test_no_maximum_length(tmp_path):
+    """Owner's rule: articles may be as long as understanding needs; only a minimum is enforced."""
+    raw = (FIXTURES / "valid-paper.md").read_text()
+    padded = raw.replace("## Key takeaways", "Every idea gets the room it needs. " * 1500 + "\n\n## Key takeaways")
+    data, body = bi.parse_article(padded)
+    errors, warnings = bi.validate_article(data, body, CASES["tracks"], CASES["articleIds"])
+    assert errors == []
+    assert warnings == []

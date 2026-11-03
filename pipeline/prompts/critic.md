@@ -10,7 +10,7 @@ Score each criterion from 0 to 10:
 - "glossary": 3 to 8 terms a beginner needs, defined simply, and marked inline with [[Term]].
 - "quiz": exactly 3 questions that test understanding, not trivia, with good explanations.
 - "accuracy": no invented numbers, results, quotes, dates or links; code and complexity claims are correct; system design numbers are labelled as estimates.
-- "length": within the target length for the kind, with no padding.
+- "length": long enough to explain the topic completely (at least the minimum for the kind), with no padding. There is no maximum.
 - "no_filler": no filler phrases ("delve", "moreover", "it is important to note", "in conclusion"), no repetition, no padding.
 
 Return exactly:

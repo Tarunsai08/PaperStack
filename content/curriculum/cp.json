@@ -632,8 +632,8 @@
    "prerequisites": [
     "cp-sieve"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Harmonic lemma",
@@ -662,8 +662,8 @@
    "prerequisites": [
     "dsa-sparse-table-rmq"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Doubling ranges",
@@ -723,8 +723,8 @@
    "prerequisites": [
     "cp-segment-tree"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Postpone updates with tags",
@@ -754,8 +754,8 @@
    "prerequisites": [
     "dsa-fenwick-tree"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Range update point query",
@@ -814,8 +814,8 @@
    "prerequisites": [
     "cp-segment-tree"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Find first index satisfying a condition",
@@ -844,8 +844,8 @@
    "prerequisites": [
     "cp-segment-tree"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Sorted lists in each node",
@@ -903,8 +903,8 @@
    "prerequisites": [
     "cp-sqrt-decomposition"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Sort queries by block then right end",
@@ -933,8 +933,8 @@
    "prerequisites": [
     "cp-lazy-propagation"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Store several values per node",
@@ -963,8 +963,8 @@
    "prerequisites": [
     "dsa-bitmask-dp-intro"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "dp[mask][last]",
@@ -1022,8 +1022,8 @@
    "prerequisites": [
     "dsa-dp-on-trees"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Subtree DP",
@@ -1114,8 +1114,8 @@
     "dsa-topological-sort",
     "dsa-dp-intro"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Topological order as DP order",
@@ -1144,8 +1144,8 @@
    "prerequisites": [
     "cp-bitmask-dp"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Process cells, keep a profile mask",
@@ -1202,8 +1202,8 @@
    "prerequisites": [
     "dsa-divide-and-conquer"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Monotone optimal split points",
@@ -1230,8 +1230,8 @@
    "prerequisites": [
     "dsa-interval-dp"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Optimal split points are monotone",
@@ -1261,8 +1261,8 @@
    "prerequisites": [
     "cp-bitmask-dp"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Accumulate over subsets dimension by dimension",
@@ -1289,8 +1289,8 @@
    "prerequisites": [
     "dsa-dfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Kosaraju two passes",
@@ -1320,8 +1320,8 @@
    "prerequisites": [
     "dsa-dfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Discovery time and low-link",
@@ -1349,8 +1349,8 @@
    "prerequisites": [
     "cp-scc"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Implication graph",
@@ -1377,8 +1377,8 @@
    "prerequisites": [
     "dsa-lca"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "up[v][j] is the 2^j-th ancestor",
@@ -1409,8 +1409,8 @@
     "cp-binary-lifting",
     "cp-segment-tree"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "tin and tout times",
@@ -1439,8 +1439,8 @@
    "prerequisites": [
     "cp-euler-tour"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Heavy child chains",
@@ -1468,8 +1468,8 @@
    "prerequisites": [
     "dsa-tree-recursion"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Find a centroid",
@@ -1498,8 +1498,8 @@
    "prerequisites": [
     "dsa-union-find"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Weighted DSU for parity",
@@ -1528,8 +1528,8 @@
    "prerequisites": [
     "dsa-bfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Residual graph",
@@ -1561,8 +1561,8 @@
    "prerequisites": [
     "cp-max-flow"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Kuhn's algorithm",
@@ -1590,8 +1590,8 @@
    "prerequisites": [
     "dsa-dijkstra"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "0-1 BFS with a deque",
@@ -1620,8 +1620,8 @@
    "prerequisites": [
     "dsa-dfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Degree conditions",
@@ -1652,8 +1652,8 @@
    "prerequisites": [
     "dsa-string-matching-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Longest border of each prefix",
@@ -1685,8 +1685,8 @@
    "prerequisites": [
     "cp-prefix-function"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Longest match with prefix at each position",
@@ -1746,8 +1746,8 @@
    "prerequisites": [
     "cp-string-hashing"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Sort all suffixes by doubling",
@@ -1777,8 +1777,8 @@
     "cp-prefix-function",
     "dsa-tries"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Trie plus failure links",
@@ -1810,8 +1810,8 @@
    "prerequisites": [
     "cp-z-function"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Mirror trick",
@@ -1842,8 +1842,8 @@
    "prerequisites": [
     "cp-manacher"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Nodes are distinct palindromes",
@@ -1870,8 +1870,8 @@
    "prerequisites": [
     "cp-suffix-array"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Smallest automaton accepting all substrings",
@@ -2027,8 +2027,8 @@
     "dsa-subsets-permutations",
     "dsa-binary-search"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Split into halves",
@@ -2057,8 +2057,8 @@
    "prerequisites": [
     "cp-string-hashing"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Random shuffles",
@@ -2117,8 +2117,8 @@
    "prerequisites": [
     "dsa-bit-manipulation-tricks"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "XOR basis",
@@ -2147,8 +2147,8 @@
    "prerequisites": [
     "dsa-binary-search-answer"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Discard a third each step",
@@ -2236,8 +2236,8 @@
    "prerequisites": [
     "cp-fast-io-template"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Simulate carefully",
@@ -2300,8 +2300,8 @@
    "prerequisites": [
     "cp-reading-problems-fast"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Simulations",
@@ -2416,8 +2416,8 @@
    "prerequisites": [
     "cp-counting-techniques"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Catalan formula",
@@ -2445,8 +2445,8 @@
    "prerequisites": [
     "cp-segment-tree"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Prefix sums for static",
@@ -2476,8 +2476,8 @@
    "prerequisites": [
     "cp-segment-tree-descend"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "First index with value at least x",
@@ -2506,8 +2506,8 @@
     "cp-coordinate-compression",
     "cp-fenwick-advanced"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Offline compress all values",
@@ -2535,8 +2535,8 @@
     "cp-fenwick-advanced",
     "cp-mos-algorithm"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Sort queries by right end",
@@ -2563,8 +2563,8 @@
    "prerequisites": [
     "cp-segment-tree-beats"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Node stores sum, best prefix, best suffix, best"
@@ -2590,8 +2590,8 @@
    "prerequisites": [
     "cp-bitmask-dp"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "dp[mask] = (rides, weight in last ride)"
@@ -2645,8 +2645,8 @@
     "cp-game-theory",
     "dsa-interval-dp"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Score difference trick",
@@ -2705,8 +2705,8 @@
    "prerequisites": [
     "cp-scc"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Label components",
@@ -2734,8 +2734,8 @@
    "prerequisites": [
     "dsa-bellman-ford-floyd"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Negate weights",
@@ -2762,8 +2762,8 @@
    "prerequisites": [
     "cp-binary-lifting"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "k-th boss",
@@ -2791,8 +2791,8 @@
    "prerequisites": [
     "cp-max-flow"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Model as flow network",
@@ -2820,8 +2820,8 @@
    "prerequisites": [
     "cp-prefix-function"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Follow failure links from the end"
@@ -2848,8 +2848,8 @@
    "prerequisites": [
     "cp-manacher"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Transform string",
@@ -2876,8 +2876,8 @@
    "prerequisites": [
     "cp-string-hashing"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Booth's algorithm or hashing with binary search"
@@ -2934,8 +2934,8 @@
    "prerequisites": [
     "cp-geometry-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Cross products summed",
@@ -2963,8 +2963,8 @@
    "prerequisites": [
     "dsa-subsets-permutations"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Enumerate 2^n subsets",
@@ -3023,8 +3023,8 @@
     "dsa-prefix-sums",
     "dsa-bit-manipulation-tricks"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "XOR prefix differences",
@@ -3053,8 +3053,8 @@
    "prerequisites": [
     "cp-binomial-coefficients"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Write n and r in base p",
@@ -3085,8 +3085,8 @@
     "cp-euler-totient",
     "cp-inclusion-exclusion"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Mobius function from primes",
@@ -3114,8 +3114,8 @@
    "prerequisites": [
     "cp-matrix-exponentiation"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Convolution as polynomial product",
@@ -3148,8 +3148,8 @@
    "prerequisites": [
     "cp-coordinate-compression"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "order_of_key and find_by_order",
@@ -3178,8 +3178,8 @@
    "prerequisites": [
     "cp-segment-tree"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Copy only the path you change",
@@ -3207,8 +3207,8 @@
    "prerequisites": [
     "cp-segment-tree"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "BST by key, heap by random priority",
@@ -3238,8 +3238,8 @@
     "cp-coordinate-compression",
     "cp-fenwick-advanced"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Answer queries in a convenient order",
@@ -3269,8 +3269,8 @@
     "cp-segment-tree",
     "dsa-lis"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Transition as range max over earlier values",
@@ -3300,8 +3300,8 @@
     "cp-dsu-advanced",
     "dsa-tree-recursion"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Merge smaller sets into larger",
@@ -3330,8 +3330,8 @@
     "cp-max-flow",
     "dsa-bellman-ford-floyd"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Shortest augmenting paths by cost",
@@ -3360,8 +3360,8 @@
    "prerequisites": [
     "dsa-bfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "States as nodes",
