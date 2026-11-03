@@ -1,7 +1,7 @@
 {
- "content_version": "4e206ab846053d0a",
+ "content_version": "7843b209cab865c4",
  "generated_at": "2026-11-02",
- "count": 390,
+ "count": 393,
  "subjects": [
   {
    "id": "ml",
@@ -34286,6 +34286,363 @@
    "hash": "6f6af6361804",
    "word_count": 1588,
    "excerpt": "A wedding planner has two rooms, the garden and the hall, and every guest goes into exactly one. The families send in rules, each naming two placements of which at least one must happen: \"Asha in the garden or Ben in the garden\", \"Asha in the hall or Chen in the hall\". Can every rule be honoured,…"
+  },
+  {
+   "id": "cp-binary-lifting",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "binary-lifting",
+   "title": "Express Elevators That Skip 1, 2, 4 and 8 Floors",
+   "subtitle": "Binary lifting at contest scale: the 2^j-th ancestor table, k-th ancestor in log n jumps, LCA by equal depth then joint descent, distance queries, jumping a functional graph a billion steps, and choosing LOG so nothing overflows",
+   "track": "cp-graphs",
+   "track_order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-lca"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 8,
+   "topics": [
+    "trees",
+    "binary lifting",
+    "LCA",
+    "ancestors",
+    "functional graphs"
+   ],
+   "complexity": {
+    "time": "O(n log n) build, O(log n) per query",
+    "space": "O(n log n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Company Queries I",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1687",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Company Queries II",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1688",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Distance Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1135",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Planets Queries I",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1750",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Ancestor table",
+     "definition": "up[j][v], the vertex 2^j steps above v, or a sentinel when that is above the root."
+    },
+    {
+     "term": "Doubling recurrence",
+     "definition": "up[j][v] = up[j−1][up[j−1][v]]: two jumps of 2^(j−1) make one jump of 2^j."
+    },
+    {
+     "term": "Binary decomposition",
+     "definition": "Writing a jump length k as a sum of distinct powers of two, one per set bit of k, so a k-step climb takes at most log k table jumps."
+    },
+    {
+     "term": "Lowest common ancestor",
+     "definition": "The deepest vertex that is an ancestor of both a and b; abbreviated LCA."
+    },
+    {
+     "term": "LOG",
+     "definition": "The number of table levels; it must satisfy 2^LOG > the largest jump ever needed."
+    },
+    {
+     "term": "Functional graph",
+     "definition": "A directed graph where every vertex has exactly one outgoing edge; following edges from any start eventually enters a cycle."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How is up[j][v] computed from smaller levels?",
+     "options": [
+      "up[j][v] = up[j−1][v] + 1",
+      "up[j][v] = up[j−1][up[j−1][v]]: climb 2^(j−1), then 2^(j−1) again",
+      "up[j][v] = up[0][up[j][v]]",
+      "By a DFS per level"
+     ],
+     "answer": 1,
+     "explain": "Two jumps of half the length make one full jump, so each level is filled from the level below in O(n)."
+    },
+    {
+     "q": "In the LCA loop after equalising depths, why do we jump only when up[j][a] ≠ up[j][b]?",
+     "options": [
+      "To save time",
+      "If the 2^j-th ancestors are equal, that jump lands at or above the LCA, which we cannot undo; jumping only while they differ keeps a and b strictly below the LCA, so their parent is the answer at the end",
+      "Because a and b are equal",
+      "It is required for the root"
+     ],
+     "answer": 1,
+     "explain": "The loop finds the highest pair of distinct ancestors, which are the two children of the LCA on the respective paths. One more step up from either is the LCA."
+    },
+    {
+     "q": "A query asks for the 200,000th ancestor in a tree of 200,000 vertices. Which LOG is too small?",
+     "options": [
+      "18",
+      "17, because 2^17 = 131,072 cannot represent a jump of 200,000 with levels 0 to 16",
+      "20",
+      "30"
+     ],
+     "answer": 1,
+     "explain": "With levels 0 to LOG−1 the largest jump is 2^LOG − 1. That is 131,071 for LOG = 17, so bit 17 of k would be silently ignored."
+    }
+   ],
+   "cover_seed": "cp-binary-lifting",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.75,
+   "path": "cp/binary-lifting.md",
+   "hash": "7691a85ddf2e",
+   "word_count": 1740,
+   "excerpt": "A company of 200,000 employees, each with one boss, and 200,000 questions of the form \"who is the boss of the boss of the boss... k levels above employee x?\". Walking up one boss at a time costs up to 200,000 steps per question, 4·10¹⁰ in total. That is hours, not a second. The fix is to…"
+  },
+  {
+   "id": "cp-euler-tour",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "euler-tour",
+   "title": "Numbering a Family Tree So Every Branch Is a Block",
+   "subtitle": "Euler tour flattening for contests: entry and exit times, why every subtree becomes one contiguous range, subtree sums with a Fenwick tree, root-to-vertex path sums by range update, the ancestor test, and the 2n − 1 tour behind LCA by range minimum",
+   "track": "cp-graphs",
+   "track_order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-binary-lifting",
+    "cp-segment-tree"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "trees",
+    "Euler tour",
+    "subtree queries",
+    "Fenwick tree",
+    "flattening"
+   ],
+   "complexity": {
+    "time": "O(n) flattening, O(log n) per query",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Subtree Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1137",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Path Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1138",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Distinct Colors",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1139",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "New Year Tree",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/620/E",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Entry time",
+     "definition": "tin[v], the position at which DFS first reaches v; positions 0 to n − 1 are each used once."
+    },
+    {
+     "term": "Exit time",
+     "definition": "tout[v], the largest entry time inside v's subtree, recorded when DFS leaves v."
+    },
+    {
+     "term": "Flattening",
+     "definition": "Placing vertex v's value at array position tin[v], so tree questions become array range questions."
+    },
+    {
+     "term": "Subtree range",
+     "definition": "The positions [tin[v], tout[v]], which hold exactly the vertices of v's subtree."
+    },
+    {
+     "term": "Ancestor test",
+     "definition": "u is an ancestor of v exactly when tin[u] ≤ tin[v] and tout[v] ≤ tout[u]: v's block sits inside u's block."
+    },
+    {
+     "term": "Difference trick",
+     "definition": "Adding d at position l and −d at position r + 1, so that a prefix sum at any position inside [l, r] picks up d exactly once."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why do the vertices of v's subtree occupy one contiguous block of entry times?",
+     "options": [
+      "Because the tree is balanced",
+      "DFS enters v, then visits its whole subtree before leaving, so every entry time handed out between entering and leaving v belongs to the subtree, and no other vertex receives one in that window",
+      "Because vertices are sorted by value",
+      "It only holds for binary trees"
+     ],
+     "answer": 1,
+     "explain": "The window between entering and leaving v is used exclusively for v's descendants. That is what makes [tin[v], tout[v]] the subtree."
+    },
+    {
+     "q": "How does Path Queries get the sum from the root to v with a single prefix sum?",
+     "options": [
+      "By storing each value at tin[v] only",
+      "Each vertex adds its value over its whole subtree range, using the difference trick; the prefix sum at tin[v] then collects exactly the vertices whose subtree contains v, which are v's ancestors and v itself",
+      "By walking up the parents",
+      "By a segment tree of maxima"
+     ],
+     "answer": 1,
+     "explain": "A vertex u contributes to position tin[v] exactly when tin[v] lies in [tin[u], tout[u]], which means u is an ancestor of v or v itself."
+    },
+    {
+     "q": "Which test checks whether u is an ancestor of v in O(1)?",
+     "options": [
+      "tin[u] < tin[v]",
+      "tin[u] ≤ tin[v] and tout[v] ≤ tout[u]",
+      "tout[u] < tin[v]",
+      "depth[u] < depth[v]"
+     ],
+     "answer": 1,
+     "explain": "v is in u's subtree exactly when v's block nests inside u's. An earlier entry time alone is not enough: u might be in an earlier sibling branch."
+    }
+   ],
+   "cover_seed": "cp-euler-tour",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "cp/euler-tour.md",
+   "hash": "a0332aaa0a97",
+   "word_count": 1582,
+   "excerpt": "A tree of 2·10⁵ vertices, each with a value, and 2·10⁵ operations mixed together: change one vertex's value, or ask for the total over some vertex's entire subtree. Walking the subtree costs up to n per question. A segment tree would answer range sums in O(log n), but a subtree is not a range...…"
+  },
+  {
+   "id": "cp-hld",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "hld",
+   "title": "Highway Lanes for the Busiest Routes",
+   "subtitle": "Heavy-light decomposition for contests: heavy children and chains, why any path crosses only O(log n) of them, laying chains out contiguously for one segment tree, path maximum with point updates, edge weights, and subtree queries in the same numbering",
+   "track": "cp-graphs",
+   "track_order": 6,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-euler-tour"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 8,
+   "topics": [
+    "trees",
+    "heavy-light decomposition",
+    "segment tree",
+    "path queries",
+    "LCA"
+   ],
+   "complexity": {
+    "time": "O(n) build, O(log² n) per path query",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Path Queries II",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2134",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Water Tree",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/343/D",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Query on a tree",
+     "platform": "SPOJ",
+     "url": "https://www.spoj.com/problems/QTREE/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Heavy child",
+     "definition": "The child of v with the largest subtree; ties are broken arbitrarily."
+    },
+    {
+     "term": "Light edge",
+     "definition": "An edge from a vertex to any child other than its heavy child; crossing one going up at least doubles the subtree size."
+    },
+    {
+     "term": "Heavy chain",
+     "definition": "A maximal path that follows heavy-child edges downward; every vertex lies on exactly one chain."
+    },
+    {
+     "term": "Chain head",
+     "definition": "head[v], the topmost vertex of v's chain; jumping from v to parent[head[v]] leaves the chain."
+    },
+    {
+     "term": "Chain-contiguous order",
+     "definition": "A DFS preorder that always visits the heavy child first, so every chain occupies consecutive positions and every subtree still occupies one range."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does any path from a vertex up to the root cross at most about log₂ n light edges?",
+     "options": [
+      "Because the tree is balanced",
+      "If c is a light child of v, then sz[v] ≥ 2·sz[c] + 1, so each light edge crossed upward more than doubles the subtree size, which can happen only about log₂ n times before exceeding n",
+      "Because chains are short",
+      "Because each vertex has at most two children"
+     ],
+     "answer": 1,
+     "explain": "The heavy child is at least as large as c, so v's subtree contains c, the heavy child and v itself. Sizes more than double at each light edge."
+    },
+    {
+     "q": "In the path loop, which side moves when the two vertices are on different chains?",
+     "options": [
+      "Always a",
+      "The vertex whose chain head is deeper: query its chain piece from the head down to it, then jump to the head's parent",
+      "The vertex with the larger value",
+      "The one with smaller pos"
+     ],
+     "answer": 1,
+     "explain": "If the LCA were on the deeper-headed piece, the other vertex would hang below the LCA on a chain starting below it, so its head would be even deeper, a contradiction. Consuming that piece is always safe."
+    },
+    {
+     "q": "Why must the heavy child be visited first when assigning positions?",
+     "options": [
+      "To match the input order",
+      "So that each chain gets consecutive positions, making every chain piece a single segment tree range",
+      "Because light children are smaller",
+      "It is not necessary"
+     ],
+     "answer": 1,
+     "explain": "If the heavy child came later, other vertices would be numbered between a vertex and its heavy child, splitting the chain across the array."
+    }
+   ],
+   "cover_seed": "cp-hld",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.66,
+   "path": "cp/hld.md",
+   "hash": "95b003e22d41",
+   "word_count": 1774,
+   "excerpt": "Every vertex of a tree has a value. Two kinds of operations arrive, 2·10⁵ of them: change one vertex's value, or report the largest value on the path between two vertices. The Euler tour from Numbering a Family Tree So Every Branch Is a Block made subtrees into ranges, but a path between two…"
   },
   {
    "id": "cp-string-hashing",

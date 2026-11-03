@@ -1377,8 +1377,8 @@
    "prerequisites": [
     "dsa-lca"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "up[v][j] is the 2^j-th ancestor",
@@ -1409,8 +1409,8 @@
     "cp-binary-lifting",
     "cp-segment-tree"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "tin and tout times",
@@ -1439,8 +1439,8 @@
    "prerequisites": [
     "cp-euler-tour"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Heavy child chains",
