@@ -1,7 +1,7 @@
 {
- "content_version": "36f7df7eb89dc6ce",
+ "content_version": "95ed070f3ed87193",
  "generated_at": "2026-11-03",
- "count": 588,
+ "count": 589,
  "subjects": [
   {
    "id": "ml",
@@ -61129,6 +61129,99 @@
    "hash": "b1b2f839fa32",
    "word_count": 1205,
    "excerpt": "A loop stores pointers to elements of a vector while adding more elements. It works in testing with ten items and crashes in production with a thousand. A program that counts words with map takes twice as long as a friend's with unorderedmap. Another passes every test except one, where an…"
+  },
+  {
+   "id": "cs-core-pointers-output-questions",
+   "kind": "primer",
+   "subject": "cs-core",
+   "slug": "pointers-output-questions",
+   "title": "Street Addresses Versus the Houses at Them",
+   "subtitle": "Pointer and output questions as asked in OAs: arrays decaying to pointers, pointer arithmetic, pre and post increment, references versus pointers, signed and unsigned surprises, integer promotion, and how to spot undefined behaviour",
+   "track": "cs-oop",
+   "track_order": 17,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-classes-objects"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "c++",
+    "pointers",
+    "output questions",
+    "undefined behaviour",
+    "references",
+    "integer promotion"
+   ],
+   "glossary": [
+    {
+     "term": "Pointer",
+     "definition": "A variable holding a memory address; *p reads or writes the object at that address."
+    },
+    {
+     "term": "Array decay",
+     "definition": "An array expression turning into a pointer to its first element in most contexts, including when passed to a function."
+    },
+    {
+     "term": "Pointer arithmetic",
+     "definition": "Adding an integer to a pointer moves it by that many elements (not bytes); subtracting two pointers into one array gives the element distance."
+    },
+    {
+     "term": "Reference",
+     "definition": "An alias for an existing object; it must be initialised, cannot be reseated, and is used without the * operator."
+    },
+    {
+     "term": "Integer promotion",
+     "definition": "The rule that char and short operands are converted to int before arithmetic."
+    },
+    {
+     "term": "Undefined behaviour",
+     "definition": "Code whose behaviour the C++ standard does not define, such as modifying a variable twice without sequencing; any output, or none, is possible."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "int a[5]; void f(int arr[]) prints sizeof(arr). On a 64-bit build, what is printed, and what does sizeof(a) give in main?",
+     "options": [
+      "20 and 20",
+      "8 in f (a pointer) and 20 in main (5 ints of 4 bytes)",
+      "4 and 20",
+      "20 and 8"
+     ],
+     "answer": 1,
+     "explain": "The array decays to int* when passed; g++ even warns. The test program printed 20 in main and 8 inside the function."
+    },
+    {
+     "q": "int x = 5; int y = x++ + 10; int z = ++x + 10; What are x, y and z?",
+     "options": [
+      "7, 16, 17",
+      "7, 15, 17",
+      "6, 15, 16",
+      "7, 15, 18"
+     ],
+     "answer": 1,
+     "explain": "y uses the old x (5), then x becomes 6; ++x makes x 7 before use, so z = 17. Printed: 7 15 17."
+    },
+    {
+     "q": "int s = -1; unsigned u = 1; Is s < u true?",
+     "options": [
+      "Yes",
+      "No: s is converted to unsigned, becoming a huge value",
+      "Compile error",
+      "Undefined behaviour"
+     ],
+     "answer": 1,
+     "explain": "Mixed signed and unsigned comparisons convert the signed side. The program printed 'not less', and g++ -Wall warned about it."
+    }
+   ],
+   "cover_seed": "pointers-output-questions",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.7,
+   "path": "cs-core/pointers-output-questions.md",
+   "hash": "63010f95311f",
+   "word_count": 1091,
+   "excerpt": "An online assessment shows six lines of C++ and four possible outputs. You have ninety seconds. The code is full of p++, an array passed to a function, and a comparison between an int and an unsigned. Two of the options look right. One of them is the trap. These questions test whether you know what…"
   }
  ]
 }

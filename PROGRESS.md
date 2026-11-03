@@ -14,8 +14,8 @@ Read `HANDOFF.md` first if you are picking this project up.
 | famous-algos | 39 | 0 | 52 | 91 | 32/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core | 72 | 0 | 7 | 79 | 44/47 |
-| **All** | **588** | **0** | **95** | **683** | |
+| cs-core | 73 | 0 | 6 | 79 | 44/47 |
+| **All** | **589** | **0** | **94** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -65,7 +65,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 - [ ] `cs-core-oop-interview-questions` (P0, primer, cs-oop): OOP Interview Questions, Answered Simply
 - [ ] `cs-core-memory-hierarchy` (P0, deep-dive, cs-architecture): The Memory Hierarchy and CPU Caches
-- [ ] `cs-core-pointers-output-questions` (P1, primer, cs-oop): Pointers, References and Predict-the-Output Questions
 
 ## Written so far
 
@@ -610,7 +609,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cs-core: 72 written</summary>
+<details><summary>cs-core: 73 written</summary>
 
 - [x] `cs-core-what-an-os-does` What an Operating System Actually Does
 - [x] `cs-core-processes-threads` Processes vs Threads
@@ -684,5 +683,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cs-core-memory-model-cpp` Stack vs Heap and Object Lifetimes
 - [x] `cs-core-stl-internals` STL Internals Interviewers Ask About
 - [x] `cs-core-sliding-window-protocols` Stop-and-Wait, Go-Back-N and Selective Repeat
+- [x] `cs-core-pointers-output-questions` Pointers, References and Predict-the-Output Questions
 
 </details>
