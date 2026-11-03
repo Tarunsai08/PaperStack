@@ -1,7 +1,7 @@
 {
- "content_version": "fe561f7870c827fd",
+ "content_version": "7a63db1e6dd734be",
  "generated_at": "2026-11-03",
- "count": 553,
+ "count": 555,
  "subjects": [
   {
    "id": "ml",
@@ -56318,6 +56318,192 @@
    "hash": "2bce094d9be4",
    "word_count": 1154,
    "excerpt": "Disks fail. In a server with dozens of them, a failure is not a question of if but of when. When one fails, two things can go wrong: the data on it is gone, and every program waiting on it stops. RAID (redundant array of independent disks) combines several disks so that one failure loses nothing…"
+  },
+  {
+   "id": "cs-core-io-interrupts-dma",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "io-interrupts-dma",
+   "title": "A Doorbell Versus Checking the Door Every Minute",
+   "subtitle": "How the OS talks to devices: device registers, polling versus interrupts, what happens step by step when an interrupt fires, DMA, device drivers, and why fast networks switch back to polling",
+   "track": "cs-os",
+   "track_order": 21,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-system-calls"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "operating systems",
+    "interrupts",
+    "dma",
+    "device drivers",
+    "polling",
+    "i/o"
+   ],
+   "glossary": [
+    {
+     "term": "Device controller",
+     "definition": "The hardware attached to a device that exposes registers (status, command, data) the CPU reads and writes to control it."
+    },
+    {
+     "term": "Polling",
+     "definition": "The CPU repeatedly reading a device's status register until the device is ready."
+    },
+    {
+     "term": "Interrupt",
+     "definition": "A hardware signal that makes the CPU pause its current work and run a handler registered for that device."
+    },
+    {
+     "term": "Interrupt handler",
+     "definition": "The kernel routine (interrupt service routine) that runs when a specific interrupt fires; it does the minimum work and defers the rest."
+    },
+    {
+     "term": "DMA",
+     "definition": "Direct memory access: a controller copies data between a device and memory without the CPU moving each byte, and interrupts once when done."
+    },
+    {
+     "term": "Device driver",
+     "definition": "Kernel code that knows one kind of device's registers and protocol, and presents it to the rest of the OS through a standard interface."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "When is polling better than interrupts?",
+     "options": [
+      "Never",
+      "When the device responds almost immediately or events arrive so fast that interrupt overhead dominates",
+      "When the device is slow",
+      "When there is no CPU"
+     ],
+     "answer": 1,
+     "explain": "Interrupts cost a context switch each. For very fast devices or floods of packets, checking in a loop wastes less."
+    },
+    {
+     "q": "Reading a 4 KiB disk block with DMA, roughly how many times is the CPU interrupted?",
+     "options": [
+      "4096",
+      "1024",
+      "Once, when the whole transfer completes",
+      "Never"
+     ],
+     "answer": 2,
+     "explain": "The CPU programs the DMA controller with address and length, and gets one completion interrupt."
+    },
+    {
+     "q": "Why does an interrupt handler do as little as possible?",
+     "options": [
+      "To save memory",
+      "While it runs, further interrupts may be delayed and the interrupted work is paused, so heavy work is deferred to a later 'bottom half'",
+      "Because handlers cannot call functions",
+      "To avoid DMA"
+     ],
+     "answer": 1,
+     "explain": "Linux splits handling into a quick top half and deferred work (softirqs, tasklets, workqueues)."
+    }
+   ],
+   "cover_seed": "io-interrupts-dma",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.7,
+   "path": "cs-core/io-interrupts-dma.md",
+   "hash": "d538030ec08c",
+   "word_count": 1206,
+   "excerpt": "You call read() on a file. Somewhere a disk controller begins fetching data that will take a long time by CPU standards. What should the processor do meanwhile? Stand at the device asking \"done yet? done yet?\" billions of times? Or go and run other programs, and somehow find out when the data…"
+  },
+  {
+   "id": "cs-core-threading-models",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "threading-models",
+   "title": "Workers Hired by a Contractor or Directly by the Company",
+   "subtitle": "Threading models: user-level and kernel-level threads, many-to-one, one-to-one and many-to-many mappings, green threads and goroutines, and why thread pools exist",
+   "track": "cs-os",
+   "track_order": 22,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-processes-threads"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "operating systems",
+    "threads",
+    "user threads",
+    "kernel threads",
+    "thread pools",
+    "goroutines"
+   ],
+   "glossary": [
+    {
+     "term": "Kernel thread",
+     "definition": "A thread the operating system knows about and schedules directly on CPU cores."
+    },
+    {
+     "term": "User-level thread",
+     "definition": "A thread created and scheduled by a library or language runtime inside one process, invisible to the kernel."
+    },
+    {
+     "term": "Many-to-one model",
+     "definition": "Many user threads run on a single kernel thread; switching is cheap, but one blocking call blocks them all and only one core is used."
+    },
+    {
+     "term": "One-to-one model",
+     "definition": "Each user thread is backed by its own kernel thread; true parallelism and independent blocking, at a higher cost per thread."
+    },
+    {
+     "term": "Many-to-many model",
+     "definition": "M user threads are multiplexed over N kernel threads by a runtime scheduler, combining cheap threads with parallelism."
+    },
+    {
+     "term": "Thread pool",
+     "definition": "A fixed set of reusable worker threads that take tasks from a queue, avoiding the cost of creating a thread per task."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In the many-to-one model, one thread calls a blocking read() on a slow file. What happens to the other threads in that process?",
+     "options": [
+      "They keep running on other cores",
+      "They all stop, because the single kernel thread is blocked",
+      "They are killed",
+      "Only threads with the same priority stop"
+     ],
+     "answer": 1,
+     "explain": "The kernel sees one thread; when it blocks, the whole process blocks."
+    },
+    {
+     "q": "Which model does Linux's standard pthreads implementation (NPTL) use?",
+     "options": [
+      "Many-to-one",
+      "One-to-one",
+      "Many-to-many",
+      "None"
+     ],
+     "answer": 1,
+     "explain": "Each pthread is a kernel-scheduled task."
+    },
+    {
+     "q": "Why does a web server use a thread pool instead of creating a thread per request?",
+     "options": [
+      "Threads cannot be created at runtime",
+      "Creating and destroying threads per request is costly and unbounded thread counts can exhaust memory; a pool reuses a bounded set",
+      "Pools are required by HTTP",
+      "Pools make each request faster to compute"
+     ],
+     "answer": 1,
+     "explain": "A pool bounds concurrency and reuses threads, keeping memory and scheduling overhead under control."
+    }
+   ],
+   "cover_seed": "threading-models",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.7,
+   "path": "cs-core/threading-models.md",
+   "hash": "fc38912e0762",
+   "word_count": 1103,
+   "excerpt": "A chat server holds 100,000 open connections. The simple design gives each connection its own thread. On a typical Linux setup, each thread reserves a stack of up to 8 MB by default (ulimit -s printed 8192 KB on the machine used for this article), and every thread is something the kernel must…"
   },
   {
    "id": "cs-core-dbms-intro",
