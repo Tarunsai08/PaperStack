@@ -1833,8 +1833,8 @@
     "system-design-search-systems",
     "system-design-web-crawler"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Crawl, index, rank, serve",
@@ -1863,8 +1863,8 @@
     "system-design-blob-storage",
     "system-design-news-feed"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Upload pipeline",

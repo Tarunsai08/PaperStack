@@ -1,7 +1,7 @@
 {
- "content_version": "ac780052f860a6bf",
+ "content_version": "cf90e62dfd5d70a7",
  "generated_at": "2026-11-03",
- "count": 511,
+ "count": 513,
  "subjects": [
   {
    "id": "ml",
@@ -48905,6 +48905,186 @@
    "hash": "632d38195712",
    "word_count": 1321,
    "excerpt": "Millions of things must happen at a time in the future: send this reminder at 9:00, generate this invoice on the 1st, retry this payment in 30 minutes, clean up these files every night. On one server, cron does it. Then the server dies at 1:59 and the 2:00 billing job never runs. So you run cron on…"
+  },
+  {
+   "id": "system-design-search-engine",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "search-engine",
+   "title": "Design a Web Search Engine",
+   "subtitle": "Crawl, index, rank, serve: sharded inverted indexes, query fan-out and merge, and why the slowest of a thousand shards decides how fast you are",
+   "track": "sd-cases",
+   "track_order": 17,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-search-systems",
+    "system-design-web-crawler"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "search engine",
+    "inverted index",
+    "ranking",
+    "tail latency",
+    "fan-out"
+   ],
+   "glossary": [
+    {
+     "term": "Document-partitioned index",
+     "definition": "Splitting the index by document, so each shard holds a complete inverted index for its own subset of pages; every query visits every shard."
+    },
+    {
+     "term": "Query fan-out",
+     "definition": "Sending one query to many shards in parallel and merging their partial results."
+    },
+    {
+     "term": "Tail at scale",
+     "definition": "The effect that, when a request waits for many servers, rare slow responses on individual servers become common for the request as a whole."
+    },
+    {
+     "term": "Hedged request",
+     "definition": "Sending a second copy of a slow request to another replica after a short delay and using whichever answers first."
+    },
+    {
+     "term": "Two-stage ranking",
+     "definition": "A cheap first pass that selects candidates on each shard, followed by an expensive scoring pass on the few hundred best candidates."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A query fans out to 1,000 shards. Each shard is slower than its own 99th percentile 1% of the time. Roughly how often is at least one shard slow for a given query?",
+     "options": [
+      "1%",
+      "About 63%",
+      "Almost always: about 99.996%",
+      "Never"
+     ],
+     "answer": 2,
+     "explain": "1 − 0.99¹⁰⁰⁰ ≈ 0.99996. With enough shards, the rare slow case becomes the normal case for the whole query."
+    },
+    {
+     "q": "Why are web search indexes usually partitioned by document rather than by term?",
+     "options": [
+      "Terms cannot be hashed",
+      "Each shard can answer any query for its documents, load is balanced, and losing a shard loses some documents rather than whole words",
+      "It uses less storage",
+      "Ranking requires it"
+     ],
+     "answer": 1,
+     "explain": "Term partitioning sends popular words to hot shards and makes multi-word queries cross shards; document partitioning keeps each shard independent at the cost of fanning out every query."
+    },
+    {
+     "q": "How does a hedged request cut tail latency?",
+     "options": [
+      "It makes servers faster",
+      "If a replica has not answered within, say, its 95th-percentile time, a second replica is asked; the chance both are slow is much smaller",
+      "It cancels the query",
+      "It caches every result"
+     ],
+     "answer": 1,
+     "explain": "Two independent replicas both being slow is far rarer than one being slow, at the cost of a little extra load."
+    }
+   ],
+   "cover_seed": "search-engine",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.76,
+   "path": "system-design/search-engine.md",
+   "hash": "48dd2657a980",
+   "word_count": 1151,
+   "excerpt": "You type four words and press enter. Within a fraction of a second, a search engine has looked through an index of billions of pages, scored the candidates, and returned ten blue links and a snippet for each. No single machine holds that index. The query was sent to hundreds or thousands of…"
+  },
+  {
+   "id": "system-design-photo-sharing",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "photo-sharing",
+   "title": "Design a Photo Sharing App Like Instagram",
+   "subtitle": "An upload pipeline with thumbnails, storage and CDN delivery, a feed built from follows, and like counters that survive a celebrity's post",
+   "track": "sd-cases",
+   "track_order": 18,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-blob-storage",
+    "system-design-news-feed"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "photo sharing",
+    "upload pipeline",
+    "thumbnails",
+    "feed",
+    "counters"
+   ],
+   "glossary": [
+    {
+     "term": "Pre-signed URL",
+     "definition": "A short-lived URL, issued by the backend, that lets a client upload a file directly to object storage without the bytes passing through app servers."
+    },
+    {
+     "term": "Thumbnail",
+     "definition": "A smaller, resized version of an image generated for feeds and grids, so phones download far fewer bytes."
+    },
+    {
+     "term": "Media processing pipeline",
+     "definition": "Asynchronous workers that validate, resize, compress and scan uploaded media after the upload completes."
+    },
+    {
+     "term": "Sharded counter",
+     "definition": "A counter split into several sub-counters that are incremented independently and summed on read, to avoid contention on one hot row."
+    },
+    {
+     "term": "Hot key",
+     "definition": "A single key, such as one celebrity post's like count, receiving a disproportionate share of traffic."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why should photo uploads go directly to object storage through a pre-signed URL?",
+     "options": [
+      "It is required by HTTP",
+      "App servers then handle only small metadata requests, while large bytes go straight to storage built for them",
+      "Object storage is free",
+      "It makes photos smaller"
+     ],
+     "answer": 1,
+     "explain": "Streaming megabytes through app servers ties up their connections and bandwidth. The backend just authorises the upload and records metadata."
+    },
+    {
+     "q": "A celebrity's photo receives 1 million likes in 10 minutes. What happens with a single counter row?",
+     "options": [
+      "Nothing special",
+      "About 1,700 increments per second contend on one row, causing lock waits and timeouts; sharded or buffered counters spread the load",
+      "The likes are lost",
+      "The CDN handles it"
+     ],
+     "answer": 1,
+     "explain": "One hot row serialises writers. Splitting the counter into sub-counters, or buffering increments and flushing totals periodically, removes the contention."
+    },
+    {
+     "q": "Where should feed images be served from?",
+     "options": [
+      "App servers",
+      "A CDN in front of object storage, with several thumbnail sizes so each screen downloads the smallest image that looks sharp",
+      "The database",
+      "The user's phone"
+     ],
+     "answer": 1,
+     "explain": "Images are the bulk of the bytes. A CDN serves them close to users, and right-sized thumbnails cut data usage."
+    }
+   ],
+   "cover_seed": "photo-sharing",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.8,
+   "path": "system-design/photo-sharing.md",
+   "hash": "33da2fa6c9f1",
+   "word_count": 1184,
+   "excerpt": "A photographer posts a picture. Within seconds it appears, crisp but small, in the feeds of her followers on slow mobile networks across the country. Ten minutes later it has a million likes, and the like count on every screen keeps ticking up. Three different problems hide in that sentence: moving…"
   },
   {
    "id": "system-design-oop-solid",
