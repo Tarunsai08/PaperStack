@@ -14,11 +14,11 @@ You are continuing a project another Claude session started. Everything you need
 |---|---|---|---|---|---|
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
-| famous-algos | 36 | 0 | 55 | 91 | 29/32 |
+| famous-algos | 37 | 0 | 54 | 91 | 30/32 |
 | system-design | 62 | 0 | 57 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 8 | 0 | 71 | 79 | 7/47 |
-| **All** | **464** | **0** | **219** | **683** | |
+| **All** | **465** | **0** | **218** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -32,10 +32,10 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 #### famous-algos
 - [ ] `famous-algos-fft` (P0, concept, fa-signals): The Fast Fourier Transform: Hearing the Notes in a Chord
-- [ ] `famous-algos-a-star` (P0, concept, fa-signals): A* Search: Dijkstra With a Sense of Direction
 - [ ] `famous-algos-counting-bloom-cuckoo` (P1, concept, fa-sketches): Deletable Filters: Counting Bloom and Cuckoo Filters
 - [ ] `famous-algos-heavy-hitters` (P1, concept, fa-sketches): Finding Heavy Hitters in a Stream: Misra-Gries and Space-Saving
 - [ ] `famous-algos-lsh` (P1, concept, fa-sketches): Locality-Sensitive Hashing: Finding Near Neighbours Fast
+- [ ] `famous-algos-paxos` (P1, concept, fa-distributed): Paxos: The Original Consensus Algorithm
 
 #### system-design
 - [ ] `system-design-networking-essentials` (P1, deep-dive, sd-fundamentals): TCP, UDP and QUIC for System Designers
@@ -53,10 +53,10 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 #### cs-core
 - [ ] `cs-core-classic-sync-problems` (P0, deep-dive, cs-os): Producer-Consumer, Readers-Writers and Dining Philosophers
+- [ ] `cs-core-deadlocks` (P0, deep-dive, cs-os): Deadlocks: Conditions, Prevention, Avoidance, Detection
 - [ ] `cs-core-memory-basics` (P0, deep-dive, cs-os): Memory Management: Allocation and Fragmentation
 - [ ] `cs-core-file-systems` (P0, deep-dive, cs-os): File Systems: Inodes, Directories and Allocation
 - [ ] `cs-core-dbms-intro` (P0, primer, cs-dbms): Why Databases Exist
-- [ ] `cs-core-osi-tcpip` (P0, primer, cs-networks): The OSI and TCP/IP Models
 <!-- status:end -->
 
 ## UI review status: approved

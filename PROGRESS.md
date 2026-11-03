@@ -11,11 +11,11 @@ Read `HANDOFF.md` first if you are picking this project up.
 |---|---|---|---|---|---|
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
-| famous-algos | 36 | 0 | 55 | 91 | 29/32 |
+| famous-algos | 37 | 0 | 54 | 91 | 30/32 |
 | system-design | 62 | 0 | 57 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 8 | 0 | 71 | 79 | 7/47 |
-| **All** | **464** | **0** | **219** | **683** | |
+| **All** | **465** | **0** | **218** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -34,7 +34,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 ### famous-algos
 
 - [ ] `famous-algos-fft` (P0, concept, fa-signals): The Fast Fourier Transform: Hearing the Notes in a Chord
-- [ ] `famous-algos-a-star` (P0, concept, fa-signals): A* Search: Dijkstra With a Sense of Direction
 - [ ] `famous-algos-counting-bloom-cuckoo` (P1, concept, fa-sketches): Deletable Filters: Counting Bloom and Cuckoo Filters
 - [ ] `famous-algos-heavy-hitters` (P1, concept, fa-sketches): Finding Heavy Hitters in a Stream: Misra-Gries and Space-Saving
 - [ ] `famous-algos-lsh` (P1, concept, fa-sketches): Locality-Sensitive Hashing: Finding Near Neighbours Fast
@@ -43,6 +42,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `famous-algos-leader-election-leases` (P1, concept, fa-distributed): Leases and Fencing Tokens: Safe Leadership
 - [ ] `famous-algos-sliding-window-limits` (P1, concept, fa-networking): Sliding Window Rate Limiting: Logs and Counters
 - [ ] `famous-algos-skip-lists-practice` (P1, concept, fa-storage): Skip Lists in Practice: Redis Sorted Sets
+- [ ] `famous-algos-swiss-tables` (P1, concept, fa-storage): The Hash Table You Use Every Day: Open Addressing and Swiss Tables
 
 ### system-design
 
@@ -73,6 +73,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 ### cs-core
 
 - [ ] `cs-core-classic-sync-problems` (P0, deep-dive, cs-os): Producer-Consumer, Readers-Writers and Dining Philosophers
+- [ ] `cs-core-deadlocks` (P0, deep-dive, cs-os): Deadlocks: Conditions, Prevention, Avoidance, Detection
 - [ ] `cs-core-memory-basics` (P0, deep-dive, cs-os): Memory Management: Allocation and Fragmentation
 - [ ] `cs-core-file-systems` (P0, deep-dive, cs-os): File Systems: Inodes, Directories and Allocation
 - [ ] `cs-core-dbms-intro` (P0, primer, cs-dbms): Why Databases Exist
@@ -81,7 +82,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `cs-core-memory-hierarchy` (P0, deep-dive, cs-architecture): The Memory Hierarchy and CPU Caches
 - [ ] `cs-core-monitors-condition-variables` (P1, deep-dive, cs-os): Monitors and Condition Variables
 - [ ] `cs-core-io-interrupts-dma` (P1, deep-dive, cs-os): I/O: Polling, Interrupts and DMA
-- [ ] `cs-core-threading-models` (P1, deep-dive, cs-os): User Threads, Kernel Threads and Thread Pools
 
 ## Written so far
 
@@ -370,7 +370,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>famous-algos: 36 written</summary>
+<details><summary>famous-algos: 37 written</summary>
 
 - [x] `famous-algos-bloom-filter` Bloom Filters: Saying No Without Looking
 - [x] `famous-algos-count-min-sketch` Count-Min Sketch: Counting Billions of Things in Kilobytes
@@ -408,6 +408,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `famous-algos-myers-diff` Myers' Diff: How Git Shows What Changed
 - [x] `famous-algos-rsync-rolling-checksum` rsync: Copying Only What Changed
 - [x] `famous-algos-kalman-filter` The Kalman Filter: Blending Guesses With Noisy Measurements
+- [x] `famous-algos-a-star` A* Search: Dijkstra With a Sense of Direction
 
 </details>
 
@@ -582,4 +583,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 ## Mismatches to fix
 
 - system-design-library-management has an article but is still marked planned
+- system-design-snake-ladder-tictactoe has an article but is still marked planned
 - cs-core-monitors-condition-variables has an article but is still marked planned
+- cs-core-classic-sync-problems has an article but is still marked planned
