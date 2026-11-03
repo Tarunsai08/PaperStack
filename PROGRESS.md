@@ -12,10 +12,10 @@ Read `HANDOFF.md` first if you are picking this project up.
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
-| system-design | 63 | 0 | 56 | 119 | 60/60 |
+| system-design | 64 | 0 | 55 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 8 | 0 | 71 | 79 | 7/47 |
-| **All** | **466** | **0** | **217** | **683** | |
+| **All** | **467** | **0** | **216** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -46,7 +46,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### system-design
 
-- [ ] `system-design-proxies` (P1, deep-dive, sd-fundamentals): Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere
 - [ ] `system-design-search-systems` (P1, deep-dive, sd-blocks): Search Systems: Elasticsearch and Inverted Indexes
 - [ ] `system-design-storage-types` (P1, deep-dive, sd-blocks): Block, File and Object Storage
 - [ ] `system-design-olap-warehouses` (P1, deep-dive, sd-blocks): Columnar Storage and Data Warehouses
@@ -56,6 +55,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `system-design-data-modeling-scale` (P1, deep-dive, sd-scaling): Data Modelling for Scale: Denormalisation and Access Patterns
 - [ ] `system-design-web-crawler` (P1, case-study, sd-cases): Design a Web Crawler
 - [ ] `system-design-file-sync` (P1, case-study, sd-cases): Design Google Drive or Dropbox
+- [ ] `system-design-leaderboard` (P1, case-study, sd-cases): Design a Real-Time Leaderboard
 
 ### ml
 
@@ -412,7 +412,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>system-design: 63 written</summary>
+<details><summary>system-design: 64 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -426,6 +426,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-availability-slos` Availability, Nines and SLOs
 - [x] `system-design-stateless-idempotency` Stateless Services and Idempotent APIs
 - [x] `system-design-networking-essentials` TCP, UDP and QUIC for System Designers
+- [x] `system-design-proxies` Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere
 - [x] `system-design-auth-basics` Authentication and Authorisation: Sessions, JWT and OAuth
 - [x] `system-design-load-balancers` Load Balancers: L4, L7 and the Algorithms Inside
 - [x] `system-design-caching` Caching: Cache-Aside, Write-Through and Friends
@@ -585,5 +586,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 - system-design-library-management has an article but is still marked planned
 - system-design-snake-ladder-tictactoe has an article but is still marked planned
+- system-design-atm-lld has an article but is still marked planned
 - cs-core-monitors-condition-variables has an article but is still marked planned
 - cs-core-classic-sync-problems has an article but is still marked planned
+- cs-core-deadlocks has an article but is still marked planned
