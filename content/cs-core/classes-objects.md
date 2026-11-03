@@ -154,7 +154,7 @@ A class has members `int id; double score; char grade;` and five member function
 
 ## Where you'll see this again
 
-Every OOP topic in this track builds on this one: access control in encapsulation, constructors and destructors, inheritance and virtual functions. The low-level design rounds in system design apply these ideas to whole systems, starting with [Concurrency in Machine Coding: Locks, Atomics and Thread Pools](article:system-design-concurrency-lld) and its neighbours.
+Every OOP topic in this track builds on this one: access control in encapsulation, constructors and destructors, inheritance and virtual functions. The low-level design rounds in system design apply these ideas to whole systems, starting with [Lego Bricks With Standard Studs](article:system-design-oop-solid) and problems such as [Design a Parking Lot](article:system-design-parking-lot).
 
 ## Key takeaways
 

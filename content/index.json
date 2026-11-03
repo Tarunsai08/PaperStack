@@ -1,7 +1,7 @@
 {
- "content_version": "6618fd59a15a4966",
+ "content_version": "93398d02bbed0791",
  "generated_at": "2026-11-03",
- "count": 579,
+ "count": 580,
  "subjects": [
   {
    "id": "ml",
@@ -59878,8 +59878,8 @@
    "generated_at": "2026-11-03",
    "importance_score": 0.85,
    "path": "cs-core/classes-objects.md",
-   "hash": "8d98c5c8f911",
-   "word_count": 878,
+   "hash": "84596c1a0af8",
+   "word_count": 879,
    "excerpt": "A banking app has two million customers. Each has a name, a balance and a list of transactions, and each can deposit, withdraw and check a balance. Writing two million sets of variables is absurd; writing one set of loose global variables and functions means any line of code anywhere can change…"
   },
   {
@@ -60325,6 +60325,95 @@
    "hash": "0a87c4a91316",
    "word_count": 1062,
    "excerpt": "shape-area() runs Square's area for a square and Circle's for a circle. But the compiler that translated that line had no idea which kind of shape would be there at run time; the list might be read from a file. So what instruction did it emit? It cannot be \"jump to Square::area\". The answer is a…"
+  },
+  {
+   "id": "cs-core-abstract-interfaces",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "abstract-interfaces",
+   "title": "A Job Description Versus the Person Hired",
+   "subtitle": "Abstract classes and interfaces in C++: pure virtual functions as a contract, programming to an interface, swapping UPI for a card or a test fake without touching checkout, and abstract class versus interface",
+   "track": "cs-oop",
+   "track_order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-virtual-functions-vtable"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 4,
+   "topics": [
+    "oop",
+    "c++",
+    "abstract class",
+    "interface",
+    "dependency inversion",
+    "testing"
+   ],
+   "glossary": [
+    {
+     "term": "Interface",
+     "definition": "A class with only pure virtual functions (and a virtual destructor): a contract saying what operations exist, with no data or implementation."
+    },
+    {
+     "term": "Abstract class",
+     "definition": "A class with at least one pure virtual function; it cannot be instantiated but may also hold data and implemented functions."
+    },
+    {
+     "term": "Concrete class",
+     "definition": "A class that implements every pure virtual function it inherits, so objects of it can be created."
+    },
+    {
+     "term": "Programming to an interface",
+     "definition": "Writing code that depends on the contract (the interface type) rather than on a specific implementation."
+    },
+    {
+     "term": "Dependency inversion",
+     "definition": "High-level code and low-level details both depend on an abstraction, instead of high-level code depending directly on details."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What happens with `PaymentMethod m;` when PaymentMethod has pure virtual functions?",
+     "options": [
+      "It creates an empty object",
+      "Compile error: cannot declare a variable of abstract type",
+      "Runtime crash",
+      "It calls the first implementation"
+     ],
+     "answer": 1,
+     "explain": "g++ reported: cannot declare variable 'm' to be of abstract type 'PaymentMethod'."
+    },
+    {
+     "q": "checkout(PaymentMethod&, total) was written for UPI. What must change to support a new Wallet payment?",
+     "options": [
+      "checkout must add an if for Wallet",
+      "Nothing in checkout: write a Wallet class that implements PaymentMethod",
+      "Recompile PaymentMethod with Wallet inside",
+      "Use templates"
+     ],
+     "answer": 1,
+     "explain": "Code written against the interface works with any new implementation."
+    },
+    {
+     "q": "What is the main difference between an abstract class and a pure interface?",
+     "options": [
+      "None",
+      "An abstract class may hold data and implemented functions; an interface is only the contract of pure virtual functions",
+      "Interfaces can be instantiated",
+      "Abstract classes cannot have virtual functions"
+     ],
+     "answer": 1,
+     "explain": "C++ has no interface keyword; an interface is a convention: an abstract class with no state."
+    }
+   ],
+   "cover_seed": "abstract-interfaces",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.84,
+   "path": "cs-core/abstract-interfaces.md",
+   "hash": "a4443dee7252",
+   "word_count": 966,
+   "excerpt": "A food-delivery app's checkout code charges customers by calling a UPI library directly. Then the business adds cards. Then wallets. Then \"pay later\". Each addition means editing checkout, re-testing it, and hoping nothing broke. And testing checkout at all is painful, because every test run tries…"
   }
  ]
 }
