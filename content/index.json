@@ -1,7 +1,7 @@
 {
- "content_version": "eab1403d5e628354",
+ "content_version": "b7fb088a0a617a02",
  "generated_at": "2026-11-03",
- "count": 502,
+ "count": 504,
  "subjects": [
   {
    "id": "ml",
@@ -51842,6 +51842,184 @@
    "hash": "0de1b983a41f",
    "word_count": 1090,
    "excerpt": "A bank in Mumbai transfers money, and a millisecond later an auditor in New York reads the accounts. The auditor must see the transfer, in the right order, as if there were one database in one place. But the database is spread across continents, and each continent has its own clocks. The earlier…"
+  },
+  {
+   "id": "system-design-dynamo-paper",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "dynamo-paper",
+   "title": "A Shop That Never Refuses an Order",
+   "subtitle": "The Dynamo paper: why Amazon built an always-writable store, the techniques it combined, and which lessons still shape databases today",
+   "track": "sd-distributed",
+   "track_order": 19,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-quorums",
+    "system-design-consistent-hashing-sd"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "dynamo",
+    "availability",
+    "eventual consistency",
+    "papers"
+   ],
+   "glossary": [
+    {
+     "term": "Always writable",
+     "definition": "A design goal where writes are accepted even during failures and network partitions, with conflicts resolved later rather than writes being rejected."
+    },
+    {
+     "term": "Eventual consistency",
+     "definition": "A guarantee that if no new writes arrive, all replicas will eventually converge to the same value."
+    },
+    {
+     "term": "Tail latency",
+     "definition": "Latency experienced by the slowest requests, such as the 99.9th percentile, which matters because a page often waits on many calls."
+    },
+    {
+     "term": "Symmetry",
+     "definition": "Every node has the same role and responsibilities, so there is no special master to fail or overload."
+    },
+    {
+     "term": "Application-level reconciliation",
+     "definition": "Letting the application that understands the data merge conflicting versions, instead of the database picking one blindly."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why did Dynamo prefer accepting writes over rejecting them during failures?",
+     "options": [
+      "Writes are cheaper than reads",
+      "For a shopping cart, refusing 'add to cart' costs sales and trust; occasional conflicts can be merged later",
+      "Rejected writes are impossible",
+      "Because it had no replicas"
+     ],
+     "answer": 1,
+     "explain": "The business requirement drove the design: availability for writes mattered more than every read seeing the latest value instantly."
+    },
+    {
+     "q": "Why did the paper focus on the 99.9th percentile of latency rather than the average?",
+     "options": [
+      "Averages are hard to compute",
+      "Because the slowest requests are what some customers feel, and a page depends on many service calls",
+      "Because the median is always zero",
+      "To impress reviewers"
+     ],
+     "answer": 1,
+     "explain": "Averages hide the slow tail. Setting targets on high percentiles protects the experience of every customer, not just the typical one."
+    },
+    {
+     "q": "Is Amazon DynamoDB the same system as the Dynamo described in the 2007 paper?",
+     "options": [
+      "Yes, identical",
+      "No: DynamoDB is a later managed service that shares the name and some ideas, but its architecture and consistency options differ",
+      "DynamoDB came first",
+      "Dynamo was never used"
+     ],
+     "answer": 1,
+     "explain": "Treat the paper as a design lesson, not as documentation of DynamoDB's internals."
+    }
+   ],
+   "cover_seed": "dynamo-paper",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.68,
+   "path": "system-design/dynamo-paper.md",
+   "hash": "e70c76f7db63",
+   "word_count": 1038,
+   "excerpt": "It is the holiday shopping peak. A customer adds a gift to their cart, and somewhere in a data centre a network link flaps. A strongly consistent database would face a choice: refuse the write (\"please try again later\") or risk two replicas disagreeing. Amazon decided that refusing was the worse…"
+  },
+  {
+   "id": "system-design-gfs-hdfs",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "gfs-hdfs",
+   "title": "The Librarian Who Knows Which Shelf Holds Each Chapter",
+   "subtitle": "GFS and HDFS: one metadata master, many chunk servers, huge chunks, three replicas, and a design built for appending and streaming rather than editing",
+   "track": "sd-distributed",
+   "track_order": 20,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-blob-storage",
+    "system-design-replication"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "gfs",
+    "hdfs",
+    "distributed file system",
+    "papers"
+   ],
+   "glossary": [
+    {
+     "term": "Master",
+     "definition": "The single coordinator that stores the file system's metadata: file names, which chunks make up each file, and where each chunk's replicas live. Called the NameNode in HDFS."
+    },
+    {
+     "term": "Chunk server",
+     "definition": "A machine that stores chunks as ordinary local files and serves their bytes directly to clients. Called a DataNode in HDFS."
+    },
+    {
+     "term": "Chunk",
+     "definition": "A large fixed-size piece of a file (64 MB in the GFS paper, 128 MB by default in recent HDFS), replicated on several chunk servers."
+    },
+    {
+     "term": "Record append",
+     "definition": "A GFS operation that appends data atomically at least once at an offset chosen by the system, so many producers can append to one file concurrently."
+    },
+    {
+     "term": "Lease",
+     "definition": "A time-limited grant from the master making one replica the primary for a chunk, which orders all mutations to it."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does a client read file data directly from chunk servers rather than through the master?",
+     "options": [
+      "The master has no network",
+      "So the single master handles only small metadata requests and never becomes a bandwidth bottleneck",
+      "Chunk servers are faster at metadata",
+      "For encryption"
+     ],
+     "answer": 1,
+     "explain": "The master answers 'which chunk servers hold chunk 7 of this file?'. Gigabytes of data then flow between client and chunk servers directly."
+    },
+    {
+     "q": "Why did GFS choose very large chunks such as 64 MB?",
+     "options": [
+      "Disks require it",
+      "Fewer chunks means less metadata in the master's memory and fewer client-master interactions for large sequential reads",
+      "Small files become cheaper",
+      "To make random writes fast"
+     ],
+     "answer": 1,
+     "explain": "With huge files read and written sequentially, large chunks keep metadata small. The cost is waste and hot spots for small files."
+    },
+    {
+     "q": "What happens when many tiny files are stored in HDFS?",
+     "options": [
+      "They are very efficient",
+      "Each file and block needs metadata in the NameNode's memory, so millions of small files exhaust the master long before the disks fill",
+      "They are merged automatically",
+      "HDFS rejects them"
+     ],
+     "answer": 1,
+     "explain": "Metadata cost is per file and per block, not per byte. Small-file workloads are the classic way to overload a single-master file system."
+    }
+   ],
+   "cover_seed": "gfs-hdfs",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.65,
+   "path": "system-design/gfs-hdfs.md",
+   "hash": "c771dbb95849",
+   "word_count": 1122,
+   "excerpt": "In the early 2000s, Google needed to store and crawl the web: files of many gigabytes, written by many machines at once, read sequentially by batch jobs, on thousands of cheap disks that failed every day. No existing file system fit. So they built the Google File System, described by Ghemawat,…"
   },
   {
    "id": "cs-core-what-an-os-does",
