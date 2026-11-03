@@ -1,7 +1,7 @@
 {
- "content_version": "5f47b205394eaaa2",
+ "content_version": "75453d54e3bf9306",
  "generated_at": "2026-11-02",
- "count": 357,
+ "count": 360,
  "subjects": [
   {
    "id": "ml",
@@ -29076,6 +29076,117 @@
    "excerpt": "Compute the 10¹⁸-th Fibonacci number modulo 10⁹ + 7. A loop that adds the last two terms needs 10¹⁸ steps, which would take decades. Yet the answer comes back in microseconds with a trick built from two things you already know: the recurrence, and fast exponentiation from Raising to the Power of a…"
   },
   {
+   "id": "cp-number-theory-tricks",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "number-theory-tricks",
+   "title": "Grouping Receipts by How Many Fit the Budget",
+   "subtitle": "Number theory shortcuts for contests: the harmonic lemma behind O(n log n) divisor sieves, iterating over the O(√n) distinct values of n / i, summing divisors up to 10¹², and divisor count, sum and product from a factorisation",
+   "track": "cp-math",
+   "track_order": 13,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-sieve"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "number theory",
+    "divisors",
+    "harmonic series",
+    "modular arithmetic"
+   ],
+   "complexity": {
+    "time": "O(√n) for sums over n / i, O(n log n) for divisor sieves",
+    "space": "O(1) or O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Sum of Divisors",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1082",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Divisor Analysis",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2182",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Counting Divisors",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1713",
+     "difficulty": "Easy"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Harmonic lemma",
+     "definition": "The fact that n/1 + n/2 + ... + n/n is about n ln n, so looping over all multiples of every number up to n costs O(n log n)."
+    },
+    {
+     "term": "Floor block",
+     "definition": "A maximal range of i values [l, r] for which ⌊n / i⌋ is the same number q; its right end is r = ⌊n / q⌋."
+    },
+    {
+     "term": "Distinct quotients",
+     "definition": "The values that ⌊n / i⌋ takes as i runs from 1 to n; there are at most about 2√n of them."
+    },
+    {
+     "term": "Contribution counting",
+     "definition": "Turning a sum over numbers into a sum over divisors by asking, for each divisor d, how many numbers it divides."
+    },
+    {
+     "term": "Exponent reduction",
+     "definition": "Reducing an exponent modulo M - 1 before computing a^e mod M, valid by Fermat's little theorem when M is prime and a is not a multiple of M."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why is looping over all multiples of every d from 1 to n O(n log n), not O(n²)?",
+     "options": [
+      "Because most d have no multiples",
+      "Number d has n / d multiples, and n/1 + n/2 + ... + n/n grows like n ln n",
+      "Because the loop stops early",
+      "It is O(n²)"
+     ],
+     "answer": 1,
+     "explain": "The harmonic sum 1 + 1/2 + ... + 1/n is about ln n, so the total is about n ln n operations."
+    },
+    {
+     "q": "For n = 10, which i share ⌊10 / i⌋ = 2?",
+     "options": [
+      "Only i = 5",
+      "i = 4 and 5, the block from l = 4 to r = ⌊10 / 2⌋ = 5",
+      "i = 2 to 5",
+      "i = 3 to 5"
+     ],
+     "answer": 1,
+     "explain": "10 / 4 = 2.5 and 10 / 5 = 2 both floor to 2, while 10 / 3 floors to 3 and 10 / 6 to 1. The block's right end is ⌊n / q⌋ = 5."
+    },
+    {
+     "q": "To compute the product of all divisors modulo the prime 10⁹ + 7, why are exponents reduced modulo 10⁹ + 6?",
+     "options": [
+      "They are not",
+      "By Fermat's little theorem, a^(M-1) = 1 mod M, so exponents only matter modulo M - 1 when a is not a multiple of M",
+      "Because the product is small",
+      "To avoid negative numbers"
+     ],
+     "answer": 1,
+     "explain": "The divisor count can be astronomically large. Since a^(M - 1) ≡ 1 for prime M, the exponent can be taken modulo M - 1 safely."
+    }
+   ],
+   "cover_seed": "number-theory-tricks",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.6,
+   "path": "cp/number-theory-tricks.md",
+   "hash": "350c2ac8dc0b",
+   "word_count": 1365,
+   "excerpt": "An accountant must answer: summing over every price from 1 to 10¹², how many times does each price fit into a budget of 10¹², and what do those counts add up to? Looping over 10¹² prices is out of the question. But most prices fit the same number of times: every price from 500,000,000,001 to 10¹²…"
+  },
+  {
    "id": "cp-counting-divisors",
    "kind": "problem-walkthrough",
    "subject": "cp",
@@ -29425,6 +29536,220 @@
    "hash": "67b624491028",
    "word_count": 1154,
    "excerpt": "Computing aᵇ mod p for b up to 10⁹ is the classic fast exponentiation exercise from Raising to the Power of a Billion in Thirty Steps. Now raise the stakes: compute a^(b^c) mod p, where b and c are each up to 10⁹. The exponent b^c can have billions of digits. You cannot even write it down, let…"
+  },
+  {
+   "id": "cp-bracket-sequences",
+   "kind": "problem-walkthrough",
+   "subject": "cp",
+   "slug": "bracket-sequences",
+   "title": "Paths That Never Dip Below Sea Level",
+   "subtitle": "Counting valid bracket sequences with the Catalan numbers, the reflection trick that counts the bad ones, and extending it to count every way to finish a given prefix",
+   "track": "cp-math",
+   "track_order": 17,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-counting-techniques"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "combinatorics",
+    "Catalan numbers",
+    "reflection principle",
+    "modular arithmetic"
+   ],
+   "complexity": {
+    "time": "O(n) to precompute factorials, O(1) per answer",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Bracket Sequences I",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2064",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Bracket Sequences II",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2187",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Generate Parentheses",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/generate-parentheses/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Valid bracket sequence",
+     "definition": "A string of '(' and ')' where every prefix has at least as many '(' as ')', and the totals are equal."
+    },
+    {
+     "term": "Lattice path",
+     "definition": "A walk where each '(' is a step up and each ')' a step down, so a bracket sequence becomes a mountain profile."
+    },
+    {
+     "term": "Catalan number",
+     "definition": "C_k = C(2k, k) / (k + 1), the number of valid bracket sequences with k pairs: 1, 1, 2, 5, 14, 42, ..."
+    },
+    {
+     "term": "Reflection principle",
+     "definition": "A bijection that flips a path after its first touch of a forbidden line, which counts the paths that cross the line."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How many valid bracket sequences of length 6 are there?",
+     "options": [
+      "6",
+      "5, the Catalan number C_3",
+      "20",
+      "15"
+     ],
+     "answer": 1,
+     "explain": "With 3 pairs, C_3 = C(6, 3) / 4 = 20 / 4 = 5: ((())), (()()), (())(), ()(()), ()()()."
+    },
+    {
+     "q": "In the reflection trick for k pairs, how many of the C(2k, k) balanced strings are invalid?",
+     "options": [
+      "None",
+      "C(2k, k + 1), because reflecting each bad path after its first dip to -1 gives a bijection with paths that end at -2",
+      "k",
+      "C(2k, k) / 2"
+     ],
+     "answer": 1,
+     "explain": "Flip every step after the first time the path reaches -1. A path from 0 to 0 becomes one from 0 to -2, which has k + 1 down steps, and the map is reversible."
+    },
+    {
+     "q": "What is the answer for any odd length n?",
+     "options": [
+      "1",
+      "0, because a valid sequence needs equal numbers of '(' and ')'",
+      "The Catalan number of n / 2",
+      "n"
+     ],
+     "answer": 1,
+     "explain": "Equal counts of two kinds of bracket force an even length, so odd n has no valid sequence."
+    }
+   ],
+   "cover_seed": "bracket-sequences",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.58,
+   "path": "cp/bracket-sequences.md",
+   "hash": "46e12d07af01",
+   "word_count": 1258,
+   "excerpt": "A hiker walks a ridge in fixed-length steps, each step one metre up or one metre down. The walk must start and end at sea level, and the hiker refuses to ever go below it, because below sea level is the sea. How many different walks of 2k steps are there? That hiker's walk is a bracket sequence in…"
+  },
+  {
+   "id": "cp-lucas-theorem",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "lucas-theorem",
+   "title": "Reading a Number Digit by Digit in Base p",
+   "subtitle": "Lucas's theorem: when the prime modulus is small, C(n, r) mod p is the product of binomials of the base-p digits of n and r, why factorial inverses fail there, the odd entries of Pascal's triangle, and small composite moduli through CRT",
+   "track": "cp-math",
+   "track_order": 18,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-binomial-coefficients"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "combinatorics",
+    "binomial coefficients",
+    "modular arithmetic",
+    "number theory"
+   ],
+   "complexity": {
+    "time": "O(p) precomputation, O(log_p n) per query",
+    "space": "O(p)"
+   },
+   "practice_problems": [
+    {
+     "name": "Binomial Coefficients",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1079",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Find Triangular Sum of an Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-triangular-sum-of-an-array/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Check If Digits Are Equal in String After Operations II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/check-if-digits-are-equal-in-string-after-operations-ii/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Lucas's theorem",
+     "definition": "For a prime p, C(n, r) mod p equals the product of C(n_i, r_i) mod p over the base-p digits n_i and r_i of n and r."
+    },
+    {
+     "term": "Base-p digits",
+     "definition": "The digits of a number written in base p, found by repeatedly taking the remainder mod p and dividing by p."
+    },
+    {
+     "term": "Small prime modulus",
+     "definition": "A prime p not larger than n, so n! is divisible by p and factorials have no inverse mod p."
+    },
+    {
+     "term": "Digit binomial",
+     "definition": "C(n_i, r_i) for single base-p digits, which is 0 when r_i > n_i and otherwise computable from factorials below p."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why do factorial inverses fail for C(n, r) mod p when p ≤ n?",
+     "options": [
+      "They are too slow",
+      "n! contains the factor p, so n! ≡ 0 mod p and has no modular inverse; the usual formula divides by zero",
+      "Because p is even",
+      "They work fine"
+     ],
+     "answer": 1,
+     "explain": "Both the numerator and the denominator can contain powers of p. Modulo p they become 0, and 0 has no inverse, so n! × inv(r!) × inv((n-r)!) breaks."
+    },
+    {
+     "q": "C(10, 3) mod 3 by Lucas: 10 is 101 in base 3 and 3 is 010. What is the result?",
+     "options": [
+      "1",
+      "0, because the middle digit pair is C(0, 1) = 0",
+      "120",
+      "2"
+     ],
+     "answer": 1,
+     "explain": "C(1, 0) × C(0, 1) × C(1, 0) = 1 × 0 × 1 = 0. Indeed C(10, 3) = 120, which is divisible by 3."
+    },
+    {
+     "q": "By Lucas with p = 2, when is C(n, r) odd?",
+     "options": [
+      "When n is odd",
+      "Exactly when every bit set in r is also set in n, that is r & n == r",
+      "When r is even",
+      "Always"
+     ],
+     "answer": 1,
+     "explain": "Each binary digit binomial is C(1, 1) = 1, C(1, 0) = 1, C(0, 0) = 1 or C(0, 1) = 0. The product is 1 only if r never has a 1 where n has a 0."
+    }
+   ],
+   "cover_seed": "lucas-theorem",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.52,
+   "path": "cp/lucas-theorem.md",
+   "hash": "d842432ca8c0",
+   "word_count": 1264,
+   "excerpt": "Most binomial coefficient problems use a big prime such as 10⁹ + 7, and precomputed factorials do the rest. Then a problem asks for C(n, r) modulo 7, or modulo 10, with n up to 10¹⁸. Factorials are useless: 7! is already 0 modulo 7, and dividing by 0 is not an option. Édouard Lucas found the way…"
   },
   {
    "id": "cp-segment-tree",

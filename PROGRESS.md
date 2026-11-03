@@ -10,12 +10,12 @@ Read `HANDOFF.md` first if you are picking this project up.
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
 | dsa | 152 | 0 | 0 | 152 | 72/72 |
-| cp | 48 | 0 | 67 | 115 | 20/29 |
+| cp | 51 | 0 | 64 | 115 | 20/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **357** | **0** | **316** | **673** | |
+| **All** | **360** | **0** | **313** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -238,7 +238,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cp: 48 written</summary>
+<details><summary>cp: 51 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -260,6 +260,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cp-counting-techniques` Counting Without Listing: Combinatorics Toolkit
 - [x] `cp-probability-expectation` Expected Value and Linearity of Expectation
 - [x] `cp-matrix-exponentiation` Matrix Exponentiation for Linear Recurrences
+- [x] `cp-number-theory-tricks` Divisor Sums and Floor Division Blocks
 - [x] `cp-segment-tree` Segment Trees From Scratch
 - [x] `cp-coordinate-compression` Coordinate Compression
 - [x] `cp-sqrt-decomposition` Square Root Decomposition
@@ -281,11 +282,13 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cp-counting-divisors` Counting Divisors for a Million Numbers
 - [x] `cp-creating-strings-ii` Counting Arrangements of a Word
 - [x] `cp-exponentiation-ii` a^(b^c) mod p: Fermat to the Rescue
+- [x] `cp-bracket-sequences` Counting Bracket Sequences With Catalan Numbers
 - [x] `cp-counting-numbers` Counting Numbers With No Equal Adjacent Digits
 - [x] `cp-projects-dp` Projects: Weighted Interval Scheduling
 - [x] `cp-nim-games` Nim and Its Variants
 - [x] `cp-invariants-observations` Invariants and Observations: The Heart of Div 2
 - [x] `cp-prefix-xor-tricks` Prefix XOR and Subarray Tricks
+- [x] `cp-lucas-theorem` Lucas' Theorem: nCr Mod a Small Prime
 - [x] `cp-pbds-ordered-set` Ordered Sets With Rank: Policy-Based Data Structures
 - [x] `cp-practice-plan` A 12-Week Contest Practice Plan
 

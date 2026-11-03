@@ -632,8 +632,8 @@
    "prerequisites": [
     "cp-sieve"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Harmonic lemma",
@@ -2416,8 +2416,8 @@
    "prerequisites": [
     "cp-counting-techniques"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Catalan formula",
@@ -3053,8 +3053,8 @@
    "prerequisites": [
     "cp-binomial-coefficients"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Write n and r in base p",
