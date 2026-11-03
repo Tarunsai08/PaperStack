@@ -828,8 +828,8 @@
    "prerequisites": [
     "cs-core-sql-joins"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Correlated subqueries",
@@ -855,8 +855,8 @@
    "prerequisites": [
     "cs-core-sql-advanced"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Nth highest salary",

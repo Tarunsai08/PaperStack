@@ -1,7 +1,7 @@
 {
- "content_version": "b871a3b831931600",
+ "content_version": "0df061d5f30e813a",
  "generated_at": "2026-11-03",
- "count": 535,
+ "count": 537,
  "subjects": [
   {
    "id": "ml",
@@ -56317,6 +56317,221 @@
    "hash": "6e06fdbbb8f0",
    "word_count": 1021,
    "excerpt": "\"List every department and how many employees it has, including empty departments.\" You write an inner join with GROUP BY. HR, which has nobody yet, simply vanishes from the result. The interviewer waits. \"Now list departments with no employees.\" You write WHERE id NOT IN (SELECT deptid FROM emp).…"
+  },
+  {
+   "id": "cs-core-sql-advanced",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "sql-advanced",
+   "title": "A Leaderboard Computed Inside the Query",
+   "subtitle": "Subqueries, CTEs and window functions: correlated subqueries, ROW_NUMBER versus RANK versus DENSE_RANK, PARTITION BY, running totals and LAG",
+   "track": "cs-dbms",
+   "track_order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-sql-joins"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 4,
+   "topics": [
+    "dbms",
+    "sql",
+    "window functions",
+    "cte",
+    "subqueries",
+    "ranking"
+   ],
+   "glossary": [
+    {
+     "term": "Correlated subquery",
+     "definition": "A subquery that refers to a column of the outer query, so it is conceptually evaluated once per outer row."
+    },
+    {
+     "term": "CTE",
+     "definition": "Common table expression: a named temporary result defined with WITH, used to make complex queries readable step by step."
+    },
+    {
+     "term": "Window function",
+     "definition": "A function computed over a set of rows related to the current row (its window) without collapsing them into one row, such as RANK() OVER (…)."
+    },
+    {
+     "term": "PARTITION BY",
+     "definition": "The part of a window definition that splits rows into independent groups, so ranking or sums restart in each group."
+    },
+    {
+     "term": "Frame",
+     "definition": "The subset of the partition a window function looks at for each row, such as all rows from the start up to the current row for running totals."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Salaries 150, 120, 120, 90. What does DENSE_RANK() give the employee earning 90?",
+     "options": [
+      "4",
+      "3",
+      "2",
+      "5"
+     ],
+     "answer": 1,
+     "explain": "DENSE_RANK leaves no gaps after ties: 1, 2, 2, 3. RANK would give 4, and ROW_NUMBER also 4."
+    },
+    {
+     "q": "What is the key difference between GROUP BY and a window function?",
+     "options": [
+      "None",
+      "GROUP BY collapses each group into one row; a window function keeps every row and adds a computed column",
+      "Window functions cannot use aggregates",
+      "GROUP BY is slower"
+     ],
+     "answer": 1,
+     "explain": "With windows you can show each employee alongside their department's rank or total, which GROUP BY alone cannot do."
+    },
+    {
+     "q": "Daily sales 100, 150, 80, 200. What does SUM(amount) OVER (ORDER BY day) give on day 3?",
+     "options": [
+      "80",
+      "330",
+      "530",
+      "230"
+     ],
+     "answer": 1,
+     "explain": "The default frame with ORDER BY runs from the first row to the current one: 100 + 150 + 80 = 330."
+    }
+   ],
+   "cover_seed": "sql-advanced",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.87,
+   "path": "cs-core/sql-advanced.md",
+   "hash": "21283ff610f6",
+   "word_count": 940,
+   "excerpt": "\"Show each employee with their rank inside their department.\" With only GROUP BY, you are stuck: grouping collapses employees into one row per department, and you lose the individuals. People write self joins that count \"how many earn more than me\", and the query becomes unreadable. One feature…"
+  },
+  {
+   "id": "cs-core-sql-interview-queries",
+   "kind": "problem-walkthrough",
+   "subject": "cs-core",
+   "slug": "sql-interview-queries",
+   "title": "Quiz Night: The SQL Questions Interviewers Always Ask",
+   "subtitle": "Nth highest salary, duplicates, top earners per department with ties, employees above their managers, and consecutive-day streaks, each solved and checked",
+   "track": "cs-dbms",
+   "track_order": 8,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-sql-advanced"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "dbms",
+    "sql",
+    "interview questions",
+    "window functions",
+    "gaps and islands"
+   ],
+   "complexity": {
+    "time": "O(n log n)",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Second Highest Salary",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/second-highest-salary/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Nth Highest Salary",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/nth-highest-salary/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Duplicate Emails",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/duplicate-emails/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Department Highest Salary",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/department-highest-salary/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Employees Earning More Than Their Managers",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/employees-earning-more-than-their-managers/",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Consecutive Numbers",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/consecutive-numbers/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Distinct rank",
+     "definition": "Ranking distinct values only, so ties do not consume positions; DENSE_RANK gives this directly."
+    },
+    {
+     "term": "Gaps and islands",
+     "definition": "The family of problems about finding runs of consecutive values (islands) separated by missing values (gaps)."
+    },
+    {
+     "term": "Group key trick",
+     "definition": "For consecutive dates, date minus its row number is constant within a run, so it can be used to GROUP BY each run."
+    },
+    {
+     "term": "Tie handling",
+     "definition": "Deciding whether equal values share a position, both appear in results, or are broken by another column."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Distinct salaries are 150, 125, 120, 90, 85, 70, and two people earn 85. Which query returns the 3rd highest distinct salary?",
+     "options": [
+      "ROW_NUMBER() = 3",
+      "DENSE_RANK() = 3 (or DISTINCT … ORDER BY … LIMIT 1 OFFSET 2)",
+      "RANK() = 3 always",
+      "MAX(salary) − 3"
+     ],
+     "answer": 1,
+     "explain": "DENSE_RANK ranks distinct values without gaps, giving 120. ROW_NUMBER counts people, not distinct salaries."
+    },
+    {
+     "q": "Logins on 1, 2, 3 and 5 January. Dates minus row numbers give the same value for the 1st to 3rd and a different value for the 5th. What does that let you do?",
+     "options": [
+      "Nothing",
+      "Group each run of consecutive days, then count their length",
+      "Sort by day",
+      "Remove duplicates"
+     ],
+     "answer": 1,
+     "explain": "Within a run, both the date and the row number increase by 1 each step, so their difference is constant: that difference is the run's group key."
+    },
+    {
+     "q": "In Sales, Kabir and Ishan both earn the department's maximum of 85. What should 'highest earner per department' return for Sales?",
+     "options": [
+      "Only Kabir",
+      "Both Kabir and Ishan, unless the question says to break ties",
+      "Neither",
+      "The average"
+     ],
+     "answer": 1,
+     "explain": "Comparing with MAX per department, or using DENSE_RANK = 1, keeps all tied top earners."
+    }
+   ],
+   "cover_seed": "sql-interview-queries",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.9,
+   "path": "cs-core/sql-interview-queries.md",
+   "hash": "618ec1f38e09",
+   "word_count": 1000,
+   "excerpt": "Fundamentals rounds and online assessments reuse the same handful of SQL questions with new table names. Know them, and you can answer in two minutes; miss the twist in each, and a plausible query silently returns the wrong rows. The twists are always the same three: ties, NULLs and \"no such row\".…"
   }
  ]
 }
