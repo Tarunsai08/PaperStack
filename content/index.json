@@ -1,7 +1,7 @@
 {
- "content_version": "35eda5d4a4756f2e",
+ "content_version": "6ac37f4956075254",
  "generated_at": "2026-11-03",
- "count": 584,
+ "count": 585,
  "subjects": [
   {
    "id": "ml",
@@ -60680,6 +60680,95 @@
    "hash": "47167ce72f11",
    "word_count": 1049,
    "excerpt": "In raw C++, every new must be matched by exactly one delete, on every path, by whoever \"owns\" the object, and nothing in the code says who that is. Forget the delete and memory leaks; do it twice and the program corrupts memory; do it too early and another part of the program reads freed memory.…"
+  },
+  {
+   "id": "cs-core-static-friend",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "static-friend",
+   "title": "A Shared Office Noticeboard",
+   "subtitle": "Class-level members and controlled exceptions to privacy in C++: static data and static functions, friend functions and friend classes, const member functions and mutable, traced with a ticket counter",
+   "track": "cs-oop",
+   "track_order": 11,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-encapsulation-access"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "oop",
+    "c++",
+    "static members",
+    "friend",
+    "const member functions",
+    "mutable"
+   ],
+   "glossary": [
+    {
+     "term": "Static data member",
+     "definition": "A variable that belongs to the class rather than to any object; there is exactly one copy, shared by all objects."
+    },
+    {
+     "term": "Static member function",
+     "definition": "A member function with no this pointer, called through the class name, which can use only static members directly."
+    },
+    {
+     "term": "Friend",
+     "definition": "A function or class that a class explicitly grants access to its private and protected members."
+    },
+    {
+     "term": "const member function",
+     "definition": "A member function marked const, which may not modify the object's data members and can be called on const objects."
+    },
+    {
+     "term": "mutable",
+     "definition": "A keyword allowing a data member to be changed even inside const member functions, for bookkeeping such as caches and counters."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Each Ticket constructor does number(++issued), where issued is a static int starting at 0. After creating three tickets, what is Ticket::totalIssued()?",
+     "options": [
+      "1",
+      "3",
+      "0",
+      "It depends on which object you ask"
+     ],
+     "answer": 1,
+     "explain": "There is one shared counter; the program printed 0 before any tickets and 3 after three."
+    },
+    {
+     "q": "Why can a static member function not read a non-static member like number?",
+     "options": [
+      "It is private",
+      "It has no this pointer, so there is no particular object whose number it could mean",
+      "Static functions cannot return int",
+      "It can"
+     ],
+     "answer": 1,
+     "explain": "It can still use static members and any object passed to it explicitly."
+    },
+    {
+     "q": "Why is operator<< for a class usually a friend rather than a member?",
+     "options": [
+      "Friends are faster",
+      "Its left operand is the stream, so it cannot be a member of your class, yet it needs your private data",
+      "Members cannot return references",
+      "It must be static"
+     ],
+     "answer": 1,
+     "explain": "A member operator's left operand is always the object itself; for cout << t, the left operand is cout."
+    }
+   ],
+   "cover_seed": "static-friend",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.66,
+   "path": "cs-core/static-friend.md",
+   "hash": "804ac225f932",
+   "word_count": 1032,
+   "excerpt": "A ticketing class needs every new ticket to get the next number: 1, 2, 3, and so on. Where does the counter live? Not in each ticket: each would start at zero. A global variable works, but then any code anywhere can reset it. And you want cout << ticket to print private details without making them…"
   },
   {
    "id": "cs-core-memory-model-cpp",
