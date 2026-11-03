@@ -933,8 +933,8 @@
    "prerequisites": [
     "cp-lazy-propagation"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Store several values per node",
@@ -2445,8 +2445,8 @@
    "prerequisites": [
     "cp-segment-tree"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Prefix sums for static",
@@ -2476,8 +2476,8 @@
    "prerequisites": [
     "cp-segment-tree-descend"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "First index with value at least x",
