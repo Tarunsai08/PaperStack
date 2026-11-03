@@ -1,7 +1,7 @@
 {
- "content_version": "cc0ff9b0b70898a5",
+ "content_version": "2d74dbc19046f3e0",
  "generated_at": "2026-11-03",
- "count": 521,
+ "count": 523,
  "subjects": [
   {
    "id": "ml",
@@ -49718,6 +49718,182 @@
    "hash": "7c29af2163b4",
    "word_count": 1176,
    "excerpt": "Your database can serve about 60,000 reads per second before it struggles. Your product serves 1 million. The difference is a cache cluster answering 95% of reads from memory. That makes the cache not an optimisation but a load-bearing wall. Now picture one of its 32 nodes failing at peak. Predict…"
+  },
+  {
+   "id": "system-design-pastebin",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "pastebin",
+   "title": "Design Pastebin",
+   "subtitle": "A shared clipboard with an expiry date: unguessable keys, text in blob storage with metadata in a database, expiry, access control, and the one paste the whole internet opens",
+   "track": "sd-cases",
+   "track_order": 29,
+   "priority": "P2",
+   "prerequisites": [
+    "system-design-url-shortener",
+    "system-design-blob-storage"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 4,
+   "topics": [
+    "system design",
+    "pastebin",
+    "blob storage",
+    "expiry",
+    "caching",
+    "access control"
+   ],
+   "glossary": [
+    {
+     "term": "Paste",
+     "definition": "A piece of text stored by the service and identified by a short key in its URL."
+    },
+    {
+     "term": "Unguessable key",
+     "definition": "A random key from a space so large that guessing valid keys is impractical, which matters for unlisted pastes."
+    },
+    {
+     "term": "Expiry",
+     "definition": "A time after which a paste is no longer served and its storage can be reclaimed."
+    },
+    {
+     "term": "Unlisted paste",
+     "definition": "A paste that is not searchable or listed anywhere, readable only by people who have its link."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why store paste text in blob storage instead of in the metadata database?",
+     "options": [
+      "Databases cannot store text",
+      "Pastes can be large; keeping bulky text out of the database keeps it small and fast, while blob storage is cheap and serves through a CDN",
+      "Blob storage is encrypted",
+      "It makes keys shorter"
+     ],
+     "answer": 1,
+     "explain": "The database holds small rows (key, owner, expiry, visibility, location); the bytes live in storage built for them."
+    },
+    {
+     "q": "Why must keys for unlisted pastes be random rather than sequential?",
+     "options": [
+      "Sequential keys are too long",
+      "Sequential keys let anyone enumerate every paste by counting, exposing unlisted content",
+      "Random keys are faster",
+      "Databases prefer random keys"
+     ],
+     "answer": 1,
+     "explain": "An unlisted paste is protected only by its link. Predictable keys turn 'unlisted' into 'public'."
+    },
+    {
+     "q": "A paste goes viral and gets 50,000 views per second. What handles it?",
+     "options": [
+      "The metadata database",
+      "A CDN caching the paste content (with the expiry respected), so origin servers see few requests",
+      "More database replicas only",
+      "Nothing can"
+     ],
+     "answer": 1,
+     "explain": "Paste content is immutable, which makes it perfect for CDN caching with a TTL no longer than the paste's remaining lifetime."
+    }
+   ],
+   "cover_seed": "pastebin",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.6,
+   "path": "system-design/pastebin.md",
+   "hash": "6d9af398c934",
+   "word_count": 911,
+   "excerpt": "A developer pastes a stack trace, gets a short link, and sends it to a colleague. Tomorrow the paste should be gone. Simple. Then someone pastes a leaked password list, marked \"unlisted\". Within an hour a bot has found it, because the keys were sequential and the bot just counted upwards. And a…"
+  },
+  {
+   "id": "system-design-online-judge",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "online-judge",
+   "title": "Design an Online Judge Like LeetCode",
+   "subtitle": "An exam hall with invigilated cubicles: queued submissions, sandboxed execution with hard limits, fair scheduling, and surviving the last ten minutes of a contest",
+   "track": "sd-cases",
+   "track_order": 30,
+   "priority": "P2",
+   "prerequisites": [
+    "system-design-async-processing",
+    "system-design-security-at-scale"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "online judge",
+    "sandbox",
+    "queues",
+    "contests",
+    "security"
+   ],
+   "glossary": [
+    {
+     "term": "Sandbox",
+     "definition": "An isolated environment that runs untrusted code with no network, a restricted file system, limited system calls and hard CPU, memory and time limits."
+    },
+    {
+     "term": "Verdict",
+     "definition": "The judge's result for a submission: accepted, wrong answer, time limit exceeded, memory limit exceeded, runtime error or compilation error."
+    },
+    {
+     "term": "Judge worker",
+     "definition": "A machine or container that takes submissions from the queue, compiles and runs them in sandboxes, and compares outputs."
+    },
+    {
+     "term": "Fair scheduling",
+     "definition": "Ordering queued work so no user or contest monopolises the judges, for example by limiting concurrent jobs per user."
+    },
+    {
+     "term": "Resource limits",
+     "definition": "Operating-system enforced caps on CPU time, wall time, memory, processes and output size for a running program."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why must user code run with no network access?",
+     "options": [
+      "Networks are slow",
+      "Untrusted code could attack internal services, download test data or exfiltrate other users' submissions",
+      "Compilers need it",
+      "To save bandwidth"
+     ],
+     "answer": 1,
+     "explain": "Submitted code is hostile until proven otherwise. No network and a minimal file system remove whole classes of attacks."
+    },
+    {
+     "q": "A contest has 50,000 submissions over 2 hours, with a peak 10 times the average. Each takes about 5 CPU-seconds to judge. Roughly how many cores are busy at peak?",
+     "options": [
+      "35",
+      "About 350",
+      "3,500",
+      "35,000"
+     ],
+     "answer": 1,
+     "explain": "Average is 50,000 ÷ 7,200 ≈ 7 per second; peak is about 70 per second; 70 × 5 CPU-seconds ≈ 350 cores."
+    },
+    {
+     "q": "Why should a judge measure CPU time, not only wall-clock time, for the time limit?",
+     "options": [
+      "CPU time is easier to read",
+      "Wall time depends on how busy the machine is; CPU time reflects the program's own work, making verdicts fairer, with wall time as a backstop for sleeping or blocked programs",
+      "Wall time is illegal",
+      "They are always equal"
+     ],
+     "answer": 1,
+     "explain": "A busy judge should not turn a correct solution into 'time limit exceeded'. CPU time is the main limit; a wall-time cap catches programs that block."
+    }
+   ],
+   "cover_seed": "online-judge",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.68,
+   "path": "system-design/online-judge.md",
+   "hash": "1d60854c8e13",
+   "word_count": 1050,
+   "excerpt": "Ten minutes before a contest ends, 20,000 people press \"Submit\" on their last attempt. Each submission is a program written by a stranger: some correct, some in infinite loops, some allocating all the memory they can, and a few deliberately trying to read the test data or attack the server. The…"
   },
   {
    "id": "system-design-oop-solid",
