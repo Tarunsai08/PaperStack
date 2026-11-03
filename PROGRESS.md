@@ -12,10 +12,10 @@ Read `HANDOFF.md` first if you are picking this project up.
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 36 | 0 | 55 | 91 | 29/32 |
-| system-design | 58 | 0 | 61 | 119 | 57/60 |
+| system-design | 59 | 0 | 60 | 119 | 58/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 8 | 0 | 71 | 79 | 7/47 |
-| **All** | **460** | **0** | **223** | **683** | |
+| **All** | **461** | **0** | **222** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -46,7 +46,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### system-design
 
-- [ ] `system-design-ticket-booking` (P0, case-study, sd-cases): Design a Ticket Booking System Like BookMyShow
 - [ ] `system-design-networking-essentials` (P1, deep-dive, sd-fundamentals): TCP, UDP and QUIC for System Designers
 - [ ] `system-design-proxies` (P1, deep-dive, sd-fundamentals): Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere
 - [ ] `system-design-search-systems` (P1, deep-dive, sd-blocks): Search Systems: Elasticsearch and Inverted Indexes
@@ -56,6 +55,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `system-design-multi-region` (P1, deep-dive, sd-scaling): Multi-Region Architectures and Disaster Recovery
 - [ ] `system-design-data-modeling-scale` (P1, deep-dive, sd-scaling): Data Modelling for Scale: Denormalisation and Access Patterns
 - [ ] `system-design-web-crawler` (P1, case-study, sd-cases): Design a Web Crawler
+- [ ] `system-design-file-sync` (P1, case-study, sd-cases): Design Google Drive or Dropbox
 
 ### ml
 
@@ -411,7 +411,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>system-design: 58 written</summary>
+<details><summary>system-design: 59 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -449,6 +449,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-video-streaming` Design a Video Streaming Platform Like YouTube
 - [x] `system-design-ride-sharing` Design a Ride-Sharing App Like Uber
 - [x] `system-design-payments` Design a Payment System
+- [x] `system-design-ticket-booking` Design a Ticket Booking System Like BookMyShow
 - [x] `system-design-oop-solid` Object-Oriented Design and SOLID Principles
 - [x] `system-design-creational-patterns` Creational Patterns: Factory, Builder and Singleton
 - [x] `system-design-behavioural-patterns` Behavioural Patterns: Strategy, Observer, State and Command
