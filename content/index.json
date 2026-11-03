@@ -1,7 +1,7 @@
 {
- "content_version": "2d74dbc19046f3e0",
+ "content_version": "794f3d9642d7ad86",
  "generated_at": "2026-11-03",
- "count": 523,
+ "count": 524,
  "subjects": [
   {
    "id": "ml",
@@ -49718,6 +49718,95 @@
    "hash": "7c29af2163b4",
    "word_count": 1176,
    "excerpt": "Your database can serve about 60,000 reads per second before it struggles. Your product serves 1 million. The difference is a cache cluster answering 95% of reads from memory. That makes the cache not an optimisation but a load-bearing wall. Now picture one of its 32 nodes failing at peak. Predict…"
+  },
+  {
+   "id": "system-design-ad-click-aggregation",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "ad-click-aggregation",
+   "title": "Design an Ad Click Aggregator",
+   "subtitle": "Counting turnstile clicks per minute across many gates: streaming windows, deduplication so retries never double-bill, and batch reconciliation for the numbers that pay",
+   "track": "sd-cases",
+   "track_order": 28,
+   "priority": "P2",
+   "prerequisites": [
+    "system-design-stream-processing"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "ad clicks",
+    "stream processing",
+    "deduplication",
+    "lambda architecture",
+    "kappa architecture"
+   ],
+   "glossary": [
+    {
+     "term": "Click event",
+     "definition": "A record of one ad click with a unique click id, ad id, timestamp and context, produced when a user clicks an ad."
+    },
+    {
+     "term": "Deduplication window",
+     "definition": "The period during which the system remembers click ids, so a repeated delivery of the same click is counted only once."
+    },
+    {
+     "term": "Lambda architecture",
+     "definition": "Running a fast streaming path for fresh approximate results alongside a batch path that later recomputes exact results from the raw log."
+    },
+    {
+     "term": "Kappa architecture",
+     "definition": "Using a single streaming pipeline for everything, and reprocessing history by replaying the stored log through it."
+    },
+    {
+     "term": "Reconciliation",
+     "definition": "Comparing the streaming totals with an independent batch recomputation and correcting any difference before results are used for billing."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A click event is delivered twice because the producer retried after a timeout. How do you avoid billing twice?",
+     "options": [
+      "Ignore retries",
+      "Each click has a unique click id; the aggregator keeps recent ids in a deduplication window and counts each id once",
+      "Divide totals by two",
+      "Use processing time"
+     ],
+     "answer": 1,
+     "explain": "At-least-once delivery is normal. Idempotent counting by click id turns duplicates into no-ops."
+    },
+    {
+     "q": "Why do many ad systems still run a daily batch job if they already have a streaming pipeline?",
+     "options": [
+      "Batch is faster",
+      "To reconcile: recompute exact totals from the raw log, catching late events, bugs and duplicates before billing",
+      "Streaming cannot count",
+      "Regulations forbid streams"
+     ],
+     "answer": 1,
+     "explain": "Streaming gives fresh numbers for dashboards; billing needs the most accurate totals, which batch recomputation provides."
+    },
+    {
+     "q": "Which time should per-minute click counts use?",
+     "options": [
+      "The aggregator's processing time",
+      "The click's event time, with watermarks to handle late arrivals",
+      "The advertiser's local time",
+      "The database insert time"
+     ],
+     "answer": 1,
+     "explain": "Counts must reflect when clicks happened. Processing time would shift clicks into the wrong minute whenever the pipeline lags."
+    }
+   ],
+   "cover_seed": "ad-click-aggregation",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.62,
+   "path": "system-design/ad-click-aggregation.md",
+   "hash": "790383512077",
+   "word_count": 1136,
+   "excerpt": "Advertisers pay per click. A dashboard shows each campaign's clicks per minute, and at the end of the month the totals become invoices. One day a network blip makes producers retry, and some clicks arrive twice. Another day a data centre's events arrive two hours late. If the aggregator counts…"
   },
   {
    "id": "system-design-pastebin",
