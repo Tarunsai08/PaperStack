@@ -10,12 +10,12 @@ Read `HANDOFF.md` first if you are picking this project up.
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
 | dsa | 152 | 0 | 0 | 152 | 72/72 |
-| cp | 95 | 0 | 20 | 115 | 27/29 |
+| cp | 97 | 0 | 18 | 115 | 27/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **404** | **0** | **269** | **673** | |
+| **All** | **406** | **0** | **267** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -30,15 +30,15 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 ### cp
 
 - [ ] `cp-prefix-function` (P0, pattern, cp-strings): The Prefix Function and KMP
-- [ ] `cp-implicit-graphs` (P1, pattern, cp-graphs): Modelling: When the Graph Is Hidden
 - [ ] `cp-suffix-array` (P1, pattern, cp-strings): Suffix Arrays and LCP
 - [ ] `cp-meet-in-the-middle` (P1, pattern, cp-misc): Meet in the Middle
 - [ ] `cp-randomized-techniques` (P1, pattern, cp-misc): Randomised Techniques in Contests
 - [ ] `cp-bitwise-tricks-cp` (P1, pattern, cp-misc): Bitwise Tricks for Contests
 - [ ] `cp-polygon-area` (P1, problem-walkthrough, cp-misc): Polygon Area With the Shoelace Formula
 - [ ] `cp-apple-division` (P1, problem-walkthrough, cp-misc): Apple Division: Brute Force Done Right
-- [ ] `cp-min-cost-flow` (P2, pattern, cp-graphs): Minimum Cost Flow
 - [ ] `cp-minimal-rotation` (P2, problem-walkthrough, cp-strings): Minimal Rotation of a String
+- [ ] `cp-ternary-search` (P2, pattern, cp-misc): Ternary Search on Unimodal Functions
+- [ ] `cp-sweep-line-geometry` (P2, pattern, cp-misc): Sweep Line: Closest Pair and Intersections
 
 ### famous-algos
 
@@ -238,7 +238,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cp: 95 written</summary>
+<details><summary>cp: 97 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -334,6 +334,8 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cp-offline-queries` Offline Thinking: Sort the Queries, Not Just the Data
 - [x] `cp-dp-with-data-structures` DP Sped Up by Segment Trees and BITs
 - [x] `cp-small-to-large` Small-to-Large Merging (DSU on Tree)
+- [x] `cp-min-cost-flow` Minimum Cost Flow
+- [x] `cp-implicit-graphs` Modelling: When the Graph Is Hidden
 - [x] `cp-practice-plan` A 12-Week Contest Practice Plan
 
 </details>

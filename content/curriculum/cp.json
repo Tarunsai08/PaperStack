@@ -3330,8 +3330,8 @@
     "cp-max-flow",
     "dsa-bellman-ford-floyd"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Shortest augmenting paths by cost",
@@ -3360,8 +3360,8 @@
    "prerequisites": [
     "dsa-bfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "States as nodes",

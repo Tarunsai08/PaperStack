@@ -1,7 +1,7 @@
 {
- "content_version": "0a22c77657bd6167",
+ "content_version": "01ef1c8ee352788e",
  "generated_at": "2026-11-02",
- "count": 404,
+ "count": 406,
  "subjects": [
   {
    "id": "ml",
@@ -35931,6 +35931,246 @@
    "hash": "2436f66bc172",
    "word_count": 1553,
    "excerpt": "Every vertex of a tree has a colour, and for every vertex you must report how many distinct colours appear in its subtree. Collecting the colours of each subtree separately costs the subtree's size, and on a path that adds up to n²/2: about 2·10¹⁰ steps for 2·10⁵ vertices. Yet the subtree of a…"
+  },
+  {
+   "id": "cp-min-cost-flow",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "min-cost-flow",
+   "title": "Shipping Goods Along the Cheapest Routes Until Demand Is Met",
+   "subtitle": "Minimum cost flow for contests: costs on residual edges, successive shortest augmenting paths, why reverse edges carry negated costs, potentials that let Dijkstra run on negative edges, assignment problems, and k disjoint cheapest routes",
+   "track": "cp-graphs",
+   "track_order": 18,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-max-flow",
+    "dsa-bellman-ford-floyd"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "graphs",
+    "minimum cost flow",
+    "potentials",
+    "assignment problem",
+    "Dijkstra"
+   ],
+   "complexity": {
+    "time": "O(F·(V + E) log V) after one Bellman–Ford",
+    "space": "O(V + E)"
+   },
+   "practice_problems": [
+    {
+     "name": "Task Assignment",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2129",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Distinct Routes II",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2130",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Binary Tree on Plane",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/277/E",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Minimum cost flow",
+     "definition": "A flow of a required value from source to sink whose total cost, the sum of flow times cost per unit over all edges, is as small as possible."
+    },
+    {
+     "term": "Residual cost",
+     "definition": "The cost of pushing one unit along a residual edge: the edge's cost forwards, and the negated cost on its reverse twin, since pushing back refunds it."
+    },
+    {
+     "term": "Successive shortest paths",
+     "definition": "Repeatedly augmenting along a cheapest source-to-sink path in the residual graph until the required flow is sent."
+    },
+    {
+     "term": "Potential",
+     "definition": "A number pot[v] per vertex; the reduced cost cost(u, v) + pot[u] − pot[v] keeps every path's cost up to a constant, and with the right potentials it is never negative."
+    },
+    {
+     "term": "Reduced cost",
+     "definition": "cost(u, v) + pot[u] − pot[v]; Dijkstra runs on reduced costs, and shortest paths stay shortest paths."
+    },
+    {
+     "term": "Assignment problem",
+     "definition": "Matching n workers to n tasks one to one with the least total cost; a minimum cost flow on a bipartite network with unit capacities."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does a reverse edge carry the negated cost?",
+     "options": [
+      "To keep costs balanced",
+      "Pushing flow back along it cancels flow that was sent forwards, so it refunds that edge's cost",
+      "Because Dijkstra needs it",
+      "It carries the same cost"
+     ],
+     "answer": 1,
+     "explain": "Cancelling a unit on u → v saves cost(u, v). Representing that as an edge v → u of cost −cost(u, v) lets cheapest-path searches consider rerouting."
+    },
+    {
+     "q": "Why can Dijkstra be used even though reverse edges have negative costs?",
+     "options": [
+      "It cannot",
+      "With potentials equal to the previous shortest distances, every residual edge has a non-negative reduced cost, and reduced costs change every path's cost only by pot[s] − pot[t]",
+      "Because the costs are small",
+      "Because there are no cycles"
+     ],
+     "answer": 1,
+     "explain": "Edges on the last shortest path have reduced cost 0, so their reverses also have reduced cost 0. Every other edge already satisfied the triangle inequality with the old distances."
+    },
+    {
+     "q": "What property does successive shortest paths maintain after every augmentation?",
+     "options": [
+      "The flow is maximum",
+      "The residual graph has no negative cycle, so the current flow is the cheapest among all flows of the same value",
+      "All edges are saturated",
+      "Potentials are zero"
+     ],
+     "answer": 1,
+     "explain": "A flow is minimum cost for its value exactly when its residual graph has no negative cycle. Augmenting along a cheapest path never creates one."
+    }
+   ],
+   "cover_seed": "cp-min-cost-flow",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.56,
+   "path": "cp/min-cost-flow.md",
+   "hash": "6661f52f3b25",
+   "word_count": 1580,
+   "excerpt": "A warehouse must send a fixed number of crates to a store. Every road has a limit on how many crates it can carry, and a price per crate. Maximum flow from Water Pipes From a Reservoir to a City tells you how many crates can get through; now you also want the cheapest way to send exactly the number…"
+  },
+  {
+   "id": "cp-implicit-graphs",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "implicit-graphs",
+   "title": "Turning a Puzzle's Every Position Into a Map",
+   "subtitle": "Graph modelling for contests: states as vertices generated on the fly, bounding the state space, multi-source BFS for racing against monsters, virtual hub vertices that replace quadratically many edges, and the habit of counting states before writing code",
+   "track": "cp-graphs",
+   "track_order": 19,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-bfs"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "graphs",
+    "modelling",
+    "BFS",
+    "0-1 BFS",
+    "state space",
+    "virtual nodes"
+   ],
+   "complexity": {
+    "time": "O(states + transitions)",
+    "space": "O(states)"
+   },
+   "practice_problems": [
+    {
+     "name": "Monsters",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1194",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Two Buttons",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/520/B",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Jump Game IV",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/jump-game-iv/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Sliding Puzzle",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sliding-puzzle/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Implicit graph",
+     "definition": "A graph that is never stored: its vertices are states and its edges are the moves, generated on demand from the current state."
+    },
+    {
+     "term": "State",
+     "definition": "Everything that determines what can happen next, such as a position plus any resources or flags that affect future moves."
+    },
+    {
+     "term": "State space",
+     "definition": "The set of all reachable states; its size, times the moves per state, is the cost of a BFS over it."
+    },
+    {
+     "term": "Multi-source BFS",
+     "definition": "A BFS that starts with several vertices in the queue at distance 0, giving every vertex its distance to the nearest source."
+    },
+    {
+     "term": "Virtual node",
+     "definition": "An extra vertex that stands for a group, such as all indices with one value, so that k members need 2k edges instead of k²."
+    },
+    {
+     "term": "Arrival race",
+     "definition": "Comparing your BFS time at a cell with a rival's precomputed time, and entering only cells you reach strictly first."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In Monsters, why is one BFS from all monsters at once enough, even though monsters move every step?",
+     "options": [
+      "Monsters cannot move",
+      "A multi-source BFS gives each square the earliest time any monster can be there; you are safe exactly on squares you reach strictly earlier, whichever monster it would be",
+      "Because there is only one monster",
+      "Because monsters move randomly"
+     ],
+     "answer": 1,
+     "explain": "Monsters can follow any route, so the danger at a square is the earliest arrival over all monsters, which is exactly what starting every monster at distance 0 computes."
+    },
+    {
+     "q": "Why does a virtual hub per value help in Jump Game IV?",
+     "options": [
+      "It saves memory only",
+      "Joining every pair of equal values needs up to k² edges for k equal values; joining each to a hub with a cost-1 edge in and a cost-0 edge out needs 2k, and 0-1 BFS still gives the same distances",
+      "It changes the answer",
+      "It makes the graph a tree"
+     ],
+     "answer": 1,
+     "explain": "A jump i → hub → j costs 1 + 0 = 1, the same as the direct jump, so distances are preserved while the edge count drops from quadratic to linear."
+    },
+    {
+     "q": "What should you do before coding a BFS over states?",
+     "options": [
+      "Nothing",
+      "Count the states and transitions: positions times extra information, times moves per state, and compare with the time and memory limits",
+      "Write a DFS instead",
+      "Sort the states"
+     ],
+     "answer": 1,
+     "explain": "State explosion is the main failure of this technique. A quick multiplication tells you whether the model fits or needs a smaller state."
+    }
+   ],
+   "cover_seed": "cp-implicit-graphs",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.66,
+   "path": "cp/implicit-graphs.md",
+   "hash": "817242cf3fd9",
+   "word_count": 1596,
+   "excerpt": "Many contest problems never mention a graph. A sliding tile puzzle, a calculator with two buttons, a maze with monsters chasing you, an array where you may jump between equal values: each is a shortest-path problem once you decide what a vertex is and what an edge is. That decision is the whole…"
   },
   {
    "id": "cp-string-hashing",
