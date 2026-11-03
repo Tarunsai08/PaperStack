@@ -1,7 +1,7 @@
 {
- "content_version": "334ceeb55fd266ea",
+ "content_version": "393a8e2ae2ead8f8",
  "generated_at": "2026-11-03",
- "count": 530,
+ "count": 533,
  "subjects": [
   {
    "id": "ml",
@@ -55869,6 +55869,276 @@
    "hash": "34a7db98f6e1",
    "word_count": 3341,
    "excerpt": "A puzzle first, one that surprised the people who first ran into it. A program runs with 3 frames of memory and causes 9 page faults. You give it 4 frames, a third more memory, and run exactly the same program on exactly the same input. It now causes 10 page faults. More memory, more disk trips. No…"
+  },
+  {
+   "id": "cs-core-dbms-intro",
+   "kind": "primer",
+   "subject": "cs-core",
+   "slug": "dbms-intro",
+   "title": "The Librarian and the Pile of Books",
+   "subtitle": "Why databases exist: what goes wrong with plain files, what a DBMS takes care of for you, and the three-schema idea behind data independence",
+   "track": "cs-dbms",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [],
+   "difficulty": "beginner",
+   "read_minutes": 4,
+   "topics": [
+    "dbms",
+    "databases",
+    "data independence",
+    "three-schema architecture"
+   ],
+   "glossary": [
+    {
+     "term": "DBMS",
+     "definition": "Database management system: software that stores data and manages access to it, including queries, concurrency, integrity, security and recovery."
+    },
+    {
+     "term": "Data redundancy",
+     "definition": "The same fact stored in several places, which wastes space and lets copies disagree."
+    },
+    {
+     "term": "Data independence",
+     "definition": "The ability to change how data is stored or organised at one level without rewriting programs that use another level."
+    },
+    {
+     "term": "Schema",
+     "definition": "The description of how data is organised: tables, columns, types and constraints, as opposed to the data itself."
+    },
+    {
+     "term": "Three-schema architecture",
+     "definition": "Separating a database into an external level (user views), a conceptual level (the logical schema) and an internal level (physical storage)."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Two programs keep a student's phone number in two separate files. One file is updated, the other is not. Which file-system problem is this?",
+     "options": [
+      "Atomicity",
+      "Data redundancy leading to inconsistency",
+      "Security",
+      "Indexing"
+     ],
+     "answer": 1,
+     "explain": "The same fact stored twice can disagree. A DBMS stores it once and lets every program use that copy."
+    },
+    {
+     "q": "A database adds an index and moves tables to faster disks, and no application code changes. Which property made that possible?",
+     "options": [
+      "Logical data independence",
+      "Physical data independence",
+      "Concurrency control",
+      "Normalisation"
+     ],
+     "answer": 1,
+     "explain": "Physical data independence means changes in storage do not affect the logical schema or the programs using it."
+    },
+    {
+     "q": "In the three-schema architecture, where do different user groups' customised views live?",
+     "options": [
+      "Internal level",
+      "External level",
+      "Conceptual level",
+      "Physical disk"
+     ],
+     "answer": 1,
+     "explain": "The external level holds views tailored to users; the conceptual level is the whole logical schema; the internal level is storage."
+    }
+   ],
+   "cover_seed": "dbms-intro",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.85,
+   "path": "cs-core/dbms-intro.md",
+   "hash": "6e5641edea65",
+   "word_count": 878,
+   "excerpt": "Your college office keeps student records in spreadsheets. The admissions office has one, the hostel office another, the exam cell a third. A student changes her phone number. Admissions updates it; nobody tells the hostel. Two weeks later the hostel cannot reach her in an emergency. Meanwhile two…"
+  },
+  {
+   "id": "cs-core-er-model",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "er-model",
+   "title": "Drawing the Family Tree Before Writing the Addresses",
+   "subtitle": "ER modelling: entities, attributes and relationships, cardinality and participation, weak entities, and the rules for turning a diagram into tables",
+   "track": "cs-dbms",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-dbms-intro"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 4,
+   "topics": [
+    "dbms",
+    "er model",
+    "entities",
+    "relationships",
+    "cardinality",
+    "schema design"
+   ],
+   "glossary": [
+    {
+     "term": "Entity",
+     "definition": "A thing the database stores information about, such as a student or a course; an entity set is all such things of one type."
+    },
+    {
+     "term": "Attribute",
+     "definition": "A property of an entity or relationship, such as a student's name; it can be simple, composite, multivalued or derived."
+    },
+    {
+     "term": "Relationship",
+     "definition": "An association between entities, such as a student enrolling in a course; it can have its own attributes, such as a grade."
+    },
+    {
+     "term": "Cardinality",
+     "definition": "How many entities on one side can relate to one entity on the other: one-to-one, one-to-many or many-to-many."
+    },
+    {
+     "term": "Participation",
+     "definition": "Whether every entity must take part in a relationship (total) or may not (partial)."
+    },
+    {
+     "term": "Weak entity",
+     "definition": "An entity that cannot be identified by its own attributes alone and depends on an owner entity, such as a dependent of an employee."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Students enrol in many courses and each course has many students, with a grade per enrolment. How many tables does this become?",
+     "options": [
+      "Two: Student and Course",
+      "Three: Student, Course and Enrolment(student_id, course_id, grade)",
+      "One big table",
+      "Four"
+     ],
+     "answer": 1,
+     "explain": "A many-to-many relationship becomes its own table holding both foreign keys and the relationship's attributes."
+    },
+    {
+     "q": "Each department has many professors; each professor belongs to one department. Where does the foreign key go?",
+     "options": [
+      "In Department",
+      "In Professor, as dept_id",
+      "In a separate table",
+      "In both"
+     ],
+     "answer": 1,
+     "explain": "For one-to-many, put the key of the 'one' side into the table of the 'many' side."
+    },
+    {
+     "q": "A Dependent (child of an employee) is identified by name only within that employee. What is its primary key in tables?",
+     "options": [
+      "name",
+      "(employee_id, name): the owner's key plus the partial key",
+      "A random id only",
+      "employee_id"
+     ],
+     "answer": 1,
+     "explain": "A weak entity's key combines its owner's primary key with its own partial key."
+    }
+   ],
+   "cover_seed": "er-model",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.8,
+   "path": "cs-core/er-model.md",
+   "hash": "a61fc7907661",
+   "word_count": 930,
+   "excerpt": "Your team builds a college management app. Day one, someone creates a table: Students(rollno, name, course1, course2, course3, professor1, …). It works until a student takes a fourth course, a professor changes department, or two students need the same course data typed twice. The fix is not a…"
+  },
+  {
+   "id": "cs-core-relational-keys",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "relational-keys",
+   "title": "ID Cards That Uniquely Identify People",
+   "subtitle": "The relational model and keys: super, candidate, primary, alternate, composite and foreign keys, and the integrity constraints a database enforces for you",
+   "track": "cs-dbms",
+   "track_order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-er-model"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "dbms",
+    "relational model",
+    "keys",
+    "foreign key",
+    "integrity constraints"
+   ],
+   "glossary": [
+    {
+     "term": "Super key",
+     "definition": "Any set of attributes whose values are unique for every row; it may contain extra, unnecessary attributes."
+    },
+    {
+     "term": "Candidate key",
+     "definition": "A minimal super key: removing any attribute from it breaks uniqueness."
+    },
+    {
+     "term": "Primary key",
+     "definition": "The candidate key chosen to identify rows; it must be unique and not null."
+    },
+    {
+     "term": "Foreign key",
+     "definition": "Attributes in one table that must match a key in another table (or be null), linking the two tables."
+    },
+    {
+     "term": "Composite key",
+     "definition": "A key made of more than one attribute, such as (roll_no, course_id) in an enrolment table."
+    },
+    {
+     "term": "Referential integrity",
+     "definition": "The rule that every foreign key value must refer to an existing row, enforced by the database."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Students(roll_no, email, name, phone): roll_no and email are each unique. How many super keys are there?",
+     "options": [
+      "2",
+      "12",
+      "4",
+      "16"
+     ],
+     "answer": 1,
+     "explain": "Any subset containing roll_no or email is a super key. Of the 16 subsets of 4 attributes, the 4 subsets of {name, phone} contain neither, leaving 12 (all non-empty ones that include a key)."
+    },
+    {
+     "q": "Which of these is a candidate key of the same table?",
+     "options": [
+      "(roll_no, name)",
+      "email",
+      "(name, phone)",
+      "(roll_no, email)"
+     ],
+     "answer": 1,
+     "explain": "email alone is unique and minimal. (roll_no, name) and (roll_no, email) are super keys but not minimal."
+    },
+    {
+     "q": "A professor row references dept_id = 2, but no department 2 exists. What does a database with foreign keys do?",
+     "options": [
+      "Accepts it",
+      "Rejects the insert because it violates referential integrity",
+      "Creates department 2",
+      "Sets dept_id to 1"
+     ],
+     "answer": 1,
+     "explain": "The foreign key constraint fails. Running this in SQLite with foreign keys on gives 'FOREIGN KEY constraint failed'."
+    }
+   ],
+   "cover_seed": "relational-keys",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.82,
+   "path": "cs-core/relational-keys.md",
+   "hash": "1f0203067584",
+   "word_count": 1008,
+   "excerpt": "A college database has two students named Priya Sharma in the same year. The exam cell enters marks by name. You can guess what happens: one Priya gets the other's grades. People's names are not identifiers. Roll numbers, email addresses and Aadhaar numbers are. Databases make this idea precise…"
   }
  ]
 }

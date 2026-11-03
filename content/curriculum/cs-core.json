@@ -669,8 +669,8 @@
    "order": 1,
    "priority": "P0",
    "prerequisites": [],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "File system problems",
@@ -696,8 +696,8 @@
    "prerequisites": [
     "cs-core-dbms-intro"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Entities, attributes, relationships",
@@ -723,8 +723,8 @@
    "prerequisites": [
     "cs-core-er-model"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Super, candidate, primary, foreign, composite keys",

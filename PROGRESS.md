@@ -14,8 +14,8 @@ Read `HANDOFF.md` first if you are picking this project up.
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core | 16 | 0 | 63 | 79 | 13/47 |
-| **All** | **530** | **0** | **153** | **683** | |
+| cs-core | 19 | 0 | 60 | 79 | 16/47 |
+| **All** | **533** | **0** | **150** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -64,14 +64,15 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 ### cs-core
 
 - [ ] `cs-core-file-systems` (P0, deep-dive, cs-os): File Systems: Inodes, Directories and Allocation
-- [ ] `cs-core-dbms-intro` (P0, primer, cs-dbms): Why Databases Exist
+- [ ] `cs-core-sql-basics` (P0, deep-dive, cs-dbms): SQL Essentials: SELECT to GROUP BY
+- [ ] `cs-core-functional-dependencies` (P0, deep-dive, cs-dbms): Functional Dependencies and Closures
+- [ ] `cs-core-transactions-acid` (P0, deep-dive, cs-dbms): Transactions and ACID
 - [ ] `cs-core-osi-tcpip` (P0, primer, cs-networks): The OSI and TCP/IP Models
 - [ ] `cs-core-classes-objects` (P0, primer, cs-oop): Classes and Objects in C++
 - [ ] `cs-core-memory-hierarchy` (P0, deep-dive, cs-architecture): The Memory Hierarchy and CPU Caches
 - [ ] `cs-core-thrashing` (P1, deep-dive, cs-os): Thrashing and the Working Set
 - [ ] `cs-core-io-interrupts-dma` (P1, deep-dive, cs-os): I/O: Polling, Interrupts and DMA
 - [ ] `cs-core-threading-models` (P1, deep-dive, cs-os): User Threads, Kernel Threads and Thread Pools
-- [ ] `cs-core-booting` (P2, deep-dive, cs-os): What Happens When a Computer Boots
 
 ## Written so far
 
@@ -614,7 +615,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cs-core: 16 written</summary>
+<details><summary>cs-core: 19 written</summary>
 
 - [x] `cs-core-what-an-os-does` What an Operating System Actually Does
 - [x] `cs-core-processes-threads` Processes vs Threads
@@ -632,5 +633,8 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cs-core-segmentation` Segmentation and Segmented Paging
 - [x] `cs-core-virtual-memory` Virtual Memory and Demand Paging
 - [x] `cs-core-page-replacement` Page Replacement: FIFO, LRU, Optimal and CLOCK
+- [x] `cs-core-dbms-intro` Why Databases Exist
+- [x] `cs-core-er-model` ER Modelling: Entities, Relationships and Cardinality
+- [x] `cs-core-relational-keys` The Relational Model and Keys
 
 </details>

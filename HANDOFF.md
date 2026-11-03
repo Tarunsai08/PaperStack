@@ -17,8 +17,8 @@ You are continuing a project another Claude session started. Everything you need
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core | 16 | 0 | 63 | 79 | 13/47 |
-| **All** | **530** | **0** | **153** | **683** | |
+| cs-core | 19 | 0 | 60 | 79 | 16/47 |
+| **All** | **533** | **0** | **150** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -49,10 +49,10 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 #### cs-core
 - [ ] `cs-core-file-systems` (P0, deep-dive, cs-os): File Systems: Inodes, Directories and Allocation
-- [ ] `cs-core-dbms-intro` (P0, primer, cs-dbms): Why Databases Exist
+- [ ] `cs-core-sql-basics` (P0, deep-dive, cs-dbms): SQL Essentials: SELECT to GROUP BY
+- [ ] `cs-core-functional-dependencies` (P0, deep-dive, cs-dbms): Functional Dependencies and Closures
+- [ ] `cs-core-transactions-acid` (P0, deep-dive, cs-dbms): Transactions and ACID
 - [ ] `cs-core-osi-tcpip` (P0, primer, cs-networks): The OSI and TCP/IP Models
-- [ ] `cs-core-classes-objects` (P0, primer, cs-oop): Classes and Objects in C++
-- [ ] `cs-core-memory-hierarchy` (P0, deep-dive, cs-architecture): The Memory Hierarchy and CPU Caches
 <!-- status:end -->
 
 ## UI review status: approved
