@@ -14,8 +14,8 @@ Read `HANDOFF.md` first if you are picking this project up.
 | famous-algos | 38 | 0 | 53 | 91 | 31/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core | 55 | 0 | 24 | 79 | 34/47 |
-| **All** | **570** | **0** | **113** | **683** | |
+| cs-core | 57 | 0 | 22 | 79 | 34/47 |
+| **All** | **572** | **0** | **111** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -65,8 +65,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 - [ ] `cs-core-classes-objects` (P0, primer, cs-oop): Classes and Objects in C++
 - [ ] `cs-core-memory-hierarchy` (P0, deep-dive, cs-architecture): The Memory Hierarchy and CPU Caches
-- [ ] `cs-core-icmp-tools` (P2, deep-dive, cs-networks): ICMP, ping and traceroute
-- [ ] `cs-core-email-protocols` (P2, deep-dive, cs-networks): Email Protocols: SMTP, IMAP and POP3
 
 ## Written so far
 
@@ -610,7 +608,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cs-core: 55 written</summary>
+<details><summary>cs-core: 57 written</summary>
 
 - [x] `cs-core-what-an-os-does` What an Operating System Actually Does
 - [x] `cs-core-processes-threads` Processes vs Threads
@@ -664,8 +662,10 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cs-core-ports-sockets` Ports, Sockets and Socket Programming
 - [x] `cs-core-http-https` HTTP and HTTPS for Interviews
 - [x] `cs-core-dns-cs` DNS for CS Interviews
+- [x] `cs-core-icmp-tools` ICMP, ping and traceroute
 - [x] `cs-core-network-security` Network Security Basics: Firewalls, VPNs and Common Attacks
 - [x] `cs-core-url-to-page` What Happens When You Type a URL (Networks Edition)
+- [x] `cs-core-email-protocols` Email Protocols: SMTP, IMAP and POP3
 - [x] `cs-core-sliding-window-protocols` Stop-and-Wait, Go-Back-N and Selective Repeat
 
 </details>
