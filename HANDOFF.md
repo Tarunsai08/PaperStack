@@ -15,10 +15,10 @@ You are continuing a project another Claude session started. Everything you need
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 36 | 0 | 55 | 91 | 29/32 |
-| system-design | 49 | 0 | 70 | 119 | 48/60 |
+| system-design | 50 | 0 | 69 | 119 | 49/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core (coming soon) | 0 | 0 | 79 | 79 | 0/47 |
-| **All** | **443** | **0** | **240** | **683** | |
+| cs-core (coming soon) | 8 | 0 | 71 | 79 | 7/47 |
+| **All** | **452** | **0** | **231** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 

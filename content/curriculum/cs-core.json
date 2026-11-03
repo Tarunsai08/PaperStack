@@ -12,8 +12,8 @@
    "order": 1,
    "priority": "P0",
    "prerequisites": [],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Resource manager and abstraction layer",
@@ -38,8 +38,8 @@
    "prerequisites": [
     "cs-core-what-an-os-does"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Address spaces",
@@ -68,8 +68,8 @@
    "prerequisites": [
     "cs-core-processes-threads"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "New, ready, running, waiting, terminated",
@@ -94,8 +94,8 @@
    "prerequisites": [
     "cs-core-what-an-os-does"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Traps",
@@ -124,8 +124,8 @@
    "prerequisites": [
     "cs-core-process-states"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Metrics: turnaround, waiting, response",
@@ -153,8 +153,8 @@
    "prerequisites": [
     "cs-core-processes-threads"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Pipes and FIFOs",
@@ -180,8 +180,8 @@
    "prerequisites": [
     "cs-core-processes-threads"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Interleavings",
@@ -206,8 +206,8 @@
    "prerequisites": [
     "cs-core-race-conditions"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Binary vs counting semaphores",

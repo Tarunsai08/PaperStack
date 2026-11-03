@@ -12,10 +12,10 @@ Read `HANDOFF.md` first if you are picking this project up.
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 36 | 0 | 55 | 91 | 29/32 |
-| system-design | 49 | 0 | 70 | 119 | 48/60 |
+| system-design | 50 | 0 | 69 | 119 | 49/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core (coming soon) | 0 | 0 | 79 | 79 | 0/47 |
-| **All** | **443** | **0** | **240** | **683** | |
+| cs-core (coming soon) | 8 | 0 | 71 | 79 | 7/47 |
+| **All** | **452** | **0** | **231** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -53,7 +53,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `system-design-vending-machine` (P0, lld, sd-lld): Design a Vending Machine With the State Pattern
 - [ ] `system-design-splitwise` (P0, lld, sd-lld): Design Splitwise
 - [ ] `system-design-bookmyshow-lld` (P0, lld, sd-lld): Design BookMyShow (Low-Level)
-- [ ] `system-design-consensus-overview` (P0, deep-dive, sd-distributed): Consensus in Practice: Raft, Paxos, etcd and ZooKeeper
+- [ ] `system-design-distributed-locks-sd` (P0, deep-dive, sd-distributed): Distributed Locks and Leader Election
 - [ ] `system-design-networking-essentials` (P1, deep-dive, sd-fundamentals): TCP, UDP and QUIC for System Designers
 - [ ] `system-design-proxies` (P1, deep-dive, sd-fundamentals): Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere
 
@@ -398,7 +398,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>system-design: 49 written</summary>
+<details><summary>system-design: 50 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -449,6 +449,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-sagas` Sagas: Long Transactions Without Locks
 - [x] `system-design-outbox-cdc` The Outbox Pattern and Change Data Capture
 - [x] `system-design-exactly-once` Exactly-Once Delivery Is a Myth; Exactly-Once Processing Is Not
+- [x] `system-design-consensus-overview` Consensus in Practice: Raft, Paxos, etcd and ZooKeeper
 
 </details>
 
@@ -540,6 +541,19 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
+<details><summary>cs-core: 8 written</summary>
+
+- [x] `cs-core-what-an-os-does` What an Operating System Actually Does
+- [x] `cs-core-processes-threads` Processes vs Threads
+- [x] `cs-core-process-states` Process States and Context Switching
+- [x] `cs-core-system-calls` System Calls, User Mode and Kernel Mode
+- [x] `cs-core-cpu-scheduling` CPU Scheduling: FCFS, SJF, Round Robin, Priority, MLFQ
+- [x] `cs-core-ipc` Inter-Process Communication: Pipes, Shared Memory, Messages
+- [x] `cs-core-race-conditions` Race Conditions and the Critical Section Problem
+- [x] `cs-core-mutex-semaphore` Mutexes, Semaphores and Spinlocks
+
+</details>
+
 ## Mismatches to fix
 
 - system-design-behavioural-patterns has an article but is still marked planned
@@ -548,11 +562,3 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - system-design-elevator-system has an article but is still marked planned
 - system-design-vending-machine has an article but is still marked planned
 - system-design-splitwise has an article but is still marked planned
-- cs-core-what-an-os-does has an article but is still marked planned
-- cs-core-processes-threads has an article but is still marked planned
-- cs-core-process-states has an article but is still marked planned
-- cs-core-system-calls has an article but is still marked planned
-- cs-core-cpu-scheduling has an article but is still marked planned
-- cs-core-ipc has an article but is still marked planned
-- cs-core-race-conditions has an article but is still marked planned
-- cs-core-mutex-semaphore has an article but is still marked planned

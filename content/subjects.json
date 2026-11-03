@@ -59,10 +59,10 @@
     "title": "CS Core",
     "short": "Core",
     "subtitle": "Operating systems, databases, networks and OOP",
-    "description": "The core CS subjects every interview loop checks. The curriculum is planned; articles are coming soon.",
+    "description": "The core CS subjects every interview loop checks: operating systems, databases and SQL, computer networks, OOP in C++ and computer architecture.",
     "order": 5,
     "accent": "#5F6CAF",
     "motif": "grid",
-    "status": "coming-soon"
+    "status": "active"
   }
 ]
