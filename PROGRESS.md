@@ -12,10 +12,10 @@ Read `HANDOFF.md` first if you are picking this project up.
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
-| system-design | 116 | 0 | 3 | 119 | 60/60 |
+| system-design | 118 | 0 | 1 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 16 | 0 | 63 | 79 | 13/47 |
-| **All** | **527** | **0** | **156** | **683** | |
+| **All** | **529** | **0** | **154** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -46,8 +46,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### system-design
 
-- [ ] `system-design-maps-navigation` (P2, case-study, sd-cases): Design Google Maps Navigation
-- [ ] `system-design-chess-lld` (P2, lld, sd-lld): Design Chess
 - [ ] `system-design-cab-booking-lld` (P2, lld, sd-lld): Design a Cab Booking Service (Low-Level)
 
 ### ml
@@ -404,7 +402,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>system-design: 116 written</summary>
+<details><summary>system-design: 118 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -480,6 +478,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-pastebin` Design Pastebin
 - [x] `system-design-online-judge` Design an Online Judge Like LeetCode
 - [x] `system-design-email-service` Design an Email Service
+- [x] `system-design-maps-navigation` Design Google Maps Navigation
 - [x] `system-design-oop-solid` Object-Oriented Design and SOLID Principles
 - [x] `system-design-creational-patterns` Creational Patterns: Factory, Builder and Singleton
 - [x] `system-design-structural-patterns` Structural Patterns: Adapter, Decorator, Facade, Proxy
@@ -492,6 +491,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-bookmyshow-lld` Design BookMyShow (Low-Level)
 - [x] `system-design-library-management` Design a Library Management System
 - [x] `system-design-snake-ladder-tictactoe` Design Board Games: Snake and Ladder, Tic-Tac-Toe
+- [x] `system-design-chess-lld` Design Chess
 - [x] `system-design-atm-lld` Design an ATM
 - [x] `system-design-logger-lld` Design a Logging Framework
 - [x] `system-design-cache-lld` Design an In-Memory Cache With Eviction Policies

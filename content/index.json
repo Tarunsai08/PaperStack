@@ -1,7 +1,7 @@
 {
- "content_version": "ef9d6d48eabb2c48",
+ "content_version": "99eb36722019da42",
  "generated_at": "2026-11-03",
- "count": 527,
+ "count": 529,
  "subjects": [
   {
    "id": "ml",
@@ -50257,6 +50257,96 @@
    "excerpt": "Somewhere a mail server says \"250 OK\" to another mail server. With those three characters, responsibility for your email has changed hands: the sender's server deletes its copy, and from now on, if the message is lost, it is lost forever. An email service must accept mail from the whole internet…"
   },
   {
+   "id": "system-design-maps-navigation",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "maps-navigation",
+   "title": "Design Google Maps Navigation",
+   "subtitle": "A road atlas that updates with traffic: map tiles by zoom level, routing on a hierarchy instead of the whole graph, live-traffic ETAs and rerouting",
+   "track": "sd-cases",
+   "track_order": 32,
+   "priority": "P2",
+   "prerequisites": [
+    "famous-algos-a-star",
+    "famous-algos-geohash"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "maps",
+    "routing",
+    "map tiles",
+    "eta",
+    "traffic"
+   ],
+   "glossary": [
+    {
+     "term": "Map tile",
+     "definition": "A small square image or vector data block covering one area at one zoom level; the map is drawn from tiles fetched as the user pans and zooms."
+    },
+    {
+     "term": "Zoom level",
+     "definition": "A scale step; each level up splits every tile into four, so level z has 4^z tiles covering the world."
+    },
+    {
+     "term": "Road graph",
+     "definition": "Intersections as nodes and road segments as weighted edges, with weights such as travel time."
+    },
+    {
+     "term": "Contraction hierarchies",
+     "definition": "A preprocessing technique that ranks nodes by importance and adds shortcut edges, so queries mostly travel up to major roads and back down, exploring far fewer nodes."
+    },
+    {
+     "term": "Live traffic",
+     "definition": "Current speeds on road segments estimated from anonymised location reports, used to update travel-time weights."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How many tiles cover the world at zoom level 18?",
+     "options": [
+      "262,144",
+      "About 6.9 × 10¹⁰ (4¹⁸)",
+      "18 × 4",
+      "About 1 million"
+     ],
+     "answer": 1,
+     "explain": "Each level quadruples the count: 4¹⁸ = 68,719,476,736. Most are ocean or empty land, which is why tiles are generated lazily and cached."
+    },
+    {
+     "q": "Why don't navigation services run plain Dijkstra on the full road graph for each query?",
+     "options": [
+      "Dijkstra is wrong on roads",
+      "A long route would explore a huge share of hundreds of millions of nodes; hierarchical preprocessing lets queries touch only a tiny fraction",
+      "Roads have negative weights",
+      "It cannot handle one-way streets"
+     ],
+     "answer": 1,
+     "explain": "Preprocessing (such as contraction hierarchies) moves most of the work offline, so each query explores thousands of nodes instead of millions."
+    },
+    {
+     "q": "Why do ETAs change during a trip?",
+     "options": [
+      "Bugs",
+      "Travel-time weights are updated from live traffic, so the remaining route is re-estimated, and sometimes a faster route is offered",
+      "The phone's clock drifts",
+      "Map tiles change"
+     ],
+     "answer": 1,
+     "explain": "ETA = sum of current predicted segment times. As conditions change, the prediction and possibly the best route change too."
+    }
+   ],
+   "cover_seed": "maps-navigation",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.6,
+   "path": "system-design/maps-navigation.md",
+   "hash": "3f98ebd47a08",
+   "word_count": 1162,
+   "excerpt": "You ask for directions from Pune to Bengaluru. In under a second you get a route of more than 800 km, an arrival time, and a warning about traffic near Kolhapur. Halfway through the drive, the app says \"a faster route is available, saves 12 minutes\". The road network of a country has hundreds of…"
+  },
+  {
    "id": "system-design-oop-solid",
    "kind": "lld",
    "subject": "system-design",
@@ -51347,6 +51437,94 @@
    "hash": "8310dd62de85",
    "word_count": 2083,
    "excerpt": "You finish a clean snake-and-ladder program in forty minutes. The interviewer smiles and says, \"Nice. Now make the board 150 cells, add a second dice, and let a player who rolls a six roll again.\" You scroll through your code. The number 100 appears in eleven places. The dice roll lives inside the…"
+  },
+  {
+   "id": "system-design-chess-lld",
+   "kind": "lld",
+   "subject": "system-design",
+   "slug": "chess-lld",
+   "title": "Design Chess",
+   "subtitle": "Each piece knows its own dance steps: polymorphic move rules, a board that checks paths, legality by trying the move, and check and checkmate without a giant if-else",
+   "track": "sd-lld",
+   "track_order": 13,
+   "priority": "P2",
+   "prerequisites": [
+    "system-design-snake-ladder-tictactoe"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "low-level design",
+    "chess",
+    "polymorphism",
+    "game design",
+    "machine coding"
+   ],
+   "glossary": [
+    {
+     "term": "Pseudo-legal move",
+     "definition": "A move that follows the piece's movement rules and board blocking, before checking whether it leaves the player's own king in check."
+    },
+    {
+     "term": "Legal move",
+     "definition": "A pseudo-legal move that does not leave the moving player's king in check."
+    },
+    {
+     "term": "Check",
+     "definition": "A position where the side to move has its king attacked by an opponent piece."
+    },
+    {
+     "term": "Checkmate",
+     "definition": "Check with no legal move available to escape it; the game ends."
+    },
+    {
+     "term": "Polymorphism",
+     "definition": "Calling the same method, here canMove, on different piece objects, with each class supplying its own rule."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Where should the rule 'a bishop moves diagonally and cannot jump' live?",
+     "options": [
+      "In one big Game.validateMove switch",
+      "In the Bishop class's canMove, using a board helper that checks the path is clear",
+      "In the UI",
+      "In the Player class"
+     ],
+     "answer": 1,
+     "explain": "Each piece owns its movement rule; the board offers shared helpers such as pathClear. Adding a new piece type then means adding a class, not editing a switch."
+    },
+    {
+     "q": "How does the design decide whether a move leaves your own king in check?",
+     "options": [
+      "It cannot",
+      "It applies the move on the board, asks whether any opponent piece can reach the king, and then undoes the move",
+      "It asks the opponent",
+      "It looks at the previous move only"
+     ],
+     "answer": 1,
+     "explain": "Try, test, undo is simple and correct: legality depends on the whole position after the move."
+    },
+    {
+     "q": "When is it checkmate rather than check?",
+     "options": [
+      "When the king is attacked twice",
+      "When the side to move is in check and has no legal move at all",
+      "When the queen is captured",
+      "After 50 moves"
+     ],
+     "answer": 1,
+     "explain": "Checkmate means no legal move escapes the check. The game generates or tries candidate moves and finds none legal."
+    }
+   ],
+   "cover_seed": "chess-lld",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.6,
+   "path": "system-design/chess-lld.md",
+   "hash": "e31257fa2c9b",
+   "word_count": 1072,
+   "excerpt": "A machine-coding round: \"Design chess. Two players, legal moves only, detect check and checkmate. You have 90 minutes.\" The tempting first version is one function, isValidMove, with a switch on the piece type: 200 lines of nested conditions for rooks, bishops, knights, pawns, kings, special cases.…"
   },
   {
    "id": "system-design-atm-lld",

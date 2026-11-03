@@ -15,10 +15,10 @@ You are continuing a project another Claude session started. Everything you need
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
-| system-design | 116 | 0 | 3 | 119 | 60/60 |
+| system-design | 118 | 0 | 1 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 16 | 0 | 63 | 79 | 13/47 |
-| **All** | **527** | **0** | **156** | **683** | |
+| **All** | **529** | **0** | **154** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -38,8 +38,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `famous-algos-paxos` (P1, concept, fa-distributed): Paxos: The Original Consensus Algorithm
 
 #### system-design
-- [ ] `system-design-maps-navigation` (P2, case-study, sd-cases): Design Google Maps Navigation
-- [ ] `system-design-chess-lld` (P2, lld, sd-lld): Design Chess
 - [ ] `system-design-cab-booking-lld` (P2, lld, sd-lld): Design a Cab Booking Service (Low-Level)
 
 #### ml
