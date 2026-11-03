@@ -1,7 +1,7 @@
 {
- "content_version": "1a4d5b2ac2c02f36",
+ "content_version": "3657b77f625c176d",
  "generated_at": "2026-11-03",
- "count": 559,
+ "count": 561,
  "subjects": [
   {
    "id": "ml",
@@ -58517,6 +58517,188 @@
    "hash": "6a88c3824879",
    "word_count": 1404,
    "excerpt": "Your college gets the block 192.168.10.0/24 for its labs: 256 addresses. The computer lab needs 100 machines, the library 50, the admin office 20, and a link between two routers needs just 2. Can one block serve all four, each on its own network? And when a packet arrives for 192.168.10.77, which…"
+  },
+  {
+   "id": "cs-core-tcp-deep-dive",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "tcp-deep-dive",
+   "title": "A Phone Call Where Both Sides Confirm They Can Hear",
+   "subtitle": "TCP from the inside: the three-way handshake, sequence and acknowledgement numbers traced byte by byte, retransmission, sliding-window flow control, the four-way close and TIME_WAIT",
+   "track": "cs-networks",
+   "track_order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-osi-tcpip"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "computer networks",
+    "tcp",
+    "handshake",
+    "flow control",
+    "time_wait",
+    "reliability"
+   ],
+   "glossary": [
+    {
+     "term": "Sequence number",
+     "definition": "The byte position of a segment's first data byte in the sender's stream, starting from a random initial value chosen at connection setup."
+    },
+    {
+     "term": "Acknowledgement number",
+     "definition": "The next byte the receiver expects; it acknowledges every byte before it (cumulative ACK)."
+    },
+    {
+     "term": "Three-way handshake",
+     "definition": "SYN, SYN-ACK, ACK: the exchange that opens a TCP connection and agrees on both sides' initial sequence numbers."
+    },
+    {
+     "term": "Receive window",
+     "definition": "rwnd: how many more bytes the receiver has buffer space for; the sender must not have more unacknowledged data in flight."
+    },
+    {
+     "term": "Flow control",
+     "definition": "Preventing a fast sender from overflowing a slow receiver's buffer, using the receive window."
+    },
+    {
+     "term": "TIME_WAIT",
+     "definition": "The state the side that closes first stays in for twice the maximum segment lifetime, so late packets and lost final ACKs are handled safely."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "The client's initial sequence number is 1000. After the handshake, it sends 100 bytes. What sequence number does that segment carry, and what ACK will the server send?",
+     "options": [
+      "1000 and 1100",
+      "1001 and 1101",
+      "1 and 101",
+      "1000 and 1001"
+     ],
+     "answer": 1,
+     "explain": "The SYN consumes one sequence number, so data starts at 1001 and occupies 1001 to 1100. The server acknowledges the next byte it expects: 1101."
+    },
+    {
+     "q": "What is the difference between flow control and congestion control?",
+     "options": [
+      "They are the same",
+      "Flow control protects the receiver's buffer (rwnd); congestion control protects the network (cwnd); the sender uses the minimum of the two",
+      "Flow control is only for UDP",
+      "Congestion control is done by routers alone"
+     ],
+     "answer": 1,
+     "explain": "A fast receiver on a congested network, or a slow receiver on an empty network, each limit the sender differently."
+    },
+    {
+     "q": "Why does a TCP handshake need three messages rather than two?",
+     "options": [
+      "Tradition",
+      "Each side must send its initial sequence number and hear it acknowledged; the third message acknowledges the server's",
+      "To exchange encryption keys",
+      "To measure bandwidth"
+     ],
+     "answer": 1,
+     "explain": "With two messages, the server would never learn that the client received its sequence number, and stale duplicate SYNs could open bogus connections."
+    }
+   ],
+   "cover_seed": "tcp-deep-dive",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.92,
+   "path": "cs-core/tcp-deep-dive.md",
+   "hash": "ec40bdf3c922",
+   "word_count": 1229,
+   "excerpt": "The internet below TCP makes almost no promises. IP packets can be lost, duplicated, delayed, or arrive in a different order from the one they were sent in. And yet when you download a 2 GB file, every byte arrives, in order, exactly once. TCP builds that guarantee out of a few numbers in each…"
+  },
+  {
+   "id": "cs-core-udp",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "udp",
+   "title": "Postcards Versus Registered Letters",
+   "subtitle": "UDP: an 8-byte header and no promises, message boundaries shown with real sockets, why DNS, games, video calls and QUIC choose it, and what an application must build for itself",
+   "track": "cs-networks",
+   "track_order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-tcp-deep-dive"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "computer networks",
+    "udp",
+    "datagrams",
+    "real-time",
+    "quic",
+    "dns"
+   ],
+   "glossary": [
+    {
+     "term": "Datagram",
+     "definition": "A self-contained message sent on its own, with no connection and no guarantee of delivery or order."
+    },
+    {
+     "term": "Connectionless",
+     "definition": "Sending without first setting up shared state between sender and receiver, so the first message can carry data immediately."
+    },
+    {
+     "term": "Message boundary",
+     "definition": "The edge between separate sends; UDP preserves it (one send, one receive), while TCP delivers a continuous byte stream."
+    },
+    {
+     "term": "Head-of-line blocking",
+     "definition": "Later data waiting behind an earlier lost packet, as happens in TCP's in-order byte stream."
+    },
+    {
+     "term": "Jitter buffer",
+     "definition": "A small delay that real-time apps add to smooth out packets arriving at uneven intervals."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A program sends 'hello', 'world' and '!' as three separate sends. What does the receiver get over UDP, and over TCP?",
+     "options": [
+      "Three messages each time",
+      "UDP: three separate datagrams; TCP: possibly one chunk 'helloworld!'",
+      "TCP: three messages; UDP: one",
+      "Both lose the data"
+     ],
+     "answer": 1,
+     "explain": "Running this on one machine, three UDP receives returned the three messages, while one TCP recv returned b'helloworld!'. TCP is a byte stream with no boundaries."
+    },
+    {
+     "q": "Why do video calls usually use UDP rather than TCP?",
+     "options": [
+      "UDP is encrypted",
+      "A late frame is useless, so waiting for TCP's retransmission and in-order delivery would freeze the call instead of skipping a moment",
+      "UDP has more bandwidth",
+      "TCP cannot carry audio"
+     ],
+     "answer": 1,
+     "explain": "Real-time media prefers fresh data over complete data; it conceals small losses instead of waiting."
+    },
+    {
+     "q": "How large is the UDP header?",
+     "options": [
+      "20 bytes",
+      "8 bytes",
+      "40 bytes",
+      "2 bytes"
+     ],
+     "answer": 1,
+     "explain": "Four 2-byte fields: source port, destination port, length and checksum."
+    }
+   ],
+   "cover_seed": "udp",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.82,
+   "path": "cs-core/udp.md",
+   "hash": "5a20aea75aac",
+   "word_count": 1031,
+   "excerpt": "In an online game, your character's position is sent twenty or more times a second. One update goes missing. Should the game stop everything, ask for that update again, and wait until it arrives before showing anything newer? By the time it comes back, it describes where you were. TCP would do…"
   }
  ]
 }

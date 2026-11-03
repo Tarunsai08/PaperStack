@@ -17,8 +17,8 @@ You are continuing a project another Claude session started. Everything you need
 | famous-algos | 38 | 0 | 53 | 91 | 31/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core | 44 | 0 | 35 | 79 | 29/47 |
-| **All** | **559** | **0** | **124** | **683** | |
+| cs-core | 46 | 0 | 33 | 79 | 31/47 |
+| **All** | **561** | **0** | **122** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -48,7 +48,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `paper-yolo` (P2, paper, deep-learning): You Only Look Once: Unified, Real-Time Object Detection
 
 #### cs-core
-- [ ] `cs-core-tcp-deep-dive` (P0, deep-dive, cs-networks): TCP: Handshakes, Reliability and Flow Control
+- [ ] `cs-core-http-https` (P0, deep-dive, cs-networks): HTTP and HTTPS for Interviews
 - [ ] `cs-core-dns-cs` (P0, deep-dive, cs-networks): DNS for CS Interviews
 - [ ] `cs-core-classes-objects` (P0, primer, cs-oop): Classes and Objects in C++
 - [ ] `cs-core-memory-hierarchy` (P0, deep-dive, cs-architecture): The Memory Hierarchy and CPU Caches
