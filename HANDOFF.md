@@ -14,11 +14,11 @@ You are continuing a project another Claude session started. Everything you need
 |---|---|---|---|---|---|
 | dsa | 152 | 0 | 0 | 152 | 72/72 |
 | cp | 114 | 0 | 1 | 115 | 29/29 |
-| famous-algos | 35 | 0 | 56 | 91 | 28/32 |
-| system-design | 43 | 0 | 76 | 119 | 43/60 |
+| famous-algos | 36 | 0 | 55 | 91 | 29/32 |
+| system-design | 45 | 0 | 74 | 119 | 45/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **427** | **0** | **246** | **673** | |
+| **All** | **430** | **0** | **243** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -31,16 +31,16 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `cp-bitset-optimisation` (P2, pattern, cp-misc): Bitsets: Dividing by 64 for Free
 
 #### famous-algos
-- [ ] `famous-algos-myers-diff` (P0, concept, fa-search): Myers' Diff: How Git Shows What Changed
 - [ ] `famous-algos-fft` (P0, concept, fa-signals): The Fast Fourier Transform: Hearing the Notes in a Chord
 - [ ] `famous-algos-a-star` (P0, concept, fa-signals): A* Search: Dijkstra With a Sense of Direction
 - [ ] `famous-algos-counting-bloom-cuckoo` (P1, concept, fa-sketches): Deletable Filters: Counting Bloom and Cuckoo Filters
 - [ ] `famous-algos-heavy-hitters` (P1, concept, fa-sketches): Finding Heavy Hitters in a Stream: Misra-Gries and Space-Saving
+- [ ] `famous-algos-lsh` (P1, concept, fa-sketches): Locality-Sensitive Hashing: Finding Near Neighbours Fast
 
 #### system-design
-- [ ] `system-design-creational-patterns` (P0, lld, sd-lld): Creational Patterns: Factory, Builder and Singleton
-- [ ] `system-design-replication` (P0, deep-dive, sd-distributed): Replication: Leaders, Followers and Lag
+- [ ] `system-design-behavioural-patterns` (P0, lld, sd-lld): Behavioural Patterns: Strategy, Observer, State and Command
 - [ ] `system-design-consistent-hashing-sd` (P0, deep-dive, sd-distributed): Consistent Hashing in System Design Interviews
+- [ ] `system-design-consensus-overview` (P0, deep-dive, sd-distributed): Consensus in Practice: Raft, Paxos, etcd and ZooKeeper
 - [ ] `system-design-networking-essentials` (P1, deep-dive, sd-fundamentals): TCP, UDP and QUIC for System Designers
 - [ ] `system-design-proxies` (P1, deep-dive, sd-fundamentals): Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere
 

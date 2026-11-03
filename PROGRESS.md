@@ -11,11 +11,11 @@ Read `HANDOFF.md` first if you are picking this project up.
 |---|---|---|---|---|---|
 | dsa | 152 | 0 | 0 | 152 | 72/72 |
 | cp | 114 | 0 | 1 | 115 | 29/29 |
-| famous-algos | 35 | 0 | 56 | 91 | 28/32 |
-| system-design | 43 | 0 | 76 | 119 | 43/60 |
+| famous-algos | 36 | 0 | 55 | 91 | 29/32 |
+| system-design | 45 | 0 | 74 | 119 | 45/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **427** | **0** | **246** | **673** | |
+| **All** | **430** | **0** | **243** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -33,7 +33,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### famous-algos
 
-- [ ] `famous-algos-myers-diff` (P0, concept, fa-search): Myers' Diff: How Git Shows What Changed
 - [ ] `famous-algos-fft` (P0, concept, fa-signals): The Fast Fourier Transform: Hearing the Notes in a Chord
 - [ ] `famous-algos-a-star` (P0, concept, fa-signals): A* Search: Dijkstra With a Sense of Direction
 - [ ] `famous-algos-counting-bloom-cuckoo` (P1, concept, fa-sketches): Deletable Filters: Counting Bloom and Cuckoo Filters
@@ -43,12 +42,13 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `famous-algos-crdts` (P1, concept, fa-distributed): CRDTs: Data Types That Merge Themselves
 - [ ] `famous-algos-leader-election-leases` (P1, concept, fa-distributed): Leases and Fencing Tokens: Safe Leadership
 - [ ] `famous-algos-sliding-window-limits` (P1, concept, fa-networking): Sliding Window Rate Limiting: Logs and Counters
+- [ ] `famous-algos-skip-lists-practice` (P1, concept, fa-storage): Skip Lists in Practice: Redis Sorted Sets
 
 ### system-design
 
-- [ ] `system-design-creational-patterns` (P0, lld, sd-lld): Creational Patterns: Factory, Builder and Singleton
-- [ ] `system-design-replication` (P0, deep-dive, sd-distributed): Replication: Leaders, Followers and Lag
+- [ ] `system-design-behavioural-patterns` (P0, lld, sd-lld): Behavioural Patterns: Strategy, Observer, State and Command
 - [ ] `system-design-consistent-hashing-sd` (P0, deep-dive, sd-distributed): Consistent Hashing in System Design Interviews
+- [ ] `system-design-consensus-overview` (P0, deep-dive, sd-distributed): Consensus in Practice: Raft, Paxos, etcd and ZooKeeper
 - [ ] `system-design-networking-essentials` (P1, deep-dive, sd-fundamentals): TCP, UDP and QUIC for System Designers
 - [ ] `system-design-proxies` (P1, deep-dive, sd-fundamentals): Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere
 - [ ] `system-design-search-systems` (P1, deep-dive, sd-blocks): Search Systems: Elasticsearch and Inverted Indexes
@@ -348,7 +348,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>famous-algos: 35 written</summary>
+<details><summary>famous-algos: 36 written</summary>
 
 - [x] `famous-algos-bloom-filter` Bloom Filters: Saying No Without Looking
 - [x] `famous-algos-count-min-sketch` Count-Min Sketch: Counting Billions of Things in Kilobytes
@@ -383,12 +383,13 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `famous-algos-digital-signatures` Digital Signatures and Certificates: Trust on the Internet
 - [x] `famous-algos-inverted-index` Inverted Indexes: How Search Finds Pages in Milliseconds
 - [x] `famous-algos-tf-idf-bm25` TF-IDF and BM25: Ranking by Relevance
+- [x] `famous-algos-myers-diff` Myers' Diff: How Git Shows What Changed
 - [x] `famous-algos-rsync-rolling-checksum` rsync: Copying Only What Changed
 - [x] `famous-algos-kalman-filter` The Kalman Filter: Blending Guesses With Noisy Measurements
 
 </details>
 
-<details><summary>system-design: 43 written</summary>
+<details><summary>system-design: 45 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -426,6 +427,8 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-ride-sharing` Design a Ride-Sharing App Like Uber
 - [x] `system-design-payments` Design a Payment System
 - [x] `system-design-oop-solid` Object-Oriented Design and SOLID Principles
+- [x] `system-design-creational-patterns` Creational Patterns: Factory, Builder and Singleton
+- [x] `system-design-replication` Replication: Leaders, Followers and Lag
 - [x] `system-design-partitioning` Partitioning: Splitting Data Across Machines
 - [x] `system-design-consistency-models` Consistency Models: Linearizable to Eventual
 - [x] `system-design-isolation-levels` Transaction Isolation Levels and Anomalies

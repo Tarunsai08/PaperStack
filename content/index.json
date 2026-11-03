@@ -1,7 +1,7 @@
 {
- "content_version": "7961d03aea22c9d6",
+ "content_version": "11e12ace89fe710b",
  "generated_at": "2026-11-03",
- "count": 427,
+ "count": 430,
  "subjects": [
   {
    "id": "ml",
@@ -42149,6 +42149,94 @@
    "excerpt": "You search a recipe site for \"tomato pasta\". A lookup in an inverted index, as in The Index at the Back of Every Search Engine, instantly finds every document containing either word: a pasta recipe, a soup page that says \"tomato\" three times, an essay on the history of tomatoes, a quick pasta…"
   },
   {
+   "id": "famous-algos-myers-diff",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "myers-diff",
+   "title": "How Git Knows What You Changed",
+   "subtitle": "Myers' diff algorithm: the shortest edit script as a walk on a grid that grabs every free diagonal it can",
+   "track": "fa-search",
+   "track_order": 7,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-lcs-edit-distance"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "diff",
+    "edit distance",
+    "shortest edit script",
+    "git",
+    "greedy"
+   ],
+   "glossary": [
+    {
+     "term": "Shortest edit script",
+     "definition": "The smallest list of single-element insertions and deletions that turns one sequence into another, with everything else kept."
+    },
+    {
+     "term": "Edit graph",
+     "definition": "A grid where moving right deletes an element of the old text, moving down inserts one from the new text, and a diagonal move keeps an element that is equal in both, for free."
+    },
+    {
+     "term": "Diagonal",
+     "definition": "In the edit graph, the line of points where x − y equals a fixed number k. Myers tracks the furthest point reached on each diagonal."
+    },
+    {
+     "term": "Snake",
+     "definition": "One non-diagonal move followed by as many free diagonal moves as possible."
+    },
+    {
+     "term": "Hunk",
+     "definition": "A block of nearby changes in a diff output, shown together with a few unchanged context lines."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In the edit graph, what does a diagonal move mean?",
+     "options": [
+      "Delete a line from the old file",
+      "Insert a line from the new file",
+      "Keep a line that is identical in both files, at no cost",
+      "Replace a line"
+     ],
+     "answer": 2,
+     "explain": "A diagonal is only allowed where the old and new elements are equal. It keeps the element and costs nothing, which is why the algorithm takes as many as it can."
+    },
+    {
+     "q": "Old text ABCABBA, new text CBABAC. The shortest edit script has 5 edits. How long is their longest common subsequence?",
+     "options": [
+      "3",
+      "4",
+      "5",
+      "6"
+     ],
+     "answer": 1,
+     "explain": "With only insertions and deletions, edits = N + M − 2·LCS. Here 5 = 7 + 6 − 2·LCS, so LCS = 4, for example CABA."
+    },
+    {
+     "q": "Why is Myers' algorithm fast on real code changes?",
+     "options": [
+      "It uses hashing",
+      "Its running time is O((N + M)·D), and D, the number of edits, is usually small compared with the file size",
+      "It only compares the first lines",
+      "It runs in O(1)"
+     ],
+     "answer": 1,
+     "explain": "Search stops as soon as D edits are enough. Typical commits change a few lines of a long file, so D is small and the algorithm does far less work than the full N × M table."
+    }
+   ],
+   "cover_seed": "myers-diff",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.85,
+   "path": "famous-algos/myers-diff.md",
+   "hash": "06e022e4b8fe",
+   "word_count": 1595,
+   "excerpt": "You change three lines in a 5,000-line file and run git diff. In a blink, Git shows exactly those three lines in red and green, with a little context around them. Now think about how hard that is. Git does not know what you did. It only has the old file and the new file. There are astronomically…"
+  },
+  {
    "id": "famous-algos-rsync-rolling-checksum",
    "kind": "concept",
    "subject": "famous-algos",
@@ -45681,6 +45769,190 @@
    "hash": "8c75389302df",
    "word_count": 1539,
    "excerpt": "Here is a real-looking class from a food-delivery app. It is 400 lines long, and every product meeting adds to it. Tomorrow the business wants pay-later, WhatsApp notifications and a new coupon type. Predict how many places in this class you would have to touch, and how many existing features you…"
+  },
+  {
+   "id": "system-design-creational-patterns",
+   "kind": "lld",
+   "subject": "system-design",
+   "slug": "creational-patterns",
+   "title": "The Car Factory and the Custom Configurator",
+   "subtitle": "Factory, Builder and Singleton: who decides which object to create, how to build one with many options, and when one instance is one too many",
+   "track": "sd-lld",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-oop-solid"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "low-level design",
+    "design patterns",
+    "factory",
+    "builder",
+    "singleton"
+   ],
+   "glossary": [
+    {
+     "term": "Design pattern",
+     "definition": "A named, reusable solution shape for a design problem that keeps coming up, described independently of any one program."
+    },
+    {
+     "term": "Factory",
+     "definition": "An object or method whose job is to create other objects, so callers ask for what they need without naming the concrete class."
+    },
+    {
+     "term": "Builder",
+     "definition": "An object that assembles a complex object step by step through readable method calls and produces it with a final build() call."
+    },
+    {
+     "term": "Singleton",
+     "definition": "A class that allows only one instance in the whole program and provides a global way to reach it."
+    },
+    {
+     "term": "Immutable object",
+     "definition": "An object whose fields cannot change after it is created, which makes it safe to share between threads."
+    },
+    {
+     "term": "Telescoping constructor",
+     "definition": "A chain of constructors with more and more parameters, which becomes unreadable when many parameters are optional."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Checkout code has `if type == \"upi\" return new UpiPayment()` in five different places. Which pattern removes the duplication?",
+     "options": [
+      "Singleton",
+      "Factory: one place maps the type to the right class, and every caller asks it",
+      "Builder",
+      "Observer"
+     ],
+     "answer": 1,
+     "explain": "A factory centralises the decision of which concrete class to create. Adding a new payment method then changes one place, not five."
+    },
+    {
+     "q": "An HTTP request object has 2 required fields and 9 optional ones. Which pattern makes creating it readable and safe?",
+     "options": [
+      "Factory",
+      "Builder: set what you need by name, then build() validates and returns an immutable object",
+      "Singleton",
+      "Inheritance"
+     ],
+     "answer": 1,
+     "explain": "A builder replaces long, error-prone constructor calls with named steps and a single validation point."
+    },
+    {
+     "q": "Why is overusing Singleton considered harmful?",
+     "options": [
+      "It uses too much memory",
+      "It becomes hidden global state: any code can change it, tests interfere with each other, and dependencies are invisible",
+      "It cannot have methods",
+      "It is slow"
+     ],
+     "answer": 1,
+     "explain": "A singleton reached from everywhere couples the whole codebase to it. Prefer creating one instance at startup and injecting it where needed."
+    }
+   ],
+   "cover_seed": "creational-patterns",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.85,
+   "path": "system-design/creational-patterns.md",
+   "hash": "0d0da9298c96",
+   "word_count": 1362,
+   "excerpt": "Your checkout from the last article is clean now: CheckoutService depends on a PaymentMethod interface and never names a concrete class. Lovely. Then you search the codebase and find this, copied into the API controller, the retry job, the admin panel and two tests: The if-else you killed in the…"
+  },
+  {
+   "id": "system-design-replication",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "replication",
+   "title": "A Teacher Dictating Notes to the Class",
+   "subtitle": "Leader-follower replication: how changes are shipped, sync vs async, and why failover is where data quietly disappears",
+   "track": "sd-distributed",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-read-replicas"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "system design",
+    "replication",
+    "leader election",
+    "failover",
+    "replication log"
+   ],
+   "glossary": [
+    {
+     "term": "Leader",
+     "definition": "The node that accepts writes, decides their order and sends them to followers. Also called primary or master."
+    },
+    {
+     "term": "Follower",
+     "definition": "A node that receives the leader's changes and applies them in the same order. Also called replica or secondary."
+    },
+    {
+     "term": "Replication log",
+     "definition": "The ordered stream of changes the leader sends to followers, such as low-level storage changes or row-level change records."
+    },
+    {
+     "term": "Semi-synchronous replication",
+     "definition": "The leader waits for at least one follower to confirm a write before acknowledging it, and replicates to the rest asynchronously."
+    },
+    {
+     "term": "Split brain",
+     "definition": "Two nodes both believe they are the leader and both accept writes, so the data diverges."
+    },
+    {
+     "term": "Fencing",
+     "definition": "Cutting an old leader off from accepting writes (for example by revoking its access or using an epoch number) before or during a failover."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "With asynchronous replication, the leader acknowledges a write and crashes one millisecond later. A follower is promoted. What happens to that write?",
+     "options": [
+      "It is always preserved",
+      "It may be lost, because the follower may never have received it",
+      "The new leader asks the old one for it",
+      "The client is told it failed"
+     ],
+     "answer": 1,
+     "explain": "The client was told the write succeeded, but it existed only on the crashed leader. Asynchronous failover can silently lose acknowledged writes."
+    },
+    {
+     "q": "Why do many databases ship row-level change records instead of the original SQL statements?",
+     "options": [
+      "They are smaller",
+      "Statements with NOW(), RAND() or auto-increment could produce different results on each follower",
+      "SQL cannot be logged",
+      "Followers cannot parse SQL"
+     ],
+     "answer": 1,
+     "explain": "Replaying a statement re-runs any non-deterministic function on the follower. Shipping the actual changed rows makes every follower end up identical."
+    },
+    {
+     "q": "During a network partition, the old leader still accepts writes while a follower has been promoted. What is this called and what prevents it?",
+     "options": [
+      "Replication lag; add replicas",
+      "Split brain; fencing the old leader and requiring a majority to elect a leader",
+      "Write skew; serializable isolation",
+      "Hot partition; hashing"
+     ],
+     "answer": 1,
+     "explain": "Two leaders accepting writes is split brain. Majority-based election plus fencing tokens or epochs make sure only one leader's writes are accepted."
+    }
+   ],
+   "cover_seed": "replication",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.9,
+   "path": "system-design/replication.md",
+   "hash": "73c808a6345a",
+   "word_count": 1574,
+   "excerpt": "At 2:14 am the primary database of a busy shop loses power. Within thirty seconds a replica is promoted, the app reconnects, and the dashboards turn green again. Everyone goes back to sleep. Next morning, support gets three emails: \"I paid, I got a confirmation, and my order does not exist.\" Nobody…"
   },
   {
    "id": "system-design-partitioning",

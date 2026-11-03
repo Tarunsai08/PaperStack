@@ -2359,8 +2359,8 @@
    "prerequisites": [
     "system-design-oop-solid"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "When each helps",
@@ -2952,8 +2952,8 @@
    "prerequisites": [
     "system-design-read-replicas"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Leader-follower",
