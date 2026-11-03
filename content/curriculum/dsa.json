@@ -4916,8 +4916,8 @@
     ]
    },
    "subject": "dsa",
-   "status": "planned",
-   "written_by": null
+   "status": "written",
+   "written_by": "claude-seed"
   },
   {
    "id": "dsa-debugging-unfamiliar-code",
@@ -5015,8 +5015,8 @@
     ]
    },
    "subject": "dsa",
-   "status": "planned",
-   "written_by": null
+   "status": "written",
+   "written_by": "claude-seed"
   },
   {
    "id": "dsa-state-space-search",

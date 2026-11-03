@@ -1,7 +1,7 @@
 {
- "content_version": "11e12ace89fe710b",
+ "content_version": "197cbbd357d99606",
  "generated_at": "2026-11-03",
- "count": 430,
+ "count": 432,
  "subjects": [
   {
    "id": "ml",
@@ -8847,6 +8847,95 @@
    "excerpt": "Here is a puzzle interviewers love: every number in an array appears twice, except one. Find it, in one pass, with no extra memory. A hash map works but uses memory. Sorting works but is slow. The real answer is a single line: XOR all the numbers together. Pairs cancel to zero, and the lonely…"
   },
   {
+   "id": "dsa-oa-strategy",
+   "kind": "primer",
+   "subject": "dsa",
+   "slug": "oa-strategy",
+   "title": "Chasing a Target: How to Play an Online Assessment",
+   "subtitle": "Time, constraints, partial scores and hidden tests: the game plan that turns what you know into points",
+   "track": "dsa-start",
+   "track_order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-big-o",
+    "dsa-problem-solving-framework"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 6,
+   "topics": [
+    "online assessment",
+    "strategy",
+    "edge cases",
+    "time management",
+    "placements"
+   ],
+   "glossary": [
+    {
+     "term": "Online assessment",
+     "definition": "A timed, auto-graded coding test that companies use to shortlist candidates before interviews, often with two to four problems."
+    },
+    {
+     "term": "Hidden tests",
+     "definition": "Test cases you cannot see, run after you submit. They usually include edge cases and the largest allowed inputs."
+    },
+    {
+     "term": "Partial scoring",
+     "definition": "Grading that awards points for each test case passed, so a correct but slow solution can still earn part of the marks."
+    },
+    {
+     "term": "Expected score per minute",
+     "definition": "A planning estimate: the points a step is likely to earn divided by the minutes it will take, used to decide what to do next."
+    },
+    {
+     "term": "Edge case",
+     "definition": "An input at the boundary of what is allowed, such as an empty array, one element, all equal values or the maximum size."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "You have 20 minutes left. Problem 3 is unsolved. A brute force that passes small tests would take 10 minutes; the full solution might take 40. What do you do, if the test awards points per test case?",
+     "options": [
+      "Start the full solution",
+      "Write the brute force, submit it for partial points, then attempt the improvement if time remains",
+      "Re-check problem 1",
+      "Submit nothing"
+     ],
+     "answer": 1,
+     "explain": "With per-test scoring, a correct brute force banks real points in the time you have. The full solution would not finish in 20 minutes."
+    },
+    {
+     "q": "Constraints say n ≤ 2·10⁵. Which complexity should you aim for?",
+     "options": [
+      "O(n²)",
+      "O(n log n) or O(n)",
+      "O(2ⁿ)",
+      "O(n³)"
+     ],
+     "answer": 1,
+     "explain": "n² is 4·10¹⁰ operations, far too many. O(n log n) is a few million, comfortably fast."
+    },
+    {
+     "q": "Your solution passes every visible sample but fails hidden tests. What is the most likely cause?",
+     "options": [
+      "The judge is broken",
+      "An edge case or overflow: empty input, one element, duplicates, negative numbers or values near the maximum",
+      "You used C++",
+      "The samples were wrong"
+     ],
+     "answer": 1,
+     "explain": "Samples are usually small and friendly. Hidden tests probe boundaries and maximum sizes, where off-by-one errors, overflow and slow loops appear."
+    }
+   ],
+   "cover_seed": "oa-strategy",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.92,
+   "path": "dsa/oa-strategy.md",
+   "hash": "bf53a542e853",
+   "word_count": 1210,
+   "excerpt": "Two friends take the same 90-minute assessment. Both know binary search, graphs and DP equally well. One opens problem 3 first because it looks the most interesting, spends 70 minutes on it, gets it nearly working, and submits two half-finished solutions in the last ten minutes. The other banks…"
+  },
+  {
    "id": "dsa-prefix-sums",
    "kind": "pattern",
    "subject": "dsa",
@@ -14891,6 +14980,126 @@
    "hash": "be124830c0c8",
    "word_count": 1383,
    "excerpt": "Cars from a slip road merge one at a time into a single lane. Each new car can only interact with the car directly in front of it, the last one that merged. Sometimes it pushes that car out of the lane, then the one in front of that, until something stops it. The lane only ever changes at its back…"
+  },
+  {
+   "id": "dsa-contribution-technique",
+   "kind": "pattern",
+   "subject": "dsa",
+   "slug": "contribution-technique",
+   "title": "Splitting the Bill by What Each Person Ate",
+   "subtitle": "The contribution technique: stop looping over subarrays and ask how many of them each element affects",
+   "track": "dsa-linear",
+   "track_order": 16,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-monotonic-stack",
+    "dsa-prefix-sums"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "contribution technique",
+    "monotonic stack",
+    "counting",
+    "subarrays"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Sum of Subarray Minimums",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sum-of-subarray-minimums/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Sum of Subarray Ranges",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/sum-of-subarray-ranges/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Total Appeal of A String",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/total-appeal-of-a-string/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Count Unique Characters of All Substrings of a Given String",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/count-unique-characters-of-all-substrings-of-a-given-string/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Maximum Subarray Min-Product",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/maximum-subarray-min-product/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Contribution technique",
+     "definition": "Computing a sum over many groups (such as all subarrays) by adding up, for each element, its value times the number of groups in which it counts."
+    },
+    {
+     "term": "Span",
+     "definition": "For an element, the range of start and end positions of subarrays in which it is the minimum (or maximum); its size is left count times right count."
+    },
+    {
+     "term": "Previous smaller element",
+     "definition": "The nearest element to the left that is smaller than (or, by a chosen rule, at most) the current one."
+    },
+    {
+     "term": "Tie-breaking rule",
+     "definition": "A convention such as 'the leftmost minimum owns the subarray', used so that equal values never count the same subarray twice."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In the array [5, 9, 7], in how many subarrays does the element at index 1 (value 9) appear?",
+     "options": [
+      "2",
+      "3",
+      "4",
+      "6"
+     ],
+     "answer": 2,
+     "explain": "It can start at index 0 or 1 (2 choices) and end at index 1 or 2 (2 choices), so (i + 1)·(n − i) = 2·2 = 4 subarrays."
+    },
+    {
+     "q": "Why use 'previous smaller or equal' on one side and 'next strictly smaller' on the other?",
+     "options": [
+      "It is faster",
+      "So that when equal values tie for the minimum, exactly one of them owns each subarray and nothing is counted twice",
+      "Because the stack requires it",
+      "To handle negative numbers"
+     ],
+     "answer": 1,
+     "explain": "With both sides strict, a subarray like [2, 2] would be counted for both 2s. Making one side inclusive gives ownership to the leftmost (or rightmost) minimum only."
+    },
+    {
+     "q": "How do you get the sum of (max − min) over all subarrays quickly?",
+     "options": [
+      "Two nested loops",
+      "Sum of subarray maxima minus sum of subarray minima, each by contribution",
+      "Sort the array first",
+      "Prefix sums of max and min"
+     ],
+     "answer": 1,
+     "explain": "The sum splits into two independent sums. Each is a contribution problem with a monotonic stack, so the whole thing is O(n)."
+    }
+   ],
+   "cover_seed": "contribution-technique",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.9,
+   "path": "dsa/contribution-technique.md",
+   "hash": "db315e48db1c",
+   "word_count": 1416,
+   "excerpt": "An online assessment gives you an array of up to 10⁵ numbers and asks: over every subarray, add up the minimum element. Give the answer modulo 10⁹ + 7. There are about 5·10⁹ subarrays. Even finding each minimum in O(1) would blow a 2-second limit. And yet the expected solution is O(n), one pass…"
   },
   {
    "id": "dsa-subsets-permutations",

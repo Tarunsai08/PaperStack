@@ -12,24 +12,23 @@ You are continuing a project another Claude session started. Everything you need
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 152 | 0 | 6 | 158 | 72/74 |
+| dsa | 154 | 0 | 4 | 158 | 74/74 |
 | cp | 114 | 0 | 3 | 117 | 29/29 |
 | famous-algos | 36 | 0 | 55 | 91 | 29/32 |
 | system-design | 45 | 0 | 74 | 119 | 45/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 79 | 79 | 0/47 |
-| **All** | **430** | **0** | **253** | **683** | |
+| **All** | **432** | **0** | **251** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
 ### Next to write (top 5 per subject; full list in PROGRESS.md)
 
 #### dsa
-- [ ] `dsa-oa-strategy` (P0, primer, dsa-start): Cracking Online Assessments: Time, Partial Scores and Hidden Tests
-- [ ] `dsa-contribution-technique` (P0, pattern, dsa-linear): The Contribution Technique: Counting Each Element's Share
 - [ ] `dsa-counting-pairs` (P1, pattern, dsa-search-sort): Counting Pairs: Sort, Two Pointers and Fenwick Trees
 - [ ] `dsa-state-space-search` (P1, pattern, dsa-graphs): Shortest Paths Over States: Keys, Fuel and Stops
 - [ ] `dsa-counting-dp-strings` (P1, pattern, dsa-dp): Counting Valid Strings With DP and a Modulo
+- [ ] `dsa-debugging-unfamiliar-code` (P2, primer, dsa-start): Finding the Bug in Code You Did Not Write
 
 #### cp
 - [ ] `cp-xor-basis` (P2, pattern, cp-math): XOR Basis: Linear Algebra Over Bits
