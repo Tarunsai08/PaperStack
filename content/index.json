@@ -1,7 +1,7 @@
 {
- "content_version": "0df061d5f30e813a",
+ "content_version": "fd21cb87a1604f3c",
  "generated_at": "2026-11-03",
- "count": 537,
+ "count": 539,
  "subjects": [
   {
    "id": "ml",
@@ -56532,6 +56532,188 @@
    "hash": "618ec1f38e09",
    "word_count": 1000,
    "excerpt": "Fundamentals rounds and online assessments reuse the same handful of SQL questions with new table names. Know them, and you can answer in two minutes; miss the twist in each, and a plausible query silently returns the wrong rows. The twists are always the same three: ties, NULLs and \"no such row\".…"
+  },
+  {
+   "id": "cs-core-functional-dependencies",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "functional-dependencies",
+   "title": "If You Know the Roll Number, You Know the Name",
+   "subtitle": "Functional dependencies, attribute closure, finding every candidate key, and Armstrong's axioms, with a worked example that has four keys",
+   "track": "cs-dbms",
+   "track_order": 9,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-relational-keys"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "dbms",
+    "functional dependencies",
+    "closure",
+    "candidate keys",
+    "armstrong axioms"
+   ],
+   "glossary": [
+    {
+     "term": "Functional dependency",
+     "definition": "X → Y means any two rows that agree on the attributes X must also agree on Y; X determines Y."
+    },
+    {
+     "term": "Attribute closure",
+     "definition": "X⁺, the set of all attributes that X determines, found by repeatedly applying the dependencies until nothing new is added."
+    },
+    {
+     "term": "Armstrong's axioms",
+     "definition": "Three inference rules (reflexivity, augmentation, transitivity) that derive every dependency implied by a given set."
+    },
+    {
+     "term": "Prime attribute",
+     "definition": "An attribute that belongs to at least one candidate key."
+    },
+    {
+     "term": "Minimal cover",
+     "definition": "An equivalent set of dependencies with single attributes on the right, no redundant left-side attributes and no redundant dependencies."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "R(A, B, C, D, E) with A → B, B → C, CD → E, E → A. What is the closure of {A}?",
+     "options": [
+      "{A}",
+      "{A, B, C}",
+      "{A, B, C, D, E}",
+      "{A, B}"
+     ],
+     "answer": 1,
+     "explain": "A gives B, B gives C. CD → E needs D, which nothing provides, so the closure stops at {A, B, C}."
+    },
+    {
+     "q": "In the same relation, D never appears on the right side of any dependency. What follows?",
+     "options": [
+      "D is not needed in any key",
+      "D must be part of every candidate key",
+      "D is a foreign key",
+      "D determines everything"
+     ],
+     "answer": 1,
+     "explain": "Nothing can produce D, so any set whose closure contains D must already contain D."
+    },
+    {
+     "q": "Which rule lets you go from roll → name to (roll, course) → (name, course)?",
+     "options": [
+      "Transitivity",
+      "Augmentation",
+      "Reflexivity",
+      "Decomposition"
+     ],
+     "answer": 1,
+     "explain": "Augmentation adds the same attributes to both sides of a dependency."
+    }
+   ],
+   "cover_seed": "functional-dependencies",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.88,
+   "path": "cs-core/functional-dependencies.md",
+   "hash": "d15f34c59d97",
+   "word_count": 1257,
+   "excerpt": "The exam cell keeps one huge sheet: roll number, name, course, instructor, instructor's department, grade. A student takes five courses, so their name is typed five times. One day it is corrected in three rows and not the other two. Now the database says the same roll number belongs to two…"
+  },
+  {
+   "id": "cs-core-normalization",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "normalization",
+   "title": "Splitting a Messy Notebook Into Tidy Ledgers",
+   "subtitle": "Normalisation from 1NF to BCNF: the three anomalies, partial and transitive dependencies, lossless joins, dependency preservation, and when to stop",
+   "track": "cs-dbms",
+   "track_order": 10,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-functional-dependencies"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "dbms",
+    "normalization",
+    "1nf",
+    "2nf",
+    "3nf",
+    "bcnf",
+    "decomposition"
+   ],
+   "glossary": [
+    {
+     "term": "Anomaly",
+     "definition": "A problem caused by storing the same fact in several rows: update, insertion or deletion anomalies."
+    },
+    {
+     "term": "Partial dependency",
+     "definition": "A non-prime attribute that depends on only part of a composite candidate key, such as name depending on roll alone when the key is (roll, course)."
+    },
+    {
+     "term": "Transitive dependency",
+     "definition": "A non-prime attribute that depends on another non-key attribute, such as dept depending on instructor, which depends on course."
+    },
+    {
+     "term": "BCNF",
+     "definition": "Boyce–Codd normal form: for every non-trivial dependency X → Y, X is a super key."
+    },
+    {
+     "term": "Lossless decomposition",
+     "definition": "A split of a table whose natural join gives back exactly the original rows, with no spurious ones."
+    },
+    {
+     "term": "Dependency preservation",
+     "definition": "A decomposition where every original dependency can be checked inside a single smaller table."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Key (roll, course); roll → name. Which normal form does this violate first?",
+     "options": [
+      "1NF",
+      "2NF",
+      "3NF only",
+      "BCNF only"
+     ],
+     "answer": 1,
+     "explain": "name, a non-prime attribute, depends on part of the composite key: a partial dependency, forbidden by 2NF."
+    },
+    {
+     "q": "R(A, B) is split into R1 and R2. When is a split of R into R1 and R2 guaranteed lossless?",
+     "options": [
+      "Always",
+      "When their common attributes form a key of R1 or of R2",
+      "When they have no common attributes",
+      "When both are in BCNF"
+     ],
+     "answer": 1,
+     "explain": "If the shared columns are a key of one side, each row of the other side matches at most one row, so no spurious rows appear."
+    },
+    {
+     "q": "(student, course, instructor) with instructor → course and (student, course) → instructor. Why is it in 3NF but not BCNF?",
+     "options": [
+      "It has a partial dependency",
+      "instructor is not a super key, but course is prime, which 3NF allows and BCNF does not",
+      "It has repeating groups",
+      "It is in BCNF"
+     ],
+     "answer": 1,
+     "explain": "3NF allows X → A when A is prime; course is part of the key (student, course). BCNF requires every determinant to be a super key."
+    }
+   ],
+   "cover_seed": "normalization",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.9,
+   "path": "cs-core/normalization.md",
+   "hash": "681145516147",
+   "word_count": 1345,
+   "excerpt": "Back to the exam cell's sheet from the last article: roll, name, course, instructor, instructor's department, grade, all in one table. It looks convenient. Then three things happen in one week. Asha's name is corrected in three of her five rows (an update anomaly). A new course with an assigned…"
   }
  ]
 }
