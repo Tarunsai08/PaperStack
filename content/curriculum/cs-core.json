@@ -1254,8 +1254,8 @@
    "prerequisites": [
     "cs-core-ip-addressing"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Private to public translation",
@@ -1444,8 +1444,8 @@
    "prerequisites": [
     "cs-core-http-https"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Firewalls",

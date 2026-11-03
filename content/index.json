@@ -1,7 +1,7 @@
 {
- "content_version": "81ac413f9c910835",
+ "content_version": "14fedab5f203df41",
  "generated_at": "2026-11-03",
- "count": 568,
+ "count": 570,
  "subjects": [
   {
    "id": "ml",
@@ -58701,6 +58701,94 @@
    "excerpt": "A packet leaving your laptop for a server on another continent passes through a dozen or more routers. None of them knows the whole path. Each one looks at the destination address, picks a next hop from its table, and forgets the packet. Yet the hops add up to a sensible route, and when a cable is…"
   },
   {
+   "id": "cs-core-nat-dhcp",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "nat-dhcp",
+   "title": "An Office Receptionist Forwarding Calls to Extensions",
+   "subtitle": "NAT and DHCP: how a whole hostel shares one public IP address through a port-mapping table, why that breaks incoming connections, and the four-message DORA exchange that hands out addresses",
+   "track": "cs-networks",
+   "track_order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-ip-addressing"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 6,
+   "topics": [
+    "computer networks",
+    "nat",
+    "dhcp",
+    "private addresses",
+    "port forwarding"
+   ],
+   "glossary": [
+    {
+     "term": "NAT",
+     "definition": "Network address translation: a router rewrites private source addresses (and ports) to its public address on the way out, and reverses the change for replies."
+    },
+    {
+     "term": "NAT table",
+     "definition": "The router's record of active translations, mapping each public port back to a private address and port."
+    },
+    {
+     "term": "Port forwarding",
+     "definition": "A manual NAT rule that sends incoming connections on a public port to a chosen private address and port."
+    },
+    {
+     "term": "DHCP",
+     "definition": "Dynamic Host Configuration Protocol: hands a joining device an IP address, subnet mask, default gateway and DNS servers, for a limited lease time."
+    },
+    {
+     "term": "Lease",
+     "definition": "The period for which a DHCP-assigned address is valid; the client renews it before it expires."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Two laptops, 192.168.1.5 and 192.168.1.6, both use source port 50000 to reach the same web server. How does the NAT router keep the replies apart?",
+     "options": [
+      "It cannot",
+      "It maps them to different public ports, such as 40001 and 40002, and records both in its NAT table",
+      "It uses MAC addresses on the internet",
+      "It sends replies to both laptops"
+     ],
+     "answer": 1,
+     "explain": "Port address translation gives each inside connection its own public port, so replies can be matched back."
+    },
+    {
+     "q": "What are the four DHCP messages, in order?",
+     "options": [
+      "Request, Offer, Discover, Ack",
+      "Discover, Offer, Request, Acknowledge",
+      "Offer, Discover, Ack, Request",
+      "Hello, Offer, Accept, Done"
+     ],
+     "answer": 1,
+     "explain": "DORA: the client discovers servers, a server offers an address, the client requests it, and the server acknowledges."
+    },
+    {
+     "q": "Why can't someone on the internet simply connect to a game server running on your laptop behind home NAT?",
+     "options": [
+      "Games use UDP",
+      "The router has no NAT table entry for an unsolicited incoming connection, so it does not know which inside device should get it",
+      "Laptops cannot run servers",
+      "Firewalls block all games"
+     ],
+     "answer": 1,
+     "explain": "Translations are created by outgoing traffic. Incoming connections need port forwarding, UPnP or NAT traversal techniques."
+    }
+   ],
+   "cover_seed": "nat-dhcp",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.72,
+   "path": "cs-core/nat-dhcp.md",
+   "hash": "1ca1a1bb7d23",
+   "word_count": 1247,
+   "excerpt": "Your hostel has three hundred phones and laptops online, all browsing at the same time. The internet provider gave the hostel one public IPv4 address. Every reply from every website comes back to that single address, yet each one reaches the right phone. And when your phone joined the hostel Wi-Fi,…"
+  },
+  {
    "id": "cs-core-tcp-deep-dive",
    "kind": "deep-dive",
    "subject": "cs-core",
@@ -59160,6 +59248,99 @@
    "hash": "8095078ae203",
    "word_count": 1231,
    "excerpt": "Computers route packets to numbers like 203.0.113.10 or 2001:db8::10 (the addresses in this article come from ranges reserved for documentation). People type names like example.com. Somewhere between your keyboard and the first packet, a name has to become a number, and it usually happens in a few…"
+  },
+  {
+   "id": "cs-core-network-security",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "network-security",
+   "title": "Locks, Guards and Private Corridors",
+   "subtitle": "Network security basics: stateless and stateful firewalls with a rule list traced packet by packet, VPN tunnels, and the classic attacks (spoofing, man-in-the-middle, DDoS) with the defence for each",
+   "track": "cs-networks",
+   "track_order": 12,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-http-https"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "computer networks",
+    "security",
+    "firewall",
+    "vpn",
+    "ddos",
+    "mitm"
+   ],
+   "glossary": [
+    {
+     "term": "Firewall",
+     "definition": "A device or program that allows or blocks traffic according to rules on addresses, ports, protocols and connection state."
+    },
+    {
+     "term": "Stateful firewall",
+     "definition": "A firewall that tracks connections, so replies to allowed outgoing connections are let in automatically while unsolicited traffic is blocked."
+    },
+    {
+     "term": "VPN",
+     "definition": "Virtual private network: an encrypted tunnel that carries packets between a device and a remote network across an untrusted network."
+    },
+    {
+     "term": "Spoofing",
+     "definition": "Forging an identity field, such as a packet's source IP address or an ARP reply, to impersonate another host."
+    },
+    {
+     "term": "Man-in-the-middle",
+     "definition": "An attack where the attacker secretly relays, reads or alters traffic between two parties who believe they are talking directly."
+    },
+    {
+     "term": "DDoS",
+     "definition": "Distributed denial of service: overwhelming a target's bandwidth, connection tables or servers with traffic from many sources."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Rules are checked top to bottom, first match wins: (1) allow TCP to port 443, (2) allow TCP to port 22 from 10.0.0.0/8, (3) deny everything. A packet arrives from 198.51.100.9 to port 22. What happens?",
+     "options": [
+      "Allowed by rule 1",
+      "Allowed by rule 2",
+      "Denied by rule 3",
+      "Allowed because SSH is safe"
+     ],
+     "answer": 2,
+     "explain": "Rule 1 is for port 443; rule 2 needs a 10.x.x.x source. Only rule 3 matches."
+    },
+    {
+     "q": "Why does HTTPS defeat most man-in-the-middle attacks on public Wi-Fi?",
+     "options": [
+      "Wi-Fi encryption is strong",
+      "The attacker cannot present a valid certificate for the real site, so the browser refuses or warns, and the traffic is encrypted end to end",
+      "HTTPS hides IP addresses",
+      "Public Wi-Fi blocks attackers"
+     ],
+     "answer": 1,
+     "explain": "Even if the attacker controls the network path, TLS authenticates the server and encrypts the content."
+    },
+    {
+     "q": "Why are DNS and NTP servers abused for amplification DDoS attacks?",
+     "options": [
+      "They are slow",
+      "They answer small UDP requests with much larger responses, and UDP lets attackers spoof the victim's address as the source",
+      "They use TCP",
+      "They store passwords"
+     ],
+     "answer": 1,
+     "explain": "The attacker sends small spoofed queries; the servers send large replies to the victim."
+    }
+   ],
+   "cover_seed": "network-security",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.75,
+   "path": "cs-core/network-security.md",
+   "hash": "e16860d70044",
+   "word_count": 1182,
+   "excerpt": "You connect to the café's free Wi-Fi, called \"CafeFree\". So does the person at the next table, except their laptop is broadcasting \"CafeFree\" too, and your phone picked theirs because the signal was stronger. Every packet you send now passes through a stranger's machine. What can they see? What can…"
   },
   {
    "id": "cs-core-url-to-page",
