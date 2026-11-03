@@ -1,7 +1,7 @@
 {
- "content_version": "794f3d9642d7ad86",
+ "content_version": "596ec8d7d0efb1ea",
  "generated_at": "2026-11-03",
- "count": 524,
+ "count": 525,
  "subjects": [
   {
    "id": "ml",
@@ -49718,6 +49718,99 @@
    "hash": "7c29af2163b4",
    "word_count": 1176,
    "excerpt": "Your database can serve about 60,000 reads per second before it struggles. Your product serves 1 million. The difference is a cache cluster answering 95% of reads from memory. That makes the cache not an optimisation but a load-bearing wall. Now picture one of its 32 nodes failing at peak. Predict…"
+  },
+  {
+   "id": "system-design-stock-exchange",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "stock-exchange",
+   "title": "Design a Stock Exchange",
+   "subtitle": "An auctioneer matching bids and asks: the order book, a deterministic matching engine, a sequencer that decides who was first, and fair, fast market data",
+   "track": "sd-cases",
+   "track_order": 27,
+   "priority": "P2",
+   "prerequisites": [
+    "system-design-message-queues"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "stock exchange",
+    "matching engine",
+    "order book",
+    "low latency",
+    "sequencer"
+   ],
+   "glossary": [
+    {
+     "term": "Order book",
+     "definition": "For one symbol, the list of buy orders (bids) sorted from highest price and sell orders (asks) sorted from lowest price, each in time order at the same price."
+    },
+    {
+     "term": "Matching engine",
+     "definition": "The component that takes incoming orders in sequence, matches them against the order book and produces trades."
+    },
+    {
+     "term": "Price-time priority",
+     "definition": "The rule that the best price trades first and, at the same price, the earliest order trades first."
+    },
+    {
+     "term": "Sequencer",
+     "definition": "The component that assigns every incoming order a single global sequence number, fixing the official order of events."
+    },
+    {
+     "term": "Market data",
+     "definition": "The stream of trades and order book changes published to all participants."
+    },
+    {
+     "term": "Deterministic replay",
+     "definition": "Rebuilding exactly the same state by feeding the same sequenced inputs through the same logic, used for recovery and hot standbys."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Asks are 200 shares at ₹100 (A1), 150 at ₹101 (A2), 100 at ₹101 (A3). A buy order for 300 shares limited to ₹101 arrives. What trades?",
+     "options": [
+      "300 at ₹101 from A2 and A3",
+      "200 at ₹100 from A1, then 100 at ₹101 from A2 (the earlier order at ₹101)",
+      "300 at ₹100",
+      "Nothing"
+     ],
+     "answer": 1,
+     "explain": "Best price first (₹100), then at ₹101 the earliest order, A2. A2 is left with 50 shares, and A3 is untouched."
+    },
+    {
+     "q": "Why is a stock's matching engine usually single-threaded?",
+     "options": [
+      "Multithreading is impossible",
+      "Matching must apply orders in one exact sequence; a single thread processing sequenced input in memory is deterministic, fast and avoids locks",
+      "To save power",
+      "Regulations require one CPU"
+     ],
+     "answer": 1,
+     "explain": "Determinism is essential for fairness and recovery. Parallelism comes from running different symbols on different engines."
+    },
+    {
+     "q": "How does an exchange recover the matching engine after a crash without losing state?",
+     "options": [
+      "Ask participants to resend orders",
+      "Replay the durable, sequenced input log through the same deterministic engine, or fail over to a standby that has been replaying the same log",
+      "Restore from a nightly backup only",
+      "Start with an empty book"
+     ],
+     "answer": 1,
+     "explain": "Same inputs in the same order through the same logic produce the same state, so the log is the source of truth."
+    }
+   ],
+   "cover_seed": "stock-exchange",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.6,
+   "path": "system-design/stock-exchange.md",
+   "hash": "ee844e8fef09",
+   "word_count": 1122,
+   "excerpt": "Two traders, in two different cities, send an order to buy the last 100 shares at ₹101 at almost exactly the same instant. One of them gets the shares, the other does not. Millions of rupees can depend on who was \"first\". An exchange's job sounds simple: match buyers and sellers. Its real job is to…"
   },
   {
    "id": "system-design-ad-click-aggregation",
