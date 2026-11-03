@@ -1,7 +1,7 @@
 {
- "content_version": "8f56bae138d76331",
+ "content_version": "4e206ab846053d0a",
  "generated_at": "2026-11-02",
- "count": 387,
+ "count": 390,
  "subjects": [
   {
    "id": "ml",
@@ -33931,6 +33931,361 @@
    "hash": "242d76f5bf39",
    "word_count": 1179,
    "excerpt": "At a sports day, each new runner wants to know the best time among all earlier runners who were younger. Asking every earlier runner is slow when there are 200,000 of them. A scoreboard organised by age answers instantly: look up the best entry in the \"younger than me\" section. Many DPs have that…"
+  },
+  {
+   "id": "cp-scc",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "scc",
+   "title": "One-Way Streets, Found in a Single Walk",
+   "subtitle": "Strongly connected components at contest level: Tarjan's one-pass algorithm with discovery indices, low-links and a stack, why it emits components in reverse topological order, and the reachability check behind Flight Routes Check",
+   "track": "cp-graphs",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-dfs"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "graphs",
+    "strongly connected components",
+    "Tarjan",
+    "DFS",
+    "condensation"
+   ],
+   "complexity": {
+    "time": "O(n + m)",
+    "space": "O(n + m)"
+   },
+   "practice_problems": [
+    {
+     "name": "Planets and Kingdoms",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1683",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Flight Routes Check",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1682",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Coin Collector",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1686",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Discovery index",
+     "definition": "idx[v], the order in which DFS first visits v."
+    },
+    {
+     "term": "Low-link",
+     "definition": "low[v], the smallest discovery index reachable from v's DFS subtree using tree edges and at most one edge to a vertex still on the stack."
+    },
+    {
+     "term": "Tarjan stack",
+     "definition": "A stack of visited vertices whose component has not been finished yet; a component is popped off as a block when its root finishes."
+    },
+    {
+     "term": "Component root",
+     "definition": "The first vertex of an SCC visited by DFS, recognised when it finishes with low[v] = idx[v]."
+    },
+    {
+     "term": "Reverse topological emission",
+     "definition": "Tarjan's algorithm completes sink components first, so the order components are found in is a reverse topological order of the condensation."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "When does Tarjan's algorithm pop a component off its stack?",
+     "options": [
+      "When the stack is full",
+      "When a vertex v finishes with low[v] = idx[v]: v is the root of its component, and everything above it on the stack belongs to that component",
+      "After every edge",
+      "At the end of the whole DFS only"
+     ],
+     "answer": 1,
+     "explain": "low[v] = idx[v] means nothing in v's subtree reaches above v through vertices still unassigned, so v and the vertices pushed after it form a closed component."
+    },
+    {
+     "q": "Why does an edge to an already-visited vertex only update low if that vertex is still on the stack?",
+     "options": [
+      "For speed",
+      "A visited vertex no longer on the stack already belongs to a finished component, which cannot be part of the current one, so it must not lower low",
+      "Because of recursion",
+      "It always updates low"
+     ],
+     "answer": 1,
+     "explain": "Finished components are closed: no path leads from them back to the current vertex. Letting them lower low would merge components that are not mutually reachable."
+    },
+    {
+     "q": "In which order does Tarjan's algorithm find components?",
+     "options": [
+      "Random",
+      "Reverse topological order of the condensation: sink components first",
+      "Topological order",
+      "By size"
+     ],
+     "answer": 1,
+     "explain": "A component is emitted only when everything reachable from it has been explored and emitted. So the components it points to come out before it."
+    }
+   ],
+   "cover_seed": "cp-scc",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.74,
+   "path": "cp/scc.md",
+   "hash": "52aaf77c845a",
+   "word_count": 1252,
+   "excerpt": "A city of one-way streets falls apart into neighbourhoods you can drive around in loops, joined by streets you can only use in one direction. Kosaraju's algorithm, from One-Way Streets and the Loops Between Them, finds those neighbourhoods with two DFS passes and a reversed graph. Contest code…"
+  },
+  {
+   "id": "cp-bridges-articulation",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "bridges-articulation",
+   "title": "The Bridges and Junctions a City Cannot Lose",
+   "subtitle": "Bridges and articulation points at contest scale: one low-link DFS for both, the multi-edge trap, an iterative DFS that survives 10⁵ vertices, the bridge tree, and orienting every road so the city stays strongly connected",
+   "track": "cp-graphs",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-dfs"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 9,
+   "topics": [
+    "graphs",
+    "bridges",
+    "articulation points",
+    "low-link",
+    "DFS",
+    "2-edge-connected components"
+   ],
+   "complexity": {
+    "time": "O(n + m)",
+    "space": "O(n + m)"
+   },
+   "practice_problems": [
+    {
+     "name": "Necessary Roads",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2076",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Necessary Cities",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2077",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Strongly Connected Edges",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2177",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Bertown roads",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/118/E",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Bridge",
+     "definition": "An edge whose removal increases the number of connected components."
+    },
+    {
+     "term": "Articulation point",
+     "definition": "A vertex whose removal, together with its edges, increases the number of connected components; also called a cut vertex."
+    },
+    {
+     "term": "Entry time",
+     "definition": "tin[v], the moment DFS first reaches v; ancestors always have smaller entry times than their descendants."
+    },
+    {
+     "term": "Low-link",
+     "definition": "low[v], the smallest entry time reachable from v's DFS subtree using tree edges downward and at most one non-tree edge, never reusing the edge v arrived by."
+    },
+    {
+     "term": "Back edge",
+     "definition": "A non-tree edge of an undirected DFS; it always joins a vertex to one of its ancestors."
+    },
+    {
+     "term": "2-edge-connected component",
+     "definition": "A maximal set of vertices that stays connected after removing any single edge; the pieces left when every bridge is deleted."
+    },
+    {
+     "term": "Bridge tree",
+     "definition": "The graph whose nodes are 2-edge-connected components and whose edges are the bridges; it is always a forest."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A tree edge p → v is a bridge exactly when which condition holds?",
+     "options": [
+      "low[v] ≥ tin[p]",
+      "low[v] > tin[p]: nothing in v's subtree can climb to p or above without the edge p–v",
+      "tin[v] > tin[p]",
+      "v has two children"
+     ],
+     "answer": 1,
+     "explain": "If some vertex below v had another edge reaching p or higher, removing p–v would leave a second route. The strict inequality says no such route exists."
+    },
+    {
+     "q": "Why must the parent edge be skipped by edge id rather than by parent vertex?",
+     "options": [
+      "It is faster",
+      "With two parallel edges between p and v, the second one is a genuine second route; skipping by vertex throws it away and wrongly reports a bridge",
+      "Vertex ids can repeat",
+      "It only matters for directed graphs"
+     ],
+     "answer": 1,
+     "explain": "Skipping by vertex ignores every edge to the parent, including parallel copies. Skipping only the exact edge used to arrive keeps the copies, which correctly lower low[v]."
+    },
+    {
+     "q": "When is the DFS root an articulation point?",
+     "options": [
+      "When low[root] = 0",
+      "When it has at least two DFS children, because those subtrees have no edges between them",
+      "Always",
+      "When it lies on a bridge"
+     ],
+     "answer": 1,
+     "explain": "In an undirected DFS there are no edges between different subtrees of a vertex. Two children of the root can only meet through the root, so removing it splits them."
+    }
+   ],
+   "cover_seed": "cp-bridges-articulation",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.76,
+   "path": "cp/bridges-articulation.md",
+   "hash": "5fc44fe2adc4",
+   "word_count": 1936,
+   "excerpt": "A city engineer is given a map of roads and asked two questions before the flood season. Which single road, if washed away, would cut some neighbourhood off from the rest? Which single junction, if it had to close, would do the same? Trying every road one at a time costs a full search per road,…"
+  },
+  {
+   "id": "cp-two-sat",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "two-sat",
+   "title": "Seating Rules Turned Into One-Way Arrows",
+   "subtitle": "2-SAT for contests: turning each either-or rule into two implications, why a variable and its negation in one strongly connected component means impossible, and how Tarjan's component order hands you a valid assignment",
+   "track": "cp-graphs",
+   "track_order": 3,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-scc"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "graphs",
+    "2-SAT",
+    "implication graph",
+    "strongly connected components",
+    "Tarjan"
+   ],
+   "complexity": {
+    "time": "O(n + m)",
+    "space": "O(n + m)"
+   },
+   "practice_problems": [
+    {
+     "name": "Giant Pizza",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1684",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "The Door Problem",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/776/D",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "The Road to Berland is Paved With Good Intentions",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/228/E",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Literal",
+     "definition": "A variable or its negation, such as x or ¬x; 2-SAT stores literal 2x for x and 2x + 1 for ¬x, so negation is xor with 1."
+    },
+    {
+     "term": "Clause",
+     "definition": "A rule of the form (a ∨ b) on two literals: at least one of them must be true."
+    },
+    {
+     "term": "Implication graph",
+     "definition": "A directed graph on the 2n literals with edges ¬a → b and ¬b → a for every clause (a ∨ b)."
+    },
+    {
+     "term": "Contrapositive",
+     "definition": "The implication ¬b → ¬a, which is logically equivalent to a → b; every edge of the implication graph comes with its contrapositive."
+    },
+    {
+     "term": "Skew symmetry",
+     "definition": "The property that u → v is an edge exactly when ¬v → ¬u is, so the implication graph looks the same after negating every literal and reversing every edge."
+    },
+    {
+     "term": "Condensation order",
+     "definition": "A topological order of the strongly connected components; Tarjan's algorithm numbers components in the reverse of such an order."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Which edges does the clause (a ∨ b) add to the implication graph?",
+     "options": [
+      "a → b and b → a",
+      "¬a → b and ¬b → a: if one literal is false, the other must be true",
+      "a → ¬b only",
+      "¬a → ¬b and ¬b → ¬a"
+     ],
+     "answer": 1,
+     "explain": "The clause fails only when both are false. So a false forces b true, and b false forces a true. Those are exactly the two edges."
+    },
+    {
+     "q": "When is a 2-SAT instance unsatisfiable?",
+     "options": [
+      "When the implication graph has a cycle",
+      "When some variable x and its negation ¬x lie in the same strongly connected component",
+      "When there are more clauses than variables",
+      "When a literal has no outgoing edges"
+     ],
+     "answer": 1,
+     "explain": "Same component means x forces ¬x and ¬x forces x, so neither value is possible. If no variable has this, a valid assignment always exists."
+    },
+    {
+     "q": "With Tarjan's component ids, which rule gives a valid assignment?",
+     "options": [
+      "x is true if comp[x] > comp[¬x]",
+      "x is true if comp[x] < comp[¬x], because Tarjan ids are in reverse topological order, so a smaller id means later in topological order",
+      "x is always true",
+      "x is true if x was visited first"
+     ],
+     "answer": 1,
+     "explain": "We want each variable's chosen literal to come later in topological order than its negation. Tarjan emits sink components first, so later in topological order means a smaller id."
+    }
+   ],
+   "cover_seed": "cp-two-sat",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.68,
+   "path": "cp/two-sat.md",
+   "hash": "6f6af6361804",
+   "word_count": 1588,
+   "excerpt": "A wedding planner has two rooms, the garden and the hall, and every guest goes into exactly one. The families send in rules, each naming two placements of which at least one must happen: \"Asha in the garden or Ben in the garden\", \"Asha in the hall or Chen in the hall\". Can every rule be honoured,…"
   },
   {
    "id": "cp-string-hashing",
