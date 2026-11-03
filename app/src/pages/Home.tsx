@@ -1,18 +1,16 @@
 import { ArrowRight, Flame, Map as MapIcon, Settings as SettingsIcon } from 'lucide-react';
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { ArticleCard } from '../components/ArticleCard';
 import { ArticleCover } from '../components/ArticleCover';
-import { SectionTitle } from '../components/Headers';
+import { ArticleRow, ProgressBar } from '../components/ArticleRow';
 import { Page } from '../components/Page';
 import { PullToRefresh } from '../components/PullToRefresh';
 import { CardSkeleton, ListSkeleton, Skeleton } from '../components/Skeleton';
-import { SubjectCard } from '../components/SubjectCard';
 import { syncContent } from '../lib/contentSync';
-import { continueReading, effectiveStreak, localDay, nextInPath } from '../lib/progress';
+import { continueReading, effectiveStreak, nextInPath, trackProgress } from '../lib/progress';
 import { useStore } from '../lib/storage';
 import { toast } from '../lib/toast';
-import type { Article } from '../lib/types';
+import type { Article, Subject } from '../lib/types';
 import { useContent } from '../lib/useContent';
 
 function greeting(d = new Date()): string {
@@ -21,10 +19,6 @@ function greeting(d = new Date()): string {
   if (h < 12) return 'Good morning';
   if (h < 17) return 'Good afternoon';
   return 'Good evening';
-}
-
-function dayNumber(day: string): number {
-  return Math.floor(Date.parse(`${day}T00:00:00Z`) / 86_400_000);
 }
 
 export default function Home() {
@@ -37,29 +31,29 @@ export default function Home() {
   const next = useMemo(() => nextInPath(path, progress), [path, progress]);
   const upNext = next && next.id !== cont?.id ? next : path.find((a) => !progress[a.id]?.completedAt && a.id !== cont?.id);
 
-  const featured = useMemo(() => {
-    const skip = new Set([cont?.id, upNext?.id]);
-    const pool = path
-      .filter((a) => a.kind !== 'primer' && !skip.has(a.id))
-      .sort((a, b) => b.importance_score - a.importance_score)
-      .slice(0, 14);
-    const unread = pool.filter((a) => !progress[a.id]?.completedAt);
-    const list = unread.length ? unread : pool;
-    return list.length ? list[dayNumber(localDay()) % list.length] : undefined;
-  }, [path, progress, cont?.id, upNext?.id]);
+  const primary = cont ?? upNext;
+  const prefs = useStore('prefs');
+  const focus = useMemo(() => {
+    const active = subjects.filter((x) => x.status === 'active');
+    return active.find((x) => x.id === prefs.subject) ?? (primary ? active.find((x) => x.id === primary.subject) : undefined) ?? active[0];
+  }, [subjects, prefs.subject, primary]);
+  const upNextList = useMemo(
+    () => (focus ? content.pathInSubject(focus.id).filter((a) => !progress[a.id]?.completedAt && a.id !== primary?.id).slice(0, 3) : []),
+    [content, focus, progress, primary?.id],
+  );
 
   const recent = useMemo(() => {
-    const officialSkip = new Set([featured?.id]);
+    const skip = new Set([primary?.id, ...upNextList.map((a) => a.id)]);
     return [...path]
-      .filter((a) => !officialSkip.has(a.id))
+      .filter((a) => !skip.has(a.id))
       .sort(
         (a, b) =>
           sourceRank(b) - sourceRank(a) ||
           b.generated_at.localeCompare(a.generated_at) ||
           b.importance_score - a.importance_score,
       )
-      .slice(0, 4);
-  }, [path, featured?.id]);
+      .slice(0, 3);
+  }, [path, primary?.id, upNextList]);
 
   const done = path.filter((a) => progress[a.id]?.completedAt).length;
   const s = effectiveStreak(streak);
@@ -115,71 +109,75 @@ export default function Home() {
         </header>
 
         {!content.ready ? (
-          <div className="space-y-8 px-5 pt-4">
-            <Skeleton className="h-28 w-full rounded-card" />
+          <div className="space-y-6 px-5 pt-4">
+            <Skeleton className="h-24 w-full rounded-card" />
             <CardSkeleton />
             <ListSkeleton rows={3} />
           </div>
         ) : (
-          <div className="space-y-10 pt-4">
-            {cont && <ContinueCard article={cont} pct={progress[cont.id]?.scrollPct ?? 0} accent={trackById.get(cont.track)?.accent} />}
-
-            {upNext && (
-              <section className="px-5">
-                <p className="chrome mb-3 text-[12px] font-semibold uppercase tracking-[0.08em] text-muted">
-                  {done === 0 && !cont ? 'Start here' : 'Up next on your path'}
-                </p>
-                <UpNextCard article={upNext} accent={trackById.get(upNext.track)?.accent} />
-              </section>
-            )}
-
-            {featured && (
-              <section className="px-5">
-                <p className="chrome mb-3 text-[12px] font-semibold uppercase tracking-[0.08em] text-muted">Today's pick</p>
-                <ArticleCard article={featured} variant="featured" />
+          <div className="space-y-6 px-5 pb-6 pt-2">
+            {primary && (
+              <section>
+                <Label>{cont ? 'Continue reading' : done === 0 ? 'Start here' : 'Up next'}</Label>
+                <PrimaryCard article={primary} pct={progress[primary.id]?.scrollPct ?? 0} accent={trackById.get(primary.track)?.accent} />
               </section>
             )}
 
             <section>
-              <SectionTitle
-                action={
-                  <Link to="/learn" className="press flex h-11 items-center gap-1 text-[14px] font-semibold text-brand-ink">
-                    See paths <ArrowRight size={16} />
-                  </Link>
-                }
-              >
-                Your subjects
-              </SectionTitle>
-              <div className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-3 scroll-px-5">
+              <Label>Subjects</Label>
+              <div className="grid grid-cols-2 gap-3">
                 {subjects.map((sub) => (
-                  <SubjectCard key={sub.id} subject={sub} articles={content.pathInSubject(sub.id)} />
+                  <SubjectTile key={sub.id} subject={sub} articles={content.pathInSubject(sub.id)} />
                 ))}
-              </div>
-              <div className="px-5 pt-2">
-                <Link
-                  to="/roadmap"
-                  className="press flex items-center gap-4 rounded-card border border-line bg-surface p-4 shadow-card"
-                >
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand/12 text-brand-ink">
-                    <MapIcon size={22} />
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block text-[16px] font-semibold leading-snug">Placement Roadmap</span>
-                    <span className="mt-0.5 block text-[13.5px] leading-snug text-muted">A 6 or 12 month plan across every subject</span>
-                  </span>
-                  <ArrowRight size={18} className="shrink-0 text-muted" />
-                </Link>
               </div>
             </section>
 
-            <section>
-              <SectionTitle>Recently added</SectionTitle>
-              <div className="space-y-6 px-5">
-                {recent.map((a) => (
-                  <ArticleCard key={a.id} article={a} variant="row" />
-                ))}
-              </div>
-            </section>
+            {upNextList.length > 0 && focus && (
+              <section>
+                <Label
+                  action={
+                    <Link to={`/learn?subject=${focus.id}`} className="press flex h-8 items-center gap-1 text-[13px] font-semibold text-brand-ink">
+                      Open path <ArrowRight size={15} />
+                    </Link>
+                  }
+                >
+                  Up next in {focus.short}
+                </Label>
+                <div className="divide-y divide-line rounded-card border border-line bg-surface px-3">
+                  {upNextList.map((a) => (
+                    <ArticleRow key={a.id} article={a} index={a.track_order} accent={trackById.get(a.track)?.accent ?? focus.accent} />
+                  ))}
+                </div>
+              </section>
+            )}
+
+            <Link to="/roadmap" className="press flex items-center gap-3 rounded-card border border-line bg-surface px-4 py-3">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand/12 text-brand-ink">
+                <MapIcon size={18} />
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block text-[15px] font-semibold leading-snug">Placement Roadmap</span>
+                <span className="block text-[12.5px] leading-snug text-muted">A 6 or 12 month plan across every subject</span>
+              </span>
+              <ArrowRight size={17} className="shrink-0 text-muted" />
+            </Link>
+
+            {recent.length > 0 && (
+              <section>
+                <Label>Recently added</Label>
+                <div className="divide-y divide-line rounded-card border border-line bg-surface px-3">
+                  {recent.map((a) => (
+                    <ArticleRow
+                      key={a.id}
+                      article={a}
+                      index={a.track_order}
+                      accent={trackById.get(a.track)?.accent ?? '#FF6719'}
+                      showTrack={trackById.get(a.track)?.title}
+                    />
+                  ))}
+                </div>
+              </section>
+            )}
           </div>
         )}
       </PullToRefresh>
@@ -201,42 +199,68 @@ export function Logo({ size = 28 }: { size?: number }) {
   );
 }
 
-function ContinueCard({ article, pct, accent = '#FF6719' }: { article: Article; pct: number; accent?: string }) {
-  const left = Math.max(1, Math.ceil(article.read_minutes * (1 - pct)));
+function Label({ children, action }: { children: ReactNode; action?: ReactNode }) {
   return (
-    <section className="px-5">
-      <p className="chrome mb-3 text-[12px] font-semibold uppercase tracking-[0.08em] text-muted">Continue reading</p>
-      <Link to={`/article/${article.id}`} className="press flex items-center gap-4 rounded-card border border-line bg-surface p-3 shadow-card">
-        <ArticleCover article={article} className="h-[76px] w-[76px] shrink-0 rounded-xl" />
-        <div className="min-w-0 flex-1">
-          <p className="line-clamp-2 font-serif text-[16.5px] font-semibold leading-snug">{article.title}</p>
-          <div className="mt-2 flex items-center gap-2.5">
-            <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-line">
-              <div className="h-full rounded-full" style={{ width: `${Math.round(pct * 100)}%`, background: accent }} />
-            </div>
-            <span className="shrink-0 text-[12.5px] font-medium text-muted">{left} min left</span>
-          </div>
-        </div>
-      </Link>
-    </section>
+    <div className="chrome mb-2 flex h-8 items-center justify-between">
+      <h2 className="text-[12px] font-semibold uppercase tracking-[0.08em] text-muted">{children}</h2>
+      {action}
+    </div>
   );
 }
 
-function UpNextCard({ article }: { article: Article; accent?: string }) {
+/** The one primary card on Home: continue the article in progress, or start the next one. */
+function PrimaryCard({ article, pct, accent = '#FF6719' }: { article: Article; pct: number; accent?: string }) {
   const { trackById } = useContent();
+  const started = pct > 0.02;
+  const left = Math.max(1, Math.ceil(article.read_minutes * (1 - pct)));
   return (
-    <Link to={`/article/${article.id}`} className="press block overflow-hidden rounded-card border border-line bg-surface shadow-card">
-      <ArticleCover article={article} className="aspect-[16/8] w-full" />
-      <div className="p-4">
-        <p className="text-[12.5px] font-medium text-muted">
-          {trackById.get(article.track)?.title} · Part {article.track_order} · {article.read_minutes} min
-        </p>
-        <h3 className="mt-1 font-serif text-[21px] font-semibold leading-tight">{article.title}</h3>
-        <p className="mt-1 text-[15px] leading-snug text-muted">{article.subtitle}</p>
-        <span className="mt-4 inline-flex h-11 items-center gap-2 rounded-full bg-brand-btn px-5 text-[15px] font-semibold text-white">
-          Start reading <ArrowRight size={17} />
+    <Link to={`/article/${article.id}`} className="press block rounded-card border border-line bg-surface p-3 shadow-card">
+      <div className="flex items-center gap-3">
+        <ArticleCover article={article} className="h-[72px] w-[72px] shrink-0 rounded-xl" />
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-[12.5px] font-medium text-muted">
+            {trackById.get(article.track)?.title} · Part {article.track_order}
+          </p>
+          <p className="mt-0.5 line-clamp-2 font-serif text-[17px] font-semibold leading-snug">{article.title}</p>
+        </div>
+      </div>
+      <div className="mt-3 flex items-center gap-3">
+        <div className="flex-1">
+          <ProgressBar pct={started ? pct : 0} color={accent} />
+        </div>
+        <span className="shrink-0 text-[12.5px] font-medium text-muted">{started ? `${left} min left` : `${article.read_minutes} min`}</span>
+        <span className="inline-flex h-9 shrink-0 items-center gap-1.5 rounded-full bg-brand-btn px-4 text-[14px] font-semibold text-white">
+          {started ? 'Continue' : 'Start'} <ArrowRight size={15} />
         </span>
       </div>
+    </Link>
+  );
+}
+
+/** Compact subject tile for the 2-column grid on Home. */
+function SubjectTile({ subject, articles }: { subject: Subject; articles: Article[] }) {
+  const progress = useStore('progress');
+  const p = trackProgress(articles, progress);
+  const soon = subject.status === 'coming-soon';
+  return (
+    <Link
+      to={`/learn?subject=${subject.id}`}
+      className={`press flex min-h-[92px] flex-col justify-between rounded-card border border-line bg-surface p-3 ${soon ? 'opacity-70' : ''}`}
+    >
+      <div className="flex items-start gap-2">
+        <span className="mt-[5px] h-2.5 w-2.5 shrink-0 rounded-full" style={{ background: subject.accent }} aria-hidden />
+        <span className="line-clamp-2 text-[14.5px] font-semibold leading-snug">{subject.title}</span>
+      </div>
+      {soon ? (
+        <span className="text-[12.5px] text-muted">Coming soon</span>
+      ) : (
+        <div>
+          <p className="mb-1.5 text-[12.5px] text-muted">
+            {p.done}/{p.total} read
+          </p>
+          <ProgressBar pct={p.pct} color={subject.accent} />
+        </div>
+      )}
     </Link>
   );
 }
