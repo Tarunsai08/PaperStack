@@ -1,7 +1,7 @@
 {
- "content_version": "cf90e62dfd5d70a7",
+ "content_version": "e4272bad33dbf4ae",
  "generated_at": "2026-11-03",
- "count": 513,
+ "count": 515,
  "subjects": [
   {
    "id": "ml",
@@ -49085,6 +49085,185 @@
    "hash": "33da2fa6c9f1",
    "word_count": 1184,
    "excerpt": "A photographer posts a picture. Within seconds it appears, crisp but small, in the feeds of her followers on slow mobile networks across the country. Ten minutes later it has a million likes, and the like count on every screen keeps ticking up. Three different problems hide in that sentence: moving…"
+  },
+  {
+   "id": "system-design-proximity-service",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "proximity-service",
+   "title": "Design a Nearby Places Service",
+   "subtitle": "Restaurants within walking distance: geospatial cells, searching neighbouring cells, a read-heavy design cached by cell, and the boundary bug everyone hits first",
+   "track": "sd-cases",
+   "track_order": 19,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-geohash",
+    "system-design-database-indexing"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "system design",
+    "proximity",
+    "geohash",
+    "quadtree",
+    "geospatial",
+    "caching"
+   ],
+   "glossary": [
+    {
+     "term": "Geospatial index",
+     "definition": "An index that finds points near a location quickly, for example by grouping points into grid cells or tree nodes by position."
+    },
+    {
+     "term": "Geohash cell",
+     "definition": "A rectangular map cell identified by a string; longer strings mean smaller cells, and nearby points often share a prefix."
+    },
+    {
+     "term": "Radius search",
+     "definition": "Finding all places within a given distance of a point, usually by fetching candidate cells and then filtering by exact distance."
+    },
+    {
+     "term": "Boundary miss",
+     "definition": "Missing a nearby place because it lies in a neighbouring cell across a cell edge, when only the user's own cell was searched."
+    },
+    {
+     "term": "Quadtree",
+     "definition": "A tree that splits map regions into four children until each holds at most a set number of points, so dense areas get small cells."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A user stands near the edge of their geohash cell. A café 50 m away is in the next cell. Searching only the user's cell returns what?",
+     "options": [
+      "The café",
+      "Not the café: a boundary miss; always search the user's cell and its 8 neighbours",
+      "An error",
+      "Everything in the city"
+     ],
+     "answer": 1,
+     "explain": "Cells have edges, and nearby places can sit across them with a different prefix. Searching the 3 × 3 block covers every point within one cell size."
+    },
+    {
+     "q": "Why is a proximity service a good fit for heavy caching?",
+     "options": [
+      "Locations change every second",
+      "Business locations change rarely while searches are very frequent, so results per cell can be cached and reused",
+      "Caches are required for maps",
+      "Users never move"
+     ],
+     "answer": 1,
+     "explain": "Places are mostly static. Caching the list of places per cell turns most searches into cache reads."
+    },
+    {
+     "q": "When is a quadtree better than fixed geohash cells?",
+     "options": [
+      "Never",
+      "When density varies a lot: it splits busy city centres into small cells and leaves empty areas large, keeping candidates per cell balanced",
+      "When data never changes",
+      "When you need string keys"
+     ],
+     "answer": 1,
+     "explain": "Fixed cells may hold thousands of places downtown and none in the countryside. A quadtree adapts cell size to density."
+    }
+   ],
+   "cover_seed": "proximity-service",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.76,
+   "path": "system-design/proximity-service.md",
+   "hash": "9faaf0f6bf4f",
+   "word_count": 1239,
+   "excerpt": "It is lunchtime. You open a food app and tap \"restaurants near me\". In under a second you see twenty places within a kilometre, sorted by distance and rating. The app did not compute the distance from you to all 100 million places in its database. That would be 100 million calculations per search,…"
+  },
+  {
+   "id": "system-design-hotel-reservation",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "hotel-reservation",
+   "title": "Design a Hotel Reservation System",
+   "subtitle": "A register with a row per room type per night: inventory by date, multi-night bookings in one transaction, deliberate overbooking, and the race for the last room",
+   "track": "sd-cases",
+   "track_order": 20,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-ticket-booking"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "hotel reservation",
+    "inventory",
+    "concurrency",
+    "transactions",
+    "overbooking"
+   ],
+   "glossary": [
+    {
+     "term": "Room-type inventory",
+     "definition": "For each hotel, room type and date, the total rooms and how many are reserved; bookings are made against types, not specific rooms."
+    },
+    {
+     "term": "Date-range booking",
+     "definition": "A reservation covering several consecutive nights, which must reserve inventory on every night or on none."
+    },
+    {
+     "term": "Overbooking",
+     "definition": "Deliberately accepting slightly more reservations than rooms, expecting some cancellations and no-shows."
+    },
+    {
+     "term": "Optimistic locking",
+     "definition": "Checking at write time that a row has not changed since it was read (for example with a version number or a condition), and retrying if it has."
+    },
+    {
+     "term": "Idempotency key",
+     "definition": "A unique key for one booking attempt, so retries after timeouts do not create duplicate reservations."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A guest books 3 nights, 10 to 12 November. Two nights have rooms left but 12 November is full. What should happen?",
+     "options": [
+      "Book the two available nights",
+      "Reject the whole booking: the three inventory updates run in one transaction, and the failed night rolls back the others",
+      "Book a different hotel automatically",
+      "Overwrite another guest"
+     ],
+     "answer": 1,
+     "explain": "A date-range booking is all-or-nothing. Partial stays are not what the guest asked for."
+    },
+    {
+     "q": "Why do hotel systems usually reserve room types rather than specific room numbers?",
+     "options": [
+      "Room numbers are secret",
+      "It keeps inventory simple (count per type per night) and lets the hotel assign actual rooms at check-in, maximising flexibility",
+      "Databases cannot store room numbers",
+      "It is required by law"
+     ],
+     "answer": 1,
+     "explain": "Guests care about 'a deluxe double', not room 412. Type-level counts make availability checks and concurrency simpler."
+    },
+    {
+     "q": "With 10% overbooking allowed and 100 deluxe rooms, how many deluxe reservations can be accepted for one night?",
+     "options": [
+      "100",
+      "110",
+      "90",
+      "Unlimited"
+     ],
+     "answer": 1,
+     "explain": "The condition becomes reserved < total × 1.1, so up to 110. The policy accepts the risk of occasionally walking a guest to another hotel."
+    }
+   ],
+   "cover_seed": "hotel-reservation",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.72,
+   "path": "system-design/hotel-reservation.md",
+   "hash": "edd9a744c216",
+   "word_count": 1185,
+   "excerpt": "It is the night before a long weekend. A beach hotel has one deluxe room left for Saturday. Two families, on two different booking sites connected to the same system, press \"Book\" in the same second for Friday to Sunday. The naive code checks availability for each night, sees one room, and inserts…"
   },
   {
    "id": "system-design-oop-solid",

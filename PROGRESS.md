@@ -12,10 +12,10 @@ Read `HANDOFF.md` first if you are picking this project up.
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
-| system-design | 102 | 0 | 17 | 119 | 60/60 |
+| system-design | 104 | 0 | 15 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 16 | 0 | 63 | 79 | 13/47 |
-| **All** | **513** | **0** | **170** | **683** | |
+| **All** | **515** | **0** | **168** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -46,8 +46,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### system-design
 
-- [ ] `system-design-proximity-service` (P1, case-study, sd-cases): Design a Nearby Places Service Like Yelp
-- [ ] `system-design-hotel-reservation` (P1, case-study, sd-cases): Design a Hotel Reservation System
 - [ ] `system-design-ecommerce-checkout` (P1, case-study, sd-cases): Design an E-Commerce Checkout
 - [ ] `system-design-food-delivery` (P1, case-study, sd-cases): Design a Food Delivery App Like Swiggy or Zomato
 - [ ] `system-design-distributed-message-queue` (P1, case-study, sd-cases): Design a Distributed Message Queue Like Kafka
@@ -56,6 +54,8 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `system-design-stock-exchange` (P2, case-study, sd-cases): Design a Stock Exchange
 - [ ] `system-design-ad-click-aggregation` (P2, case-study, sd-cases): Design an Ad Click Aggregator
 - [ ] `system-design-pastebin` (P2, case-study, sd-cases): Design Pastebin
+- [ ] `system-design-online-judge` (P2, case-study, sd-cases): Design an Online Judge Like LeetCode
+- [ ] `system-design-email-service` (P2, case-study, sd-cases): Design an Email Service
 
 ### ml
 
@@ -411,7 +411,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>system-design: 102 written</summary>
+<details><summary>system-design: 104 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -474,6 +474,8 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-job-scheduler` Design a Distributed Job Scheduler
 - [x] `system-design-search-engine` Design a Web Search Engine
 - [x] `system-design-photo-sharing` Design Instagram
+- [x] `system-design-proximity-service` Design a Nearby Places Service Like Yelp
+- [x] `system-design-hotel-reservation` Design a Hotel Reservation System
 - [x] `system-design-oop-solid` Object-Oriented Design and SOLID Principles
 - [x] `system-design-creational-patterns` Creational Patterns: Factory, Builder and Singleton
 - [x] `system-design-structural-patterns` Structural Patterns: Adapter, Decorator, Facade, Proxy

@@ -1895,8 +1895,8 @@
     "famous-algos-geohash",
     "system-design-database-indexing"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Geohash or quadtree",
@@ -1924,8 +1924,8 @@
    "prerequisites": [
     "system-design-ticket-booking"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Inventory per date",
