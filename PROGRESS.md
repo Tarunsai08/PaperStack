@@ -11,11 +11,11 @@ Read `HANDOFF.md` first if you are picking this project up.
 |---|---|---|---|---|---|
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
-| famous-algos | 38 | 0 | 53 | 91 | 31/32 |
+| famous-algos | 39 | 0 | 52 | 91 | 32/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 57 | 0 | 22 | 79 | 34/47 |
-| **All** | **572** | **0** | **111** | **683** | |
+| **All** | **573** | **0** | **110** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -353,7 +353,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>famous-algos: 38 written</summary>
+<details><summary>famous-algos: 39 written</summary>
 
 - [x] `famous-algos-bloom-filter` Bloom Filters: Saying No Without Looking
 - [x] `famous-algos-count-min-sketch` Count-Min Sketch: Counting Billions of Things in Kilobytes
@@ -386,6 +386,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `famous-algos-diffie-hellman` Diffie-Hellman: Agreeing on a Secret in Public
 - [x] `famous-algos-rsa` RSA: Locks Anyone Can Close but Only You Can Open
 - [x] `famous-algos-digital-signatures` Digital Signatures and Certificates: Trust on the Internet
+- [x] `famous-algos-tls-handshake` The TLS Handshake: What Happens Before the Padlock Appears
 - [x] `famous-algos-inverted-index` Inverted Indexes: How Search Finds Pages in Milliseconds
 - [x] `famous-algos-tf-idf-bm25` TF-IDF and BM25: Ranking by Relevance
 - [x] `famous-algos-myers-diff` Myers' Diff: How Git Shows What Changed

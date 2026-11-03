@@ -1,7 +1,7 @@
 {
- "content_version": "ce9c5584850d4fe2",
+ "content_version": "31f91277ad004e74",
  "generated_at": "2026-11-03",
- "count": 572,
+ "count": 573,
  "subjects": [
   {
    "id": "ml",
@@ -42920,6 +42920,100 @@
    "hash": "b7fab850b23c",
    "word_count": 1425,
    "excerpt": "You type your bank's address and a padlock appears. Your browser has never met this server, and the network in between could be a café's Wi-Fi run by anyone. Yet within a fraction of a second it decided: this really is the bank, not someone pretending. That decision rests on two ideas. A digital…"
+  },
+  {
+   "id": "famous-algos-tls-handshake",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "tls-handshake",
+   "title": "What Happens Before the Padlock Appears",
+   "subtitle": "The TLS 1.3 handshake: how two strangers agree on a secret key in one round trip, prove who the server is with a certificate, get forward secrecy for free, and where TLS sits relative to HTTP",
+   "track": "fa-crypto",
+   "track_order": 9,
+   "priority": "P0",
+   "prerequisites": [
+    "famous-algos-digital-signatures",
+    "famous-algos-diffie-hellman"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "tls",
+    "https",
+    "handshake",
+    "diffie-hellman",
+    "certificates",
+    "forward secrecy"
+   ],
+   "glossary": [
+    {
+     "term": "Handshake",
+     "definition": "The opening exchange of a TLS connection, in which the two sides agree on algorithms and keys and the server proves its identity."
+    },
+    {
+     "term": "Key share",
+     "definition": "A side's public Diffie-Hellman value sent in the handshake; combining it with the other side's share yields the same secret on both ends."
+    },
+    {
+     "term": "Certificate",
+     "definition": "A signed statement from a certificate authority binding a domain name to a public key."
+    },
+    {
+     "term": "Session keys",
+     "definition": "The symmetric keys, derived from the shared secret, that encrypt and authenticate the actual application data."
+    },
+    {
+     "term": "Forward secrecy",
+     "definition": "The property that stealing a server's long-term private key later does not decrypt recorded past sessions, because each session used fresh, discarded key shares."
+    },
+    {
+     "term": "AEAD",
+     "definition": "Authenticated encryption with associated data, such as AES-GCM or ChaCha20-Poly1305: encryption that also detects any tampering."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How many network round trips does a fresh TLS 1.3 handshake add before the client can send its first encrypted request?",
+     "options": [
+      "None",
+      "One",
+      "Two",
+      "Three"
+     ],
+     "answer": 1,
+     "explain": "The client sends its key share in the first message, so after the server's reply both sides have the keys. TLS 1.2 typically needed two round trips."
+    },
+    {
+     "q": "What does the server's CertificateVerify message prove?",
+     "options": [
+      "That the client is trusted",
+      "That the server holds the private key matching the certificate, by signing the handshake transcript",
+      "That the certificate is not expired",
+      "That DNS is correct"
+     ],
+     "answer": 1,
+     "explain": "A copied certificate is public; only the real server can sign this handshake's transcript with the matching private key."
+    },
+    {
+     "q": "An attacker records encrypted traffic today and steals the server's private key next year. With TLS 1.3, can they decrypt the recording?",
+     "options": [
+      "Yes, always",
+      "No: session keys came from ephemeral Diffie-Hellman shares that were thrown away; the long-term key only signed the handshake",
+      "Only if the certificate expired",
+      "Only for HTTP/2"
+     ],
+     "answer": 1,
+     "explain": "That is forward secrecy. TLS 1.3 removed the static RSA key exchange that lacked it."
+    }
+   ],
+   "cover_seed": "tls-handshake",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.9,
+   "path": "famous-algos/tls-handshake.md",
+   "hash": "051691ea4362",
+   "word_count": 1398,
+   "excerpt": "You open your bank's website on the café's Wi-Fi. Between your phone and the bank sit the café router, an ISP and a dozen other machines, any of which could read or rewrite your packets. You have never met the bank's server, and you share no secret with it. Yet a fraction of a second later the…"
   },
   {
    "id": "famous-algos-inverted-index",
