@@ -719,8 +719,8 @@
    "prerequisites": [
     "system-design-load-balancers"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Routing, auth, rate limiting at the edge",
@@ -1052,8 +1052,8 @@
    "prerequisites": [
     "system-design-api-gateway"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Team autonomy vs operational cost",
@@ -1083,8 +1083,8 @@
     "system-design-stateless-idempotency",
     "system-design-microservices"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Timeouts everywhere",

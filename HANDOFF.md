@@ -15,10 +15,10 @@ You are continuing a project another Claude session started. Everything you need
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 36 | 0 | 55 | 91 | 29/32 |
-| system-design | 59 | 0 | 60 | 119 | 58/60 |
+| system-design | 62 | 0 | 57 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 8 | 0 | 71 | 79 | 7/47 |
-| **All** | **461** | **0** | **222** | **683** | |
+| **All** | **464** | **0** | **219** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -41,8 +41,8 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `system-design-networking-essentials` (P1, deep-dive, sd-fundamentals): TCP, UDP and QUIC for System Designers
 - [ ] `system-design-proxies` (P1, deep-dive, sd-fundamentals): Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere
 - [ ] `system-design-search-systems` (P1, deep-dive, sd-blocks): Search Systems: Elasticsearch and Inverted Indexes
-- [ ] `system-design-api-gateway` (P1, deep-dive, sd-blocks): API Gateways and Service Discovery
 - [ ] `system-design-storage-types` (P1, deep-dive, sd-blocks): Block, File and Object Storage
+- [ ] `system-design-olap-warehouses` (P1, deep-dive, sd-blocks): Columnar Storage and Data Warehouses
 
 #### ml
 - [ ] `paper-layer-normalization` (P2, paper, deep-learning): Layer Normalization
