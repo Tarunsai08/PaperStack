@@ -1,7 +1,7 @@
 {
- "content_version": "6633e71fea0a4d47",
+ "content_version": "5313634aa2820a8d",
  "generated_at": "2026-11-02",
- "count": 371,
+ "count": 374,
  "subjects": [
   {
    "id": "ml",
@@ -31324,6 +31324,329 @@
    "hash": "874abf98f95c",
    "word_count": 1236,
    "excerpt": "A receptionist at a row of small hotels gets a stream of tour groups. Each group must go, whole, to the first hotel in the row that still has enough free rooms. If none does, the group is turned away. Scanning the row for every group works on a quiet day; with 200,000 hotels and 200,000 groups, the…"
+  },
+  {
+   "id": "cp-salary-queries",
+   "kind": "problem-walkthrough",
+   "subject": "cp",
+   "slug": "salary-queries",
+   "title": "Payroll Bands Instead of Exact Salaries",
+   "subtitle": "CSES Salary Queries: counting values in a range while values change, by reading every operation first, compressing all salaries that will ever appear, and keeping a Fenwick tree of counts over the compressed bands",
+   "track": "cp-ranges",
+   "track_order": 13,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-coordinate-compression",
+    "cp-fenwick-advanced"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "coordinate compression",
+    "Fenwick tree",
+    "offline processing",
+    "counting"
+   ],
+   "complexity": {
+    "time": "O((n + q) log(n + q))",
+    "space": "O(n + q)"
+   },
+   "practice_problems": [
+    {
+     "name": "Salary Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1144",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Count of Range Sum",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/count-of-range-sum/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Count of Smaller Numbers After Self",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/count-of-smaller-numbers-after-self/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Value-indexed Fenwick tree",
+     "definition": "A Fenwick tree whose positions are values, or their compressed ranks, and whose entries count how many items currently have each value."
+    },
+    {
+     "term": "Offline compression",
+     "definition": "Reading every operation before answering any, so that all values that will ever be inserted or queried can be compressed together."
+    },
+    {
+     "term": "Rank range",
+     "definition": "For a query [a, b], the compressed positions from the first rank with value ≥ a to the last rank with value ≤ b."
+    },
+    {
+     "term": "Move as delete plus insert",
+     "definition": "Treating a value change as removing one count at the old value and adding one at the new value."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Salaries go up to 10⁹. Why not index a Fenwick tree directly by salary?",
+     "options": [
+      "Fenwick trees cannot count",
+      "It would need an array of 10⁹ entries, far too much memory, while only n + q distinct values ever matter",
+      "Because salaries are negative",
+      "It would be too fast"
+     ],
+     "answer": 1,
+     "explain": "At most n + q different salaries appear. Compressing them to ranks 1..k gives a Fenwick tree of size k ≤ 4 × 10⁵."
+    },
+    {
+     "q": "What goes wrong if you compress only the initial salaries?",
+     "options": [
+      "Nothing",
+      "A later update can set a salary that has no rank, so it cannot be inserted into the tree",
+      "Queries become slower",
+      "The answer doubles"
+     ],
+     "answer": 1,
+     "explain": "Every value that will ever be stored must have a rank. Compress initial salaries and update values together, after reading all operations."
+    },
+    {
+     "q": "How is the count of salaries in [a, b] read from the tree?",
+     "options": [
+      "tree[b] - tree[a]",
+      "sum up to the rank of the largest value ≤ b, minus sum up to the rank just before the first value ≥ a",
+      "The size of the tree",
+      "A binary search on the original array"
+     ],
+     "answer": 1,
+     "explain": "Query bounds need not be stored values themselves. lower_bound(a) and upper_bound(b) on the sorted value list give the rank range to sum."
+    }
+   ],
+   "cover_seed": "salary-queries",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.62,
+   "path": "cp/salary-queries.md",
+   "hash": "2d18e2fa329a",
+   "word_count": 1092,
+   "excerpt": "A payroll office is asked, over and over, \"how many employees earn between 40,000 and 70,000?\", while salaries keep changing as people are promoted. Salaries can be any number up to a billion. Keeping a counter for every possible salary would need a billion counters; scanning all employees for…"
+  },
+  {
+   "id": "cp-distinct-values-queries",
+   "kind": "problem-walkthrough",
+   "subject": "cp",
+   "slug": "distinct-values-queries",
+   "title": "Counting a Guest Only at Their Latest Visit",
+   "subtitle": "CSES Distinct Values Queries offline in O((n + q) log n): sort queries by right end, keep a mark only at each value's last occurrence so far, and answer every query as a Fenwick range sum",
+   "track": "cp-ranges",
+   "track_order": 14,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-fenwick-advanced",
+    "cp-mos-algorithm"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "offline queries",
+    "Fenwick tree",
+    "distinct values",
+    "sweep line"
+   ],
+   "complexity": {
+    "time": "O((n + q) log n)",
+    "space": "O(n + q)"
+   },
+   "practice_problems": [
+    {
+     "name": "Distinct Values Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1734",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "D-query",
+     "platform": "SPOJ",
+     "url": "https://www.spoj.com/problems/DQUERY/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Mishka and Interesting sum",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/703/D",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Last-occurrence mark",
+     "definition": "A 1 placed at the most recent position, so far in the sweep, where a value appears, with every earlier position of that value set back to 0."
+    },
+    {
+     "term": "Right-end sweep",
+     "definition": "Processing positions from left to right and answering each query when the sweep reaches its right end."
+    },
+    {
+     "term": "Offline answering",
+     "definition": "Reordering queries for convenience, here by right end, and writing each answer back to its original index at the end."
+    },
+    {
+     "term": "Representative occurrence",
+     "definition": "The single position chosen to stand for a value inside a range; choosing the last one makes the choice independent of the left end."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "When the sweep reaches position r, which positions carry a mark?",
+     "options": [
+      "All positions up to r",
+      "For each value seen so far, only its last occurrence at or before r",
+      "Only position r",
+      "Positions with even values"
+     ],
+     "answer": 1,
+     "explain": "Each new occurrence moves the value's mark: the old position is set to 0 and the new one to 1, so every value seen so far has exactly one mark, at its latest position."
+    },
+    {
+     "q": "For a query [l, r] answered when the sweep is at r, why is the number of distinct values the sum of marks in [l, r]?",
+     "options": [
+      "Because marks are sorted",
+      "A value appears in [l, r] exactly when its last occurrence up to r is at or after l, and that occurrence is where its only mark sits",
+      "Because the Fenwick tree removes duplicates",
+      "It is not"
+     ],
+     "answer": 1,
+     "explain": "If the value occurs anywhere in [l, r], its latest occurrence up to r is also in [l, r]. Values whose latest occurrence is before l do not appear in the range. So each value contributes 1 exactly when it is present."
+    },
+    {
+     "q": "Why must queries be sorted by their right end?",
+     "options": [
+      "For speed only",
+      "The marks are correct only for ranges ending at the current sweep position; a query with a smaller r would see marks moved by later occurrences",
+      "To use binary search",
+      "They need not be"
+     ],
+     "answer": 1,
+     "explain": "After the sweep passes r, some marks jump to positions beyond r and leave their old spots inside [l, r] empty. Answering each query exactly when the sweep is at its r keeps the marks right."
+    }
+   ],
+   "cover_seed": "distinct-values-queries",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.66,
+   "path": "cp/distinct-values-queries.md",
+   "hash": "b2124edacb6a",
+   "word_count": 1230,
+   "excerpt": "A hotel keeps a log of guests checking in, one per night, and the manager asks: between night 40 and night 90, how many different guests stayed? A guest who came five times must count once. Answering by collecting names in a set for every question costs the length of the range each time, and with 2…"
+  },
+  {
+   "id": "cp-subarray-sum-queries",
+   "kind": "problem-walkthrough",
+   "subject": "cp",
+   "slug": "subarray-sum-queries",
+   "title": "Every Manager Knows the Best Start and End",
+   "subtitle": "CSES Subarray Sum Queries: the maximum subarray sum after every point update, by storing sum, best prefix, best suffix and best subarray in each segment tree node and merging them in four lines",
+   "track": "cp-ranges",
+   "track_order": 15,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-segment-tree-beats"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 5,
+   "topics": [
+    "segment tree",
+    "maximum subarray",
+    "Kadane",
+    "node merging"
+   ],
+   "complexity": {
+    "time": "O(log n) per update, O(1) to read the answer",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Subarray Sum Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1190",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Maximum Subarray",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/maximum-subarray/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Prefix Sum Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2166",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Four-field node",
+     "definition": "A segment tree node storing (sum, pref, suf, best): total, best prefix, best suffix and best subarray of its segment."
+    },
+    {
+     "term": "Crossing subarray",
+     "definition": "A subarray of a merged segment that starts in the left child and ends in the right child; its best value is left.suf + right.pref."
+    },
+    {
+     "term": "Empty subarray",
+     "definition": "The subarray with no elements and sum 0, allowed in CSES Subarray Sum Queries, so the answer is never negative."
+    },
+    {
+     "term": "Root answer",
+     "definition": "When every query asks about the whole array, the answer is simply the root's best field, read in O(1) after each update."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "For merged node P = merge(L, R), what is P.best?",
+     "options": [
+      "L.best + R.best",
+      "max(L.best, R.best, L.suf + R.pref)",
+      "L.sum + R.sum",
+      "max(L.pref, R.suf)"
+     ],
+     "answer": 1,
+     "explain": "The best subarray lies entirely in L, entirely in R, or crosses the middle, in which case it is the best suffix of L glued to the best prefix of R."
+    },
+    {
+     "q": "What are P.pref and P.suf?",
+     "options": [
+      "L.pref and R.suf",
+      "P.pref = max(L.pref, L.sum + R.pref) and P.suf = max(R.suf, R.sum + L.suf)",
+      "Both equal P.best",
+      "L.sum and R.sum"
+     ],
+     "answer": 1,
+     "explain": "A prefix of P either stays in L or covers all of L and continues into R. A suffix of P is symmetric, starting in R or covering all of R."
+    },
+    {
+     "q": "If the empty subarray is allowed, how should leaves be initialised for a value x?",
+     "options": [
+      "All four fields equal x",
+      "sum = x and pref = suf = best = max(0, x)",
+      "All fields 0",
+      "best = x, others 0"
+     ],
+     "answer": 1,
+     "explain": "Allowing an empty prefix, suffix or subarray means each can be 0 when x is negative. The sum is always the real total."
+    }
+   ],
+   "cover_seed": "subarray-sum-queries",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.6,
+   "path": "cp/subarray-sum-queries.md",
+   "hash": "9a213cd91464",
+   "word_count": 1157,
+   "excerpt": "Kadane's algorithm finds the best stretch of consecutive gains in one pass. Now the numbers keep changing: after every single update, you must report the best stretch again. Rerunning Kadane after each of 2 × 10⁵ updates on an array of 2 × 10⁵ values is 4 × 10¹⁰ steps. The segment tree answer is…"
   },
   {
    "id": "cp-pbds-ordered-set",

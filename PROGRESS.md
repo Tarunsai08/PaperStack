@@ -10,12 +10,12 @@ Read `HANDOFF.md` first if you are picking this project up.
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
 | dsa | 152 | 0 | 0 | 152 | 72/72 |
-| cp | 62 | 0 | 53 | 115 | 22/29 |
+| cp | 65 | 0 | 50 | 115 | 22/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **371** | **0** | **302** | **673** | |
+| **All** | **374** | **0** | **299** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -35,10 +35,10 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `cp-bridges-articulation` (P0, pattern, cp-graphs): Bridges and Articulation Points
 - [ ] `cp-binary-lifting` (P0, pattern, cp-graphs): Binary Lifting and LCA in log n
 - [ ] `cp-prefix-function` (P0, pattern, cp-strings): The Prefix Function and KMP
-- [ ] `cp-salary-queries` (P1, problem-walkthrough, cp-ranges): Salary Queries: Compression Meets Fenwick
-- [ ] `cp-distinct-values-queries` (P1, problem-walkthrough, cp-ranges): Distinct Values in a Range, Offline
 - [ ] `cp-offline-queries` (P1, pattern, cp-ranges): Offline Thinking: Sort the Queries, Not Just the Data
 - [ ] `cp-dp-on-dag` (P1, pattern, cp-dp): DP on DAGs: Longest and Counting Paths
+- [ ] `cp-removal-game` (P1, problem-walkthrough, cp-dp): Removal Game: Interval DP for Two Players
+- [ ] `cp-dp-with-data-structures` (P1, pattern, cp-dp): DP Sped Up by Segment Trees and BITs
 
 ### famous-algos
 
@@ -238,7 +238,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cp: 62 written</summary>
+<details><summary>cp: 65 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -292,6 +292,9 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cp-bracket-sequences` Counting Bracket Sequences With Catalan Numbers
 - [x] `cp-range-sum-queries-cses` From Static to Dynamic Range Queries
 - [x] `cp-hotel-queries` Hotel Queries: Descending a Max Segment Tree
+- [x] `cp-salary-queries` Salary Queries: Compression Meets Fenwick
+- [x] `cp-distinct-values-queries` Distinct Values in a Range, Offline
+- [x] `cp-subarray-sum-queries` Maximum Subarray Sum With Updates
 - [x] `cp-counting-numbers` Counting Numbers With No Equal Adjacent Digits
 - [x] `cp-projects-dp` Projects: Weighted Interval Scheduling
 - [x] `cp-nim-games` Nim and Its Variants

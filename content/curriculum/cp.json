@@ -2506,8 +2506,8 @@
     "cp-coordinate-compression",
     "cp-fenwick-advanced"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Offline compress all values",
@@ -2535,8 +2535,8 @@
     "cp-fenwick-advanced",
     "cp-mos-algorithm"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Sort queries by right end",
@@ -2563,8 +2563,8 @@
    "prerequisites": [
     "cp-segment-tree-beats"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Node stores sum, best prefix, best suffix, best"
