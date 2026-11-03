@@ -1,5 +1,5 @@
 {
- "content_version": "e58ac4780e9acb5d",
+ "content_version": "a183a617ecbafc30",
  "generated_at": "2026-11-02",
  "count": 422,
  "subjects": [
@@ -41934,8 +41934,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "famous-algos/inverted-index.md",
-   "hash": "2e9007db93a6",
-   "word_count": 1227,
+   "hash": "d35ab92a8f45",
+   "word_count": 1246,
    "excerpt": "Type three words into a search box and results from billions of pages appear in a fraction of a second. Reading every page for those words would take far longer than that, even for a huge data centre. The search engine is not reading pages when you search. It did the reading long before, and built…"
   },
   {
