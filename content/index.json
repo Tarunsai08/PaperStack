@@ -1,7 +1,7 @@
 {
- "content_version": "457a7ce084d51ddf",
+ "content_version": "33c44ad042651f27",
  "generated_at": "2026-11-03",
- "count": 562,
+ "count": 563,
  "subjects": [
   {
    "id": "ml",
@@ -58793,6 +58793,98 @@
    "hash": "f178c5ca89e3",
    "word_count": 1217,
    "excerpt": "Every time you open an app, it sends dozens of short text messages that start with words like GET and POST and receive replies that start with numbers like 200 and 404. That is HTTP: a conversation format simple enough to type by hand, yet carrying almost everything on the web, including the APIs…"
+  },
+  {
+   "id": "cs-core-dns-cs",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "dns-cs",
+   "title": "A Phone Book With Local Copies Everywhere",
+   "subtitle": "DNS for networks exams and interviews: the name hierarchy, recursive versus iterative resolution traced step by step, record types, TTL caching, why it uses UDP and when it switches to TCP",
+   "track": "cs-networks",
+   "track_order": 10,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-osi-tcpip"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 6,
+   "topics": [
+    "computer networks",
+    "dns",
+    "resolution",
+    "caching",
+    "records"
+   ],
+   "glossary": [
+    {
+     "term": "Resolver",
+     "definition": "The server (often run by your ISP, company or a public provider) that answers your device's DNS questions, asking other servers on your behalf and caching the answers."
+    },
+    {
+     "term": "Authoritative server",
+     "definition": "A server that holds the official records for a zone, such as example.com, and answers for it directly."
+    },
+    {
+     "term": "Recursive query",
+     "definition": "A query asking the server to return the final answer, doing all further lookups itself."
+    },
+    {
+     "term": "Iterative query",
+     "definition": "A query where the server returns the best answer it has, often a referral to another server, and the asker continues from there."
+    },
+    {
+     "term": "TTL",
+     "definition": "Time to live: how many seconds a record may be cached before it must be looked up again."
+    },
+    {
+     "term": "Zone",
+     "definition": "A part of the name space managed as one unit, with its own authoritative servers, such as example.com and its subdomains."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Your laptop asks its resolver for www.example.com, and the resolver asks the root, then the .com servers, then example.com's servers. Which queries are recursive and which iterative?",
+     "options": [
+      "All recursive",
+      "Laptop to resolver is recursive; resolver to root, TLD and authoritative servers are iterative",
+      "All iterative",
+      "Laptop to resolver is iterative"
+     ],
+     "answer": 1,
+     "explain": "The laptop wants a final answer; the other servers only give referrals or answers, and the resolver does the walking."
+    },
+    {
+     "q": "Which record maps a name to an IPv6 address?",
+     "options": [
+      "A",
+      "AAAA",
+      "MX",
+      "CNAME"
+     ],
+     "answer": 1,
+     "explain": "A is IPv4, AAAA is IPv6, MX names mail servers, CNAME aliases one name to another."
+    },
+    {
+     "q": "A record has a TTL of 300 seconds and you change it now. Some users still reach the old address for a few minutes. Why?",
+     "options": [
+      "DNS is broken",
+      "Resolvers that cached the old record may keep using it until their copy's TTL runs out",
+      "The new address is invalid",
+      "TTL is in hours"
+     ],
+     "answer": 1,
+     "explain": "Caching is what makes DNS fast, and TTL is the price: changes spread as caches expire. Lower the TTL before a planned change."
+    }
+   ],
+   "cover_seed": "dns-cs",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.86,
+   "path": "cs-core/dns-cs.md",
+   "hash": "8095078ae203",
+   "word_count": 1231,
+   "excerpt": "Computers route packets to numbers like 203.0.113.10 or 2001:db8::10 (the addresses in this article come from ranges reserved for documentation). People type names like example.com. Somewhere between your keyboard and the first packet, a name has to become a number, and it usually happens in a few…"
   }
  ]
 }

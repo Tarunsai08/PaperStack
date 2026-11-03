@@ -14,8 +14,8 @@ Read `HANDOFF.md` first if you are picking this project up.
 | famous-algos | 38 | 0 | 53 | 91 | 31/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core | 47 | 0 | 32 | 79 | 32/47 |
-| **All** | **562** | **0** | **121** | **683** | |
+| cs-core | 48 | 0 | 31 | 79 | 33/47 |
+| **All** | **563** | **0** | **120** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -63,7 +63,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### cs-core
 
-- [ ] `cs-core-dns-cs` (P0, deep-dive, cs-networks): DNS for CS Interviews
+- [ ] `cs-core-url-to-page` (P0, deep-dive, cs-networks): What Happens When You Type a URL (Networks Edition)
 - [ ] `cs-core-classes-objects` (P0, primer, cs-oop): Classes and Objects in C++
 - [ ] `cs-core-memory-hierarchy` (P0, deep-dive, cs-architecture): The Memory Hierarchy and CPU Caches
 - [ ] `cs-core-data-link` (P1, deep-dive, cs-networks): The Data Link Layer: MAC, Switches and ARP
@@ -616,7 +616,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cs-core: 47 written</summary>
+<details><summary>cs-core: 48 written</summary>
 
 - [x] `cs-core-what-an-os-does` What an Operating System Actually Does
 - [x] `cs-core-processes-threads` Processes vs Threads
@@ -665,5 +665,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cs-core-tcp-deep-dive` TCP: Handshakes, Reliability and Flow Control
 - [x] `cs-core-udp` UDP and When Unreliable Is Better
 - [x] `cs-core-http-https` HTTP and HTTPS for Interviews
+- [x] `cs-core-dns-cs` DNS for CS Interviews
 
 </details>
