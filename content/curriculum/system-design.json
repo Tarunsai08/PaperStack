@@ -1263,8 +1263,8 @@
    "prerequisites": [
     "system-design-database-indexing"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Design for queries",
@@ -1292,8 +1292,8 @@
    "prerequisites": [
     "system-design-api-gateway"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Rate limits and edge filtering",

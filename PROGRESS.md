@@ -12,10 +12,10 @@ Read `HANDOFF.md` first if you are picking this project up.
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
-| system-design | 75 | 0 | 44 | 119 | 60/60 |
+| system-design | 77 | 0 | 42 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 16 | 0 | 63 | 79 | 13/47 |
-| **All** | **486** | **0** | **197** | **683** | |
+| **All** | **488** | **0** | **195** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -46,7 +46,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### system-design
 
-- [ ] `system-design-data-modeling-scale` (P1, deep-dive, sd-scaling): Data Modelling for Scale: Denormalisation and Access Patterns
 - [ ] `system-design-web-crawler` (P1, case-study, sd-cases): Design a Web Crawler
 - [ ] `system-design-file-sync` (P1, case-study, sd-cases): Design Google Drive or Dropbox
 - [ ] `system-design-leaderboard` (P1, case-study, sd-cases): Design a Real-Time Leaderboard
@@ -56,6 +55,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `system-design-hotel-reservation` (P1, case-study, sd-cases): Design a Hotel Reservation System
 - [ ] `system-design-ecommerce-checkout` (P1, case-study, sd-cases): Design an E-Commerce Checkout
 - [ ] `system-design-food-delivery` (P1, case-study, sd-cases): Design a Food Delivery App Like Swiggy or Zomato
+- [ ] `system-design-distributed-message-queue` (P1, case-study, sd-cases): Design a Distributed Message Queue Like Kafka
 
 ### ml
 
@@ -411,7 +411,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>system-design: 75 written</summary>
+<details><summary>system-design: 77 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -454,6 +454,8 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-deployments` Shipping Safely: Blue-Green, Canary and Feature Flags
 - [x] `system-design-multi-region` Multi-Region Architectures and Disaster Recovery
 - [x] `system-design-autoscaling` Autoscaling: Matching Capacity to Demand
+- [x] `system-design-data-modeling-scale` Data Modelling for Scale: Denormalisation and Access Patterns
+- [x] `system-design-security-at-scale` Security at Scale: DDoS, WAFs and Secrets
 - [x] `system-design-url-shortener` Design a URL Shortener
 - [x] `system-design-rate-limiter` Design a Rate Limiter
 - [x] `system-design-unique-id-generator` Design a Unique ID Generator
@@ -609,3 +611,4 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - system-design-cache-lld has an article but is still marked planned
 - system-design-rate-limiter-lld has an article but is still marked planned
 - system-design-pub-sub-lld has an article but is still marked planned
+- system-design-shopping-cart-lld has an article but is still marked planned

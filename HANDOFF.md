@@ -15,10 +15,10 @@ You are continuing a project another Claude session started. Everything you need
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
-| system-design | 75 | 0 | 44 | 119 | 60/60 |
+| system-design | 77 | 0 | 42 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 16 | 0 | 63 | 79 | 13/47 |
-| **All** | **486** | **0** | **197** | **683** | |
+| **All** | **488** | **0** | **195** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -38,11 +38,11 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `famous-algos-paxos` (P1, concept, fa-distributed): Paxos: The Original Consensus Algorithm
 
 #### system-design
-- [ ] `system-design-data-modeling-scale` (P1, deep-dive, sd-scaling): Data Modelling for Scale: Denormalisation and Access Patterns
 - [ ] `system-design-web-crawler` (P1, case-study, sd-cases): Design a Web Crawler
 - [ ] `system-design-file-sync` (P1, case-study, sd-cases): Design Google Drive or Dropbox
 - [ ] `system-design-leaderboard` (P1, case-study, sd-cases): Design a Real-Time Leaderboard
 - [ ] `system-design-job-scheduler` (P1, case-study, sd-cases): Design a Distributed Job Scheduler
+- [ ] `system-design-photo-sharing` (P1, case-study, sd-cases): Design Instagram
 
 #### ml
 - [ ] `paper-layer-normalization` (P2, paper, deep-learning): Layer Normalization
