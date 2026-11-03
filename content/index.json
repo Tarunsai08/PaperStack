@@ -1,7 +1,7 @@
 {
- "content_version": "32540938d9ab1f2a",
+ "content_version": "b38bc2e20ced4458",
  "generated_at": "2026-11-02",
- "count": 418,
+ "count": 420,
  "subjects": [
   {
    "id": "ml",
@@ -38285,6 +38285,244 @@
    "hash": "a52a28e7aa2c",
    "word_count": 1300,
    "excerpt": "You open problem D and there is no input file. Instead the statement says: \"The judge has hidden a number between 1 and 10⁹. You may ask at most 30 questions of the form '? x', and the judge will tell you whether its number is at least x.\" Your first submission prints a perfect binary search and…"
+  },
+  {
+   "id": "cp-bitwise-tricks-cp",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "bitwise-tricks-cp",
+   "title": "Counting How Often Each Light Is On Across All Switches",
+   "subtitle": "Bitwise thinking at contest level: splitting sums over pairs into independent bits, the XOR basis that answers maximum and reachable subset XORs, the parity of binomial coefficients behind the XOR pyramid, and the integer-width traps that silently corrupt answers",
+   "track": "cp-misc",
+   "track_order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-bit-manipulation-tricks"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "bit manipulation",
+    "XOR basis",
+    "per-bit contribution",
+    "linear algebra over GF(2)"
+   ],
+   "complexity": {
+    "time": "O(n · bits)",
+    "space": "O(bits)"
+   },
+   "practice_problems": [
+    {
+     "name": "Xor Pyramid",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2419",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "(Zero XOR Subset)-less",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/1101/G",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Find XOR Sum of All Pairs Bitwise AND",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/find-xor-sum-of-all-pairs-bitwise-and/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Bitwise XOR of All Pairings",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/bitwise-xor-of-all-pairings/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Per-bit contribution",
+     "definition": "Computing a sum of bitwise results bit by bit: for each bit b, count how many terms have it set and multiply by 2^b."
+    },
+    {
+     "term": "XOR basis",
+     "definition": "A set of at most 60 values, each with a distinct highest bit, whose subset XORs are exactly the subset XORs of the original array."
+    },
+    {
+     "term": "Rank",
+     "definition": "The number of values in the XOR basis; the array has exactly 2^rank distinct subset XORs."
+    },
+    {
+     "term": "Linearly dependent",
+     "definition": "A value that is already the XOR of some earlier values; inserting it into the basis reduces it to zero."
+    },
+    {
+     "term": "Submask",
+     "definition": "A number i whose set bits are all set in m too, written (i & m) == i."
+    },
+    {
+     "term": "Integer width",
+     "definition": "The number of bits a type holds; 1 << k is an int and is undefined for k ≥ 31, while 1LL << k is safe up to 62."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How many pairs (i, j) have bit b set in a[i] XOR a[j]?",
+     "options": [
+      "n²",
+      "ones × (n − ones), where ones counts elements with bit b set, because the XOR has the bit exactly when one element has it and the other does not",
+      "ones²",
+      "n − ones"
+     ],
+     "answer": 1,
+     "explain": "Bits act independently in XOR. A pair contributes 2^b exactly when its two bit values differ, and there are ones × zeros such pairs."
+    },
+    {
+     "q": "What does it mean when inserting x into the XOR basis reduces it to 0?",
+     "options": [
+      "x is zero",
+      "x is the XOR of some values already inserted, so it adds no new reachable XOR values and the rank stays the same",
+      "The basis is full",
+      "x is larger than every basis value"
+     ],
+     "answer": 1,
+     "explain": "Each reduction step XORs x with a basis value. Reaching 0 means x equals the XOR of the basis values used, which are themselves XORs of inserted values."
+    },
+    {
+     "q": "In an XOR pyramid with a base of n numbers, which base positions affect the top?",
+     "options": [
+      "All of them",
+      "Exactly the positions i that are submasks of n − 1, because the top is the XOR of base[i] taken C(n − 1, i) times and only odd binomial coefficients survive",
+      "Only the first and last",
+      "The positions with odd values"
+     ],
+     "answer": 1,
+     "explain": "Each step is Pascal's rule with XOR, so the top counts paths, C(n − 1, i), modulo 2. By Lucas's theorem C(n − 1, i) is odd exactly when i's bits are a subset of n − 1's bits."
+    }
+   ],
+   "cover_seed": "cp-bitwise-tricks-cp",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.6,
+   "path": "cp/bitwise-tricks-cp.md",
+   "hash": "cbcb0aa1c1e7",
+   "word_count": 1419,
+   "excerpt": "Sum a[i] XOR a[j] over all pairs of a hundred thousand numbers: five billion pairs, far too many to visit. Find the largest XOR any subset can make: 2ⁿ subsets. Work out the top of a pyramid where every brick is the XOR of the two below it: a million rows of work. Each becomes a few lines once you…"
+  },
+  {
+   "id": "cp-ternary-search",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "ternary-search",
+   "title": "Finding the Top of a Hill by Comparing Two Points",
+   "subtitle": "Ternary search for contests: unimodal and convex functions, discarding a third of the range per step, a fixed iteration count for real numbers, binary search on the slope for integers, how to recognise convex costs, and what happens on functions with two valleys",
+   "track": "cp-misc",
+   "track_order": 9,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-binary-search-answer"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "ternary search",
+    "unimodal functions",
+    "convexity",
+    "binary search"
+   ],
+   "complexity": {
+    "time": "O(log(range/ε) · cost of f)",
+    "space": "O(1)"
+   },
+   "practice_problems": [
+    {
+     "name": "Weakness and Poorness",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/578/C",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Devu and his Brother",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/439/D",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Restorer Distance",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/1355/E",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Peak Index in a Mountain Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/peak-index-in-a-mountain-array/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Unimodal",
+     "definition": "A function that strictly decreases up to its minimum and strictly increases after it, or the mirror image for a maximum; it has one valley and no flat stretches away from it."
+    },
+    {
+     "term": "Convex function",
+     "definition": "A function whose chord between any two points lies on or above the graph; convex functions are unimodal apart from a possible flat bottom."
+    },
+    {
+     "term": "Discarded third",
+     "definition": "With probes m1 < m2 and f(m1) < f(m2), the minimum of a unimodal f cannot lie in (m2, hi], so that part of the range is dropped."
+    },
+    {
+     "term": "Slope search",
+     "definition": "For a convex function on integers, binary search for the first t with f(t) ≤ f(t + 1); that t is a minimum."
+    },
+    {
+     "term": "Iteration budget",
+     "definition": "A fixed number of steps for real-valued ternary search; each keeps two thirds of the range, so 100 steps shrink it by a factor of about 10¹⁷."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "With probes m1 < m2 and f(m1) < f(m2) for a unimodal f, which part can be discarded?",
+     "options": [
+      "[lo, m1)",
+      "(m2, hi]: if the minimum were to the right of m2, the function would be decreasing through m1 and m2, so f(m1) > f(m2), a contradiction",
+      "[m1, m2]",
+      "Nothing can be discarded"
+     ],
+     "answer": 1,
+     "explain": "Left of the minimum the function decreases. If both probes were left of the minimum, the right probe would be lower. So the minimum is at or left of m2."
+    },
+    {
+     "q": "Why is binary search on f(t) ≤ f(t + 1) preferred to ternary search for integers?",
+     "options": [
+      "It is the same",
+      "For a convex f the predicate is monotone, so a standard binary search finds the minimum in log₂ of the range steps with simple, off-by-one-free bounds, instead of log base 1.5 steps and fiddly stopping rules",
+      "Ternary search does not work on integers",
+      "It uses less memory"
+     ],
+     "answer": 1,
+     "explain": "f(t + 1) − f(t) is non-decreasing for convex f, so 'not decreasing any more' switches from false to true exactly once."
+    },
+    {
+     "q": "On a function with two valleys, what does ternary search return?",
+     "options": [
+      "Always the lower valley",
+      "Some point in one of the valleys, possibly the higher one, because an early comparison can discard the lower valley entirely",
+      "An error",
+      "The average of the two"
+     ],
+     "answer": 1,
+     "explain": "The discard rule is only valid for unimodal functions. In the program's example, the first comparison throws away the deeper valley at 1 and the search ends at 8."
+    }
+   ],
+   "cover_seed": "cp-ternary-search",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.52,
+   "path": "cp/ternary-search.md",
+   "hash": "c63cf4865668",
+   "word_count": 1476,
+   "excerpt": "A hiker in thick fog wants the lowest point of a valley. They cannot see the slope, but they can stand at two spots and compare heights. If the left spot is lower, the valley floor cannot be to the right of the right spot, so they can forget about that whole stretch. Two measurements, and a third…"
   },
   {
    "id": "cp-two-pointer-cp",

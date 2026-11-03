@@ -10,12 +10,12 @@ Read `HANDOFF.md` first if you are picking this project up.
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
 | dsa | 152 | 0 | 0 | 152 | 72/72 |
-| cp | 109 | 0 | 6 | 115 | 29/29 |
+| cp | 111 | 0 | 4 | 115 | 29/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **418** | **0** | **255** | **673** | |
+| **All** | **420** | **0** | **253** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -29,11 +29,10 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### cp
 
-- [ ] `cp-bitwise-tricks-cp` (P1, pattern, cp-misc): Bitwise Tricks for Contests
 - [ ] `cp-polygon-area` (P1, problem-walkthrough, cp-misc): Polygon Area With the Shoelace Formula
 - [ ] `cp-apple-division` (P1, problem-walkthrough, cp-misc): Apple Division: Brute Force Done Right
-- [ ] `cp-ternary-search` (P2, pattern, cp-misc): Ternary Search on Unimodal Functions
 - [ ] `cp-sweep-line-geometry` (P2, pattern, cp-misc): Sweep Line: Closest Pair and Intersections
+- [ ] `cp-bitset-optimisation` (P2, pattern, cp-misc): Bitsets: Dividing by 64 for Free
 
 ### famous-algos
 
@@ -233,7 +232,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cp: 109 written</summary>
+<details><summary>cp: 111 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -304,6 +303,8 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cp-meet-in-the-middle` Meet in the Middle
 - [x] `cp-randomized-techniques` Randomised Techniques in Contests
 - [x] `cp-interactive-problems` Interactive Problems: Talking to the Judge
+- [x] `cp-bitwise-tricks-cp` Bitwise Tricks for Contests
+- [x] `cp-ternary-search` Ternary Search on Unimodal Functions
 - [x] `cp-two-pointer-cp` Two Pointers and Monotonicity in Contests
 - [x] `cp-contest-strategy` Contest Strategy: Order, Time and Nerves
 - [x] `cp-weird-algorithm` Your First CSES Problems: Weird Algorithm to Increasing Array
