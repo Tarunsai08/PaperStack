@@ -10,12 +10,12 @@ Read `HANDOFF.md` first if you are picking this project up.
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
 | dsa | 152 | 0 | 0 | 152 | 72/72 |
-| cp | 74 | 0 | 41 | 115 | 24/29 |
+| cp | 76 | 0 | 39 | 115 | 24/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **383** | **0** | **290** | **673** | |
+| **All** | **385** | **0** | **288** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -33,12 +33,12 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `cp-bridges-articulation` (P0, pattern, cp-graphs): Bridges and Articulation Points
 - [ ] `cp-binary-lifting` (P0, pattern, cp-graphs): Binary Lifting and LCA in log n
 - [ ] `cp-prefix-function` (P0, pattern, cp-strings): The Prefix Function and KMP
-- [ ] `cp-elevator-rides` (P1, problem-walkthrough, cp-dp): Elevator Rides: Bitmask DP With Pairs
 - [ ] `cp-removal-game` (P1, problem-walkthrough, cp-dp): Removal Game: Interval DP for Two Players
 - [ ] `cp-dp-with-data-structures` (P1, pattern, cp-dp): DP Sped Up by Segment Trees and BITs
 - [ ] `cp-dsu-advanced` (P1, pattern, cp-graphs): DSU Tricks: Rollback, Parity and Offline
 - [ ] `cp-max-flow` (P1, pattern, cp-graphs): Maximum Flow: Edmonds-Karp and Dinic
 - [ ] `cp-shortest-path-tricks` (P1, pattern, cp-graphs): Shortest Path Tricks: 0-1 BFS, Multi-State, Potentials
+- [ ] `cp-high-score` (P1, problem-walkthrough, cp-graphs): High Score: Positive Cycles and Bellman-Ford
 
 ### famous-algos
 
@@ -238,7 +238,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cp: 74 written</summary>
+<details><summary>cp: 76 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -281,6 +281,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cp-convex-hull-trick` The Convex Hull Trick
 - [x] `cp-divide-conquer-dp` Divide and Conquer DP Optimisation
 - [x] `cp-knuth-optimization` Knuth's Optimisation for Interval DP
+- [x] `cp-sos-dp` Sum Over Subsets DP
 - [x] `cp-string-hashing` Polynomial String Hashing
 - [x] `cp-game-theory` Game Theory: Winning and Losing Positions
 - [x] `cp-sprague-grundy` Sprague-Grundy: Adding Games Together
@@ -301,6 +302,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cp-salary-queries` Salary Queries: Compression Meets Fenwick
 - [x] `cp-distinct-values-queries` Distinct Values in a Range, Offline
 - [x] `cp-subarray-sum-queries` Maximum Subarray Sum With Updates
+- [x] `cp-elevator-rides` Elevator Rides: Bitmask DP With Pairs
 - [x] `cp-counting-numbers` Counting Numbers With No Equal Adjacent Digits
 - [x] `cp-projects-dp` Projects: Weighted Interval Scheduling
 - [x] `cp-nim-games` Nim and Its Variants

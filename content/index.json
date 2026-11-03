@@ -1,7 +1,7 @@
 {
- "content_version": "f75f0f6675d8ae64",
+ "content_version": "10db11829895aab3",
  "generated_at": "2026-11-02",
- "count": 383,
+ "count": 385,
  "subjects": [
   {
    "id": "ml",
@@ -33265,6 +33265,220 @@
    "hash": "1e73c809c9ad",
    "word_count": 1182,
    "excerpt": "A carpenter cuts a long board at marked points, paying the board's current length for each cut. Choosing the order of cuts is a classic interval DP: for every stretch of the board, try every mark as the first cut. That is O(n³) for n marks, fine for 100 marks and far too slow for 3,000. Then you…"
+  },
+  {
+   "id": "cp-sos-dp",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "sos-dp",
+   "title": "Every Lock Summarising Its Sub-Combinations",
+   "subtitle": "Sum over subsets DP: for every mask, add up a value over all of its submasks in O(n × 2ⁿ) instead of O(3ⁿ), processing one bit at a time, plus the superset version and the three counts of CSES Bit Problem",
+   "track": "cp-dp",
+   "track_order": 11,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-bitmask-dp"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "bitmask DP",
+    "SOS DP",
+    "subset sums",
+    "bitwise operations"
+   ],
+   "complexity": {
+    "time": "O(B × 2^B) for B bits",
+    "space": "O(2^B)"
+   },
+   "practice_problems": [
+    {
+     "name": "Bit Problem",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1654",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Compatible Numbers",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/165/E",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Jzzhu and Numbers",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/449/D",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Subset sum transform",
+     "definition": "F[mask] = Σ f[s] over all submasks s of mask, computed for every mask at once."
+    },
+    {
+     "term": "Superset sum transform",
+     "definition": "G[mask] = Σ f[s] over all supersets s of mask, the mirror image of the subset transform."
+    },
+    {
+     "term": "Dimension-by-dimension",
+     "definition": "Treating each bit as one dimension of a 2 × 2 × ... × 2 cube and taking prefix sums along one dimension at a time."
+    },
+    {
+     "term": "Complement trick",
+     "definition": "Counting values y with x & y = 0 by summing over submasks of the complement of x, since such y avoid every bit of x."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why is SOS DP O(B × 2^B) rather than the O(3^B) of submask enumeration?",
+     "options": [
+      "It skips masks",
+      "It adds one bit dimension at a time: after processing bits 0..b, F[mask] sums over submasks differing only in those bits, so each pass is O(2^B) and there are B passes",
+      "It uses binary search",
+      "It is O(3^B)"
+     ],
+     "answer": 1,
+     "explain": "Each submask is reached by a unique sequence of 'turn this bit off' steps, one bit at a time, so B linear passes accumulate every submask exactly once."
+    },
+    {
+     "q": "In the loop 'for bit b, for mask m: if m has bit b, F[m] += F[m ^ (1 << b)]', why must the bit loop be the outer one?",
+     "options": [
+      "For speed",
+      "Each pass must finish one dimension for all masks before the next dimension starts; with masks outside, some submasks are added more than once",
+      "It does not matter",
+      "Because masks are sorted"
+     ],
+     "answer": 1,
+     "explain": "Swapping the loops mixes partially processed dimensions and counts some submasks several times. Bits outer, masks inner, is the correct order."
+    },
+    {
+     "q": "How does Bit Problem count y with x & y ≠ 0?",
+     "options": [
+      "Directly with SOS over x",
+      "As n minus the number of y with x & y = 0, which are the y that are submasks of the complement of x",
+      "By sorting",
+      "By the superset transform of x"
+     ],
+     "answer": 1,
+     "explain": "y shares no bit with x exactly when y fits inside ~x. The subset transform at ~x counts those, and subtracting from n gives the rest."
+    }
+   ],
+   "cover_seed": "sos-dp",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.5,
+   "path": "cp/sos-dp.md",
+   "hash": "e641b26153c3",
+   "word_count": 1226,
+   "excerpt": "A locksmith has a combination lock with 20 switches and a box of numbers, each a switch pattern. For every possible pattern, they want to know how many numbers in the box fit inside it: patterns whose switches are all among the pattern's switches. Enumerating submasks of every mask is 3²⁰, about…"
+  },
+  {
+   "id": "cp-elevator-rides",
+   "kind": "problem-walkthrough",
+   "subject": "cp",
+   "slug": "elevator-rides",
+   "title": "Loading Friends Into a Lift One at a Time",
+   "subtitle": "CSES Elevator Rides: the fewest lift trips for 20 people, with dp[mask] = (rides used, weight in the last ride) compared lexicographically, why that pair is enough, and why 3ⁿ submask DP is too slow here",
+   "track": "cp-dp",
+   "track_order": 12,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-bitmask-dp"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "bitmask DP",
+    "bin packing",
+    "lexicographic comparison",
+    "CSES"
+   ],
+   "complexity": {
+    "time": "O(2ⁿ × n)",
+    "space": "O(2ⁿ)"
+   },
+   "practice_problems": [
+    {
+     "name": "Elevator Rides",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1653",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Minimum Number of Work Sessions to Finish the Tasks",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/minimum-number-of-work-sessions-to-finish-the-tasks/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Matchsticks to Square",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/matchsticks-to-square/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Ride state",
+     "definition": "The pair (number of rides used, weight in the current, last ride) describing how a group of people has been sent so far."
+    },
+    {
+     "term": "Lexicographic minimum",
+     "definition": "Comparing pairs by their first component, and only on a tie by the second; (2, 9) is better than (3, 1), and (2, 4) is better than (2, 9)."
+    },
+    {
+     "term": "Dominance",
+     "definition": "One state is at least as good as another for every possible future; fewer rides dominate more, and with equal rides a lighter last ride dominates a heavier one."
+    },
+    {
+     "term": "Order-based packing",
+     "definition": "Sending people in some order and starting a new ride whenever the next person does not fit; every valid plan arises from some order."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why is the state (rides, last ride weight) enough, instead of remembering every ride's contents?",
+     "options": [
+      "Because rides are equal",
+      "Only the current ride can still take more people; earlier rides are closed and their contents never matter again",
+      "Because weights are small",
+      "It is not enough"
+     ],
+     "answer": 1,
+     "explain": "With people added one at a time, earlier rides are finished. All a future decision needs is how many rides were used and how much room is left in the one still open."
+    },
+    {
+     "q": "Why compare states as pairs with fewer rides first?",
+     "options": [
+      "Arbitrary",
+      "A state with fewer rides can always match a state with more rides by starting a new ride, so it is never worse; among equal rides, more room left is never worse",
+      "Because the weight matters more",
+      "To sort masks"
+     ],
+     "answer": 1,
+     "explain": "That is dominance. Taking the lexicographic minimum keeps, for each set of people, the single state that is at least as good as any other."
+    },
+    {
+     "q": "Why not use the O(3ⁿ) set partition DP for n = 20?",
+     "options": [
+      "It gives wrong answers",
+      "3²⁰ is about 3.5 × 10⁹ steps, far over the time limit, while 2²⁰ × 20 is about 2 × 10⁷",
+      "It uses too little memory",
+      "It works fine"
+     ],
+     "answer": 1,
+     "explain": "Choosing whole rides as submasks is correct but enumerates 3ⁿ pairs. Adding one person at a time with the ride state is exponentially cheaper."
+    }
+   ],
+   "cover_seed": "elevator-rides",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.62,
+   "path": "cp/elevator-rides.md",
+   "hash": "81fd274977dd",
+   "word_count": 1211,
+   "excerpt": "Twenty friends with luggage want to go up a tower in a lift that carries at most 10 units of weight per trip. What is the fewest number of trips? Sorting by weight and packing greedily is wrong in general; this is bin packing, a famously hard problem. But with only 20 people, a bitmask over \"who…"
   },
   {
    "id": "cp-counting-numbers",
