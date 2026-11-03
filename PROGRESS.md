@@ -12,10 +12,10 @@ Read `HANDOFF.md` first if you are picking this project up.
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 36 | 0 | 55 | 91 | 29/32 |
-| system-design | 50 | 0 | 69 | 119 | 49/60 |
+| system-design | 58 | 0 | 61 | 119 | 57/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 8 | 0 | 71 | 79 | 7/47 |
-| **All** | **452** | **0** | **231** | **683** | |
+| **All** | **460** | **0** | **223** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -46,16 +46,16 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### system-design
 
-- [ ] `system-design-behavioural-patterns` (P0, lld, sd-lld): Behavioural Patterns: Strategy, Observer, State and Command
-- [ ] `system-design-machine-coding-approach` (P0, lld, sd-lld): How to Ace a Machine Coding Round
-- [ ] `system-design-parking-lot` (P0, lld, sd-lld): Design a Parking Lot
-- [ ] `system-design-elevator-system` (P0, lld, sd-lld): Design an Elevator System
-- [ ] `system-design-vending-machine` (P0, lld, sd-lld): Design a Vending Machine With the State Pattern
-- [ ] `system-design-splitwise` (P0, lld, sd-lld): Design Splitwise
-- [ ] `system-design-bookmyshow-lld` (P0, lld, sd-lld): Design BookMyShow (Low-Level)
-- [ ] `system-design-distributed-locks-sd` (P0, deep-dive, sd-distributed): Distributed Locks and Leader Election
+- [ ] `system-design-ticket-booking` (P0, case-study, sd-cases): Design a Ticket Booking System Like BookMyShow
 - [ ] `system-design-networking-essentials` (P1, deep-dive, sd-fundamentals): TCP, UDP and QUIC for System Designers
 - [ ] `system-design-proxies` (P1, deep-dive, sd-fundamentals): Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere
+- [ ] `system-design-search-systems` (P1, deep-dive, sd-blocks): Search Systems: Elasticsearch and Inverted Indexes
+- [ ] `system-design-api-gateway` (P1, deep-dive, sd-blocks): API Gateways and Service Discovery
+- [ ] `system-design-storage-types` (P1, deep-dive, sd-blocks): Block, File and Object Storage
+- [ ] `system-design-olap-warehouses` (P1, deep-dive, sd-blocks): Columnar Storage and Data Warehouses
+- [ ] `system-design-multi-region` (P1, deep-dive, sd-scaling): Multi-Region Architectures and Disaster Recovery
+- [ ] `system-design-data-modeling-scale` (P1, deep-dive, sd-scaling): Data Modelling for Scale: Denormalisation and Access Patterns
+- [ ] `system-design-web-crawler` (P1, case-study, sd-cases): Design a Web Crawler
 
 ### ml
 
@@ -411,7 +411,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>system-design: 50 written</summary>
+<details><summary>system-design: 58 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -451,6 +451,13 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-payments` Design a Payment System
 - [x] `system-design-oop-solid` Object-Oriented Design and SOLID Principles
 - [x] `system-design-creational-patterns` Creational Patterns: Factory, Builder and Singleton
+- [x] `system-design-behavioural-patterns` Behavioural Patterns: Strategy, Observer, State and Command
+- [x] `system-design-machine-coding-approach` How to Ace a Machine Coding Round
+- [x] `system-design-parking-lot` Design a Parking Lot
+- [x] `system-design-elevator-system` Design an Elevator System
+- [x] `system-design-vending-machine` Design a Vending Machine With the State Pattern
+- [x] `system-design-splitwise` Design Splitwise
+- [x] `system-design-bookmyshow-lld` Design BookMyShow (Low-Level)
 - [x] `system-design-replication` Replication: Leaders, Followers and Lag
 - [x] `system-design-multi-leader-leaderless` Multi-Leader and Leaderless Replication
 - [x] `system-design-quorums` Quorums: Why R + W > N Works
@@ -463,6 +470,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-outbox-cdc` The Outbox Pattern and Change Data Capture
 - [x] `system-design-exactly-once` Exactly-Once Delivery Is a Myth; Exactly-Once Processing Is Not
 - [x] `system-design-consensus-overview` Consensus in Practice: Raft, Paxos, etcd and ZooKeeper
+- [x] `system-design-distributed-locks-sd` Distributed Locks and Leader Election
 
 </details>
 
@@ -566,12 +574,3 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cs-core-mutex-semaphore` Mutexes, Semaphores and Spinlocks
 
 </details>
-
-## Mismatches to fix
-
-- system-design-behavioural-patterns has an article but is still marked planned
-- system-design-machine-coding-approach has an article but is still marked planned
-- system-design-parking-lot has an article but is still marked planned
-- system-design-elevator-system has an article but is still marked planned
-- system-design-vending-machine has an article but is still marked planned
-- system-design-splitwise has an article but is still marked planned
