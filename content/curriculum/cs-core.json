@@ -235,8 +235,8 @@
    "prerequisites": [
     "cs-core-mutex-semaphore"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Wait and signal",
@@ -264,8 +264,8 @@
    "prerequisites": [
     "cs-core-mutex-semaphore"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Bounded buffer with semaphores",
@@ -293,8 +293,8 @@
    "prerequisites": [
     "cs-core-classic-sync-problems"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Coffman conditions",
@@ -320,8 +320,8 @@
    "prerequisites": [
     "cs-core-what-an-os-does"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Contiguous allocation",
@@ -347,8 +347,8 @@
    "prerequisites": [
     "cs-core-memory-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Pages and frames",
@@ -375,8 +375,8 @@
    "prerequisites": [
     "cs-core-paging-tlb"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Logical segments",
@@ -401,8 +401,8 @@
    "prerequisites": [
     "cs-core-paging-tlb"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Page faults",
@@ -427,8 +427,8 @@
    "prerequisites": [
     "cs-core-virtual-memory"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Fault counting on reference strings",

@@ -12,10 +12,10 @@ Read `HANDOFF.md` first if you are picking this project up.
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
-| system-design | 74 | 0 | 45 | 119 | 60/60 |
+| system-design | 75 | 0 | 44 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core | 8 | 0 | 71 | 79 | 7/47 |
-| **All** | **477** | **0** | **206** | **683** | |
+| cs-core | 16 | 0 | 63 | 79 | 13/47 |
+| **All** | **486** | **0** | **197** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -46,7 +46,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### system-design
 
-- [ ] `system-design-autoscaling` (P1, deep-dive, sd-scaling): Autoscaling: Matching Capacity to Demand
 - [ ] `system-design-data-modeling-scale` (P1, deep-dive, sd-scaling): Data Modelling for Scale: Denormalisation and Access Patterns
 - [ ] `system-design-web-crawler` (P1, case-study, sd-cases): Design a Web Crawler
 - [ ] `system-design-file-sync` (P1, case-study, sd-cases): Design Google Drive or Dropbox
@@ -56,6 +55,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `system-design-proximity-service` (P1, case-study, sd-cases): Design a Nearby Places Service Like Yelp
 - [ ] `system-design-hotel-reservation` (P1, case-study, sd-cases): Design a Hotel Reservation System
 - [ ] `system-design-ecommerce-checkout` (P1, case-study, sd-cases): Design an E-Commerce Checkout
+- [ ] `system-design-food-delivery` (P1, case-study, sd-cases): Design a Food Delivery App Like Swiggy or Zomato
 
 ### ml
 
@@ -72,16 +72,15 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### cs-core
 
-- [ ] `cs-core-classic-sync-problems` (P0, deep-dive, cs-os): Producer-Consumer, Readers-Writers and Dining Philosophers
-- [ ] `cs-core-deadlocks` (P0, deep-dive, cs-os): Deadlocks: Conditions, Prevention, Avoidance, Detection
-- [ ] `cs-core-memory-basics` (P0, deep-dive, cs-os): Memory Management: Allocation and Fragmentation
-- [ ] `cs-core-paging-tlb` (P0, deep-dive, cs-os): Paging, Page Tables and the TLB
-- [ ] `cs-core-virtual-memory` (P0, deep-dive, cs-os): Virtual Memory and Demand Paging
-- [ ] `cs-core-page-replacement` (P0, deep-dive, cs-os): Page Replacement: FIFO, LRU, Optimal and CLOCK
 - [ ] `cs-core-file-systems` (P0, deep-dive, cs-os): File Systems: Inodes, Directories and Allocation
 - [ ] `cs-core-dbms-intro` (P0, primer, cs-dbms): Why Databases Exist
 - [ ] `cs-core-osi-tcpip` (P0, primer, cs-networks): The OSI and TCP/IP Models
 - [ ] `cs-core-classes-objects` (P0, primer, cs-oop): Classes and Objects in C++
+- [ ] `cs-core-memory-hierarchy` (P0, deep-dive, cs-architecture): The Memory Hierarchy and CPU Caches
+- [ ] `cs-core-thrashing` (P1, deep-dive, cs-os): Thrashing and the Working Set
+- [ ] `cs-core-io-interrupts-dma` (P1, deep-dive, cs-os): I/O: Polling, Interrupts and DMA
+- [ ] `cs-core-threading-models` (P1, deep-dive, cs-os): User Threads, Kernel Threads and Thread Pools
+- [ ] `cs-core-booting` (P2, deep-dive, cs-os): What Happens When a Computer Boots
 
 ## Written so far
 
@@ -412,7 +411,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>system-design: 74 written</summary>
+<details><summary>system-design: 75 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -454,6 +453,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-observability` Observability: Logs, Metrics and Traces
 - [x] `system-design-deployments` Shipping Safely: Blue-Green, Canary and Feature Flags
 - [x] `system-design-multi-region` Multi-Region Architectures and Disaster Recovery
+- [x] `system-design-autoscaling` Autoscaling: Matching Capacity to Demand
 - [x] `system-design-url-shortener` Design a URL Shortener
 - [x] `system-design-rate-limiter` Design a Rate Limiter
 - [x] `system-design-unique-id-generator` Design a Unique ID Generator
@@ -579,7 +579,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cs-core: 8 written</summary>
+<details><summary>cs-core: 16 written</summary>
 
 - [x] `cs-core-what-an-os-does` What an Operating System Actually Does
 - [x] `cs-core-processes-threads` Processes vs Threads
@@ -589,6 +589,14 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cs-core-ipc` Inter-Process Communication: Pipes, Shared Memory, Messages
 - [x] `cs-core-race-conditions` Race Conditions and the Critical Section Problem
 - [x] `cs-core-mutex-semaphore` Mutexes, Semaphores and Spinlocks
+- [x] `cs-core-monitors-condition-variables` Monitors and Condition Variables
+- [x] `cs-core-classic-sync-problems` Producer-Consumer, Readers-Writers and Dining Philosophers
+- [x] `cs-core-deadlocks` Deadlocks: Conditions, Prevention, Avoidance, Detection
+- [x] `cs-core-memory-basics` Memory Management: Allocation and Fragmentation
+- [x] `cs-core-paging-tlb` Paging, Page Tables and the TLB
+- [x] `cs-core-segmentation` Segmentation and Segmented Paging
+- [x] `cs-core-virtual-memory` Virtual Memory and Demand Paging
+- [x] `cs-core-page-replacement` Page Replacement: FIFO, LRU, Optimal and CLOCK
 
 </details>
 
@@ -601,11 +609,3 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - system-design-cache-lld has an article but is still marked planned
 - system-design-rate-limiter-lld has an article but is still marked planned
 - system-design-pub-sub-lld has an article but is still marked planned
-- cs-core-monitors-condition-variables has an article but is still marked planned
-- cs-core-classic-sync-problems has an article but is still marked planned
-- cs-core-deadlocks has an article but is still marked planned
-- cs-core-memory-basics has an article but is still marked planned
-- cs-core-paging-tlb has an article but is still marked planned
-- cs-core-segmentation has an article but is still marked planned
-- cs-core-virtual-memory has an article but is still marked planned
-- cs-core-page-replacement has an article but is still marked planned
