@@ -2705,8 +2705,8 @@
    "prerequisites": [
     "cp-scc"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Label components",
@@ -2734,8 +2734,8 @@
    "prerequisites": [
     "dsa-bellman-ford-floyd"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Negate weights",
@@ -2762,8 +2762,8 @@
    "prerequisites": [
     "cp-binary-lifting"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "k-th boss",

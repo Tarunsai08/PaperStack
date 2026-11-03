@@ -1,7 +1,7 @@
 {
- "content_version": "d37bba46592beb4b",
+ "content_version": "3b8f3a93c9edb6ee",
  "generated_at": "2026-11-02",
- "count": 399,
+ "count": 402,
  "subjects": [
   {
    "id": "ml",
@@ -35365,6 +35365,347 @@
    "hash": "56313bc77cac",
    "word_count": 1478,
    "excerpt": "Can you draw an envelope without lifting the pen and without tracing any line twice? Children try for minutes. A graph theorist checks how many corners have an odd number of lines and answers in seconds. The question is old. In 1736 Euler proved that nobody could walk through Königsberg crossing…"
+  },
+  {
+   "id": "cp-planets-and-kingdoms",
+   "kind": "problem-walkthrough",
+   "subject": "cp",
+   "slug": "planets-and-kingdoms",
+   "title": "One-Way Teleporters Between Planets",
+   "subtitle": "CSES Planets and Kingdoms end to end: why pairwise reachability is too slow, Kosaraju's two passes and why the latest finisher must go first, both passes without recursion, and how the labels double as a topological order",
+   "track": "cp-graphs",
+   "track_order": 13,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-scc"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "graphs",
+    "strongly connected components",
+    "Kosaraju",
+    "CSES"
+   ],
+   "complexity": {
+    "time": "O(n + m)",
+    "space": "O(n + m)"
+   },
+   "practice_problems": [
+    {
+     "name": "Planets and Kingdoms",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1683",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Flight Routes Check",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1682",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Coin Collector",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1686",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Kingdom",
+     "definition": "The problem's name for a strongly connected component: a maximal set of planets that can all reach each other."
+    },
+    {
+     "term": "Finishing order",
+     "definition": "The order in which a DFS completes vertices, each one after everything reachable from it that was still unvisited."
+    },
+    {
+     "term": "Source component",
+     "definition": "A component of the condensation with no edges coming in from other components."
+    },
+    {
+     "term": "Reversed graph",
+     "definition": "The same vertices with every edge pointing the other way; it has exactly the same strongly connected components."
+    },
+    {
+     "term": "Explicit stack DFS",
+     "definition": "A DFS that keeps its own stack of vertices and a next-edge pointer per vertex instead of recursing, so depth is limited only by memory."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does Kosaraju's second pass start from the vertex that finished last in the first pass?",
+     "options": [
+      "Any vertex works",
+      "That vertex lies in a source component of the condensation; in the reversed graph that component has no way out, so a search from it labels exactly its own component",
+      "Because it has the most edges",
+      "Because it was visited first"
+     ],
+     "answer": 1,
+     "explain": "The last finisher's component can only be reached from itself. Reversing all edges turns it into a component nothing escapes from, so the reverse search stops at its border."
+    },
+    {
+     "q": "What goes wrong if pass two searches the original graph instead of the reversed one?",
+     "options": [
+      "Nothing",
+      "From a source component the original edges lead into later components, so the search swallows several kingdoms at once",
+      "It becomes slower but stays correct",
+      "Labels come out reversed but correct"
+     ],
+     "answer": 1,
+     "explain": "In the example, a forward search from planet 6 reaches all seven planets, merging three kingdoms into one."
+    },
+    {
+     "q": "Why write both passes without recursion for this problem?",
+     "options": [
+      "It is required by CSES",
+      "A long chain or cycle of 10⁵ planets makes a recursive DFS 10⁵ calls deep, which can overflow a small stack; an explicit stack has no such limit",
+      "Recursion is slower in C++",
+      "To get a different answer"
+     ],
+     "answer": 1,
+     "explain": "Depth equals the longest DFS path, which can be the whole graph. Iterative code removes the risk entirely."
+    }
+   ],
+   "cover_seed": "cp-planets-and-kingdoms",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.62,
+   "path": "cp/planets-and-kingdoms.md",
+   "hash": "90bde1df6c80",
+   "word_count": 1362,
+   "excerpt": "A galaxy of planets is linked by one-way teleporters. Two planets belong to the same kingdom when you can teleport from each to the other, possibly through other planets. Label every planet with its kingdom. This is strongly connected components in its purest form. One-Way Streets, Found in a…"
+  },
+  {
+   "id": "cp-high-score",
+   "kind": "problem-walkthrough",
+   "subject": "cp",
+   "slug": "high-score",
+   "title": "A Game Loop That Pays You Forever",
+   "subtitle": "CSES High Score end to end: longest paths as shortest paths with negated weights, Bellman–Ford for n − 1 rounds, the extra round that exposes positive cycles, and why only cycles you can reach from the start and leave towards the exit count",
+   "track": "cp-graphs",
+   "track_order": 14,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-bellman-ford-floyd"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "graphs",
+    "Bellman-Ford",
+    "longest path",
+    "positive cycles",
+    "CSES"
+   ],
+   "complexity": {
+    "time": "O(n·m)",
+    "space": "O(n + m)"
+   },
+   "practice_problems": [
+    {
+     "name": "High Score",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1673",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Score Attack",
+     "platform": "AtCoder",
+     "url": "https://atcoder.jp/contests/abc061/tasks/abc061_d",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Cycle Finding",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1197",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Positive cycle",
+     "definition": "A cycle whose tunnel scores sum to more than zero; going round it again always adds score."
+    },
+    {
+     "term": "Relaxation",
+     "definition": "Updating best[b] to best[a] + w when that is larger, for a tunnel a → b with score w."
+    },
+    {
+     "term": "Useful cycle",
+     "definition": "A positive cycle that can be reached from the start room and from which the exit room can be reached."
+    },
+    {
+     "term": "Extra round test",
+     "definition": "After n − 1 rounds of relaxation, any tunnel that can still improve its end room proves that a positive cycle feeds into that tunnel."
+    },
+    {
+     "term": "Reverse reachability",
+     "definition": "The set of rooms that can reach the exit, found by searching from the exit along reversed tunnels."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does Bellman–Ford need only n − 1 rounds when there is no useful positive cycle?",
+     "options": [
+      "Because the graph is small",
+      "Without a useful positive cycle, some best route is a simple path, which has at most n − 1 tunnels, and round i settles every route of i tunnels",
+      "Because scores are bounded",
+      "It needs n² rounds"
+     ],
+     "answer": 1,
+     "explain": "Repeating a room would mean going round a cycle; if no cycle on the way is positive, removing it never lowers the score, so a simple best route exists."
+    },
+    {
+     "q": "After n − 1 rounds, tunnel a → b can still improve best[b]. When must the answer be −1?",
+     "options": [
+      "Always",
+      "When a is reachable from the start and the exit is reachable from b; otherwise the cycle that feeds a can never be cashed in at the exit",
+      "When b is the exit",
+      "Never"
+     ],
+     "answer": 1,
+     "explain": "A late improvement proves a positive cycle before a. Only if the route can continue from b to the exit does the score at the exit become unbounded."
+    },
+    {
+     "q": "What does a positive cycle that cannot reach the exit change about the answer?",
+     "options": [
+      "The answer becomes −1",
+      "Nothing: scores in that region grow without limit, but they never flow into the exit, so the best finite route is still correct",
+      "The answer becomes 0",
+      "Bellman–Ford fails to terminate"
+     ],
+     "answer": 1,
+     "explain": "Bellman–Ford runs a fixed number of rounds, so it terminates. The growing values stay inside rooms that cannot lead to the exit."
+    }
+   ],
+   "cover_seed": "cp-high-score",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.6,
+   "path": "cp/high-score.md",
+   "hash": "2e2f61849f68",
+   "word_count": 1441,
+   "excerpt": "A game has rooms joined by one-way tunnels, and walking through a tunnel changes your score by some amount, possibly negative. You start in room 1 and want to finish in room n with the highest possible score. If you can make the score as large as you like, you must say so. The twist is a loop of…"
+  },
+  {
+   "id": "cp-company-queries",
+   "kind": "problem-walkthrough",
+   "subject": "cp",
+   "slug": "company-queries",
+   "title": "Express Elevators in a Corporate Tower",
+   "subtitle": "CSES Company Queries I and II end to end: why walking up boss by boss times out, the jump table, the k-th boss with its out-of-range case, the lowest common boss, and an offline DFS that answers the same k-th boss queries from the current chain of command",
+   "track": "cp-graphs",
+   "track_order": 15,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-binary-lifting"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "trees",
+    "binary lifting",
+    "LCA",
+    "offline queries",
+    "CSES"
+   ],
+   "complexity": {
+    "time": "O((n + q) log n)",
+    "space": "O(n log n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Company Queries I",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1687",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Company Queries II",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1688",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Distance Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1135",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Kth Ancestor of a Tree Node",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/kth-ancestor-of-a-tree-node/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Chain of command",
+     "definition": "The list of bosses from an employee up to the general director; its length is the employee's depth."
+    },
+    {
+     "term": "Jump table",
+     "definition": "up[j][v], the boss 2^j levels above employee v, or 0 when that is above the director."
+    },
+    {
+     "term": "Out-of-range jump",
+     "definition": "A request for a boss more levels up than the employee's depth; the answer must be −1, not whatever the table happens to hold."
+    },
+    {
+     "term": "Lowest common boss",
+     "definition": "The lowest employee who is a boss, directly or indirectly, of both a and b, or one of them if one manages the other; the LCA."
+    },
+    {
+     "term": "Offline chain method",
+     "definition": "Answering all k-th boss queries during one DFS, by keeping the current chain of command on a stack and reading the entry k places from its top."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Employee 10 has depth 5. What should a query for their 6th boss return?",
+     "options": [
+      "The director",
+      "−1, because there are only 5 bosses above employee 10",
+      "0",
+      "Employee 10"
+     ],
+     "answer": 1,
+     "explain": "A jump of 6 is out of range. Checking k > depth[v] first gives −1 without relying on how the table treats jumps past the top."
+    },
+    {
+     "q": "Why is LOG chosen so that 2^LOG > n here, and not 2^LOG > the maximum depth only?",
+     "options": [
+      "It must be prime",
+      "Queries can ask for k up to n, and the out-of-range check only works if k's bits are all representable; with 2^LOG > n every k up to n fits",
+      "It makes the table smaller",
+      "Depth is unknown"
+     ],
+     "answer": 1,
+     "explain": "Even though k > depth is caught first, sizing the table from n removes any doubt about dropping high bits for legal jumps."
+    },
+    {
+     "q": "In the offline chain method, how is the k-th boss of the employee just entered found?",
+     "options": [
+      "By walking up k parents",
+      "The DFS keeps the current chain of command on a stack; the k-th boss is the entry k places below the top, if the stack is that tall",
+      "By binary search",
+      "It cannot be found offline"
+     ],
+     "answer": 1,
+     "explain": "The stack holds exactly the director down to the current employee, so position size − 1 − k is the k-th boss."
+    }
+   ],
+   "cover_seed": "cp-company-queries",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.62,
+   "path": "cp/company-queries.md",
+   "hash": "ff2a1f7b4c90",
+   "word_count": 1555,
+   "excerpt": "A company has a general director, and every other employee has exactly one direct boss. Two kinds of questions arrive by the hundred thousand: \"who is employee x's boss k levels up?\" and \"who is the lowest boss that both a and b report to?\". In a deep company, walking up boss by boss is far too…"
   },
   {
    "id": "cp-string-hashing",

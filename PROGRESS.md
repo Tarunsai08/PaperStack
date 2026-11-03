@@ -10,12 +10,12 @@ Read `HANDOFF.md` first if you are picking this project up.
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
 | dsa | 152 | 0 | 0 | 152 | 72/72 |
-| cp | 90 | 0 | 25 | 115 | 27/29 |
+| cp | 93 | 0 | 22 | 115 | 27/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **399** | **0** | **274** | **673** | |
+| **All** | **402** | **0** | **271** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -30,15 +30,15 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 ### cp
 
 - [ ] `cp-prefix-function` (P0, pattern, cp-strings): The Prefix Function and KMP
-- [ ] `cp-planets-and-kingdoms` (P1, problem-walkthrough, cp-graphs): Planets and Kingdoms: SCCs in Practice
-- [ ] `cp-high-score` (P1, problem-walkthrough, cp-graphs): High Score: Positive Cycles and Bellman-Ford
-- [ ] `cp-company-queries` (P1, problem-walkthrough, cp-graphs): Company Queries: Binary Lifting by Example
 - [ ] `cp-small-to-large` (P1, pattern, cp-graphs): Small-to-Large Merging (DSU on Tree)
 - [ ] `cp-implicit-graphs` (P1, pattern, cp-graphs): Modelling: When the Graph Is Hidden
 - [ ] `cp-suffix-array` (P1, pattern, cp-strings): Suffix Arrays and LCP
 - [ ] `cp-meet-in-the-middle` (P1, pattern, cp-misc): Meet in the Middle
 - [ ] `cp-randomized-techniques` (P1, pattern, cp-misc): Randomised Techniques in Contests
 - [ ] `cp-bitwise-tricks-cp` (P1, pattern, cp-misc): Bitwise Tricks for Contests
+- [ ] `cp-polygon-area` (P1, problem-walkthrough, cp-misc): Polygon Area With the Shoelace Formula
+- [ ] `cp-apple-division` (P1, problem-walkthrough, cp-misc): Apple Division: Brute Force Done Right
+- [ ] `cp-download-speed` (P2, problem-walkthrough, cp-graphs): Download Speed: Max Flow in Practice
 
 ### famous-algos
 
@@ -238,7 +238,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cp: 90 written</summary>
+<details><summary>cp: 93 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -318,6 +318,9 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cp-counting-numbers` Counting Numbers With No Equal Adjacent Digits
 - [x] `cp-removal-game` Removal Game: Interval DP for Two Players
 - [x] `cp-projects-dp` Projects: Weighted Interval Scheduling
+- [x] `cp-planets-and-kingdoms` Planets and Kingdoms: SCCs in Practice
+- [x] `cp-high-score` High Score: Positive Cycles and Bellman-Ford
+- [x] `cp-company-queries` Company Queries: Binary Lifting by Example
 - [x] `cp-nim-games` Nim and Its Variants
 - [x] `cp-invariants-observations` Invariants and Observations: The Heart of Div 2
 - [x] `cp-prefix-xor-tricks` Prefix XOR and Subarray Tricks
