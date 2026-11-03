@@ -1,7 +1,7 @@
 {
- "content_version": "6cbf7bd263283727",
+ "content_version": "1a4d5b2ac2c02f36",
  "generated_at": "2026-11-03",
- "count": 557,
+ "count": 559,
  "subjects": [
   {
    "id": "ml",
@@ -58339,6 +58339,184 @@
    "hash": "853d7bcd0169",
    "word_count": 1068,
    "excerpt": "You have spent the whole DBMS track normalising tables, splitting facts so each is stored once, and joining them back with keys. Then an interviewer asks: \"Your app stores shopping carts for a hundred million users, read and written constantly, and nobody ever joins a cart with anything. Would you…"
+  },
+  {
+   "id": "cs-core-osi-tcpip",
+   "kind": "primer",
+   "subject": "cs-core",
+   "slug": "osi-tcpip",
+   "title": "Sending a Parcel Through Layers of Packaging",
+   "subtitle": "The OSI and TCP/IP models: what each layer does, which devices and protocols live where, and encapsulation traced byte by byte for one small web request",
+   "track": "cs-networks",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "computer networks",
+    "osi model",
+    "tcp/ip",
+    "encapsulation",
+    "layers"
+   ],
+   "glossary": [
+    {
+     "term": "Layer",
+     "definition": "A level of the network stack that offers one service to the layer above and uses the service of the layer below."
+    },
+    {
+     "term": "Encapsulation",
+     "definition": "Each layer wrapping the data from the layer above with its own header (and sometimes trailer) on the way down, and removing it on the way up."
+    },
+    {
+     "term": "Protocol data unit",
+     "definition": "The name of the data at a given layer: segment (transport), packet (network), frame (data link), bits (physical)."
+    },
+    {
+     "term": "MTU",
+     "definition": "Maximum transmission unit: the largest packet a link can carry in one frame, commonly 1500 bytes on Ethernet."
+    },
+    {
+     "term": "Port",
+     "definition": "A 16-bit number that the transport layer uses to deliver data to the right program on a host."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "At which layer do IP addresses and routers operate?",
+     "options": [
+      "Data link",
+      "Network",
+      "Transport",
+      "Application"
+     ],
+     "answer": 1,
+     "explain": "The network layer moves packets between networks using IP addresses; routers make decisions there."
+    },
+    {
+     "q": "A 100-byte HTTP payload goes out over Ethernet with minimal TCP and IPv4 headers. How many bytes does the frame carry, counting the 14-byte Ethernet header and 4-byte trailer?",
+     "options": [
+      "100",
+      "140",
+      "158",
+      "1500"
+     ],
+     "answer": 2,
+     "explain": "100 + 20 (TCP) + 20 (IPv4) + 14 + 4 (Ethernet) = 158 bytes."
+    },
+    {
+     "q": "Which statement about the OSI and TCP/IP models is right?",
+     "options": [
+      "The internet runs the full seven-layer OSI protocol suite",
+      "TCP/IP has four layers that merge OSI's top three into one application layer, and OSI is used mainly as vocabulary",
+      "They are unrelated",
+      "TCP/IP has more layers"
+     ],
+     "answer": 1,
+     "explain": "People say 'layer 4 load balancer' or 'layer 7 firewall' using OSI numbers, while the running protocols follow the TCP/IP stack."
+    }
+   ],
+   "cover_seed": "osi-tcpip",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.88,
+   "path": "cs-core/osi-tcpip.md",
+   "hash": "a9e395268cb9",
+   "word_count": 1042,
+   "excerpt": "You type a web address and press Enter. Your laptop's Wi-Fi radio does not know what a web page is. The web browser does not know what a radio wave is. The router in your hostel does not care whether the bytes are a video or a password. Yet the request arrives, intact, at a server across the world.…"
+  },
+  {
+   "id": "cs-core-ip-addressing",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "ip-addressing",
+   "title": "Street Addresses With Postcodes",
+   "subtitle": "IP addressing and subnetting: from classes to CIDR, subnet masks in binary, network and broadcast addresses, host counts, VLSM worked end to end, private ranges, and a first look at IPv6",
+   "track": "cs-networks",
+   "track_order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-osi-tcpip"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "computer networks",
+    "ip addressing",
+    "subnetting",
+    "cidr",
+    "ipv6"
+   ],
+   "glossary": [
+    {
+     "term": "IPv4 address",
+     "definition": "A 32-bit number written as four decimal bytes, such as 192.168.10.77, identifying a network interface."
+    },
+    {
+     "term": "Prefix length",
+     "definition": "The /n in CIDR notation: how many leading bits identify the network; the rest identify the host."
+    },
+    {
+     "term": "Subnet mask",
+     "definition": "The prefix written as a 32-bit mask of n ones followed by zeros, such as 255.255.255.192 for /26."
+    },
+    {
+     "term": "Network address",
+     "definition": "The first address of a subnet, with all host bits 0; it names the subnet and is not given to a host."
+    },
+    {
+     "term": "Broadcast address",
+     "definition": "The last address of a subnet, with all host bits 1; a packet sent to it reaches every host on the subnet."
+    },
+    {
+     "term": "CIDR",
+     "definition": "Classless inter-domain routing: addresses are split at any prefix length, replacing the fixed class A, B and C sizes."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Which subnet does 192.168.10.77/26 belong to, and what is its broadcast address?",
+     "options": [
+      "192.168.10.0, broadcast .63",
+      "192.168.10.64, broadcast .127",
+      "192.168.10.77, broadcast .255",
+      "192.168.10.128, broadcast .191"
+     ],
+     "answer": 1,
+     "explain": "/26 subnets go up in blocks of 64: .0, .64, .128, .192. 77 falls in .64 to .127."
+    },
+    {
+     "q": "How many usable host addresses does a /27 subnet have?",
+     "options": [
+      "32",
+      "30",
+      "62",
+      "14"
+     ],
+     "answer": 1,
+     "explain": "5 host bits give 2⁵ = 32 addresses, minus the network and broadcast addresses: 30."
+    },
+    {
+     "q": "Which address is private (not routed on the public internet)?",
+     "options": [
+      "172.32.0.1",
+      "172.20.5.5",
+      "8.8.8.8",
+      "192.169.1.1"
+     ],
+     "answer": 1,
+     "explain": "172.16.0.0/12 covers 172.16.0.0 to 172.31.255.255. 172.32.0.1 is outside it, and 192.169 is not 192.168."
+    }
+   ],
+   "cover_seed": "ip-addressing",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.88,
+   "path": "cs-core/ip-addressing.md",
+   "hash": "6a88c3824879",
+   "word_count": 1404,
+   "excerpt": "Your college gets the block 192.168.10.0/24 for its labs: 256 addresses. The computer lab needs 100 machines, the library 50, the admin office 20, and a link between two routers needs just 2. Can one block serve all four, each on its own network? And when a packet arrives for 192.168.10.77, which…"
   }
  ]
 }

@@ -1147,8 +1147,8 @@
    "order": 1,
    "priority": "P0",
    "prerequisites": [],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Seven vs four layers",
@@ -1200,8 +1200,8 @@
    "prerequisites": [
     "cs-core-osi-tcpip"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "IPv4 classes vs CIDR",

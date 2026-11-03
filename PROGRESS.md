@@ -14,8 +14,8 @@ Read `HANDOFF.md` first if you are picking this project up.
 | famous-algos | 38 | 0 | 53 | 91 | 31/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core | 42 | 0 | 37 | 79 | 27/47 |
-| **All** | **557** | **0** | **126** | **683** | |
+| cs-core | 44 | 0 | 35 | 79 | 29/47 |
+| **All** | **559** | **0** | **124** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -63,9 +63,14 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### cs-core
 
-- [ ] `cs-core-osi-tcpip` (P0, primer, cs-networks): The OSI and TCP/IP Models
+- [ ] `cs-core-tcp-deep-dive` (P0, deep-dive, cs-networks): TCP: Handshakes, Reliability and Flow Control
+- [ ] `cs-core-dns-cs` (P0, deep-dive, cs-networks): DNS for CS Interviews
 - [ ] `cs-core-classes-objects` (P0, primer, cs-oop): Classes and Objects in C++
 - [ ] `cs-core-memory-hierarchy` (P0, deep-dive, cs-architecture): The Memory Hierarchy and CPU Caches
+- [ ] `cs-core-data-link` (P1, deep-dive, cs-networks): The Data Link Layer: MAC, Switches and ARP
+- [ ] `cs-core-routing-algorithms` (P1, deep-dive, cs-networks): Routing: Distance Vector and Link State
+- [ ] `cs-core-nat-dhcp` (P1, deep-dive, cs-networks): NAT and DHCP
+- [ ] `cs-core-icmp-tools` (P2, deep-dive, cs-networks): ICMP, ping and traceroute
 
 ## Written so far
 
@@ -609,7 +614,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cs-core: 42 written</summary>
+<details><summary>cs-core: 44 written</summary>
 
 - [x] `cs-core-what-an-os-does` What an Operating System Actually Does
 - [x] `cs-core-processes-threads` Processes vs Threads
@@ -653,5 +658,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cs-core-query-optimization` How a Query Runs: Parsing, Planning, Executing
 - [x] `cs-core-views-triggers-procedures` Views, Stored Procedures and Triggers
 - [x] `cs-core-nosql-overview` NoSQL Families for DBMS Interviews
+- [x] `cs-core-osi-tcpip` The OSI and TCP/IP Models
+- [x] `cs-core-ip-addressing` IP Addressing and Subnetting
 
 </details>
