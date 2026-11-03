@@ -1,7 +1,7 @@
 {
- "content_version": "a403254e9a3972fa",
+ "content_version": "32540938d9ab1f2a",
  "generated_at": "2026-11-02",
- "count": 416,
+ "count": 418,
  "subjects": [
   {
    "id": "ml",
@@ -37963,6 +37963,236 @@
    "hash": "ef407de2f3ff",
    "word_count": 1634,
    "excerpt": "A farmer has hammered fence posts all over a field and wants the shortest fence that encloses every post. Some posts will sit on the fence; most will end up inside. Which ones are on the fence, and in what order? With ten posts you could eyeball it. With 200,000 posts, given only as coordinates,…"
+  },
+  {
+   "id": "cp-meet-in-the-middle",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "meet-in-the-middle",
+   "title": "Two Tunnel Teams Digging From Both Ends",
+   "subtitle": "Meet in the middle for contests: splitting 2^n choices into two lists of 2^(n/2), generating each list already sorted by merging, counting exact matches and finding the closest sum with two pointers, and keeping the combine step from becoming the bottleneck",
+   "track": "cp-misc",
+   "track_order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-subsets-permutations",
+    "dsa-binary-search"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "meet in the middle",
+    "subset sums",
+    "two pointers",
+    "enumeration"
+   ],
+   "complexity": {
+    "time": "O(2^(n/2)) with merge generation",
+    "space": "O(2^(n/2))"
+   },
+   "practice_problems": [
+    {
+     "name": "Meet in the Middle",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1628",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Closest Subsequence Sum",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/closest-subsequence-sum/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Partition Array Into Two Arrays to Minimize Sum Difference",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Maximum Subsequence",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/888/E",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Meet in the middle",
+     "definition": "Splitting a search over n independent choices into two halves, enumerating each half fully, and combining the two lists instead of enumerating all combinations."
+    },
+    {
+     "term": "Half list",
+     "definition": "The 2^(n/2) values, such as subset sums, produced by every choice within one half."
+    },
+    {
+     "term": "Merge generation",
+     "definition": "Building a half's sums already sorted: adding one element to a sorted list gives a second sorted list, and merging the two takes linear time."
+    },
+    {
+     "term": "Combine step",
+     "definition": "The phase that pairs values from the two half lists, by two pointers, binary search or hashing; it must stay near-linear in the list sizes."
+    },
+    {
+     "term": "Equal runs",
+     "definition": "Consecutive equal values in a sorted list; when counting pairs, each run on one side multiplies with the matching run on the other."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why is meet in the middle faster than trying all 2^n subsets?",
+     "options": [
+      "It skips invalid subsets",
+      "Every subset is a pair (left part, right part), so enumerating the 2^(n/2) left sums and 2^(n/2) right sums and combining them with a near-linear step replaces 2^n work by about 2·2^(n/2)",
+      "It uses dynamic programming",
+      "It is not faster"
+     ],
+     "answer": 1,
+     "explain": "For n = 40, that is about two million values instead of a trillion subsets, provided the combine step does not pair every left with every right."
+    },
+    {
+     "q": "What goes wrong if the combine step loops over every pair of left and right sums?",
+     "options": [
+      "Nothing",
+      "It is 2^(n/2) × 2^(n/2) = 2^n again, so the split saved nothing; sorting plus two pointers or hashing keeps the combine near-linear",
+      "It uses too much memory",
+      "It gives wrong answers"
+     ],
+     "answer": 1,
+     "explain": "The whole gain comes from not looking at pairs individually. A sorted order lets one pass find all matching pairs."
+    },
+    {
+     "q": "How does merge generation build a sorted half list without a final sort?",
+     "options": [
+      "By hashing",
+      "Start with [0]; for each element, the old list plus the element is also sorted, so merge the old list and the shifted list in linear time; after n/2 elements the list is sorted",
+      "By random sampling",
+      "By binary search"
+     ],
+     "answer": 1,
+     "explain": "Each step doubles the list with a linear merge, so the total is 1 + 2 + 4 + ... + 2^(n/2), which is O(2^(n/2)), with no log factor."
+    }
+   ],
+   "cover_seed": "cp-meet-in-the-middle",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.62,
+   "path": "cp/meet-in-the-middle.md",
+   "hash": "12e8825b39c3",
+   "word_count": 1356,
+   "excerpt": "Forty numbers, and the question: how many subsets add up to exactly x? Trying all 2⁴⁰ subsets is about 10¹² sums, hours of computing. A knapsack DP over sums does not help either when the numbers are up to 10⁹. But 40 is not that big if you cut it in half. Twenty numbers have only about a million…"
+  },
+  {
+   "id": "cp-randomized-techniques",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "randomized-techniques",
+   "title": "Spot-Checking a Few Receipts to Catch the Errors",
+   "subtitle": "Randomisation for contests: a proper random generator instead of rand(), hashes that a prepared test cannot target, Freivalds' check of a matrix product in O(n²), XOR hashing of sets with random labels, the birthday bound that decides how wide a hash must be, and random sampling for frequent elements",
+   "track": "cp-misc",
+   "track_order": 6,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-string-hashing"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "randomisation",
+    "hashing",
+    "Freivalds",
+    "XOR hashing",
+    "probability"
+   ],
+   "complexity": {
+    "time": "O(n²) per Freivalds trial; O(1) per hashed set comparison",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "The Number of Subpermutations",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/1175/F",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Love-Hate",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/1523/D",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Shuffle an Array",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/shuffle-an-array/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Seeded generator",
+     "definition": "A pseudo-random generator such as mt19937_64 started from an unpredictable value, for example the clock, so that a fixed test cannot anticipate its choices."
+    },
+    {
+     "term": "One-sided error",
+     "definition": "An algorithm whose 'no' answers are always right and whose 'yes' answers are wrong with small probability, like Freivalds' check."
+    },
+    {
+     "term": "Freivalds' check",
+     "definition": "Testing A·B = C by comparing A·(B·r) with C·r for a random 0/1 vector r, in O(n²) instead of O(n³)."
+    },
+    {
+     "term": "XOR hashing",
+     "definition": "Giving every value a random 64-bit label and fingerprinting a set as the XOR, or a multiset as the sum, of its labels."
+    },
+    {
+     "term": "Birthday bound",
+     "definition": "Among k random values from a space of size M, some two collide with noticeable probability once k is around √M; the expected number of colliding pairs is about k²/(2M)."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Freivalds' check reports A·B ≠ C for one random 0/1 vector. How certain is that answer?",
+     "options": [
+      "50 percent",
+      "Completely certain: A·(B·r) ≠ C·r is a concrete witness that the products differ; only an 'equal' answer can be wrong",
+      "90 percent",
+      "It depends on n"
+     ],
+     "answer": 1,
+     "explain": "If A·B = C then A·B·r = C·r for every r. So a mismatch proves inequality, and the only error is accepting a wrong C, with probability at most 1/2 per trial."
+    },
+    {
+     "q": "Why is hashing 10⁶ strings modulo a single prime near 10⁹ risky even with a random base?",
+     "options": [
+      "Primes are slow",
+      "By the birthday bound, 10⁶ values in a space of 10⁹ give about 10¹²/(2·10⁹) = 500 expected colliding pairs, so some unrelated strings will share a hash",
+      "It is not risky",
+      "Because the base is random"
+     ],
+     "answer": 1,
+     "explain": "Pairwise collision chance is small, but there are about 5·10¹¹ pairs. A 64-bit or double hash makes the expected number of collisions tiny."
+    },
+    {
+     "q": "How does XOR hashing test whether a[l..r] is a permutation of 1..(r − l + 1)?",
+     "options": [
+      "By sorting the subarray",
+      "Give each value a random 64-bit label; compare the XOR of labels in a[l..r], from prefix XORs, with the precomputed XOR of labels of 1..len",
+      "By summing the values",
+      "It cannot"
+     ],
+     "answer": 1,
+     "explain": "Equal sets give equal XORs. Different sets give equal XORs only by a chance of about 2⁻⁶⁴ per comparison, but a plain sum check can be fooled, for example by 1 + 4 = 2 + 3."
+    }
+   ],
+   "cover_seed": "cp-randomized-techniques",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.58,
+   "path": "cp/randomized-techniques.md",
+   "hash": "3e13e4bb15aa",
+   "word_count": 1562,
+   "excerpt": "An auditor faced with ten thousand receipts does not recheck every one. They pick a few at random and check those carefully. If the books are clean, every spot check passes. If something is wrong, a well-designed spot check catches it with high probability, and repeating it makes a miss…"
   },
   {
    "id": "cp-interactive-problems",
