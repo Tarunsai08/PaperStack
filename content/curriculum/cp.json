@@ -1842,8 +1842,8 @@
    "prerequisites": [
     "cp-manacher"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Nodes are distinct palindromes",
@@ -1870,8 +1870,8 @@
    "prerequisites": [
     "cp-suffix-array"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Smallest automaton accepting all substrings",

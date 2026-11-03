@@ -1,7 +1,7 @@
 {
- "content_version": "c55569da39e6f6c5",
+ "content_version": "bc0e805809582624",
  "generated_at": "2026-11-02",
- "count": 411,
+ "count": 413,
  "subjects": [
   {
    "id": "ml",
@@ -36896,6 +36896,240 @@
    "hash": "1ec58c4ae172",
    "word_count": 1412,
    "excerpt": "Find the longest palindrome inside a string of a million letters. Expanding around each of the 2n − 1 centres is O(n²) in the worst case, for example on a string of a single repeated letter, where every centre expands to the edge. Dynamic programming over all substrings is O(n²) as well. Manacher…"
+  },
+  {
+   "id": "cp-palindromic-tree",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "palindromic-tree",
+   "title": "A Family Tree of Palindromes",
+   "subtitle": "The palindromic tree, or eertree, for contests: one node per distinct palindrome, two roots of length −1 and 0, suffix links to the longest palindromic suffix, why each new letter adds at most one palindrome, and occurrence counts pushed along suffix links",
+   "track": "cp-strings",
+   "track_order": 7,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-manacher"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "strings",
+    "palindromes",
+    "palindromic tree",
+    "eertree",
+    "suffix links"
+   ],
+   "complexity": {
+    "time": "O(n) amortised, plus O(σ) per node to allocate",
+    "space": "O(n·σ)"
+   },
+   "practice_problems": [
+    {
+     "name": "Palindromes (APIO 2014)",
+     "platform": "oj.uz",
+     "url": "https://oj.uz/problem/view/APIO14_palindrome",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Palisection",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/17/E",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Palindrome Partition",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/932/G",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Palindromic tree",
+     "definition": "A structure with one node per distinct palindromic substring; an edge by letter c from node X leads to the palindrome cXc. Also called an eertree."
+    },
+    {
+     "term": "Imaginary root",
+     "definition": "Node of length −1; its child by c is the single letter c, because c + (length −1) + c has length 1."
+    },
+    {
+     "term": "Empty root",
+     "definition": "Node of length 0, the empty palindrome; its child by c is cc. Its suffix link points to the imaginary root."
+    },
+    {
+     "term": "Suffix link",
+     "definition": "link[v], the node for the longest proper palindromic suffix of v's palindrome."
+    },
+    {
+     "term": "Longest suffix palindrome",
+     "definition": "After adding letter i, the longest palindrome ending at i; the tree keeps a pointer to its node."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does adding one letter create at most one new distinct palindrome?",
+     "options": [
+      "Palindromes are rare",
+      "If two palindromes ending at the new letter were both new, the shorter one is a suffix of the longer, hence by symmetry also a prefix of it, so it ended earlier and was not new",
+      "Because of the two roots",
+      "It can create several"
+     ],
+     "answer": 1,
+     "explain": "A palindromic suffix of a palindrome is also its prefix. So every palindrome ending at i except the longest already appeared earlier."
+    },
+    {
+     "q": "What is the role of the root with length −1?",
+     "options": [
+      "It is never used",
+      "Its child by c represents the single letter c, so one-letter palindromes are created by the same rule c + X + c as all others, and the walk along suffix links always stops there",
+      "It stores the empty string",
+      "It marks the end of input"
+     ],
+     "answer": 1,
+     "explain": "The check s[i − len − 1] = s[i] with len = −1 compares s[i] with itself, which always succeeds. That guarantees the walk terminates."
+    },
+    {
+     "q": "How are occurrence counts of every palindrome obtained?",
+     "options": [
+      "By rescanning the string",
+      "Add 1 to the longest suffix palindrome's node at each position, then add each node's count into its suffix link, processing nodes from last created to first",
+      "By Manacher's algorithm",
+      "They cannot be obtained"
+     ],
+     "answer": 1,
+     "explain": "Every palindromic suffix of the longest one also ends at that position, and they are exactly the suffix-link chain. Pushing counts down the chain, longest first, counts them all."
+    }
+   ],
+   "cover_seed": "cp-palindromic-tree",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.5,
+   "path": "cp/palindromic-tree.md",
+   "hash": "b0c88de22366",
+   "word_count": 1539,
+   "excerpt": "Manacher's algorithm from A Mirror That Remembers the Reflections It Already Checked finds the longest palindrome around every centre. It does not, by itself, tell you which palindromes are distinct, how often each one occurs, or how they relate to each other. The palindromic tree does. It gives…"
+  },
+  {
+   "id": "cp-suffix-automaton",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "suffix-automaton",
+   "title": "A Road Map of Every Way to Read Part of a Word",
+   "subtitle": "The suffix automaton for contests: states as classes of substrings with the same set of end positions, suffix links, the online extension with its clone step traced letter by letter, distinct substrings, occurrence counts, first positions and the longest common substring",
+   "track": "cp-strings",
+   "track_order": 8,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-suffix-array"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "strings",
+    "suffix automaton",
+    "endpos",
+    "suffix links",
+    "distinct substrings"
+   ],
+   "complexity": {
+    "time": "O(n log σ) with map transitions",
+    "space": "O(n·σ) worst case, at most 2n − 1 states"
+   },
+   "practice_problems": [
+    {
+     "name": "Distinct Substrings",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2105",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Pattern Positions",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2104",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Counting Patterns",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2103",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Longest Common Substring",
+     "platform": "SPOJ",
+     "url": "https://www.spoj.com/problems/LCS/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Suffix automaton",
+     "definition": "The smallest deterministic automaton that accepts exactly the suffixes of s; every path from the start reads a substring of s."
+    },
+    {
+     "term": "endpos",
+     "definition": "The set of positions where occurrences of a substring end; substrings with the same endpos set share one state."
+    },
+    {
+     "term": "Suffix link",
+     "definition": "link[v], the state of the longest suffix of v's strings that has a strictly larger endpos set."
+    },
+    {
+     "term": "len",
+     "definition": "len[v], the length of the longest string in state v; the state holds every length from len[link[v]] + 1 to len[v]."
+    },
+    {
+     "term": "Clone",
+     "definition": "A copy of a state q made during extension when q holds strings of different lengths that must now split into different endpos classes."
+    },
+    {
+     "term": "Terminal states",
+     "definition": "The states on the suffix-link chain from the last state; they are exactly the states containing suffixes of s."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why can several substrings share a single state?",
+     "options": [
+      "To save memory by hashing",
+      "Substrings with the same set of end positions behave identically for every future extension, so the automaton merges them; they are always consecutive suffixes of the longest one",
+      "Because they have the same length",
+      "They cannot"
+     ],
+     "answer": 1,
+     "explain": "If two strings end at exactly the same positions, appending any letter keeps them together. Merging them is what makes the automaton smallest."
+    },
+    {
+     "q": "During extension by c, when must state q be cloned?",
+     "options": [
+      "Always",
+      "When the state p found on the suffix-link chain has an edge by c to q but len[p] + 1 < len[q]: only the shorter strings of q gain the new end position, so they must split off into a clone with len[p] + 1",
+      "When q is the start state",
+      "Never; cloning is optional"
+     ],
+     "answer": 1,
+     "explain": "If len[q] = len[p] + 1, every string of q gets the new end position and q can be reused. Otherwise q mixes strings that now have different endpos sets."
+    },
+    {
+     "q": "How many distinct substrings does s have, in terms of the automaton?",
+     "options": [
+      "The number of states",
+      "The sum over non-start states of len[v] − len[link[v]], since each state holds exactly that many distinct strings",
+      "The number of transitions",
+      "len of the last state"
+     ],
+     "answer": 1,
+     "explain": "A state holds the lengths from len[link[v]] + 1 to len[v], and different states hold different strings. Summing counts every substring once."
+    }
+   ],
+   "cover_seed": "cp-suffix-automaton",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.52,
+   "path": "cp/suffix-automaton.md",
+   "hash": "af075f0ed634",
+   "word_count": 1553,
+   "excerpt": "The suffix array from A Dictionary of Every Ending of a Word answers questions about all substrings after sorting. The suffix automaton answers many of the same questions with a different shape: a map of junctions and one-way roads, where every route from the start spells a substring, and every…"
   },
   {
    "id": "cp-game-theory",
