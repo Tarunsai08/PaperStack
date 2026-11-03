@@ -2645,8 +2645,8 @@
     "cp-game-theory",
     "dsa-interval-dp"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Score difference trick",
@@ -3269,8 +3269,8 @@
     "cp-segment-tree",
     "dsa-lis"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Transition as range max over earlier values",

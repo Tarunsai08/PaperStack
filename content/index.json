@@ -1,7 +1,7 @@
 {
- "content_version": "10db11829895aab3",
+ "content_version": "8f56bae138d76331",
  "generated_at": "2026-11-02",
- "count": 385,
+ "count": 387,
  "subjects": [
   {
    "id": "ml",
@@ -33598,6 +33598,114 @@
    "excerpt": "How many numbers between a and b, where b can be as large as 10¹⁸, have no two equal digits next to each other? 1213 is fine, 1223 is not. A loop over the range is hopeless, and there is no neat closed formula once the bounds are arbitrary. This CSES problem is the cleanest possible exercise in…"
   },
   {
+   "id": "cp-removal-game",
+   "kind": "problem-walkthrough",
+   "subject": "cp",
+   "slug": "removal-game",
+   "title": "Two Players Taking Coins From Either End",
+   "subtitle": "CSES Removal Game: the score-difference trick that turns a two-player game into one interval DP, the one-dimensional version that fits 5,000 coins in memory, and why the first player of an even row can never lose",
+   "track": "cp-dp",
+   "track_order": 14,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-game-theory",
+    "dsa-interval-dp"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "game theory",
+    "interval DP",
+    "minimax",
+    "space optimisation"
+   ],
+   "complexity": {
+    "time": "O(n²)",
+    "space": "O(n) with rolling lengths"
+   },
+   "practice_problems": [
+    {
+     "name": "Removal Game",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1097",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Predict the Winner",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/predict-the-winner/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Stone Game",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/stone-game/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Score difference",
+     "definition": "d[l][r], the best (current player's total) minus (opponent's total) achievable on the coins l..r when it is the current player's turn and both play optimally."
+    },
+    {
+     "term": "Zero-sum game",
+     "definition": "A game where one player's gain is exactly the other's loss, so one number, the difference, describes the outcome."
+    },
+    {
+     "term": "Rolling by length",
+     "definition": "Keeping only the values for ranges of the previous length, since d for length L depends only on length L - 1."
+    },
+    {
+     "term": "Colour strategy",
+     "definition": "In an even-length row, the first player can always take all even-indexed coins or all odd-indexed coins, whichever sum is larger."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What is the recurrence for the score difference d[l][r]?",
+     "options": [
+      "d[l][r] = a[l] + a[r]",
+      "d[l][r] = max(a[l] - d[l + 1][r], a[r] - d[l][r - 1])",
+      "d[l][r] = d[l + 1][r] + d[l][r - 1]",
+      "d[l][r] = max(a[l], a[r])"
+     ],
+     "answer": 1,
+     "explain": "Taking a[l] gains a[l]; then the opponent faces l + 1..r and achieves difference d[l + 1][r] against you. Your net is a[l] - d[l + 1][r]. The same for the right end; choose the better."
+    },
+    {
+     "q": "How is the first player's actual total recovered from the difference?",
+     "options": [
+      "It is the difference",
+      "(sum + d[0][n - 1]) / 2, since the two totals add up to the sum and differ by d",
+      "sum - d",
+      "sum / 2"
+     ],
+     "answer": 1,
+     "explain": "If the totals are A and B, then A + B = sum and A - B = d, so A = (sum + d) / 2."
+    },
+    {
+     "q": "Why can the first player never lose when the number of coins is even?",
+     "options": [
+      "Because they move first",
+      "They can always take every coin at even positions or every coin at odd positions, and one of those sums is at least half the total",
+      "Because the DP says so for small cases",
+      "They can lose"
+     ],
+     "answer": 1,
+     "explain": "With an even row, the first player can always take an end of the chosen parity, forcing the opponent to take the other parity. Picking the larger parity sum guarantees at least a draw; the DP may find even better."
+    }
+   ],
+   "cover_seed": "removal-game",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.62,
+   "path": "cp/removal-game.md",
+   "hash": "98dc6946e52f",
+   "word_count": 1235,
+   "excerpt": "A row of coins lies on a table. Two players take turns, each picking up the coin at either end. Both play perfectly. How much does the first player collect? Greedily grabbing the larger end is a trap: it can expose a huge coin for the opponent. The obvious game-tree search doubles with every coin.…"
+  },
+  {
    "id": "cp-projects-dp",
    "kind": "problem-walkthrough",
    "subject": "cp",
@@ -33714,6 +33822,115 @@
    "hash": "44ca406f4405",
    "word_count": 1517,
    "excerpt": "Riya is a freelance designer with a calendar full of offers. A logo from day 2 to day 5 pays 80, a poster from day 7 to day 9 pays 60, and a third gig overlaps both. She cannot work two gigs on the same day, and she wants the most money by the end of the month. Grabbing the best-paid gig first…"
+  },
+  {
+   "id": "cp-dp-with-data-structures",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "dp-with-data-structures",
+   "title": "Asking the Scoreboard Instead of Every Player",
+   "subtitle": "When a DP transition is 'best or sum over earlier states with a smaller value', store the states in a Fenwick or segment tree indexed by value: counting increasing subsequences, LIS with a gap limit, and counting the longest ones, all in O(n log n)",
+   "track": "cp-dp",
+   "track_order": 16,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-segment-tree",
+    "dsa-lis"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 5,
+   "topics": [
+    "dynamic programming",
+    "Fenwick tree",
+    "segment tree",
+    "LIS",
+    "coordinate compression"
+   ],
+   "complexity": {
+    "time": "O(n log n)",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Increasing Subsequence II",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1748",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Longest Increasing Subsequence II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/longest-increasing-subsequence-ii/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Number of Longest Increasing Subsequence",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/number-of-longest-increasing-subsequence/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Value-indexed DP store",
+     "definition": "A Fenwick or segment tree whose position v holds the combined DP value of all earlier elements equal to v, so a range of values can be queried at once."
+    },
+    {
+     "term": "Prefix transition",
+     "definition": "A transition that combines dp[j] over earlier j with a[j] < a[i], which is a prefix query over values."
+    },
+    {
+     "term": "Window transition over values",
+     "definition": "A transition over earlier j with a[i] - k ≤ a[j] < a[i], which is a range query over values."
+    },
+    {
+     "term": "Pair merge",
+     "definition": "Combining (length, count) pairs by keeping the larger length and adding counts on ties, used to count longest increasing subsequences."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "For counting increasing subsequences, why is dp[i] = 1 + Σ dp[j] over earlier j with a[j] < a[i] a prefix query?",
+     "options": [
+      "Because j < i",
+      "With dp values stored at positions given by the values a[j], 'a[j] < a[i]' is the prefix of positions below a[i]'s rank",
+      "Because the array is sorted",
+      "It is not"
+     ],
+     "answer": 1,
+     "explain": "Process elements left to right, so only earlier ones are in the tree. Indexing the tree by value turns the 'smaller value' condition into a prefix of positions."
+    },
+    {
+     "q": "Why must values be compressed before using a Fenwick tree here?",
+     "options": [
+      "To sort the answer",
+      "Values can be up to 10⁹, and the tree's size is the number of distinct positions, so values are mapped to ranks 1..k first",
+      "To remove duplicates from the input",
+      "It is optional for speed only"
+     ],
+     "answer": 1,
+     "explain": "A tree indexed by raw values would need 10⁹ entries. Compression keeps the order, which is all the transition needs, with k ≤ n positions."
+    },
+    {
+     "q": "How do equal values affect a strictly increasing condition?",
+     "options": [
+      "They are counted as increasing",
+      "The query must stop at rank(a[i]) - 1, so earlier equal values are excluded",
+      "They must be removed from the input",
+      "They do not matter"
+     ],
+     "answer": 1,
+     "explain": "Strictly increasing means a[j] < a[i]. Querying up to rank - 1 excludes equal values; querying up to rank would wrongly allow them."
+    }
+   ],
+   "cover_seed": "dp-with-data-structures",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.68,
+   "path": "cp/dp-with-data-structures.md",
+   "hash": "242d76f5bf39",
+   "word_count": 1179,
+   "excerpt": "At a sports day, each new runner wants to know the best time among all earlier runners who were younger. Asking every earlier runner is slow when there are 200,000 of them. A scoreboard organised by age answers instantly: look up the best entry in the \"younger than me\" section. Many DPs have that…"
   },
   {
    "id": "cp-string-hashing",
