@@ -1,7 +1,7 @@
 {
- "content_version": "a096efd91df7b1ae",
+ "content_version": "17de563817cd6f63",
  "generated_at": "2026-11-03",
- "count": 543,
+ "count": 545,
  "subjects": [
   {
    "id": "ml",
@@ -57080,6 +57080,186 @@
    "hash": "4b2de187c347",
    "word_count": 1267,
    "excerpt": "A database tells you \"committed\" for a ₹30 transfer. A millisecond later the power fails. The data page with your new balance was still in memory, never written to disk. When the server restarts, is your transfer there? It must be: that is durability. And another transaction that was half-way…"
+  },
+  {
+   "id": "cs-core-db-indexing-cs",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "db-indexing-cs",
+   "title": "A Book Index Versus a Phone Directory",
+   "subtitle": "Database indexing for DBMS exams and interviews: dense and sparse, primary, clustered and secondary indexes, the B+ tree with its order and height worked out, and where hash indexes stop helping",
+   "track": "cs-dbms",
+   "track_order": 15,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-sql-basics"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "dbms",
+    "indexing",
+    "b+ tree",
+    "hash index",
+    "clustered index"
+   ],
+   "glossary": [
+    {
+     "term": "Dense index",
+     "definition": "An index with one entry for every search-key value (or every record) in the file."
+    },
+    {
+     "term": "Sparse index",
+     "definition": "An index with entries for only some records, typically the first record of each block; it needs the file sorted on the key."
+    },
+    {
+     "term": "Clustered index",
+     "definition": "An index whose key order matches the physical order of the rows, so a table can have only one."
+    },
+    {
+     "term": "Secondary index",
+     "definition": "An index on a column the file is not sorted by; it must be dense and points to rows scattered across the file."
+    },
+    {
+     "term": "B+ tree",
+     "definition": "A balanced search tree whose internal nodes hold only keys for routing and whose leaves hold all keys, linked left to right for range scans."
+    },
+    {
+     "term": "Fanout",
+     "definition": "The number of children an internal node can have; high fanout keeps the tree only a few levels deep."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A disk block is 4096 bytes, keys and pointers are 8 bytes each. An internal B+ tree node holds p pointers and p − 1 keys. What is the largest p?",
+     "options": [
+      "128",
+      "256",
+      "512",
+      "4096"
+     ],
+     "answer": 1,
+     "explain": "8p + 8(p − 1) ≤ 4096 gives 16p ≤ 4104, so p = 256."
+    },
+    {
+     "q": "With a fanout of about 256, how many levels does a B+ tree need for one billion keys?",
+     "options": [
+      "2",
+      "4",
+      "10",
+      "30"
+     ],
+     "answer": 1,
+     "explain": "256³ ≈ 16.8 million is too few; 256⁴ ≈ 4.3 billion is enough. So about 4 levels."
+    },
+    {
+     "q": "Why can a sparse index not be built on a column the file is not sorted by?",
+     "options": [
+      "It can",
+      "A sparse entry points to the first record of a block and relies on sorted order to find the rest; unsorted values could be in any block",
+      "Because sparse indexes use hashing",
+      "Because of NULLs"
+     ],
+     "answer": 1,
+     "explain": "Secondary indexes on unsorted columns must be dense: one entry per value."
+    }
+   ],
+   "cover_seed": "db-indexing-cs",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.88,
+   "path": "cs-core/db-indexing-cs.md",
+   "hash": "881de4f60f7a",
+   "word_count": 1336,
+   "excerpt": "A table of a billion rows, at about 100 rows per block, lives on disk in roughly ten million blocks. Find the row for roll number 21CS042 without an index, and the database reads blocks until it gets lucky: on average, five million of them. With a B+ tree index, the same lookup reads about four…"
+  },
+  {
+   "id": "cs-core-query-optimization",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "query-optimization",
+   "title": "A Sat-Nav Choosing the Fastest Route Through Your Data",
+   "subtitle": "How a query runs: parsing, rewriting, cost-based planning, the join algorithms with their textbook costs, and reading a real EXPLAIN plan before and after an index",
+   "track": "cs-dbms",
+   "track_order": 16,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-db-indexing-cs"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "dbms",
+    "query optimization",
+    "join algorithms",
+    "explain",
+    "cost model"
+   ],
+   "glossary": [
+    {
+     "term": "Query plan",
+     "definition": "The tree of physical operators (scans, index lookups, joins, sorts) the database will execute to answer a query."
+    },
+    {
+     "term": "Selectivity",
+     "definition": "The fraction of rows a condition keeps; a selective condition keeps few rows."
+    },
+    {
+     "term": "Cardinality estimate",
+     "definition": "The optimiser's guess of how many rows each step will produce, computed from table statistics."
+    },
+    {
+     "term": "Selection pushdown",
+     "definition": "Applying filters as early as possible, before joins, so later steps handle fewer rows."
+    },
+    {
+     "term": "Hash join",
+     "definition": "A join that builds a hash table on the smaller input's join key and probes it with each row of the larger input."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "R has 400 blocks, S has 100 blocks, and memory is tight. Which join order is cheaper for a block nested-loop join, using the cost b_outer + b_outer × b_inner?",
+     "options": [
+      "R outer: 400 + 400 × 100 = 40,400",
+      "S outer: 100 + 100 × 400 = 40,100",
+      "They are equal",
+      "Neither works"
+     ],
+     "answer": 1,
+     "explain": "Putting the smaller relation outside saves reading it repeatedly: 40,100 versus 40,400 block reads."
+    },
+    {
+     "q": "Why does an optimiser need table statistics?",
+     "options": [
+      "To check syntax",
+      "To estimate how many rows each step produces, which decides which plan is cheapest",
+      "To enforce foreign keys",
+      "To compress data"
+     ],
+     "answer": 1,
+     "explain": "Costs depend on cardinalities. Stale statistics give bad estimates and bad plans."
+    },
+    {
+     "q": "Which join algorithm works only for equality conditions?",
+     "options": [
+      "Nested-loop join",
+      "Hash join",
+      "Block nested-loop join",
+      "All of them"
+     ],
+     "answer": 1,
+     "explain": "Hashing groups equal keys; it cannot answer conditions like r.a < s.b. Nested loops handle any condition."
+    }
+   ],
+   "cover_seed": "query-optimization",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.8,
+   "path": "cs-core/query-optimization.md",
+   "hash": "169e2ec8a696",
+   "word_count": 1279,
+   "excerpt": "You write one line of SQL: names of employees in department d7 earning more than 800. You never said how to find them. Should the database read all 100,000 employees and check each? Start from the 100 departments? Use an index, and which one? On a test table built for this article, the same query…"
   }
  ]
 }

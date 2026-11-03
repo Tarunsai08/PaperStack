@@ -1044,8 +1044,8 @@
    "prerequisites": [
     "cs-core-sql-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Dense vs sparse",
@@ -1071,8 +1071,8 @@
    "prerequisites": [
     "cs-core-db-indexing-cs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Query plans",
