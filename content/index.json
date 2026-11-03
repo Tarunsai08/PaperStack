@@ -1,7 +1,7 @@
 {
- "content_version": "7843b209cab865c4",
+ "content_version": "7f6e652159a714c9",
  "generated_at": "2026-11-02",
- "count": 393,
+ "count": 396,
  "subjects": [
   {
    "id": "ml",
@@ -34643,6 +34643,366 @@
    "hash": "95b003e22d41",
    "word_count": 1774,
    "excerpt": "Every vertex of a tree has a value. Two kinds of operations arrive, 2·10⁵ of them: change one vertex's value, or report the largest value on the path between two vertices. The Euler tour from Numbering a Family Tree So Every Branch Is a Block made subtrees into ranges, but a path between two…"
+  },
+  {
+   "id": "cp-centroid-decomposition",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "centroid-decomposition",
+   "title": "Splitting a Kingdom at Its Capital, Again and Again",
+   "subtitle": "Centroid decomposition for contests: finding a vertex whose removal leaves pieces of at most half the size, recursing to depth log n, counting paths of an exact length through each centroid, clearing arrays without going quadratic, and the centroid tree for nearest-marked-vertex queries",
+   "track": "cp-graphs",
+   "track_order": 7,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-tree-recursion"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 8,
+   "topics": [
+    "trees",
+    "centroid decomposition",
+    "divide and conquer",
+    "path counting"
+   ],
+   "complexity": {
+    "time": "O(n log n)",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Finding a Centroid",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2079",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Fixed-Length Paths I",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2080",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Fixed-Length Paths II",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2081",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Xenia and Tree",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/342/E",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Centroid",
+     "definition": "A vertex whose removal leaves every remaining component with at most half of the tree's vertices; every tree has one or two."
+    },
+    {
+     "term": "Piece",
+     "definition": "One connected component of the vertices not yet removed during the decomposition."
+    },
+    {
+     "term": "Centroid tree",
+     "definition": "The tree that makes each piece's centroid the parent of the centroids of the pieces it splits into; its depth is at most about log₂ n."
+    },
+    {
+     "term": "Path through a centroid",
+     "definition": "A path in the current piece that contains the centroid; it is made of two downward legs in different branches, or one leg ending at the centroid."
+    },
+    {
+     "term": "Depth count array",
+     "definition": "cnt[d], the number of vertices seen so far at distance d from the current centroid, used to pair legs from different branches."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does centroid decomposition have only O(log n) levels?",
+     "options": [
+      "Because trees are balanced",
+      "Each piece is at most half the size of the piece it came from, so after about log₂ n splits every piece has one vertex",
+      "Because each vertex has few children",
+      "Because of path compression"
+     ],
+     "answer": 1,
+     "explain": "The centroid's defining property is that every remaining component has at most half the vertices. Halving can happen only about log₂ n times."
+    },
+    {
+     "q": "When counting paths of exactly k edges through a centroid, why process branches one at a time?",
+     "options": [
+      "For speed only",
+      "A path through the centroid must use two different branches; pairing each new branch only with earlier branches counts each such path once and never pairs two vertices of the same branch, whose real path does not pass through the centroid",
+      "Because depths are sorted",
+      "To avoid recursion"
+     ],
+     "answer": 1,
+     "explain": "Two vertices in the same branch are joined by a path that stays in that branch. Counting them through the centroid would use a wrong distance."
+    },
+    {
+     "q": "What makes clearing the depth count array cheap?",
+     "options": [
+      "Using memset on the whole array each time",
+      "Clearing only the entries up to the largest depth actually used, which is at most the piece's size, so the total stays O(n log n)",
+      "Never clearing it",
+      "Using a map"
+     ],
+     "answer": 1,
+     "explain": "Clearing the whole array at every centroid costs n per centroid, O(n²) in total. The used depths are bounded by the piece size, which sums to O(n) per level."
+    }
+   ],
+   "cover_seed": "cp-centroid-decomposition",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.64,
+   "path": "cp/centroid-decomposition.md",
+   "hash": "d2b97d77eb5d",
+   "word_count": 1783,
+   "excerpt": "How many pairs of vertices in a tree of 2·10⁵ vertices are exactly k edges apart? A BFS from every vertex is O(n²), 4·10¹⁰ steps. A tree DP that keeps, for each vertex, a count of descendants at each depth is quadratic on a long path. Centroid decomposition is divide and conquer for trees. Pick a…"
+  },
+  {
+   "id": "cp-dsu-advanced",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "dsu-advanced",
+   "title": "Friend Groups That Also Remember Who Is on Which Team",
+   "subtitle": "Union-find beyond connectivity: parity DSU for 'same or opposite' constraints, undoing merges with a rollback DSU, why path compression breaks undo, and offline dynamic connectivity with a segment tree over time",
+   "track": "cp-graphs",
+   "track_order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-union-find"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 8,
+   "topics": [
+    "union-find",
+    "DSU",
+    "parity",
+    "rollback",
+    "offline queries",
+    "dynamic connectivity"
+   ],
+   "complexity": {
+    "time": "O(α(n)) parity DSU, O(log n) rollback find, O(q log q log n) offline connectivity",
+    "space": "O(n + q log q)"
+   },
+   "practice_problems": [
+    {
+     "name": "Road Construction",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1676",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Split Into Two Sets",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/1702/E",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Dynamic Connectivity",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2133",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Bipartite Checking",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/813/F",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Parity DSU",
+     "definition": "A union-find that stores, for each vertex, whether its colour equals its parent's, so it can answer 'same team or opposite?' for any two connected vertices."
+    },
+    {
+     "term": "Relative parity",
+     "definition": "par[v], the xor of v's colour and its parent's colour; xoring along the path to the root gives v's colour relative to the root."
+    },
+    {
+     "term": "Rollback DSU",
+     "definition": "A union-find that records each merge on a stack so the most recent merges can be undone exactly."
+    },
+    {
+     "term": "Union by size",
+     "definition": "Always attaching the smaller tree under the larger root, which keeps every tree's height at most log₂ n."
+    },
+    {
+     "term": "Segment tree over time",
+     "definition": "A segment tree whose leaves are moments in time; each edge is stored at the O(log q) nodes covering the interval during which it exists."
+    },
+    {
+     "term": "Offline dynamic connectivity",
+     "definition": "Answering connectivity questions under edge insertions and deletions by knowing all events in advance and replaying them with a rollback DSU."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In a parity DSU, a new rule says a and b are on opposite teams, and both already have root r with relative parities pa and pb. When is the rule a contradiction?",
+     "options": [
+      "When pa = 1",
+      "When pa xor pb = 0: the structure already knows they are on the same team",
+      "When pa xor pb = 1",
+      "Never"
+     ],
+     "answer": 1,
+     "explain": "pa xor pb is colour[a] xor colour[b]. If it is 0, they are already forced onto the same team, so 'opposite' contradicts it."
+    },
+    {
+     "q": "Why does a rollback DSU avoid path compression?",
+     "options": [
+      "Compression is slow",
+      "Compression rewrites many parent pointers during ordinary finds, which would all have to be logged and undone, and its amortised guarantee does not survive undo; union by size alone keeps finds at O(log n) with nothing to undo but the merge itself",
+      "Compression breaks union by size",
+      "Compression only works on trees"
+     ],
+     "answer": 1,
+     "explain": "With union by size, a merge changes exactly one parent pointer and one size, so undo is two assignments. Compression would spread changes everywhere."
+    },
+    {
+     "q": "In offline dynamic connectivity, where is an edge that exists from time l to time r − 1 stored?",
+     "options": [
+      "At every leaf in [l, r)",
+      "At the O(log q) segment tree nodes whose ranges exactly cover [l, r)",
+      "Only at the root",
+      "At leaf l"
+     ],
+     "answer": 1,
+     "explain": "Like a range update, the interval splits into O(log q) canonical nodes. A DFS that unites a node's edges on entry and rolls back on exit sees exactly the alive edges at every leaf."
+    }
+   ],
+   "cover_seed": "cp-dsu-advanced",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.66,
+   "path": "cp/dsu-advanced.md",
+   "hash": "82655130b074",
+   "word_count": 1842,
+   "excerpt": "Plain union-find answers one question: are these two in the same group? Friend Groups That Merge at a Party built it with path compression and union by size, and CSES Road Construction is that structure printing the number of groups and the largest group after every new road. Contest problems push…"
+  },
+  {
+   "id": "cp-max-flow",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "max-flow",
+   "title": "Water Pipes From a Reservoir to a City",
+   "subtitle": "Maximum flow for contests: capacities and the residual graph, augmenting paths, why reverse edges let the algorithm change its mind, Edmonds–Karp with BFS, reading the minimum cut off the final residual graph, and modelling undirected and vertex limits",
+   "track": "cp-graphs",
+   "track_order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-bfs"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 8,
+   "topics": [
+    "graphs",
+    "maximum flow",
+    "minimum cut",
+    "Edmonds-Karp",
+    "residual graph"
+   ],
+   "complexity": {
+    "time": "O(V·E²) Edmonds–Karp",
+    "space": "O(V + E)"
+   },
+   "practice_problems": [
+    {
+     "name": "Download Speed",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1694",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Police Chase",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1695",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Distinct Routes",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1711",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Flow network",
+     "definition": "A directed graph with a capacity on each edge, a source s where flow starts and a sink t where it ends."
+    },
+    {
+     "term": "Residual capacity",
+     "definition": "How much more can still be sent along a direction: capacity minus flow forwards, and the current flow backwards."
+    },
+    {
+     "term": "Residual graph",
+     "definition": "The graph of all directions with positive residual capacity; augmenting paths are searched in it."
+    },
+    {
+     "term": "Augmenting path",
+     "definition": "An s-to-t path in the residual graph; sending its bottleneck amount along it increases the total flow."
+    },
+    {
+     "term": "Reverse edge",
+     "definition": "The residual twin of an edge, whose capacity equals the flow on it; pushing along it cancels earlier flow."
+    },
+    {
+     "term": "Cut",
+     "definition": "A split of the vertices into a side S containing s and a side T containing t; its capacity is the sum of capacities on edges from S to T."
+    },
+    {
+     "term": "Max-flow min-cut theorem",
+     "definition": "The largest possible flow from s to t equals the smallest capacity of any cut separating them."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does every edge need a reverse edge in the residual graph?",
+     "options": [
+      "To make the graph undirected",
+      "So a later augmenting path can cancel flow sent earlier, letting the algorithm undo a poor early choice; without them a greedy route can block the optimum",
+      "To double the capacity",
+      "Only for undirected graphs"
+     ],
+     "answer": 1,
+     "explain": "Pushing along a reverse edge reduces the flow on the original edge and reroutes it. That is how augmenting paths repair earlier decisions."
+    },
+    {
+     "q": "After the algorithm stops, how do you find a minimum cut?",
+     "options": [
+      "Take the edges with the largest capacities",
+      "Search from s in the final residual graph; the reachable vertices form S, and the original edges from S to the unreachable vertices form a minimum cut",
+      "Take all edges with zero flow",
+      "Run the algorithm again from t"
+     ],
+     "answer": 1,
+     "explain": "Every original edge from S to T must be saturated, or its endpoint would be reachable. Their capacities therefore sum to the flow, which is the smallest any cut can be."
+    },
+    {
+     "q": "How do you model an undirected street of capacity c?",
+     "options": [
+      "One directed edge",
+      "One edge a → b with capacity c whose residual twin b → a also starts with capacity c",
+      "Two edges with capacity c/2",
+      "It cannot be modelled"
+     ],
+     "answer": 1,
+     "explain": "Either direction may carry up to c. Giving the twin capacity c at the start lets flow go either way, and cancelling works as usual."
+    }
+   ],
+   "cover_seed": "cp-max-flow",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.68,
+   "path": "cp/max-flow.md",
+   "hash": "6b7f9a90e02c",
+   "word_count": 1784,
+   "excerpt": "A reservoir feeds a city through a network of pipes, each with a limit on how many litres per second it can carry. Water can split at junctions and merge again, but nothing leaks and nothing is stored. How much water per second can reach the city? The answer is a maximum flow, and the same model…"
   },
   {
    "id": "cp-string-hashing",
