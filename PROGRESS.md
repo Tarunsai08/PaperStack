@@ -14,8 +14,8 @@ Read `HANDOFF.md` first if you are picking this project up.
 | famous-algos | 38 | 0 | 53 | 91 | 31/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core | 50 | 0 | 29 | 79 | 34/47 |
-| **All** | **565** | **0** | **118** | **683** | |
+| cs-core | 51 | 0 | 28 | 79 | 34/47 |
+| **All** | **566** | **0** | **117** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -68,7 +68,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `cs-core-data-link` (P1, deep-dive, cs-networks): The Data Link Layer: MAC, Switches and ARP
 - [ ] `cs-core-routing-algorithms` (P1, deep-dive, cs-networks): Routing: Distance Vector and Link State
 - [ ] `cs-core-nat-dhcp` (P1, deep-dive, cs-networks): NAT and DHCP
-- [ ] `cs-core-ports-sockets` (P1, deep-dive, cs-networks): Ports, Sockets and Socket Programming
 - [ ] `cs-core-network-security` (P1, deep-dive, cs-networks): Network Security Basics: Firewalls, VPNs and Common Attacks
 - [ ] `cs-core-icmp-tools` (P2, deep-dive, cs-networks): ICMP, ping and traceroute
 - [ ] `cs-core-email-protocols` (P2, deep-dive, cs-networks): Email Protocols: SMTP, IMAP and POP3
@@ -615,7 +614,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cs-core: 50 written</summary>
+<details><summary>cs-core: 51 written</summary>
 
 - [x] `cs-core-what-an-os-does` What an Operating System Actually Does
 - [x] `cs-core-processes-threads` Processes vs Threads
@@ -663,6 +662,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cs-core-ip-addressing` IP Addressing and Subnetting
 - [x] `cs-core-tcp-deep-dive` TCP: Handshakes, Reliability and Flow Control
 - [x] `cs-core-udp` UDP and When Unreliable Is Better
+- [x] `cs-core-ports-sockets` Ports, Sockets and Socket Programming
 - [x] `cs-core-http-https` HTTP and HTTPS for Interviews
 - [x] `cs-core-dns-cs` DNS for CS Interviews
 - [x] `cs-core-url-to-page` What Happens When You Type a URL (Networks Edition)

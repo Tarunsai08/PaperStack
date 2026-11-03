@@ -1,7 +1,7 @@
 {
- "content_version": "3234509383dbbed6",
+ "content_version": "453fd016c4465002",
  "generated_at": "2026-11-03",
- "count": 565,
+ "count": 566,
  "subjects": [
   {
    "id": "ml",
@@ -58699,6 +58699,99 @@
    "hash": "f24ae740f24e",
    "word_count": 1097,
    "excerpt": "In an online game, your character's position is sent twenty or more times a second. One update goes missing. Should the game stop everything, ask for that update again, and wait until it arrives before showing anything newer? By the time it comes back, it describes where you were. TCP would do…"
+  },
+  {
+   "id": "cs-core-ports-sockets",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "ports-sockets",
+   "title": "Apartment Numbers in One Building",
+   "subtitle": "Ports and sockets: the 5-tuple that tells connections apart, what listen and accept really do, blocking versus non-blocking I/O, and how select, poll and epoll let one thread serve thousands of clients",
+   "track": "cs-networks",
+   "track_order": 8,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-tcp-deep-dive"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "computer networks",
+    "sockets",
+    "ports",
+    "epoll",
+    "non-blocking io",
+    "event loop"
+   ],
+   "glossary": [
+    {
+     "term": "Port",
+     "definition": "A 16-bit number (0 to 65535) identifying a communication endpoint within a host, such as 443 for HTTPS."
+    },
+    {
+     "term": "Socket",
+     "definition": "The operating system object a program uses to send and receive network data, referred to by a file descriptor."
+    },
+    {
+     "term": "5-tuple",
+     "definition": "Protocol, source IP, source port, destination IP and destination port: the values that uniquely identify a connection."
+    },
+    {
+     "term": "Ephemeral port",
+     "definition": "A temporary port the OS assigns to the client side of a connection automatically."
+    },
+    {
+     "term": "Non-blocking I/O",
+     "definition": "Socket calls that return immediately with 'try again later' instead of putting the thread to sleep when no data is ready."
+    },
+    {
+     "term": "epoll",
+     "definition": "A Linux interface that tells a program which of many registered file descriptors are ready, without scanning all of them each time."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A server listens on port 443 and has 10,000 clients connected. How does the OS tell their connections apart?",
+     "options": [
+      "Each gets a different server port",
+      "By the full 5-tuple: the clients' IP addresses and source ports differ even though the server port is the same",
+      "By process ID",
+      "It cannot"
+     ],
+     "answer": 1,
+     "explain": "All connections share the server's IP and port 443; the client address and ephemeral port make each 5-tuple unique."
+    },
+    {
+     "q": "What does accept() return?",
+     "options": [
+      "The listening socket",
+      "A new socket for one specific connection, while the listening socket keeps listening",
+      "The client's data",
+      "A port number"
+     ],
+     "answer": 1,
+     "explain": "The listening socket only produces connections; each accepted connection gets its own descriptor."
+    },
+    {
+     "q": "Why does epoll scale better than select for many idle connections?",
+     "options": [
+      "It uses UDP",
+      "select passes and scans the whole descriptor set on every call; epoll keeps the interest list in the kernel and returns only ready descriptors",
+      "epoll is multithreaded",
+      "select cannot handle sockets"
+     ],
+     "answer": 1,
+     "explain": "With 10,000 idle connections and 5 active, select does work for 10,000 each time; epoll returns the 5."
+    }
+   ],
+   "cover_seed": "ports-sockets",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.78,
+   "path": "cs-core/ports-sockets.md",
+   "hash": "43c7d046e9c4",
+   "word_count": 1140,
+   "excerpt": "A web server has one IP address and listens on one port, 443. Ten thousand browsers are connected to it at once, each in the middle of its own conversation. When a packet arrives for port 443, how does the kernel know which of the ten thousand conversations it belongs to? And how can one program…"
   },
   {
    "id": "cs-core-http-https",
