@@ -17,8 +17,8 @@ You are continuing a project another Claude session started. Everything you need
 | famous-algos | 38 | 0 | 53 | 91 | 31/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core | 40 | 0 | 39 | 79 | 27/47 |
-| **All** | **555** | **0** | **128** | **683** | |
+| cs-core | 42 | 0 | 37 | 79 | 27/47 |
+| **All** | **557** | **0** | **126** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -51,8 +51,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `cs-core-osi-tcpip` (P0, primer, cs-networks): The OSI and TCP/IP Models
 - [ ] `cs-core-classes-objects` (P0, primer, cs-oop): Classes and Objects in C++
 - [ ] `cs-core-memory-hierarchy` (P0, deep-dive, cs-architecture): The Memory Hierarchy and CPU Caches
-- [ ] `cs-core-linux-essentials` (P1, primer, cs-os): Linux Essentials for Interviews
-- [ ] `cs-core-booting` (P2, deep-dive, cs-os): What Happens When a Computer Boots
 <!-- status:end -->
 
 ## UI review status: approved
