@@ -1,7 +1,7 @@
 {
- "content_version": "497bde792e70541f",
+ "content_version": "6618fd59a15a4966",
  "generated_at": "2026-11-03",
- "count": 577,
+ "count": 579,
  "subjects": [
   {
    "id": "ml",
@@ -60147,6 +60147,184 @@
    "hash": "d967ad3ed951",
    "word_count": 1028,
    "excerpt": "A fleet app models cars, electric cars, trucks and bikes. Every one has a number plate, a description and a wheel count; electric cars also have a battery. Copying the plate logic into four classes means four places to fix every bug. Inheritance lets you write the shared part once in a Vehicle…"
+  },
+  {
+   "id": "cs-core-polymorphism",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "polymorphism",
+   "title": "One Remote Controlling Different TVs",
+   "subtitle": "Polymorphism in C++: compile-time forms (function and operator overloading, templates) versus run-time overriding with virtual functions, how the compiler picks an overload, and overloading versus overriding side by side",
+   "track": "cs-oop",
+   "track_order": 5,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-inheritance"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "oop",
+    "c++",
+    "polymorphism",
+    "overloading",
+    "overriding",
+    "operator overloading"
+   ],
+   "glossary": [
+    {
+     "term": "Polymorphism",
+     "definition": "One interface, many forms: the same name or call working with different types, chosen either at compile time or at run time."
+    },
+    {
+     "term": "Function overloading",
+     "definition": "Several functions with the same name but different parameter lists; the compiler picks one from the argument types."
+    },
+    {
+     "term": "Operator overloading",
+     "definition": "Defining what operators such as +, == or << mean for a user-defined type."
+    },
+    {
+     "term": "Overriding",
+     "definition": "A derived class providing its own version of a base-class virtual function with the same signature, chosen at run time by the object's actual type."
+    },
+    {
+     "term": "Dynamic dispatch",
+     "definition": "Choosing which function body to run at run time based on the object's dynamic type, as virtual calls do."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "area(int), area(int, int) and area(double) are declared. Which form of polymorphism is this, and when is the choice made?",
+     "options": [
+      "Run-time, by the object's type",
+      "Compile-time (overloading), from the argument types",
+      "Neither",
+      "Run-time, by the return type"
+     ],
+     "answer": 1,
+     "explain": "Overload resolution happens during compilation. The program printed 9 10 3.14159 for area(3), area(2, 5) and area(1.0)."
+    },
+    {
+     "q": "Can two overloads differ only in their return type, such as int f(int) and double f(int)?",
+     "options": [
+      "Yes",
+      "No: the compiler chooses by arguments, so return type alone cannot distinguish them",
+      "Only for operators",
+      "Only in templates"
+     ],
+     "answer": 1,
+     "explain": "A call f(3) would be ambiguous; the declarations are rejected."
+    },
+    {
+     "q": "A vector of Shape pointers holds a Square and a Circle. Calling s->area() on each gives 4 and 3.14159. What makes the right function run?",
+     "options": [
+      "Overloading",
+      "area is virtual, so the call is dispatched at run time by the object's actual type",
+      "Templates",
+      "The vector sorts them"
+     ],
+     "answer": 1,
+     "explain": "That is run-time polymorphism through overriding."
+    }
+   ],
+   "cover_seed": "polymorphism",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.85,
+   "path": "cs-core/polymorphism.md",
+   "hash": "6c7f2477c4b3",
+   "word_count": 1074,
+   "excerpt": "A drawing app keeps a list of shapes: squares, circles, triangles, and next month, stars. To redraw the screen, it loops over the list and asks each one for its area and its outline. If that loop contains if (type == SQUARE) … else if (type == CIRCLE) …, every new shape means editing the loop, and…"
+  },
+  {
+   "id": "cs-core-virtual-functions-vtable",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "virtual-functions-vtable",
+   "title": "A Switchboard That Routes Calls by Caller Type",
+   "subtitle": "How virtual functions work in C++: the vtable and the hidden vptr, why sizeof grows from 4 to 16, what a virtual call costs, why constructors do not dispatch virtually, pure virtual functions, and the missing virtual destructor bug",
+   "track": "cs-oop",
+   "track_order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-polymorphism"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "oop",
+    "c++",
+    "virtual functions",
+    "vtable",
+    "virtual destructor",
+    "dynamic dispatch"
+   ],
+   "glossary": [
+    {
+     "term": "vtable",
+     "definition": "A per-class table of function pointers, one entry per virtual function, pointing to the implementation that class uses."
+    },
+    {
+     "term": "vptr",
+     "definition": "A hidden pointer stored in each object of a class with virtual functions, pointing to its class's vtable."
+    },
+    {
+     "term": "Virtual destructor",
+     "definition": "A destructor declared virtual in a base class, so deleting a derived object through a base pointer runs the derived destructor too."
+    },
+    {
+     "term": "Pure virtual function",
+     "definition": "A virtual function declared with = 0, which has no required implementation in the base and makes the class abstract."
+    },
+    {
+     "term": "Abstract class",
+     "definition": "A class with at least one pure virtual function; it cannot be instantiated, only derived from."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "struct Plain { int x; void f(); } and struct Virtual { int x; virtual void f(); }. With g++ on 64-bit Linux, what are their sizes?",
+     "options": [
+      "4 and 4",
+      "4 and 16",
+      "8 and 8",
+      "4 and 8"
+     ],
+     "answer": 1,
+     "explain": "The virtual class gains an 8-byte vptr, and alignment pads the total to 16. The test program printed 4 16."
+    },
+    {
+     "q": "Base's constructor calls the virtual function hello(), which Derived overrides. What runs while constructing a Derived?",
+     "options": [
+      "Derived::hello",
+      "Base::hello, because during Base's constructor the object is still only a Base",
+      "Both",
+      "Undefined"
+     ],
+     "answer": 1,
+     "explain": "The vptr points at Base's vtable until Base's constructor finishes. The program printed Base::hello."
+    },
+    {
+     "q": "A base class has virtual functions but a non-virtual destructor. You delete a Derived object through a Base pointer. What happens?",
+     "options": [
+      "Both destructors run",
+      "Undefined behaviour; in practice typically only the base destructor runs, leaking whatever the derived part owns",
+      "A compile error",
+      "Only the derived destructor runs"
+     ],
+     "answer": 1,
+     "explain": "g++ -Wall warned about it, and the test printed only ~NoVirtualDtor. Make polymorphic base destructors virtual."
+    }
+   ],
+   "cover_seed": "virtual-functions-vtable",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.88,
+   "path": "cs-core/virtual-functions-vtable.md",
+   "hash": "0a87c4a91316",
+   "word_count": 1062,
+   "excerpt": "shape-area() runs Square's area for a square and Circle's for a circle. But the compiler that translated that line had no idea which kind of shape would be there at run time; the list might be read from a file. So what instruction did it emit? It cannot be \"jump to Square::area\". The answer is a…"
   }
  ]
 }

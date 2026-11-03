@@ -17,8 +17,8 @@ You are continuing a project another Claude session started. Everything you need
 | famous-algos | 39 | 0 | 52 | 91 | 32/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core | 61 | 0 | 18 | 79 | 38/47 |
-| **All** | **577** | **0** | **106** | **683** | |
+| cs-core | 63 | 0 | 16 | 79 | 40/47 |
+| **All** | **579** | **0** | **104** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -48,7 +48,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `paper-yolo` (P2, paper, deep-learning): You Only Look Once: Unified, Real-Time Object Detection
 
 #### cs-core
-- [ ] `cs-core-polymorphism` (P0, deep-dive, cs-oop): Polymorphism: Overloading and Overriding
+- [ ] `cs-core-abstract-interfaces` (P0, deep-dive, cs-oop): Abstract Classes and Interfaces
 - [ ] `cs-core-copy-move-semantics` (P0, deep-dive, cs-oop): Copy vs Move Semantics and the Rule of Five
 - [ ] `cs-core-memory-model-cpp` (P0, deep-dive, cs-oop): Stack vs Heap and Object Lifetimes
 - [ ] `cs-core-memory-hierarchy` (P0, deep-dive, cs-architecture): The Memory Hierarchy and CPU Caches
