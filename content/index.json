@@ -1,7 +1,7 @@
 {
- "content_version": "8d8e6a41eb3909f5",
+ "content_version": "d6cb68cff0504197",
  "generated_at": "2026-11-03",
- "count": 549,
+ "count": 551,
  "subjects": [
   {
    "id": "ml",
@@ -55957,6 +55957,191 @@
    "hash": "34a7db98f6e1",
    "word_count": 3341,
    "excerpt": "A puzzle first, one that surprised the people who first ran into it. A program runs with 3 frames of memory and causes 9 page faults. You give it 4 frames, a third more memory, and run exactly the same program on exactly the same input. It now causes 10 page faults. More memory, more disk trips. No…"
+  },
+  {
+   "id": "cs-core-file-systems",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "file-systems",
+   "title": "A Library Catalogue Pointing to the Shelves",
+   "subtitle": "File systems: contiguous, linked and indexed allocation, the inode and its maximum-file-size calculation, directories, hard versus soft links tested for real, and journaling for crash safety",
+   "track": "cs-os",
+   "track_order": 18,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-what-an-os-does"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "operating systems",
+    "file systems",
+    "inode",
+    "links",
+    "journaling",
+    "allocation"
+   ],
+   "glossary": [
+    {
+     "term": "Block",
+     "definition": "The fixed-size unit (often 4 KiB) in which a file system stores data on disk."
+    },
+    {
+     "term": "Inode",
+     "definition": "The per-file record in Unix file systems holding metadata (size, owner, permissions, times, link count) and pointers to the file's data blocks, but not its name."
+    },
+    {
+     "term": "Indexed allocation",
+     "definition": "Storing a file's block numbers in an index (such as an inode's pointers), so any block can be found directly."
+    },
+    {
+     "term": "Hard link",
+     "definition": "A directory entry that points to an existing inode; the file survives until every hard link to it is removed."
+    },
+    {
+     "term": "Soft link",
+     "definition": "A symbolic link: a small file containing a path to another file; it breaks if that path is removed."
+    },
+    {
+     "term": "Journaling",
+     "definition": "Writing intended metadata (and optionally data) changes to a log first, so the file system can be repaired quickly after a crash."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Blocks are 4 KiB and block pointers are 4 bytes. How much data can one single-indirect block address?",
+     "options": [
+      "4 KiB",
+      "4 MiB",
+      "4 GiB",
+      "48 KiB"
+     ],
+     "answer": 1,
+     "explain": "One block holds 4096 / 4 = 1024 pointers, each to a 4 KiB block: 1024 × 4 KiB = 4 MiB."
+    },
+    {
+     "q": "notes.txt has a hard link hard.txt and a soft link soft.txt. You delete notes.txt. What happens?",
+     "options": [
+      "Both links break",
+      "hard.txt still shows the content; soft.txt is broken",
+      "soft.txt still works; hard.txt breaks",
+      "Both still work"
+     ],
+     "answer": 1,
+     "explain": "Running this for real: cat hard.txt printed the content, and cat soft.txt said 'No such file or directory'. The inode lives while its link count is above zero."
+    },
+    {
+     "q": "Which allocation method makes random access to block 500 of a file slow?",
+     "options": [
+      "Contiguous",
+      "Linked allocation",
+      "Indexed",
+      "Extents"
+     ],
+     "answer": 1,
+     "explain": "With linked allocation you must follow 500 next-pointers from the start."
+    }
+   ],
+   "cover_seed": "file-systems",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.88,
+   "path": "cs-core/file-systems.md",
+   "hash": "4542a01bd3e2",
+   "word_count": 1322,
+   "excerpt": "A disk is a long row of numbered blocks, nothing more. It has no idea what a \"file\" is, or a \"folder\", or that report.pdf is 3 MB. Yet you save, rename and delete files all day, and after a power cut most of them are still there. Something has to keep the catalogue: which blocks belong to which…"
+  },
+  {
+   "id": "cs-core-disk-scheduling",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "disk-scheduling",
+   "title": "A Lift Picking Up Passengers Floor by Floor",
+   "subtitle": "Disk scheduling: why seek time dominates, FCFS, SSTF, SCAN, C-SCAN, LOOK and C-LOOK computed on one request queue, starvation, and what changes with SSDs",
+   "track": "cs-os",
+   "track_order": 19,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-file-systems"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 4,
+   "topics": [
+    "operating systems",
+    "disk scheduling",
+    "seek time",
+    "scan",
+    "elevator algorithm"
+   ],
+   "glossary": [
+    {
+     "term": "Seek time",
+     "definition": "The time for a hard disk's arm to move the read/write head to the requested cylinder (track)."
+    },
+    {
+     "term": "Rotational latency",
+     "definition": "The time waiting for the wanted sector to rotate under the head once the arm is in place."
+    },
+    {
+     "term": "SSTF",
+     "definition": "Shortest seek time first: always serve the pending request closest to the current head position."
+    },
+    {
+     "term": "SCAN",
+     "definition": "The elevator algorithm: the head sweeps in one direction serving requests, goes to the end of the disk, then reverses."
+    },
+    {
+     "term": "C-SCAN",
+     "definition": "Circular SCAN: serve requests in one direction only, then return to the start without serving, giving more uniform waiting times."
+    },
+    {
+     "term": "Starvation",
+     "definition": "A request waiting indefinitely because the scheduler keeps choosing other requests."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Head at 50, requests 82, 170, 43, 140, 24, 16, 190. What is the total head movement with SSTF?",
+     "options": [
+      "642",
+      "208",
+      "314",
+      "332"
+     ],
+     "answer": 1,
+     "explain": "50 → 43 → 24 → 16 → 82 → 140 → 170 → 190: 7 + 19 + 8 + 66 + 58 + 30 + 20 = 208."
+    },
+    {
+     "q": "What is SSTF's main weakness?",
+     "options": [
+      "It moves the head the most",
+      "Requests far from a busy region can starve",
+      "It needs SSDs",
+      "It ignores the head position"
+     ],
+     "answer": 1,
+     "explain": "If new requests keep arriving near the head, a distant request may never be the closest."
+    },
+    {
+     "q": "How does LOOK differ from SCAN?",
+     "options": [
+      "It serves requests randomly",
+      "It reverses at the last request in the current direction instead of travelling to the end of the disk",
+      "It only moves inward",
+      "It is the same"
+     ],
+     "answer": 1,
+     "explain": "On the example queue, LOOK turns at 190 instead of 199, saving 18 cylinders: 314 versus 332."
+    }
+   ],
+   "cover_seed": "disk-scheduling",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.7,
+   "path": "cs-core/disk-scheduling.md",
+   "hash": "43ebd678d00b",
+   "word_count": 980,
+   "excerpt": "A hard disk can transfer a block in a tiny fraction of a millisecond once its head is in place. Getting the head there, a mechanical arm swinging across the platter, takes several milliseconds. When a hundred requests are waiting, the order in which you serve them can decide whether the disk spends…"
   },
   {
    "id": "cs-core-dbms-intro",

@@ -17,8 +17,8 @@ You are continuing a project another Claude session started. Everything you need
 | famous-algos | 38 | 0 | 53 | 91 | 31/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core | 34 | 0 | 45 | 79 | 26/47 |
-| **All** | **549** | **0** | **134** | **683** | |
+| cs-core | 36 | 0 | 43 | 79 | 27/47 |
+| **All** | **551** | **0** | **132** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -48,11 +48,11 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `paper-yolo` (P2, paper, deep-learning): You Only Look Once: Unified, Real-Time Object Detection
 
 #### cs-core
-- [ ] `cs-core-file-systems` (P0, deep-dive, cs-os): File Systems: Inodes, Directories and Allocation
 - [ ] `cs-core-osi-tcpip` (P0, primer, cs-networks): The OSI and TCP/IP Models
 - [ ] `cs-core-classes-objects` (P0, primer, cs-oop): Classes and Objects in C++
 - [ ] `cs-core-memory-hierarchy` (P0, deep-dive, cs-architecture): The Memory Hierarchy and CPU Caches
 - [ ] `cs-core-thrashing` (P1, deep-dive, cs-os): Thrashing and the Working Set
+- [ ] `cs-core-raid` (P1, deep-dive, cs-os): RAID Levels Explained
 <!-- status:end -->
 
 ## UI review status: approved
