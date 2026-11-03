@@ -96,3 +96,31 @@ export function normalizeTerm(t: string): string {
   if (s.endsWith('s') && !s.endsWith('ss') && s.length > 3) return s.slice(0, -1);
   return s;
 }
+
+/** Banned filler phrases (mirrors FILLER_PHRASES in pipeline/build_index.py). */
+export const FILLER_PHRASES = [
+  'delve', 'it is important to note', "it's worth noting", 'it is worth noting', 'in conclusion',
+  'in this article we', "let's dive in", 'tapestry', 'game-changer', 'paradigm shift',
+];
+export const REPEAT_MIN_WORDS = 20;
+
+const escapeRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+/** Filler phrases found in the prose, code fences ignored. */
+export function fillerHits(body: string): string[] {
+  const t = stripFences(body).toLowerCase().replace(/\u2019/g, "'");
+  return FILLER_PHRASES.filter((f) => new RegExp(`\\b${escapeRe(f)}\\b`).test(t));
+}
+
+/** Prose paragraphs of REPEAT_MIN_WORDS+ words that appear more than once. */
+export function repeatedParagraphs(body: string): string[] {
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const para of stripFences(body).split(/\n\s*\n/)) {
+    const norm = para.trim().toLowerCase().replace(/\s+/g, ' ');
+    if (norm.split(' ').length < REPEAT_MIN_WORDS) continue;
+    if (seen.has(norm) && !out.includes(norm)) out.push(norm);
+    seen.add(norm);
+  }
+  return out;
+}

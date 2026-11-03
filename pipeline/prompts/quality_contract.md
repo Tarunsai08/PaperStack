@@ -8,6 +8,7 @@ Your article is rejected unless it meets every point below. These are not sugges
 3. **An "aha" moment:** one `:::insight` block that states the single idea worth remembering in one or two sentences.
 4. **A `:::try-this`** exercise the reader can do on paper in under two minutes, with the answer given in brackets at the end.
 5. **A `:::warning`** that names a real, common misconception and corrects it.
+5a. **Curiosity loops** opened and later closed, **predict-then-reveal** at least twice (the reader guesses an output, a complexity or a failure before seeing it), a "wait, why?" moment in each non-obvious section, varied rhythm, teasing `###` sub-headings, and an ending that hooks into the next article by its exact title. It must never read like a textbook.
 
 ## Teaching
 6. **Intuition before formalism:** plain words, then a picture or analogy, then a tiny traced example, and only then formulas or code.
@@ -28,4 +29,9 @@ Your article is rejected unless it meets every point below. These are not sugges
 17. **Practice problems:** use the problems named in the brief when given. URLs must follow the real formats exactly: `https://leetcode.com/problems/<slug>/`, `https://cses.fi/problemset/task/<number>`, `https://codeforces.com/problemset/problem/<contest>/<letter>`, `https://atcoder.jp/contests/<id>/tasks/<id>`. If you are not sure a problem exists at that URL, choose a different, famous one. Avoid LeetCode premium-only problems (for example Meeting Rooms), since most readers cannot open them. Never copy problem statements.
 18. **System design numbers** are labelled as estimates and show their arithmetic.
 19. **Complexity claims** are correct and justified in one sentence each.
-20. Respect the exact section headings, frontmatter fields and counts in the format spec: glossary 3 to 8, exactly 3 quiz questions with 4 options, at least the minimum length for the kind. There is no maximum length: completeness of understanding comes first, padding never.
+20. Respect the exact section headings, frontmatter fields and counts in the format spec: glossary 3 to 8, exactly 3 quiz questions with 4 options.
+
+## Completeness
+
+**Short is not bad, long is not good.** An article that explains the concept correctly and completely is good at any length; one that does not is not good at any length. Never judge, expand or rewrite an article because of its word count.
+21. **No minimum or maximum length.** The article passes the completeness test: a smart beginner could explain the idea to a friend and solve a fresh problem of this type (or reason about a fresh scenario). It covers why this exists, intuition, the formal idea, a fully traced example, edge cases, variants, complexity or trade-offs, common mistakes, interview follow-ups, and connections to other articles. No padding and no repeated paragraphs: the validator flags both.

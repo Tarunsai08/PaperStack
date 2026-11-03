@@ -54,7 +54,10 @@ FIELD_ORDER = [
     "difficulty", "read_minutes", "topics", "complexity", "practice_problems", "paper_title", "authors", "year",
     "venue", "paper_url", "glossary", "quiz", "cover_seed", "generated_by", "generated_at", "importance_score",
 ]
-RUBRIC = ["hook", "analogy", "intuition_first", "structure", "diagrams", "callouts", "glossary", "quiz", "accuracy", "length", "no_filler"]
+RUBRIC = [
+    "hook", "analogy", "intuition_first", "structure", "diagrams", "callouts", "glossary", "quiz", "accuracy",
+    "completeness", "curiosity_loops", "predict_reveal", "voice", "momentum", "no_filler",
+]
 
 
 class GateFailed(Exception):
@@ -167,11 +170,10 @@ def entry_header(e: dict, written: dict[str, dict], today: str) -> str:
         fixed.pop("priority")
     if e["kind"] == "paper":
         fixed["paper_url"] = e.get("paper_url")
-    target = bi.WORD_MIN.get(e["kind"], 1000)
     return f"""## The entry to write
 Working title (improve it: curiosity-driven, under 10 words): {e['title_working']}
 Kind: {e['kind']}. Required sections, in order: {' | '.join(bi.SECTIONS[e['kind']])}
-Length: at least {target} words of prose (code blocks are not counted). There is no maximum: write as much as complete understanding needs, without padding.
+Length: there is no minimum and no maximum. The article is finished when it passes the completeness test: a smart beginner could explain the idea to a friend and solve a fresh problem of this type (or reason about a fresh scenario). Cover why it exists, intuition, the formal idea, a fully traced example, edge cases, variants, complexity or trade-offs, common mistakes, interview follow-ups and links to related articles. Every paragraph must teach something or pull the reader forward; no padding.
 Use these exact frontmatter values:
 {json.dumps(fixed, indent=1, ensure_ascii=False)}
 
@@ -318,12 +320,20 @@ def lint(data: dict, body: str) -> tuple[list[str], list[str]]:
             errors.append(f"Practice problem URL has an unexpected format: {p['url']}. Use the exact formats in the contract.")
     if data.get("kind") in bi.NEEDS_CODE and "```pseudo" not in body:
         errors.append("Add pseudocode in a ```pseudo fence before any C++ in The code.")
+    # Engagement advice (owner's rule 2.2): predict-then-reveal questions, and a hook into the next article.
+    after_hook = prose.split("## The hook", 1)[-1]
+    if after_hook.count("?") < 3:
+        advice.append("Add predict-then-reveal moments: ask the reader to guess an output, a complexity or a failure before showing it.")
+    if "](article:" not in prose:
+        advice.append("End with a hook into the next article, linked by its exact title as [Title](article:<id>).")
+    if bi.repeated_paragraphs(body):
+        errors.append("Remove repeated paragraphs; length must come from new substance.")
     return errors, advice
 
 
 def gate_errors(data: dict, body: str, tracks: list[str], written: set[str]) -> list[str]:
     errors, warnings = bi.validate_article(data, body, tracks, written | {data["id"]})
-    out = [x.message for x in errors] + [x.message for x in warnings if x.code.startswith("length")] + lint(data, body)[0]
+    out = [x.message for x in errors] + [x.message for x in warnings] + lint(data, body)[0]
     for i, (info, code) in enumerate(bi.cpp_blocks(body), 1):
         if "partial" in info.split():
             continue

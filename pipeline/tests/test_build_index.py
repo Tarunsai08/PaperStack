@@ -28,6 +28,15 @@ def test_shared_fixtures(case):
     assert (len(codes) == 0) == case["ok"], codes
     for expected in case["errors"]:
         assert expected in codes, f"{expected} not in {codes}"
+    data, body = bi.parse_article((FIXTURES / case["file"]).read_text()) if case["ok"] else ({}, "")
+    if case["ok"]:
+        _, warnings = bi.validate_article(data, body, CASES["tracks"], CASES["articleIds"])
+        assert sorted(w.code for w in warnings) == sorted(case.get("warnings", [])), warnings
+
+
+@pytest.mark.parametrize("case", CASES["fillerCases"])
+def test_filler_hits(case):
+    assert bi.filler_hits(case["text"]) == case["hits"]
 
 
 @pytest.mark.parametrize("case", CASES["wordCounts"])
@@ -111,13 +120,16 @@ def test_build_rejects_slug_mismatch(tmp_path):
     assert bi.build(content, write=False) == 1
 
 
-def test_strict_mode_fails_on_length_warnings(tmp_path):
+def test_strict_mode_fails_on_warnings(tmp_path):
     content = make_content(tmp_path)
+    page = content / "primers" / "sample.md"
+    page.write_text(page.read_text().replace("## Key takeaways", "We delve into it.\n\n## Key takeaways"))
+    assert bi.build(content, write=False) == 0
     assert bi.build(content, strict=True, write=False) == 1
 
 
 def test_no_maximum_length(tmp_path):
-    """Owner's rule: articles may be as long as understanding needs; only a minimum is enforced."""
+    """Owner's rule: no minimum and no maximum length; only filler and repetition are linted."""
     raw = (FIXTURES / "valid-paper.md").read_text()
     padded = raw.replace("## Key takeaways", "Every idea gets the room it needs. " * 1500 + "\n\n## Key takeaways")
     data, body = bi.parse_article(padded)

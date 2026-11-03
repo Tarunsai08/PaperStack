@@ -56,7 +56,6 @@ def setup(tmp_path, monkeypatch, scores):
     monkeypatch.setattr(cg, "LLM", lambda providers: fake)
     monkeypatch.setattr(cg, "load_providers", lambda config, only=None: ["p"])
     monkeypatch.setattr(cg, "DRAFTS", tmp_path / "drafts")
-    monkeypatch.setitem(bi.WORD_MIN, "pattern", 1)
     cfg = cg.load_config()
     cfg["daily_mix"] = {"dsa": 1}
     monkeypatch.setattr(cg, "load_config", lambda: cfg)

@@ -49,7 +49,7 @@ Only link (`[text](article:<id>)`) and list prerequisites that **already exist a
 ## 5. Common pitfalls
 - A `[[Term]]` that is not in the glossary fails validation. So does an `article:` link to an id that does not exist yet.
 - Exactly 3 quiz questions with exactly 4 options and `answer` as 0-3.
-- Word counts exclude code fences. **There is no maximum length** (owner's rule, 2026-11-02): write until the reader understands the topic completely, with no padding. `--strict` only fails below the minimum: 900 prose words for patterns, walkthroughs, concepts and LLD; 1,000 for primers; 1,100 for deep dives and case studies; 1,400 for papers.
+- **There is no minimum or maximum length** (owner's rule, 2026-11-03). Short is fine if the concept is explained correctly and completely. `--strict` fails on filler phrases and repeated paragraphs, not on word count.
 - `practice_problems` URLs must be real (LeetCode slug pages, `https://cses.fi/problemset/task/<id>`, `https://codeforces.com/problemset/problem/<contest>/<letter>`). If you are not certain a link exists, choose a problem you are certain about.
 - System design numbers must be labelled as estimates.
 - Mermaid labels: short, no quotes, parentheses, colons or brackets.

@@ -21,8 +21,29 @@ The reader is a smart computer-science student who has never studied AI or machi
 - **"What happened next"** must only describe real later developments, and should link to other PaperStack articles with `[link text](article:<id>)` when they exist.
 - **Key takeaways:** 3-5 bullets, each one a full sentence that states a complete idea.
 
-## Length and pacing
-- No maximum length: write until the idea is fully understood, never pad. Minimums: paper articles 1,400 words, primers 1,000 words.
+## Completeness (replaces every word count)
+
+**Short is not bad, long is not good.** An article that explains the concept correctly and completely is good at any length; one that does not is not good at any length. Never judge, expand or rewrite an article because of its word count.
+There is **no minimum and no maximum length**. An article is finished only when it passes the **completeness test**: a smart beginner who reads it could (a) explain the idea to a friend and (b) solve a fresh problem of this type, or reason about a fresh scenario for system design.
+
+Completeness checklist: why this exists, intuition, the formal idea, a fully traced example, edge cases, variants, complexity or trade-offs, common mistakes, interview follow-ups, and how it connects to other articles.
+
+Length must come from substance. Every paragraph must teach something or pull the reader forward. The validator lints for filler phrases and repeated paragraphs instead of counting words. Long articles stay easy to move around with `###` sub-headings; `read_minutes` is computed from the real word count.
+
+## Engagement (never a textbook)
+- **Hook:** open with a scene, a puzzle, a surprising fact or a real product problem. Never open with a definition or "In this article".
+- **One running story or example** through the whole article, with one central analogy reused throughout.
+- **Curiosity loops:** open them ("this breaks in a way you won't expect; we'll see why in a minute") and close them later.
+- **Predict-then-reveal:** ask the reader to guess the output, the complexity or the failure before you show it. Do this at least twice.
+- **Rhythm and voice:** short punchy paragraphs mixed with longer ones, teasing section titles (as `###` sub-headings), a light sense of humour where it fits, concrete numbers, and "you".
+- **A "wait, why?" moment** at least once per section where the idea is non-obvious.
+- **End with a hook into the next article**, linked with its exact title as `[Title](article:<id>)` (only if it exists).
+- Intuition always comes before formulas.
+
+> Bad: "Dijkstra's algorithm finds the shortest path from a source to all vertices in a weighted graph with non-negative weights."
+> Good: "Your map app has about 200 milliseconds to pick one route out of billions. It cannot try them all. Here is the trick it uses instead: always be greedy about the *closest unfinished place*, and never look back."
+
+## Pacing
 - Paragraphs of 1-4 sentences. Put a visual element (diagram, callout, worked example or list) at least every ~300 words.
 - No walls of text.
 

@@ -7,7 +7,7 @@
  */
 import { parse as parseYaml } from 'yaml';
 import type { Frontmatter, Kind } from './types';
-import { articleLinks, cppBlocks, directiveNames, extractH2, glossaryRefs, hasMermaid, hasPseudo, normalizeTerm, wordCount } from './markdownText';
+import { articleLinks, cppBlocks, directiveNames, extractH2, glossaryRefs, hasMermaid, hasPseudo, normalizeTerm, fillerHits, repeatedParagraphs } from './markdownText';
 
 export * from './markdownText';
 
@@ -120,20 +120,8 @@ export const KINDS = Object.keys(SECTIONS) as Kind[];
 export const SUBJECT_IDS = ['ml', 'dsa', 'cp', 'famous-algos', 'system-design', 'cs-core'] as const;
 export const PRIORITIES = ['P0', 'P1', 'P2'] as const;
 
-// Minimum prose words per kind (a depth floor). There is deliberately no maximum:
-// an article is as long as complete understanding of the topic needs.
-export const WORD_MIN: Record<Kind, number> = {
-  paper: 1400,
-  primer: 1000,
-  // Code fences are not counted, so code-bearing kinds start a little lower.
-  pattern: 900,
-  'problem-walkthrough': 900,
-  concept: 900,
-  'deep-dive': 1100,
-  'case-study': 1100,
-  lld: 900,
-};
-
+// There is no minimum or maximum length (owner's rule, 2026-11-03). Length must come from substance,
+// so instead of word counts the validator lints for filler phrases and repeated paragraphs.
 const NEEDS_CODE = new Set<string>(['pattern', 'problem-walkthrough', 'concept', 'lld']);
 const NEEDS_MERMAID = new Set<string>(['paper', 'deep-dive', 'case-study', 'lld']);
 const NEEDS_PROBLEMS = new Set<string>(['pattern', 'problem-walkthrough']);
@@ -381,9 +369,10 @@ export function validateArticle(
     if (NEEDS_CODE.has(kind) && !cppBlocks(body).length && !hasPseudo(body)) {
       err('code_missing', `${kind} articles need a \`\`\`pseudo or \`\`\`cpp block in The code.`);
     }
-    const words = wordCount(body);
-    const lo = WORD_MIN[kind as Kind];
-    if (words < lo) warn('length_short', `Body is ${words} words; aim for at least ${lo}.`);
+    const hits = fillerHits(body);
+    if (hits.length) warn('filler', `Remove filler phrases: ${hits.join(', ')}.`);
+    const reps = repeatedParagraphs(body);
+    if (reps.length) warn('repeated_content', `These paragraphs appear more than once: ${reps.map((r) => r.slice(0, 60) + '...').join(' | ')}`);
   }
 
   for (const name of directiveNames(body)) {

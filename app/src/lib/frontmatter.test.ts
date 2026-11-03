@@ -9,13 +9,15 @@ import {
   readMinutes,
   validateArticle,
   wordCount,
+  fillerHits,
 } from './frontmatter';
 
 const FIXTURES = join(__dirname, '../../../tests/fixtures');
 const cases = JSON.parse(readFileSync(join(FIXTURES, 'cases.json'), 'utf8')) as {
   tracks: string[];
   articleIds: string[];
-  cases: { file: string; ok: boolean; errors: string[] }[];
+  cases: { file: string; ok: boolean; errors: string[]; warnings?: string[] }[];
+  fillerCases: { text: string; hits: string[] }[];
   wordCounts: { text: string; words: number }[];
 };
 
@@ -27,8 +29,13 @@ describe('shared fixtures (same cases as pipeline/tests)', () => {
       const codes = res.errors.map((e) => e.code);
       expect(res.ok, JSON.stringify(res.errors)).toBe(c.ok);
       for (const code of c.errors) expect(codes).toContain(code);
+      if (c.ok) expect(res.warnings.map((w) => w.code).sort()).toEqual([...(c.warnings ?? [])].sort());
     });
   }
+
+  it('finds filler phrases the same way as Python', () => {
+    for (const f of cases.fillerCases) expect(fillerHits(f.text)).toEqual(f.hits);
+  });
 
   it('counts words the same way as Python', () => {
     for (const w of cases.wordCounts) expect(wordCount(w.text)).toBe(w.words);
@@ -67,13 +74,13 @@ describe('helpers', () => {
     expect(res.ok).toBe(true);
   });
 
-  it('warns about length but does not fail', () => {
+  it('never warns that an article is too short', () => {
     const res = parseAndValidate(readFileSync(join(FIXTURES, 'valid-paper.md'), 'utf8'), {
       trackIds: cases.tracks,
       articleIds: cases.articleIds,
     });
     expect(res.ok).toBe(true);
-    expect(res.warnings.map((w) => w.code)).toContain('length_short');
+    expect(res.warnings).toEqual([]);
   });
 
   it('never warns that an article is too long', () => {
