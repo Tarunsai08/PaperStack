@@ -1,7 +1,7 @@
 {
- "content_version": "d2562bb64c7236e8",
+ "content_version": "746428edf1f60303",
  "generated_at": "2026-11-02",
- "count": 362,
+ "count": 365,
  "subjects": [
   {
    "id": "ml",
@@ -29977,6 +29977,118 @@
    "excerpt": "A café combines one of its cakes with one of its drinks into a set menu, and the price of a set is the cake's price plus the drink's. With 200,000 cakes and 200,000 drinks, how many set menus are there at every possible total price? Pairing everything is 4 × 10¹⁰ combinations, far too many. This…"
   },
   {
+   "id": "cp-sparse-table",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "sparse-table",
+   "title": "Lookout Towers Built for Contest Speed",
+   "subtitle": "The sparse table as a contest template: O(1) range min, max and gcd with __lg, the disjoint sparse table that gives O(1) queries for sums and any associative operation, and LCA in O(1) through an Euler tour",
+   "track": "cp-ranges",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-sparse-table-rmq"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "sparse table",
+    "range queries",
+    "LCA",
+    "Euler tour",
+    "gcd"
+   ],
+   "complexity": {
+    "time": "O(n log n) build, O(1) per query",
+    "space": "O(n log n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Static Range Minimum Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1647",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Company Queries II",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1688",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Number of Subarrays With GCD Equal to K",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/number-of-subarrays-with-gcd-equal-to-k/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Idempotent sparse table",
+     "definition": "st[k][i] = op over a[i .. i + 2^k - 1], answering ranges with two overlapping blocks; valid for min, max, gcd, AND and OR."
+    },
+    {
+     "term": "Disjoint sparse table",
+     "definition": "A sparse table that stores, for each level, prefix and suffix aggregates around block midpoints, so any associative operation is answered in O(1) with two non-overlapping parts."
+    },
+    {
+     "term": "Level of a query",
+     "definition": "In a disjoint sparse table, the position of the highest bit where l and r differ, which picks the unique block whose midpoint separates them."
+    },
+    {
+     "term": "Euler tour",
+     "definition": "The sequence of vertices visited by a DFS, writing a vertex each time the walk arrives at it, of length 2n - 1 for a tree with n vertices."
+    },
+    {
+     "term": "Range minimum to LCA",
+     "definition": "The fact that the lowest common ancestor of u and v is the shallowest vertex in the Euler tour between their first occurrences."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why can a sparse table answer range gcd in O(1)?",
+     "options": [
+      "gcd is commutative",
+      "gcd is idempotent, gcd(x, x) = x, so two overlapping blocks covering the range give the right answer",
+      "Because gcd values are small",
+      "It cannot"
+     ],
+     "answer": 1,
+     "explain": "Counting a middle element twice changes nothing for gcd, exactly as for min. Sum and product are not idempotent, which is where the disjoint sparse table comes in."
+    },
+    {
+     "q": "In a disjoint sparse table, how is the level for query [l, r] chosen when l ≠ r?",
+     "options": [
+      "By the length of the range",
+      "By the highest bit in which l and r differ, which identifies the block whose midpoint lies between them",
+      "By l alone",
+      "By binary search"
+     ],
+     "answer": 1,
+     "explain": "l and r agree on all higher bits, so they sit in the same block of size 2^(level), and the differing bit puts them on opposite sides of its midpoint. Then the answer is suffix(l) combined with prefix(r)."
+    },
+    {
+     "q": "How does an Euler tour turn LCA into a range minimum query?",
+     "options": [
+      "By sorting vertices",
+      "Between the first occurrences of u and v, the tour passes through their LCA and never above it, so the shallowest vertex there is the LCA",
+      "By counting edges",
+      "It does not"
+     ],
+     "answer": 1,
+     "explain": "The DFS walk from u to v must climb to their common ancestor and cannot go higher without leaving its subtree. A sparse table over depths finds that shallowest point in O(1)."
+    }
+   ],
+   "cover_seed": "cp-sparse-table",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "cp/sparse-table.md",
+   "hash": "28c543bd48d1",
+   "word_count": 1449,
+   "excerpt": "In a contest, a problem with 2 × 10⁵ elements and 2 × 10⁵ range-minimum queries is a warm-up, if your template is ready. The idea behind sparse tables, two overlapping power-of-two blocks, is covered in Two Overlapping Lookouts, One Answer. This article is about what contest problems ask on top of…"
+  },
+  {
    "id": "cp-segment-tree",
    "kind": "pattern",
    "subject": "cp",
@@ -30102,6 +30214,224 @@
    "hash": "1dd62fae99f2",
    "word_count": 1724,
    "excerpt": "You get an array of 200,000 numbers and 200,000 operations. Each operation either changes one element or asks for the minimum of some block a[l..r]. A loop over the block costs up to 200,000 steps per question, so the worst case is 4 × 10¹⁰ steps, far past any time limit. Prefix sums answer range…"
+  },
+  {
+   "id": "cp-lazy-propagation",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "lazy-propagation",
+   "title": "A Manager Who Promises Raises to the Whole Team",
+   "subtitle": "Lazy propagation in full: range updates in O(log n) by leaving tags on covered nodes, pushing them down before visiting children, and composing tags correctly when adds and assignments mix",
+   "track": "cp-ranges",
+   "track_order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-segment-tree"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "segment tree",
+    "lazy propagation",
+    "range updates",
+    "range queries"
+   ],
+   "complexity": {
+    "time": "O(log n) per range update and range query",
+    "space": "O(n), allocated as 4n"
+   },
+   "practice_problems": [
+    {
+     "name": "Range Update Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1651",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Range Updates and Sums",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1735",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Polynomial Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1736",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Lazy tag",
+     "definition": "A pending update stored at a node, meaning 'my stored answer already includes this update, but my children do not yet'."
+    },
+    {
+     "term": "Apply",
+     "definition": "Updating a node's stored answer for a whole-segment update, such as adding d × length to a sum, and merging the update into the node's tag."
+    },
+    {
+     "term": "Push down",
+     "definition": "Passing a node's tag to both children with apply and clearing it, done just before any operation visits the children."
+    },
+    {
+     "term": "Tag composition",
+     "definition": "The rule for combining an existing tag with a newer one into a single tag, such as an assignment overriding everything before it."
+    },
+    {
+     "term": "Arithmetic progression tag",
+     "definition": "A tag holding a first value and a step, used when an update adds 1, 2, 3, ... across a range, as in Polynomial Queries."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A range update fully covers a node. What does lazy propagation do there?",
+     "options": [
+      "Recurse to every leaf",
+      "Apply the update to the node's stored answer, record it in the node's tag, and stop without visiting the children",
+      "Ignore the node",
+      "Rebuild the subtree"
+     ],
+     "answer": 1,
+     "explain": "The node's summary is fixed immediately, so queries that stop at this node are correct. The children are updated later, only if something needs to look inside."
+    },
+    {
+     "q": "Why must push down happen before visiting a node's children, in queries as well as updates?",
+     "options": [
+      "For speed only",
+      "The children's stored answers do not yet include the parent's pending tag, so reading or changing them first would use stale values",
+      "Because queries never need it",
+      "Because the root has no tag"
+     ],
+     "answer": 1,
+     "explain": "A tag is a promise owed to the children. Any operation that is about to rely on the children must settle that promise first."
+    },
+    {
+     "q": "A node has tag 'add 3', and then 'set to 10' arrives for its whole segment. What is the combined tag?",
+     "options": [
+      "add 3 then set 10, both kept",
+      "set to 10, because an assignment overrides any earlier add",
+      "add 13",
+      "set to 13"
+     ],
+     "answer": 1,
+     "explain": "Whatever was added before, every element becomes 10. A later add would then modify the assignment value: set 10 followed by add 2 becomes set 12."
+    }
+   ],
+   "cover_seed": "lazy-propagation",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.82,
+   "path": "cp/lazy-propagation.md",
+   "hash": "ac54eb7a7afa",
+   "word_count": 1320,
+   "excerpt": "A company announces a raise of 500 for everyone in the engineering department. The head of engineering does not walk to every desk; they update the department's salary total immediately and write a note: \"everyone below me is owed 500\". Months later, someone asks about one team's payroll, and only…"
+  },
+  {
+   "id": "cp-fenwick-advanced",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "fenwick-advanced",
+   "title": "Two Piggy Banks That Track One Total",
+   "subtitle": "Fenwick trees beyond point updates: range update with point query through differences, range update with range sum using two trees, and the 2D Fenwick tree for rectangle sums on a changing grid",
+   "track": "cp-ranges",
+   "track_order": 4,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-fenwick-tree"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "Fenwick tree",
+    "range updates",
+    "difference arrays",
+    "2D queries"
+   ],
+   "complexity": {
+    "time": "O(log n) per operation, O(log n × log m) in 2D",
+    "space": "O(n), or O(n × m) in 2D"
+   },
+   "practice_problems": [
+    {
+     "name": "Range Update Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1651",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Forest Queries II",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1739",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Forest Queries",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1652",
+     "difficulty": "Easy"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Difference array",
+     "definition": "d[i] = a[i] - a[i - 1], so adding x to a[l..r] becomes d[l] += x and d[r + 1] -= x, and a[i] is the prefix sum of d."
+    },
+    {
+     "term": "Two-tree trick",
+     "definition": "Keeping two Fenwick trees B1 and B2 so that the prefix sum of the array is B1.sum(i) × i - B2.sum(i), which supports range update and range sum."
+    },
+    {
+     "term": "Correction tree",
+     "definition": "The second Fenwick tree, B2, which removes the over-count that B1.sum(i) × i makes for positions before the start of each update."
+    },
+    {
+     "term": "2D Fenwick tree",
+     "definition": "A Fenwick tree of Fenwick trees, where each update and prefix query loops over i and, inside it, over j, giving rectangle sums in O(log n × log m)."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "To add x to a[l..r] and read single values, what does the Fenwick tree store?",
+     "options": [
+      "The array itself",
+      "The difference array: add x at l and -x at r + 1, then a[i] is the prefix sum up to i",
+      "The squares of values",
+      "Nothing; it cannot"
+     ],
+     "answer": 1,
+     "explain": "Prefix sums of the difference array rebuild each element. The update touches two positions, and a point read is one prefix query."
+    },
+    {
+     "q": "In the two-tree trick, after adding x to [l, r], what does B2 receive?",
+     "options": [
+      "x at l and -x at r + 1",
+      "x × (l - 1) at l and -x × r at r + 1",
+      "x at r only",
+      "Nothing"
+     ],
+     "answer": 1,
+     "explain": "B1.sum(i) × i overcounts by x × (l - 1) for i inside the range and by x × (l - 1) - x × r for i past it. B2 stores exactly those corrections, so B1.sum(i) × i - B2.sum(i) is the prefix sum."
+    },
+    {
+     "q": "What does a 2D Fenwick tree's prefix query sum(r, c) return?",
+     "options": [
+      "The value at (r, c)",
+      "The sum of the rectangle from (1, 1) to (r, c), so any rectangle is four such queries combined by inclusion-exclusion",
+      "The row sum",
+      "The column sum"
+     ],
+     "answer": 1,
+     "explain": "Like 2D prefix sums, rect(r1, c1, r2, c2) = S(r2, c2) - S(r1 - 1, c2) - S(r2, c1 - 1) + S(r1 - 1, c1 - 1), each S computed in O(log n × log m)."
+    }
+   ],
+   "cover_seed": "fenwick-advanced",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.7,
+   "path": "cp/fenwick-advanced.md",
+   "hash": "ae5a68c2ed12",
+   "word_count": 1282,
+   "excerpt": "A plain Fenwick tree, from A Pyramid of Savings Jars, handles \"change one element\" and \"sum a prefix\". Contest problems quickly ask for more: add 7 to every element from position 1,000 to 50,000, then ask for a range sum; or toggle trees on a 1,000 by 1,000 forest map and count trees in rectangles.…"
   },
   {
    "id": "cp-coordinate-compression",
