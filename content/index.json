@@ -1,7 +1,7 @@
 {
- "content_version": "b18a303f4935a6ba",
+ "content_version": "e34bb048089cf43d",
  "generated_at": "2026-11-03",
- "count": 547,
+ "count": 548,
  "subjects": [
   {
    "id": "ml",
@@ -57432,6 +57432,99 @@
    "hash": "8894574ba6d1",
    "word_count": 1047,
    "excerpt": "HR wants three things from the employee database. A dashboard of headcount and average pay per department that is always current. A record of every salary change, who earned what before and after, that nobody can forget to write. And for interns, access to names and departments, but never salaries.…"
+  },
+  {
+   "id": "cs-core-nosql-overview",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "nosql-overview",
+   "title": "Different Shapes of Storage Boxes",
+   "subtitle": "NoSQL for DBMS interviews: key-value, document, wide-column and graph stores, one shopping-cart example modelled four ways, BASE versus ACID, and how to answer 'SQL or NoSQL?'",
+   "track": "cs-dbms",
+   "track_order": 18,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-normalization"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "dbms",
+    "nosql",
+    "key-value",
+    "document store",
+    "graph database",
+    "base"
+   ],
+   "glossary": [
+    {
+     "term": "Key-value store",
+     "definition": "A database that maps each key to an opaque value and supports get, put and delete by key, and little else."
+    },
+    {
+     "term": "Document store",
+     "definition": "A database storing self-describing documents (usually JSON-like) that can be queried and indexed by their fields."
+    },
+    {
+     "term": "Wide-column store",
+     "definition": "A database whose rows, found by a partition key, hold many columns sorted by a clustering key; built for huge write volumes."
+    },
+    {
+     "term": "Graph database",
+     "definition": "A database storing nodes and edges directly, so following relationships is a pointer hop rather than a join."
+    },
+    {
+     "term": "BASE",
+     "definition": "Basically available, soft state, eventually consistent: the looser guarantees many distributed NoSQL systems give in exchange for availability and scale."
+    },
+    {
+     "term": "Denormalisation",
+     "definition": "Storing the same data in several places, shaped for the queries that read it, to avoid joins."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "You need to fetch a user's whole profile, with nested addresses and preferences, in one read, and the fields differ between users. Which family fits best?",
+     "options": [
+      "Key-value store",
+      "Document store",
+      "Graph database",
+      "Wide-column store"
+     ],
+     "answer": 1,
+     "explain": "Documents hold nested, varying structures and can be queried and indexed by field."
+    },
+    {
+     "q": "'Friends of friends who like the same band' is slow in your SQL database because of repeated self joins. Which family is designed for this?",
+     "options": [
+      "Key-value",
+      "Document",
+      "Wide-column",
+      "Graph"
+     ],
+     "answer": 3,
+     "explain": "Graph databases store edges directly, so each hop follows a pointer instead of joining tables."
+    },
+    {
+     "q": "What does 'eventually consistent' promise?",
+     "options": [
+      "Every read sees the latest write",
+      "If writes stop, all replicas converge to the same value; reads in the meantime may be stale",
+      "Data is never lost",
+      "Transactions are serializable"
+     ],
+     "answer": 1,
+     "explain": "It guarantees convergence, not freshness. Many systems let you request stronger reads at a cost."
+    }
+   ],
+   "cover_seed": "nosql-overview",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.75,
+   "path": "cs-core/nosql-overview.md",
+   "hash": "853d7bcd0169",
+   "word_count": 1068,
+   "excerpt": "You have spent the whole DBMS track normalising tables, splitting facts so each is stored once, and joining them back with keys. Then an interviewer asks: \"Your app stores shopping carts for a hundred million users, read and written constantly, and nobody ever joins a cart with anything. Would you…"
   }
  ]
 }
