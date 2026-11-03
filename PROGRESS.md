@@ -12,10 +12,10 @@ Read `HANDOFF.md` first if you are picking this project up.
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
-| system-design | 96 | 0 | 23 | 119 | 60/60 |
+| system-design | 98 | 0 | 21 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 16 | 0 | 63 | 79 | 13/47 |
-| **All** | **507** | **0** | **176** | **683** | |
+| **All** | **509** | **0** | **174** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -46,16 +46,16 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### system-design
 
-- [ ] `system-design-web-crawler` (P1, case-study, sd-cases): Design a Web Crawler
-- [ ] `system-design-file-sync` (P1, case-study, sd-cases): Design Google Drive or Dropbox
 - [ ] `system-design-leaderboard` (P1, case-study, sd-cases): Design a Real-Time Leaderboard
 - [ ] `system-design-job-scheduler` (P1, case-study, sd-cases): Design a Distributed Job Scheduler
+- [ ] `system-design-search-engine` (P1, case-study, sd-cases): Design a Web Search Engine
 - [ ] `system-design-photo-sharing` (P1, case-study, sd-cases): Design Instagram
 - [ ] `system-design-proximity-service` (P1, case-study, sd-cases): Design a Nearby Places Service Like Yelp
 - [ ] `system-design-hotel-reservation` (P1, case-study, sd-cases): Design a Hotel Reservation System
 - [ ] `system-design-ecommerce-checkout` (P1, case-study, sd-cases): Design an E-Commerce Checkout
 - [ ] `system-design-food-delivery` (P1, case-study, sd-cases): Design a Food Delivery App Like Swiggy or Zomato
 - [ ] `system-design-distributed-message-queue` (P1, case-study, sd-cases): Design a Distributed Message Queue Like Kafka
+- [ ] `system-design-metrics-monitoring` (P1, case-study, sd-cases): Design a Metrics and Alerting System
 
 ### ml
 
@@ -411,7 +411,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>system-design: 96 written</summary>
+<details><summary>system-design: 98 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -468,6 +468,8 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-ride-sharing` Design a Ride-Sharing App Like Uber
 - [x] `system-design-payments` Design a Payment System
 - [x] `system-design-ticket-booking` Design a Ticket Booking System Like BookMyShow
+- [x] `system-design-web-crawler` Design a Web Crawler
+- [x] `system-design-file-sync` Design Google Drive or Dropbox
 - [x] `system-design-oop-solid` Object-Oriented Design and SOLID Principles
 - [x] `system-design-creational-patterns` Creational Patterns: Factory, Builder and Singleton
 - [x] `system-design-structural-patterns` Structural Patterns: Adapter, Decorator, Facade, Proxy

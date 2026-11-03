@@ -1,7 +1,7 @@
 {
- "content_version": "5f856f10f06f2d65",
+ "content_version": "1a0b608dbb7efbae",
  "generated_at": "2026-11-03",
- "count": 507,
+ "count": 509,
  "subjects": [
   {
    "id": "ml",
@@ -48542,6 +48542,190 @@
    "hash": "b4554ca0258a",
    "word_count": 1769,
    "excerpt": "10:00 am. A stadium concert with 50,000 seats goes on sale. Two million fans are already refreshing the page. At 10:00:01, thousands of them click on the same front-row seats. Two things must never happen. A seat must never be sold twice. And the site must not fall over, because a crashed site…"
+  },
+  {
+   "id": "system-design-web-crawler",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "web-crawler",
+   "title": "Design a Web Crawler",
+   "subtitle": "An army of polite librarians: the URL frontier, politeness per host, robots.txt, deduplication with hashes and Bloom filters, and escaping crawler traps",
+   "track": "sd-cases",
+   "track_order": 13,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-message-queues",
+    "famous-algos-bloom-filter"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "system design",
+    "web crawler",
+    "url frontier",
+    "politeness",
+    "deduplication",
+    "bloom filter"
+   ],
+   "glossary": [
+    {
+     "term": "URL frontier",
+     "definition": "The data structure holding URLs waiting to be fetched, organised by priority and by host so the crawler can be both smart and polite."
+    },
+    {
+     "term": "Politeness",
+     "definition": "Rules that limit how often the crawler hits any single host, so it never overloads a website."
+    },
+    {
+     "term": "robots.txt",
+     "definition": "A file at a website's root stating which paths crawlers may or may not fetch; well-behaved crawlers obey it."
+    },
+    {
+     "term": "URL normalisation",
+     "definition": "Rewriting URLs into a canonical form (lowercase host, removed default port, resolved relative paths, sorted or stripped parameters) so the same page is not crawled under many names."
+    },
+    {
+     "term": "Content fingerprint",
+     "definition": "A hash of a page's content used to detect duplicate or near-duplicate pages reached through different URLs."
+    },
+    {
+     "term": "Crawler trap",
+     "definition": "A site structure that generates endless distinct URLs, such as infinite calendars or session ids in links, which can consume a crawler forever."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does the frontier keep a separate queue per host?",
+     "options": [
+      "To sort URLs alphabetically",
+      "So workers can fetch from many hosts in parallel while each host is contacted at most at its polite rate",
+      "Because DNS requires it",
+      "To save memory"
+     ],
+     "answer": 1,
+     "explain": "Per-host queues let the scheduler interleave hosts. A single global queue would often hand several workers URLs from the same site at once."
+    },
+    {
+     "q": "You need to remember about 10 billion seen URLs. Why might a Bloom filter be used?",
+     "options": [
+      "It stores the full URLs",
+      "It answers 'definitely not seen' using about 12 GB at a 1% false-positive rate, versus about 80 GB for a set of 8-byte hashes",
+      "It removes duplicates from pages",
+      "It makes fetching faster"
+     ],
+     "answer": 1,
+     "explain": "About 9.6 bits per URL gives roughly 1% false positives. The cost: about 1% of genuinely new URLs are skipped, which is usually acceptable for a crawler."
+    },
+    {
+     "q": "A calendar page links to 'next month' forever. What protects the crawler?",
+     "options": [
+      "Nothing",
+      "Trap defences: depth and per-site page limits, URL length limits, and detecting URL patterns that keep generating new pages",
+      "robots.txt",
+      "More workers"
+     ],
+     "answer": 1,
+     "explain": "Crawler traps produce unlimited unique URLs. Caps and pattern detection keep one site from absorbing the crawl."
+    }
+   ],
+   "cover_seed": "web-crawler",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.78,
+   "path": "system-design/web-crawler.md",
+   "hash": "3bb0c331fdf1",
+   "word_count": 1393,
+   "excerpt": "A search engine is only as good as what it has seen. Somebody has to visit billions of pages, follow their links, notice when they change, and do it without knocking any website over. A naive crawler is ten lines of code: take a URL, download it, extract links, add them to a queue, repeat. Run it…"
+  },
+  {
+   "id": "system-design-file-sync",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "file-sync",
+   "title": "Design Google Drive or Dropbox",
+   "subtitle": "File sync at scale: chunking and deduplication, a metadata service separate from the bytes, change notifications, and what to do when two devices edit the same file",
+   "track": "sd-cases",
+   "track_order": 14,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-blob-storage",
+    "famous-algos-rsync-rolling-checksum"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "system design",
+    "file sync",
+    "chunking",
+    "deduplication",
+    "metadata",
+    "conflicts"
+   ],
+   "glossary": [
+    {
+     "term": "Chunk",
+     "definition": "A piece of a file, identified by the hash of its content, that is uploaded, stored and downloaded independently."
+    },
+    {
+     "term": "Content-addressed storage",
+     "definition": "Storing each chunk under the hash of its content, so identical chunks are stored once no matter how many files contain them."
+    },
+    {
+     "term": "Metadata service",
+     "definition": "The service that records files, folders, versions and which chunks make up each version, separately from the chunk bytes."
+    },
+    {
+     "term": "Content-defined chunking",
+     "definition": "Cutting files at boundaries chosen by a rolling hash of the content, so inserting bytes only changes the chunks near the edit."
+    },
+    {
+     "term": "Conflicted copy",
+     "definition": "A second file created when two devices change the same file from the same base version, so neither user's edits are lost."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A 100 MB file split into 4 MB chunks has one byte changed in place. Roughly how much must be uploaded?",
+     "options": [
+      "100 MB",
+      "About 4 MB: only the chunk containing the change",
+      "1 byte",
+      "50 MB"
+     ],
+     "answer": 1,
+     "explain": "The client hashes each chunk, finds that only one hash changed, and uploads that one chunk. The other 24 chunks are already stored."
+    },
+    {
+     "q": "Why does inserting a byte near the start of a file defeat fixed-size chunking?",
+     "options": [
+      "It does not",
+      "Every later chunk boundary shifts by one byte, so every later chunk's hash changes; content-defined chunking avoids this",
+      "Hashes are too slow",
+      "Files cannot grow"
+     ],
+     "answer": 1,
+     "explain": "Fixed boundaries move with the insertion. Boundaries chosen by content stay put after the edit point, so only nearby chunks change."
+    },
+    {
+     "q": "Laptop and phone both edit notes.txt while offline, starting from version 7. Both come online. What should the service do?",
+     "options": [
+      "Keep whichever uploads last",
+      "Accept the first upload as version 8 and save the second as a conflicted copy, so no edits are lost",
+      "Reject both",
+      "Merge the bytes automatically"
+     ],
+     "answer": 1,
+     "explain": "Both edits were based on version 7. Without a meaningful automatic merge for arbitrary files, keeping both is the safe choice."
+    }
+   ],
+   "cover_seed": "file-sync",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.78,
+   "path": "system-design/file-sync.md",
+   "hash": "9ad76493f24e",
+   "word_count": 1378,
+   "excerpt": "You edit one sentence in a 100 MB presentation and press save. A second later, your other laptop shows the change. Your phone too. Your colleague's copy updates without them doing anything. Nobody uploaded 100 MB three times. Something much smarter happened: the service figured out which few…"
   },
   {
    "id": "system-design-oop-solid",
