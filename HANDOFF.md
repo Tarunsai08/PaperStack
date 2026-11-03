@@ -13,12 +13,12 @@ You are continuing a project another Claude session started. Everything you need
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
-| cp | 114 | 0 | 3 | 117 | 29/29 |
+| cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 36 | 0 | 55 | 91 | 29/32 |
 | system-design | 45 | 0 | 74 | 119 | 45/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 79 | 79 | 0/47 |
-| **All** | **436** | **0** | **247** | **683** | |
+| **All** | **439** | **0** | **244** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -28,9 +28,7 @@ Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 _Nothing ready: every planned entry is waiting on a prerequisite, or the subject is complete._
 
 #### cp
-- [ ] `cp-xor-basis` (P2, pattern, cp-math): XOR Basis: Linear Algebra Over Bits
-- [ ] `cp-parallel-binary-search` (P2, pattern, cp-ranges): Parallel Binary Search: Many Queries, One Sweep
-- [ ] `cp-bitset-optimisation` (P2, pattern, cp-misc): Bitsets: Dividing by 64 for Free
+_Nothing ready: every planned entry is waiting on a prerequisite, or the subject is complete._
 
 #### famous-algos
 - [ ] `famous-algos-fft` (P0, concept, fa-signals): The Fast Fourier Transform: Hearing the Notes in a Chord

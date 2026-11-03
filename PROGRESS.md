@@ -10,12 +10,12 @@ Read `HANDOFF.md` first if you are picking this project up.
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
-| cp | 114 | 0 | 3 | 117 | 29/29 |
+| cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 36 | 0 | 55 | 91 | 29/32 |
 | system-design | 45 | 0 | 74 | 119 | 45/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 79 | 79 | 0/47 |
-| **All** | **436** | **0** | **247** | **683** | |
+| **All** | **439** | **0** | **244** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -29,9 +29,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### cp
 
-- [ ] `cp-xor-basis` (P2, pattern, cp-math): XOR Basis: Linear Algebra Over Bits
-- [ ] `cp-parallel-binary-search` (P2, pattern, cp-ranges): Parallel Binary Search: Many Queries, One Sweep
-- [ ] `cp-bitset-optimisation` (P2, pattern, cp-misc): Bitsets: Dividing by 64 for Free
+_Nothing ready: every planned entry is waiting on a prerequisite, or the subject is complete._
 
 ### famous-algos
 
@@ -54,10 +52,10 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `system-design-elevator-system` (P0, lld, sd-lld): Design an Elevator System
 - [ ] `system-design-vending-machine` (P0, lld, sd-lld): Design a Vending Machine With the State Pattern
 - [ ] `system-design-splitwise` (P0, lld, sd-lld): Design Splitwise
+- [ ] `system-design-bookmyshow-lld` (P0, lld, sd-lld): Design BookMyShow (Low-Level)
 - [ ] `system-design-consistent-hashing-sd` (P0, deep-dive, sd-distributed): Consistent Hashing in System Design Interviews
 - [ ] `system-design-consensus-overview` (P0, deep-dive, sd-distributed): Consensus in Practice: Raft, Paxos, etcd and ZooKeeper
 - [ ] `system-design-networking-essentials` (P1, deep-dive, sd-fundamentals): TCP, UDP and QUIC for System Designers
-- [ ] `system-design-proxies` (P1, deep-dive, sd-fundamentals): Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere
 
 ### ml
 
@@ -237,7 +235,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cp: 114 written</summary>
+<details><summary>cp: 117 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -352,7 +350,10 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cp-min-cost-flow` Minimum Cost Flow
 - [x] `cp-implicit-graphs` Modelling: When the Graph Is Hidden
 - [x] `cp-sweep-line-geometry` Sweep Line: Closest Pair and Intersections
+- [x] `cp-bitset-optimisation` Bitsets: Dividing by 64 for Free
 - [x] `cp-practice-plan` A 12-Week Contest Practice Plan
+- [x] `cp-xor-basis` XOR Basis: Linear Algebra Over Bits
+- [x] `cp-parallel-binary-search` Parallel Binary Search: Many Queries, One Sweep
 
 </details>
 
@@ -539,6 +540,10 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 - system-design-behavioural-patterns has an article but is still marked planned
 - system-design-machine-coding-approach has an article but is still marked planned
+- system-design-parking-lot has an article but is still marked planned
+- system-design-elevator-system has an article but is still marked planned
 - cs-core-what-an-os-does has an article but is still marked planned
 - cs-core-processes-threads has an article but is still marked planned
 - cs-core-process-states has an article but is still marked planned
+- cs-core-system-calls has an article but is still marked planned
+- cs-core-cpu-scheduling has an article but is still marked planned

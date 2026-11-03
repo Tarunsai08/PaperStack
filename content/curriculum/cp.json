@@ -3420,8 +3420,8 @@
    "prerequisites": [
     "cp-bitwise-tricks-cp"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Shift-or for subset sums",
@@ -3495,8 +3495,8 @@
     ]
    },
    "subject": "cp",
-   "status": "planned",
-   "written_by": null
+   "status": "written",
+   "written_by": "claude-seed"
   },
   {
    "id": "cp-parallel-binary-search",
@@ -3525,8 +3525,8 @@
     ]
    },
    "subject": "cp",
-   "status": "planned",
-   "written_by": null
+   "status": "written",
+   "written_by": "claude-seed"
   }
  ]
 }
