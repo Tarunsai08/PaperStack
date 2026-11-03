@@ -1364,8 +1364,8 @@
    "prerequisites": [
     "cs-core-tcp-deep-dive"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Methods and status codes",

@@ -1,7 +1,7 @@
 {
- "content_version": "3657b77f625c176d",
+ "content_version": "457a7ce084d51ddf",
  "generated_at": "2026-11-03",
- "count": 561,
+ "count": 562,
  "subjects": [
   {
    "id": "ml",
@@ -58696,9 +58696,103 @@
    "generated_at": "2026-11-03",
    "importance_score": 0.82,
    "path": "cs-core/udp.md",
-   "hash": "5a20aea75aac",
-   "word_count": 1031,
+   "hash": "f24ae740f24e",
+   "word_count": 1097,
    "excerpt": "In an online game, your character's position is sent twenty or more times a second. One update goes missing. Should the game stop everything, ask for that update again, and wait until it arrives before showing anything newer? By the time it comes back, it describes where you were. TCP would do…"
+  },
+  {
+   "id": "cs-core-http-https",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "http-https",
+   "title": "Ordering at a Counter With a Standard Form",
+   "subtitle": "HTTP and HTTPS: a real request and response read line by line, methods and idempotency, status codes, headers, cookies and statelessness, HTTP/1.1 to HTTP/2 to HTTP/3, and what TLS adds",
+   "track": "cs-networks",
+   "track_order": 9,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-tcp-deep-dive"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 6,
+   "topics": [
+    "computer networks",
+    "http",
+    "https",
+    "status codes",
+    "cookies",
+    "http/2",
+    "tls"
+   ],
+   "glossary": [
+    {
+     "term": "HTTP method",
+     "definition": "The verb of a request, such as GET (read), POST (create or submit), PUT (replace), PATCH (modify) or DELETE (remove)."
+    },
+    {
+     "term": "Idempotent",
+     "definition": "A request that has the same effect whether it is sent once or several times, such as GET, PUT and DELETE, so it is safe to retry."
+    },
+    {
+     "term": "Status code",
+     "definition": "The three-digit result in a response: 2xx success, 3xx redirection, 4xx client error, 5xx server error."
+    },
+    {
+     "term": "Cookie",
+     "definition": "A small piece of data a server asks the browser to store and send back with later requests, used to remember sessions over stateless HTTP."
+    },
+    {
+     "term": "Multiplexing",
+     "definition": "Sending several requests and responses at once over one connection, interleaved as frames, as HTTP/2 and HTTP/3 do."
+    },
+    {
+     "term": "TLS",
+     "definition": "Transport Layer Security: the protocol under HTTPS that authenticates the server with a certificate and encrypts and integrity-protects the traffic."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A payment request times out and the client is unsure whether it reached the server. Which method is safe to simply retry?",
+     "options": [
+      "POST /payments",
+      "PUT /payments/abc123 with the full payment record",
+      "Any method",
+      "None"
+     ],
+     "answer": 1,
+     "explain": "PUT is idempotent: repeating it leaves the same final state. A repeated POST may create a second payment unless the API uses an idempotency key."
+    },
+    {
+     "q": "What is the difference between 401 and 403?",
+     "options": [
+      "None",
+      "401 means not authenticated (who are you?); 403 means authenticated but not allowed",
+      "403 means not found",
+      "401 is a server error"
+     ],
+     "answer": 1,
+     "explain": "Log in to fix a 401; a 403 needs different permissions."
+    },
+    {
+     "q": "What problem does HTTP/2 multiplexing solve, and what does it leave for HTTP/3?",
+     "options": [
+      "Encryption; nothing",
+      "Requests waiting behind each other on one HTTP/1.1 connection; HTTP/3 removes TCP-level head-of-line blocking by running over QUIC",
+      "DNS lookups; caching",
+      "Cookies; sessions"
+     ],
+     "answer": 1,
+     "explain": "HTTP/2 interleaves streams, but one lost TCP packet still stalls them all; QUIC recovers streams independently."
+    }
+   ],
+   "cover_seed": "http-https",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.9,
+   "path": "cs-core/http-https.md",
+   "hash": "f178c5ca89e3",
+   "word_count": 1217,
+   "excerpt": "Every time you open an app, it sends dozens of short text messages that start with words like GET and POST and receive replies that start with numbers like 200 and 404. That is HTTP: a conversation format simple enough to type by hand, yet carrying almost everything on the web, including the APIs…"
   }
  ]
 }

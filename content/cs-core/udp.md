@@ -65,24 +65,26 @@ TCP would do exactly that, because it promises every byte, in order. For a game,
 | Length (header plus data) | 2 bytes |
 | Checksum | 2 bytes |
 
-That is all: no sequence numbers, no acknowledgements, no window, no handshake. UDP adds ports (so the right program gets the data) and a checksum (so corrupted datagrams are dropped) on top of IP, and nothing more. The largest payload over IPv4 is 65,535 − 8 − 20 = 65,507 bytes, though anything above the path MTU (often around 1,500 bytes) is fragmented by IP, and losing one fragment loses the whole datagram.
+That is all you get: no sequence numbers, no acknowledgements, no window, no handshake. UDP adds ports (so the right program gets the data) and a checksum (so corrupted datagrams are dropped) on top of IP, and nothing more. The largest payload over IPv4 is 65,535 − 8 − 20 = 65,507 bytes, though anything above the path MTU (often around 1,500 bytes) is fragmented by IP, and losing one fragment loses the whole datagram.
 
 ### Connectionless
 
-Being **[[connectionless]]** means the first packet carries data. A DNS query is one datagram out and one back: a single round trip, with no handshake first. The server keeps no per-client state, so one server can answer huge numbers of clients cheaply.
+Being **[[connectionless]]** means your first packet already carries data. A DNS query is one datagram out and one back: a single round trip, with no handshake first. The server keeps no per-client state, so one server can answer huge numbers of clients cheaply.
 
 ### Message boundaries, tested
 
-Three separate sends of "hello", "world" and "!" on one machine:
+Here is a difference you will trip over the first time you write network code, and it explains a bug you may otherwise chase for hours. Three separate sends of "hello", "world" and "!" on one machine:
 
 | Protocol | What the receiver got |
 |---|---|
 | UDP | three receives: b'hello', b'world', b'!' |
 | TCP | one receive: b'helloworld!' |
 
-UDP keeps **[[message boundary|message boundaries]]**: one send is one **[[datagram]]**, received whole or not at all. TCP is a byte stream, so applications on TCP must add their own framing (length prefixes or delimiters) to find where messages end.
+If you expected three TCP reads, you are not alone. UDP keeps **[[message boundary|message boundaries]]**: one send is one **[[datagram]]**, received whole or not at all. TCP is a byte stream, so applications on TCP must add their own framing (length prefixes or delimiters) to find where messages end.
 
 ### TCP versus UDP
+
+Keep one question in mind while reading this table, because the answer comes right after it: if UDP lacks all of these features, how does the newest version of HTTP run on top of it?
 
 | | TCP | UDP |
 |---|---|---|
@@ -94,7 +96,7 @@ UDP keeps **[[message boundary|message boundaries]]**: one send is one **[[datag
 | Header | 20 to 60 bytes | 8 bytes |
 | Typical uses | web, email, file transfer, databases | DNS, games, voice and video, QUIC, DHCP |
 
-Wait, if UDP has none of TCP's features, how does modern HTTP/3 run on it? QUIC builds reliability, ordering, congestion control and encryption on top of UDP, in user space, per stream. A loss on one stream does not block the others, which removes TCP's **[[head-of-line blocking]]**, and its handshake is combined with TLS to save round trips.
+Wait, so how does HTTP/3 manage it? QUIC builds reliability, ordering, congestion control and encryption on top of UDP, in user space, per stream. A loss on one stream does not block the others, which removes TCP's **[[head-of-line blocking]]**, and its handshake is combined with TLS to save round trips.
 
 ```mermaid
 flowchart TD
