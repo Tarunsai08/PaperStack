@@ -1,7 +1,7 @@
 {
- "content_version": "33c44ad042651f27",
+ "content_version": "154e647626c7bc5b",
  "generated_at": "2026-11-03",
- "count": 563,
+ "count": 564,
  "subjects": [
   {
    "id": "ml",
@@ -58885,6 +58885,96 @@
    "hash": "8095078ae203",
    "word_count": 1231,
    "excerpt": "Computers route packets to numbers like 203.0.113.10 or 2001:db8::10 (the addresses in this article come from ranges reserved for documentation). People type names like example.com. Somewhere between your keyboard and the first packet, a name has to become a number, and it usually happens in a few…"
+  },
+  {
+   "id": "cs-core-url-to-page",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "url-to-page",
+   "title": "A Letter's Journey Across the World and Back",
+   "subtitle": "What happens when you type a URL and press Enter, layer by layer: parsing and caches, DNS, ARP, NAT and routing, TCP, TLS, HTTP, the server side, and how the browser turns bytes into pixels",
+   "track": "cs-networks",
+   "track_order": 13,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-http-https",
+    "cs-core-dns-cs"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "computer networks",
+    "dns",
+    "tcp",
+    "tls",
+    "http",
+    "browser rendering"
+   ],
+   "glossary": [
+    {
+     "term": "Default gateway",
+     "definition": "The router a host sends packets to when the destination is not on its own subnet."
+    },
+    {
+     "term": "ARP",
+     "definition": "Address Resolution Protocol: finds the MAC address that belongs to an IP address on the local network."
+    },
+    {
+     "term": "Round trip time",
+     "definition": "RTT: the time for a message to reach the other side and a reply to come back; most setup steps cost one RTT each."
+    },
+    {
+     "term": "DOM",
+     "definition": "Document Object Model: the tree of elements the browser builds by parsing HTML."
+    },
+    {
+     "term": "Critical rendering path",
+     "definition": "The steps from receiving HTML, CSS and JavaScript to the first pixels: DOM, CSSOM, render tree, layout and paint."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Your laptop wants to send a packet to a web server on another network. Whose MAC address goes in the Ethernet frame?",
+     "options": [
+      "The web server's",
+      "The default gateway's (your router), found with ARP",
+      "Your own",
+      "The DNS resolver's"
+     ],
+     "answer": 1,
+     "explain": "MAC addresses are only for the next hop on the local link. The IP header carries the server's address end to end."
+    },
+    {
+     "q": "With an illustrative 50 ms round trip, a cached-at-resolver DNS answer, TCP and TLS 1.3, roughly how long before the first byte of HTML arrives, ignoring server time?",
+     "options": [
+      "50 ms",
+      "About 200 ms: DNS, TCP, TLS and HTTP each take about one round trip",
+      "1 second",
+      "10 ms"
+     ],
+     "answer": 1,
+     "explain": "1 RTT each for DNS, the TCP handshake, the TLS 1.3 handshake, and the HTTP request and response: 4 × 50 ms."
+    },
+    {
+     "q": "Why can a large script in the page's head delay the first paint?",
+     "options": [
+      "Scripts are downloaded twice",
+      "By default the HTML parser stops at a script, downloads and runs it, because the script might change the document",
+      "Scripts disable CSS",
+      "It cannot"
+     ],
+     "answer": 1,
+     "explain": "Using defer or async lets parsing continue while the script downloads."
+    }
+   ],
+   "cover_seed": "url-to-page",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.92,
+   "path": "cs-core/url-to-page.md",
+   "hash": "a2b10c6b82b4",
+   "word_count": 1379,
+   "excerpt": "\"What happens when you type a URL into the browser and press Enter?\" It may be the most famous interview question in computing, because there is no bottom to it. A fresher answer says \"DNS, then HTTP\". A strong answer walks every layer: caches, DNS, ARP, NAT, routing, TCP, TLS, HTTP, the server,…"
   }
  ]
 }

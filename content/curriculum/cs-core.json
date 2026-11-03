@@ -1472,8 +1472,8 @@
     "cs-core-http-https",
     "cs-core-dns-cs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "DNS, ARP, TCP, TLS, HTTP, rendering"
