@@ -1,7 +1,7 @@
 {
- "content_version": "95ed070f3ed87193",
+ "content_version": "1ab7733b6792568f",
  "generated_at": "2026-11-03",
- "count": 589,
+ "count": 590,
  "subjects": [
   {
    "id": "ml",
@@ -61129,6 +61129,92 @@
    "hash": "b1b2f839fa32",
    "word_count": 1205,
    "excerpt": "A loop stores pointers to elements of a vector while adding more elements. It works in testing with ten items and crashes in production with a thousand. A program that counts words with map takes twice as long as a friend's with unorderedmap. Another passes every test except one, where an…"
+  },
+  {
+   "id": "cs-core-oop-interview-questions",
+   "kind": "primer",
+   "subject": "cs-core",
+   "slug": "oop-interview-questions",
+   "title": "A Rapid-Fire Quiz Round on OOP",
+   "subtitle": "The OOP and C++ questions that come up again and again in placement interviews, each with a crisp answer, the trap behind it, and a link to the full explanation",
+   "track": "cs-oop",
+   "track_order": 16,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-virtual-functions-vtable",
+    "cs-core-smart-pointers"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "oop",
+    "c++",
+    "interview questions",
+    "polymorphism",
+    "inheritance",
+    "memory"
+   ],
+   "glossary": [
+    {
+     "term": "Four pillars",
+     "definition": "Encapsulation, abstraction, inheritance and polymorphism: the core ideas interviewers expect you to define and illustrate."
+    },
+    {
+     "term": "Dynamic dispatch",
+     "definition": "Choosing a virtual function's implementation at run time from the object's actual type, through the vtable."
+    },
+    {
+     "term": "Object slicing",
+     "definition": "Copying a derived object into a base-class object by value, which keeps only the base part."
+    },
+    {
+     "term": "Rule of five",
+     "definition": "A class that customises one of destructor, copy constructor, copy assignment, move constructor or move assignment usually needs all five."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "An interviewer asks: 'Why should a base class with virtual functions have a virtual destructor?' What is the core of the answer?",
+     "options": [
+      "It makes destruction faster",
+      "Deleting a derived object through a base pointer otherwise skips the derived destructor (undefined behaviour), leaking what it owns",
+      "Destructors must always be virtual",
+      "It prevents copying"
+     ],
+     "answer": 1,
+     "explain": "With a virtual destructor, delete dispatches to the derived destructor first, then the base one."
+    },
+    {
+     "q": "Overloading versus overriding: which one is resolved at run time?",
+     "options": [
+      "Overloading",
+      "Overriding of virtual functions",
+      "Both",
+      "Neither"
+     ],
+     "answer": 1,
+     "explain": "Overloads are chosen by the compiler from argument types; virtual overrides are chosen by the object's type at run time."
+    },
+    {
+     "q": "`Base b = derivedObject;` then `b.speak()` where speak is virtual. Which version runs?",
+     "options": [
+      "Derived's",
+      "Base's: the copy sliced off the derived part, so b really is a Base",
+      "Both",
+      "Compile error"
+     ],
+     "answer": 1,
+     "explain": "Dynamic dispatch needs a pointer or reference to the original object; a by-value copy is a new Base object."
+    }
+   ],
+   "cover_seed": "oop-interview-questions",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.88,
+   "path": "cs-core/oop-interview-questions.md",
+   "hash": "6e5b4d1e2578",
+   "word_count": 1243,
+   "excerpt": "The OOP round often starts gently: \"What are the four pillars?\" Then it speeds up: \"Why a virtual destructor? What is a vtable? Shallow or deep copy? uniqueptr or sharedptr? Can a constructor be virtual?\" Each question has a two-sentence answer and a trap, and the interviewer is listening for…"
   },
   {
    "id": "cs-core-pointers-output-questions",
