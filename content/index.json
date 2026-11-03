@@ -1,7 +1,7 @@
 {
- "content_version": "1a0b608dbb7efbae",
+ "content_version": "ac780052f860a6bf",
  "generated_at": "2026-11-03",
- "count": 509,
+ "count": 511,
  "subjects": [
   {
    "id": "ml",
@@ -48726,6 +48726,185 @@
    "hash": "9ad76493f24e",
    "word_count": 1378,
    "excerpt": "You edit one sentence in a 100 MB presentation and press save. A second later, your other laptop shows the change. Your phone too. Your colleague's copy updates without them doing anything. Nobody uploaded 100 MB three times. Something much smarter happened: the service figured out which few…"
+  },
+  {
+   "id": "system-design-leaderboard",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "leaderboard",
+   "title": "Design a Real-Time Leaderboard",
+   "subtitle": "A scoreboard that reorders as points arrive: sorted sets, rank queries in log time, sharding without losing global rank, and surviving the final-minute rush",
+   "track": "sd-cases",
+   "track_order": 15,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-distributed-cache"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "system design",
+    "leaderboard",
+    "sorted set",
+    "redis",
+    "ranking",
+    "sharding"
+   ],
+   "glossary": [
+    {
+     "term": "Sorted set",
+     "definition": "A collection of unique members each with a numeric score, kept ordered by score, supporting insert, update, rank and range queries in about O(log n)."
+    },
+    {
+     "term": "Rank",
+     "definition": "A player's position on the leaderboard: 1 plus the number of players with a strictly higher score (with a tie rule)."
+    },
+    {
+     "term": "Top-K query",
+     "definition": "Fetching the K highest-scoring players, such as the top 10 shown on the screen."
+    },
+    {
+     "term": "Tie-breaking",
+     "definition": "A rule for ordering equal scores, such as whoever reached the score first ranks higher."
+    },
+    {
+     "term": "Score bucket",
+     "definition": "A coarse range of scores with a count of players in it, used to approximate or quickly compute ranks across shards."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why is a database query like SELECT COUNT(*) WHERE score > my_score a poor way to get a rank for 50 million players under heavy load?",
+     "options": [
+      "SQL cannot count",
+      "It scans or walks a large part of an index for every request, which is too slow at high request rates; a sorted set answers rank in about O(log n)",
+      "It returns the wrong number",
+      "Counts need joins"
+     ],
+     "answer": 1,
+     "explain": "A sorted set keeps the order maintained, so rank is about 26 steps for 50 million members, instead of counting millions of rows."
+    },
+    {
+     "q": "Players are sharded across 3 sorted sets by user id. How do you compute one player's global rank?",
+     "options": [
+      "Read only the player's shard",
+      "Ask every shard how many players have a higher score and add them up, plus one",
+      "Average the shard ranks",
+      "It is impossible"
+     ],
+     "answer": 1,
+     "explain": "Rank = 1 + Σ count(score > s) over all shards. Each count is a fast range query; the cost is a small fan-out."
+    },
+    {
+     "q": "Two players both have 9,500 points. Who ranks higher?",
+     "options": [
+      "Random",
+      "Whatever the tie-breaking rule says, for example the one who reached 9,500 first; the rule must be encoded in the sort key",
+      "Both share rank and the next rank is skipped automatically",
+      "The one with the smaller id always"
+     ],
+     "answer": 1,
+     "explain": "Products must choose. A common encoding combines score with a time component so equal scores order by who got there first."
+    }
+   ],
+   "cover_seed": "leaderboard",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.75,
+   "path": "system-design/leaderboard.md",
+   "hash": "9830ba53acef",
+   "word_count": 1311,
+   "excerpt": "A mobile game runs a weekly tournament for 50 million players. Every finished match updates a score. Every player opens the app to see the top 10 and \"you are #3,503\". In the last minute of the tournament, everyone plays one more match and checks their rank again. The first version keeps scores in…"
+  },
+  {
+   "id": "system-design-job-scheduler",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "job-scheduler",
+   "title": "Design a Distributed Job Scheduler",
+   "subtitle": "An alarm clock that wakes the right worker: storing schedules, finding due jobs, leader election per partition, retries, and the duplicate run that failover always threatens",
+   "track": "sd-cases",
+   "track_order": 16,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-message-queues",
+    "system-design-distributed-locks-sd"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "system design",
+    "job scheduler",
+    "cron",
+    "leader election",
+    "idempotency",
+    "retries"
+   ],
+   "glossary": [
+    {
+     "term": "Schedule",
+     "definition": "When a job should run: once at a time, or repeatedly by a cron expression such as every day at 02:00."
+    },
+    {
+     "term": "Due job",
+     "definition": "A job whose next run time has arrived and that has not yet been dispatched for that run."
+    },
+    {
+     "term": "Run id",
+     "definition": "An identifier for one execution of a job, usually job id plus scheduled time, used as an idempotency key."
+    },
+    {
+     "term": "Visibility timeout",
+     "definition": "The time a worker has to finish a claimed run before the queue makes it available to another worker again."
+    },
+    {
+     "term": "Misfire policy",
+     "definition": "What to do with runs that were missed while the scheduler was down: run once now, run all missed, or skip."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "The scheduler leader dispatches a run, crashes before recording it, and a new leader takes over. What prevents a duplicate execution from causing harm?",
+     "options": [
+      "Nothing can",
+      "The run id (job id plus scheduled time) is an idempotency key: workers or the target system ignore a run id already completed",
+      "The queue deletes duplicates by itself",
+      "Clocks"
+     ],
+     "answer": 1,
+     "explain": "Exactly-once dispatch cannot be guaranteed across crashes; at-least-once dispatch plus idempotent execution gives an exactly-once effect."
+    },
+    {
+     "q": "Twenty percent of jobs are scheduled 'every hour on the hour'. What problem does that cause, and what helps?",
+     "options": [
+      "None",
+      "A burst of due jobs at :00; spread with jitter where allowed, pre-scale workers and queue the burst instead of running it all instantly",
+      "Clocks drift",
+      "Cron cannot express it"
+     ],
+     "answer": 1,
+     "explain": "Human-friendly times cluster. Queues absorb the burst; adding small jitter to jobs that do not need exact times flattens it."
+    },
+    {
+     "q": "Why partition jobs and elect a leader per partition, instead of one global scheduler?",
+     "options": [
+      "Fashion",
+      "So many schedulers scan and dispatch in parallel while each job still has exactly one active owner at a time",
+      "To save storage",
+      "Because cron requires it"
+     ],
+     "answer": 1,
+     "explain": "One scheduler is a bottleneck and single point of failure. Partitions spread the work; one leader per partition avoids two schedulers dispatching the same job."
+    }
+   ],
+   "cover_seed": "job-scheduler",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.76,
+   "path": "system-design/job-scheduler.md",
+   "hash": "632d38195712",
+   "word_count": 1321,
+   "excerpt": "Millions of things must happen at a time in the future: send this reminder at 9:00, generate this invoice on the 1st, retry this payment in 30 minutes, clean up these files every night. On one server, cron does it. Then the server dies at 1:59 and the 2:00 billing job never runs. So you run cron on…"
   },
   {
    "id": "system-design-oop-solid",
