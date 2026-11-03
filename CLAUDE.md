@@ -21,7 +21,7 @@ python pipeline/build_index.py           # validate all content + curricula, wri
 python pipeline/build_index.py --strict  # also fail on warnings (filler phrases, repeated paragraphs); CI uses this on branches
 python tools/review_score.py --markdown   # engagement + completeness triage table, weakest first
 python tools/check_cpp.py                # compile every runnable C++ block (g++ -std=c++17)
-python tools/progress.py                 # regenerate PROGRESS.md (run before every commit)
+python tools/progress.py --handoff       # regenerate PROGRESS.md and the status block in HANDOFF.md (run before every commit)
 python -m pytest -q pipeline/tests       # pipeline + validator tests
 cd app && npm run lint && npm test -- --run && npm run build
 ```
