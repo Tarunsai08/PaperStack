@@ -168,6 +168,16 @@ Separate priority queues fix step 2, backoff with jitter and provider-aware rate
 Common misconception: "the provider accepted it, so the user got it." A 200 response from a push or SMS provider means the message was accepted for delivery, not that it reached the phone. Track delivery receipts and opens where channels provide them, and treat "accepted" and "delivered" as different states.
 :::
 
+### Interview follow-ups
+
+**"How do you stop a user getting the same notification twice?"** Give each notification an id, have workers record sent ids (or use the provider's idempotency features), and make retries reuse the same id.
+
+**"How do you respect user preferences and quiet hours?"** Check a preferences service before enqueueing: channel opt-outs, frequency caps, time zone and quiet hours. Delay non-urgent messages instead of dropping them.
+
+**"How do you prioritise an OTP over a marketing blast?"** Separate queues (or priorities) and separate worker pools per class, with rate limits on bulk sends, so a campaign can never delay a login code.
+
+**"How do you track whether notifications work?"** Record sent, delivered, opened and clicked events per notification, and watch bounce and failure rates per provider.
+
 ## Further reading
 
 - RFC 8030, Generic Event Delivery Using HTTP Push (the Web Push protocol): https://www.rfc-editor.org/rfc/rfc8030

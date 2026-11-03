@@ -129,6 +129,16 @@ Common misconception: "Redis is just a cache." It is often used as one, but its 
 Design the storage for a game leaderboard with 5 million players, updated on every match, needing the top 100 and any player's rank instantly. Which Redis structure and commands? (One sorted set: `ZADD` or `ZINCRBY` to update a score, `ZREVRANGE 0 99` for the top 100, `ZREVRANK` for a player's rank, each O(log n). Persist results to a database periodically as the source of truth.)
 :::
 
+### Interview follow-ups
+
+**"How are keys spread across cache nodes?"** With consistent hashing (or fixed hash slots, as in Redis Cluster), so adding or removing a node moves only a fraction of keys instead of reshuffling everything.
+
+**"A cache node dies. What happens to traffic?"** Its keys miss and fall through to the database until they are refilled. Protect the database with request coalescing, replicas for cache shards, and enough database headroom for one node's share of misses.
+
+**"Redis or Memcached?"** Memcached is a simple, multithreaded key-value cache. Redis adds data structures (lists, sets, sorted sets), persistence options, replication and scripting, which is why it also serves as a rate limiter store, leaderboard or queue.
+
+**"How do you keep cache and database consistent?"** Write the database first, then delete the cache key; set TTLs as a backstop. For stronger guarantees, invalidate from the database's change stream so no code path can forget.
+
 ## In the real world
 
 Redis and Memcached sit in front of databases at most large web companies. Facebook's paper "Scaling Memcache at Facebook" describes running Memcached at very large scale with regional pools, leases to prevent stampedes, and invalidation from the database's commit log. Managed services like Amazon ElastiCache, Google Memorystore and Redis's own cloud offering run clusters for teams that do not want to operate them. In interviews, a distributed cache appears in almost every read-heavy design.

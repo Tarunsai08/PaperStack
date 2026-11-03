@@ -175,6 +175,14 @@ Common misconception: "autocomplete should update rankings live on every search.
 Your snapshot is rebuilt daily, but a major event happens at 10:00 and everyone starts typing its name. What would you add so it appears within minutes? (A streaming counter over short windows that detects fast-rising queries and maintains a small trending list per prefix, merged with the snapshot's top-k at request time.)
 :::
 
+### Interview follow-ups
+
+**"Trie in memory or a search engine?"** A trie with the top suggestions cached at each node answers prefix lookups in time proportional to the prefix length, which is ideal for hot, small vocabularies. A search engine with prefix (edge n-gram) indexes handles larger, frequently changing data and fuzzy matching.
+
+**"How do you keep requests down while the user types?"** Debounce keystrokes on the client (send after a short pause), cache results for each prefix on the client and at the CDN, and return results for short prefixes from a precomputed table.
+
+**"How do you update suggestions with new trending queries?"** Aggregate query logs in batches (or a stream with a time window), rebuild the top-k per prefix offline, and swap in the new snapshot atomically.
+
 ## Further reading
 
 - [Autocomplete in Your Pocket](article:dsa-tries) for the trie itself.

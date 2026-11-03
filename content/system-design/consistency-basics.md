@@ -123,6 +123,14 @@ Common misconception: "eventual consistency means the data might be wrong foreve
 For an online ticket booking app, label each item as strong, read-your-writes or eventual: the seat map shown while browsing, the "seat held for you" status, the payment record, and the "people viewing this show" counter. (One reasonable answer: seat map eventual, but confirmed at hold time with a strong check; your hold read-your-writes; payment strong; viewers counter eventual.)
 :::
 
+### Interview follow-ups
+
+**"A user posts a comment and refreshes, but it is gone. Fix it."** Give read-your-writes: route that user's reads to the primary for a short window after they write, or remember the write's position (log sequence number) and only read from a replica that has caught up past it.
+
+**"What is a quorum and why does R + W > N matter?"** With N replicas, a write waits for W acknowledgements and a read asks R replicas. If R + W > N, every read set overlaps every write set in at least one replica, so a read sees the latest acknowledged write. N = 3, W = 2, R = 2 is the classic choice.
+
+**"Which data needs strong consistency?"** Anything where two people acting on a stale value causes harm: balances, stock counts, unique usernames, seat bookings. Feeds, likes, view counts and recommendations are fine eventually consistent.
+
 ## In the real world
 
 Many relational databases send writes to a primary and let applications choose whether reads go to the primary or to replicas. Dynamo-style stores such as Cassandra let each query choose how many replicas must answer, trading latency for freshness per request. Global databases like Google Spanner offer strong consistency across regions by paying with carefully engineered latency. In interviews, saying which data needs which guarantee, and why, matters far more than naming products. This builds directly on the requirements step of the [interview framework](article:system-design-interview-framework).

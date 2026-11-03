@@ -1,5 +1,5 @@
 {
- "content_version": "a183a617ecbafc30",
+ "content_version": "070a3d010fd69c8c",
  "generated_at": "2026-11-02",
  "count": 422,
  "subjects": [
@@ -42491,7 +42491,7 @@
     "system-design-latency-numbers"
    ],
    "difficulty": "beginner",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "system design",
     "http",
@@ -42565,8 +42565,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "system-design/client-server-http.md",
-   "hash": "ae1162e5373f",
-   "word_count": 1116,
+   "hash": "a4c84e2f1694",
+   "word_count": 1294,
    "excerpt": "You type a web address and press Enter. Half a second later, a page appears. It feels like one action. It is actually a relay race: at least four separate conversations with machines you never see, each one costing a trip across the network before the next can start. Knowing those legs is not…"
   },
   {
@@ -42583,7 +42583,7 @@
     "system-design-client-server-http"
    ],
    "difficulty": "beginner",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "system design",
     "dns",
@@ -42653,8 +42653,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.85,
    "path": "system-design/dns-deep-dive.md",
-   "hash": "376a7682fb75",
-   "word_count": 1122,
+   "hash": "71fec9d56ee3",
+   "word_count": 1285,
    "excerpt": "Every website you visit begins with a question your browser asks before anything else: \"where is this name?\" If that question cannot be answered, a perfectly healthy service simply vanishes. Several of the internet's most visible outages have come not from servers crashing but from DNS answers…"
   },
   {
@@ -42671,7 +42671,7 @@
     "system-design-client-server-http"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "system design",
     "api design",
@@ -42746,8 +42746,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.86,
    "path": "system-design/api-design.md",
-   "hash": "d44c6a14102d",
-   "word_count": 1115,
+   "hash": "d38638291d22",
+   "word_count": 1299,
    "excerpt": "A mobile app ships with a call to GET /feed?page=2. A year later the backend team changes how pages work. The app in millions of pockets cannot be updated overnight, and suddenly half your users see duplicated posts or blank screens. APIs are the part of a system that is hardest to take back. Once…"
   },
   {
@@ -42764,7 +42764,7 @@
     "system-design-api-design"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "system design",
     "websockets",
@@ -42838,8 +42838,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.85,
    "path": "system-design/realtime-communication.md",
-   "hash": "d24c9ea67b82",
-   "word_count": 1114,
+   "hash": "1d928769b17f",
+   "word_count": 1272,
    "excerpt": "HTTP was designed for asking: the client requests, the server replies, the conversation ends. But a chat message, a driver's location or a cricket score is something the server learns first. How does the server tell you, when you did not ask? There are four answers, from crude to elegant, and every…"
   },
   {
@@ -42856,7 +42856,7 @@
     "system-design-consistency-basics"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "system design",
     "cap theorem",
@@ -42930,8 +42930,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.87,
    "path": "system-design/cap-pacelc.md",
-   "hash": "067a84a663df",
-   "word_count": 1107,
+   "hash": "483a54c8d374",
+   "word_count": 1281,
    "excerpt": "\"CAP theorem: consistency, availability, partition tolerance. Pick two.\" It is the most quoted line in system design interviews, and in its popular form it is misleading. You do not get to pick \"CA\" for a distributed system, and you are not making the choice once at design time. The real statement…"
   },
   {
@@ -42948,7 +42948,7 @@
     "system-design-api-design"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "system design",
     "consistency",
@@ -43021,8 +43021,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "system-design/consistency-basics.md",
-   "hash": "32901f17e00a",
-   "word_count": 1100,
+   "hash": "c9e5aee67b2c",
+   "word_count": 1244,
    "excerpt": "You like a friend's photo. The heart turns red. You refresh, and the like count drops by one. You refresh again, and it is back. Nothing is broken. You just watched two copies of the same data disagree for a moment. Every large system keeps several copies of its data, and copies take time to agree.…"
   },
   {
@@ -43039,7 +43039,7 @@
     "system-design-back-of-envelope"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "system design",
     "availability",
@@ -43113,8 +43113,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.82,
    "path": "system-design/availability-slos.md",
-   "hash": "1f73efe4939b",
-   "word_count": 1100,
+   "hash": "a56a8dbf98f5",
+   "word_count": 1294,
    "excerpt": "Ask a product manager how often the app may be down and the answer is \"never\". Ask an engineer what \"never\" costs and the answer is \"infinitely much\". Neither answer helps anyone design anything. The industry's way out is to turn reliability into numbers: how many nines, measured how, over what…"
   },
   {
@@ -43131,7 +43131,7 @@
     "system-design-api-design"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "system design",
     "idempotency",
@@ -43205,8 +43205,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "system-design/stateless-idempotency.md",
-   "hash": "f4f2d94747d7",
-   "word_count": 1103,
+   "hash": "2828c744c190",
+   "word_count": 1227,
    "excerpt": "You tap \"Pay\" on a train with patchy signal. The spinner turns, then an error: \"Request timed out.\" Did the payment go through? You have no idea. So you tap again. If the system is built well, you are charged once, and the second tap simply shows the same receipt. If not, you are charged twice, and…"
   },
   {
@@ -43415,7 +43415,7 @@
     "system-design-latency-numbers"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "system design",
     "caching",
@@ -43493,8 +43493,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.92,
    "path": "system-design/caching.md",
-   "hash": "5eae8cf48acc",
-   "word_count": 1110,
+   "hash": "be04a4d5a20d",
+   "word_count": 1306,
    "excerpt": "A product page is viewed a million times a day. Its price, title and photos change maybe once a week. Yet without a cache, every single view asks the database the same question and waits for the same answer. Caching is the idea of remembering answers you will need again. It is the most effective…"
   },
   {
@@ -43512,7 +43512,7 @@
     "system-design-dns-deep-dive"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "system design",
     "cdn",
@@ -43586,8 +43586,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.86,
    "path": "system-design/cdn.md",
-   "hash": "b86a4cc1e360",
-   "word_count": 1104,
+   "hash": "93d769dc62e4",
+   "word_count": 1285,
    "excerpt": "A student in Chennai opens a video site whose servers are in Virginia. Every image, script and video segment would have to cross the Pacific or the Atlantic and back, each request paying a few hundred milliseconds of travel. Multiply by a hundred files per page and a million viewers, and the origin…"
   },
   {
@@ -43604,7 +43604,7 @@
     "system-design-consistency-basics"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "system design",
     "databases",
@@ -43682,8 +43682,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "system-design/sql-vs-nosql.md",
-   "hash": "dabc98fdc289",
-   "word_count": 1107,
+   "hash": "cf3ddc8ec444",
+   "word_count": 1231,
    "excerpt": "\"Which database would you use?\" is asked in almost every design interview, and the weakest answers are slogans: \"SQL doesn't scale\", \"NoSQL is faster\", \"just use MongoDB\". Real systems at large companies run on relational databases, key-value stores, document stores and wide-column stores, often…"
   },
   {
@@ -43700,7 +43700,7 @@
     "system-design-sql-vs-nosql"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "system design",
     "databases",
@@ -43774,8 +43774,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.9,
    "path": "system-design/database-indexing.md",
-   "hash": "0dfd6e546c5e",
-   "word_count": 1110,
+   "hash": "d66b7a445be7",
+   "word_count": 1268,
    "excerpt": "A query that took 3 milliseconds yesterday takes 40 seconds today. The code did not change. The table grew from ten thousand rows to fifty million, and the query was quietly reading every one of them. One line, CREATE INDEX, brings it back to milliseconds. Indexes are the most powerful performance…"
   },
   {
@@ -43792,7 +43792,7 @@
     "system-design-api-design"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "system design",
     "message queues",
@@ -43866,8 +43866,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.9,
    "path": "system-design/message-queues.md",
-   "hash": "5efac426f224",
-   "word_count": 1110,
+   "hash": "b983f59cb51f",
+   "word_count": 1268,
    "excerpt": "When you upload a video, the site answers \"Upload complete\" in a second. But converting that video into ten resolutions takes minutes. If the upload request waited for all of it, uploads would time out, and a burst of uploads after a viral moment would crash the converters. Instead, the upload…"
   },
   {
@@ -43884,7 +43884,7 @@
     "system-design-sql-vs-nosql"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 6,
+   "read_minutes": 7,
    "topics": [
     "system design",
     "blob storage",
@@ -43962,8 +43962,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "system-design/blob-storage.md",
-   "hash": "243d36bb4fcf",
-   "word_count": 1353,
+   "hash": "5504b74a8f19",
+   "word_count": 1506,
    "excerpt": "Every photo you post, every video you upload, every PDF attached to an email, every nightly database backup has to live somewhere. It is not in the database: a 4 GB video in a table row would make every backup, replica and query painfully slow. It sits in a different kind of system, one built for a…"
   },
   {
@@ -43980,7 +43980,7 @@
     "system-design-caching"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "system design",
     "redis",
@@ -44054,8 +44054,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "system-design/distributed-cache.md",
-   "hash": "4992f6df6c52",
-   "word_count": 1148,
+   "hash": "0df61ca6ef64",
+   "word_count": 1299,
    "excerpt": "Your app runs on fifty servers. Each one keeps a little in-memory cache of user profiles. A user changes their photo; one server updates its copy, and the other forty-nine keep showing the old one until their entries expire. After every deploy, all fifty caches start empty and hammer the database…"
   },
   {
@@ -44266,7 +44266,7 @@
     "system-design-message-queues"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 8,
+   "read_minutes": 9,
    "topics": [
     "system design",
     "background jobs",
@@ -44344,8 +44344,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.9,
    "path": "system-design/async-processing.md",
-   "hash": "fd2c6f1b2f7e",
-   "word_count": 1746,
+   "hash": "407effc7172c",
+   "word_count": 1920,
    "excerpt": "You click \"Export my data\" and the page spins. Ten seconds. Thirty. At sixty seconds the load balancer gives up and shows an error, even though the server is still happily building your file. You click again, and now two exports are running. Multiply that by every user on a busy morning and the web…"
   },
   {
@@ -44437,8 +44437,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.92,
    "path": "system-design/url-shortener.md",
-   "hash": "f3adc9d145c1",
-   "word_count": 1530,
+   "hash": "23bdda831977",
+   "word_count": 1646,
    "excerpt": "A marketing team pastes a 300-character link into a campaign and gets back sho.rt/aB3xY9k. It looks like a trivial service: store a mapping, redirect on click. Then the link goes viral, receives millions of clicks an hour, and must keep working for years. The URL shortener is the most common…"
   },
   {
@@ -44456,7 +44456,7 @@
     "system-design-distributed-cache"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 6,
+   "read_minutes": 7,
    "topics": [
     "system design",
     "case study",
@@ -44530,8 +44530,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.9,
    "path": "system-design/rate-limiter.md",
-   "hash": "38eb1aa8fbe7",
-   "word_count": 1321,
+   "hash": "54201676d653",
+   "word_count": 1487,
    "excerpt": "A public API serves 50,000 developers. One of them deploys a script with a bug and starts sending 20,000 requests per second. Within minutes, database connections are exhausted, latencies spike for everyone, and the on-call engineer's phone starts ringing. A rate limiter would have rejected that…"
   },
   {
@@ -44548,7 +44548,7 @@
     "system-design-back-of-envelope"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "system design",
     "case study",
@@ -44622,8 +44622,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "system-design/unique-id-generator.md",
-   "hash": "fc80e2e1b102",
-   "word_count": 1186,
+   "hash": "655286c73c84",
+   "word_count": 1307,
    "excerpt": "Every tweet, order, message and payment needs an id. In a small app, the database's auto-increment column hands out 1, 2, 3 and nobody thinks about it. At thousands of writes per second across many database shards and data centres, that single counter becomes a bottleneck, a single point of…"
   },
   {
@@ -44641,7 +44641,7 @@
     "system-design-message-queues"
    ],
    "difficulty": "advanced",
-   "read_minutes": 6,
+   "read_minutes": 7,
    "topics": [
     "system design",
     "case study",
@@ -44719,8 +44719,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.92,
    "path": "system-design/chat-system.md",
-   "hash": "57a527c87c59",
-   "word_count": 1357,
+   "hash": "ca7d270e8bbd",
+   "word_count": 1519,
    "excerpt": "You send \"on my way\" and, a moment later, two grey ticks turn blue. Behind those ticks, your message travelled over a connection your phone kept open, through a server that knew which machine your friend's phone was connected to, into durable storage, onto their screen, and back as a receipt. If…"
   },
   {
@@ -44834,7 +44834,7 @@
     "system-design-message-queues"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 6,
+   "read_minutes": 7,
    "topics": [
     "system design",
     "case study",
@@ -44908,8 +44908,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "system-design/notification-system.md",
-   "hash": "f37f9c221b8d",
-   "word_count": 1307,
+   "hash": "14a5122767dd",
+   "word_count": 1433,
    "excerpt": "Your food is out for delivery. Your bank flags a payment. Your flight gate changed. A friend commented on your photo. Each of these reaches you as a buzz on your phone, an SMS or an email, sent by a system most users never think about until it misfires: the same alert three times, a promotional SMS…"
   },
   {
@@ -44927,7 +44927,7 @@
     "system-design-caching"
    ],
    "difficulty": "intermediate",
-   "read_minutes": 6,
+   "read_minutes": 7,
    "topics": [
     "system design",
     "case study",
@@ -45001,8 +45001,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "system-design/typeahead.md",
-   "hash": "1b08601cef87",
-   "word_count": 1423,
+   "hash": "a4df57576dda",
+   "word_count": 1551,
    "excerpt": "You type \"how to m\" and, before your finger reaches the next key, a list appears: \"how to make pancakes\", \"how to meditate\", \"how to make money online\". The suggestions changed with each letter, they reflect what millions of other people are searching for, and they arrived faster than you can type.…"
   },
   {
@@ -45094,8 +45094,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.9,
    "path": "system-design/video-streaming.md",
-   "hash": "8a6118ec2cea",
-   "word_count": 1293,
+   "hash": "b2465ffaad3b",
+   "word_count": 1408,
    "excerpt": "You press play on a video and it starts almost instantly. Halfway through, your train enters a tunnel and the picture turns a little blurry instead of freezing, then sharpens again when the signal returns. Meanwhile, somewhere, a creator just uploaded a 4K video from a phone, and within minutes it…"
   },
   {
@@ -45113,7 +45113,7 @@
     "system-design-realtime-communication"
    ],
    "difficulty": "advanced",
-   "read_minutes": 6,
+   "read_minutes": 7,
    "topics": [
     "system design",
     "case study",
@@ -45191,8 +45191,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.9,
    "path": "system-design/ride-sharing.md",
-   "hash": "a8e9d623ed74",
-   "word_count": 1325,
+   "hash": "047a5ca6995f",
+   "word_count": 1449,
    "excerpt": "You tap \"Request ride\". Within seconds, the app shows a car icon heading toward you, a driver's name, and \"4 min away\". To get there, the system knew where hundreds of thousands of drivers were, to within a few metres, a few seconds ago. It found the handful near you, estimated which could arrive…"
   },
   {
@@ -45284,8 +45284,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.9,
    "path": "system-design/payments.md",
-   "hash": "6292e14bf4f5",
-   "word_count": 1280,
+   "hash": "bbc3e29e920f",
+   "word_count": 1425,
    "excerpt": "A customer taps \"Pay ₹1,000\". Their phone's connection drops for two seconds. The app retries. Did the first attempt go through? If you guess wrong in one direction, the customer is charged twice and posts an angry screenshot. Guess wrong in the other, and the merchant ships goods for free. Now…"
   },
   {
@@ -45476,8 +45476,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "system-design/isolation-levels.md",
-   "hash": "362beae075a1",
-   "word_count": 1225,
+   "hash": "67fa1547cc19",
+   "word_count": 1358,
    "excerpt": "Two support agents refund the same order at the same moment, and the customer gets paid twice. A hospital rota allows every doctor to go off call because each one checked that \"someone else is still on\". A report adds up account balances while transfers run and shows money that never existed. Every…"
   },
   {
@@ -45567,8 +45567,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "system-design/two-phase-commit.md",
-   "hash": "01f71244d286",
-   "word_count": 1317,
+   "hash": "3825367e1eb9",
+   "word_count": 1422,
    "excerpt": "A bank moves ₹5,000 from an account stored in database A to an account stored in database B. Database A subtracts the money and commits. A moment later, database B's disk fills up and its update fails. The money has left one account and arrived nowhere. Within one database, a transaction would have…"
   },
   {
@@ -45658,8 +45658,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.88,
    "path": "system-design/sagas.md",
-   "hash": "b618cf0aa909",
-   "word_count": 1212,
+   "hash": "6736ddc06966",
+   "word_count": 1339,
    "excerpt": "An order in a shopping app touches four services: Orders creates the order, Payments charges the card, Inventory reserves the items, Shipping books a courier. Each owns its own database. If Inventory finds the last unit was sold a second ago, the customer has already been charged. You cannot roll…"
   },
   {
@@ -45677,7 +45677,7 @@
     "system-design-message-queues"
    ],
    "difficulty": "advanced",
-   "read_minutes": 5,
+   "read_minutes": 6,
    "topics": [
     "system design",
     "outbox pattern",
@@ -45751,8 +45751,8 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.86,
    "path": "system-design/outbox-cdc.md",
-   "hash": "5c65ad028b4b",
-   "word_count": 1138,
+   "hash": "322bbf1d427a",
+   "word_count": 1272,
    "excerpt": "An order service saves a new order and then publishes \"OrderCreated\" to a message broker so that payments, email and analytics can react. It works in every test. Then, in production, the broker is briefly unreachable during a deploy: orders are saved, but their events never go out. Customers are…"
   },
   {

@@ -172,6 +172,14 @@ Common misconception: "hash the URL and take the first 7 characters, done." Trun
 Your counter-based design gives each server blocks of 1,000 ids. There are 50 servers and each restarts once a day, wasting on average half a block. How many ids are wasted per year, and does it matter? (About 50 × 500 × 365 ≈ 9 million ids per year, a negligible fraction of 3.5 trillion possible codes. Wasting ids is a fine price for avoiding coordination.)
 :::
 
+### Interview follow-ups
+
+**"How many links do 7 base-62 characters give?"** 62⁷ ≈ 3.5 trillion, versus about 57 billion for 6 characters. Show the arithmetic, then compare with your estimate of links created per year.
+
+**"301 or 302 redirect?"** 301 (permanent) lets browsers cache the redirect, which cuts load but hides repeat clicks from your analytics. 302 (temporary) sends every click through your service, so you can count them and change the target.
+
+**"Hash the long URL or use a counter?"** Hashing makes the same URL map to the same code but needs collision handling. A counter encoded in base 62 never collides but makes codes guessable, so many designs shuffle or encrypt the counter value first.
+
 ## Further reading
 
 - Martin Kleppmann, *Designing Data-Intensive Applications*, chapter 6 on partitioning (O'Reilly, 2017).

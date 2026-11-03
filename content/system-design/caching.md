@@ -129,6 +129,16 @@ Common misconception: "add a cache and the database load problem is solved." A c
 A service handles 20,000 reads per second (an estimate). The database can safely handle 3,000 per second. What hit ratio does the cache need, and what happens if the cache goes down? (Misses must stay under 3,000, so the hit ratio must be at least 85%. If the cache fails, all 20,000 reads hit the database at once, nearly seven times its capacity, which is why cache failures need a plan.)
 :::
 
+### Interview follow-ups
+
+**"Cache-aside, write-through or write-back?"** Cache-aside: the app reads the cache, on a miss loads from the database and fills the cache; simple and the most common. Write-through: every write goes to cache and database together, so reads are fresh but writes are slower. Write-back: writes go to the cache and reach the database later; fastest, but data is lost if the cache dies first.
+
+**"After an update, delete the cache entry or update it?"** Usually delete it after writing the database. Updating it can race: two writers may set the cache in the opposite order to the database. A delete makes the next reader load the current value.
+
+**"Which eviction policy?"** LRU (least recently used) fits most workloads. LFU (least frequently used) keeps steady favourites better when there are one-off scans. Always add a TTL as a safety net against stale data.
+
+**"What hit rate should you expect and why does it matter?"** It depends on the access pattern. The point to make: at a 90% hit rate, the database sees 10% of reads; at 99%, 1%. Going from 90% to 99% cuts database load by 10x, which is why small hit-rate gains matter.
+
 ## In the real world
 
 Shared caches like Redis and Memcached sit in front of most large web databases. CDNs cache static files and even whole pages close to users. Databases keep their own in-memory buffer of hot pages, and CPUs have several cache levels of their own, the same idea at every scale. In design interviews, adding a cache is rarely wrong, but explaining its strategy, TTL, invalidation and failure behaviour is what earns credit.

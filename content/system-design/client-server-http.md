@@ -127,6 +127,16 @@ Common misconception: "a faster server fixes a slow page." If most of the wait i
 Estimate time to first byte for a new HTTPS connection over TCP to a server 150 ms away (round trip), assuming DNS is cached and TLS 1.3. Count the round trips: TCP handshake, TLS handshake, then the HTTP request and response. (About 3 round trips, so roughly 450 ms before the page starts arriving. A nearby CDN edge at 20 ms brings it to about 60 ms.)
 :::
 
+### Interview follow-ups
+
+**"What happens when you type a URL and press Enter?"** Name a crisp order: browser cache, DNS lookup, TCP connection, TLS handshake, HTTP request, server work, response, then the browser parses HTML and fetches CSS, JS and images, often over the same connection. Then say where a CDN, a load balancer and caching fit.
+
+**"What did HTTP/2 and HTTP/3 change?"** HTTP/2 sends many requests over one connection at once (multiplexing) with compressed headers. HTTP/3 runs over QUIC on UDP, so one lost packet no longer stalls every stream, and connection setup combines transport and TLS handshakes.
+
+**"Which status codes should you know?"** 200 OK, 201 Created, 204 No Content, 301 and 302 redirects, 304 Not Modified, 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, 409 Conflict, 429 Too Many Requests, 500 Internal Server Error, 502 Bad Gateway, 503 Service Unavailable, 504 Gateway Timeout.
+
+**"Why keep connections alive?"** Each new connection pays a TCP handshake and a TLS handshake, several round trips. Reusing connections removes that cost for every later request.
+
 ## In the real world
 
 Browsers prefetch DNS and preconnect to domains they expect to need. Large sites terminate TLS at edge locations close to users and then use long-lived connections back to their data centres. Inside companies, services talk over pooled connections, often with HTTP/2 and gRPC. Every piece follows the same rule from the [latency numbers](article:system-design-latency-numbers): round trips are expensive, so pay them rarely and pay them close by.

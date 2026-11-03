@@ -171,6 +171,14 @@ Common misconception: "UUIDs are random, so they are the best choice everywhere.
 Your generator uses 41 timestamp bits, 10 machine bits and 12 sequence bits. Product wants 4,000 generators. What would you change, and what does it cost? (4,000 needs 12 machine bits. Take 2 bits from the sequence, leaving 10 bits, 1,024 ids per millisecond per machine, still far more than one machine needs. Or take bits from the timestamp, shortening the lifetime.)
 :::
 
+### Interview follow-ups
+
+**"Lay out a Snowflake-style 64-bit id."** 1 sign bit, 41 bits of milliseconds since a custom epoch (about 69.7 years), 10 bits of machine id (1,024 machines) and 12 bits of sequence (4,096 ids per millisecond per machine, about 4 million per second).
+
+**"Why not UUIDs?"** A random UUID is 128 bits and unordered, so it bloats indexes and scatters inserts across a B-tree. Time-ordered ids sort roughly by creation time. Newer time-ordered UUID versions exist for the same reason.
+
+**"Why not a database auto-increment?"** One database becomes a bottleneck and a single point of failure. Ranges or block allocation (each server reserves 1,000 ids at a time) help, but a coordination-free generator scales further.
+
 ## Further reading
 
 - Twitter engineering, "Announcing Snowflake" (2010): https://blog.x.com/engineering/en_us/a/2010/announcing-snowflake

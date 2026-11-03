@@ -186,6 +186,14 @@ The design splits work by its shape: a slow, parallel, retryable batch pipeline 
 Common misconception: "streaming means one long download of a video file." Modern platforms serve many small, independent segment files listed in a manifest. That is what allows quality switching, instant seeking and caching in ordinary HTTP CDNs.
 :::
 
+### Interview follow-ups
+
+**"What is adaptive bitrate streaming?"** The video is encoded at several resolutions and cut into short segments, listed in a manifest (HLS or DASH). The player measures bandwidth and picks the best quality it can sustain for each next segment, switching smoothly as the network changes.
+
+**"Why transcode into many versions?"** Different devices, screens and networks need different resolutions, bitrates and codecs. Transcoding once at upload costs compute but lets every viewer get a stream that plays without buffering.
+
+**"How do you count views without overloading the database?"** Send view events to a stream, aggregate them in batches, and update counts periodically. A view count that is a few seconds behind is fine.
+
 ## Further reading
 
 - RFC 8216, HTTP Live Streaming: https://www.rfc-editor.org/rfc/rfc8216

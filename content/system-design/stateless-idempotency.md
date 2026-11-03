@@ -129,6 +129,14 @@ Common misconception: "POST requests can never be retried safely." Plain POSTs a
 Make these operations idempotent without a key, by changing what the request says: "add 1 to the cart quantity", "mark notification as read", "increase stock by 5". (Change "add 1" to "set quantity to 3"; "mark as read" is already idempotent; "increase stock by 5" can become "apply stock adjustment #812", recorded once by its id.)
 :::
 
+### Interview follow-ups
+
+**"Where does session state go if servers are stateless?"** In a signed token held by the client (such as a JWT) or in a shared store such as Redis keyed by session id. Any server can then handle any request, so you can add, remove or restart servers freely.
+
+**"Which HTTP methods are idempotent?"** GET, PUT and DELETE are defined as idempotent: repeating them leaves the same state. POST is not, which is why payment and order creation endpoints need an idempotency key.
+
+**"How long should you keep idempotency keys?"** At least as long as clients might retry, often 24 hours or more. Store the key with the request's fingerprint and its response, and reject a reused key with a different body.
+
 ## In the real world
 
 Payment APIs such as Stripe's accept an `Idempotency-Key` header on requests that create charges, and return the original response for repeated keys. Web applications keep sessions in signed tokens or a shared store like Redis so any server can serve any user. Message consumers in queues apply the same idea, deduplicating by message id, because queues also deliver at least once. These habits make the load balancers and retries in later articles safe to use.

@@ -126,6 +126,16 @@ Common misconception: "add an index on every column to be safe." Each index cost
 A feed query is `SELECT post_id, created_at FROM posts WHERE author_id = ? ORDER BY created_at DESC LIMIT 20`. Design one index for it, and say why it can be covering. (Index on (author_id, created_at) and include post_id, for example as (author_id, created_at, post_id). Equality on author_id first, ordering by created_at second, and every selected column is in the index, so no table lookups are needed.)
 :::
 
+### Interview follow-ups
+
+**"You have an index on (city, age). Which queries use it?"** WHERE city = 'Pune' and WHERE city = 'Pune' AND age > 30 can. WHERE age > 30 alone cannot use it efficiently, because the index is sorted by city first, like a phone book sorted by surname then first name.
+
+**"Why not index every column?"** Every index must be updated on every insert, update and delete, which slows writes, and each index takes disk and memory. Index the columns your frequent queries filter, join and sort on.
+
+**"What is a covering index?"** An index that contains every column a query needs, so the database answers from the index alone without visiting the table rows. It can turn a slow query into a fast one.
+
+**"How do you find out why a query is slow?"** Run EXPLAIN (or EXPLAIN ANALYZE) and look for full table scans, the rows estimated versus actually read, and whether the expected index is used.
+
 ## In the real world
 
 PostgreSQL and MySQL's InnoDB store indexes as B-tree variants; InnoDB clusters the table itself on the primary key, so secondary indexes point to primary keys. Teams review slow-query logs, run `EXPLAIN` on the worst offenders and add or adjust indexes, and also delete unused ones. In interviews, naming the key queries of your design and the indexes that serve them shows you understand where a database's speed really comes from, building on the data choices in [Filing Cabinet, Labelled Boxes or Giant Spreadsheet?](article:system-design-sql-vs-nosql).

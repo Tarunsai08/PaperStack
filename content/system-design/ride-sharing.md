@@ -177,6 +177,14 @@ Separate the fast, disposable data from the slow, precious data. Driver location
 Common misconception: "store each location update as a row in the main database." At 250,000 updates per second, that hammers the database with data that is obsolete within seconds. Keep only the latest position in memory, and send the history to a stream or analytics store.
 :::
 
+### Interview follow-ups
+
+**"How do you find nearby drivers fast?"** Index driver locations by geospatial cell (geohash, quadtree or a hexagonal grid), keep the latest location of each driver in memory, and search the rider's cell plus neighbours, then rank by estimated arrival time rather than straight-line distance.
+
+**"How do you stop two riders being matched to the same driver?"** Make the offer atomic: a compare-and-set on the driver's state (available to offered) in one store, with a short expiry if the driver does not accept.
+
+**"Drivers send location every few seconds. How do you handle the write load?"** Treat locations as ephemeral: write them to an in-memory store, not a relational database, and batch or sample what you persist for trip history and analytics.
+
 ## Further reading
 
 - H3, a hexagonal hierarchical geospatial indexing system (documentation): https://h3geo.org
