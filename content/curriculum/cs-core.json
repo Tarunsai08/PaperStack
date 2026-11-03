@@ -1571,8 +1571,8 @@
    "prerequisites": [
     "cs-core-classes-objects"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Default, parameterised, copy constructors",
@@ -1598,8 +1598,8 @@
    "prerequisites": [
     "cs-core-encapsulation-access"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Single, multiple, multilevel, hierarchical",

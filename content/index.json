@@ -1,7 +1,7 @@
 {
- "content_version": "86380c3675f31f8f",
+ "content_version": "497bde792e70541f",
  "generated_at": "2026-11-03",
- "count": 575,
+ "count": 577,
  "subjects": [
   {
    "id": "ml",
@@ -59969,6 +59969,184 @@
    "hash": "a3c33b7d7af8",
    "word_count": 992,
    "excerpt": "A bug report: a customer's wallet balance is −₹4,000. The withdraw function checks for sufficient funds, so how? A search finds the culprit in a refund script written by another team: wallet.balance -= amount;, writing straight into the field and skipping every check. When any code anywhere can…"
+  },
+  {
+   "id": "cs-core-constructors-raii",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "constructors-raii",
+   "title": "A Hotel Room Cleaned Automatically When You Check Out",
+   "subtitle": "Constructors, destructors and RAII in C++: default, parameterised, copy and delegating constructors, initialiser lists and their ordering trap, destruction order, and why a thrown exception still closes your file",
+   "track": "cs-oop",
+   "track_order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-classes-objects"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "oop",
+    "c++",
+    "constructors",
+    "destructors",
+    "raii",
+    "initializer list"
+   ],
+   "glossary": [
+    {
+     "term": "Constructor",
+     "definition": "A special member function with the class's name, run automatically when an object is created, that puts the object into a valid state."
+    },
+    {
+     "term": "Destructor",
+     "definition": "A special member function named ~ClassName, run automatically when an object's lifetime ends, that releases what the object owns."
+    },
+    {
+     "term": "Initialiser list",
+     "definition": "The part of a constructor after the colon that initialises members directly, before the constructor body runs."
+    },
+    {
+     "term": "Copy constructor",
+     "definition": "A constructor taking a reference to another object of the same class, used to create a new object as a copy."
+    },
+    {
+     "term": "RAII",
+     "definition": "Resource acquisition is initialisation: tie a resource (memory, file, lock) to an object's lifetime, acquiring it in the constructor and releasing it in the destructor."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Inside one block, Logger A is created and then Logger B. In what order are their destructors called at the end of the block?",
+     "options": [
+      "A then B",
+      "B then A",
+      "Unspecified",
+      "Only when the program exits"
+     ],
+     "answer": 1,
+     "explain": "Local objects are destroyed in reverse order of construction. The test program printed destroy B, then destroy A."
+    },
+    {
+     "q": "A function opens a File object, then throws an exception before returning. With RAII, is the file closed?",
+     "options": [
+      "No, the close line is skipped",
+      "Yes: stack unwinding runs the File destructor, which closes it",
+      "Only in debug builds",
+      "Only if caught in the same function"
+     ],
+     "answer": 1,
+     "explain": "The program printed 'file closed' for both the normal and the failing call."
+    },
+    {
+     "q": "class R { int a; int b; R() : b(5), a(b + 1) {} }; What is wrong?",
+     "options": [
+      "Nothing",
+      "Members are initialised in declaration order, so a is initialised first, from b, which is still uninitialised",
+      "b cannot be 5",
+      "Initialiser lists cannot use other members"
+     ],
+     "answer": 1,
+     "explain": "The list's order is ignored; g++ -Wall warns with -Wreorder."
+    }
+   ],
+   "cover_seed": "constructors-raii",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.86,
+   "path": "cs-core/constructors-raii.md",
+   "hash": "f372b1204608",
+   "word_count": 1136,
+   "excerpt": "A function opens a file, writes to it, and closes it at the end. Then someone adds an early return for an error case, and another person adds a call that can throw. Each new exit path skips the fclose. Months later the server dies with \"too many open files\", and nobody can find the leak, because it…"
+  },
+  {
+   "id": "cs-core-inheritance",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "inheritance",
+   "title": "Children Inheriting Family Traits",
+   "subtitle": "Inheritance in C++: is-a relationships, single, multilevel, hierarchical and multiple inheritance, how public, protected and private inheritance change access, constructor and destructor order, and name hiding",
+   "track": "cs-oop",
+   "track_order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-encapsulation-access"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "oop",
+    "c++",
+    "inheritance",
+    "constructor order",
+    "access",
+    "is-a"
+   ],
+   "glossary": [
+    {
+     "term": "Base class",
+     "definition": "The class being inherited from (also called parent or superclass)."
+    },
+    {
+     "term": "Derived class",
+     "definition": "A class that inherits the members of a base class and can add or redefine its own (also called child or subclass)."
+    },
+    {
+     "term": "Is-a relationship",
+     "definition": "The test for public inheritance: every derived object must be usable wherever a base object is expected."
+    },
+    {
+     "term": "Name hiding",
+     "definition": "A derived-class member with the same name as a base member hides every base member of that name in the derived scope."
+    },
+    {
+     "term": "Composition",
+     "definition": "Building a class by containing other objects as members (has-a), often preferred to inheritance for reuse."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "ElectricCar derives from Car, which derives from Vehicle. In what order do the constructors run when an ElectricCar is created?",
+     "options": [
+      "ElectricCar, Car, Vehicle",
+      "Vehicle, Car, ElectricCar",
+      "Car, Vehicle, ElectricCar",
+      "Only ElectricCar"
+     ],
+     "answer": 1,
+     "explain": "Bases are built first, from the top down; destructors run in exactly the reverse order. The test program printed Vehicle, Car, ElectricCar, then ~ElectricCar, ~Car, ~Vehicle."
+    },
+    {
+     "q": "class D : private B. A public member f() of B, called on a D object from outside, is…",
+     "options": [
+      "Accessible",
+      "Inaccessible: private inheritance makes B's public members private in D",
+      "Protected",
+      "A compile error in B"
+     ],
+     "answer": 1,
+     "explain": "Private inheritance means 'implemented in terms of', not 'is-a'; outside code cannot use D as a B."
+    },
+    {
+     "q": "Vehicle has a non-virtual describe(), and ElectricCar defines its own describe(). Through a Vehicle& referring to an ElectricCar, which one runs?",
+     "options": [
+      "ElectricCar::describe",
+      "Vehicle::describe, because the call is resolved by the reference's static type",
+      "Both",
+      "A compile error"
+     ],
+     "answer": 1,
+     "explain": "Without virtual, there is no dynamic dispatch. The program printed 'vehicle KA01' through the base reference."
+    }
+   ],
+   "cover_seed": "inheritance",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.84,
+   "path": "cs-core/inheritance.md",
+   "hash": "d967ad3ed951",
+   "word_count": 1028,
+   "excerpt": "A fleet app models cars, electric cars, trucks and bikes. Every one has a number plate, a description and a wheel count; electric cars also have a battery. Copying the plate logic into four classes means four places to fix every bug. Inheritance lets you write the shared part once in a Vehicle…"
   }
  ]
 }
