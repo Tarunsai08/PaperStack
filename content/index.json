@@ -1,7 +1,7 @@
 {
- "content_version": "453fd016c4465002",
+ "content_version": "81ac413f9c910835",
  "generated_at": "2026-11-03",
- "count": 566,
+ "count": 568,
  "subjects": [
   {
    "id": "ml",
@@ -58427,6 +58427,95 @@
    "excerpt": "You type a web address and press Enter. Your laptop's Wi-Fi radio does not know what a web page is. The web browser does not know what a radio wave is. The router in your hostel does not care whether the bytes are a video or a password. Yet the request arrives, intact, at a server across the world.…"
   },
   {
+   "id": "cs-core-data-link",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "data-link",
+   "title": "A Building's Internal Mail Room",
+   "subtitle": "The data link layer: frames and MAC addresses, how a switch learns where everyone sits, ARP turning IP addresses into MAC addresses, broadcast and collision domains, and sharing a medium with CSMA",
+   "track": "cs-networks",
+   "track_order": 2,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-osi-tcpip"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "computer networks",
+    "data link layer",
+    "mac address",
+    "switch",
+    "arp",
+    "ethernet"
+   ],
+   "glossary": [
+    {
+     "term": "Frame",
+     "definition": "The data link layer's unit: a packet wrapped with source and destination MAC addresses, a type field and an error-check trailer."
+    },
+    {
+     "term": "MAC address",
+     "definition": "A 48-bit hardware address of a network interface, written as six hex pairs such as 3c:22:fb:12:34:56, meaningful only on the local network."
+    },
+    {
+     "term": "Switch",
+     "definition": "A layer 2 device that learns which MAC address is on which port and forwards each frame only where it needs to go."
+    },
+    {
+     "term": "ARP",
+     "definition": "Address Resolution Protocol: a host broadcasts 'who has this IP address?' and the owner replies with its MAC address."
+    },
+    {
+     "term": "Broadcast domain",
+     "definition": "The set of devices that receive a frame sent to the broadcast MAC address ff:ff:ff:ff:ff:ff; routers and VLANs separate broadcast domains."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A switch has just powered on with an empty table. Host A on port 1 sends a frame to host B. What does the switch do?",
+     "options": [
+      "Drops it",
+      "Learns that A is on port 1, then floods the frame out of every other port because B is unknown",
+      "Sends it back to A",
+      "Asks the router"
+     ],
+     "answer": 1,
+     "explain": "Switches learn from source addresses and flood unknown destinations. When B replies, the switch learns B's port too."
+    },
+    {
+     "q": "Your laptop knows the IP address of its default gateway but not its MAC address. What does it send?",
+     "options": [
+      "A DNS query",
+      "An ARP request broadcast to everyone on the local network",
+      "A TCP SYN",
+      "A DHCP offer"
+     ],
+     "answer": 1,
+     "explain": "Only the gateway replies, with its MAC address, and the laptop caches the answer."
+    },
+    {
+     "q": "Which device separates broadcast domains?",
+     "options": [
+      "Hub",
+      "Switch",
+      "Router",
+      "Repeater"
+     ],
+     "answer": 2,
+     "explain": "Switches forward broadcasts to all ports; routers do not forward layer 2 broadcasts between networks. VLANs also split them."
+    }
+   ],
+   "cover_seed": "data-link",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.72,
+   "path": "cs-core/data-link.md",
+   "hash": "e586021d7947",
+   "word_count": 1200,
+   "excerpt": "Your laptop knows the IP address of the printer down the corridor: 192.168.1.40. But the Ethernet cable and the Wi-Fi radio do not speak IP. They deliver frames to hardware addresses, and your laptop has never been told the printer's. How does the very first frame find its way? And in the switch…"
+  },
+  {
    "id": "cs-core-ip-addressing",
    "kind": "deep-dive",
    "subject": "cs-core",
@@ -58517,6 +58606,99 @@
    "hash": "6a88c3824879",
    "word_count": 1404,
    "excerpt": "Your college gets the block 192.168.10.0/24 for its labs: 256 addresses. The computer lab needs 100 machines, the library 50, the admin office 20, and a link between two routers needs just 2. Can one block serve all four, each on its own network? And when a packet arrives for 192.168.10.77, which…"
+  },
+  {
+   "id": "cs-core-routing-algorithms",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "routing-algorithms",
+   "title": "Road Signs Versus a Full City Map",
+   "subtitle": "How routers find paths: distance vector (Bellman-Ford, RIP) and link state (Dijkstra, OSPF) computed on one small network, the count-to-infinity problem traced, and how BGP glues the internet together",
+   "track": "cs-networks",
+   "track_order": 4,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-ip-addressing"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "computer networks",
+    "routing",
+    "distance vector",
+    "link state",
+    "ospf",
+    "bgp"
+   ],
+   "glossary": [
+    {
+     "term": "Routing table",
+     "definition": "A router's list of destination prefixes, each with the next hop (and outgoing interface) to use."
+    },
+    {
+     "term": "Distance vector",
+     "definition": "A routing method where each router shares its current distances to all destinations with its neighbours only, and updates using Bellman-Ford."
+    },
+    {
+     "term": "Link state",
+     "definition": "A routing method where each router floods the state of its own links to every router, so each builds the full map and runs Dijkstra."
+    },
+    {
+     "term": "Count to infinity",
+     "definition": "The distance-vector failure where, after a link breaks, routers keep raising their distances by learning stale routes from each other."
+    },
+    {
+     "term": "Autonomous system",
+     "definition": "A network under one administration (an ISP, a large company) with its own routing policy, identified by an AS number."
+    },
+    {
+     "term": "Longest prefix match",
+     "definition": "The forwarding rule that when several table entries match a destination, the most specific (longest prefix) wins."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In distance-vector routing, what does a router send, and to whom?",
+     "options": [
+      "Its link costs, to every router",
+      "Its current distance to every destination, to its neighbours only",
+      "Packets, to the destination",
+      "Its whole map, to the root"
+     ],
+     "answer": 1,
+     "explain": "Distance vector shares conclusions with neighbours; link state shares raw link facts with everyone."
+    },
+    {
+     "q": "A line A — B — C with cost 1 per link. The A–B link fails. Why can B and C count upwards towards infinity?",
+     "options": [
+      "They use Dijkstra",
+      "B hears C advertise distance 2 to A (which went through B) and believes it, then C believes B's new value, and so on",
+      "The link costs grow",
+      "Packets are lost"
+     ],
+     "answer": 1,
+     "explain": "Each trusts the other's stale route. Split horizon and poisoned reverse stop this two-node loop; RIP caps infinity at 16."
+    },
+    {
+     "q": "A router has routes for 10.0.0.0/8 and 10.1.0.0/16. Where does a packet for 10.1.2.3 go?",
+     "options": [
+      "10.0.0.0/8, since it is listed first",
+      "10.1.0.0/16, the longest matching prefix",
+      "Both",
+      "Dropped"
+     ],
+     "answer": 1,
+     "explain": "Longest prefix match picks the most specific route."
+    }
+   ],
+   "cover_seed": "routing-algorithms",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.74,
+   "path": "cs-core/routing-algorithms.md",
+   "hash": "21fc7943426c",
+   "word_count": 1168,
+   "excerpt": "A packet leaving your laptop for a server on another continent passes through a dozen or more routers. None of them knows the whole path. Each one looks at the destination address, picks a next hop from its table, and forgets the packet. Yet the hops add up to a sensible route, and when a cable is…"
   },
   {
    "id": "cs-core-tcp-deep-dive",

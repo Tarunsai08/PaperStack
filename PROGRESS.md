@@ -14,8 +14,8 @@ Read `HANDOFF.md` first if you are picking this project up.
 | famous-algos | 38 | 0 | 53 | 91 | 31/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core | 51 | 0 | 28 | 79 | 34/47 |
-| **All** | **566** | **0** | **117** | **683** | |
+| cs-core | 53 | 0 | 26 | 79 | 34/47 |
+| **All** | **568** | **0** | **115** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -65,8 +65,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 - [ ] `cs-core-classes-objects` (P0, primer, cs-oop): Classes and Objects in C++
 - [ ] `cs-core-memory-hierarchy` (P0, deep-dive, cs-architecture): The Memory Hierarchy and CPU Caches
-- [ ] `cs-core-data-link` (P1, deep-dive, cs-networks): The Data Link Layer: MAC, Switches and ARP
-- [ ] `cs-core-routing-algorithms` (P1, deep-dive, cs-networks): Routing: Distance Vector and Link State
 - [ ] `cs-core-nat-dhcp` (P1, deep-dive, cs-networks): NAT and DHCP
 - [ ] `cs-core-network-security` (P1, deep-dive, cs-networks): Network Security Basics: Firewalls, VPNs and Common Attacks
 - [ ] `cs-core-icmp-tools` (P2, deep-dive, cs-networks): ICMP, ping and traceroute
@@ -614,7 +612,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cs-core: 51 written</summary>
+<details><summary>cs-core: 53 written</summary>
 
 - [x] `cs-core-what-an-os-does` What an Operating System Actually Does
 - [x] `cs-core-processes-threads` Processes vs Threads
@@ -659,7 +657,9 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cs-core-views-triggers-procedures` Views, Stored Procedures and Triggers
 - [x] `cs-core-nosql-overview` NoSQL Families for DBMS Interviews
 - [x] `cs-core-osi-tcpip` The OSI and TCP/IP Models
+- [x] `cs-core-data-link` The Data Link Layer: MAC, Switches and ARP
 - [x] `cs-core-ip-addressing` IP Addressing and Subnetting
+- [x] `cs-core-routing-algorithms` Routing: Distance Vector and Link State
 - [x] `cs-core-tcp-deep-dive` TCP: Handshakes, Reliability and Flow Control
 - [x] `cs-core-udp` UDP and When Unreliable Is Better
 - [x] `cs-core-ports-sockets` Ports, Sockets and Socket Programming

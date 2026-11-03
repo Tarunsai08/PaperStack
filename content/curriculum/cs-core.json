@@ -1173,8 +1173,8 @@
    "prerequisites": [
     "cs-core-osi-tcpip"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Frames",
@@ -1228,8 +1228,8 @@
    "prerequisites": [
     "cs-core-ip-addressing"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "RIP and OSPF ideas",
