@@ -12,10 +12,10 @@ Read `HANDOFF.md` first if you are picking this project up.
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
-| system-design | 62 | 0 | 57 | 119 | 60/60 |
+| system-design | 63 | 0 | 56 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 8 | 0 | 71 | 79 | 7/47 |
-| **All** | **465** | **0** | **218** | **683** | |
+| **All** | **466** | **0** | **217** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -46,7 +46,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### system-design
 
-- [ ] `system-design-networking-essentials` (P1, deep-dive, sd-fundamentals): TCP, UDP and QUIC for System Designers
 - [ ] `system-design-proxies` (P1, deep-dive, sd-fundamentals): Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere
 - [ ] `system-design-search-systems` (P1, deep-dive, sd-blocks): Search Systems: Elasticsearch and Inverted Indexes
 - [ ] `system-design-storage-types` (P1, deep-dive, sd-blocks): Block, File and Object Storage
@@ -56,6 +55,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `system-design-multi-region` (P1, deep-dive, sd-scaling): Multi-Region Architectures and Disaster Recovery
 - [ ] `system-design-data-modeling-scale` (P1, deep-dive, sd-scaling): Data Modelling for Scale: Denormalisation and Access Patterns
 - [ ] `system-design-web-crawler` (P1, case-study, sd-cases): Design a Web Crawler
+- [ ] `system-design-file-sync` (P1, case-study, sd-cases): Design Google Drive or Dropbox
 
 ### ml
 
@@ -412,7 +412,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>system-design: 62 written</summary>
+<details><summary>system-design: 63 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -425,6 +425,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-consistency-basics` Strong vs Eventual Consistency, Plainly
 - [x] `system-design-availability-slos` Availability, Nines and SLOs
 - [x] `system-design-stateless-idempotency` Stateless Services and Idempotent APIs
+- [x] `system-design-networking-essentials` TCP, UDP and QUIC for System Designers
 - [x] `system-design-auth-basics` Authentication and Authorisation: Sessions, JWT and OAuth
 - [x] `system-design-load-balancers` Load Balancers: L4, L7 and the Algorithms Inside
 - [x] `system-design-caching` Caching: Cache-Aside, Write-Through and Friends
