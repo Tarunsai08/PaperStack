@@ -1,7 +1,7 @@
 {
- "content_version": "57bc5536a26bb322",
+ "content_version": "7961d03aea22c9d6",
  "generated_at": "2026-11-03",
- "count": 424,
+ "count": 427,
  "subjects": [
   {
    "id": "ml",
@@ -38995,6 +38995,124 @@
    "excerpt": "A basket holds a handful of apples of different weights, and you must share them between two people as evenly as possible. Many people's first instinct is clever: sort the apples, deal them alternately, or run a knapsack DP. The intended solution of CSES Apple Division is none of those. It is to…"
   },
   {
+   "id": "cp-sweep-line-geometry",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "sweep-line-geometry",
+   "title": "A Scanner Bar Sliding Across the Page",
+   "subtitle": "Sweep line: sort events, keep an active set, and solve closest pair and rectangle union area in O(n log n)",
+   "track": "cp-misc",
+   "track_order": 15,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-geometry-basics"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "geometry",
+    "sweep line",
+    "closest pair",
+    "segment tree",
+    "ordered set"
+   ],
+   "complexity": {
+    "time": "O(n log n)",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Minimum Euclidean Distance",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2194",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Area of Rectangles",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1741",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Rectangle Area II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/rectangle-area-ii/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "The Skyline Problem",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/the-skyline-problem/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Sweep line",
+     "definition": "An imaginary line moved across the plane in one direction, stopping only at events, while a data structure holds what the line currently touches."
+    },
+    {
+     "term": "Event",
+     "definition": "A point where something changes for the sweep line, such as a point appearing or a rectangle starting or ending."
+    },
+    {
+     "term": "Active set",
+     "definition": "The objects the sweep line currently cares about, kept in a structure that supports fast insert, delete and range queries."
+    },
+    {
+     "term": "Coordinate compression",
+     "definition": "Replacing large coordinates by their rank among all distinct values, so they can index an array or segment tree."
+    },
+    {
+     "term": "Cover count",
+     "definition": "In the rectangle union, how many active rectangles cover a segment-tree node's whole interval; the node is fully covered when it is positive."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In the closest-pair sweep, the best squared distance so far is 10. The new point has x = 9. Which earlier points can be removed from the active set?",
+     "options": [
+      "Points with x below 9",
+      "Points with x ≤ 5, since their x-distance alone is at least 4 > √10",
+      "None",
+      "Points with y far from 9"
+     ],
+     "answer": 1,
+     "explain": "√10 ≈ 3.16, so any point at x-distance 4 or more can never beat the current best. With d = ⌊√10⌋ + 1 = 4, points with 9 − x ≥ 4, that is x ≤ 5, are dropped forever."
+    },
+    {
+     "q": "Why does the closest-pair sweep check only a few points per step?",
+     "options": [
+      "Because points are random",
+      "Inside the d by 2d box of candidates, points are at least d apart from each other, so only a constant number fit",
+      "Because the set is sorted by x",
+      "It checks all points"
+     ],
+     "answer": 1,
+     "explain": "Every pair already seen is at least the current best distance apart, so a bounded box can only hold a constant number of them. That keeps each step O(log n) plus a constant."
+    },
+    {
+     "q": "For the union area of rectangles, what does the segment tree return after each event?",
+     "options": [
+      "The number of rectangles",
+      "The total length of y covered by at least one active rectangle",
+      "The largest rectangle",
+      "The leftmost x"
+     ],
+     "answer": 1,
+     "explain": "Covered length times the x-gap to the next event is the area of that vertical strip. Summing strips gives the union area without double counting overlaps."
+    }
+   ],
+   "cover_seed": "sweep-line-geometry",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.6,
+   "path": "cp/sweep-line-geometry.md",
+   "hash": "a72e470f651d",
+   "word_count": 1519,
+   "excerpt": "You have 200,000 points and must find the two closest ones. Checking every pair is about 2·10¹⁰ distance computations. At a generous 10⁹ simple operations per second, that is 20 seconds against a 1-second limit. Now a second problem: 100,000 overlapping rectangles, and you need the total area they…"
+  },
+  {
    "id": "cp-practice-plan",
    "kind": "primer",
    "subject": "cp",
@@ -44249,6 +44367,98 @@
    "excerpt": "It is 9:58 on result day. Your exam-results site normally sees a few hundred visitors a minute. In two minutes, every student in the state will press refresh at once. You have two levers. You can rent a monster machine with ten times the cores and memory. Or you can rent ten ordinary machines and…"
   },
   {
+   "id": "system-design-read-replicas",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "read-replicas",
+   "title": "Photocopies of a Notice That Arrive a Little Late",
+   "subtitle": "Read replicas multiply your database's read capacity, and replication lag is the bug they bring with them",
+   "track": "sd-scaling",
+   "track_order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-vertical-horizontal"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 8,
+   "topics": [
+    "system design",
+    "databases",
+    "replication",
+    "read replicas",
+    "consistency"
+   ],
+   "glossary": [
+    {
+     "term": "Primary",
+     "definition": "The one database node that accepts writes and is the source of truth. Also called the leader or master."
+    },
+    {
+     "term": "Read replica",
+     "definition": "A copy of the primary that receives its changes and serves read queries. It never accepts writes from the application."
+    },
+    {
+     "term": "Replication lag",
+     "definition": "How far a replica is behind the primary, measured in time or in log position. Reads from a lagging replica return old data."
+    },
+    {
+     "term": "Asynchronous replication",
+     "definition": "The primary confirms a write before replicas have it and ships changes afterwards. Fast, but replicas lag and a crash can lose the newest writes."
+    },
+    {
+     "term": "Read-your-writes",
+     "definition": "A guarantee that after you write something, your own later reads see it, even if other users may briefly see older data."
+    },
+    {
+     "term": "Failover",
+     "definition": "Promoting a replica to become the new primary when the old primary fails."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A user edits their profile name, the page reloads and shows the old name. Reads go to a replica. What is happening?",
+     "options": [
+      "The write failed",
+      "Replication lag: the replica has not received the update yet, so the user's own read sees old data",
+      "The cache is full",
+      "The primary is overloaded"
+     ],
+     "answer": 1,
+     "explain": "The write succeeded on the primary but the replica is a moment behind. The fix is read-your-writes: route this user's reads to the primary briefly, or wait until the replica has caught up past their write."
+    },
+    {
+     "q": "Your database is 95% reads and the primary is at 90% CPU. What do read replicas buy you?",
+     "options": [
+      "Faster writes",
+      "They take most of the read load off the primary, freeing it for writes",
+      "Strong consistency for all reads",
+      "Automatic sharding"
+     ],
+     "answer": 1,
+     "explain": "Replicas copy every write, so they do not speed up writes, but they can serve the 95% of traffic that is reads."
+    },
+    {
+     "q": "Why do replicas not help a write-heavy workload?",
+     "options": [
+      "Replicas are slower machines",
+      "Every replica must apply every write too, so adding replicas adds no write capacity",
+      "Writes cannot be replicated",
+      "Replicas only store indexes"
+     ],
+     "answer": 1,
+     "explain": "Writes still all go through one primary, and each replica repeats them. For write scaling you need partitioning."
+    }
+   ],
+   "cover_seed": "read-replicas",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.9,
+   "path": "system-design/read-replicas.md",
+   "hash": "fe988adf6c2f",
+   "word_count": 1667,
+   "excerpt": "You change your display name to \"Asha 🎉\", hit save, and the page reloads with... \"Asha\". You hit refresh. Still the old name. Refresh again, and there it is. Nothing failed. Your write landed on one database server, and your read went to a different one that had not heard the news yet. Millions of…"
+  },
+  {
    "id": "system-design-cache-problems",
    "kind": "deep-dive",
    "subject": "system-design",
@@ -45471,6 +45681,102 @@
    "hash": "8c75389302df",
    "word_count": 1539,
    "excerpt": "Here is a real-looking class from a food-delivery app. It is 400 lines long, and every product meeting adds to it. Tomorrow the business wants pay-later, WhatsApp notifications and a new coupon type. Predict how many places in this class you would have to touch, and how many existing features you…"
+  },
+  {
+   "id": "system-design-partitioning",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "partitioning",
+   "title": "Splitting the Phone Book by Surname",
+   "subtitle": "Partitioning (sharding): range vs hash, hot partitions, rebalancing and the secondary-index problem",
+   "track": "sd-distributed",
+   "track_order": 4,
+   "priority": "P0",
+   "prerequisites": [
+    "system-design-vertical-horizontal"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 8,
+   "topics": [
+    "system design",
+    "partitioning",
+    "sharding",
+    "hot keys",
+    "rebalancing"
+   ],
+   "glossary": [
+    {
+     "term": "Partition",
+     "definition": "One slice of a dataset stored on its own node, also called a shard. Each record lives in exactly one partition."
+    },
+    {
+     "term": "Partition key",
+     "definition": "The field used to decide which partition a record goes to, such as user id or order date."
+    },
+    {
+     "term": "Range partitioning",
+     "definition": "Giving each partition a contiguous range of keys, like A-F, G-M, so range scans stay on few partitions."
+    },
+    {
+     "term": "Hash partitioning",
+     "definition": "Hashing the key and using the hash to pick a partition, which spreads keys evenly but scatters neighbouring keys."
+    },
+    {
+     "term": "Hot partition",
+     "definition": "A partition receiving far more traffic than others, often because of one very popular key or a skewed key choice."
+    },
+    {
+     "term": "Rebalancing",
+     "definition": "Moving data between nodes when nodes are added or removed, or when partitions grow unevenly."
+    },
+    {
+     "term": "Scatter-gather",
+     "definition": "Sending a query to every partition and merging the answers, needed when the query does not include the partition key."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Orders are range-partitioned by order date. What happens on a big sale day?",
+     "options": [
+      "Load spreads evenly",
+      "Every new order lands in the partition holding today's date, so one partition takes all the writes",
+      "Reads get faster",
+      "Nothing changes"
+     ],
+     "answer": 1,
+     "explain": "With a time-based range key, all current writes hit the newest range. Hash the key, or prefix it with something that spreads writes, to avoid this hot partition."
+    },
+    {
+     "q": "You hash user ids with hash(id) mod N and grow from 4 to 5 nodes. Roughly what fraction of keys must move?",
+     "options": [
+      "About 20%",
+      "About 80%",
+      "None",
+      "Exactly 50%"
+     ],
+     "answer": 1,
+     "explain": "A key stays only if its hash gives the same remainder mod 4 and mod 5, which happens for about 1 in 5 keys. So about 80% move. Fixed many-partition schemes or consistent hashing avoid this."
+    },
+    {
+     "q": "Users are partitioned by user id. A query asks for all users in the city Pune. What does the database have to do?",
+     "options": [
+      "Read one partition",
+      "Scatter-gather: ask every partition, or use a global secondary index on city",
+      "Rebalance",
+      "Use a range scan on user id"
+     ],
+     "answer": 1,
+     "explain": "The query does not contain the partition key, so any partition may hold matching users. Either ask them all or maintain a separate index partitioned by city."
+    }
+   ],
+   "cover_seed": "partitioning",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.92,
+   "path": "system-design/partitioning.md",
+   "hash": "191446d9f3b0",
+   "word_count": 1748,
+   "excerpt": "Your chat app stores 50 billion messages. Read replicas got you through last year: every replica holds a full copy, and they share the reads. But now the writes are too many for one primary, and the data no longer fits comfortably on one machine at all. There is no bigger box to buy. The only way…"
   },
   {
    "id": "system-design-consistency-models",

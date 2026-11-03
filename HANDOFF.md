@@ -13,12 +13,12 @@ You are continuing a project another Claude session started. Everything you need
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
 | dsa | 152 | 0 | 0 | 152 | 72/72 |
-| cp | 113 | 0 | 2 | 115 | 29/29 |
+| cp | 114 | 0 | 1 | 115 | 29/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
-| system-design | 41 | 0 | 78 | 119 | 41/60 |
+| system-design | 43 | 0 | 76 | 119 | 43/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **424** | **0** | **249** | **673** | |
+| **All** | **427** | **0** | **246** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -28,7 +28,6 @@ Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 _Nothing ready: every planned entry is waiting on a prerequisite, or the subject is complete._
 
 #### cp
-- [ ] `cp-sweep-line-geometry` (P2, pattern, cp-misc): Sweep Line: Closest Pair and Intersections
 - [ ] `cp-bitset-optimisation` (P2, pattern, cp-misc): Bitsets: Dividing by 64 for Free
 
 #### famous-algos
@@ -39,9 +38,9 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `famous-algos-heavy-hitters` (P1, concept, fa-sketches): Finding Heavy Hitters in a Stream: Misra-Gries and Space-Saving
 
 #### system-design
-- [ ] `system-design-read-replicas` (P0, deep-dive, sd-scaling): Read Replicas and Replication Lag
 - [ ] `system-design-creational-patterns` (P0, lld, sd-lld): Creational Patterns: Factory, Builder and Singleton
-- [ ] `system-design-partitioning` (P0, deep-dive, sd-distributed): Partitioning: Splitting Data Across Machines
+- [ ] `system-design-replication` (P0, deep-dive, sd-distributed): Replication: Leaders, Followers and Lag
+- [ ] `system-design-consistent-hashing-sd` (P0, deep-dive, sd-distributed): Consistent Hashing in System Design Interviews
 - [ ] `system-design-networking-essentials` (P1, deep-dive, sd-fundamentals): TCP, UDP and QUIC for System Designers
 - [ ] `system-design-proxies` (P1, deep-dive, sd-fundamentals): Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere
 

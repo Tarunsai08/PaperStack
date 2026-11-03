@@ -10,12 +10,12 @@ Read `HANDOFF.md` first if you are picking this project up.
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
 | dsa | 152 | 0 | 0 | 152 | 72/72 |
-| cp | 113 | 0 | 2 | 115 | 29/29 |
+| cp | 114 | 0 | 1 | 115 | 29/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
-| system-design | 41 | 0 | 78 | 119 | 41/60 |
+| system-design | 43 | 0 | 76 | 119 | 43/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **424** | **0** | **249** | **673** | |
+| **All** | **427** | **0** | **246** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -29,7 +29,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### cp
 
-- [ ] `cp-sweep-line-geometry` (P2, pattern, cp-misc): Sweep Line: Closest Pair and Intersections
 - [ ] `cp-bitset-optimisation` (P2, pattern, cp-misc): Bitsets: Dividing by 64 for Free
 
 ### famous-algos
@@ -47,16 +46,16 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### system-design
 
-- [ ] `system-design-read-replicas` (P0, deep-dive, sd-scaling): Read Replicas and Replication Lag
 - [ ] `system-design-creational-patterns` (P0, lld, sd-lld): Creational Patterns: Factory, Builder and Singleton
-- [ ] `system-design-partitioning` (P0, deep-dive, sd-distributed): Partitioning: Splitting Data Across Machines
+- [ ] `system-design-replication` (P0, deep-dive, sd-distributed): Replication: Leaders, Followers and Lag
+- [ ] `system-design-consistent-hashing-sd` (P0, deep-dive, sd-distributed): Consistent Hashing in System Design Interviews
 - [ ] `system-design-networking-essentials` (P1, deep-dive, sd-fundamentals): TCP, UDP and QUIC for System Designers
 - [ ] `system-design-proxies` (P1, deep-dive, sd-fundamentals): Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere
 - [ ] `system-design-search-systems` (P1, deep-dive, sd-blocks): Search Systems: Elasticsearch and Inverted Indexes
 - [ ] `system-design-api-gateway` (P1, deep-dive, sd-blocks): API Gateways and Service Discovery
 - [ ] `system-design-storage-types` (P1, deep-dive, sd-blocks): Block, File and Object Storage
 - [ ] `system-design-olap-warehouses` (P1, deep-dive, sd-blocks): Columnar Storage and Data Warehouses
-- [ ] `system-design-data-modeling-scale` (P1, deep-dive, sd-scaling): Data Modelling for Scale: Denormalisation and Access Patterns
+- [ ] `system-design-multi-region` (P1, deep-dive, sd-scaling): Multi-Region Architectures and Disaster Recovery
 
 ### ml
 
@@ -230,7 +229,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cp: 113 written</summary>
+<details><summary>cp: 114 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -344,6 +343,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cp-small-to-large` Small-to-Large Merging (DSU on Tree)
 - [x] `cp-min-cost-flow` Minimum Cost Flow
 - [x] `cp-implicit-graphs` Modelling: When the Graph Is Hidden
+- [x] `cp-sweep-line-geometry` Sweep Line: Closest Pair and Intersections
 - [x] `cp-practice-plan` A 12-Week Contest Practice Plan
 
 </details>
@@ -388,7 +388,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>system-design: 41 written</summary>
+<details><summary>system-design: 43 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -412,6 +412,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-distributed-cache` Redis and Distributed Caches
 - [x] `system-design-scaling-journey` From One Server to a Million Users
 - [x] `system-design-vertical-horizontal` Vertical vs Horizontal Scaling
+- [x] `system-design-read-replicas` Read Replicas and Replication Lag
 - [x] `system-design-cache-problems` When Caches Hurt: Stampedes, Hot Keys and Invalidation
 - [x] `system-design-async-processing` Doing Work Later: Queues, Workers and Background Jobs
 - [x] `system-design-url-shortener` Design a URL Shortener
@@ -425,6 +426,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-ride-sharing` Design a Ride-Sharing App Like Uber
 - [x] `system-design-payments` Design a Payment System
 - [x] `system-design-oop-solid` Object-Oriented Design and SOLID Principles
+- [x] `system-design-partitioning` Partitioning: Splitting Data Across Machines
 - [x] `system-design-consistency-models` Consistency Models: Linearizable to Eventual
 - [x] `system-design-isolation-levels` Transaction Isolation Levels and Anomalies
 - [x] `system-design-two-phase-commit` Two-Phase Commit and Its Weak Spot
