@@ -1,7 +1,7 @@
 {
- "content_version": "58fdd29bc9794413",
+ "content_version": "22dce3c3c165f6d0",
  "generated_at": "2026-11-03",
- "count": 582,
+ "count": 583,
  "subjects": [
   {
    "id": "ml",
@@ -60596,6 +60596,100 @@
    "hash": "47167ce72f11",
    "word_count": 1049,
    "excerpt": "In raw C++, every new must be matched by exactly one delete, on every path, by whoever \"owns\" the object, and nothing in the code says who that is. Forget the delete and memory leaks; do it twice and the program corrupts memory; do it too early and another part of the program reads freed memory.…"
+  },
+  {
+   "id": "cs-core-memory-model-cpp",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "memory-model-cpp",
+   "title": "A Desk You Clear Daily Versus a Storage Unit You Must Empty",
+   "subtitle": "Where C++ objects live: automatic, static and dynamic storage, new and delete, and the three classic bugs (leaks, dangling pointers, double frees) caught for real by the compiler and AddressSanitizer",
+   "track": "cs-oop",
+   "track_order": 14,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-constructors-raii"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "c++",
+    "memory",
+    "stack",
+    "heap",
+    "new and delete",
+    "memory leaks",
+    "dangling pointers"
+   ],
+   "glossary": [
+    {
+     "term": "Automatic storage",
+     "definition": "Storage for local variables, usually on the stack, created when the block is entered and destroyed when it exits."
+    },
+    {
+     "term": "Dynamic storage",
+     "definition": "Storage obtained with new (on the heap), which lives until it is explicitly released with delete."
+    },
+    {
+     "term": "Static storage",
+     "definition": "Storage for globals and static variables, which exist for the entire run of the program."
+    },
+    {
+     "term": "Memory leak",
+     "definition": "Dynamically allocated memory that is no longer reachable but was never freed."
+    },
+    {
+     "term": "Dangling pointer",
+     "definition": "A pointer to memory whose object has already been destroyed or freed; using it is undefined behaviour."
+    },
+    {
+     "term": "AddressSanitizer",
+     "definition": "A compiler tool (-fsanitize=address) that instruments a program to detect leaks, use-after-free, buffer overflows and similar errors at run time."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A function returns the address of its local int. What is the problem?",
+     "options": [
+      "None",
+      "The local is destroyed when the function returns, so the caller gets a dangling pointer",
+      "It leaks memory",
+      "It returns a copy"
+     ],
+     "answer": 1,
+     "explain": "g++ -Wall warned: address of local variable 'local' returned."
+    },
+    {
+     "q": "`int* p = new int[1000];` inside a function that returns without delete[]. With 4-byte ints, what does AddressSanitizer report?",
+     "options": [
+      "Nothing",
+      "A direct leak of 4000 bytes",
+      "A use-after-free",
+      "A stack overflow"
+     ],
+     "answer": 1,
+     "explain": "The pointer variable died, the allocation did not. The sanitizer reported: Direct leak of 4000 byte(s) in 1 object(s)."
+    },
+    {
+     "q": "Which pair must always match?",
+     "options": [
+      "new with free",
+      "new[] with delete[], and new with delete",
+      "malloc with delete",
+      "new[] with delete"
+     ],
+     "answer": 1,
+     "explain": "Mismatching forms is undefined behaviour; arrays need delete[] so every element's destructor runs."
+    }
+   ],
+   "cover_seed": "memory-model-cpp",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.84,
+   "path": "cs-core/memory-model-cpp.md",
+   "hash": "a647a4164f68",
+   "word_count": 1052,
+   "excerpt": "Three bug reports land on the same day. A long-running service slowly eats all the memory on its machine until it is killed. A function sometimes returns garbage values, but only in release builds. A program crashes inside the memory allocator, nowhere near the code that is actually wrong. They are…"
   }
  ]
 }
