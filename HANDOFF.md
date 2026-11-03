@@ -15,10 +15,10 @@ You are continuing a project another Claude session started. Everything you need
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 36 | 0 | 55 | 91 | 29/32 |
-| system-design | 45 | 0 | 74 | 119 | 45/60 |
+| system-design | 48 | 0 | 71 | 119 | 47/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 79 | 79 | 0/47 |
-| **All** | **439** | **0** | **244** | **683** | |
+| **All** | **442** | **0** | **241** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -38,11 +38,11 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `famous-algos-lsh` (P1, concept, fa-sketches): Locality-Sensitive Hashing: Finding Near Neighbours Fast
 
 #### system-design
+- [ ] `system-design-key-value-store` (P0, case-study, sd-cases): Design a Distributed Key-Value Store
 - [ ] `system-design-behavioural-patterns` (P0, lld, sd-lld): Behavioural Patterns: Strategy, Observer, State and Command
 - [ ] `system-design-machine-coding-approach` (P0, lld, sd-lld): How to Ace a Machine Coding Round
 - [ ] `system-design-parking-lot` (P0, lld, sd-lld): Design a Parking Lot
 - [ ] `system-design-elevator-system` (P0, lld, sd-lld): Design an Elevator System
-- [ ] `system-design-vending-machine` (P0, lld, sd-lld): Design a Vending Machine With the State Pattern
 
 #### ml
 - [ ] `paper-layer-normalization` (P2, paper, deep-learning): Layer Normalization
