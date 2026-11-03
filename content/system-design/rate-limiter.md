@@ -157,6 +157,16 @@ Common misconception: "a rate limiter protects against all overload." It caps in
 Your limit is 100 requests per minute with a fixed window. A client sends 100 requests at 10:00:58 and 100 at 10:01:01. How many get through, and how would a token bucket with rate 100 per minute and capacity 100 behave instead? (Fixed window: all 200 pass, because the window reset at 10:01:00. Token bucket: the first 100 drain the bucket; three seconds later only about 5 tokens have refilled, so about 5 of the second burst pass.)
 :::
 
+### Interview follow-ups
+
+**"Where does the limiter sit?"** Usually in the API gateway or a middleware in front of services, so abusive traffic is stopped before it costs anything. Limits are keyed by API key, user id or IP depending on who you are protecting against.
+
+**"Fixed window, sliding window or token bucket?"** A fixed window is simple but allows a double burst at the boundary (end of one minute plus start of the next). A sliding window log is exact but stores every timestamp; the sliding window counter approximates it cheaply. A token bucket allows controlled bursts with a steady average rate.
+
+**"Fail open or fail closed if Redis is down?"** For most APIs fail open (let traffic through, keep the product working) and alert. For abuse-sensitive endpoints such as login or OTP sending, fail closed or fall back to a local limit.
+
+**"What do clients receive?"** HTTP 429 with Retry-After, and ideally headers showing the limit and remaining quota so well-behaved clients slow themselves down.
+
 ## Further reading
 
 - Stripe engineering blog, "Scaling your API with rate limiters": https://stripe.com/blog/rate-limiters

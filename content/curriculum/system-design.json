@@ -356,8 +356,8 @@
    "prerequisites": [
     "system-design-client-server-http"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Reliability vs latency",
@@ -385,8 +385,8 @@
    "prerequisites": [
     "system-design-client-server-http"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "What each hides",
@@ -689,8 +689,8 @@
     "system-design-database-indexing",
     "famous-algos-inverted-index"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Inverted index",
@@ -719,8 +719,8 @@
    "prerequisites": [
     "system-design-load-balancers"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Routing, auth, rate limiting at the edge",
@@ -748,8 +748,8 @@
    "prerequisites": [
     "system-design-blob-storage"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Access patterns",
@@ -777,8 +777,8 @@
    "prerequisites": [
     "system-design-sql-vs-nosql"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Row vs column layout",
@@ -807,8 +807,8 @@
    "prerequisites": [
     "system-design-olap-warehouses"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Map, shuffle, reduce",
@@ -841,8 +841,8 @@
     "system-design-message-queues",
     "system-design-batch-processing"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Event time vs processing time",
@@ -871,8 +871,8 @@
    "prerequisites": [
     "system-design-olap-warehouses"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Append-heavy writes",
@@ -935,8 +935,8 @@
    "prerequisites": [
     "system-design-scaling-journey"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Bigger box vs more boxes",
@@ -964,8 +964,8 @@
    "prerequisites": [
     "system-design-vertical-horizontal"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Primary handles writes",
@@ -1052,8 +1052,8 @@
    "prerequisites": [
     "system-design-api-gateway"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Team autonomy vs operational cost",
@@ -1083,8 +1083,8 @@
     "system-design-stateless-idempotency",
     "system-design-microservices"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Timeouts everywhere",
@@ -1113,8 +1113,8 @@
    "prerequisites": [
     "system-design-resilience-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Bounded queues",
@@ -1143,8 +1143,8 @@
    "prerequisites": [
     "system-design-microservices"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Three pillars",
@@ -1173,8 +1173,8 @@
    "prerequisites": [
     "system-design-observability"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Deployment strategies",
@@ -1202,8 +1202,8 @@
    "prerequisites": [
     "system-design-read-replicas"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Active-passive vs active-active",
@@ -1233,8 +1233,8 @@
     "system-design-vertical-horizontal",
     "system-design-observability"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Metrics-driven scaling",
@@ -1263,8 +1263,8 @@
    "prerequisites": [
     "system-design-database-indexing"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Design for queries",
@@ -1292,8 +1292,8 @@
    "prerequisites": [
     "system-design-api-gateway"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Rate limits and edge filtering",
@@ -1421,8 +1421,8 @@
     "system-design-consistent-hashing-sd",
     "system-design-quorums"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Partitioning with consistent hashing",
@@ -1680,8 +1680,8 @@
     "system-design-distributed-locks-sd",
     "system-design-payments"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Seat hold with expiry",
@@ -1711,8 +1711,8 @@
     "system-design-message-queues",
     "famous-algos-bloom-filter"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "URL frontier with politeness",
@@ -1742,8 +1742,8 @@
     "system-design-blob-storage",
     "famous-algos-rsync-rolling-checksum"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Chunking and dedup",
@@ -1772,8 +1772,8 @@
    "prerequisites": [
     "system-design-distributed-cache"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Redis sorted sets",
@@ -1802,8 +1802,8 @@
     "system-design-message-queues",
     "system-design-distributed-locks-sd"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Time-based triggers",
@@ -1833,8 +1833,8 @@
     "system-design-search-systems",
     "system-design-web-crawler"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Crawl, index, rank, serve",
@@ -1863,8 +1863,8 @@
     "system-design-blob-storage",
     "system-design-news-feed"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Upload pipeline",
@@ -1895,8 +1895,8 @@
     "famous-algos-geohash",
     "system-design-database-indexing"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Geohash or quadtree",
@@ -1924,8 +1924,8 @@
    "prerequisites": [
     "system-design-ticket-booking"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Inventory per date",
@@ -1955,8 +1955,8 @@
     "system-design-payments",
     "system-design-sagas"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Cart, inventory reservation, order, payment",
@@ -1985,8 +1985,8 @@
     "system-design-ride-sharing",
     "system-design-notification-system"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Restaurant search",
@@ -2016,8 +2016,8 @@
     "system-design-message-queues",
     "system-design-replication"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Partitioned append-only logs",
@@ -2050,8 +2050,8 @@
     "system-design-time-series-db",
     "system-design-stream-processing"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Collection agents",
@@ -2082,8 +2082,8 @@
     "system-design-distributed-cache",
     "system-design-consistent-hashing-sd"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Sharding",
@@ -2114,8 +2114,8 @@
     "system-design-realtime-communication",
     "famous-algos-operational-transform"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "OT vs CRDT",
@@ -2144,8 +2144,8 @@
    "prerequisites": [
     "system-design-message-queues"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Order book",
@@ -2175,8 +2175,8 @@
    "prerequisites": [
     "system-design-stream-processing"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Exactly-once counting",
@@ -2205,8 +2205,8 @@
     "system-design-url-shortener",
     "system-design-blob-storage"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Text in blob storage",
@@ -2235,8 +2235,8 @@
     "system-design-async-processing",
     "system-design-security-at-scale"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Sandboxed execution",
@@ -2266,8 +2266,8 @@
     "system-design-blob-storage",
     "system-design-search-systems"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "SMTP ingestion",
@@ -2297,8 +2297,8 @@
     "famous-algos-a-star",
     "famous-algos-geohash"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Map tiles",
@@ -2327,8 +2327,8 @@
    "prerequisites": [
     "system-design-interview-framework"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Encapsulation, abstraction, inheritance, polymorphism",
@@ -2359,8 +2359,8 @@
    "prerequisites": [
     "system-design-oop-solid"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "When each helps",
@@ -2391,8 +2391,8 @@
    "prerequisites": [
     "system-design-creational-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Wrapping and adapting",
@@ -2419,8 +2419,8 @@
    "prerequisites": [
     "system-design-creational-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Swap algorithms",
@@ -2450,8 +2450,8 @@
     "system-design-oop-solid",
     "system-design-behavioural-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Clarify scope",
@@ -2481,8 +2481,8 @@
    "prerequisites": [
     "system-design-machine-coding-approach"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Levels, spots, vehicles, tickets, payments",
@@ -2512,8 +2512,8 @@
     "system-design-machine-coding-approach",
     "system-design-behavioural-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Elevator state machine",
@@ -2541,8 +2541,8 @@
    "prerequisites": [
     "system-design-behavioural-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "States: idle, has money, dispensing",
@@ -2570,8 +2570,8 @@
    "prerequisites": [
     "system-design-machine-coding-approach"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Users, groups, expenses, split strategies",
@@ -2599,8 +2599,8 @@
    "prerequisites": [
     "system-design-parking-lot"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Movies, shows, screens, seats",
@@ -2628,8 +2628,8 @@
    "prerequisites": [
     "system-design-machine-coding-approach"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Books vs copies",
@@ -2658,8 +2658,8 @@
    "prerequisites": [
     "system-design-machine-coding-approach"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Board, players, dice, rules",
@@ -2687,8 +2687,8 @@
    "prerequisites": [
     "system-design-snake-ladder-tictactoe"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Pieces with polymorphic moves",
@@ -2716,8 +2716,8 @@
    "prerequisites": [
     "system-design-vending-machine"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "States",
@@ -2746,8 +2746,8 @@
     "system-design-behavioural-patterns",
     "system-design-structural-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Levels",
@@ -2777,8 +2777,8 @@
     "dsa-lru-cache",
     "system-design-behavioural-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Strategy for eviction",
@@ -2807,8 +2807,8 @@
     "system-design-rate-limiter",
     "system-design-behavioural-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Strategy per algorithm",
@@ -2836,8 +2836,8 @@
    "prerequisites": [
     "system-design-behavioural-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Topics, publishers, subscribers",
@@ -2865,8 +2865,8 @@
    "prerequisites": [
     "system-design-machine-coding-approach"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Products, cart, pricing rules, discounts strategy",
@@ -2893,8 +2893,8 @@
    "prerequisites": [
     "system-design-machine-coding-approach"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Race conditions",
@@ -2923,8 +2923,8 @@
    "prerequisites": [
     "system-design-parking-lot"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Riders, drivers, trips",
@@ -2952,8 +2952,8 @@
    "prerequisites": [
     "system-design-read-replicas"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Leader-follower",
@@ -2982,8 +2982,8 @@
    "prerequisites": [
     "system-design-replication"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Write conflicts",
@@ -3011,8 +3011,8 @@
    "prerequisites": [
     "system-design-multi-leader-leaderless"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Overlap of read and write sets",
@@ -3040,8 +3040,8 @@
    "prerequisites": [
     "system-design-vertical-horizontal"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Range vs hash",
@@ -3071,8 +3071,8 @@
     "system-design-partitioning",
     "famous-algos-consistent-hashing"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Ring with virtual nodes",
@@ -3280,8 +3280,8 @@
     "system-design-replication",
     "famous-algos-raft"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "What consensus gives",
@@ -3309,8 +3309,8 @@
    "prerequisites": [
     "system-design-consensus-overview"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Lease-based locks",
@@ -3338,8 +3338,8 @@
    "prerequisites": [
     "famous-algos-lamport-clocks"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Clock skew",
@@ -3367,8 +3367,8 @@
    "prerequisites": [
     "system-design-consensus-overview"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Timeouts are guesses",
@@ -3398,8 +3398,8 @@
     "system-design-quorums",
     "famous-algos-merkle-trees"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Repair on read",
@@ -3427,8 +3427,8 @@
    "prerequisites": [
     "system-design-outbox-cdc"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Store events not state",
@@ -3457,8 +3457,8 @@
     "system-design-time-ordering",
     "system-design-two-phase-commit"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Uncertainty intervals",
@@ -3490,8 +3490,8 @@
     "system-design-quorums",
     "system-design-consistent-hashing-sd"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Always-writable design",
@@ -3524,8 +3524,8 @@
     "system-design-blob-storage",
     "system-design-replication"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Master plus chunkservers",
@@ -3558,8 +3558,8 @@
     "system-design-distributed-message-queue",
     "system-design-replication"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Segment files",
@@ -3589,8 +3589,8 @@
     "system-design-gfs-hdfs",
     "famous-algos-lsm-trees"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Sorted rows",
@@ -3621,8 +3621,8 @@
    "prerequisites": [
     "system-design-consensus-overview"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Asynchronous model",

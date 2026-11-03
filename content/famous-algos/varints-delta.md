@@ -202,6 +202,14 @@ Common misconception: "varints always save space." Large numbers grow: a full 64
 - **Branchy decoding**: the byte-by-byte loop is harder for CPUs to predict than fixed widths; search engines often use block-based integer codecs that decode many values at once with SIMD.
 - **Deltas need sorted or smooth data**: on random values, gaps are as large as the values themselves.
 
+### Interview follow-ups
+
+**"Encode 300 as a varint."** 300 is 0b1_0010_1100. Low 7 bits 0101100 go first with the continuation bit set: 0xAC. The remaining bits are 0b10 = 0x02, with the continuation bit clear. So 300 becomes the two bytes AC 02.
+
+**"What is zigzag encoding?"** It maps signed to unsigned so small magnitudes stay small: 0→0, −1→1, 1→2, −2→3, 2→4, computed as (n << 1) XOR (n >> 63) for 64-bit values. Then −1 takes one byte instead of ten.
+
+**"Why delta-encode posting lists?"** Document ids in a sorted list are large but close together, so the gaps are small and fit in one or two varint bytes. The index shrinks a lot, and smaller indexes mean fewer disk reads and better cache use.
+
 ## Key takeaways
 
 - A varint stores 7 bits per byte and uses the top bit to say whether another byte follows, so small numbers take one byte.

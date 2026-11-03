@@ -265,6 +265,14 @@ Common misconception: "count the brackets: if opens equal closes, it is valid." 
 - **Storing characters when you need lengths,** as in Longest Valid Parentheses; store indices and keep a base index below them.
 - **Popping on ".." at the root** in Simplify Path, which must simply stay at "/".
 
+### Interview follow-ups
+
+**"Can you validate brackets in O(1) extra space?"** With only one bracket type, yes: a counter that must never go negative and ends at 0. With several types you need the stack to remember which closer is expected.
+
+**"Design a stack that returns the minimum in O(1)."** Store pairs (value, minimum so far), or keep a second stack of minimums pushed whenever the new value is ≤ the current minimum. Both give O(1) push, pop and getMin.
+
+**"Implement a queue using two stacks."** Push into an in-stack; to pop, if the out-stack is empty, move everything across, then pop from it. Each element moves at most once, so operations are amortised O(1).
+
 ## Practice problems
 
 *Valid Parentheses* is pattern 1 directly.

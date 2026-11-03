@@ -146,6 +146,16 @@ Common misconception: "a failure detector can know for sure that a machine is de
 - **Partitions confuse membership**: each side may declare the other dead. Applications must handle members reappearing later.
 - **Tuning matters**: probe intervals, timeouts and k trade detection speed for bandwidth and false alarms.
 
+### Interview follow-ups
+
+**"Why not have every node heartbeat every other node?"** All-to-all heartbeats cost O(N²) messages per period, which explodes in large clusters. SWIM has each node probe one random member per period, so load per node stays constant as the cluster grows.
+
+**"A probe times out. Why not declare the node dead immediately?"** The problem may be the path between the two nodes, not the target. SWIM asks k other members to probe it indirectly, then marks it suspect for a while, giving it a chance to refute. This cuts false positives sharply.
+
+**"How is membership news spread?"** By piggybacking joins, suspicions and failures on the probe and ack messages that are already flowing. No extra broadcast traffic is needed.
+
+**"What do you tune?"** Probe interval, timeout, number of indirect probers k and the suspicion timeout. Shorter values detect failure faster but raise false alarms on a congested network.
+
 ## Key takeaways
 
 - SWIM detects failures by having each member ping one random member per period, giving constant work per member.

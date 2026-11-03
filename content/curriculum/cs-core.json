@@ -12,8 +12,8 @@
    "order": 1,
    "priority": "P0",
    "prerequisites": [],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Resource manager and abstraction layer",
@@ -38,8 +38,8 @@
    "prerequisites": [
     "cs-core-what-an-os-does"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Address spaces",
@@ -68,8 +68,8 @@
    "prerequisites": [
     "cs-core-processes-threads"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "New, ready, running, waiting, terminated",
@@ -94,8 +94,8 @@
    "prerequisites": [
     "cs-core-what-an-os-does"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Traps",
@@ -124,8 +124,8 @@
    "prerequisites": [
     "cs-core-process-states"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Metrics: turnaround, waiting, response",
@@ -153,8 +153,8 @@
    "prerequisites": [
     "cs-core-processes-threads"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Pipes and FIFOs",
@@ -180,8 +180,8 @@
    "prerequisites": [
     "cs-core-processes-threads"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Interleavings",
@@ -206,8 +206,8 @@
    "prerequisites": [
     "cs-core-race-conditions"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Binary vs counting semaphores",
@@ -235,8 +235,8 @@
    "prerequisites": [
     "cs-core-mutex-semaphore"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Wait and signal",
@@ -264,8 +264,8 @@
    "prerequisites": [
     "cs-core-mutex-semaphore"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Bounded buffer with semaphores",
@@ -293,8 +293,8 @@
    "prerequisites": [
     "cs-core-classic-sync-problems"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Coffman conditions",
@@ -320,8 +320,8 @@
    "prerequisites": [
     "cs-core-what-an-os-does"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Contiguous allocation",
@@ -347,8 +347,8 @@
    "prerequisites": [
     "cs-core-memory-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Pages and frames",
@@ -375,8 +375,8 @@
    "prerequisites": [
     "cs-core-paging-tlb"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Logical segments",
@@ -401,8 +401,8 @@
    "prerequisites": [
     "cs-core-paging-tlb"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Page faults",
@@ -427,8 +427,8 @@
    "prerequisites": [
     "cs-core-virtual-memory"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Fault counting on reference strings",
@@ -456,8 +456,8 @@
    "prerequisites": [
     "cs-core-page-replacement"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Too many processes, too few frames",
@@ -482,8 +482,8 @@
    "prerequisites": [
     "cs-core-what-an-os-does"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Contiguous, linked, indexed allocation",
@@ -509,8 +509,8 @@
    "prerequisites": [
     "cs-core-file-systems"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Seek time",
@@ -535,8 +535,8 @@
    "prerequisites": [
     "cs-core-disk-scheduling"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "RAID 0, 1, 5, 6, 10",
@@ -564,8 +564,8 @@
    "prerequisites": [
     "cs-core-system-calls"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Interrupt handling",
@@ -590,8 +590,8 @@
    "prerequisites": [
     "cs-core-processes-threads"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Many-to-one, one-to-one, many-to-many",
@@ -616,8 +616,8 @@
    "prerequisites": [
     "cs-core-what-an-os-does"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Firmware",
@@ -644,8 +644,8 @@
     "cs-core-system-calls",
     "cs-core-file-systems"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Processes and signals",
@@ -669,8 +669,8 @@
    "order": 1,
    "priority": "P0",
    "prerequisites": [],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "File system problems",
@@ -696,8 +696,8 @@
    "prerequisites": [
     "cs-core-dbms-intro"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Entities, attributes, relationships",
@@ -723,8 +723,8 @@
    "prerequisites": [
     "cs-core-er-model"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Super, candidate, primary, foreign, composite keys",
@@ -748,8 +748,8 @@
    "prerequisites": [
     "cs-core-relational-keys"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Select, project, join, union, difference, division"
@@ -772,8 +772,8 @@
    "prerequisites": [
     "cs-core-relational-keys"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Filtering",
@@ -802,8 +802,8 @@
    "prerequisites": [
     "cs-core-sql-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Inner, left, right, full, cross, self joins",
@@ -828,8 +828,8 @@
    "prerequisites": [
     "cs-core-sql-joins"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Correlated subqueries",
@@ -855,8 +855,8 @@
    "prerequisites": [
     "cs-core-sql-advanced"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Nth highest salary",
@@ -882,8 +882,8 @@
    "prerequisites": [
     "cs-core-relational-keys"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "FD notation",
@@ -909,8 +909,8 @@
    "prerequisites": [
     "cs-core-functional-dependencies"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Anomalies",
@@ -938,8 +938,8 @@
    "prerequisites": [
     "cs-core-dbms-intro"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Atomicity, consistency, isolation, durability",
@@ -964,8 +964,8 @@
    "prerequisites": [
     "cs-core-transactions-acid"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Conflict serializability",
@@ -990,8 +990,8 @@
    "prerequisites": [
     "cs-core-serializability"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Shared and exclusive locks",
@@ -1018,8 +1018,8 @@
    "prerequisites": [
     "cs-core-transactions-acid"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Undo and redo logging",
@@ -1044,8 +1044,8 @@
    "prerequisites": [
     "cs-core-sql-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Dense vs sparse",
@@ -1071,8 +1071,8 @@
    "prerequisites": [
     "cs-core-db-indexing-cs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Query plans",
@@ -1098,8 +1098,8 @@
    "prerequisites": [
     "cs-core-sql-advanced"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Virtual tables",
@@ -1124,8 +1124,8 @@
    "prerequisites": [
     "cs-core-normalization"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Key-value, document, column-family, graph",
@@ -1147,8 +1147,8 @@
    "order": 1,
    "priority": "P0",
    "prerequisites": [],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Seven vs four layers",
@@ -1173,8 +1173,8 @@
    "prerequisites": [
     "cs-core-osi-tcpip"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Frames",
@@ -1200,8 +1200,8 @@
    "prerequisites": [
     "cs-core-osi-tcpip"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "IPv4 classes vs CIDR",
@@ -1228,8 +1228,8 @@
    "prerequisites": [
     "cs-core-ip-addressing"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "RIP and OSPF ideas",
@@ -1254,8 +1254,8 @@
    "prerequisites": [
     "cs-core-ip-addressing"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Private to public translation",
@@ -1280,8 +1280,8 @@
    "prerequisites": [
     "cs-core-osi-tcpip"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Three-way handshake",
@@ -1311,8 +1311,8 @@
    "prerequisites": [
     "cs-core-tcp-deep-dive"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "No connection",
@@ -1337,8 +1337,8 @@
    "prerequisites": [
     "cs-core-tcp-deep-dive"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "5-tuple",
@@ -1364,8 +1364,8 @@
    "prerequisites": [
     "cs-core-tcp-deep-dive"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Methods and status codes",
@@ -1392,8 +1392,8 @@
    "prerequisites": [
     "cs-core-osi-tcpip"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Record types",
@@ -1419,8 +1419,8 @@
    "prerequisites": [
     "cs-core-ip-addressing"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Echo requests",
@@ -1444,8 +1444,8 @@
    "prerequisites": [
     "cs-core-http-https"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Firewalls",
@@ -1472,8 +1472,8 @@
     "cs-core-http-https",
     "cs-core-dns-cs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "DNS, ARP, TCP, TLS, HTTP, rendering"
@@ -1496,8 +1496,8 @@
    "prerequisites": [
     "cs-core-http-https"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Sending vs retrieving",
@@ -1519,8 +1519,8 @@
    "order": 1,
    "priority": "P0",
    "prerequisites": [],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Blueprint vs instance",
@@ -1545,8 +1545,8 @@
    "prerequisites": [
     "cs-core-classes-objects"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "private, protected, public",
@@ -1571,8 +1571,8 @@
    "prerequisites": [
     "cs-core-classes-objects"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Default, parameterised, copy constructors",
@@ -1598,8 +1598,8 @@
    "prerequisites": [
     "cs-core-encapsulation-access"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Single, multiple, multilevel, hierarchical",
@@ -1624,8 +1624,8 @@
    "prerequisites": [
     "cs-core-inheritance"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Compile-time vs runtime",
@@ -1650,8 +1650,8 @@
    "prerequisites": [
     "cs-core-polymorphism"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Dynamic dispatch",
@@ -1680,8 +1680,8 @@
    "prerequisites": [
     "cs-core-virtual-functions-vtable"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Pure virtual",
@@ -1706,8 +1706,8 @@
    "prerequisites": [
     "cs-core-inheritance"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Ambiguity",
@@ -1731,8 +1731,8 @@
    "prerequisites": [
     "cs-core-constructors-raii"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Deep vs shallow copy",
@@ -1758,8 +1758,8 @@
    "prerequisites": [
     "cs-core-copy-move-semantics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Ownership models",
@@ -1784,8 +1784,8 @@
    "prerequisites": [
     "cs-core-encapsulation-access"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Class-level data",
@@ -1810,8 +1810,8 @@
    "prerequisites": [
     "cs-core-polymorphism"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Function and class templates",
@@ -1836,8 +1836,8 @@
    "prerequisites": [
     "cs-core-constructors-raii"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "try, catch, throw",
@@ -1863,8 +1863,8 @@
    "prerequisites": [
     "cs-core-constructors-raii"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Automatic vs dynamic storage",
@@ -1889,8 +1889,8 @@
    "prerequisites": [
     "cs-core-templates-basics"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "vector growth and iterator invalidation",
@@ -1916,8 +1916,8 @@
     "cs-core-virtual-functions-vtable",
     "cs-core-smart-pointers"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Common questions with crisp answers",
@@ -1939,8 +1939,8 @@
    "order": 1,
    "priority": "P0",
    "prerequisites": [],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Registers, caches, RAM, disk",
@@ -1966,8 +1966,8 @@
    "prerequisites": [
     "cs-core-memory-hierarchy"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Two's complement",
@@ -1993,8 +1993,8 @@
    "prerequisites": [
     "cs-core-number-representation"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Preprocessing, compilation, assembly, linking",
@@ -2019,8 +2019,8 @@
    "prerequisites": [
     "cs-core-memory-hierarchy"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Stages",
@@ -2045,8 +2045,8 @@
    "prerequisites": [
     "cs-core-memory-hierarchy"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "MESI idea",
@@ -2057,9 +2057,72 @@
      "Diagram"
     ]
    }
+  },
+  {
+   "id": "cs-core-sliding-window-protocols",
+   "slug": "sliding-window-protocols",
+   "title_working": "Stop-and-Wait, Go-Back-N and Selective Repeat",
+   "kind": "deep-dive",
+   "track": "cs-networks",
+   "order": 15,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-tcp-deep-dive"
+   ],
+   "brief": {
+    "key_points": [
+     "Why waiting for each ACK wastes the link",
+     "Window size and sequence number space",
+     "Go-Back-N resends from the loss onward",
+     "Selective Repeat resends only the lost frame",
+     "Efficiency calculations asked in OAs"
+    ],
+    "analogy": "Sending numbered parcels and getting receipts back",
+    "include": [
+     "A timeline with one lost frame for both protocols",
+     "Utilisation formula with a worked number"
+    ],
+    "traps": [
+     "Window size limits relative to sequence numbers"
+    ]
+   },
+   "subject": "cs-core",
+   "status": "written",
+   "written_by": "claude-seed"
+  },
+  {
+   "id": "cs-core-pointers-output-questions",
+   "slug": "pointers-output-questions",
+   "title_working": "Pointers, References and Predict-the-Output Questions",
+   "kind": "primer",
+   "track": "cs-oop",
+   "order": 17,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-classes-objects"
+   ],
+   "brief": {
+    "key_points": [
+     "Pointer arithmetic and arrays decaying to pointers",
+     "References vs pointers",
+     "Pre and post increment and sequence points",
+     "Integer promotion and signed/unsigned comparisons",
+     "Undefined behaviour: why some outputs are not defined"
+    ],
+    "analogy": "Street addresses vs the houses at them",
+    "include": [
+     "Ten short snippets with their outputs and why"
+    ],
+    "traps": [
+     "Claiming a definite output for undefined behaviour"
+    ]
+   },
+   "subject": "cs-core",
+   "status": "written",
+   "written_by": "claude-seed"
   }
  ],
- "status": "planned",
+ "status": "active",
  "tracks": [
   {
    "id": "cs-os",

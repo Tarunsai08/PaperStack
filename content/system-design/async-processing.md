@@ -164,6 +164,16 @@ The cost of polling is easy to estimate. If 1 million jobs a day each take 30 se
 Common misconception: "putting work on a queue means it will definitely get done." A queue only moves the problem. Jobs are lost if the queue is not durable, if workers acknowledge before finishing, or if failures are silently dropped. Reliability comes from the whole loop: durable storage, ack after work, idempotent retries, a dead letter queue and alerts on lag.
 :::
 
+### Interview follow-ups
+
+**"The user uploads a video. What happens synchronously and what is queued?"** Synchronously: validate, store the raw file, create a job record, return 202 Accepted with a job id. Everything slow, such as transcoding, thumbnails and notifications, goes onto a queue. The client polls the job status or gets a push when it is done.
+
+**"A job keeps crashing the worker. What protects the system?"** Limit attempts with backoff, then move the job to a dead-letter queue so it stops blocking others, and alert on the dead-letter queue size. A human or a fixed deploy replays it later.
+
+**"How do you scale workers?"** Watch queue depth and the age of the oldest job, not CPU. Add workers when the backlog grows faster than it drains; cap concurrency to what the downstream database or API can take.
+
+**"How do you avoid processing a job twice?"** Assume at-least-once delivery. Make the handler idempotent: check a processed-job table or use a natural key (for example "thumbnail for video 42") so a repeat is a no-op.
+
 ## In the real world
 
 - Job frameworks such as Celery for Python and Sidekiq for Ruby provide worker pools, retries with backoff and scheduled jobs on top of a broker such as RabbitMQ or Redis.

@@ -160,6 +160,16 @@ Common misconception: "a signed message is an encrypted message." Signing proves
 - **Private key theft** lets an attacker sign as you until the key is revoked; keys are often kept in hardware security modules.
 - **Quantum computers** would break RSA and elliptic-curve signatures, so post-quantum signature schemes are being standardised.
 
+### Interview follow-ups
+
+**"What exactly does a browser check before showing the padlock?"** That the server's certificate names the domain, is within its validity dates, and has a signature chain up to a root certificate the browser already trusts. Then, during the handshake, the server proves it holds the certificate's private key by signing handshake data.
+
+**"Why sign a hash instead of the whole message?"** Signature operations are slow and work on small inputs. Hashing first turns any size of message into a short digest; collision resistance means signing the digest is as good as signing the message.
+
+**"What is certificate pinning and its risk?"** A mobile app accepts only a specific certificate or public key for its API, so a rogue certificate from some other CA is rejected. The risk: if you rotate keys without updating the pins, every installed app stops connecting.
+
+**"Signature versus MAC?"** A MAC (such as HMAC) uses one shared secret: fast, but anyone who can verify can also forge. A signature uses a private key to sign and a public key to verify, so anyone can check it and only the owner can produce it.
+
 ## Key takeaways
 
 - A digital signature is made with a private key over a hash of the message and verified by anyone with the matching public key.

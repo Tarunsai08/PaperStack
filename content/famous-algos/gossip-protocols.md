@@ -145,6 +145,16 @@ Common misconception: "gossip gives every node the same view at the same time." 
 - **Bandwidth adds up** if the gossiped state is large; systems send digests or deltas instead of full state.
 - **Slow failure detection on its own.** Simple heartbeat gossip can take a while to notice a dead node, which is why SWIM-style protocols add direct and indirect probing.
 
+### Interview follow-ups
+
+**"How fast does a rumour reach 1,000 nodes?"** Each informed node tells a few random peers per round, so the informed set roughly multiplies each round. Spreading takes O(log N) rounds, a small number even for thousands of nodes, and each node sends only a constant number of messages per round.
+
+**"Push, pull or push-pull?"** Push is fast early, when few nodes know the rumour. Pull is fast late, because uninformed nodes ask and nearly everyone they ask knows. Push-pull combines both and is what most systems use.
+
+**"Where is gossip used in practice?"** Cluster membership and failure detection (Cassandra, Consul's Serf layer), spreading configuration or schema versions, and anti-entropy between replicas. It suits information that is fine to arrive a few rounds late.
+
+**"How do you stop gossip from flooding the network with big state?"** Exchange digests (version numbers or hashes) first and send only the entries the other side lacks. Bound fanout and round frequency.
+
 ## Key takeaways
 
 - In a gossip protocol, every node periodically exchanges what it knows with a few random peers, with no central coordinator.

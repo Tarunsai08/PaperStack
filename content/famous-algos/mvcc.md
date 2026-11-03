@@ -145,6 +145,16 @@ Common misconception: "MVCC means transactions are fully isolated." Snapshot iso
 - **Write conflicts still need coordination:** two transactions updating the same row still conflict, and one must wait or retry.
 - **Reads walk version chains**, which can slow down hot rows that are updated very frequently.
 
+### Interview follow-ups
+
+**"Explain write skew with an example."** Two doctors are on call and the rule is that at least one must stay. Each doctor's transaction reads the snapshot ("two on call"), sees it is safe to leave, and updates its own row. The rows differ, so neither write conflicts, both commit, and nobody is on call. Snapshot isolation allows this; serializable isolation, or locking the rows read with SELECT ... FOR UPDATE, prevents it.
+
+**"How does a reader decide which version it sees?"** Each version records the transaction that created it (and, once replaced, the one that ended it). A reader sees the newest version committed before its snapshot was taken and ignores anything newer or uncommitted.
+
+**"What cleans up old versions?"** A background process (VACUUM in PostgreSQL, purge in InnoDB) removes versions no active snapshot can still see. A single transaction left open for hours holds back this cleanup for the whole table.
+
+**"Two transactions update the same row. What happens?"** MVCC does not avoid that conflict. The second writer waits for the first; under snapshot isolation, if the first commits, the second typically aborts with a serialization error and must retry.
+
 ## Key takeaways
 
 - MVCC keeps multiple versions of each row instead of overwriting in place.

@@ -46,3 +46,21 @@ Calibration read (`paper-going-deeper-with-convolutions`): readable and correctl
 | `paper-large-language-models-are-zero-shot-reasoners` | 1565 | 9.9 | 6 | 10.0 heuristic, 8.5+ editorial | rewritten | Full author list; NeurIPS 2022. Exam-hall rough-sheet and answer-box analogy for the two stages. Own cupcake trace replaces the paper's juggler example; answer-parsing table. Removed the unverified 16-template accuracy table, last-letter and coin-flip percentages and the 48.7% few-shot number; headline numbers kept to the abstract (17.7 to 78.7 MultiArith, 10.4 to 40.7 GSM8K, PaLM similar). |
 | `paper-enriching-word-vectors-with-subword-information` | 2103 | 10.0 | 6 | 10.0 heuristic, 8.5+ editorial | rewritten | Full author names (Mikolov added); year 2017 TACL (arXiv 2016). LEGO-bricks analogy. Computed n-gram table for <play> (10), counts for playing/played/replayed (22/18/26) and overlaps (14 shared for replayed), 2-D score example (1.05, sigmoid 0.74). Removed all per-language score tables, perplexity and words-per-second numbers; results qualitative (syntactic and rare-word gains, semantic mixed, about 1.5x slower). |
 | `paper-thumbs-up-sentiment-classification-using-machine-learning-te` | 1759 | 10.0 | 7 | 10.0 heuristic, 8.5+ editorial | rewritten | Full author names; EMNLP 2002. Words-in-a-jar analogy (order lost, negation stapled back, presence vs count). Illustrative presence-vs-count scoring table (+0.3 vs -1.7) and negation-tagging table. Kept the well-known figures (58/64% human lists, 81.0/80.4/82.9, 72.8% SVM with counts, 700+700 reviews); removed the adjective-only range and the 75% tie figure. |
+
+## Depth and engagement pass (2026-11-03)
+
+Goal (owner): every concept explained well enough to answer placement interview questions. Short is fine if the explanation is correct and complete; length is never the criterion.
+
+**Method (targeted, not brute force):**
+1. A structural scan of all non-ML articles for missing completeness items (traced example, edge cases, mistakes, variants, cost, interview follow-ups), plus a word-count sort to find the thinnest articles.
+2. Read only the candidates: one calibration read of a full article per group, then the "limits" section (Where it falls short / What can go wrong / Common mistakes) of each candidate so additions never repeat existing content.
+3. Fix only what was missing. Every article read was factually correct and clearly explained, so **no full rewrites were needed**. The real gap for placements was the interviewer's next question, so each got an `### Interview follow-ups` subsection (3-5 questions with worked answers; every number computed in Python).
+
+| Group | Articles changed | What was added |
+|---|---|---|
+| Famous Algorithms | all 35 | Sizing questions (Bloom filter 1M keys at 1% = 9.6M bits, k = 7; HyperLogLog 0.81% in 12 KB; Count-Min 2,719 x 5; Merkle proof 640 bytes), design-round placement, alternatives, distributed versions |
+| System Design | 29 (the 10 others already covered follow-ups) | Trade-off choices (REST/GraphQL/gRPC, Kafka/RabbitMQ, 301/302), numbers (99.9% = 8.76 h/year, 0.999^3, 62^7, Snowflake bit layout), failure handling |
+| DSA | 10 shortest P0 articles without follow-ups | Classic follow-up variants (O(1) min-stack, queue from two stacks, space-optimised LCS, Catalan counts, leaf-to-leaf path sum) |
+| CP | none | Shortest CP articles (sieve, modular arithmetic, modular inverse) checked: complete; CP is contest-focused and already deep |
+
+**Status:** done. Future articles get follow-ups from the start (rule in `writing_guide.md`; `review_score.py` checks completeness).

@@ -141,6 +141,16 @@ Common misconception: "a Merkle root proves who created the data or that it is t
 - **Block boundaries matter.** Inserting a byte near the start of a file with fixed-size blocks shifts every later block and changes almost every leaf; content-defined chunking helps.
 - **Both sides must build trees the same way**, with the same block ranges, hash function and ordering, or every comparison will differ.
 
+### Interview follow-ups
+
+**"How big is a proof that one block belongs to a tree of 1 million blocks?"** One sibling hash per level: ⌈log₂ 1,000,000⌉ = 20 hashes. With 32-byte SHA-256 hashes that is 640 bytes, instead of downloading all the blocks.
+
+**"Two replicas hold 1 billion keys and differ in a handful. How do they find the differences?"** Each builds a Merkle tree over key ranges and they compare roots. If roots match, done. If not, compare the children and descend only into subtrees whose hashes differ. Traffic grows with the number of differences times the tree height, not with the data size. Dynamo-style stores use this for anti-entropy repair.
+
+**"Where else does it appear?"** Git (every commit names a tree of hashes), blockchains (a block header commits to all transactions), BitTorrent piece verification, and certificate transparency logs.
+
+**"What if the number of leaves is odd?"** Implementations pick a rule, such as duplicating the last hash or promoting it unchanged. The rule itself does not matter much, but both sides must use the same one, or the roots will never match.
+
 ## Key takeaways
 
 - A Merkle tree hashes data blocks into leaves and repeatedly hashes pairs of hashes until one root hash remains.

@@ -122,6 +122,16 @@ Common misconception: "adding a queue makes the system faster." A queue makes th
 A queue receives 1,200 messages per second. Each consumer processes 150 per second. How many consumers do you need, and how many partitions at least (Kafka style, one consumer per partition)? (At least 8 consumers, so at least 8 partitions; add headroom, such as 12, for spikes and failures.)
 :::
 
+### Interview follow-ups
+
+**"Kafka or RabbitMQ?"** Kafka is a durable, partitioned log: consumers track their own offsets, many groups can replay the same data, and throughput is very high. RabbitMQ is a broker that routes and deletes messages once acknowledged, with flexible routing and per-message features. Pick Kafka for event streams and replay; RabbitMQ for task queues with routing.
+
+**"How do you keep order for one user's events?"** Use the user id as the partition key, so all of that user's events go to one partition and are read in order. Order across different partitions is not guaranteed.
+
+**"Exactly-once delivery?"** Across a network you get at-least-once delivery plus idempotent processing: deduplicate by message id, or write results and consumer offsets in one transaction.
+
+**"What is backpressure here?"** When consumers are slower than producers, the queue absorbs the difference. That buys time but not infinite time: monitor lag, scale consumers, and slow or shed producers before the backlog exceeds retention.
+
 ## In the real world
 
 Kafka, which started at LinkedIn, is widely used as a durable event log between services and data systems. RabbitMQ and cloud services such as Amazon SQS and Google Cloud Pub/Sub are common for job queues and pub-sub. Typical uses: sending emails and notifications, processing uploads, updating search indexes, feeding analytics, and connecting microservices without tight coupling. A later case study designs a Kafka-like log from scratch.

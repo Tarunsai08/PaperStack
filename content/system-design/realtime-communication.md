@@ -123,6 +123,14 @@ Common misconception: "WebSockets are always better than polling." For data that
 For each feature, pick polling, SSE or WebSockets: a cricket score page, a two-way chat, a dashboard refreshed every five minutes, and a live auction where users place bids. (A reasonable answer: SSE for scores, WebSockets for chat, polling for the dashboard, and WebSockets or SSE plus normal POST requests for the auction, since bids are client actions and updates are server pushes.)
 :::
 
+### Interview follow-ups
+
+**"Polling, long polling, SSE or WebSockets?"** Short polling is simplest but wastes requests. Long polling holds the request open until there is news, which suits occasional updates. Server-Sent Events stream one way from server to browser over plain HTTP, good for live scores or notifications. WebSockets are two-way and low latency, needed for chat, games and collaborative editing.
+
+**"How do you send a message to a user connected to a different server?"** Keep a registry of which gateway holds each user's connection (for example in Redis), or publish to a pub/sub channel that every gateway subscribes to. The receiving gateway pushes the message down its socket.
+
+**"How many connections can one server hold?"** Idle connections are cheap in memory, so one well-tuned server can hold a large number, often limited by memory, file descriptors and per-connection buffers rather than CPU. Say you would load test it, and plan for reconnect storms rather than steady state.
+
 ## In the real world
 
 Chat and collaboration products typically run gateway fleets holding persistent connections and a separate service layer for logic, as in the diagram above. Live sports and notification feeds often use SSE or similar streaming because traffic is one-way. Mobile apps fall back to platform push services when the app is in the background. All of these sit on top of the request lifecycle in [Everything That Happens Before a Page Appears](article:system-design-client-server-http): an upgrade still starts as an ordinary HTTP request.

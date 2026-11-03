@@ -160,6 +160,18 @@ Common misconception: "more Raft servers make the system faster and safer." Each
 - **No progress without a majority.** If a partition leaves no side with a majority, writes stop until the network heals. This is the consistency-over-availability choice described by CAP.
 - **The leader is a throughput bottleneck.** Every write goes through one server, so large systems run many independent Raft groups, one per shard.
 
+### Interview follow-ups
+
+**"How many failures can a 5-node cluster survive? A 4-node one?"** A majority of 5 is 3, so 5 nodes survive 2 failures. A majority of 4 is also 3, so 4 nodes survive only 1, the same as 3 nodes. That is why clusters use odd sizes.
+
+**"Can two leaders exist at once?"** Briefly, yes: an old leader cut off by a partition may still think it leads. It cannot commit anything, because it cannot reach a majority, and as soon as it hears a higher term it steps down. Safety comes from terms plus majorities, not from there being only one leader.
+
+**"Why are election timeouts randomised?"** If all followers timed out together, they would all become candidates, split the votes and repeat forever. Random timeouts let one node usually start first and win.
+
+**"How do you read the latest value safely?"** A read served from a follower may be stale. For linearizable reads, go through the leader and have it confirm it is still leader, by a heartbeat round to a majority or by holding a time-based lease, before answering.
+
+**"Where is Raft used?"** Coordination stores and metadata services such as etcd and Consul, and the replication layer of several distributed databases. It stores small, critical state that everyone must agree on, not bulk data.
+
 ## Key takeaways
 
 - Raft keeps a replicated log identical across servers by electing one leader per term that orders all commands.

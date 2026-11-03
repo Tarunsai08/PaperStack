@@ -169,6 +169,14 @@ Common misconception: "my database is transactional, so it is serializable by de
 - **Serializable without retries**: aborts are normal at this level, so code must catch serialization failures and retry the whole transaction.
 - **Mixing up isolation and consistency**: replica lag is a separate problem from transaction isolation, as [The Promises a Messenger Can Make](article:system-design-consistency-models) explains.
 
+### Interview follow-ups
+
+**"Name the anomalies each level allows."** Read uncommitted allows dirty reads. Read committed prevents dirty reads but allows non-repeatable reads and lost updates. Repeatable read or snapshot isolation prevents those but can allow write skew (and phantoms in some implementations). Serializable prevents all of them.
+
+**"Two requests increment the same counter and one update is lost. Fix it."** Do the update atomically in the database (UPDATE ... SET n = n + 1), lock the row with SELECT ... FOR UPDATE before changing it, or use optimistic concurrency with a version column and retry on conflict.
+
+**"Optimistic or pessimistic locking?"** Optimistic (version check at write time, retry on conflict) suits low contention, such as editing a profile. Pessimistic (lock first) suits hot rows with frequent conflicts, such as the last few seats on a flight.
+
 ## In the real world
 
 - PostgreSQL implements its repeatable read level as snapshot isolation and, since version 9.1, its serializable level with serializable snapshot isolation.

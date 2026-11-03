@@ -7,6 +7,8 @@ A Substack-style learning app (React + Capacitor APK + GitHub Pages PWA) for a C
 
 ## Non-negotiables
 - **Articles are the product.** Follow `pipeline/prompts/writing_guide.md` and `pipeline/prompts/format.md` exactly. Story-style hook, one central analogy reused throughout, intuition before formulas, a traced example, callouts, glossary (3-8), exactly 3 quiz questions, 3-5 full-sentence takeaways. No filler ("delve", "in conclusion", "it is important to note").
+- **No length limit, in either direction (owner's rule, 2026-11-03).** An article is done when it passes the completeness test: a smart beginner could explain the idea to a friend and solve a fresh problem of this type. Short is not bad and long is not good: judge whether the concept is explained correctly and completely, never the word count. No padding; the validator lints filler and repeated paragraphs instead of counting words.
+- **Maximum engagement.** Scene or puzzle hook, one running example, curiosity loops, predict-then-reveal, a "wait, why?" moment per non-obvious section, varied rhythm, and a closing hook into the next article. See the Engagement section of `writing_guide.md`; `tools/review_score.py` scores it (triage only, an editorial read decides).
 - **Ideas before code.** Pseudocode (```pseudo) first; then compact C++17 (```cpp) for DSA and CP. Every runnable ```cpp block must compile; fragments are ```cpp partial.
 - **Never invent facts, numbers, quotes or problem links.** If unsure, say it qualitatively or leave it out, and log it in `DECISIONS.md`. Never copy problem statements or ByteByteGo text/images; draw diagrams yourself.
 - **Do not break the UI or saved data.** Keep ML ids, slugs and folders stable (progress and highlights are keyed by id). Keep the existing design language (see `docs/screenshots/`).
@@ -16,9 +18,10 @@ A Substack-style learning app (React + Capacitor APK + GitHub Pages PWA) for a C
 ## Commands (from the repo root)
 ```bash
 python pipeline/build_index.py           # validate all content + curricula, write index.json and roadmap.json
-python pipeline/build_index.py --strict  # also fail on warnings such as too-short articles (no maximum length; CI uses this on branches)
+python pipeline/build_index.py --strict  # also fail on warnings (filler phrases, repeated paragraphs); CI uses this on branches
+python tools/review_score.py --markdown   # engagement + completeness triage table, weakest first
 python tools/check_cpp.py                # compile every runnable C++ block (g++ -std=c++17)
-python tools/progress.py                 # regenerate PROGRESS.md (run before every commit)
+python tools/progress.py --handoff       # regenerate PROGRESS.md and the status block in HANDOFF.md (run before every commit)
 python -m pytest -q pipeline/tests       # pipeline + validator tests
 cd app && npm run lint && npm test -- --run && npm run build
 ```

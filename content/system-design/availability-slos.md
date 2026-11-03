@@ -132,6 +132,16 @@ Common misconception: "adding a replica always doubles reliability." The paralle
 A request goes through a load balancer (99.99%), an app tier with two independent servers (each 99.9%), and one database (99.95%). Estimate end-to-end availability. (App tier: 1 − 0.001² ≈ 99.9999%. Total ≈ 0.9999 × 0.999999 × 0.9995 ≈ 0.9994, about 99.94%. The single database dominates, so that is where redundancy pays off next.)
 :::
 
+### Interview follow-ups
+
+**"How much downtime does 99.9% allow?"** 0.1% of a year is 8.76 hours, about 43 minutes in a 30-day month. 99.99% allows about 52.6 minutes per year. Each extra nine cuts the budget by 10x and usually costs far more than 10x in engineering.
+
+**"Three services in series, each 99.9%. What is the total?"** Multiply: 0.999³ ≈ 0.997, so about 99.7%. Dependencies in series lower availability; redundant replicas in parallel raise it, for example two independent 99% replicas give 1 − 0.01² = 99.99%, if they really fail independently.
+
+**"SLI, SLO or SLA?"** An SLI is the measurement (share of requests that succeed under 300 ms). An SLO is the internal target for it (99.9% over 30 days). An SLA is the external contract with consequences, set looser than the SLO so you notice trouble before you owe refunds.
+
+**"What is an error budget used for?"** It is the allowed unreliability: 100% minus the SLO. While budget remains, teams ship features; when it is spent, they freeze risky launches and fix reliability. It turns reliability into an agreed number instead of an argument.
+
 ## In the real world
 
 Google's Site Reliability Engineering practices popularised SLOs and error budgets, and many companies now run on similar rules. Cloud providers publish SLAs for their services, and architects combine those numbers with the series and parallel formulas to estimate what their own systems can promise. In interviews, stating an availability target early, as part of the non-functional requirements in the [interview framework](article:system-design-interview-framework), justifies every replica and region you add later. It also tells you when to stop adding them.

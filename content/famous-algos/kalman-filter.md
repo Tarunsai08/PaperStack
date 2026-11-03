@@ -180,6 +180,14 @@ Common misconception: "the Kalman filter works on any noisy data." Its optimalit
 - **A wrong motion model** makes predictions confidently wrong; the filter cannot fix a bad model.
 - **Multi-modal beliefs**, like "the robot is in one of two corridors", cannot be represented by a single estimate with a variance; particle filters handle those.
 
+### Interview follow-ups
+
+**"What does the Kalman gain mean intuitively?"** In one dimension, K = P / (P + R): your prediction's uncertainty divided by total uncertainty. If the prediction is very uncertain, K is near 1 and you trust the measurement; if the sensor is noisy, K is near 0 and you trust the prediction.
+
+**"Your phone's GPS jumps around. How would a filter help?"** Model position and velocity, predict where the phone should be from the last estimate, and blend in each GPS fix weighted by the gain. Fusing other sensors, such as accelerometer readings in the prediction step, makes the estimate smoother still.
+
+**"What if the system is non-linear?"** Use an extended Kalman filter (linearise around the current estimate), an unscented Kalman filter (propagate a few sample points), or a particle filter when beliefs can be multi-modal.
+
 ## Key takeaways
 
 - The Kalman filter repeatedly predicts the state with a motion model, then updates it with a noisy measurement.

@@ -247,6 +247,14 @@ int main() {
 - **Duplicate results** from removing either of two identical adjacent brackets; skip repeats at the same level.
 - **Flipping case on digits** in Letter Case Permutation.
 
+### Interview follow-ups
+
+**"How many results are there for n pairs?"** The n-th Catalan number: 1, 2, 5, 14, 42 for n = 1 to 5. It grows roughly like 4ⁿ / n^1.5, so the output size itself dominates the running time.
+
+**"Can you generate them without backtracking?"** Yes, by building from smaller answers: every valid string is "(" + A + ")" + B where A and B are valid strings with fewer pairs. This is the same split that defines the Catalan numbers.
+
+**"How would you check a single string quickly?"** One counter: +1 for "(", −1 for ")", never below 0, and 0 at the end.
+
 ## Practice problems
 
 *Letter Case Permutation* is the simplest of the three: two choices per letter, one per digit. *Generate Parentheses* is the walkthrough, and a good one to explain aloud with the mobile picture. *Remove Invalid Parentheses* combines the counting scan with backtracking over removal positions, and is a frequent hard interview question. For validity checks with a stack, see [The Last Plate In Is the First Plate Out](article:dsa-stack-patterns).

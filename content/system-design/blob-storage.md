@@ -152,6 +152,16 @@ Common misconception: "putting files in the database keeps everything in one pla
 - **Listing as a database**: listing millions of keys by prefix to answer "which photos does user 42 have?" is slow and costly. Keep that index in your database.
 - **Correlated failures**: three replicas on the same rack or power supply are not three independent copies. Spread pieces across racks and zones.
 
+### Interview follow-ups
+
+**"How should a mobile app upload a 2 GB video?"** The API returns a pre-signed URL and the client uploads directly to object storage in parts (multipart upload), retrying only failed parts. The app servers never carry the bytes. On completion, storage notifies the backend, which records metadata and starts processing.
+
+**"Where do metadata and the file each live?"** The file in object storage under a generated key; owner, size, content type, key and status in a database row. Queries hit the database; bytes come from storage or a CDN.
+
+**"How do you serve private files securely?"** Keep the bucket private and hand out short-lived signed URLs after an authorisation check. The link expires, so sharing it later does not leak the file.
+
+**"How would you save storage costs?"** Lifecycle rules move old, rarely read objects to cheaper storage classes, deduplicate identical files by content hash, and delete abandoned partial uploads.
+
 ## In the real world
 
 - Amazon S3 launched in 2006 and is designed for 99.999999999% (eleven nines) annual durability; since December 2020 it provides strong read-after-write consistency for all objects.

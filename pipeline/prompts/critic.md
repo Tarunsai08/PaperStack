@@ -10,11 +10,15 @@ Score each criterion from 0 to 10:
 - "glossary": 3 to 8 terms a beginner needs, defined simply, and marked inline with [[Term]].
 - "quiz": exactly 3 questions that test understanding, not trivia, with good explanations.
 - "accuracy": no invented numbers, results, quotes, dates or links; code and complexity claims are correct; system design numbers are labelled as estimates.
-- "length": long enough to explain the topic completely (at least the minimum for the kind), with no padding. There is no maximum.
-- "no_filler": no filler phrases ("delve", "moreover", "it is important to note", "in conclusion"), no repetition, no padding.
+- "completeness": passes the completeness test. A smart beginner could explain the idea to a friend and solve a fresh problem of this type (or reason about a fresh scenario). Covers why it exists, intuition, the formal idea, a fully traced example, edge cases, variants, complexity or trade-offs, common mistakes, interview follow-ups, and links to related articles. There is no minimum or maximum word count.
+- "curiosity_loops": the article opens questions ("this breaks in a way you won't expect; we'll see why in a minute") and closes them later.
+- "predict_reveal": the reader is asked to guess an output, a complexity or a failure before it is shown, at least twice.
+- "voice": talks to the reader as "you", varies rhythm (short punchy paragraphs mixed with longer ones), uses concrete numbers, light humour where it fits, and never reads like a textbook.
+- "momentum": teasing section titles, a "wait, why?" moment in each non-obvious section, and an ending that hooks into the next article by its exact title.
+- "no_filler": no filler phrases ("delve", "moreover", "it is important to note", "in conclusion"), no repetition, no padding. Every paragraph teaches something or pulls the reader forward.
 
 Return exactly:
-{"scores": {"hook": n, "analogy": n, "intuition_first": n, "structure": n, "diagrams": n, "callouts": n, "glossary": n, "quiz": n, "accuracy": n, "length": n, "no_filler": n},
+{"scores": {"hook": n, "analogy": n, "intuition_first": n, "structure": n, "diagrams": n, "callouts": n, "glossary": n, "quiz": n, "accuracy": n, "completeness": n, "curiosity_loops": n, "predict_reveal": n, "voice": n, "momentum": n, "no_filler": n},
  "overall": n,
  "problems": ["specific, actionable problem 1", "..."]}
 

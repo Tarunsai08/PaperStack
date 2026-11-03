@@ -215,6 +215,14 @@ The global best starts at `LLONG_MIN`, which is what makes the single-node −3 
 - **Assuming the best path passes through the root.**
 - **Overflow** in sums of many large values.
 
+### Interview follow-ups
+
+**"What if the path must start at the root?"** Then no branching is allowed at all: return the best root-to-node descent, which is the same gain function without the global two-sided update.
+
+**"What if the path must go from leaf to leaf?"** Only update the answer at nodes that have both children, and do not clamp gains to 0, because the path must reach real leaves on both sides.
+
+**"Why is this O(n)?"** Each node is visited once and does O(1) work combining its two children's gains; the recursion depth is the tree height.
+
 ## Practice problems
 
 *Diameter of Binary Tree* is the same structure with edge counts and no negatives, a good warm-up. *Longest Univalue Path* adds a condition for extending an arm. *Binary Tree Maximum Path Sum* is the full problem with negative values and the all-negative edge case. Once these feel natural, the "return one thing, record another" idea carries over to many tree DP problems, such as the house robber variant on trees in [The Thief Who Never Robs Two Neighbours](article:dsa-house-robber-variants).

@@ -9,13 +9,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 152 | 0 | 0 | 152 | 72/72 |
-| cp | 113 | 0 | 2 | 115 | 29/29 |
-| famous-algos | 35 | 0 | 56 | 91 | 28/32 |
-| system-design | 39 | 0 | 80 | 119 | 39/60 |
+| dsa | 158 | 0 | 0 | 158 | 74/74 |
+| cp | 117 | 0 | 0 | 117 | 29/29 |
+| famous-algos | 39 | 0 | 52 | 91 | 32/32 |
+| system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **422** | **0** | **251** | **673** | |
+| cs-core | 79 | 0 | 0 | 79 | 47/47 |
+| **All** | **595** | **0** | **88** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -29,14 +29,10 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### cp
 
-- [ ] `cp-sweep-line-geometry` (P2, pattern, cp-misc): Sweep Line: Closest Pair and Intersections
-- [ ] `cp-bitset-optimisation` (P2, pattern, cp-misc): Bitsets: Dividing by 64 for Free
+_Nothing ready: every planned entry is waiting on a prerequisite, or the subject is complete._
 
 ### famous-algos
 
-- [ ] `famous-algos-myers-diff` (P0, concept, fa-search): Myers' Diff: How Git Shows What Changed
-- [ ] `famous-algos-fft` (P0, concept, fa-signals): The Fast Fourier Transform: Hearing the Notes in a Chord
-- [ ] `famous-algos-a-star` (P0, concept, fa-signals): A* Search: Dijkstra With a Sense of Direction
 - [ ] `famous-algos-counting-bloom-cuckoo` (P1, concept, fa-sketches): Deletable Filters: Counting Bloom and Cuckoo Filters
 - [ ] `famous-algos-heavy-hitters` (P1, concept, fa-sketches): Finding Heavy Hitters in a Stream: Misra-Gries and Space-Saving
 - [ ] `famous-algos-lsh` (P1, concept, fa-sketches): Locality-Sensitive Hashing: Finding Near Neighbours Fast
@@ -44,19 +40,13 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `famous-algos-crdts` (P1, concept, fa-distributed): CRDTs: Data Types That Merge Themselves
 - [ ] `famous-algos-leader-election-leases` (P1, concept, fa-distributed): Leases and Fencing Tokens: Safe Leadership
 - [ ] `famous-algos-sliding-window-limits` (P1, concept, fa-networking): Sliding Window Rate Limiting: Logs and Counters
+- [ ] `famous-algos-skip-lists-practice` (P1, concept, fa-storage): Skip Lists in Practice: Redis Sorted Sets
+- [ ] `famous-algos-swiss-tables` (P1, concept, fa-storage): The Hash Table You Use Every Day: Open Addressing and Swiss Tables
+- [ ] `famous-algos-quadtrees-rtrees` (P1, concept, fa-storage): Quadtrees and R-Trees: Spatial Indexes
 
 ### system-design
 
-- [ ] `system-design-vertical-horizontal` (P0, deep-dive, sd-scaling): Vertical vs Horizontal Scaling
-- [ ] `system-design-oop-solid` (P0, lld, sd-lld): Object-Oriented Design and SOLID Principles
-- [ ] `system-design-networking-essentials` (P1, deep-dive, sd-fundamentals): TCP, UDP and QUIC for System Designers
-- [ ] `system-design-proxies` (P1, deep-dive, sd-fundamentals): Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere
-- [ ] `system-design-search-systems` (P1, deep-dive, sd-blocks): Search Systems: Elasticsearch and Inverted Indexes
-- [ ] `system-design-api-gateway` (P1, deep-dive, sd-blocks): API Gateways and Service Discovery
-- [ ] `system-design-storage-types` (P1, deep-dive, sd-blocks): Block, File and Object Storage
-- [ ] `system-design-olap-warehouses` (P1, deep-dive, sd-blocks): Columnar Storage and Data Warehouses
-- [ ] `system-design-data-modeling-scale` (P1, deep-dive, sd-scaling): Data Modelling for Scale: Denormalisation and Access Patterns
-- [ ] `system-design-web-crawler` (P1, case-study, sd-cases): Design a Web Crawler
+_Nothing ready: every planned entry is waiting on a prerequisite, or the subject is complete._
 
 ### ml
 
@@ -71,9 +61,13 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `paper-cyclegan` (P2, paper, generative): Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks
 - [ ] `paper-wavenet` (P2, paper, generative): WaveNet: A Generative Model for Raw Audio
 
+### cs-core
+
+_Nothing ready: every planned entry is waiting on a prerequisite, or the subject is complete._
+
 ## Written so far
 
-<details><summary>dsa: 152 written</summary>
+<details><summary>dsa: 158 written</summary>
 
 - [x] `dsa-big-o` Big-O Without Fear: Reading Constraints Like a Pro
 - [x] `dsa-cpp-stl-toolkit` The C++ STL Toolkit You Will Use Every Day
@@ -227,10 +221,16 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `dsa-kmp-for-interviews` KMP for Interviews: Matching Without Going Back
 - [x] `dsa-lfu-cache` Designing an LFU Cache
 - [x] `dsa-interview-dsa-revision` The Night-Before Revision Sheet
+- [x] `dsa-oa-strategy` Cracking Online Assessments: Time, Partial Scores and Hidden Tests
+- [x] `dsa-debugging-unfamiliar-code` Finding the Bug in Code You Did Not Write
+- [x] `dsa-counting-pairs` Counting Pairs: Sort, Two Pointers and Fenwick Trees
+- [x] `dsa-contribution-technique` The Contribution Technique: Counting Each Element's Share
+- [x] `dsa-state-space-search` Shortest Paths Over States: Keys, Fuel and Stops
+- [x] `dsa-counting-dp-strings` Counting Valid Strings With DP and a Modulo
 
 </details>
 
-<details><summary>cp: 113 written</summary>
+<details><summary>cp: 117 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -344,11 +344,15 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cp-small-to-large` Small-to-Large Merging (DSU on Tree)
 - [x] `cp-min-cost-flow` Minimum Cost Flow
 - [x] `cp-implicit-graphs` Modelling: When the Graph Is Hidden
+- [x] `cp-sweep-line-geometry` Sweep Line: Closest Pair and Intersections
+- [x] `cp-bitset-optimisation` Bitsets: Dividing by 64 for Free
 - [x] `cp-practice-plan` A 12-Week Contest Practice Plan
+- [x] `cp-xor-basis` XOR Basis: Linear Algebra Over Bits
+- [x] `cp-parallel-binary-search` Parallel Binary Search: Many Queries, One Sweep
 
 </details>
 
-<details><summary>famous-algos: 35 written</summary>
+<details><summary>famous-algos: 39 written</summary>
 
 - [x] `famous-algos-bloom-filter` Bloom Filters: Saying No Without Looking
 - [x] `famous-algos-count-min-sketch` Count-Min Sketch: Counting Billions of Things in Kilobytes
@@ -381,14 +385,18 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `famous-algos-diffie-hellman` Diffie-Hellman: Agreeing on a Secret in Public
 - [x] `famous-algos-rsa` RSA: Locks Anyone Can Close but Only You Can Open
 - [x] `famous-algos-digital-signatures` Digital Signatures and Certificates: Trust on the Internet
+- [x] `famous-algos-tls-handshake` The TLS Handshake: What Happens Before the Padlock Appears
 - [x] `famous-algos-inverted-index` Inverted Indexes: How Search Finds Pages in Milliseconds
 - [x] `famous-algos-tf-idf-bm25` TF-IDF and BM25: Ranking by Relevance
+- [x] `famous-algos-myers-diff` Myers' Diff: How Git Shows What Changed
 - [x] `famous-algos-rsync-rolling-checksum` rsync: Copying Only What Changed
+- [x] `famous-algos-fft` The Fast Fourier Transform: Hearing the Notes in a Chord
 - [x] `famous-algos-kalman-filter` The Kalman Filter: Blending Guesses With Noisy Measurements
+- [x] `famous-algos-a-star` A* Search: Dijkstra With a Sense of Direction
 
 </details>
 
-<details><summary>system-design: 39 written</summary>
+<details><summary>system-design: 119 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -401,6 +409,8 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-consistency-basics` Strong vs Eventual Consistency, Plainly
 - [x] `system-design-availability-slos` Availability, Nines and SLOs
 - [x] `system-design-stateless-idempotency` Stateless Services and Idempotent APIs
+- [x] `system-design-networking-essentials` TCP, UDP and QUIC for System Designers
+- [x] `system-design-proxies` Forward Proxies, Reverse Proxies and Why Nginx Is Everywhere
 - [x] `system-design-auth-basics` Authentication and Authorisation: Sessions, JWT and OAuth
 - [x] `system-design-load-balancers` Load Balancers: L4, L7 and the Algorithms Inside
 - [x] `system-design-caching` Caching: Cache-Aside, Write-Through and Friends
@@ -410,12 +420,31 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-message-queues` Message Queues and Pub-Sub: Decoupling With Kafka and Friends
 - [x] `system-design-blob-storage` Blob Storage: How S3-Style Systems Store Files
 - [x] `system-design-distributed-cache` Redis and Distributed Caches
+- [x] `system-design-search-systems` Search Systems: Elasticsearch and Inverted Indexes
+- [x] `system-design-api-gateway` API Gateways and Service Discovery
+- [x] `system-design-storage-types` Block, File and Object Storage
+- [x] `system-design-olap-warehouses` Columnar Storage and Data Warehouses
+- [x] `system-design-batch-processing` Batch Processing: MapReduce and Spark
+- [x] `system-design-stream-processing` Stream Processing: Windows, Watermarks and Late Data
+- [x] `system-design-time-series-db` Time-Series Databases for Metrics
 - [x] `system-design-scaling-journey` From One Server to a Million Users
+- [x] `system-design-vertical-horizontal` Vertical vs Horizontal Scaling
+- [x] `system-design-read-replicas` Read Replicas and Replication Lag
 - [x] `system-design-cache-problems` When Caches Hurt: Stampedes, Hot Keys and Invalidation
 - [x] `system-design-async-processing` Doing Work Later: Queues, Workers and Background Jobs
+- [x] `system-design-microservices` Microservices vs Monoliths: Honest Trade-offs
+- [x] `system-design-resilience-patterns` Timeouts, Retries and Circuit Breakers
+- [x] `system-design-backpressure-load-shedding` Backpressure and Load Shedding
+- [x] `system-design-observability` Observability: Logs, Metrics and Traces
+- [x] `system-design-deployments` Shipping Safely: Blue-Green, Canary and Feature Flags
+- [x] `system-design-multi-region` Multi-Region Architectures and Disaster Recovery
+- [x] `system-design-autoscaling` Autoscaling: Matching Capacity to Demand
+- [x] `system-design-data-modeling-scale` Data Modelling for Scale: Denormalisation and Access Patterns
+- [x] `system-design-security-at-scale` Security at Scale: DDoS, WAFs and Secrets
 - [x] `system-design-url-shortener` Design a URL Shortener
 - [x] `system-design-rate-limiter` Design a Rate Limiter
 - [x] `system-design-unique-id-generator` Design a Unique ID Generator
+- [x] `system-design-key-value-store` Design a Distributed Key-Value Store
 - [x] `system-design-chat-system` Design a Chat System Like WhatsApp
 - [x] `system-design-news-feed` Design a News Feed
 - [x] `system-design-notification-system` Design a Notification System
@@ -423,12 +452,71 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-video-streaming` Design a Video Streaming Platform Like YouTube
 - [x] `system-design-ride-sharing` Design a Ride-Sharing App Like Uber
 - [x] `system-design-payments` Design a Payment System
+- [x] `system-design-ticket-booking` Design a Ticket Booking System Like BookMyShow
+- [x] `system-design-web-crawler` Design a Web Crawler
+- [x] `system-design-file-sync` Design Google Drive or Dropbox
+- [x] `system-design-leaderboard` Design a Real-Time Leaderboard
+- [x] `system-design-job-scheduler` Design a Distributed Job Scheduler
+- [x] `system-design-search-engine` Design a Web Search Engine
+- [x] `system-design-photo-sharing` Design Instagram
+- [x] `system-design-proximity-service` Design a Nearby Places Service Like Yelp
+- [x] `system-design-hotel-reservation` Design a Hotel Reservation System
+- [x] `system-design-ecommerce-checkout` Design an E-Commerce Checkout
+- [x] `system-design-food-delivery` Design a Food Delivery App Like Swiggy or Zomato
+- [x] `system-design-distributed-message-queue` Design a Distributed Message Queue Like Kafka
+- [x] `system-design-metrics-monitoring` Design a Metrics and Alerting System
+- [x] `system-design-distributed-cache-design` Design a Distributed Cache
+- [x] `system-design-collaborative-editor` Design Google Docs
+- [x] `system-design-stock-exchange` Design a Stock Exchange
+- [x] `system-design-ad-click-aggregation` Design an Ad Click Aggregator
+- [x] `system-design-pastebin` Design Pastebin
+- [x] `system-design-online-judge` Design an Online Judge Like LeetCode
+- [x] `system-design-email-service` Design an Email Service
+- [x] `system-design-maps-navigation` Design Google Maps Navigation
+- [x] `system-design-oop-solid` Object-Oriented Design and SOLID Principles
+- [x] `system-design-creational-patterns` Creational Patterns: Factory, Builder and Singleton
+- [x] `system-design-structural-patterns` Structural Patterns: Adapter, Decorator, Facade, Proxy
+- [x] `system-design-behavioural-patterns` Behavioural Patterns: Strategy, Observer, State and Command
+- [x] `system-design-machine-coding-approach` How to Ace a Machine Coding Round
+- [x] `system-design-parking-lot` Design a Parking Lot
+- [x] `system-design-elevator-system` Design an Elevator System
+- [x] `system-design-vending-machine` Design a Vending Machine With the State Pattern
+- [x] `system-design-splitwise` Design Splitwise
+- [x] `system-design-bookmyshow-lld` Design BookMyShow (Low-Level)
+- [x] `system-design-library-management` Design a Library Management System
+- [x] `system-design-snake-ladder-tictactoe` Design Board Games: Snake and Ladder, Tic-Tac-Toe
+- [x] `system-design-chess-lld` Design Chess
+- [x] `system-design-atm-lld` Design an ATM
+- [x] `system-design-logger-lld` Design a Logging Framework
+- [x] `system-design-cache-lld` Design an In-Memory Cache With Eviction Policies
+- [x] `system-design-rate-limiter-lld` Design a Rate Limiter (Low-Level)
+- [x] `system-design-pub-sub-lld` Design a Pub-Sub Message Broker (Low-Level)
+- [x] `system-design-shopping-cart-lld` Design a Shopping Cart and Inventory
+- [x] `system-design-concurrency-lld` Concurrency in Machine Coding: Locks, Atomics and Thread Pools
+- [x] `system-design-cab-booking-lld` Design a Cab Booking Service (Low-Level)
+- [x] `system-design-replication` Replication: Leaders, Followers and Lag
+- [x] `system-design-multi-leader-leaderless` Multi-Leader and Leaderless Replication
+- [x] `system-design-quorums` Quorums: Why R + W > N Works
+- [x] `system-design-partitioning` Partitioning: Splitting Data Across Machines
+- [x] `system-design-consistent-hashing-sd` Consistent Hashing in System Design Interviews
 - [x] `system-design-consistency-models` Consistency Models: Linearizable to Eventual
 - [x] `system-design-isolation-levels` Transaction Isolation Levels and Anomalies
 - [x] `system-design-two-phase-commit` Two-Phase Commit and Its Weak Spot
 - [x] `system-design-sagas` Sagas: Long Transactions Without Locks
 - [x] `system-design-outbox-cdc` The Outbox Pattern and Change Data Capture
 - [x] `system-design-exactly-once` Exactly-Once Delivery Is a Myth; Exactly-Once Processing Is Not
+- [x] `system-design-consensus-overview` Consensus in Practice: Raft, Paxos, etcd and ZooKeeper
+- [x] `system-design-distributed-locks-sd` Distributed Locks and Leader Election
+- [x] `system-design-time-ordering` Time and Ordering in Distributed Systems
+- [x] `system-design-failure-detection` Failures, Partitions and Split Brain
+- [x] `system-design-anti-entropy` Read Repair, Hinted Handoff and Anti-Entropy
+- [x] `system-design-event-sourcing-cqrs` Event Sourcing and CQRS
+- [x] `system-design-spanner-truetime` Spanner: Global Transactions With TrueTime
+- [x] `system-design-dynamo-paper` Dynamo: The Paper Behind Modern Key-Value Stores
+- [x] `system-design-gfs-hdfs` GFS and HDFS: Files Bigger Than Any Disk
+- [x] `system-design-kafka-internals` Inside Kafka: Logs, Partitions and ISR
+- [x] `system-design-bigtable` Bigtable: The Sorted Map Behind Many Google Services
+- [x] `system-design-flp-impossibility` FLP: Why Perfect Consensus Is Impossible
 
 </details>
 
@@ -517,5 +605,89 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `paper-self-consistency-improves-chain-of-thought-reasoning-in-lang` Why Multiple Reasoning Paths Beat One Greedy Guess
 - [x] `paper-tree-of-thoughts-deliberate-problem-solving-with-large-langu` Giving Language Models the Power to Backtrack
 - [x] `paper-the-llama-3-herd-of-models` The Engineering Playbook of Llama 3
+
+</details>
+
+<details><summary>cs-core: 79 written</summary>
+
+- [x] `cs-core-what-an-os-does` What an Operating System Actually Does
+- [x] `cs-core-processes-threads` Processes vs Threads
+- [x] `cs-core-process-states` Process States and Context Switching
+- [x] `cs-core-system-calls` System Calls, User Mode and Kernel Mode
+- [x] `cs-core-cpu-scheduling` CPU Scheduling: FCFS, SJF, Round Robin, Priority, MLFQ
+- [x] `cs-core-ipc` Inter-Process Communication: Pipes, Shared Memory, Messages
+- [x] `cs-core-race-conditions` Race Conditions and the Critical Section Problem
+- [x] `cs-core-mutex-semaphore` Mutexes, Semaphores and Spinlocks
+- [x] `cs-core-monitors-condition-variables` Monitors and Condition Variables
+- [x] `cs-core-classic-sync-problems` Producer-Consumer, Readers-Writers and Dining Philosophers
+- [x] `cs-core-deadlocks` Deadlocks: Conditions, Prevention, Avoidance, Detection
+- [x] `cs-core-memory-basics` Memory Management: Allocation and Fragmentation
+- [x] `cs-core-paging-tlb` Paging, Page Tables and the TLB
+- [x] `cs-core-segmentation` Segmentation and Segmented Paging
+- [x] `cs-core-virtual-memory` Virtual Memory and Demand Paging
+- [x] `cs-core-page-replacement` Page Replacement: FIFO, LRU, Optimal and CLOCK
+- [x] `cs-core-thrashing` Thrashing and the Working Set
+- [x] `cs-core-file-systems` File Systems: Inodes, Directories and Allocation
+- [x] `cs-core-disk-scheduling` Disk Scheduling: FCFS, SSTF, SCAN, C-SCAN, LOOK
+- [x] `cs-core-raid` RAID Levels Explained
+- [x] `cs-core-io-interrupts-dma` I/O: Polling, Interrupts and DMA
+- [x] `cs-core-threading-models` User Threads, Kernel Threads and Thread Pools
+- [x] `cs-core-booting` What Happens When a Computer Boots
+- [x] `cs-core-linux-essentials` Linux Essentials for Interviews
+- [x] `cs-core-dbms-intro` Why Databases Exist
+- [x] `cs-core-er-model` ER Modelling: Entities, Relationships and Cardinality
+- [x] `cs-core-relational-keys` The Relational Model and Keys
+- [x] `cs-core-relational-algebra` Relational Algebra in Plain Words
+- [x] `cs-core-sql-basics` SQL Essentials: SELECT to GROUP BY
+- [x] `cs-core-sql-joins` SQL Joins Without Confusion
+- [x] `cs-core-sql-advanced` Subqueries, CTEs and Window Functions
+- [x] `cs-core-sql-interview-queries` The SQL Queries Interviewers Always Ask
+- [x] `cs-core-functional-dependencies` Functional Dependencies and Closures
+- [x] `cs-core-normalization` Normalisation: 1NF to BCNF
+- [x] `cs-core-transactions-acid` Transactions and ACID
+- [x] `cs-core-serializability` Schedules and Serializability
+- [x] `cs-core-concurrency-control` Concurrency Control: Locks, 2PL and Timestamps
+- [x] `cs-core-db-recovery` Crash Recovery: Logs, Checkpoints and ARIES
+- [x] `cs-core-db-indexing-cs` Indexing: B+ Trees and Hash Indexes
+- [x] `cs-core-query-optimization` How a Query Runs: Parsing, Planning, Executing
+- [x] `cs-core-views-triggers-procedures` Views, Stored Procedures and Triggers
+- [x] `cs-core-nosql-overview` NoSQL Families for DBMS Interviews
+- [x] `cs-core-osi-tcpip` The OSI and TCP/IP Models
+- [x] `cs-core-data-link` The Data Link Layer: MAC, Switches and ARP
+- [x] `cs-core-ip-addressing` IP Addressing and Subnetting
+- [x] `cs-core-routing-algorithms` Routing: Distance Vector and Link State
+- [x] `cs-core-nat-dhcp` NAT and DHCP
+- [x] `cs-core-tcp-deep-dive` TCP: Handshakes, Reliability and Flow Control
+- [x] `cs-core-udp` UDP and When Unreliable Is Better
+- [x] `cs-core-ports-sockets` Ports, Sockets and Socket Programming
+- [x] `cs-core-http-https` HTTP and HTTPS for Interviews
+- [x] `cs-core-dns-cs` DNS for CS Interviews
+- [x] `cs-core-icmp-tools` ICMP, ping and traceroute
+- [x] `cs-core-network-security` Network Security Basics: Firewalls, VPNs and Common Attacks
+- [x] `cs-core-url-to-page` What Happens When You Type a URL (Networks Edition)
+- [x] `cs-core-email-protocols` Email Protocols: SMTP, IMAP and POP3
+- [x] `cs-core-classes-objects` Classes and Objects in C++
+- [x] `cs-core-encapsulation-access` Encapsulation and Access Specifiers
+- [x] `cs-core-constructors-raii` Constructors, Destructors and RAII
+- [x] `cs-core-inheritance` Inheritance in C++
+- [x] `cs-core-polymorphism` Polymorphism: Overloading and Overriding
+- [x] `cs-core-virtual-functions-vtable` Virtual Functions and the vtable
+- [x] `cs-core-abstract-interfaces` Abstract Classes and Interfaces
+- [x] `cs-core-diamond-problem` The Diamond Problem and Virtual Inheritance
+- [x] `cs-core-copy-move-semantics` Copy vs Move Semantics and the Rule of Five
+- [x] `cs-core-smart-pointers` Smart Pointers: unique_ptr, shared_ptr, weak_ptr
+- [x] `cs-core-static-friend` static Members, friend Functions and const Correctness
+- [x] `cs-core-templates-basics` Templates and Generic Programming
+- [x] `cs-core-exceptions` Exception Handling in C++
+- [x] `cs-core-memory-model-cpp` Stack vs Heap and Object Lifetimes
+- [x] `cs-core-stl-internals` STL Internals Interviewers Ask About
+- [x] `cs-core-oop-interview-questions` OOP Interview Questions, Answered Simply
+- [x] `cs-core-memory-hierarchy` The Memory Hierarchy and CPU Caches
+- [x] `cs-core-number-representation` Numbers in Hardware: Two's Complement, Floating Point, Endianness
+- [x] `cs-core-compile-link-load` From Source to Running Program: Compile, Link, Load
+- [x] `cs-core-pipelining` Instruction Pipelining and Hazards
+- [x] `cs-core-cache-coherence` Cache Coherence and False Sharing
+- [x] `cs-core-sliding-window-protocols` Stop-and-Wait, Go-Back-N and Selective Repeat
+- [x] `cs-core-pointers-output-questions` Pointers, References and Predict-the-Output Questions
 
 </details>

@@ -147,6 +147,14 @@ Common misconception: "publish the event right after commit, and retry if it fai
 A service updates a customer's email and must update the search index. Which approach would you choose, and what must the indexer do? (CDC on the customers table, or an outbox event CustomerEmailChanged, then an idempotent indexer that applies changes by customer id and ignores events older than the version it has already applied.)
 :::
 
+### Interview follow-ups
+
+**"Why not just write to the database and then publish to Kafka?"** If the service crashes between the two, one happens without the other: a saved order with no event, or an event for an order that rolled back. The outbox writes the event in the same database transaction as the data, so both happen or neither does.
+
+**"Polling relay or change data capture?"** A polling relay periodically selects unpublished outbox rows; simple, but adds database load and some delay. CDC (for example Debezium) tails the database's log and publishes changes with low latency and no polling queries, at the cost of running another system.
+
+**"How do consumers handle duplicates?"** Delivery is at least once, so each event carries a unique id and consumers record processed ids, or make their updates idempotent.
+
 ## In the real world
 
 - Debezium is a widely used open-source CDC platform that reads database logs and publishes changes to Kafka.

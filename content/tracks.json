@@ -367,5 +367,50 @@
     "order": 5,
     "accent": "#B45309",
     "subject": "system-design"
+  },
+  {
+    "id": "cs-os",
+    "title": "Operating Systems",
+    "subtitle": "Processes, threads, memory and concurrency",
+    "description": "What the OS does for your program: processes and threads, scheduling, synchronisation and deadlocks, paging and virtual memory, file systems and I/O.",
+    "order": 0,
+    "accent": "#5F6CAF",
+    "subject": "cs-core"
+  },
+  {
+    "id": "cs-dbms",
+    "title": "Databases (DBMS and SQL)",
+    "subtitle": "Keys, SQL, normalisation and transactions",
+    "description": "Relational modelling, the SQL every interview asks, normalisation, transactions and ACID, concurrency control, indexing and recovery.",
+    "order": 1,
+    "accent": "#3B8EA5",
+    "subject": "cs-core"
+  },
+  {
+    "id": "cs-networks",
+    "title": "Computer Networks",
+    "subtitle": "From the OSI model to HTTPS",
+    "description": "Layers, addressing and subnetting, routing, TCP and UDP, HTTP, DNS, sockets and what happens when you type a URL.",
+    "order": 2,
+    "accent": "#2E9E6B",
+    "subject": "cs-core"
+  },
+  {
+    "id": "cs-oop",
+    "title": "OOP in C++",
+    "subtitle": "Classes, polymorphism and memory",
+    "description": "Objects, inheritance, virtual functions, RAII, move semantics, smart pointers and the OOP questions interviewers ask.",
+    "order": 3,
+    "accent": "#C0603A",
+    "subject": "cs-core"
+  },
+  {
+    "id": "cs-architecture",
+    "title": "Computer Architecture",
+    "subtitle": "Caches, numbers and how programs run",
+    "description": "The memory hierarchy, two's complement and floating point, compilation and linking, pipelining and cache coherence.",
+    "order": 4,
+    "accent": "#8E5BA8",
+    "subject": "cs-core"
   }
 ]

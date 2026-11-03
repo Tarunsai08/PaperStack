@@ -224,6 +224,14 @@ Common misconception: "the first row and first column are always 1 path each." T
 - **Filling in the wrong order** for problems like Dungeon Game, where the answer depends on cells below and to the right.
 - **Using DP when moves go in all four directions**, where paths can loop and a graph algorithm is needed.
 
+### Interview follow-ups
+
+**"What if you can also move left and up?"** Then the dependencies form cycles, so a single DP pass no longer works. Minimum cost becomes a shortest-path problem: Dijkstra for non-negative costs, or BFS for unit costs.
+
+**"Count paths in a 100 × 100 grid: what goes wrong?"** The count is a binomial coefficient, C(198, 99) without obstacles, far beyond 64-bit integers. Problems ask for it modulo a prime, or you use big integers.
+
+**"Two people collect cherries at once (Cherry Pickup). How does the state change?"** Move both together step by step, so the state is (step, row1, row2) and each column follows from step minus row. That turns a hard two-path problem into an O(n³) DP.
+
 ## Practice problems
 
 *Unique Paths* and *Unique Paths II* are the counting templates, with and without obstacles. *Grid Paths* (CSES) is the obstacle version with a modulus. *Minimum Path Sum* is the cheapest-path template. *Maximal Square* uses the three-neighbour minimum rule. *Dungeon Game* fills the table backwards from the bottom-right.

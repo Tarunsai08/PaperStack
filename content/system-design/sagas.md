@@ -152,6 +152,14 @@ Common misconception: "a compensation is just a rollback." A rollback erases a c
 A saga books a hotel, a flight and a car. The car step fails. List the actions the saga takes, in order. (Cancel the flight, then cancel the hotel: compensations run in reverse order of the successful steps, each with its own idempotency key.)
 :::
 
+### Interview follow-ups
+
+**"Saga or two-phase commit?"** Two-phase commit gives atomicity but holds locks across services and blocks if the coordinator fails, so it rarely spans microservices. A saga runs local transactions one after another and undoes finished steps with compensations, accepting that others may briefly see intermediate states.
+
+**"Choreography or orchestration?"** Choreography: services react to each other's events, with no central brain; fine for 2-3 steps, hard to follow beyond that. Orchestration: one coordinator tells each service what to do and records progress; easier to reason about, monitor and change.
+
+**"What makes a good compensation?"** It must be idempotent and always possible: refund rather than "un-charge", release a reservation rather than delete history. Some actions, such as a sent email, cannot be undone, so put them last.
+
 ## In the real world
 
 - Microservice frameworks and workflow engines commonly provide orchestration primitives for sagas, with durable state, retries and timeouts.

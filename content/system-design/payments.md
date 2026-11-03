@@ -203,6 +203,16 @@ Common misconception: "if every retry carries an idempotency key, we have exactl
 A customer's ₹1,000 payment (2% fee) is fully refunded, and the platform refunds its fee. Write the ledger entries for the refund. (Debit Merchant payable ₹980, debit Platform fee revenue ₹20, credit PSP receivable ₹1,000. The totals balance, and the original entries stay untouched.)
 :::
 
+### Interview follow-ups
+
+**"How do you avoid double charging?"** An idempotency key per payment attempt, created by the client for one user action and sent on every retry, plus a unique constraint on that key in the payments table. The payment provider gets the same key too.
+
+**"The provider times out. Did the charge happen?"** Unknown, so mark the payment pending, never failed. Query the provider by the idempotency key or wait for its webhook, and reconcile.
+
+**"Why a double-entry ledger?"** Every movement is recorded as a debit in one account and a credit in another, so the books always balance. Money cannot appear or vanish silently, and audits can replay history. Ledger rows are append-only; corrections are new entries.
+
+**"What is reconciliation?"** A regular job compares your records with the provider's settlement reports and flags mismatches, such as charges you think failed but were taken.
+
 ## Further reading
 
 - Stripe API documentation, Idempotent requests: https://stripe.com/docs/api/idempotent_requests

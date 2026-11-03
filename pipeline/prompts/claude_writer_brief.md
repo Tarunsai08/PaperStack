@@ -33,7 +33,8 @@ You write PaperStack seed articles for students preparing for top product and in
 - **Glossary:** 3-8 terms, each used in the body as `[[term]]`.
 - **Quiz:** exactly 3 questions.
 - **Takeaways:** 3-5, full sentences.
-- **Length:** no maximum. Write as much as the reader needs to understand the topic completely, and never pad. The validator only enforces a floor (900 prose words for code kinds, 1,100 for deep-dive and case-study). Cover the interview follow-ups, variants, edge cases and pitfalls a candidate needs, and use any presentation that helps: tables, diagrams, traced states, extra examples.
+- **Length:** no minimum and no maximum. The article is done when it passes the completeness test in `writing_guide.md` (explain it to a friend, solve a fresh problem). Cover why it exists, intuition, the formal idea, a traced example, edge cases, variants, complexity or trade-offs, common mistakes, interview follow-ups and connections. Use `###` sub-headings so long articles stay easy to navigate. Never pad.
+- **Engagement:** follow the engagement rules in `writing_guide.md`: scene or puzzle hook, one running example, curiosity loops, predict-then-reveal (at least twice), a "wait, why?" moment per non-obvious section, varied rhythm, and a closing hook into the next article by its exact title.
 - **Practice problems:** only real, free problems whose exact URL you are certain of. No LeetCode premium. Never copy problem statements.
 - **Cross-links:** `[Exact Title](article:<id>)`, and only to articles that exist. Grep `^title` to get the exact title.
 - **Facts:** never invent facts, dates, names, numbers or URLs. If unsure, stay qualitative or leave it out. For system design, use only labelled estimates of your own, never company traffic numbers, and never ByteByteGo text.
@@ -56,4 +57,4 @@ You write PaperStack seed articles for students preparing for top product and in
 - Run `python3 pipeline/build_index.py --strict`. Fix every warning in your files. "Article exists but status is still planned" is expected; ignore it.
 - Run `python3 tools/check_cpp.py <your files>`.
 
-Report in under 150 words: ids, word counts, and anything you left out as unverified.
+Report in under 150 words: ids, `python3 tools/review_score.py <files>` scores, and anything you left out as unverified.

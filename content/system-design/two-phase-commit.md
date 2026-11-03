@@ -155,6 +155,14 @@ Common misconception: "2PC is the right way to keep microservices consistent." I
 Database B votes NO because a constraint fails. Database A had already voted YES. Walk through what happens. (The coordinator decides ABORT, logs it, and sends ABORT to both. B has already aborted; A, which was in doubt with locks held, rolls back its prepared changes and releases its locks. Nobody commits.)
 :::
 
+### Interview follow-ups
+
+**"Why is 2PC called blocking?"** A participant that voted yes must wait for the coordinator's decision while holding locks. If the coordinator crashes at that moment, the participant can neither commit nor abort on its own.
+
+**"How do real systems reduce that risk?"** Make the coordinator's decision durable and replicated (for example on a consensus group), so another node can finish the protocol, and keep transactions short.
+
+**"Where is 2PC actually used?"** Inside one database system across its own shards, and in XA transactions between a database and a message broker. Across independently owned microservices, sagas with the outbox pattern are more common.
+
 ## In the real world
 
 - Relational databases expose 2PC through the XA standard and commands such as PostgreSQL's `PREPARE TRANSACTION` and `COMMIT PREPARED`.

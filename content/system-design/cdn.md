@@ -115,6 +115,16 @@ Common misconception: "a CDN only helps static files." Even uncacheable requests
 Your HTML page has a 60-second TTL and references `style.css` with a 1-day TTL. You change the CSS and deploy. What do users see, and how would versioned file names fix it? (For up to a day, many users get the new HTML with the old CSS, a broken mix. With versioned names, the new HTML points to `style.ab12.css`, a file no cache has seen, so everyone gets the matching CSS within 60 seconds.)
 :::
 
+### Interview follow-ups
+
+**"How do you deploy a new version of app.js without users getting stale files?"** Put a content hash in the file name (app.3f9a1c.js) and cache it for a long time. The HTML that references it gets a short TTL. A deploy changes the name, so no purge is needed.
+
+**"Push or pull CDN?"** Pull: the edge fetches from your origin on the first miss and caches it; easy and the default. Push: you upload content to the CDN ahead of time; useful for large files you know will be requested, such as a game patch.
+
+**"Can a CDN help with dynamic or personalised pages?"** Partly: it still terminates TLS near the user and keeps warm connections to the origin, which cuts latency. Cache the shared parts and fetch the personal parts separately, and never cache user-specific responses under a shared key.
+
+**"What protects the origin when the CDN cache is cold?"** An origin shield, a middle cache tier, so many edges ask one shield instead of all hitting the origin, plus request coalescing at the edge.
+
 ## In the real world
 
 Large CDNs such as Akamai, Cloudflare, Fastly and Amazon CloudFront run edge servers in many cities worldwide. Video platforms serve most of their traffic from caches near users, and some, like Netflix with its Open Connect appliances, place their own cache servers inside internet providers' networks. In system design interviews, a CDN is the standard answer for static assets and media in any read-heavy, global product, as long as you also explain cache keys, TTLs and invalidation, which build on [Keep the Spices on the Counter](article:system-design-caching).

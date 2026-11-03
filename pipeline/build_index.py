@@ -125,19 +125,14 @@ DIFFICULTIES = ["beginner", "intermediate", "advanced"]
 KINDS = list(SECTIONS)
 SUBJECTS = ["ml", "dsa", "cp", "famous-algos", "system-design", "cs-core"]
 PRIORITIES = ["P0", "P1", "P2"]
-# Minimum prose words per kind (a depth floor). There is deliberately no maximum:
-# an article is as long as complete understanding of the topic needs (owner's rule).
-WORD_MIN = {
-    "paper": 1400,
-    "primer": 1000,
-    # Code fences are not counted, so code-bearing kinds start a little lower.
-    "pattern": 900,
-    "problem-walkthrough": 900,
-    "concept": 900,
-    "deep-dive": 1100,
-    "case-study": 1100,
-    "lld": 900,
-}
+# There is no minimum or maximum length (owner's rule, 2026-11-03). An article is finished when it
+# passes the completeness test in pipeline/prompts/writing_guide.md. Length must come from substance,
+# so instead of word counts the validator lints for filler phrases and repeated paragraphs.
+FILLER_PHRASES = [
+    "delve", "it is important to note", "it's worth noting", "it is worth noting", "in conclusion",
+    "in this article we", "let's dive in", "tapestry", "game-changer", "paradigm shift",
+]
+REPEAT_MIN_WORDS = 20
 # Kinds that must show code (pseudocode or C++), a diagram, or practice problems.
 NEEDS_CODE = {"pattern", "problem-walkthrough", "concept", "lld"}
 NEEDS_MERMAID = {"paper", "deep-dive", "case-study", "lld"}
@@ -262,6 +257,26 @@ def plain_text(body: str) -> str:
 
 def word_count(body: str) -> int:
     return len(WORD_RE.findall(plain_text(body)))
+
+
+def filler_hits(body: str) -> list[str]:
+    """Banned filler phrases found in the prose (code fences ignored). Mirrors fillerHits in TS."""
+    t = strip_fences(body).lower().replace("\u2019", "'")
+    return [f for f in FILLER_PHRASES if re.search(r"\b" + re.escape(f) + r"\b", t)]
+
+
+def repeated_paragraphs(body: str) -> list[str]:
+    """Prose paragraphs of REPEAT_MIN_WORDS+ words that appear twice. Mirrors repeatedParagraphs in TS."""
+    seen: set[str] = set()
+    out: list[str] = []
+    for para in re.split(r"\n\s*\n", strip_fences(body)):
+        norm = re.sub(r"\s+", " ", para.strip().lower())
+        if len(norm.split(" ")) < REPEAT_MIN_WORDS:
+            continue
+        if norm in seen and norm not in out:
+            out.append(norm)
+        seen.add(norm)
+    return out
 
 
 def read_minutes(words: int) -> int:
@@ -478,10 +493,12 @@ def validate_article(
             err("mermaid_missing", f"{kind} articles need at least one ```mermaid diagram.")
         if kind in NEEDS_CODE and not (cpp_blocks(body) or has_pseudo(body)):
             err("code_missing", f"{kind} articles need a ```pseudo or ```cpp block in The code.")
-        words = word_count(body)
-        lo = WORD_MIN[kind]
-        if words < lo:
-            warn("length_short", f"Body is {words} words; aim for at least {lo}.")
+        hits = filler_hits(body)
+        if hits:
+            warn("filler", f"Remove filler phrases: {', '.join(hits)}.")
+        reps = repeated_paragraphs(body)
+        if reps:
+            warn("repeated_content", f"These paragraphs appear more than once: {' | '.join(r[:60] + '...' for r in reps)}")
 
     for name in directive_names(body):
         if name not in DIRECTIVES:

@@ -146,6 +146,16 @@ Common misconception: "a rate limiter protects the service from any overload." A
 - **Clock issues.** Lazy refill depends on timestamps, so clock jumps on a server can briefly grant too many or too few tokens.
 - **Costs are uniform.** One token per request ignores that some requests are far more expensive; weighted costs fix this but need tuning.
 
+### Interview follow-ups
+
+**"Bucket capacity 10, refill 5 tokens per second. How many requests can pass in the first second?"** Up to 15: the 10 already in the bucket plus 5 refilled during the second. Over a long period, the rate settles at 5 per second. Capacity sets the burst, refill rate sets the average.
+
+**"Token bucket, leaky bucket or sliding window?"** Token bucket allows bursts up to the capacity, which suits APIs. A leaky bucket smooths output to a constant rate, which suits feeding a fragile downstream. A sliding-window counter enforces "at most N in any 60 seconds" more strictly but costs more memory or approximation.
+
+**"Implement it across 20 API servers."** Keep each client's (tokens, last_refill_time) in a shared store such as Redis and do refill-then-take atomically, for example in a single server-side script, so two servers cannot spend the same token. To cut latency, let each server hold a small local allowance and sync periodically, accepting slight over-admission.
+
+**"What do you return when a request is limited?"** HTTP 429 Too Many Requests, ideally with a Retry-After header telling the client when a token will be available, so clients back off instead of hammering.
+
 ## Key takeaways
 
 - A token bucket refills tokens at a steady rate up to a capacity, and each request spends one token.

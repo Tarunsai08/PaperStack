@@ -160,6 +160,16 @@ Common misconception: "if two geohashes are very different, the points are far a
 - **Hot cells**: in dense city centres, one cell can contain far more points than others; adaptive structures like quadtrees split busy areas further.
 - **Alternatives** such as Google's S2 and Uber's H3 use different cell shapes and hierarchies for more uniform coverage.
 
+### Interview follow-ups
+
+**"What precision would you index for 'drivers within 1 km'?"** Each character adds 5 bits, alternating longitude and latitude. Six characters give 15 bits each, so a cell is about 1.2 km wide and 0.6 km tall at the equator. Search the rider's cell plus its 8 neighbours, then filter by exact distance.
+
+**"Why the 8 neighbours?"** A driver 50 m away can sit across a cell boundary with a different prefix. The 3x3 block covers every point within one cell size, in any direction.
+
+**"Geohash or quadtree for a ride-sharing service?"** Geohash cells are fixed, so they map neatly onto a key-value store or a database index on a string prefix, and updates are just rewriting a key. A quadtree splits busy areas finely and leaves empty areas coarse, but it is an in-memory structure that is harder to shard and update at high write rates. Many designs use geohash-like cells for storage and keep cell sizes adaptive in other ways.
+
+**"Drivers move every few seconds. How do you keep the index fresh?"** Store each driver's latest cell in a fast in-memory store keyed by cell, move the driver between cell sets when the cell changes, and expire entries that stop updating. Most updates do not change the cell at all.
+
 ## Key takeaways
 
 - A geohash encodes a location by repeatedly halving longitude and latitude ranges and interleaving the resulting bits.

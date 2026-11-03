@@ -177,6 +177,16 @@ Common misconception: "removing stop words and stemming always improves search."
 - **Common terms have huge lists**: queries with very frequent words need skip pointers, early termination or caching to stay fast.
 - **Sharding**: big indexes are split across machines, by document or by term, each with its own trade-offs for query fan-out.
 
+### Interview follow-ups
+
+**"How do you answer 'cat AND dog' quickly?"** Both posting lists are sorted by document id, so walk them with two pointers and output ids that appear in both: O(len1 + len2). Start with the shorter list, and use skip pointers or galloping search to jump ahead in the longer one.
+
+**"How would you support phrase queries such as new york?"** Store word positions in each posting, as the phrase query above does. A document matches when "york" appears at a position exactly one after some position of "new", so the check is a two-pointer walk over the two position lists.
+
+**"Shard by document or by term?"** By document: each shard indexes a subset of documents, every query goes to all shards and results are merged. Simple and balanced, and the common choice. By term: each shard owns some words, so a query touches fewer shards, but popular words create hot shards and multi-word queries need cross-shard joins.
+
+**"How do new documents become searchable quickly?"** Write them into a small in-memory segment that is searchable almost at once, flush it to disk as an immutable segment, and merge segments in the background.
+
 ## Key takeaways
 
 - An inverted index maps each term to a sorted posting list of the documents that contain it.

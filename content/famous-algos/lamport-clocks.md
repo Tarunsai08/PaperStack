@@ -154,6 +154,16 @@ Common misconception: "if L(a) < L(b), then a happened before b." The clock cond
 - **The total order is somewhat arbitrary** for concurrent events: tie-breaking by machine id is consistent but not meaningful.
 - **Lost or never-sent messages** mean causality the system cannot see, such as two users talking on the phone, is invisible to the clocks.
 
+### Interview follow-ups
+
+**"State the update rules."** Before each local event or send, increment your counter. Attach the counter to every message. On receive, set counter = max(own, received) + 1. That is the whole algorithm.
+
+**"Why not just use wall-clock timestamps?"** Machine clocks drift and get adjusted, so a reply can carry an earlier timestamp than the request that caused it. Lamport clocks guarantee that if a caused b, then L(a) < L(b), whatever the physical clocks say.
+
+**"How do you get a total order everyone agrees on?"** Sort by (timestamp, machine id). Ties between concurrent events are broken the same way on every machine, which is enough for things like a distributed mutual exclusion queue.
+
+**"Lamport or vector clocks for detecting conflicting writes?"** Vector clocks. A Lamport timestamp cannot tell "concurrent" from "happened before"; a vector clock can, at the cost of one counter per participant.
+
 ## Key takeaways
 
 - Physical clocks on different machines drift, so they cannot reliably order events in a distributed system.

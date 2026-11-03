@@ -12,24 +12,28 @@
     {
       "file": "valid-primer.md",
       "ok": true,
-      "errors": []
+      "errors": [],
+      "warnings": []
     },
     {
       "file": "valid-paper.md",
       "ok": true,
-      "errors": []
+      "errors": [],
+      "warnings": []
     },
     {
       "file": "wrapped-in-fence.md",
       "ok": true,
-      "errors": []
+      "errors": [],
+      "warnings": []
     },
     {
       "file": "bad-sections.md",
       "ok": false,
       "errors": [
         "sections"
-      ]
+      ],
+      "warnings": []
     },
     {
       "file": "bad-quiz.md",
@@ -38,7 +42,8 @@
         "quiz_count",
         "quiz_options",
         "quiz_answer"
-      ]
+      ],
+      "warnings": []
     },
     {
       "file": "bad-glossary.md",
@@ -46,7 +51,8 @@
       "errors": [
         "glossary_count",
         "glossary_ref_unknown"
-      ]
+      ],
+      "warnings": []
     },
     {
       "file": "bad-paper-fields.md",
@@ -55,7 +61,8 @@
         "field_missing",
         "paper_url",
         "mermaid_missing"
-      ]
+      ],
+      "warnings": []
     },
     {
       "file": "bad-crossref.md",
@@ -65,7 +72,8 @@
         "directive_unknown",
         "prerequisite_unknown",
         "article_link_unknown"
-      ]
+      ],
+      "warnings": []
     },
     {
       "file": "bad-values.md",
@@ -75,26 +83,30 @@
         "difficulty_invalid",
         "date_format",
         "importance_range"
-      ]
+      ],
+      "warnings": []
     },
     {
       "file": "no-frontmatter.md",
       "ok": false,
       "errors": [
         "frontmatter_missing"
-      ]
+      ],
+      "warnings": []
     },
     {
       "file": "bad-yaml.md",
       "ok": false,
       "errors": [
         "yaml_invalid"
-      ]
+      ],
+      "warnings": []
     },
     {
       "file": "valid-pattern.md",
       "ok": true,
-      "errors": []
+      "errors": [],
+      "warnings": []
     },
     {
       "file": "bad-pattern.md",
@@ -107,7 +119,8 @@
         "problems_count",
         "sections",
         "code_missing"
-      ]
+      ],
+      "warnings": []
     },
     {
       "file": "bad-subject.md",
@@ -115,6 +128,16 @@
       "errors": [
         "kind_invalid",
         "field_missing"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "warn-filler.md",
+      "ok": true,
+      "errors": [],
+      "warnings": [
+        "filler",
+        "repeated_content"
       ]
     }
   ],
@@ -122,6 +145,21 @@
     {
       "text": "Hello world, it's a [[Token|token]] and [a link](article:x).\n\n```mermaid\nflowchart LR\n A-->B\n```\n\n$$x^2$$\n\n:::insight\nState-of-the-art 3.5 ideas\n:::",
       "words": 12
+    }
+  ],
+  "fillerCases": [
+    {
+      "text": "We delve in.\n\n```\nin conclusion\n```\n\nIt\u2019s worth noting this.",
+      "hits": [
+        "delve",
+        "it's worth noting"
+      ]
+    },
+    {
+      "text": "Delve-free? No: undelved is fine.",
+      "hits": [
+        "delve"
+      ]
     }
   ]
 }

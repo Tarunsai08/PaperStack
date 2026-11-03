@@ -224,6 +224,14 @@ Common misconception: "if the path for a word exists in the trie, the word was i
 - **Word Search II duplicates**: clear a node's end flag after you report its word, so it is not found twice.
 - **Uppercase or other characters**: `ch - 'a'` only works for lowercase letters; validate the alphabet first.
 
+### Interview follow-ups
+
+**"Trie or hash set for word lookup?"** A hash set is simpler and fast for exact lookups. A trie wins when you need prefixes: autocomplete, startsWith, pruning a grid search the moment no word starts with the current path, or longest common prefix.
+
+**"How would you return the top 3 suggestions for a prefix?"** Walk to the prefix node, then DFS in lexicographic order, stopping after 3 words. For speed in production, cache the top suggestions at each node.
+
+**"How do you cut memory?"** Use a hash map of children instead of a fixed array of 26 when the alphabet is large or sparse, or compress chains of single-child nodes (a radix tree).
+
 ## Practice problems
 
 *Implement Trie (Prefix Tree)* is the template. *Design Add and Search Words Data Structure* adds a wildcard search done with DFS over children. *Replace Words* stops at the first end flag along each word. *Word Search II* combines a trie with grid backtracking, using the traversal ideas from [Four Ways to Tour a Family Tree](article:dsa-tree-traversals). *Maximum XOR of Two Numbers in an Array* uses a binary trie and the greedy opposite-bit walk. When you only need exact-match lookups, the hash sets from [The Notebook That Turns O(n²) Into O(n)](article:dsa-hashing-patterns) are simpler.

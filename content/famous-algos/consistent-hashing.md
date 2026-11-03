@@ -152,6 +152,18 @@ Common misconception: "consistent hashing balances load perfectly." It balances 
 - **Membership must be agreed.** Every client must see the same ring, which needs a coordination or gossip mechanism.
 - **Alternatives exist** for specific needs: rendezvous hashing avoids the ring entirely, and jump consistent hash needs no memory when servers are simply numbered.
 
+### Interview follow-ups
+
+**"With N servers and K keys, how many keys move when you add one server?"** About K/(N+1): only the keys on the arc the new server takes over. Plain `hash(key) mod N` would move almost all of them, because nearly every key's remainder changes.
+
+**"Why virtual nodes, and how many?"** Each physical server gets many points on the ring, so its share is the sum of many small arcs and evens out. More points mean better balance but a bigger ring to store and search; systems typically use tens to a few hundred per server. Virtual nodes also let a bigger machine take proportionally more points.
+
+**"How do you replicate data on a ring?"** Store each key on the next R distinct physical servers clockwise. Skip virtual nodes that belong to a server already chosen, or two replicas could land on the same machine.
+
+**"One key gets 100x the traffic. What now?"** Consistent hashing cannot help, because it places keys, not load. Cache the hot key in front, replicate it to several servers and spread reads, or split it into sub-keys such as key#1..key#8.
+
+**"Ring versus rendezvous hashing?"** Rendezvous (highest random weight) scores every server for each key and picks the best: no ring, perfect minimal movement, but O(N) work per lookup. Fine for tens of servers; the ring with binary search scales to many more.
+
 ## Key takeaways
 
 - Plain `hash(key) mod n` moves most keys whenever n changes, which can wipe out a cache or force a huge data migration.

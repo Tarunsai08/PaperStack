@@ -122,6 +122,16 @@ Common misconception: "REST means JSON over HTTP with any URLs." The core ideas 
 Sketch the API for a URL shortener in four lines: create a short link, redirect, get click stats, delete a link. Pick methods and status codes. (One reasonable answer: `POST /links` returns 201 with the code; `GET /{code}` returns 301 or 302 to the target; `GET /links/{code}/stats` returns 200; `DELETE /links/{code}` returns 204. The redirect uses 302 if you need every click to reach your servers for analytics.)
 :::
 
+### Interview follow-ups
+
+**"REST, GraphQL or gRPC for this service?"** REST for public, cacheable, resource-shaped APIs that any client can call. GraphQL when many different screens need different slices of related data and over-fetching hurts mobile clients. gRPC for internal service-to-service calls where speed, strict schemas and streaming matter more than browser friendliness.
+
+**"Offset or cursor pagination?"** Offset (`?page=500`) is simple but slow on deep pages, because the database still walks past the skipped rows, and it skips or repeats items when rows are inserted meanwhile. A cursor (`?after=<last id>`) uses an index seek and stays stable, so feeds and large lists use cursors.
+
+**"How do you version an API without breaking old app installs?"** Only make additive changes inside a version (new optional fields, new endpoints). For breaking changes, add /v2 or a version header, run both, measure who still calls v1, and retire it on an announced schedule.
+
+**"How do you make POST /payments safe to retry?"** Require an Idempotency-Key header. Store the key with the result; a repeat with the same key returns the stored result instead of charging again.
+
 ## In the real world
 
 Large companies often expose REST or GraphQL at the edge for apps and partners, and use gRPC between internal services, translating at an API gateway. Payment providers popularised idempotency keys for exactly the retry problem above. In interviews, writing three or four endpoints with methods, inputs, outputs and pagination in the first ten minutes, as step 3 of the [interview framework](article:system-design-interview-framework), makes the rest of the design concrete.

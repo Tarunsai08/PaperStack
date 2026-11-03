@@ -144,6 +144,16 @@ Common misconception: "more retries make a system more reliable." Past a point t
 - **It does not fix overload.** If a service is permanently under-provisioned, backoff only slows the failure. Circuit breakers and load shedding handle that case.
 - **Tuning matters.** Base, cap and attempt counts depend on how quickly the dependency typically recovers.
 
+### Interview follow-ups
+
+**"Write the retry delay for attempt i with full jitter."** sleep = random(0, min(cap, base · 2^i)). With base 100 ms and cap 10 s, the upper bounds are 0.1, 0.2, 0.4, 0.8, 1.6, 3.2, 6.4 s, then 10 s for every later attempt.
+
+**"Why add jitter at all?"** Without it, every client that failed at the same moment retries at the same moment, so the retries arrive as a new spike. Randomness spreads them out and the server sees a smooth trickle.
+
+**"Which errors should you retry?"** Transient ones: timeouts, connection resets, 503, 429 (respecting Retry-After). Do not retry other 4xx client errors such as 400 or 404; they will fail again. Only retry non-idempotent operations, such as charging a card, if the request carries an idempotency key.
+
+**"What is a retry budget?"** A cap on retries as a fraction of normal traffic, for example retries may add at most 10% extra requests. When the budget is spent, fail fast. It stops retries from multiplying load during an outage.
+
 ## Key takeaways
 
 - Exponential backoff doubles the wait after each failed attempt, up to a cap, giving a struggling service room to recover.

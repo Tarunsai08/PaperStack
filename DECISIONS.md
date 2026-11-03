@@ -89,3 +89,12 @@ Choices made while building, so nobody has to guess later.
 
 ## 2026-11-02: no maximum article length
 The owner asked that articles have no size limit: complete understanding is the goal. The validators (`pipeline/build_index.py`, `app/src/lib/frontmatter.ts`) no longer warn on long articles (`length_long` removed, `WORD_LIMITS` replaced by `WORD_MIN`); only the per-kind minimum remains as a depth floor. Prompts, the critic rubric, `review_score.py` and HANDOFF were updated to match.
+
+## 2026-11-03: Curriculum audit against placement OAs and interviews
+Owner asked whether the curricula are enough to crack top-company OAs (IIT Bombay placements). Web research (candidate OA reports for Google, Microsoft, Amazon; CS-fundamentals round reports; prep-site topic lists) was compared with every curriculum.
+- **DSA (152 written) covers the core topics.** Added 6 entries for real gaps: OA strategy (P0), contribution technique (P0), counting pairs (P1), state-space shortest paths (P1), counting DP over strings with modulo (P1), debugging unfamiliar code (P2; Amazon has reported an AI-assisted debugging round).
+- **CP:** added XOR basis and parallel binary search (both P2).
+- **CS Core:** added sliding-window protocols (Go-Back-N, Selective Repeat) and pointer/predict-the-output questions, both common in OA multiple-choice sections.
+- **System Design, Famous Algorithms:** no gaps found.
+- **Quant/HFT preparation** (probability, puzzles, mental maths for firms such as Graviton or Tower Research) was offered as a new subject; the owner chose to skip it for now.
+- No existing entry was removed, renamed or reordered; new entries were appended at the end of their tracks.

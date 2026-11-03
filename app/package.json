@@ -13,7 +13,8 @@
     "typecheck": "tsc -b",
     "icons": "node scripts/make-icons.mjs && capacitor-assets generate --android --iconBackgroundColor '#FF6719' --iconBackgroundColorDark '#FF6719' --splashBackgroundColor '#FFFFFF' --splashBackgroundColorDark '#111111'",
     "progress": "python3 ../tools/progress.py",
-    "check:cpp": "python3 ../tools/check_cpp.py"
+    "check:cpp": "python3 ../tools/check_cpp.py",
+    "screenshots": "node scripts/screenshots.mjs"
   },
   "dependencies": {
     "@capacitor/android": "^7.6.9",

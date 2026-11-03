@@ -122,6 +122,16 @@ Common misconception: "a single-node SQL database is CA, so it beats CAP." A sin
 Label each as PA/EL, PC/EC or a mix, and say why: a DNS-like configuration store for a CDN, a bank transfer service, a chat app's "last seen" status, and an inventory count during a flash sale. (Plausible answers: config store often PA/EL with short caches; bank PC/EC; last seen PA/EL; inventory PC/EC at the moment of purchase, even if the displayed count is EL.)
 :::
 
+### Interview follow-ups
+
+**"Is MongoDB or Cassandra CP or AP?"** Avoid one-word labels: most systems are configurable. Cassandra with consistency level ONE behaves AP; with QUORUM reads and writes it gives stronger guarantees at the cost of availability during partitions. Say which setting you would choose for which data and why.
+
+**"Why can't you just pick CA?"** In a distributed system, partitions will happen, so you cannot opt out of P. CAP only forces a choice during a partition: refuse some requests (C) or answer with possibly stale data (A).
+
+**"What does PACELC add?"** Else, when there is no partition, you still trade latency against consistency. Waiting for remote replicas to confirm costs milliseconds on every request; answering from the local replica is faster but may be stale.
+
+**"Pick C or A for a bank balance, a like count and a shopping cart."** Bank balance: consistency, refuse rather than show or spend wrong money. Like count: availability, a slightly stale number harms nobody. Cart: availability with merge on conflict, so adding an item never fails.
+
 ## In the real world
 
 Raft-based stores such as etcd behave as CP: a minority partition stops accepting writes. Dynamo-style databases such as Cassandra let each request choose how many replicas must respond, moving between AP-like and CP-like behaviour per operation. Google Spanner aims for strong consistency globally and pays for it with carefully engineered latency. The everyday ELC choice shows up whenever you decide whether reads may come from a nearby replica, as covered in [consistency basics](article:system-design-consistency-basics).

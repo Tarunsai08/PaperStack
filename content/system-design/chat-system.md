@@ -156,6 +156,16 @@ Separate the parts that hold state from the parts that make decisions. Gateways 
 Common misconception: "the WebSocket connection guarantees delivery." A socket can look open while the network beneath it is dead, and a message written to it may never arrive. Delivery is guaranteed only by storing the message durably first, and by the recipient acknowledging it, with sync on reconnect as the safety net.
 :::
 
+### Interview follow-ups
+
+**"How do you guarantee message order in a conversation?"** Assign a per-conversation sequence number on the server, for example by routing each conversation to one partition or using an atomic counter, and have clients display by that number, not by device clocks.
+
+**"How does the sender see 'delivered' and 'read'?"** The recipient's device sends acknowledgements back through the gateway; the server stores the latest delivered and read sequence per user per conversation and forwards an update to the sender.
+
+**"How do group chats with 500 members change the design?"** Fan-out: one message becomes 500 deliveries. Write the message once, then deliver to online members through their gateways and queue push notifications for offline ones. Very large groups or channels switch to members pulling recent messages instead of per-member pushes.
+
+**"What about end-to-end encryption?"** The server then only stores and forwards ciphertext, so server-side search and moderation of content are no longer possible. Key management per device becomes the hard part.
+
 ## Further reading
 
 - Discord engineering, "How Discord Stores Billions of Messages": https://discord.com/blog/how-discord-stores-billions-of-messages

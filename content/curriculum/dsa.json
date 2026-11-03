@@ -4881,6 +4881,210 @@
      "Learning new topics the night before"
     ]
    }
+  },
+  {
+   "id": "dsa-oa-strategy",
+   "slug": "oa-strategy",
+   "title_working": "Cracking Online Assessments: Time, Partial Scores and Hidden Tests",
+   "kind": "primer",
+   "track": "dsa-start",
+   "order": 6,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-big-o",
+    "dsa-problem-solving-framework"
+   ],
+   "brief": {
+    "key_points": [
+     "Read all questions first, order by expected score per minute",
+     "Constraints decide the algorithm before you code",
+     "Partial scoring: ship a correct brute force, then optimise",
+     "Hidden tests: edge cases, overflow, empty input, duplicates",
+     "Custom input and quick self-tests before submitting"
+    ],
+    "analogy": "A cricket chase: read the required rate, bank easy singles, then go for boundaries",
+    "include": [
+     "A 90-minute timeline for a 3-question OA",
+     "Edge-case checklist"
+    ],
+    "traps": [
+     "Spending 60 minutes on the hardest problem first",
+     "Inventing platform-specific rules"
+    ],
+    "exact_facts": [
+     "Keep platform details generic; formats vary by company and year"
+    ]
+   },
+   "subject": "dsa",
+   "status": "written",
+   "written_by": "claude-seed"
+  },
+  {
+   "id": "dsa-debugging-unfamiliar-code",
+   "slug": "debugging-unfamiliar-code",
+   "title_working": "Finding the Bug in Code You Did Not Write",
+   "kind": "primer",
+   "track": "dsa-start",
+   "order": 7,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-oa-strategy"
+   ],
+   "brief": {
+    "key_points": [
+     "Reproduce with the smallest failing input",
+     "Read for invariants: what must be true at each line",
+     "Common bug families: off-by-one, overflow, wrong comparator, stale state, aliasing",
+     "Using an AI assistant critically: verify every suggested fix with a test"
+    ],
+    "analogy": "A detective narrowing suspects with alibis",
+    "include": [
+     "Three buggy snippets with the fix"
+    ],
+    "traps": [
+     "Changing code until the sample passes"
+    ]
+   },
+   "subject": "dsa",
+   "status": "written",
+   "written_by": "claude-seed"
+  },
+  {
+   "id": "dsa-counting-pairs",
+   "slug": "counting-pairs",
+   "title_working": "Counting Pairs: Sort, Two Pointers and Fenwick Trees",
+   "kind": "pattern",
+   "track": "dsa-search-sort",
+   "order": 10,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-two-pointers",
+    "dsa-binary-search",
+    "dsa-fenwick-tree"
+   ],
+   "brief": {
+    "key_points": [
+     "Pairs with sum at most K via sort plus two pointers",
+     "Pairs with difference constraints",
+     "Counting inversions-style pairs with a BIT",
+     "Order of indices matters vs not"
+    ],
+    "analogy": "Pairing dancers by height in a sorted line",
+    "include": [
+     "Count pairs i<j with a[i]+a[j] <= K",
+     "Reverse Pairs (LeetCode 493)",
+     "Count of Smaller Numbers After Self"
+    ],
+    "traps": [
+     "Double counting (i,j) and (j,i)",
+     "Overflow in pair counts"
+    ]
+   },
+   "subject": "dsa",
+   "status": "written",
+   "written_by": "claude-seed"
+  },
+  {
+   "id": "dsa-contribution-technique",
+   "slug": "contribution-technique",
+   "title_working": "The Contribution Technique: Counting Each Element's Share",
+   "kind": "pattern",
+   "track": "dsa-linear",
+   "order": 16,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-monotonic-stack",
+    "dsa-prefix-sums"
+   ],
+   "brief": {
+    "key_points": [
+     "Flip the sum: instead of looping over subarrays, ask how many subarrays each element affects",
+     "Previous and next smaller element give the span",
+     "Strict vs non-strict on one side to handle duplicates",
+     "Sum of subarray ranges, sum of all subarray sums, pair contributions with sorting"
+    ],
+    "analogy": "Splitting a group restaurant bill by what each person actually ate",
+    "include": [
+     "Sum of Subarray Minimums (LeetCode 907)",
+     "Sum of Subarray Ranges (LeetCode 2104)",
+     "Sum of all subarray sums formula a[i]*(i+1)*(n-i)"
+    ],
+    "traps": [
+     "Counting duplicates twice",
+     "Forgetting modulo on large sums"
+    ]
+   },
+   "subject": "dsa",
+   "status": "written",
+   "written_by": "claude-seed"
+  },
+  {
+   "id": "dsa-state-space-search",
+   "slug": "state-space-search",
+   "title_working": "Shortest Paths Over States: Keys, Fuel and Stops",
+   "kind": "pattern",
+   "track": "dsa-graphs",
+   "order": 22,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-bfs",
+    "dsa-dijkstra"
+   ],
+   "brief": {
+    "key_points": [
+     "A node is (place, extra state)",
+     "BFS for unit steps, Dijkstra for weights, 0-1 BFS for 0/1 costs",
+     "Bitmask of keys collected as state",
+     "State count decides feasibility"
+    ],
+    "analogy": "A game save file: same room, different inventory, different situation",
+    "include": [
+     "Shortest Path to Get All Keys (LeetCode 864)",
+     "Shortest Path in a Grid with Obstacles Elimination (LeetCode 1293)",
+     "Minimum cost with a fuel or stop limit"
+    ],
+    "traps": [
+     "Visited keyed on position only",
+     "State explosion without pruning"
+    ]
+   },
+   "subject": "dsa",
+   "status": "written",
+   "written_by": "claude-seed"
+  },
+  {
+   "id": "dsa-counting-dp-strings",
+   "slug": "counting-dp-strings",
+   "title_working": "Counting Valid Strings With DP and a Modulo",
+   "kind": "pattern",
+   "track": "dsa-dp",
+   "order": 24,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-dp-intro",
+    "dsa-modular-fast-power"
+   ],
+   "brief": {
+    "key_points": [
+     "State = position plus the little you must remember (last char, run length, count so far)",
+     "Transitions append one character",
+     "Take modulo at every addition",
+     "Recognise when the answer is a known sequence (Fibonacci for no consecutive ones)"
+    ],
+    "analogy": "Building a necklace bead by bead, only remembering the last few beads",
+    "include": [
+     "Binary strings with no consecutive ones",
+     "Count Vowels Permutation (LeetCode 1220)",
+     "Student Attendance Record II (LeetCode 552)"
+    ],
+    "traps": [
+     "Forgetting modulo after subtraction",
+     "Too much state"
+    ]
+   },
+   "subject": "dsa",
+   "status": "written",
+   "written_by": "claude-seed"
   }
  ]
 }

@@ -156,6 +156,14 @@ Common misconception: "recursion is always slower than loops." Recursion has a s
 
 Recursion is the backbone of the next tracks: generating subsets and permutations, backtracking with pruning, divide and conquer like merge sort, every tree article, and DFS on graphs. Dynamic programming is recursion plus memory. When you meet those articles, the leap of faith is the skill doing the heavy lifting. Its cost analysis connects back to [Reading Constraints Like a Pro](article:dsa-big-o).
 
+### Interview follow-ups
+
+**"What happens if the input is 10⁶ deep?"** Each call uses a stack frame, so a recursion 10⁶ levels deep can overflow the default stack and crash. Convert it to a loop with an explicit stack, or make sure the depth is logarithmic, as in balanced divide and conquer.
+
+**"Recursion or iteration: which is faster?"** Same complexity; recursion pays a small cost per call. Choose recursion when it mirrors the problem (trees, backtracking) and iteration when depth could be large or the loop is just as clear.
+
+**"Your recursive Fibonacci is slow. Why, and how do you fix it?"** It recomputes the same subproblems, giving about 2ⁿ calls. Cache results (memoisation) to get O(n), or build bottom-up. That fix is exactly where dynamic programming starts.
+
 ## Key takeaways
 
 - A recursive function solves a problem by calling itself on smaller inputs, and needs a base case that stops the calls.

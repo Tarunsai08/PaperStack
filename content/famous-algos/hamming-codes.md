@@ -206,6 +206,14 @@ Common misconception: "a code that detects two errors can also correct two." Dis
 - **Bit-level only**: storage and communication errors often damage whole bytes or blocks, where byte-oriented codes such as Reed-Solomon work far better, as in [Why a Stained QR Code Still Scans](article:famous-algos-reed-solomon).
 - **Overhead on small blocks**: 3 check bits for 4 data bits is 75% extra; real systems use long codes such as 8 check bits for 64 data bits.
 
+### Interview follow-ups
+
+**"How many parity bits does single-error correction need for m data bits?"** The smallest r with 2^r ≥ m + r + 1, because the syndrome must name every bit position plus "no error". For 4 data bits r = 3, giving Hamming(7,4). For 64 data bits r = 7; adding one overall parity bit for double-error detection gives the 72-bit words used by ECC memory.
+
+**"What does the syndrome tell you?"** Recompute each parity check; the failing checks, read as a binary number, are the position of the flipped bit. Zero means no single-bit error.
+
+**"Why do ECC systems interleave data?"** A burst that flips neighbouring bits would put two errors in one codeword. Spreading consecutive bits across different codewords turns one burst into several single errors, each correctable.
+
 ## Key takeaways
 
 - A Hamming code places parity bits at power-of-two positions, each checking every position whose binary address has that bit set.

@@ -127,6 +127,16 @@ Common misconception: "DNS changes propagate instantly" or "DNS changes take 48 
 Your site's A record has a TTL of 3,600 seconds. You plan to move to a new server next Monday. What should you do on Friday, and why? (Lower the TTL to about 60 seconds on Friday, so that by Monday every cache holds a short-lived answer. Then switch the record, and clients follow within a minute or so. Raise the TTL again afterwards.)
 :::
 
+### Interview follow-ups
+
+**"Why do DNS changes take time to apply everywhere?"** Resolvers cache answers for the record's TTL. Lower the TTL well before a planned change, wait for the old TTL to expire, then switch.
+
+**"How can DNS help with global load balancing?"** GeoDNS or latency-based routing returns the IP of the nearest healthy region, and health checks remove failed regions from answers. Failover is limited by caching, so it takes about a TTL to take effect.
+
+**"A record, CNAME or alias?"** An A record maps a name to an IPv4 address (AAAA for IPv6). A CNAME points one name at another name. Many providers offer an alias type to point the bare domain at a load balancer, because a CNAME is not allowed at the zone apex.
+
+**"Recursive versus authoritative server?"** The recursive resolver (your ISP's or a public one) does the lookup work and caches results. The authoritative server holds the actual records for a domain and answers only for it.
+
 ## In the real world
 
 Public resolvers run by large providers answer enormous query volumes from caches spread across many locations. CDNs and cloud providers use DNS to steer users to nearby edges, then terminate connections there, as described in [Everything That Happens Before a Page Appears](article:system-design-client-server-http). Inside data centres, service discovery systems often expose services through DNS names, so a service can move without its callers changing configuration.
