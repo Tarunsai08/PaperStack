@@ -12,10 +12,10 @@ Read `HANDOFF.md` first if you are picking this project up.
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
-| system-design | 68 | 0 | 51 | 119 | 60/60 |
+| system-design | 70 | 0 | 49 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 8 | 0 | 71 | 79 | 7/47 |
-| **All** | **471** | **0** | **212** | **683** | |
+| **All** | **473** | **0** | **210** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -46,7 +46,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### system-design
 
-- [ ] `system-design-stream-processing` (P1, deep-dive, sd-blocks): Stream Processing: Windows, Watermarks and Late Data
 - [ ] `system-design-backpressure-load-shedding` (P1, deep-dive, sd-scaling): Backpressure and Load Shedding
 - [ ] `system-design-observability` (P1, deep-dive, sd-scaling): Observability: Logs, Metrics and Traces
 - [ ] `system-design-multi-region` (P1, deep-dive, sd-scaling): Multi-Region Architectures and Disaster Recovery
@@ -56,6 +55,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `system-design-leaderboard` (P1, case-study, sd-cases): Design a Real-Time Leaderboard
 - [ ] `system-design-job-scheduler` (P1, case-study, sd-cases): Design a Distributed Job Scheduler
 - [ ] `system-design-photo-sharing` (P1, case-study, sd-cases): Design Instagram
+- [ ] `system-design-proximity-service` (P1, case-study, sd-cases): Design a Nearby Places Service Like Yelp
 
 ### ml
 
@@ -77,11 +77,11 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `cs-core-memory-basics` (P0, deep-dive, cs-os): Memory Management: Allocation and Fragmentation
 - [ ] `cs-core-paging-tlb` (P0, deep-dive, cs-os): Paging, Page Tables and the TLB
 - [ ] `cs-core-virtual-memory` (P0, deep-dive, cs-os): Virtual Memory and Demand Paging
+- [ ] `cs-core-page-replacement` (P0, deep-dive, cs-os): Page Replacement: FIFO, LRU, Optimal and CLOCK
 - [ ] `cs-core-file-systems` (P0, deep-dive, cs-os): File Systems: Inodes, Directories and Allocation
 - [ ] `cs-core-dbms-intro` (P0, primer, cs-dbms): Why Databases Exist
 - [ ] `cs-core-osi-tcpip` (P0, primer, cs-networks): The OSI and TCP/IP Models
 - [ ] `cs-core-classes-objects` (P0, primer, cs-oop): Classes and Objects in C++
-- [ ] `cs-core-memory-hierarchy` (P0, deep-dive, cs-architecture): The Memory Hierarchy and CPU Caches
 
 ## Written so far
 
@@ -412,7 +412,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>system-design: 68 written</summary>
+<details><summary>system-design: 70 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -441,6 +441,8 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-storage-types` Block, File and Object Storage
 - [x] `system-design-olap-warehouses` Columnar Storage and Data Warehouses
 - [x] `system-design-batch-processing` Batch Processing: MapReduce and Spark
+- [x] `system-design-stream-processing` Stream Processing: Windows, Watermarks and Late Data
+- [x] `system-design-time-series-db` Time-Series Databases for Metrics
 - [x] `system-design-scaling-journey` From One Server to a Million Users
 - [x] `system-design-vertical-horizontal` Vertical vs Horizontal Scaling
 - [x] `system-design-read-replicas` Read Replicas and Replication Lag
@@ -592,8 +594,11 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - system-design-snake-ladder-tictactoe has an article but is still marked planned
 - system-design-atm-lld has an article but is still marked planned
 - system-design-logger-lld has an article but is still marked planned
+- system-design-cache-lld has an article but is still marked planned
 - cs-core-monitors-condition-variables has an article but is still marked planned
 - cs-core-classic-sync-problems has an article but is still marked planned
 - cs-core-deadlocks has an article but is still marked planned
 - cs-core-memory-basics has an article but is still marked planned
 - cs-core-paging-tlb has an article but is still marked planned
+- cs-core-segmentation has an article but is still marked planned
+- cs-core-virtual-memory has an article but is still marked planned
