@@ -10,12 +10,12 @@ Read `HANDOFF.md` first if you are picking this project up.
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
 | dsa | 152 | 0 | 0 | 152 | 72/72 |
-| cp | 104 | 0 | 11 | 115 | 29/29 |
+| cp | 107 | 0 | 8 | 115 | 29/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **413** | **0** | **260** | **673** | |
+| **All** | **416** | **0** | **257** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -29,14 +29,11 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### cp
 
-- [ ] `cp-finding-borders` (P1, problem-walkthrough, cp-strings): Finding Borders With the Prefix Function
-- [ ] `cp-longest-palindrome-cses` (P1, problem-walkthrough, cp-strings): Longest Palindrome in Linear Time
 - [ ] `cp-meet-in-the-middle` (P1, pattern, cp-misc): Meet in the Middle
 - [ ] `cp-randomized-techniques` (P1, pattern, cp-misc): Randomised Techniques in Contests
 - [ ] `cp-bitwise-tricks-cp` (P1, pattern, cp-misc): Bitwise Tricks for Contests
 - [ ] `cp-polygon-area` (P1, problem-walkthrough, cp-misc): Polygon Area With the Shoelace Formula
 - [ ] `cp-apple-division` (P1, problem-walkthrough, cp-misc): Apple Division: Brute Force Done Right
-- [ ] `cp-minimal-rotation` (P2, problem-walkthrough, cp-strings): Minimal Rotation of a String
 - [ ] `cp-ternary-search` (P2, pattern, cp-misc): Ternary Search on Unimodal Functions
 - [ ] `cp-sweep-line-geometry` (P2, pattern, cp-misc): Sweep Line: Closest Pair and Intersections
 
@@ -238,7 +235,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cp: 104 written</summary>
+<details><summary>cp: 107 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -329,6 +326,9 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cp-high-score` High Score: Positive Cycles and Bellman-Ford
 - [x] `cp-company-queries` Company Queries: Binary Lifting by Example
 - [x] `cp-download-speed` Download Speed: Max Flow in Practice
+- [x] `cp-finding-borders` Finding Borders With the Prefix Function
+- [x] `cp-longest-palindrome-cses` Longest Palindrome in Linear Time
+- [x] `cp-minimal-rotation` Minimal Rotation of a String
 - [x] `cp-nim-games` Nim and Its Variants
 - [x] `cp-invariants-observations` Invariants and Observations: The Heart of Div 2
 - [x] `cp-prefix-xor-tricks` Prefix XOR and Subarray Tricks

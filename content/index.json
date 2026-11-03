@@ -1,7 +1,7 @@
 {
- "content_version": "bc0e805809582624",
+ "content_version": "a403254e9a3972fa",
  "generated_at": "2026-11-02",
- "count": 413,
+ "count": 416,
  "subjects": [
   {
    "id": "ml",
@@ -37130,6 +37130,342 @@
    "hash": "af075f0ed634",
    "word_count": 1553,
    "excerpt": "The suffix array from A Dictionary of Every Ending of a Word answers questions about all substrings after sorting. The suffix automaton answers many of the same questions with a different shape: a map of junctions and one-way roads, where every route from the start spells a substring, and every…"
+  },
+  {
+   "id": "cp-finding-borders",
+   "kind": "problem-walkthrough",
+   "subject": "cp",
+   "slug": "finding-borders",
+   "title": "Matching the Start and End of a Word Like Bookends",
+   "subtitle": "CSES Finding Borders and Finding Periods end to end: why checking every length naively is quadratic, the prefix-function chain that lists every border, the Z-function and hashing alternatives, and the one-line step from borders to periods",
+   "track": "cp-strings",
+   "track_order": 9,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-prefix-function"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "strings",
+    "borders",
+    "periods",
+    "prefix function",
+    "CSES"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Finding Borders",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1732",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Finding Periods",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1733",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Repeated Substring Pattern",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/repeated-substring-pattern/",
+     "difficulty": "Easy"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Border",
+     "definition": "A proper prefix of a string that is also its suffix; the whole string itself does not count."
+    },
+    {
+     "term": "Border chain",
+     "definition": "pi[n − 1], pi[pi[n − 1] − 1], ..., the list of every border length from longest to shortest."
+    },
+    {
+     "term": "Period",
+     "definition": "A length p such that the string is a prefix of its first p letters repeated; p is a period exactly when n − p is a border length, or p = n."
+    },
+    {
+     "term": "Proper prefix",
+     "definition": "A prefix strictly shorter than the whole string; borders must be proper."
+    },
+    {
+     "term": "Border of a border",
+     "definition": "Any border of a border of s is itself a border of s, which is why the chain finds them all."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does following pi from the end list every border and nothing else?",
+     "options": [
+      "Because pi is sorted",
+      "The longest border is pi[n − 1], and the longest border shorter than any border k is the longest border of that border, pi[k − 1]; borders of borders are borders, so the chain visits each one in decreasing order",
+      "Because each value is used once",
+      "It lists only some borders"
+     ],
+     "answer": 1,
+     "explain": "Every border shorter than k is a prefix and a suffix of the border of length k, hence one of its borders. So stepping to pi[k − 1] never skips a border."
+    },
+    {
+     "q": "For a string of length 10 with borders 2 and 5, what are its periods?",
+     "options": [
+      "2 and 5",
+      "5, 8 and 10: each border k gives the period 10 − k, and the whole length always counts",
+      "10 only",
+      "1, 2 and 5"
+     ],
+     "answer": 1,
+     "explain": "A border of length k means s[i] = s[i + n − k] wherever both exist, which is the definition of period n − k."
+    },
+    {
+     "q": "Why is checking every length k with a direct comparison too slow for n = 10⁶?",
+     "options": [
+      "It is not too slow",
+      "Each comparison costs up to k letters, and on a string like aaaa...a every k matches fully, so the total is about n²/2 comparisons",
+      "Because of memory",
+      "Because strings are immutable"
+     ],
+     "answer": 1,
+     "explain": "With all letters equal, every length is a border and every comparison runs to the end: about 5·10¹¹ letter checks."
+    }
+   ],
+   "cover_seed": "cp-finding-borders",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.55,
+   "path": "cp/finding-borders.md",
+   "hash": "bb5724f3b56d",
+   "word_count": 1173,
+   "excerpt": "Put a book between two bookends and the left one mirrors the right one. A word has bookends too: \"abcababcab\" starts with \"ab\" and ends with \"ab\", and also starts and ends with \"abcab\". Those matching beginnings and endings are borders, and they reveal how the word repeats itself. CSES Finding…"
+  },
+  {
+   "id": "cp-longest-palindrome-cses",
+   "kind": "problem-walkthrough",
+   "subject": "cp",
+   "slug": "longest-palindrome-cses",
+   "title": "A Mirror Walk Through the String",
+   "subtitle": "CSES Longest Palindrome end to end: why expanding around every centre fails on a million equal letters, binary search plus forward and backward hashes in O(n log n), Manacher's linear pass, and the index arithmetic that maps the answer back to the original string",
+   "track": "cp-strings",
+   "track_order": 10,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-manacher"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "strings",
+    "palindromes",
+    "Manacher",
+    "hashing",
+    "CSES"
+   ],
+   "complexity": {
+    "time": "O(n) with Manacher",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Longest Palindrome",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1111",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Longest Palindromic Substring",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/longest-palindromic-substring/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Shortest Palindrome",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/shortest-palindrome/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Centre",
+     "definition": "The middle of a palindrome; a string of length n has 2n − 1 centres, n letters and n − 1 gaps."
+    },
+    {
+     "term": "Expansion",
+     "definition": "Growing a palindrome outwards from a centre while the letters on both sides match."
+    },
+    {
+     "term": "Monotone radius",
+     "definition": "If a palindrome of radius k exists at a centre, so does every smaller radius; this is what makes binary search on the radius valid."
+    },
+    {
+     "term": "Reverse fingerprint",
+     "definition": "A hash of a substring read backwards, computed from suffix hashes; a substring is a palindrome when its forward and reverse fingerprints agree."
+    },
+    {
+     "term": "Index mapping",
+     "definition": "Converting a centre and radius in the transformed string #s₀#s₁#...# back to a start and length in s: start (i − p[i]) / 2, length p[i]."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does expanding around every centre time out on CSES?",
+     "options": [
+      "It is wrong for even lengths",
+      "On a string of a million equal letters, every centre expands to the nearest end, so the work is about n²/2, far beyond the time limit",
+      "It uses too much memory",
+      "It does not find the leftmost answer"
+     ],
+     "answer": 1,
+     "explain": "Expansion is O(total radius). With all letters equal, the radii add up to about 2.5·10¹¹ for n = 10⁶."
+    },
+    {
+     "q": "Why can the radius at a centre be found by binary search?",
+     "options": [
+      "Because the string is sorted",
+      "Palindromes at a centre are nested: if radius k works, every smaller radius works, so the predicate is monotone",
+      "Because hashing is exact",
+      "It cannot"
+     ],
+     "answer": 1,
+     "explain": "Removing one letter from each end of a palindrome leaves a palindrome. That monotonicity is exactly what binary search needs."
+    },
+    {
+     "q": "Manacher reports the largest radius p = 7 at transformed index i = 9. Which substring of s is the answer?",
+     "options": [
+      "s.substr(9, 7)",
+      "s.substr((9 − 7) / 2, 7) = s.substr(1, 7)",
+      "s.substr(4, 7)",
+      "s.substr(9 / 2, 7 / 2)"
+     ],
+     "answer": 1,
+     "explain": "In #s₀#s₁#..., the radius equals the length in s, and the leftmost character of the window is a '#' at index 2·start."
+    }
+   ],
+   "cover_seed": "cp-longest-palindrome-cses",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.55,
+   "path": "cp/longest-palindrome-cses.md",
+   "hash": "10ddc12b293d",
+   "word_count": 1366,
+   "excerpt": "The longest palindrome inside a string sounds like an interview warm-up, and at interview sizes it is: expand around each centre and keep the best. CSES Longest Palindrome raises the length to a million letters and includes the input that breaks expansion, a long run of one letter. This walkthrough…"
+  },
+  {
+   "id": "cp-minimal-rotation",
+   "kind": "problem-walkthrough",
+   "subject": "cp",
+   "slug": "minimal-rotation",
+   "title": "Turning a Necklace to Its Alphabetically Smallest Start",
+   "subtitle": "CSES Minimal Rotation end to end: why comparing every rotation is quadratic, comparing rotations in O(log n) with hashes and binary search, and the linear two-pointer method that discards a whole block of losing starts after every mismatch",
+   "track": "cp-strings",
+   "track_order": 11,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-string-hashing"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 7,
+   "topics": [
+    "strings",
+    "rotations",
+    "two pointers",
+    "hashing",
+    "CSES"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Minimal Rotation",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1110",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Orderly Queue",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/orderly-queue/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Rotate String",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/rotate-string/",
+     "difficulty": "Easy"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Rotation",
+     "definition": "The string obtained by moving the first i letters of s to its end; s has n rotations, one per starting position."
+    },
+    {
+     "term": "Doubled string",
+     "definition": "t = s + s; the rotation starting at i is exactly t[i..i + n), so no rotation ever has to be built."
+    },
+    {
+     "term": "Candidate start",
+     "definition": "One of the two positions i and j that the two-pointer method keeps as possible starts of the minimal rotation."
+    },
+    {
+     "term": "Block discard",
+     "definition": "After t[i..i + k) = t[j..j + k) and t[i + k] > t[j + k], every start from i to i + k is beaten by the matching start from j, so all k + 1 of them are skipped."
+    },
+    {
+     "term": "Necklace",
+     "definition": "A string considered up to rotation; the minimal rotation is its canonical form, so two strings are rotations of each other exactly when their minimal rotations are equal."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "After t[i..i + k) equals t[j..j + k) and t[i + k] > t[j + k], why may starts i + 1 to i + k also be discarded?",
+     "options": [
+      "They are never minimal by luck",
+      "The rotation starting at i + d agrees with the one at j + d for k − d letters and then has the larger letter, so each is beaten by its partner from j's side",
+      "Because i + k is the maximum",
+      "They may not be discarded"
+     ],
+     "answer": 1,
+     "explain": "Shifting both comparisons by d keeps the same mismatch, just d letters earlier. So every start in the block loses to a start that is still alive."
+    },
+    {
+     "q": "Why compare rotations inside the doubled string s + s?",
+     "options": [
+      "To sort them",
+      "The rotation starting at i is the substring of s + s from i of length n, so comparing rotations becomes comparing substrings, with no copying",
+      "To double the speed",
+      "Because of hashing"
+     ],
+     "answer": 1,
+     "explain": "Building each rotation costs O(n). Reading it from s + s costs nothing, and hashes or character comparisons work directly on t."
+    },
+    {
+     "q": "What does the hashing method compute for each pair of rotations?",
+     "options": [
+      "Their sum",
+      "Their longest common prefix, by binary search with substring hashes; the first different letter then decides which rotation is smaller",
+      "Their length",
+      "Their sorted order directly"
+     ],
+     "answer": 1,
+     "explain": "Equal hashes of a prefix length mean the rotations agree that far, with high probability. The first position after the common prefix settles the comparison."
+    }
+   ],
+   "cover_seed": "cp-minimal-rotation",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.48,
+   "path": "cp/minimal-rotation.md",
+   "hash": "b8132dbb1a1d",
+   "word_count": 1444,
+   "excerpt": "A necklace of lettered beads has no beginning: you can start reading it anywhere. To file necklaces in a catalogue, you agree to read each one from the start that gives the alphabetically smallest string. That reading is the minimal rotation, and it answers \"are these two strings rotations of each…"
   },
   {
    "id": "cp-game-theory",

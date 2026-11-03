@@ -2820,8 +2820,8 @@
    "prerequisites": [
     "cp-prefix-function"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Follow failure links from the end"
@@ -2848,8 +2848,8 @@
    "prerequisites": [
     "cp-manacher"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Transform string",
@@ -2876,8 +2876,8 @@
    "prerequisites": [
     "cp-string-hashing"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Booth's algorithm or hashing with binary search"
