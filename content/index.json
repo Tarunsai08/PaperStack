@@ -1,7 +1,7 @@
 {
- "content_version": "b7fb088a0a617a02",
+ "content_version": "1b8c2147f517fbdd",
  "generated_at": "2026-11-03",
- "count": 504,
+ "count": 506,
  "subjects": [
   {
    "id": "ml",
@@ -52020,6 +52020,189 @@
    "hash": "c771dbb95849",
    "word_count": 1122,
    "excerpt": "In the early 2000s, Google needed to store and crawl the web: files of many gigabytes, written by many machines at once, read sequentially by batch jobs, on thousands of cheap disks that failed every day. No existing file system fit. So they built the Google File System, described by Ghemawat,…"
+  },
+  {
+   "id": "system-design-bigtable",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "bigtable",
+   "title": "A Giant Sorted Spreadsheet Cut Into Pages",
+   "subtitle": "Bigtable: a sparse, sorted map of rows and column families, split into tablets, stored as memtables and SSTables, and why row key design decides everything",
+   "track": "sd-distributed",
+   "track_order": 22,
+   "priority": "P2",
+   "prerequisites": [
+    "system-design-gfs-hdfs",
+    "famous-algos-lsm-trees"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "bigtable",
+    "wide column",
+    "lsm tree",
+    "row key design",
+    "papers"
+   ],
+   "glossary": [
+    {
+     "term": "Row key",
+     "definition": "The string that identifies a row. Rows are stored sorted by row key, so keys that sort together are stored together."
+    },
+    {
+     "term": "Column family",
+     "definition": "A group of columns declared in the schema and stored together; columns inside a family can be created freely per row."
+    },
+    {
+     "term": "Tablet",
+     "definition": "A contiguous range of rows, the unit of distribution and load balancing; large tablets split, small ones merge."
+    },
+    {
+     "term": "Memtable",
+     "definition": "The in-memory sorted buffer of recent writes, flushed to disk as an immutable SSTable when it fills."
+    },
+    {
+     "term": "SSTable",
+     "definition": "An immutable, sorted file of key-value pairs with an index, stored on the distributed file system."
+    },
+    {
+     "term": "Hotspot",
+     "definition": "One tablet or server receiving a disproportionate share of traffic, usually because many writes share a key prefix."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A table uses row keys that start with the current timestamp. What happens under heavy writes?",
+     "options": [
+      "Load spreads evenly",
+      "Every new write goes to the end of the key space, so one tablet on one server takes all writes: a hotspot",
+      "Reads become impossible",
+      "Bigtable rejects the keys"
+     ],
+     "answer": 1,
+     "explain": "Sorted storage puts neighbouring keys together. Monotonically increasing keys always land on the last tablet. Prefix with a hash or an entity id instead."
+    },
+    {
+     "q": "Why did the Bigtable paper's web table use reversed domain names like com.cnn.www as row keys?",
+     "options": [
+      "Shorter keys",
+      "So pages from the same domain sort next to each other, making scans over one site efficient",
+      "Encryption",
+      "Because of DNS rules"
+     ],
+     "answer": 1,
+     "explain": "Reversing the domain groups maps.google.com, news.google.com and www.google.com together under com.google, a good fit for sorted-range storage."
+    },
+    {
+     "q": "Where does a newly written cell live first?",
+     "options": [
+      "In an SSTable on GFS",
+      "In the tablet server's commit log and memtable, then later in an SSTable when the memtable is flushed",
+      "In the master",
+      "In a client cache"
+     ],
+     "answer": 1,
+     "explain": "This is the LSM-tree write path: durable log plus in-memory sorted buffer, flushed to immutable sorted files and compacted over time."
+    }
+   ],
+   "cover_seed": "bigtable",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.6,
+   "path": "system-design/bigtable.md",
+   "hash": "ec97870a132f",
+   "word_count": 1168,
+   "excerpt": "Google in 2006 had to store the web crawl, map tiles, user analytics and more: billions of rows, columns that differ from row to row, and petabytes of data. Relational databases of the time wanted fixed schemas on single machines. Bigtable, described by Chang and colleagues in 2006, answered with…"
+  },
+  {
+   "id": "system-design-flp-impossibility",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "flp-impossibility",
+   "title": "Waiting Forever for a Friend Who Might Just Be Slow",
+   "subtitle": "The FLP result: why no algorithm can guarantee consensus in a fully asynchronous system with one crash, and how Raft and Paxos stay useful anyway",
+   "track": "sd-distributed",
+   "track_order": 23,
+   "priority": "P2",
+   "prerequisites": [
+    "system-design-consensus-overview"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "flp",
+    "consensus",
+    "impossibility",
+    "asynchronous systems",
+    "papers"
+   ],
+   "glossary": [
+    {
+     "term": "Asynchronous system",
+     "definition": "A model with no upper bound on message delays or processing speed: a message may take arbitrarily long, so a slow process cannot be told apart from a crashed one."
+    },
+    {
+     "term": "Safety",
+     "definition": "Nothing bad ever happens, for example two nodes never decide different values."
+    },
+    {
+     "term": "Liveness",
+     "definition": "Something good eventually happens, for example every correct node eventually decides."
+    },
+    {
+     "term": "Partial synchrony",
+     "definition": "A more realistic model where delays are unbounded only for some unknown period; after it, messages arrive within some bound."
+    },
+    {
+     "term": "Randomised consensus",
+     "definition": "Consensus algorithms that use random choices so that, with probability 1, they eventually decide, sidestepping the deterministic impossibility."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What exactly does the FLP result say is impossible?",
+     "options": [
+      "Consensus in any real system",
+      "A deterministic algorithm that always reaches consensus in a fully asynchronous system where even one process may crash",
+      "Consensus with three nodes",
+      "Leader election"
+     ],
+     "answer": 1,
+     "explain": "The conditions matter: deterministic, fully asynchronous, at least one crash possible, and a guarantee of always terminating. Drop any of them and consensus becomes possible."
+    },
+    {
+     "q": "How do practical algorithms such as Raft live with FLP?",
+     "options": [
+      "They ignore crashes",
+      "They never violate safety, and they rely on timeouts and randomised elections so that progress happens whenever the network behaves well enough for a while",
+      "They require perfect clocks",
+      "They only run on one machine"
+     ],
+     "answer": 1,
+     "explain": "Raft can, in theory, keep electing without deciding, but randomised timeouts make that vanishingly unlikely when delays are reasonable."
+    },
+    {
+     "q": "Which property do systems like Raft refuse to give up, even under bad network conditions?",
+     "options": [
+      "Liveness",
+      "Safety: never deciding two different values",
+      "Speed",
+      "Availability"
+     ],
+     "answer": 1,
+     "explain": "During long partitions or extreme delays they may stop making progress, but they never let two leaders commit conflicting values."
+    }
+   ],
+   "cover_seed": "flp-impossibility",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.55,
+   "path": "system-design/flp-impossibility.md",
+   "hash": "dd924131b65a",
+   "word_count": 1084,
+   "excerpt": "In 1985, Michael Fischer, Nancy Lynch and Michael Paterson proved a result that sounds like it should have ended distributed computing: in a fully asynchronous system, no deterministic algorithm can guarantee that a group of processes will agree on a value if even one of them might crash. Yet etcd,…"
   },
   {
    "id": "cs-core-what-an-os-does",
