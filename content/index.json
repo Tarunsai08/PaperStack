@@ -1,7 +1,7 @@
 {
- "content_version": "b38bc2e20ced4458",
+ "content_version": "cccdf50e7936db0b",
  "generated_at": "2026-11-02",
- "count": 420,
+ "count": 422,
  "subjects": [
   {
    "id": "ml",
@@ -38769,6 +38769,230 @@
    "hash": "037ffbb22d17",
    "word_count": 1990,
    "excerpt": "Four piles of matchsticks sit on a table: 6, 9, 13 and 7. You and a friend take turns removing as many sticks as you like from any single pile, and whoever takes the last stick wins. Your friend says \"you go first\". Should you agree? You may know the rule from Counting Backwards From the Last Move:…"
+  },
+  {
+   "id": "cp-polygon-area",
+   "kind": "problem-walkthrough",
+   "subject": "cp",
+   "slug": "polygon-area",
+   "title": "Lacing a Shoe Through the Polygon's Corners",
+   "subtitle": "CSES Polygon Area and Polygon Lattice Points end to end: the shoelace sum of cross products, why the sign tells the orientation, exact integer arithmetic with the doubled area, boundary points from gcds, and Pick's theorem for the points inside",
+   "track": "cp-misc",
+   "track_order": 13,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-geometry-basics"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "geometry",
+    "shoelace formula",
+    "Pick's theorem",
+    "cross product",
+    "CSES"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Polygon Area",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2191",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Polygon Lattice Points",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2193",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Point in Polygon",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2192",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Shoelace formula",
+     "definition": "Twice the signed area of a polygon equals the sum over consecutive vertices of x_i·y_{i+1} − x_{i+1}·y_i."
+    },
+    {
+     "term": "Signed area",
+     "definition": "The area with a sign: positive when the vertices are listed counter-clockwise, negative when clockwise."
+    },
+    {
+     "term": "Doubled area",
+     "definition": "2A, which is always an integer for integer vertices, so it can be computed and printed exactly."
+    },
+    {
+     "term": "Boundary lattice points",
+     "definition": "Integer points on the polygon's edges; an edge from p to q holds gcd(|dx|, |dy|) of them, counting one endpoint."
+    },
+    {
+     "term": "Pick's theorem",
+     "definition": "For a simple polygon with integer vertices, A = I + B/2 − 1, where I counts interior lattice points and B boundary lattice points."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What does a negative shoelace sum mean?",
+     "options": [
+      "The polygon is invalid",
+      "The vertices are listed clockwise; the area is the absolute value",
+      "The polygon is not convex",
+      "There was an overflow"
+     ],
+     "answer": 1,
+     "explain": "Each cross product is the signed doubled area of a triangle with the origin. Going clockwise flips every sign, so the total is the negative of the area."
+    },
+    {
+     "q": "How many lattice points lie on the edge from (4, 3) to (1, 5), counting one endpoint?",
+     "options": [
+      "3",
+      "gcd(3, 2) = 1: only the endpoint, since the step (3, 2) cannot be divided into smaller integer steps",
+      "5",
+      "2"
+     ],
+     "answer": 1,
+     "explain": "Lattice points on a segment are evenly spaced by (dx/g, dy/g) with g = gcd(|dx|, |dy|), so there are g steps and g points if one endpoint is counted."
+    },
+    {
+     "q": "Using Pick's theorem, how is the interior count I computed exactly in integers?",
+     "options": [
+      "I = A − B",
+      "I = (2A − B + 2) / 2, using the doubled area 2A, which is an integer",
+      "I = A + B/2",
+      "I = 2A − B"
+     ],
+     "answer": 1,
+     "explain": "From A = I + B/2 − 1, multiply by 2: 2A = 2I + B − 2. All quantities are integers, so I = (2A − B + 2)/2 without any floating point."
+    }
+   ],
+   "cover_seed": "cp-polygon-area",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.55,
+   "path": "cp/polygon-area.md",
+   "hash": "902e7f901a63",
+   "word_count": 1268,
+   "excerpt": "Given the corners of a field as integer coordinates, how big is it? Splitting a general polygon into triangles by hand is messy, especially when it is not convex. A single formula does it in one pass, and it got its name from the criss-cross pattern of multiplications, like laces across a shoe.…"
+  },
+  {
+   "id": "cp-apple-division",
+   "kind": "problem-walkthrough",
+   "subject": "cp",
+   "slug": "apple-division",
+   "title": "Trying Every Split of a Fruit Basket",
+   "subtitle": "CSES Apple Division end to end: reading the constraints to see that 2^20 splits is the intended solution, why a subset-sum DP is the wrong tool when weights reach 10⁹, three ways to enumerate splits, halving the work by symmetry, and when to switch to meet in the middle",
+   "track": "cp-misc",
+   "track_order": 14,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-subsets-permutations"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "brute force",
+    "subsets",
+    "bitmasks",
+    "Gray code",
+    "CSES"
+   ],
+   "complexity": {
+    "time": "O(2^n)",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Apple Division",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1623",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Meet in the Middle",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1628",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Last Stone Weight II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/last-stone-weight-ii/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Split",
+     "definition": "An assignment of every apple to one of two groups; there are 2^n splits of n apples."
+    },
+    {
+     "term": "Bitmask enumeration",
+     "definition": "Looping over every integer from 0 to 2^n − 1 and reading bit i as 'apple i goes to group 1'."
+    },
+    {
+     "term": "Symmetry halving",
+     "definition": "Swapping the two groups gives the same difference, so apple 0 can be fixed in group 1, leaving 2^(n−1) splits."
+    },
+    {
+     "term": "Gray code",
+     "definition": "An ordering of all bitmasks in which consecutive masks differ in exactly one bit; the k-th mask is k xor (k >> 1)."
+    },
+    {
+     "term": "Constraint reading",
+     "definition": "Using the input limits to choose the algorithm: n ≤ 20 invites 2^n, values up to 10⁹ rule out DP over sums."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why is a subset-sum DP over weights a poor fit here?",
+     "options": [
+      "DP is always slower",
+      "The weights go up to 10⁹, so a table indexed by sum would need up to about 2·10¹⁰ entries; with only 20 apples, enumerating 2^20 splits is far smaller",
+      "DP cannot find a minimum",
+      "Because the answer can be zero"
+     ],
+     "answer": 1,
+     "explain": "DP over sums costs n times the total weight. With 20 apples of up to 10⁹ each, that is astronomically more than about a million splits."
+    },
+    {
+     "q": "How does fixing apple 0 in group 1 change the work?",
+     "options": [
+      "It changes the answer",
+      "It halves the number of splits to 2^(n−1), because every split and its mirror image have the same difference",
+      "It makes it quadratic",
+      "It only helps for even n"
+     ],
+     "answer": 1,
+     "explain": "Swapping the groups maps a split to another split with the same |g1 − g2|. Choosing one representative of each pair is enough."
+    },
+    {
+     "q": "What does Gray code order buy over plain bitmask order?",
+     "options": [
+      "A different answer",
+      "Consecutive masks differ in one apple, so the group sum is updated by adding or removing one weight instead of being recomputed from scratch, giving O(2^n) instead of O(2^n · n)",
+      "Less memory",
+      "It sorts the apples"
+     ],
+     "answer": 1,
+     "explain": "Bit i of mask k flips exactly at the steps where k's lowest set bit is i, and gray(k) = k xor (k >> 1) gives the masks in that order."
+    }
+   ],
+   "cover_seed": "cp-apple-division",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.5,
+   "path": "cp/apple-division.md",
+   "hash": "678d00696ea5",
+   "word_count": 1191,
+   "excerpt": "A basket holds a handful of apples of different weights, and you must share them between two people as evenly as possible. Many people's first instinct is clever: sort the apples, deal them alternately, or run a knapsack DP. The intended solution of CSES Apple Division is none of those. It is to…"
   },
   {
    "id": "cp-practice-plan",
