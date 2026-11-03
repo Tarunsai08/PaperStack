@@ -1955,8 +1955,8 @@
     "system-design-payments",
     "system-design-sagas"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Cart, inventory reservation, order, payment",
@@ -1985,8 +1985,8 @@
     "system-design-ride-sharing",
     "system-design-notification-system"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Restaurant search",

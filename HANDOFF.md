@@ -15,10 +15,10 @@ You are continuing a project another Claude session started. Everything you need
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
-| system-design | 104 | 0 | 15 | 119 | 60/60 |
+| system-design | 106 | 0 | 13 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 16 | 0 | 63 | 79 | 13/47 |
-| **All** | **515** | **0** | **168** | **683** | |
+| **All** | **517** | **0** | **166** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -38,11 +38,11 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `famous-algos-paxos` (P1, concept, fa-distributed): Paxos: The Original Consensus Algorithm
 
 #### system-design
-- [ ] `system-design-ecommerce-checkout` (P1, case-study, sd-cases): Design an E-Commerce Checkout
-- [ ] `system-design-food-delivery` (P1, case-study, sd-cases): Design a Food Delivery App Like Swiggy or Zomato
 - [ ] `system-design-distributed-message-queue` (P1, case-study, sd-cases): Design a Distributed Message Queue Like Kafka
 - [ ] `system-design-metrics-monitoring` (P1, case-study, sd-cases): Design a Metrics and Alerting System
 - [ ] `system-design-distributed-cache-design` (P1, case-study, sd-cases): Design a Distributed Cache
+- [ ] `system-design-stock-exchange` (P2, case-study, sd-cases): Design a Stock Exchange
+- [ ] `system-design-ad-click-aggregation` (P2, case-study, sd-cases): Design an Ad Click Aggregator
 
 #### ml
 - [ ] `paper-layer-normalization` (P2, paper, deep-learning): Layer Normalization
