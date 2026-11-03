@@ -12,10 +12,10 @@ Read `HANDOFF.md` first if you are picking this project up.
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
-| system-design | 79 | 0 | 40 | 119 | 60/60 |
+| system-design | 89 | 0 | 30 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 16 | 0 | 63 | 79 | 13/47 |
-| **All** | **490** | **0** | **193** | **683** | |
+| **All** | **500** | **0** | **183** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -411,7 +411,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>system-design: 79 written</summary>
+<details><summary>system-design: 89 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -477,6 +477,15 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-vending-machine` Design a Vending Machine With the State Pattern
 - [x] `system-design-splitwise` Design Splitwise
 - [x] `system-design-bookmyshow-lld` Design BookMyShow (Low-Level)
+- [x] `system-design-library-management` Design a Library Management System
+- [x] `system-design-snake-ladder-tictactoe` Design Board Games: Snake and Ladder, Tic-Tac-Toe
+- [x] `system-design-atm-lld` Design an ATM
+- [x] `system-design-logger-lld` Design a Logging Framework
+- [x] `system-design-cache-lld` Design an In-Memory Cache With Eviction Policies
+- [x] `system-design-rate-limiter-lld` Design a Rate Limiter (Low-Level)
+- [x] `system-design-pub-sub-lld` Design a Pub-Sub Message Broker (Low-Level)
+- [x] `system-design-shopping-cart-lld` Design a Shopping Cart and Inventory
+- [x] `system-design-concurrency-lld` Concurrency in Machine Coding: Locks, Atomics and Thread Pools
 - [x] `system-design-replication` Replication: Leaders, Followers and Lag
 - [x] `system-design-multi-leader-leaderless` Multi-Leader and Leaderless Replication
 - [x] `system-design-quorums` Quorums: Why R + W > N Works
@@ -492,6 +501,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-distributed-locks-sd` Distributed Locks and Leader Election
 - [x] `system-design-time-ordering` Time and Ordering in Distributed Systems
 - [x] `system-design-failure-detection` Failures, Partitions and Split Brain
+- [x] `system-design-anti-entropy` Read Repair, Hinted Handoff and Anti-Entropy
 
 </details>
 
@@ -603,15 +613,3 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cs-core-page-replacement` Page Replacement: FIFO, LRU, Optimal and CLOCK
 
 </details>
-
-## Mismatches to fix
-
-- system-design-library-management has an article but is still marked planned
-- system-design-snake-ladder-tictactoe has an article but is still marked planned
-- system-design-atm-lld has an article but is still marked planned
-- system-design-logger-lld has an article but is still marked planned
-- system-design-cache-lld has an article but is still marked planned
-- system-design-rate-limiter-lld has an article but is still marked planned
-- system-design-pub-sub-lld has an article but is still marked planned
-- system-design-shopping-cart-lld has an article but is still marked planned
-- system-design-concurrency-lld has an article but is still marked planned

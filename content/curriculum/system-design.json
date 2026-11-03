@@ -2628,8 +2628,8 @@
    "prerequisites": [
     "system-design-machine-coding-approach"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Books vs copies",
@@ -2658,8 +2658,8 @@
    "prerequisites": [
     "system-design-machine-coding-approach"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Board, players, dice, rules",
@@ -2716,8 +2716,8 @@
    "prerequisites": [
     "system-design-vending-machine"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "States",
@@ -2746,8 +2746,8 @@
     "system-design-behavioural-patterns",
     "system-design-structural-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Levels",
@@ -2777,8 +2777,8 @@
     "dsa-lru-cache",
     "system-design-behavioural-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Strategy for eviction",
@@ -2807,8 +2807,8 @@
     "system-design-rate-limiter",
     "system-design-behavioural-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Strategy per algorithm",
@@ -2836,8 +2836,8 @@
    "prerequisites": [
     "system-design-behavioural-patterns"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Topics, publishers, subscribers",
@@ -2865,8 +2865,8 @@
    "prerequisites": [
     "system-design-machine-coding-approach"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Products, cart, pricing rules, discounts strategy",
@@ -2893,8 +2893,8 @@
    "prerequisites": [
     "system-design-machine-coding-approach"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Race conditions",
@@ -3398,8 +3398,8 @@
     "system-design-quorums",
     "famous-algos-merkle-trees"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Repair on read",
