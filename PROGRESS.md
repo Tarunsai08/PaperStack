@@ -12,10 +12,10 @@ Read `HANDOFF.md` first if you are picking this project up.
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
-| system-design | 114 | 0 | 5 | 119 | 60/60 |
+| system-design | 116 | 0 | 3 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 16 | 0 | 63 | 79 | 13/47 |
-| **All** | **525** | **0** | **158** | **683** | |
+| **All** | **527** | **0** | **156** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -46,7 +46,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### system-design
 
-- [ ] `system-design-email-service` (P2, case-study, sd-cases): Design an Email Service
 - [ ] `system-design-maps-navigation` (P2, case-study, sd-cases): Design Google Maps Navigation
 - [ ] `system-design-chess-lld` (P2, lld, sd-lld): Design Chess
 - [ ] `system-design-cab-booking-lld` (P2, lld, sd-lld): Design a Cab Booking Service (Low-Level)
@@ -405,7 +404,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>system-design: 114 written</summary>
+<details><summary>system-design: 116 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -475,10 +474,12 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-distributed-message-queue` Design a Distributed Message Queue Like Kafka
 - [x] `system-design-metrics-monitoring` Design a Metrics and Alerting System
 - [x] `system-design-distributed-cache-design` Design a Distributed Cache
+- [x] `system-design-collaborative-editor` Design Google Docs
 - [x] `system-design-stock-exchange` Design a Stock Exchange
 - [x] `system-design-ad-click-aggregation` Design an Ad Click Aggregator
 - [x] `system-design-pastebin` Design Pastebin
 - [x] `system-design-online-judge` Design an Online Judge Like LeetCode
+- [x] `system-design-email-service` Design an Email Service
 - [x] `system-design-oop-solid` Object-Oriented Design and SOLID Principles
 - [x] `system-design-creational-patterns` Creational Patterns: Factory, Builder and Singleton
 - [x] `system-design-structural-patterns` Structural Patterns: Adapter, Decorator, Facade, Proxy

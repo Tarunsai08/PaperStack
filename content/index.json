@@ -1,7 +1,7 @@
 {
- "content_version": "596ec8d7d0efb1ea",
+ "content_version": "ef9d6d48eabb2c48",
  "generated_at": "2026-11-03",
- "count": 525,
+ "count": 527,
  "subjects": [
   {
    "id": "ml",
@@ -49720,6 +49720,95 @@
    "excerpt": "Your database can serve about 60,000 reads per second before it struggles. Your product serves 1 million. The difference is a cache cluster answering 95% of reads from memory. That makes the cache not an optimisation but a load-bearing wall. Now picture one of its 32 nodes failing at peak. Predict…"
   },
   {
+   "id": "system-design-collaborative-editor",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "collaborative-editor",
+   "title": "Design a Collaborative Editor Like Google Docs",
+   "subtitle": "Several people writing on one whiteboard: operations instead of files, transforming or merging concurrent edits, document sessions, presence, and history",
+   "track": "sd-cases",
+   "track_order": 26,
+   "priority": "P2",
+   "prerequisites": [
+    "system-design-realtime-communication"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "collaborative editing",
+    "operational transformation",
+    "crdt",
+    "websockets",
+    "presence"
+   ],
+   "glossary": [
+    {
+     "term": "Operation",
+     "definition": "A small edit such as 'insert X at position 1' or 'delete the character at position 2', sent instead of the whole document."
+    },
+    {
+     "term": "Operational transformation",
+     "definition": "OT: adjusting an operation against concurrent operations already applied (for example shifting a position) so every copy converges to the same text."
+    },
+    {
+     "term": "CRDT",
+     "definition": "Conflict-free replicated data type: a data structure designed so concurrent edits merge automatically in any order, often by giving every character a unique, ordered identity."
+    },
+    {
+     "term": "Document session",
+     "definition": "The set of clients currently editing one document, usually coordinated by one server that orders their operations."
+    },
+    {
+     "term": "Presence",
+     "definition": "Live information about who is viewing a document and where their cursors and selections are."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "The document is 'abc'. Alice inserts X at position 1 while Bob, concurrently, deletes position 2 (the 'c'). If Bob's delete is applied unchanged after Alice's insert, what is the result?",
+     "options": [
+      "aXb",
+      "aXc: the wrong character is deleted, because Alice's insert shifted 'c' to position 3",
+      "abc",
+      "Xab"
+     ],
+     "answer": 1,
+     "explain": "After Alice's insert the text is aXbc, and position 2 is now 'b'. OT transforms Bob's delete to position 3, giving the intended aXb."
+    },
+    {
+     "q": "Why do OT-based editors usually route a document's operations through one server?",
+     "options": [
+      "Servers type faster",
+      "A single server fixes one order of operations per document, which keeps transformation manageable and every client convergent",
+      "To save bandwidth only",
+      "Because browsers require it"
+     ],
+     "answer": 1,
+     "explain": "With a central order, each client transforms its pending edits against operations it has not seen yet. Without one, OT becomes much harder to get right."
+    },
+    {
+     "q": "What is the main advantage of CRDTs over server-centred OT?",
+     "options": [
+      "Smaller documents",
+      "Edits merge correctly in any order without a central server, which suits offline and peer-to-peer editing",
+      "They never use memory",
+      "They need no network"
+     ],
+     "answer": 1,
+     "explain": "CRDTs give every character a stable identity, so replicas converge regardless of the order operations arrive, at the cost of extra metadata."
+    }
+   ],
+   "cover_seed": "collaborative-editor",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.62,
+   "path": "system-design/collaborative-editor.md",
+   "hash": "9bd7badd309f",
+   "word_count": 1164,
+   "excerpt": "Three classmates edit the same project report at 11 pm. Asha fixes a typo in the introduction, Ravi adds a paragraph in the middle, Meera deletes a sentence at the end. Each sees the others' cursors moving, and every change appears on every screen within a fraction of a second. Nobody's work is…"
+  },
+  {
    "id": "system-design-stock-exchange",
    "kind": "case-study",
    "subject": "system-design",
@@ -50076,6 +50165,96 @@
    "hash": "1d60854c8e13",
    "word_count": 1050,
    "excerpt": "Ten minutes before a contest ends, 20,000 people press \"Submit\" on their last attempt. Each submission is a program written by a stranger: some correct, some in infinite loops, some allocating all the memory they can, and a few deliberately trying to read the test data or attack the server. The…"
+  },
+  {
+   "id": "system-design-email-service",
+   "kind": "case-study",
+   "subject": "system-design",
+   "slug": "email-service",
+   "title": "Design an Email Service Like Gmail",
+   "subtitle": "A post office with a filing room for every person: SMTP ingestion, spam filtering, per-user mailbox storage, attachments, and search across years of mail",
+   "track": "sd-cases",
+   "track_order": 31,
+   "priority": "P2",
+   "prerequisites": [
+    "system-design-blob-storage",
+    "system-design-search-systems"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "email",
+    "smtp",
+    "mailbox storage",
+    "spam filtering",
+    "search"
+   ],
+   "glossary": [
+    {
+     "term": "SMTP",
+     "definition": "Simple Mail Transfer Protocol: how mail servers send email to each other across the internet."
+    },
+    {
+     "term": "MX record",
+     "definition": "A DNS record naming the mail servers that accept email for a domain."
+    },
+    {
+     "term": "Mailbox store",
+     "definition": "Per-user storage of message metadata (sender, subject, labels, read status, thread) partitioned by user."
+    },
+    {
+     "term": "Attachment deduplication",
+     "definition": "Storing identical attachment content once, keyed by its hash, and referencing it from every message that contains it."
+    },
+    {
+     "term": "Spam filter",
+     "definition": "A pipeline of checks (sender authentication, reputation, content models, user reports) that decides whether a message goes to the inbox, spam or is rejected."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why partition mailbox metadata by user id?",
+     "options": [
+      "It is alphabetical",
+      "Almost every operation (list inbox, search, label) concerns one user's mail, so keeping a user's data together makes those operations local to one partition",
+      "To balance attachments",
+      "Because SMTP requires it"
+     ],
+     "answer": 1,
+     "explain": "Access patterns are per user. Partitioning by user keeps queries on one shard and spreads users evenly."
+    },
+    {
+     "q": "A 5 MB attachment is sent to 200 colleagues. With content-hash deduplication, roughly how much attachment storage does it use?",
+     "options": [
+      "1,000 MB",
+      "About 5 MB, stored once and referenced 200 times",
+      "200 MB",
+      "0 MB"
+     ],
+     "answer": 1,
+     "explain": "Each recipient's message references the same blob by hash, saving about 995 MB here."
+    },
+    {
+     "q": "Why is an email accepted into a durable queue before spam filtering and delivery to mailboxes?",
+     "options": [
+      "To slow senders down",
+      "Once the receiving server says 'accepted', the sender deletes its copy, so the message must be safely stored before acknowledging; processing can then happen asynchronously",
+      "Spam filters are fast",
+      "It is optional"
+     ],
+     "answer": 1,
+     "explain": "SMTP hands over responsibility on acceptance. Durability first, processing second, avoids losing mail."
+    }
+   ],
+   "cover_seed": "email-service",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.58,
+   "path": "system-design/email-service.md",
+   "hash": "7f02b20de665",
+   "word_count": 1055,
+   "excerpt": "Somewhere a mail server says \"250 OK\" to another mail server. With those three characters, responsibility for your email has changed hands: the sender's server deletes its copy, and from now on, if the message is lost, it is lost forever. An email service must accept mail from the whole internet…"
   },
   {
    "id": "system-design-oop-solid",
