@@ -12,10 +12,10 @@ Read `HANDOFF.md` first if you are picking this project up.
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
-| system-design | 95 | 0 | 24 | 119 | 60/60 |
+| system-design | 96 | 0 | 23 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 16 | 0 | 63 | 79 | 13/47 |
-| **All** | **506** | **0** | **177** | **683** | |
+| **All** | **507** | **0** | **176** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -411,7 +411,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>system-design: 95 written</summary>
+<details><summary>system-design: 96 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -470,6 +470,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-ticket-booking` Design a Ticket Booking System Like BookMyShow
 - [x] `system-design-oop-solid` Object-Oriented Design and SOLID Principles
 - [x] `system-design-creational-patterns` Creational Patterns: Factory, Builder and Singleton
+- [x] `system-design-structural-patterns` Structural Patterns: Adapter, Decorator, Facade, Proxy
 - [x] `system-design-behavioural-patterns` Behavioural Patterns: Strategy, Observer, State and Command
 - [x] `system-design-machine-coding-approach` How to Ace a Machine Coding Round
 - [x] `system-design-parking-lot` Design a Parking Lot

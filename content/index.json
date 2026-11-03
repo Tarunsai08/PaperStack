@@ -1,7 +1,7 @@
 {
- "content_version": "1b8c2147f517fbdd",
+ "content_version": "5f856f10f06f2d65",
  "generated_at": "2026-11-03",
- "count": 506,
+ "count": 507,
  "subjects": [
   {
    "id": "ml",
@@ -48726,6 +48726,95 @@
    "hash": "0d0da9298c96",
    "word_count": 1362,
    "excerpt": "Your checkout from the last article is clean now: CheckoutService depends on a PaymentMethod interface and never names a concrete class. Lovely. Then you search the codebase and find this, copied into the API controller, the retry job, the admin panel and two tests: The if-else you killed in the…"
+  },
+  {
+   "id": "system-design-structural-patterns",
+   "kind": "lld",
+   "subject": "system-design",
+   "slug": "structural-patterns",
+   "title": "Travel Plug Adapters and Phone Cases",
+   "subtitle": "Structural patterns: Adapter, Decorator, Facade and Proxy, the ways to wrap objects so they fit, gain behaviour, or hide complexity without rewriting them",
+   "track": "sd-lld",
+   "track_order": 3,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-creational-patterns"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 4,
+   "topics": [
+    "low-level design",
+    "design patterns",
+    "adapter",
+    "decorator",
+    "facade",
+    "proxy"
+   ],
+   "glossary": [
+    {
+     "term": "Adapter",
+     "definition": "A wrapper that converts one interface into another that clients expect, so incompatible classes can work together."
+    },
+    {
+     "term": "Decorator",
+     "definition": "A wrapper with the same interface as the object it wraps, adding one behaviour before or after delegating; decorators can be stacked."
+    },
+    {
+     "term": "Facade",
+     "definition": "A simple interface in front of a complicated subsystem, so callers do one call instead of coordinating many classes."
+    },
+    {
+     "term": "Proxy",
+     "definition": "A stand-in with the same interface as the real object that controls access to it, for example lazy loading, caching or permission checks."
+    },
+    {
+     "term": "Subclass explosion",
+     "definition": "The number of subclasses needed when every combination of optional features gets its own class, which grows exponentially."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A payment vendor's SDK has a charge(amountInPaise, currencyCode, idempotencyKey) method, but your code calls pay(Money amount). Which pattern fits?",
+     "options": [
+      "Decorator",
+      "Adapter: a class implementing your PaymentMethod interface that translates calls to the vendor SDK",
+      "Singleton",
+      "Observer"
+     ],
+     "answer": 1,
+     "explain": "An adapter converts one interface into another without changing either side."
+    },
+    {
+     "q": "Three notifier types each need optional logging, retries and rate limiting in any combination. How many classes does subclassing need, compared with decorators?",
+     "options": [
+      "6 vs 24",
+      "24 subclasses (3 × 2³) vs 6 classes (3 notifiers + 3 decorators)",
+      "9 vs 9",
+      "3 vs 3"
+     ],
+     "answer": 1,
+     "explain": "Each notifier needs one subclass per subset of the 3 features: 3 × 8 = 24. Decorators need one class per feature, composed at runtime."
+    },
+    {
+     "q": "How is a Proxy different from a Decorator, given both wrap an object with the same interface?",
+     "options": [
+      "They are identical",
+      "A proxy controls access to the real object (lazy creation, caching, permissions), while a decorator adds behaviour; the intent differs",
+      "A proxy changes the interface",
+      "A decorator cannot be stacked"
+     ],
+     "answer": 1,
+     "explain": "Same shape, different purpose. Interviewers want the intent: access control versus added responsibilities."
+    }
+   ],
+   "cover_seed": "structural-patterns",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.72,
+   "path": "system-design/structural-patterns.md",
+   "hash": "1a92ca3bf363",
+   "word_count": 960,
+   "excerpt": "Your food-delivery app's notification code is clean: every channel implements Notifier.send(to, text). Then two requests arrive on the same day. One: the business signs a cheaper SMS vendor whose SDK looks nothing like your interface. Two: some notifications need logging, some need rate limiting,…"
   },
   {
    "id": "system-design-behavioural-patterns",
