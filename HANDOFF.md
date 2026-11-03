@@ -12,22 +12,28 @@ You are continuing a project another Claude session started. Everything you need
 
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
-| dsa | 152 | 0 | 0 | 152 | 72/72 |
-| cp | 114 | 0 | 1 | 115 | 29/29 |
+| dsa | 152 | 0 | 6 | 158 | 72/74 |
+| cp | 114 | 0 | 3 | 117 | 29/29 |
 | famous-algos | 36 | 0 | 55 | 91 | 29/32 |
 | system-design | 45 | 0 | 74 | 119 | 45/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **430** | **0** | **243** | **673** | |
+| cs-core (coming soon) | 0 | 0 | 79 | 79 | 0/47 |
+| **All** | **430** | **0** | **253** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
 ### Next to write (top 5 per subject; full list in PROGRESS.md)
 
 #### dsa
-_Nothing ready: every planned entry is waiting on a prerequisite, or the subject is complete._
+- [ ] `dsa-oa-strategy` (P0, primer, dsa-start): Cracking Online Assessments: Time, Partial Scores and Hidden Tests
+- [ ] `dsa-contribution-technique` (P0, pattern, dsa-linear): The Contribution Technique: Counting Each Element's Share
+- [ ] `dsa-counting-pairs` (P1, pattern, dsa-search-sort): Counting Pairs: Sort, Two Pointers and Fenwick Trees
+- [ ] `dsa-state-space-search` (P1, pattern, dsa-graphs): Shortest Paths Over States: Keys, Fuel and Stops
+- [ ] `dsa-counting-dp-strings` (P1, pattern, dsa-dp): Counting Valid Strings With DP and a Modulo
 
 #### cp
+- [ ] `cp-xor-basis` (P2, pattern, cp-math): XOR Basis: Linear Algebra Over Bits
+- [ ] `cp-parallel-binary-search` (P2, pattern, cp-ranges): Parallel Binary Search: Many Queries, One Sweep
 - [ ] `cp-bitset-optimisation` (P2, pattern, cp-misc): Bitsets: Dividing by 64 for Free
 
 #### famous-algos

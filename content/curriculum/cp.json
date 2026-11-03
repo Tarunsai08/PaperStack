@@ -3467,6 +3467,66 @@
      "Doing only virtual contests without review"
     ]
    }
+  },
+  {
+   "id": "cp-xor-basis",
+   "slug": "xor-basis",
+   "title_working": "XOR Basis: Linear Algebra Over Bits",
+   "kind": "pattern",
+   "track": "cp-math",
+   "order": 21,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-bitwise-tricks-cp"
+   ],
+   "brief": {
+    "key_points": [
+     "Insert numbers greedily by highest bit",
+     "Maximum XOR of any subset",
+     "Count of distinct subset XORs is 2^rank",
+     "Check whether x is representable"
+    ],
+    "analogy": "A set of building blocks from which every reachable XOR is made",
+    "include": [
+     "Maximum subset XOR worked example"
+    ],
+    "traps": [
+     "Confusing with max XOR of a pair (trie)"
+    ]
+   },
+   "subject": "cp",
+   "status": "planned",
+   "written_by": null
+  },
+  {
+   "id": "cp-parallel-binary-search",
+   "slug": "parallel-binary-search",
+   "title_working": "Parallel Binary Search: Many Queries, One Sweep",
+   "kind": "pattern",
+   "track": "cp-ranges",
+   "order": 20,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-offline-queries",
+    "cp-fenwick-advanced"
+   ],
+   "brief": {
+    "key_points": [
+     "Each query needs a binary search over time",
+     "Batch all queries per round and replay updates once",
+     "O((n + q) log n) rounds times update cost"
+    ],
+    "analogy": "Many students guessing the same exam answer key in rounds",
+    "include": [
+     "A worked example with updates over time"
+    ],
+    "traps": [
+     "Resetting the data structure each round"
+    ]
+   },
+   "subject": "cp",
+   "status": "planned",
+   "written_by": null
   }
  ]
 }

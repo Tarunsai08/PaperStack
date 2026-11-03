@@ -2057,6 +2057,69 @@
      "Diagram"
     ]
    }
+  },
+  {
+   "id": "cs-core-sliding-window-protocols",
+   "slug": "sliding-window-protocols",
+   "title_working": "Stop-and-Wait, Go-Back-N and Selective Repeat",
+   "kind": "deep-dive",
+   "track": "cs-networks",
+   "order": 15,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-tcp-deep-dive"
+   ],
+   "brief": {
+    "key_points": [
+     "Why waiting for each ACK wastes the link",
+     "Window size and sequence number space",
+     "Go-Back-N resends from the loss onward",
+     "Selective Repeat resends only the lost frame",
+     "Efficiency calculations asked in OAs"
+    ],
+    "analogy": "Sending numbered parcels and getting receipts back",
+    "include": [
+     "A timeline with one lost frame for both protocols",
+     "Utilisation formula with a worked number"
+    ],
+    "traps": [
+     "Window size limits relative to sequence numbers"
+    ]
+   },
+   "subject": "cs-core",
+   "status": "planned",
+   "written_by": null
+  },
+  {
+   "id": "cs-core-pointers-output-questions",
+   "slug": "pointers-output-questions",
+   "title_working": "Pointers, References and Predict-the-Output Questions",
+   "kind": "primer",
+   "track": "cs-oop",
+   "order": 17,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-classes-objects"
+   ],
+   "brief": {
+    "key_points": [
+     "Pointer arithmetic and arrays decaying to pointers",
+     "References vs pointers",
+     "Pre and post increment and sequence points",
+     "Integer promotion and signed/unsigned comparisons",
+     "Undefined behaviour: why some outputs are not defined"
+    ],
+    "analogy": "Street addresses vs the houses at them",
+    "include": [
+     "Ten short snippets with their outputs and why"
+    ],
+    "traps": [
+     "Claiming a definite output for undefined behaviour"
+    ]
+   },
+   "subject": "cs-core",
+   "status": "planned",
+   "written_by": null
   }
  ],
  "status": "planned",
