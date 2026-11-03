@@ -12,10 +12,10 @@ Read `HANDOFF.md` first if you are picking this project up.
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
-| system-design | 70 | 0 | 49 | 119 | 60/60 |
+| system-design | 72 | 0 | 47 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 8 | 0 | 71 | 79 | 7/47 |
-| **All** | **473** | **0** | **210** | **683** | |
+| **All** | **475** | **0** | **208** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -46,9 +46,9 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### system-design
 
-- [ ] `system-design-backpressure-load-shedding` (P1, deep-dive, sd-scaling): Backpressure and Load Shedding
-- [ ] `system-design-observability` (P1, deep-dive, sd-scaling): Observability: Logs, Metrics and Traces
+- [ ] `system-design-deployments` (P1, deep-dive, sd-scaling): Shipping Safely: Blue-Green, Canary and Feature Flags
 - [ ] `system-design-multi-region` (P1, deep-dive, sd-scaling): Multi-Region Architectures and Disaster Recovery
+- [ ] `system-design-autoscaling` (P1, deep-dive, sd-scaling): Autoscaling: Matching Capacity to Demand
 - [ ] `system-design-data-modeling-scale` (P1, deep-dive, sd-scaling): Data Modelling for Scale: Denormalisation and Access Patterns
 - [ ] `system-design-web-crawler` (P1, case-study, sd-cases): Design a Web Crawler
 - [ ] `system-design-file-sync` (P1, case-study, sd-cases): Design Google Drive or Dropbox
@@ -412,7 +412,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>system-design: 70 written</summary>
+<details><summary>system-design: 72 written</summary>
 
 - [x] `system-design-interview-framework` How to Answer Any System Design Question
 - [x] `system-design-back-of-envelope` Back-of-Envelope Estimates in Five Minutes
@@ -450,6 +450,8 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `system-design-async-processing` Doing Work Later: Queues, Workers and Background Jobs
 - [x] `system-design-microservices` Microservices vs Monoliths: Honest Trade-offs
 - [x] `system-design-resilience-patterns` Timeouts, Retries and Circuit Breakers
+- [x] `system-design-backpressure-load-shedding` Backpressure and Load Shedding
+- [x] `system-design-observability` Observability: Logs, Metrics and Traces
 - [x] `system-design-url-shortener` Design a URL Shortener
 - [x] `system-design-rate-limiter` Design a Rate Limiter
 - [x] `system-design-unique-id-generator` Design a Unique ID Generator
@@ -595,6 +597,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - system-design-atm-lld has an article but is still marked planned
 - system-design-logger-lld has an article but is still marked planned
 - system-design-cache-lld has an article but is still marked planned
+- system-design-rate-limiter-lld has an article but is still marked planned
 - cs-core-monitors-condition-variables has an article but is still marked planned
 - cs-core-classic-sync-problems has an article but is still marked planned
 - cs-core-deadlocks has an article but is still marked planned

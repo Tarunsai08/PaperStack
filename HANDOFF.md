@@ -15,10 +15,10 @@ You are continuing a project another Claude session started. Everything you need
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
-| system-design | 70 | 0 | 49 | 119 | 60/60 |
+| system-design | 72 | 0 | 47 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core | 8 | 0 | 71 | 79 | 7/47 |
-| **All** | **473** | **0** | **210** | **683** | |
+| **All** | **475** | **0** | **208** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -38,9 +38,9 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `famous-algos-paxos` (P1, concept, fa-distributed): Paxos: The Original Consensus Algorithm
 
 #### system-design
-- [ ] `system-design-backpressure-load-shedding` (P1, deep-dive, sd-scaling): Backpressure and Load Shedding
-- [ ] `system-design-observability` (P1, deep-dive, sd-scaling): Observability: Logs, Metrics and Traces
+- [ ] `system-design-deployments` (P1, deep-dive, sd-scaling): Shipping Safely: Blue-Green, Canary and Feature Flags
 - [ ] `system-design-multi-region` (P1, deep-dive, sd-scaling): Multi-Region Architectures and Disaster Recovery
+- [ ] `system-design-autoscaling` (P1, deep-dive, sd-scaling): Autoscaling: Matching Capacity to Demand
 - [ ] `system-design-data-modeling-scale` (P1, deep-dive, sd-scaling): Data Modelling for Scale: Denormalisation and Access Patterns
 - [ ] `system-design-web-crawler` (P1, case-study, sd-cases): Design a Web Crawler
 
