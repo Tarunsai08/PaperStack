@@ -1,7 +1,7 @@
 {
- "content_version": "6ac37f4956075254",
+ "content_version": "738c6b6045f47134",
  "generated_at": "2026-11-03",
- "count": 585,
+ "count": 587,
  "subjects": [
   {
    "id": "ml",
@@ -60769,6 +60769,182 @@
    "hash": "804ac225f932",
    "word_count": 1032,
    "excerpt": "A ticketing class needs every new ticket to get the next number: 1, 2, 3, and so on. Where does the counter live? Not in each ticket: each would start at zero. A global variable works, but then any code anywhere can reset it. And you want cout << ticket to print private details without making them…"
+  },
+  {
+   "id": "cs-core-templates-basics",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "templates-basics",
+   "title": "A Recipe That Works for Any Fruit",
+   "subtitle": "C++ templates: function and class templates, type deduction, non-type parameters, specialisation, why the error appears only when you use a type that lacks an operation, and how the STL is built from them",
+   "track": "cs-oop",
+   "track_order": 12,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-polymorphism"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 4,
+   "topics": [
+    "c++",
+    "templates",
+    "generic programming",
+    "specialisation",
+    "stl"
+   ],
+   "glossary": [
+    {
+     "term": "Template",
+     "definition": "A pattern for a function or class with type (or value) parameters, from which the compiler generates concrete code."
+    },
+    {
+     "term": "Instantiation",
+     "definition": "The compiler generating a concrete function or class from a template for specific arguments, such as largest<int>."
+    },
+    {
+     "term": "Template argument deduction",
+     "definition": "The compiler working out template parameters from the types of the function call's arguments."
+    },
+    {
+     "term": "Non-type template parameter",
+     "definition": "A template parameter that is a compile-time value, such as int N in FixedStack<char, 3>."
+    },
+    {
+     "term": "Specialisation",
+     "definition": "A separate definition of a template for particular arguments, replacing the general version for those arguments."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "largest<T> uses `best < x`. What happens when you call it with a vector of a struct that has no operator<?",
+     "options": [
+      "It returns the first element",
+      "A compile error at instantiation: no match for operator<",
+      "A run-time exception",
+      "It compares addresses"
+     ],
+     "answer": 1,
+     "explain": "g++ reported: no match for 'operator<' (operand types are 'P' and 'const P'). Templates are checked when instantiated with a real type."
+    },
+    {
+     "q": "Is template polymorphism resolved at compile time or run time?",
+     "options": [
+      "Run time, like virtual functions",
+      "Compile time: each type used gets its own generated code",
+      "Link time",
+      "Never"
+     ],
+     "answer": 1,
+     "explain": "There is no run-time dispatch; largest<int> and largest<string> are separate functions."
+    },
+    {
+     "q": "FixedStack<char, 3> pushes a, b, c, d. Which pushes succeed?",
+     "options": [
+      "All four",
+      "The first three; the fourth returns false",
+      "None",
+      "Only d"
+     ],
+     "answer": 1,
+     "explain": "N = 3 is part of the type. The program printed 1110."
+    }
+   ],
+   "cover_seed": "templates-basics",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.7,
+   "path": "cs-core/templates-basics.md",
+   "hash": "f58d536794f5",
+   "word_count": 946,
+   "excerpt": "You write a function to find the largest int in a vector. Then you need it for doubles. Then for strings. Copying the function three times means three copies of every future bug fix. Using void and casts throws away type checking. Templates let you write the function once with a placeholder type…"
+  },
+  {
+   "id": "cs-core-exceptions",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "exceptions",
+   "title": "A Fire Alarm That Walks Everyone Out in Order",
+   "subtitle": "C++ exceptions: throw, try and catch, catching by reference from specific to general, stack unwinding traced with RAII guards, noexcept and std::terminate, and the basic, strong and no-throw guarantees",
+   "track": "cs-oop",
+   "track_order": 13,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-constructors-raii"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "c++",
+    "exceptions",
+    "stack unwinding",
+    "noexcept",
+    "exception safety"
+   ],
+   "glossary": [
+    {
+     "term": "Exception",
+     "definition": "An object thrown to signal an error that the current code cannot handle, transferring control to the nearest matching catch block up the call stack."
+    },
+    {
+     "term": "Stack unwinding",
+     "definition": "Destroying the local objects of every function being exited, in reverse order, while an exception travels to its handler."
+    },
+    {
+     "term": "noexcept",
+     "definition": "A promise that a function will not throw; if an exception escapes it anyway, std::terminate is called."
+    },
+    {
+     "term": "Strong guarantee",
+     "definition": "An operation either succeeds completely or, if it throws, leaves the program state exactly as it was before."
+    },
+    {
+     "term": "Basic guarantee",
+     "definition": "If an operation throws, no resources leak and objects remain valid, though their values may have changed."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "transfer creates Guard('transfer') and calls debit, which creates Guard('debit') and throws. In what order are the guards destroyed?",
+     "options": [
+      "transfer, then debit",
+      "debit, then transfer, before the catch block runs",
+      "Neither is destroyed",
+      "After the catch block"
+     ],
+     "answer": 1,
+     "explain": "The program printed leave debit, leave transfer, then the catch message."
+    },
+    {
+     "q": "Why catch exceptions by const reference rather than by value?",
+     "options": [
+      "It is faster to type",
+      "Catching by value copies the exception and slices derived types down to the caught base type, losing their data and overrides",
+      "References cannot be thrown",
+      "By value does not compile"
+     ],
+     "answer": 1,
+     "explain": "catch (const std::exception& e) keeps the dynamic type, so e.what() and derived fields work."
+    },
+    {
+     "q": "A function marked noexcept throws. What happens?",
+     "options": [
+      "The caller's catch handles it",
+      "std::terminate is called and the program ends",
+      "The exception is ignored",
+      "It becomes a return value"
+     ],
+     "answer": 1,
+     "explain": "g++ warned that the throw would always call terminate, and running it printed 'terminate called after throwing an instance of std::runtime_error'."
+    }
+   ],
+   "cover_seed": "exceptions",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.66,
+   "path": "cs-core/exceptions.md",
+   "hash": "4c5cc14f1186",
+   "word_count": 1007,
+   "excerpt": "A transfer function calls debit, which calls a balance check deep inside, and the check discovers the account is short by ₹150. The check cannot fix that; neither can debit. Only the code at the top, which can show a message or offer a smaller amount, knows what to do. With error codes, every…"
   },
   {
    "id": "cs-core-memory-model-cpp",
