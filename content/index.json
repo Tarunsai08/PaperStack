@@ -1,7 +1,7 @@
 {
- "content_version": "01ef1c8ee352788e",
+ "content_version": "fb002d37f817c604",
  "generated_at": "2026-11-02",
- "count": 406,
+ "count": 409,
  "subjects": [
   {
    "id": "ml",
@@ -36173,6 +36173,246 @@
    "excerpt": "Many contest problems never mention a graph. A sliding tile puzzle, a calculator with two buttons, a maze with monsters chasing you, an array where you may jump between equal values: each is a shortest-path problem once you decide what a vertex is and what an edge is. That decision is the whole…"
   },
   {
+   "id": "cp-prefix-function",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "prefix-function",
+   "title": "A Reader Who Never Rereads the Page",
+   "subtitle": "The prefix function at contest strength: borders of every prefix, the amortised proof that fallbacks are linear, matching without a separator, all borders and periods from one chain, counting every prefix's occurrences, and the KMP automaton that powers DP over strings that must contain a pattern",
+   "track": "cp-strings",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-string-matching-basics"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "strings",
+    "prefix function",
+    "KMP",
+    "borders",
+    "automaton",
+    "string DP"
+   ],
+   "complexity": {
+    "time": "O(n + m) matching; O(m·σ) automaton",
+    "space": "O(m) or O(m·σ)"
+   },
+   "practice_problems": [
+    {
+     "name": "String Matching",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1753",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Finding Borders",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1732",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Finding Periods",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1733",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Required Substring",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1112",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Border",
+     "definition": "A string that is both a proper prefix and a suffix of another string; \"aba\" is a border of \"abacaba\"."
+    },
+    {
+     "term": "Prefix function",
+     "definition": "pi[i], the length of the longest border of the prefix s[0..i]."
+    },
+    {
+     "term": "Fallback chain",
+     "definition": "The sequence k, pi[k − 1], pi[pi[k − 1] − 1], ... which lists every border of a prefix from longest to shortest."
+    },
+    {
+     "term": "Period",
+     "definition": "A length p such that s[i] = s[i + p] wherever both exist; p is a period exactly when n − p is a border length, or p = n."
+    },
+    {
+     "term": "KMP automaton",
+     "definition": "A table go[state][c] giving the new matched length after reading letter c in state 'the last state letters match the pattern's first state letters'."
+    },
+    {
+     "term": "Absorbing state",
+     "definition": "A DP state that, once entered, is never left; for 'contains the pattern', reaching full length m is permanent."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why is computing the prefix function O(n) even though there is a while loop inside the for loop?",
+     "options": [
+      "The loop rarely runs",
+      "k rises by at most 1 per position and every fallback lowers it by at least 1; since k never drops below 0, the total number of fallbacks over the whole string is at most n",
+      "Because borders are short",
+      "It is O(n log n)"
+     ],
+     "answer": 1,
+     "explain": "Think of k as a stack of coins: one coin added per position at most, each fallback spends at least one coin. You cannot spend more than you added."
+    },
+    {
+     "q": "How do you list every border of s, not just the longest?",
+     "options": [
+      "Run the prefix function n times",
+      "Follow the fallback chain from k = pi[n − 1]: each next value pi[k − 1] is the next shorter border",
+      "Sort the pi array",
+      "Only the longest border exists"
+     ],
+     "answer": 1,
+     "explain": "A border of a border is a border, and the longest border shorter than k is pi[k − 1]. So the chain visits all of them, longest first."
+    },
+    {
+     "q": "In the KMP automaton, what is go[st][c] when c does not extend the match?",
+     "options": [
+      "Always 0",
+      "go[pi[st − 1]][c], the answer of the fallback state, or 0 from state 0, so each entry is computed in O(1) from earlier ones",
+      "st − 1",
+      "m"
+     ],
+     "answer": 1,
+     "explain": "On a mismatch, KMP falls back to the longest border and tries again. The automaton has already stored what that fallback state does with c."
+    }
+   ],
+   "cover_seed": "cp-prefix-function",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.74,
+   "path": "cp/prefix-function.md",
+   "hash": "7f9edbdcfa38",
+   "word_count": 1521,
+   "excerpt": "A proofreader hunts for one phrase in a book of a million letters. A careless reader, on a mismatch, goes back to just after where the attempt started and tries again, so some letters are read over and over. A careful reader never moves their eyes backwards: on a mismatch they remember how much of…"
+  },
+  {
+   "id": "cp-z-function",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "z-function",
+   "title": "A Window That Remembers What It Already Checked",
+   "subtitle": "The Z-function for contests: the longest match with the start at every position, the Z-box that lets each comparison be made once, the linear-time argument, pattern search without a separator, periods in one line, and the prefix-suffix-middle Password problem",
+   "track": "cp-strings",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "cp-prefix-function"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "strings",
+    "Z-function",
+    "pattern matching",
+    "periods"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "String Matching",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1753",
+     "difficulty": "Easy"
+    },
+    {
+     "name": "Finding Periods",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1733",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Password",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/126/B",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Prefixes and Suffixes",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/432/D",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Z-function",
+     "definition": "z[i], the length of the longest common prefix of s and the suffix starting at i; z[0] is set to n by convention."
+    },
+    {
+     "term": "Z-box",
+     "definition": "The interval [l, r) of the rightmost match found so far: s[l..r) equals s[0..r − l)."
+    },
+    {
+     "term": "Mirror position",
+     "definition": "For i inside the Z-box, the position i − l in the prefix that holds the same letters as i, whose z value is already known."
+    },
+    {
+     "term": "Separator",
+     "definition": "A character placed between pattern and text in p + '#' + t so matches cannot run across the join; unnecessary if only z ≥ |p| is tested."
+    },
+    {
+     "term": "Period test",
+     "definition": "p is a period of s exactly when p + z[p] = n, meaning the suffix at p matches the prefix all the way to the end."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "For i inside the Z-box [l, r), what does the algorithm know before comparing any letters?",
+     "options": [
+      "Nothing",
+      "That z[i] is at least min(r − i, z[i − l]), because s[i..r) is a copy of s[i − l..r − l), whose match with the prefix is already known",
+      "That z[i] = z[i − l] exactly",
+      "That z[i] = r − i"
+     ],
+     "answer": 1,
+     "explain": "Inside the box the letters repeat the prefix. The mirror's value is reliable up to the box's right edge; beyond r nothing is known, so the minimum is taken and comparison continues from there."
+    },
+    {
+     "q": "Why is the Z-function O(n) overall?",
+     "options": [
+      "Because z values are small",
+      "Every successful comparison beyond the box extends r, which only moves right and never past n; comparisons inside the box are never repeated, and each position has at most one failed comparison",
+      "Because of the separator",
+      "It is O(n log n)"
+     ],
+     "answer": 1,
+     "explain": "Successful comparisons are paid for by r advancing, at most n in total. Failed comparisons are at most one per position."
+    },
+    {
+     "q": "Searching p in t with z of p + t and no separator, which test finds matches correctly?",
+     "options": [
+      "z[i] = |p| at any i",
+      "z[i] ≥ |p| for positions i ≥ |p|, since such a z value means the |p| letters at i equal the pattern",
+      "z[i] > 0",
+      "It cannot work without a separator"
+     ],
+     "answer": 1,
+     "explain": "Without a separator, z values in the text part can run past |p|, but that only makes them larger. Testing z[i] ≥ |p| is exactly 'the pattern starts here'."
+    }
+   ],
+   "cover_seed": "cp-z-function",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.68,
+   "path": "cp/z-function.md",
+   "hash": "fea564a493aa",
+   "word_count": 1499,
+   "excerpt": "The prefix function from A Reader Who Never Rereads the Page looks at each position and asks: what is the longest border ending here? The Z-function flips the question: starting here, how far does the string agree with its own beginning? Both answer the same family of problems, matching, borders…"
+  },
+  {
    "id": "cp-string-hashing",
    "kind": "pattern",
    "subject": "cp",
@@ -36304,6 +36544,128 @@
    "hash": "d799fd22a1d6",
    "word_count": 1652,
    "excerpt": "A problem asks, a hundred thousand times, \"is this piece of the string equal to that piece?\" Each piece can be a hundred thousand characters long. Comparing letter by letter is correct and hopeless: up to 10¹⁰ character checks. What if every substring carried a short number, so that equal…"
+  },
+  {
+   "id": "cp-suffix-array",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "suffix-array",
+   "title": "A Dictionary of Every Ending of a Word",
+   "subtitle": "Suffix arrays for contests: sorting all suffixes by doubling with counting sort in O(n log n), the LCP array by Kasai's argument, distinct substrings, the longest repeated substring, pattern counting by binary search, and the k-th substring in sorted order",
+   "track": "cp-strings",
+   "track_order": 4,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-string-hashing"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "strings",
+    "suffix array",
+    "LCP",
+    "Kasai",
+    "prefix doubling"
+   ],
+   "complexity": {
+    "time": "O(n log n) build, O(n) LCP",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Distinct Substrings",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2105",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Repeating Substring",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2106",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Substring Order I",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2108",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Pattern Positions",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2104",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Suffix array",
+     "definition": "sa, the starting positions of all suffixes of s listed in lexicographic order of the suffixes."
+    },
+    {
+     "term": "Rank",
+     "definition": "rk[i], the position of the suffix (or, during construction, of the length-k prefix) starting at i in sorted order; equal strings share a rank."
+    },
+    {
+     "term": "Prefix doubling",
+     "definition": "Sorting by the first 2k letters using pairs of ranks (rk[i], rk[i + k]) from the previous round, so log n rounds sort completely."
+    },
+    {
+     "term": "LCP array",
+     "definition": "lcp[i], the length of the longest common prefix of the suffixes at sa[i] and sa[i + 1], neighbours in sorted order."
+    },
+    {
+     "term": "Kasai's argument",
+     "definition": "Moving from suffix i to suffix i + 1 lowers the LCP with the sorted successor by at most one, so computing all LCPs in text order takes O(n)."
+    },
+    {
+     "term": "Sentinel",
+     "definition": "A character smaller than every letter, appended so that no suffix is a prefix of another and cyclic comparisons behave like suffix comparisons."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In prefix doubling, how is the order by the first 2k letters obtained from the order by the first k?",
+     "options": [
+      "By comparing strings directly",
+      "Each position gets the pair (rank of its first k letters, rank of the k letters starting at i + k); sorting by these pairs sorts by 2k letters",
+      "By reversing the order",
+      "By hashing"
+     ],
+     "answer": 1,
+     "explain": "Two length-2k strings compare by their first halves, and on a tie by their second halves. Both halves already have ranks from the previous round."
+    },
+    {
+     "q": "How many distinct substrings does a string of length n have, in terms of the LCP array?",
+     "options": [
+      "n²",
+      "n(n + 1)/2 minus the sum of the LCP array, because each suffix contributes its prefixes except the ones it shares with the previous suffix in sorted order",
+      "The number of distinct letters",
+      "The sum of the LCP array"
+     ],
+     "answer": 1,
+     "explain": "Every substring is a prefix of some suffix. Walking suffixes in sorted order, the first lcp letters' prefixes were already counted by the neighbour."
+    },
+    {
+     "q": "Why does Kasai's algorithm run in linear time?",
+     "options": [
+      "The LCP values are small",
+      "Processing suffixes in text order, the current match length h drops by at most one per step, so it increases at most 2n times in total",
+      "Because it uses hashing",
+      "It runs in O(n log n)"
+     ],
+     "answer": 1,
+     "explain": "If suffix i shares h letters with its successor, then suffix i + 1 shares at least h − 1 letters with its own successor. So h never has to restart from zero."
+    }
+   ],
+   "cover_seed": "cp-suffix-array",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.64,
+   "path": "cp/suffix-array.md",
+   "hash": "bee1aa2d4a1b",
+   "word_count": 1524,
+   "excerpt": "Write down every ending of a word, from the whole word to its last letter, and sort the list as a dictionary would. For \"banana\" that is a, ana, anana, banana, na, nana. This tiny list answers surprisingly many questions: how many different substrings does the word have, which substring repeats and…"
   },
   {
    "id": "cp-game-theory",

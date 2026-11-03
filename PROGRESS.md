@@ -10,12 +10,12 @@ Read `HANDOFF.md` first if you are picking this project up.
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
 | dsa | 152 | 0 | 0 | 152 | 72/72 |
-| cp | 97 | 0 | 18 | 115 | 27/29 |
+| cp | 100 | 0 | 15 | 115 | 29/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **406** | **0** | **267** | **673** | |
+| **All** | **409** | **0** | **264** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -29,16 +29,16 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### cp
 
-- [ ] `cp-prefix-function` (P0, pattern, cp-strings): The Prefix Function and KMP
-- [ ] `cp-suffix-array` (P1, pattern, cp-strings): Suffix Arrays and LCP
+- [ ] `cp-aho-corasick` (P1, pattern, cp-strings): Aho-Corasick: Many Patterns at Once
+- [ ] `cp-manacher` (P1, pattern, cp-strings): Manacher's Algorithm: All Palindromes in Linear Time
+- [ ] `cp-finding-borders` (P1, problem-walkthrough, cp-strings): Finding Borders With the Prefix Function
 - [ ] `cp-meet-in-the-middle` (P1, pattern, cp-misc): Meet in the Middle
 - [ ] `cp-randomized-techniques` (P1, pattern, cp-misc): Randomised Techniques in Contests
 - [ ] `cp-bitwise-tricks-cp` (P1, pattern, cp-misc): Bitwise Tricks for Contests
 - [ ] `cp-polygon-area` (P1, problem-walkthrough, cp-misc): Polygon Area With the Shoelace Formula
 - [ ] `cp-apple-division` (P1, problem-walkthrough, cp-misc): Apple Division: Brute Force Done Right
+- [ ] `cp-suffix-automaton` (P2, pattern, cp-strings): Suffix Automaton
 - [ ] `cp-minimal-rotation` (P2, problem-walkthrough, cp-strings): Minimal Rotation of a String
-- [ ] `cp-ternary-search` (P2, pattern, cp-misc): Ternary Search on Unimodal Functions
-- [ ] `cp-sweep-line-geometry` (P2, pattern, cp-misc): Sweep Line: Closest Pair and Intersections
 
 ### famous-algos
 
@@ -238,7 +238,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cp: 97 written</summary>
+<details><summary>cp: 100 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -294,7 +294,10 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cp-bipartite-matching` Bipartite Matching
 - [x] `cp-shortest-path-tricks` Shortest Path Tricks: 0-1 BFS, Multi-State, Potentials
 - [x] `cp-euler-path` Eulerian Paths and Circuits
+- [x] `cp-prefix-function` The Prefix Function and KMP
+- [x] `cp-z-function` The Z-Function
 - [x] `cp-string-hashing` Polynomial String Hashing
+- [x] `cp-suffix-array` Suffix Arrays and LCP
 - [x] `cp-game-theory` Game Theory: Winning and Losing Positions
 - [x] `cp-sprague-grundy` Sprague-Grundy: Adding Games Together
 - [x] `cp-geometry-basics` Geometry Basics: Cross Products Solve Everything
