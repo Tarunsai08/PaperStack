@@ -1,7 +1,7 @@
 {
- "content_version": "738c6b6045f47134",
+ "content_version": "36f7df7eb89dc6ce",
  "generated_at": "2026-11-03",
- "count": 587,
+ "count": 588,
  "subjects": [
   {
    "id": "ml",
@@ -61039,6 +61039,96 @@
    "hash": "a647a4164f68",
    "word_count": 1052,
    "excerpt": "Three bug reports land on the same day. A long-running service slowly eats all the memory on its machine until it is killed. A function sometimes returns garbage values, but only in release builds. A program crashes inside the memory allocator, nowhere near the code that is actually wrong. They are…"
+  },
+  {
+   "id": "cs-core-stl-internals",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "stl-internals",
+   "title": "Knowing How the Engine Works Before a Long Trip",
+   "subtitle": "What is inside the STL containers you use every day: vector's doubling and amortised O(1) push_back, iterator invalidation, map as a red-black tree, unordered_map's buckets and rehashing, and when each one wins",
+   "track": "cs-oop",
+   "track_order": 15,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-templates-basics"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 5,
+   "topics": [
+    "c++",
+    "stl",
+    "vector",
+    "map",
+    "unordered_map",
+    "complexity",
+    "iterator invalidation"
+   ],
+   "glossary": [
+    {
+     "term": "Capacity",
+     "definition": "How many elements a vector can hold before it must allocate a bigger buffer; size is how many it actually holds."
+    },
+    {
+     "term": "Amortised O(1)",
+     "definition": "An operation that is occasionally expensive but averages a constant cost over a long sequence, like push_back with doubling."
+    },
+    {
+     "term": "Iterator invalidation",
+     "definition": "An iterator, pointer or reference into a container becoming unusable because an operation moved or removed the elements."
+    },
+    {
+     "term": "Red-black tree",
+     "definition": "A self-balancing binary search tree that keeps height O(log n); libstdc++ uses it for map and set."
+    },
+    {
+     "term": "Load factor",
+     "definition": "Elements divided by buckets in a hash table; when it exceeds the maximum, the table rehashes into more buckets."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "With libstdc++, a vector grows by doubling. How many reallocations happen during 100 push_backs starting from empty?",
+     "options": [
+      "100",
+      "8 (capacities 1, 2, 4, …, 128)",
+      "1",
+      "50"
+     ],
+     "answer": 1,
+     "explain": "The test program printed capacities 1 2 4 8 16 32 64 128: 8 reallocations, so push_back is amortised O(1)."
+    },
+    {
+     "q": "You hold an iterator into a vector, then push_back causes a reallocation. Is the iterator still valid?",
+     "options": [
+      "Yes",
+      "No: the elements moved to a new buffer, so old iterators, pointers and references dangle",
+      "Only for reading",
+      "Only if the vector is const"
+     ],
+     "answer": 1,
+     "explain": "The test showed data() changing after push_back on a full vector."
+    },
+    {
+     "q": "Why might std::map beat std::unordered_map for a task?",
+     "options": [
+      "map is always faster",
+      "You need keys in sorted order, range queries (lower_bound), or guaranteed O(log n) without bad hash cases",
+      "unordered_map cannot store ints",
+      "map uses less memory always"
+     ],
+     "answer": 1,
+     "explain": "unordered_map is O(1) on average but unordered and can degrade with poor hashing."
+    }
+   ],
+   "cover_seed": "stl-internals",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.72,
+   "path": "cs-core/stl-internals.md",
+   "hash": "b1b2f839fa32",
+   "word_count": 1205,
+   "excerpt": "A loop stores pointers to elements of a vector while adding more elements. It works in testing with ten items and crashes in production with a thousand. A program that counts words with map takes twice as long as a friend's with unorderedmap. Another passes every test except one, where an…"
   }
  ]
 }

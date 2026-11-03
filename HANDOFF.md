@@ -17,8 +17,8 @@ You are continuing a project another Claude session started. Everything you need
 | famous-algos | 39 | 0 | 52 | 91 | 32/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core | 71 | 0 | 8 | 79 | 44/47 |
-| **All** | **587** | **0** | **96** | **683** | |
+| cs-core | 72 | 0 | 7 | 79 | 44/47 |
+| **All** | **588** | **0** | **95** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -50,7 +50,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 #### cs-core
 - [ ] `cs-core-oop-interview-questions` (P0, primer, cs-oop): OOP Interview Questions, Answered Simply
 - [ ] `cs-core-memory-hierarchy` (P0, deep-dive, cs-architecture): The Memory Hierarchy and CPU Caches
-- [ ] `cs-core-stl-internals` (P1, deep-dive, cs-oop): STL Internals Interviewers Ask About
 - [ ] `cs-core-pointers-output-questions` (P1, primer, cs-oop): Pointers, References and Predict-the-Output Questions
 <!-- status:end -->
 
