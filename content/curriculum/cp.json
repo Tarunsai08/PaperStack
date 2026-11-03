@@ -1561,8 +1561,8 @@
    "prerequisites": [
     "cp-max-flow"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Kuhn's algorithm",
@@ -1590,8 +1590,8 @@
    "prerequisites": [
     "dsa-dijkstra"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "0-1 BFS with a deque",
@@ -1620,8 +1620,8 @@
    "prerequisites": [
     "dsa-dfs"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Degree conditions",

@@ -1,7 +1,7 @@
 {
- "content_version": "7f6e652159a714c9",
+ "content_version": "d37bba46592beb4b",
  "generated_at": "2026-11-02",
- "count": 396,
+ "count": 399,
  "subjects": [
   {
    "id": "ml",
@@ -35003,6 +35003,368 @@
    "hash": "6b7f9a90e02c",
    "word_count": 1784,
    "excerpt": "A reservoir feeds a city through a network of pipes, each with a limit on how many litres per second it can carry. Water can split at junctions and merge again, but nothing leaks and nothing is stored. How much water per second can reach the city? The answer is a maximum flow, and the same model…"
+  },
+  {
+   "id": "cp-bipartite-matching",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "bipartite-matching",
+   "title": "Pairing Dancers Who Agreed to Dance Together",
+   "subtitle": "Maximum bipartite matching for contests: Kuhn's augmenting-path algorithm, why one partner can step aside for another, when the visited marks must be cleared, matching as unit-capacity flow, and König's theorem for minimum vertex cover and maximum independent set",
+   "track": "cp-graphs",
+   "track_order": 10,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-max-flow"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "graphs",
+    "bipartite matching",
+    "Kuhn's algorithm",
+    "augmenting paths",
+    "vertex cover",
+    "König's theorem"
+   ],
+   "complexity": {
+    "time": "O(V·E) Kuhn",
+    "space": "O(V + E)"
+   },
+   "practice_problems": [
+    {
+     "name": "School Dance",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1696",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Fast Maximum Matching",
+     "platform": "SPOJ",
+     "url": "https://www.spoj.com/problems/MATCHING/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Maximize Mex",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/1139/E",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Bipartite graph",
+     "definition": "A graph whose vertices split into a left side and a right side, with every edge joining the two sides."
+    },
+    {
+     "term": "Matching",
+     "definition": "A set of edges with no shared endpoint: each vertex is paired with at most one partner."
+    },
+    {
+     "term": "Alternating path",
+     "definition": "A path whose edges alternate between not in the matching and in the matching."
+    },
+    {
+     "term": "Augmenting path",
+     "definition": "An alternating path that starts and ends at unmatched vertices; flipping every edge on it grows the matching by one."
+    },
+    {
+     "term": "Vertex cover",
+     "definition": "A set of vertices that touches every edge; in a bipartite graph the smallest one has the size of the maximum matching."
+    },
+    {
+     "term": "König's theorem",
+     "definition": "In a bipartite graph, the size of a maximum matching equals the size of a minimum vertex cover."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In Kuhn's algorithm, what happens when left vertex u wants right vertex v, but v is already matched to w?",
+     "options": [
+      "u gives up on v",
+      "The algorithm recursively asks w to find a different free partner; if w can move, v goes to u, and the whole chain of moves is an augmenting path",
+      "w is removed from the matching",
+      "v is matched to both"
+     ],
+     "answer": 1,
+     "explain": "Each step of the chain reassigns one vertex. If the chain ends at a free right vertex, everyone along it is still matched and u is newly matched: the matching grows by one."
+    },
+    {
+     "q": "Why must the visited marks be cleared after a successful augmentation?",
+     "options": [
+      "They do not need clearing",
+      "A success changes the matching, so right vertices that led nowhere before may now lead to free vertices; keeping stale marks can miss augmenting paths, for example making the second of two boys who both like girl 0 fail even when the first could move",
+      "To save memory",
+      "Because the graph changed"
+     ],
+     "answer": 1,
+     "explain": "Marks only mean 'explored and hopeless under the current matching'. After the matching changes, that judgement is out of date. After a failure the matching is unchanged, so the marks may be kept."
+    },
+    {
+     "q": "How do you turn a maximum matching into a minimum vertex cover?",
+     "options": [
+      "Take all matched left vertices",
+      "Search alternating paths from every unmatched left vertex; the cover is the left vertices not reached plus the right vertices reached",
+      "Take every vertex of degree at least 2",
+      "Take both ends of every matching edge"
+     ],
+     "answer": 1,
+     "explain": "This is the constructive proof of König's theorem. Every edge has an unreached left end or a reached right end, and each matching edge contributes exactly one cover vertex."
+    }
+   ],
+   "cover_seed": "cp-bipartite-matching",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.66,
+   "path": "cp/bipartite-matching.md",
+   "hash": "03fff1ecf73d",
+   "word_count": 1588,
+   "excerpt": "A school dance has boys and girls, and a list of pairs who have agreed to dance together. The organiser wants as many couples on the floor at once as possible, with nobody in two couples. Pairing greedily goes wrong quickly: if the first boy grabs the one girl who is the only option for someone…"
+  },
+  {
+   "id": "cp-shortest-path-tricks",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "shortest-path-tricks",
+   "title": "A Travel Planner With One Discount Voucher",
+   "subtitle": "Shortest paths at contest level: choosing BFS, 0-1 BFS, Dijkstra or Bellman–Ford from the constraints, layered state graphs for vouchers, the k cheapest routes by popping each city k times, counting cheapest routes with fewest and most flights, and testing which edges lie on a shortest path",
+   "track": "cp-graphs",
+   "track_order": 11,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-dijkstra"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 9,
+   "topics": [
+    "graphs",
+    "Dijkstra",
+    "state graphs",
+    "k shortest paths",
+    "path counting",
+    "0-1 BFS"
+   ],
+   "complexity": {
+    "time": "O((n + m) log n) per Dijkstra; O(k·m log(k·m)) for k routes",
+    "space": "O(n + m) times the number of layers"
+   },
+   "practice_problems": [
+    {
+     "name": "Flight Discount",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1195",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Flight Routes",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1196",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Investigation",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1202",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "President and Roads",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/567/E",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "State graph",
+     "definition": "A graph whose vertices are (place, extra information) pairs, such as (city, voucher used), so that a constraint becomes part of where you are."
+    },
+    {
+     "term": "Layer",
+     "definition": "All states sharing the same extra information, for example every city with the voucher still unused; edges move within a layer or to the next."
+    },
+    {
+     "term": "k-th pop rule",
+     "definition": "In a Dijkstra that lets each vertex be popped up to k times, the j-th pop of a vertex carries the j-th cheapest walk to it."
+    },
+    {
+     "term": "Shortest-path DAG",
+     "definition": "The edges u → v with dist[u] + w = dist[v]; every cheapest route from the source uses only these edges."
+    },
+    {
+     "term": "Two-sided distance test",
+     "definition": "An edge u → v of weight w lies on some cheapest s-to-t route exactly when distS[u] + w + distT[v] equals the shortest distance."
+    },
+    {
+     "term": "State explosion",
+     "definition": "When the number of states, places times extra information, grows beyond what time or memory allows."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How does Flight Discount turn one half-price voucher into an ordinary Dijkstra?",
+     "options": [
+      "By halving every edge",
+      "By doubling the graph into two layers, voucher unused and voucher used; each flight gives a full-price edge inside each layer and a half-price edge from the unused layer to the used one",
+      "By running Dijkstra twice from the start",
+      "By using Bellman–Ford"
+     ],
+     "answer": 1,
+     "explain": "Using the voucher is a one-way move between layers. All weights stay non-negative, so Dijkstra on the 2n states is exact, and the answer is the better of the two copies of the target."
+    },
+    {
+     "q": "In Investigation, why are the counts at a vertex final when it is popped?",
+     "options": [
+      "Because of the modulus",
+      "Every predecessor on a cheapest route to it has strictly smaller distance, since weights are positive, so all of them were popped and contributed earlier",
+      "Because the heap is sorted by count",
+      "They are not final"
+     ],
+     "answer": 1,
+     "explain": "With positive weights, an equal-cost entry into v must come from a vertex with smaller distance. Those are popped first, so by the time v is popped nothing can add to it."
+    },
+    {
+     "q": "Which test tells whether edge u → v of weight w lies on some cheapest route from s to t?",
+     "options": [
+      "dist[u] < dist[v]",
+      "distS[u] + w + distT[v] = D, where distT comes from Dijkstra on the reversed graph from t",
+      "w is the smallest weight",
+      "u and v are both reachable"
+     ],
+     "answer": 1,
+     "explain": "The left side is the cost of the cheapest route that is forced through that edge. It equals D exactly when the edge can be part of a cheapest route."
+    }
+   ],
+   "cover_seed": "cp-shortest-path-tricks",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.7,
+   "path": "cp/shortest-path-tricks.md",
+   "hash": "244940ea19d6",
+   "word_count": 1882,
+   "excerpt": "A travel planner books the cheapest trip from city 1 to city n. Then the client adds conditions: \"I have one voucher that halves one flight.\" \"Give me the three cheapest options, not just one.\" \"How many different cheapest trips exist, and what is the fewest and most flights among them?\" \"Which…"
+  },
+  {
+   "id": "cp-euler-path",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "euler-path",
+   "title": "Drawing a Figure Without Lifting Your Pen",
+   "subtitle": "Euler paths and circuits for contests: the degree conditions for undirected and directed graphs, the connectivity check people forget, Hierholzer's algorithm with an explicit stack that splices detours into the route, and De Bruijn sequences as an Euler circuit",
+   "track": "cp-graphs",
+   "track_order": 12,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-dfs"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "graphs",
+    "Euler path",
+    "Euler circuit",
+    "Hierholzer",
+    "De Bruijn sequence"
+   ],
+   "complexity": {
+    "time": "O(n + m)",
+    "space": "O(n + m)"
+   },
+   "practice_problems": [
+    {
+     "name": "Mail Delivery",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1691",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Teleporters Path",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1693",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "De Bruijn Sequence",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1692",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Reconstruct Itinerary",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/reconstruct-itinerary/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Euler trail",
+     "definition": "A walk that uses every edge of the graph exactly once; vertices may repeat. Also called an Euler path."
+    },
+    {
+     "term": "Euler circuit",
+     "definition": "An Euler trail that ends where it started."
+    },
+    {
+     "term": "Degree condition",
+     "definition": "The parity or balance requirement on vertex degrees: undirected graphs need zero or two odd-degree vertices; directed graphs need out-degree minus in-degree to be +1 at the start, −1 at the end and 0 elsewhere."
+    },
+    {
+     "term": "Hierholzer's algorithm",
+     "definition": "Walk unused edges until stuck, write the stuck vertex down, back up and resume from the latest vertex with unused edges; reversed, the written list is an Euler trail."
+    },
+    {
+     "term": "Edge pointer",
+     "definition": "it[v], the index of the next adjacency entry of v to try, so each edge is examined O(1) times overall."
+    },
+    {
+     "term": "De Bruijn sequence",
+     "definition": "A shortest string containing every length-k string over an alphabet exactly once as a substring; for bits it has length 2^k + k − 1."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "When does a connected undirected graph have an Euler circuit?",
+     "options": [
+      "When it has no cycles",
+      "When every vertex has even degree",
+      "When exactly two vertices have odd degree",
+      "When it is bipartite"
+     ],
+     "answer": 1,
+     "explain": "Every time the walk passes through a vertex it uses one edge in and one out, so each vertex needs an even number of edge ends. Exactly two odd vertices gives a trail between them instead."
+    },
+    {
+     "q": "Why is a degree check alone not enough?",
+     "options": [
+      "It is enough",
+      "The edges could lie in two separate components that each satisfy the degrees; Hierholzer then walks only one of them, which the code detects when the trail has fewer than m + 1 vertices",
+      "Because of self-loops",
+      "Because degrees can be negative"
+     ],
+     "answer": 1,
+     "explain": "Two disjoint triangles have all degrees even but no single walk can use all six edges. Checking the trail length after Hierholzer catches this cheaply."
+    },
+    {
+     "q": "In Hierholzer's algorithm, when is a vertex appended to the output list?",
+     "options": [
+      "When it is first visited",
+      "When it has no unused edges left, at which point its position at the end of the remaining route is fixed",
+      "When the stack is empty",
+      "Every time an edge is used"
+     ],
+     "answer": 1,
+     "explain": "A stuck vertex must be where the current part of the route finishes. Appending stuck vertices builds the trail from the end backwards, splicing every detour into place."
+    }
+   ],
+   "cover_seed": "cp-euler-path",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.6,
+   "path": "cp/euler-path.md",
+   "hash": "56313bc77cac",
+   "word_count": 1478,
+   "excerpt": "Can you draw an envelope without lifting the pen and without tracing any line twice? Children try for minutes. A graph theorist checks how many corners have an odd number of lines and answers in seconds. The question is old. In 1736 Euler proved that nobody could walk through Königsberg crossing…"
   },
   {
    "id": "cp-string-hashing",
