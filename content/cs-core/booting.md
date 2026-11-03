@@ -80,7 +80,7 @@ sequenceDiagram
 
 ### 1. Firmware
 
-At power-on the CPU starts executing at a fixed address mapped to the firmware chip. The firmware runs the power-on self-test, initialises the memory controller and essential devices, and looks for a bootable device in the configured order.
+When you press the button, your CPU starts executing at a fixed address mapped to the firmware chip; that answers the question from the hook. The firmware runs the power-on self-test, initialises the memory controller and essential devices, and looks for a bootable device in the configured order.
 
 | | Legacy BIOS | UEFI |
 |---|---|---|
@@ -90,11 +90,11 @@ At power-on the CPU starts executing at a fixed address mapped to the firmware c
 
 ### 2. Bootloader
 
-The bootloader (GRUB on most Linux systems, Windows Boot Manager on Windows) shows a menu if there are several choices, then loads the **kernel image** and the **[[initramfs]]** into memory and jumps to the kernel, passing a command line (such as which disk holds the root file system).
+You have probably seen this stage without noticing it: the menu that offers several systems or recovery mode. The bootloader (GRUB on most Linux systems, Windows Boot Manager on Windows) shows a menu if there are several choices, then loads the **kernel image** and the **[[initramfs]]** into memory and jumps to the kernel, passing a command line (such as which disk holds the root file system).
 
 ### 3. Kernel initialisation
 
-The kernel decompresses itself, sets up page tables and virtual memory, interrupt handlers, the scheduler and built-in drivers. Then a chicken-and-egg problem appears: the real root file system might be on an encrypted volume or a RAID array, and the drivers to read it are files on that very file system.
+Hold on to one question for this stage, because it has a neat answer: how can the kernel read a disk whose driver is stored on that disk? First, the kernel decompresses itself, sets up page tables and virtual memory, interrupt handlers, the scheduler and built-in drivers. Then the chicken-and-egg problem appears: the real root file system might be on an encrypted volume or a RAID array, and the drivers to read it are files on that very file system.
 
 Wait, then how does it ever mount it? Through the initramfs, a tiny temporary file system the bootloader loaded alongside the kernel. It holds just enough drivers and tools to find, unlock and mount the real root, after which the kernel switches over to it.
 

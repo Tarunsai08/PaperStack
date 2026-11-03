@@ -1,5 +1,5 @@
 {
- "content_version": "28283b0529e3b450",
+ "content_version": "6cbf7bd263283727",
  "generated_at": "2026-11-03",
  "count": 557,
  "subjects": [
@@ -56590,8 +56590,8 @@
    "generated_at": "2026-11-03",
    "importance_score": 0.6,
    "path": "cs-core/booting.md",
-   "hash": "0402df9ea692",
-   "word_count": 1075,
+   "hash": "599f3f5e62a1",
+   "word_count": 1132,
    "excerpt": "When you press the power button, memory is empty. There is no operating system loaded, no file system mounted, no drivers. And yet, a short while later, you are looking at a login screen. Something had to load the program that loads the operating system, without an operating system to help. The…"
   },
   {
