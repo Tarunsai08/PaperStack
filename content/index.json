@@ -1,7 +1,7 @@
 {
- "content_version": "9270796ce9004189",
+ "content_version": "eab1403d5e628354",
  "generated_at": "2026-11-03",
- "count": 500,
+ "count": 502,
  "subjects": [
   {
    "id": "ml",
@@ -51661,6 +51661,187 @@
    "hash": "41d9b3b56c0d",
    "word_count": 1175,
    "excerpt": "A key-value store keeps every key on three replicas. Over a week, things happen: one replica reboots for a kernel patch, another misses a few writes during a network blip, a third was slow and timed out of some quorums. Nobody lost data, exactly. But the three replicas no longer agree. A key…"
+  },
+  {
+   "id": "system-design-event-sourcing-cqrs",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "event-sourcing-cqrs",
+   "title": "A Bank Statement Instead of Just a Balance",
+   "subtitle": "Event sourcing and CQRS: store what happened rather than the current state, rebuild views from the history, and separate the write model from the read models",
+   "track": "sd-distributed",
+   "track_order": 17,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-outbox-cdc"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "event sourcing",
+    "cqrs",
+    "projections",
+    "events"
+   ],
+   "glossary": [
+    {
+     "term": "Event sourcing",
+     "definition": "Storing every change as an immutable event in an append-only log, and deriving current state by replaying the events."
+    },
+    {
+     "term": "Event store",
+     "definition": "The append-only database of events, usually grouped into streams per entity, such as one stream per bank account."
+    },
+    {
+     "term": "Projection",
+     "definition": "A read model built by processing events, such as a current-balance table or a monthly summary."
+    },
+    {
+     "term": "CQRS",
+     "definition": "Command Query Responsibility Segregation: using separate models for changing data (commands) and for reading it (queries)."
+    },
+    {
+     "term": "Snapshot",
+     "definition": "A saved copy of an entity's state at some event, so rebuilding it later only replays the events after the snapshot."
+    },
+    {
+     "term": "Upcasting",
+     "definition": "Converting old versions of events into the current format when they are read, so code can evolve without rewriting history."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "An account's events are: opened, deposited 5,000, withdrew 1,200, deposited 800, withdrew 3,000. What is the balance?",
+     "options": [
+      "5,000",
+      "1,600",
+      "3,800",
+      "4,600"
+     ],
+     "answer": 1,
+     "explain": "Replay in order: 0 → 5,000 → 3,800 → 4,600 → 1,600."
+    },
+    {
+     "q": "A bug in the monthly-summary projection produced wrong totals for six months. With event sourcing, how do you fix it?",
+     "options": [
+      "Edit the old events",
+      "Fix the projection code and rebuild the projection by replaying the events from the start",
+      "Delete the account",
+      "It cannot be fixed"
+     ],
+     "answer": 1,
+     "explain": "Events are the source of truth and are never edited. Projections are derived, so they can be thrown away and rebuilt correctly."
+    },
+    {
+     "q": "What is the main consequence of serving reads from projections updated asynchronously from the event store?",
+     "options": [
+      "Reads become strongly consistent",
+      "Read models can lag slightly behind the latest command, so a user might not see their own change immediately",
+      "Writes become slower",
+      "Events are lost"
+     ],
+     "answer": 1,
+     "explain": "CQRS read models are usually eventually consistent. Design the UI and read-your-writes paths accordingly."
+    }
+   ],
+   "cover_seed": "event-sourcing-cqrs",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.68,
+   "path": "system-design/event-sourcing-cqrs.md",
+   "hash": "e5bb061fb7d0",
+   "word_count": 1092,
+   "excerpt": "A customer calls their bank: \"My balance says ₹1,600. That cannot be right.\" If the bank stored only a balance column, the support agent could only reply: \"The system says ₹1,600.\" There is no way to show how it got there. But banks do not store just a balance. They store a statement: every deposit…"
+  },
+  {
+   "id": "system-design-spanner-truetime",
+   "kind": "deep-dive",
+   "subject": "system-design",
+   "slug": "spanner-truetime",
+   "title": "Waiting Out the Uncertainty Before Announcing the Result",
+   "subtitle": "Spanner and TrueTime: how bounded clock uncertainty, a short commit wait and Paxos-replicated groups give globally ordered transactions",
+   "track": "sd-distributed",
+   "track_order": 18,
+   "priority": "P1",
+   "prerequisites": [
+    "system-design-time-ordering",
+    "system-design-two-phase-commit"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 5,
+   "topics": [
+    "system design",
+    "spanner",
+    "truetime",
+    "external consistency",
+    "distributed transactions"
+   ],
+   "glossary": [
+    {
+     "term": "TrueTime",
+     "definition": "Spanner's clock API, which returns an interval [earliest, latest] guaranteed to contain the real current time, instead of a single timestamp."
+    },
+    {
+     "term": "Uncertainty bound",
+     "definition": "How wide the TrueTime interval is, written ε: the most the local clock might be off from real time."
+    },
+    {
+     "term": "Commit wait",
+     "definition": "After choosing a commit timestamp, waiting until TrueTime is sure that timestamp has passed everywhere before making the commit visible."
+    },
+    {
+     "term": "External consistency",
+     "definition": "If transaction T1 commits before T2 starts in real time, T1's timestamp is smaller than T2's; the database order matches what an outside observer saw."
+    },
+    {
+     "term": "Paxos group",
+     "definition": "A set of replicas of one data range, kept consistent by the Paxos consensus protocol, with one leader handling writes."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does Spanner wait before making a commit visible?",
+     "options": [
+      "To batch writes",
+      "To be sure the chosen timestamp is in the past on every machine's clock, so later transactions anywhere get larger timestamps",
+      "To save power",
+      "Because Paxos requires a delay"
+     ],
+     "answer": 1,
+     "explain": "With uncertainty ε, a timestamp is only safely in the past after waiting out the uncertainty. That makes timestamp order match real-time order."
+    },
+    {
+     "q": "What happens to commit latency if clock uncertainty grows?",
+     "options": [
+      "Nothing",
+      "Commits wait longer, because commit wait is roughly proportional to the uncertainty",
+      "Commits become faster",
+      "Transactions abort"
+     ],
+     "answer": 1,
+     "explain": "Spanner invests in tight clocks (GPS and atomic clocks) precisely to keep that wait short."
+    },
+    {
+     "q": "How does Spanner commit a transaction that writes to two different data ranges?",
+     "options": [
+      "It cannot",
+      "Two-phase commit across the ranges' Paxos groups, where each participant is itself replicated, so a crashed leader does not block the transaction forever",
+      "Last write wins",
+      "It copies one range into the other"
+     ],
+     "answer": 1,
+     "explain": "Because every participant is a fault-tolerant Paxos group, the classic blocking weakness of two-phase commit is much less of a problem."
+    }
+   ],
+   "cover_seed": "spanner-truetime",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.65,
+   "path": "system-design/spanner-truetime.md",
+   "hash": "0de1b983a41f",
+   "word_count": 1090,
+   "excerpt": "A bank in Mumbai transfers money, and a millisecond later an auditor in New York reads the accounts. The auditor must see the transfer, in the right order, as if there were one database in one place. But the database is spread across continents, and each continent has its own clocks. The earlier…"
   },
   {
    "id": "cs-core-what-an-os-does",
