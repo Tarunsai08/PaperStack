@@ -10,12 +10,12 @@ Read `HANDOFF.md` first if you are picking this project up.
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
 | dsa | 152 | 0 | 0 | 152 | 72/72 |
-| cp | 71 | 0 | 44 | 115 | 24/29 |
+| cp | 74 | 0 | 41 | 115 | 24/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **380** | **0** | **293** | **673** | |
+| **All** | **383** | **0** | **290** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -238,7 +238,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cp: 71 written</summary>
+<details><summary>cp: 74 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -277,7 +277,10 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cp-dp-probability` DP With Probabilities and Expected Values
 - [x] `cp-knapsack-variants` Knapsack Variants in Contests
 - [x] `cp-dp-on-dag` DP on DAGs: Longest and Counting Paths
+- [x] `cp-broken-profile-dp` Broken Profile DP: Tiling Grids
 - [x] `cp-convex-hull-trick` The Convex Hull Trick
+- [x] `cp-divide-conquer-dp` Divide and Conquer DP Optimisation
+- [x] `cp-knuth-optimization` Knuth's Optimisation for Interval DP
 - [x] `cp-string-hashing` Polynomial String Hashing
 - [x] `cp-game-theory` Game Theory: Winning and Losing Positions
 - [x] `cp-sprague-grundy` Sprague-Grundy: Adding Games Together

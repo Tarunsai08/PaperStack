@@ -1,7 +1,7 @@
 {
- "content_version": "92a6304ffbad47a4",
+ "content_version": "f75f0f6675d8ae64",
  "generated_at": "2026-11-02",
- "count": 380,
+ "count": 383,
  "subjects": [
   {
    "id": "ml",
@@ -32825,6 +32825,113 @@
    "excerpt": "Rainwater on a hillside only runs downhill, so it never comes back to a spot it has left. To find the longest stream from the summit to the sea, or to count all the different streams, you can work from high ground to low ground, and each spot needs only the spots above it. The theory, relaxing…"
   },
   {
+   "id": "cp-broken-profile-dp",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "broken-profile-dp",
+   "title": "Laying Tiles While Remembering the Jagged Edge",
+   "subtitle": "Broken-profile DP: tile a grid cell by cell while a bitmask remembers which cells of the next column are already covered, counting domino tilings of a 10 × 1000 board in O(n × m × 2ⁿ)",
+   "track": "cp-dp",
+   "track_order": 7,
+   "priority": "P2",
+   "prerequisites": [
+    "cp-bitmask-dp"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "bitmask DP",
+    "profile DP",
+    "tilings",
+    "grids"
+   ],
+   "complexity": {
+    "time": "O(n × m × 2ⁿ) for n rows and m columns",
+    "space": "O(2ⁿ)"
+   },
+   "practice_problems": [
+    {
+     "name": "Counting Tilings",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2181",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Domino and Tromino Tiling",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/domino-and-tromino-tiling/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Painting a Grid With Three Different Colors",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/painting-a-grid-with-three-different-colors/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Profile",
+     "definition": "A bitmask describing the boundary between processed and unprocessed cells: which cells just past the boundary are already covered by tiles that stick out."
+    },
+    {
+     "term": "Broken profile",
+     "definition": "A profile whose boundary has a step in it, because processing goes cell by cell rather than a whole column at a time."
+    },
+    {
+     "term": "Cell transition",
+     "definition": "The choice made at one cell: skip it if already covered, or cover it with a horizontal or vertical domino, updating the profile."
+    },
+    {
+     "term": "Column-major order",
+     "definition": "Processing cells top to bottom within a column, then moving to the next column, which keeps the profile at n bits."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In broken-profile DP for dominoes, what does bit i of the mask mean while processing cell (i, j)?",
+     "options": [
+      "Whether row i is finished",
+      "For rows already processed in this column, whether the cell in the next column is pre-covered; for rows not yet processed, whether the cell in this column is pre-covered",
+      "The colour of the cell",
+      "The number of dominoes"
+     ],
+     "answer": 1,
+     "explain": "The boundary is a staircase. Bits above the current row look one column ahead; bits from the current row down describe the current column. That is why it is called a broken profile."
+    },
+    {
+     "q": "At an uncovered cell (i, j), which moves are allowed?",
+     "options": [
+      "Only a vertical domino",
+      "A horizontal domino if j + 1 < m, which sets bit i for the next column, or a vertical domino if i + 1 < n and cell (i + 1, j) is not pre-covered",
+      "Any tile shape",
+      "Only skipping"
+     ],
+     "answer": 1,
+     "explain": "A horizontal domino sticks into the next column, so its bit stays set. A vertical one covers the cell below in this column, so that bit is set until that cell is reached and skipped."
+    },
+    {
+     "q": "Why is the running time O(n × m × 2ⁿ)?",
+     "options": [
+      "Because of recursion",
+      "There are n × m cells, and at each cell every one of the 2ⁿ profiles has at most two transitions",
+      "Because there are 2ᵐ profiles",
+      "It is O(2^(nm))"
+     ],
+     "answer": 1,
+     "explain": "The profile has n bits, so 2ⁿ states. For n = 10 and m = 1,000 that is about 10⁷ state updates, which fits easily."
+    }
+   ],
+   "cover_seed": "broken-profile-dp",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.5,
+   "path": "cp/broken-profile-dp.md",
+   "hash": "468e8076a50c",
+   "word_count": 1340,
+   "excerpt": "A tiler lays 1 × 2 dominoes over a long floor 10 tiles wide and 1,000 tiles long. In how many different ways can the floor be covered completely? The number is astronomically large and the ways are impossible to list. But the tiler works in strips, and at any moment only one thing matters about the…"
+  },
+  {
    "id": "cp-convex-hull-trick",
    "kind": "pattern",
    "subject": "cp",
@@ -32940,6 +33047,224 @@
    "hash": "a38a3cca839e",
    "word_count": 1264,
    "excerpt": "A frog hops along stones of increasing height. Jumping from stone j to stone i costs (hᵢ − hⱼ)² plus a fixed fee C, and the frog wants the cheapest way to the last stone. The DP is obvious: dp[i] = min over j < i of dp[j] + (hᵢ − hⱼ)² + C. With 2 × 10⁵ stones that is 2 × 10¹⁰ transitions, far too…"
+  },
+  {
+   "id": "cp-divide-conquer-dp",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "divide-conquer-dp",
+   "title": "District Lines That Only Move Right",
+   "subtitle": "Divide and conquer DP optimisation: when the best split point for dp[k][i] never moves left as i grows, compute each layer in O(n log n) instead of O(n²), and the quadrangle inequality that guarantees it",
+   "track": "cp-dp",
+   "track_order": 9,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-divide-and-conquer"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "dynamic programming",
+    "DP optimisation",
+    "divide and conquer",
+    "partition"
+   ],
+   "complexity": {
+    "time": "O(k × n log n) instead of O(k × n²)",
+    "space": "O(n) per layer"
+   },
+   "practice_problems": [
+    {
+     "name": "Ciel and Gondolas",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/321/E",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Yet Another Minimization Problem",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/868/F",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Allocate Mailboxes",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/allocate-mailboxes/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Layered partition DP",
+     "definition": "dp[k][i] = min over j < i of dp[k - 1][j] + cost(j, i): the best way to split the first i items into k groups, the last group being items j to i - 1."
+    },
+    {
+     "term": "Optimal split point",
+     "definition": "opt[k][i], the j that achieves the minimum for dp[k][i], taking the smallest such j when several tie."
+    },
+    {
+     "term": "Monotone opt",
+     "definition": "The property opt[k][i] ≤ opt[k][i + 1]: as the prefix grows, the best place for the last cut never moves left."
+    },
+    {
+     "term": "Quadrangle inequality",
+     "definition": "cost(a, c) + cost(b, d) ≤ cost(a, d) + cost(b, c) for a ≤ b ≤ c ≤ d; it implies monotone optimal split points."
+    },
+    {
+     "term": "Search window",
+     "definition": "The range [optL, optR] of split points that still need checking for the indices in the current recursive call."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "What does divide and conquer optimisation compute first in a layer?",
+     "options": [
+      "dp[k][1], then dp[k][2] and so on",
+      "dp[k][mid] for the middle index, scanning all candidates in its window, then recurses on each half with the window narrowed by opt[mid]",
+      "All split points at once",
+      "The last index only"
+     ],
+     "answer": 1,
+     "explain": "Knowing opt[mid] splits the problem: indices left of mid only need split points up to opt[mid], indices right of mid only need split points from opt[mid]."
+    },
+    {
+     "q": "Why is each recursion level O(n), giving O(n log n) per layer?",
+     "options": [
+      "Because the array is sorted",
+      "The windows of the calls at one level overlap only at their endpoints, so together they cover about n candidate split points",
+      "Because of memoisation",
+      "It is O(n²)"
+     ],
+     "answer": 1,
+     "explain": "Each call's window starts where its left neighbour's window ended. Summed over a level, the windows total O(n + number of calls), and there are log n levels."
+    },
+    {
+     "q": "Which property guarantees that optimal split points are monotone?",
+     "options": [
+      "Any cost function",
+      "The quadrangle inequality, cost(a, c) + cost(b, d) ≤ cost(a, d) + cost(b, c), which holds for example for the square of a group's sum with non-negative values",
+      "Cost must be zero",
+      "Cost must be increasing"
+     ],
+     "answer": 1,
+     "explain": "The quadrangle inequality makes 'crossing' choices never better than nested ones, which forces opt to be non-decreasing. Without it, the optimisation can silently give wrong answers."
+    }
+   ],
+   "cover_seed": "divide-conquer-dp",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.5,
+   "path": "cp/divide-conquer-dp.md",
+   "hash": "e42dd74ce6b7",
+   "word_count": 1244,
+   "excerpt": "A city council splits a long street of shops into k districts, each a run of consecutive shops, and wants to minimise a total cost that grows with each district's size. The textbook DP tries every place for the last district line for every prefix of the street: O(n²) per district count, too slow…"
+  },
+  {
+   "id": "cp-knuth-optimization",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "knuth-optimization",
+   "title": "The Best Cut Moved Only a Little",
+   "subtitle": "Knuth's optimisation for interval DP: when opt[i][j - 1] ≤ opt[i][j] ≤ opt[i + 1][j], each interval only searches a narrow window of split points, and the whole table drops from O(n³) to O(n²)",
+   "track": "cp-dp",
+   "track_order": 10,
+   "priority": "P2",
+   "prerequisites": [
+    "dsa-interval-dp"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 5,
+   "topics": [
+    "dynamic programming",
+    "interval DP",
+    "DP optimisation",
+    "merging"
+   ],
+   "complexity": {
+    "time": "O(n²) instead of O(n³)",
+    "space": "O(n²)"
+   },
+   "practice_problems": [
+    {
+     "name": "Breaking String",
+     "platform": "SPOJ",
+     "url": "https://www.spoj.com/problems/BRKSTRNG/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Minimum Cost to Cut a Stick",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/minimum-cost-to-cut-a-stick/",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Minimum Cost to Merge Stones",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/minimum-cost-to-merge-stones/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Split-point interval DP",
+     "definition": "dp[i][j] = min over i ≤ k < j of dp[i][k] + dp[k + 1][j] + C(i, j), where C is the cost of the final operation on [i, j]."
+    },
+    {
+     "term": "Knuth's condition",
+     "definition": "opt[i][j - 1] ≤ opt[i][j] ≤ opt[i + 1][j]: the best split of an interval lies between the best splits of the interval shortened at either end."
+    },
+    {
+     "term": "Telescoping bound",
+     "definition": "Summing opt[i + 1][j] - opt[i][j - 1] over all intervals of one length gives at most n, so each length costs O(n) and the whole table O(n²)."
+    },
+    {
+     "term": "Monotone cost",
+     "definition": "C(b, c) ≤ C(a, d) whenever [b, c] is inside [a, d]: a larger interval never costs less to finish."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "With Knuth's optimisation, which split points does dp[i][j] try?",
+     "options": [
+      "All k from i to j - 1",
+      "Only k from opt[i][j - 1] to opt[i + 1][j]",
+      "Only the middle",
+      "Only k = i"
+     ],
+     "answer": 1,
+     "explain": "Knuth's condition bounds the best split of [i, j] between the best splits of [i, j - 1] and [i + 1, j], both already computed because they are shorter."
+    },
+    {
+     "q": "Why does the total work become O(n²)?",
+     "options": [
+      "Because the table is smaller",
+      "For each interval length, the window sizes opt[i + 1][j] - opt[i][j - 1] + 1 telescope to at most about 2n, and there are n lengths",
+      "Because of binary search",
+      "It is O(n³)"
+     ],
+     "answer": 1,
+     "explain": "Consecutive intervals of the same length share window endpoints, so the sum of their window widths collapses. n lengths times O(n) gives O(n²)."
+    },
+    {
+     "q": "Which costs are known to satisfy Knuth's condition?",
+     "options": [
+      "Any cost",
+      "Costs satisfying the quadrangle inequality and monotone on nested intervals, such as the total size of the merged or cut interval",
+      "Only constant costs",
+      "Only negative costs"
+     ],
+     "answer": 1,
+     "explain": "Classic cases are merging adjacent piles at cost equal to their total, and cutting a stick at cost equal to its length. Both use C(i, j) = sum over [i, j], which satisfies both requirements."
+    }
+   ],
+   "cover_seed": "knuth-optimization",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.48,
+   "path": "cp/knuth-optimization.md",
+   "hash": "1e73c809c9ad",
+   "word_count": 1182,
+   "excerpt": "A carpenter cuts a long board at marked points, paying the board's current length for each cut. Choosing the order of cuts is a classic interval DP: for every stretch of the board, try every mark as the first cut. That is O(n³) for n marks, fine for 100 marks and far too slow for 3,000. Then you…"
   },
   {
    "id": "cp-counting-numbers",
