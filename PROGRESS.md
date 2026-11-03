@@ -10,12 +10,12 @@ Read `HANDOFF.md` first if you are picking this project up.
 | Subject | Written | Needs review | Planned | Total | P0 written |
 |---|---|---|---|---|---|
 | dsa | 152 | 0 | 0 | 152 | 72/72 |
-| cp | 68 | 0 | 47 | 115 | 22/29 |
+| cp | 71 | 0 | 44 | 115 | 24/29 |
 | famous-algos | 35 | 0 | 56 | 91 | 28/32 |
 | system-design | 39 | 0 | 80 | 119 | 39/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
 | cs-core (coming soon) | 0 | 0 | 77 | 77 | 0/47 |
-| **All** | **377** | **0** | **296** | **673** | |
+| **All** | **380** | **0** | **293** | **673** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -29,16 +29,16 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### cp
 
-- [ ] `cp-bitmask-dp` (P0, pattern, cp-dp): Bitmask DP for Contests
-- [ ] `cp-dp-on-trees-advanced` (P0, pattern, cp-dp): Tree DP and Rerooting
 - [ ] `cp-scc` (P0, pattern, cp-graphs): Strongly Connected Components
 - [ ] `cp-bridges-articulation` (P0, pattern, cp-graphs): Bridges and Articulation Points
 - [ ] `cp-binary-lifting` (P0, pattern, cp-graphs): Binary Lifting and LCA in log n
 - [ ] `cp-prefix-function` (P0, pattern, cp-strings): The Prefix Function and KMP
-- [ ] `cp-dp-on-dag` (P1, pattern, cp-dp): DP on DAGs: Longest and Counting Paths
+- [ ] `cp-elevator-rides` (P1, problem-walkthrough, cp-dp): Elevator Rides: Bitmask DP With Pairs
 - [ ] `cp-removal-game` (P1, problem-walkthrough, cp-dp): Removal Game: Interval DP for Two Players
 - [ ] `cp-dp-with-data-structures` (P1, pattern, cp-dp): DP Sped Up by Segment Trees and BITs
 - [ ] `cp-dsu-advanced` (P1, pattern, cp-graphs): DSU Tricks: Rollback, Parity and Offline
+- [ ] `cp-max-flow` (P1, pattern, cp-graphs): Maximum Flow: Edmonds-Karp and Dinic
+- [ ] `cp-shortest-path-tricks` (P1, pattern, cp-graphs): Shortest Path Tricks: 0-1 BFS, Multi-State, Potentials
 
 ### famous-algos
 
@@ -238,7 +238,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>cp: 68 written</summary>
+<details><summary>cp: 71 written</summary>
 
 - [x] `cp-how-contests-work` How Programming Contests Work
 - [x] `cp-fast-io-template` Your Contest Template and Fast I/O
@@ -271,9 +271,12 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `cp-sqrt-decomposition` Square Root Decomposition
 - [x] `cp-mos-algorithm` Mo's Algorithm: Offline Range Queries
 - [x] `cp-segment-tree-beats` Segment Tree Patterns: Max Subarray and Beyond
+- [x] `cp-bitmask-dp` Bitmask DP for Contests
 - [x] `cp-digit-dp` Digit DP: Counting Numbers With Properties
+- [x] `cp-dp-on-trees-advanced` Tree DP and Rerooting
 - [x] `cp-dp-probability` DP With Probabilities and Expected Values
 - [x] `cp-knapsack-variants` Knapsack Variants in Contests
+- [x] `cp-dp-on-dag` DP on DAGs: Longest and Counting Paths
 - [x] `cp-convex-hull-trick` The Convex Hull Trick
 - [x] `cp-string-hashing` Polynomial String Hashing
 - [x] `cp-game-theory` Game Theory: Winning and Losing Positions

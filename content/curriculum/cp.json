@@ -963,8 +963,8 @@
    "prerequisites": [
     "dsa-bitmask-dp-intro"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "dp[mask][last]",
@@ -1022,8 +1022,8 @@
    "prerequisites": [
     "dsa-dp-on-trees"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Subtree DP",
@@ -1114,8 +1114,8 @@
     "dsa-topological-sort",
     "dsa-dp-intro"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "claude-seed",
    "brief": {
     "key_points": [
      "Topological order as DP order",

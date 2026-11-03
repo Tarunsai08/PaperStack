@@ -1,7 +1,7 @@
 {
- "content_version": "1968d41e3d8856d0",
+ "content_version": "92a6304ffbad47a4",
  "generated_at": "2026-11-02",
- "count": 377,
+ "count": 380,
  "subjects": [
   {
    "id": "ml",
@@ -32114,6 +32114,123 @@
    "excerpt": "A teacher collects a stack of exams and grades them in whatever order is fastest: all the question-1 answers together, then all question 2, so the marking scheme stays in their head. Then they sort the papers back into roll-call order before handing them out. Nobody in the class can tell the…"
   },
   {
+   "id": "cp-bitmask-dp",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "bitmask-dp",
+   "title": "Visited Cities as a Row of Switches",
+   "subtitle": "Bitmask DP at contest level: dp[mask][last] for paths, enumerating every submask of every mask in 3ⁿ, partitioning a set into groups, and fitting the tables into memory when n reaches 20",
+   "track": "cp-dp",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-bitmask-dp-intro"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "bitmask DP",
+    "submask enumeration",
+    "set partition",
+    "travelling salesman"
+   ],
+   "complexity": {
+    "time": "O(2ⁿ × n²) for paths, O(3ⁿ) for submask DP",
+    "space": "O(2ⁿ × n) or O(2ⁿ)"
+   },
+   "practice_problems": [
+    {
+     "name": "Hamiltonian Flights",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1690",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Elevator Rides",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1653",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Minimum Number of Work Sessions to Finish the Tasks",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/minimum-number-of-work-sessions-to-finish-the-tasks/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Parallel Courses II",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/parallel-courses-ii/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Submask",
+     "definition": "A mask s with s & m = s, meaning every item in s is also in m; m has 2^popcount(m) submasks including 0 and m."
+    },
+    {
+     "term": "Submask enumeration",
+     "definition": "The loop s = m, then s = (s - 1) & m, which visits every non-empty submask of m in decreasing order."
+    },
+    {
+     "term": "3ⁿ bound",
+     "definition": "The total number of (mask, submask) pairs over all masks of n items, since each item is either outside the mask, in the mask but not the submask, or in both."
+    },
+    {
+     "term": "Set partition DP",
+     "definition": "dp[mask] = best way to split the items in mask into groups, built by choosing the group containing a fixed item and recursing on the rest."
+    },
+    {
+     "term": "Lowest-bit anchoring",
+     "definition": "Requiring the chosen group to contain the lowest item of the mask, so each partition is counted or considered once instead of once per group order."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why does s = (s - 1) & m visit every submask of m?",
+     "options": [
+      "It visits random masks",
+      "Subtracting 1 turns the lowest set bit off and every bit below it on; ANDing with m keeps only bits of m, giving the next smaller submask",
+      "It only visits single bits",
+      "It skips half of them"
+     ],
+     "answer": 1,
+     "explain": "Restricted to the bit positions of m, s - 1 behaves like counting down in binary, and the AND throws away positions outside m. So the loop counts down through all submasks."
+    },
+    {
+     "q": "Why is enumerating all submasks of all masks O(3ⁿ) rather than O(4ⁿ)?",
+     "options": [
+      "Because of caching",
+      "Each item independently is outside the mask, in the mask only, or in both mask and submask: three choices per item",
+      "Because masks are sorted",
+      "It is O(4ⁿ)"
+     ],
+     "answer": 1,
+     "explain": "A (mask, submask) pair assigns each of the n items one of three roles, so there are exactly 3ⁿ pairs. For n = 16 that is about 4.3 × 10⁷."
+    },
+    {
+     "q": "In set partition DP, why fix the group containing the lowest item of the mask?",
+     "options": [
+      "For speed only",
+      "Every partition has exactly one group containing that item, so each partition is reached once; without it, the same partition is built once per order of its groups",
+      "Because the lowest item is the smallest",
+      "It changes the answer"
+     ],
+     "answer": 1,
+     "explain": "Choosing groups in a fixed canonical order removes duplicates. It also roughly halves the work, since only submasks containing that bit are tried."
+    }
+   ],
+   "cover_seed": "cp-bitmask-dp",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.74,
+   "path": "cp/bitmask-dp.md",
+   "hash": "3d191f41e1df",
+   "word_count": 1327,
+   "excerpt": "A courier has 18 deliveries and a van that carries at most 10 kilograms per trip. What is the fewest number of trips? Trying every way to split 18 parcels into trips is astronomically many. Yet bitmask DP answers it in well under a second, and the same toolkit handles routes visiting every city,…"
+  },
+  {
    "id": "cp-digit-dp",
    "kind": "pattern",
    "subject": "cp",
@@ -32239,6 +32356,123 @@
    "hash": "064e8626d980",
    "word_count": 1345,
    "excerpt": "How many numbers between 1 and 10¹⁸ have a digit sum divisible by 7? How many have no two equal adjacent digits? How many contain at most three non-zero digits? Looping over 10¹⁸ numbers is impossible, and the property depends on the digits, which plain maths does not handle well. Problems of this…"
+  },
+  {
+   "id": "cp-dp-on-trees-advanced",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "dp-on-trees-advanced",
+   "title": "Every Town Imagining Itself as the Capital",
+   "subtitle": "Rerooting DP for contests: a down pass for subtree answers, an up pass that hands each child the best answer from the rest of the tree, top-two values when the combine is a maximum, and iterative traversals that survive deep trees",
+   "track": "cp-dp",
+   "track_order": 3,
+   "priority": "P0",
+   "prerequisites": [
+    "dsa-dp-on-trees"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 5,
+   "topics": [
+    "tree DP",
+    "rerooting",
+    "DFS",
+    "trees"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Tree Distances I",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1132",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Tree Distances II",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1133",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Tree with Maximum Cost",
+     "platform": "Codeforces",
+     "url": "https://codeforces.com/problemset/problem/1092/F",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Minimum Height Trees",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/minimum-height-trees/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Down value",
+     "definition": "down[v], the answer for v's subtree when the tree is rooted at a fixed root, computed bottom-up."
+    },
+    {
+     "term": "Up value",
+     "definition": "up[v], the answer for everything outside v's subtree, seen from v through its parent, computed top-down."
+    },
+    {
+     "term": "Rerooting",
+     "definition": "Computing the answer for every vertex as root by combining its down value with its up value, in two passes instead of n."
+    },
+    {
+     "term": "Exclusive combine",
+     "definition": "The parent's answer with one particular child removed, needed to build that child's up value."
+    },
+    {
+     "term": "Top-two trick",
+     "definition": "Keeping the best and second-best child values, so the best excluding any one child is read in O(1) when the combine is a maximum."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "To compute up[c] for a child c of v, why can't you just use v's full answer?",
+     "options": [
+      "It is too large",
+      "v's full answer includes c's own subtree, which c already sees through down[c]; using it would count c's side twice",
+      "Because up values are zero",
+      "You can"
+     ],
+     "answer": 1,
+     "explain": "up[c] must describe the tree outside c's subtree. So v's contribution to c has to exclude the branch through c, which is the double-counting trap."
+    },
+    {
+     "q": "For the farthest distance from each vertex, why keep the two largest down depths at each vertex?",
+     "options": [
+      "For speed",
+      "When building up[c], if c is the child that gives v's largest depth, the best remaining depth is the second largest; otherwise it is the largest",
+      "To find the diameter only",
+      "Two is arbitrary"
+     ],
+     "answer": 1,
+     "explain": "Maximum has no inverse, so you cannot subtract c's contribution. The top-two values give the best over all children except any single one in O(1)."
+    },
+    {
+     "q": "For the sum of distances, why is the up pass a simple formula instead of top-two values?",
+     "options": [
+      "Sums are smaller",
+      "Sum is invertible: the contribution of c's subtree can be subtracted from v's total, giving ans[c] = ans[v] - size[c] + (n - size[c])",
+      "Because distances are equal",
+      "It is not"
+     ],
+     "answer": 1,
+     "explain": "With an invertible combine, excluding one child is a subtraction. With max, it needs the top-two values or prefix and suffix maxima over the children."
+    }
+   ],
+   "cover_seed": "cp-dp-on-trees-advanced",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.72,
+   "path": "cp/dp-on-trees-advanced.md",
+   "hash": "b7d64aab1cb3",
+   "word_count": 1207,
+   "excerpt": "A country of towns connected by roads, with no cycles, wants to choose a capital. For each town, the planners ask: if this town were the capital, how far would the most distant town be? Running a search from every town is O(n²), hopeless for 2 × 10⁵ towns. Yet every town's answer comes out of two…"
   },
   {
    "id": "cp-dp-probability",
@@ -32480,6 +32714,115 @@
    "hash": "5b5c41db1271",
    "word_count": 1281,
    "excerpt": "You know the classic 0/1 knapsack from Packing a Backpack With a Weight Limit: each item once, a table over capacities, done. Then the contest changes one detail, and the template breaks: the shop has up to 1,000 copies of each book, and expanding them one by one is too slow; weights go up to 10⁹,…"
+  },
+  {
+   "id": "cp-dp-on-dag",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "dp-on-dag",
+   "title": "Every Route Downhill, Counted and Measured",
+   "subtitle": "DP on directed acyclic graphs for contests: longest routes with reconstruction, counting routes modulo a prime, and the shortest-path DAG that lets one Dijkstra report the cheapest price, the number of cheapest routes, and their fewest and most flights",
+   "track": "cp-dp",
+   "track_order": 6,
+   "priority": "P1",
+   "prerequisites": [
+    "dsa-topological-sort",
+    "dsa-dp-intro"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 5,
+   "topics": [
+    "DAG",
+    "dynamic programming",
+    "topological sort",
+    "Dijkstra",
+    "counting paths"
+   ],
+   "complexity": {
+    "time": "O(n + m), or O((n + m) log n) with Dijkstra",
+    "space": "O(n + m)"
+   },
+   "practice_problems": [
+    {
+     "name": "Longest Flight Route",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1680",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Game Routes",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1681",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Investigation",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1202",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "DAG DP",
+     "definition": "Dynamic programming whose states are the vertices of a directed acyclic graph, evaluated in topological order so every predecessor is final first."
+    },
+    {
+     "term": "Reachability guard",
+     "definition": "Skipping vertices that cannot be reached from the start, so their placeholder values never leak into longest-path or counting results."
+    },
+    {
+     "term": "Shortest-path DAG",
+     "definition": "The subgraph of edges u → v with dist[u] + w = dist[v]; every shortest path uses only these edges, and they form a DAG when weights are positive."
+    },
+    {
+     "term": "Settled order",
+     "definition": "The order in which Dijkstra pops vertices with their final distance, which is a topological order of the shortest-path DAG."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "In Longest Flight Route, why must unreachable vertices be skipped?",
+     "options": [
+      "To save time",
+      "Their placeholder value would let the DP extend routes that never start at city 1, giving wrong lengths",
+      "Because they have no edges",
+      "They need not be"
+     ],
+     "answer": 1,
+     "explain": "A route must begin at city 1. A vertex the start cannot reach has no valid route, and treating its value as 0 or 1 would create fake routes. The reachability guard prevents that."
+    },
+    {
+     "q": "Why can Dijkstra's pop order serve as the DP order for counting cheapest routes?",
+     "options": [
+      "It is alphabetical",
+      "Every edge on a shortest path goes from a vertex with a smaller final distance to one with a larger distance, and Dijkstra pops vertices in increasing distance",
+      "Because the graph is undirected",
+      "It cannot"
+     ],
+     "answer": 1,
+     "explain": "With positive weights, shortest-path edges strictly increase the distance. Popping in distance order means all predecessors on cheapest routes are final before a vertex is finalised."
+    },
+    {
+     "q": "What extra quantities does CSES Investigation ask for on top of the cheapest price?",
+     "options": [
+      "Only the price",
+      "The number of cheapest routes, and the fewest and most flights among cheapest routes",
+      "The longest route",
+      "The second cheapest price"
+     ],
+     "answer": 1,
+     "explain": "Each is a DP over the shortest-path DAG: counts add, and the flight counts take min and max of predecessors plus one."
+    }
+   ],
+   "cover_seed": "cp-dp-on-dag",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.68,
+   "path": "cp/dp-on-dag.md",
+   "hash": "5b94abdbd6d2",
+   "word_count": 1201,
+   "excerpt": "Rainwater on a hillside only runs downhill, so it never comes back to a spot it has left. To find the longest stream from the summit to the sea, or to count all the different streams, you can work from high ground to low ground, and each spot needs only the spots above it. The theory, relaxing…"
   },
   {
    "id": "cp-convex-hull-trick",
