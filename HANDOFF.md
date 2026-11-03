@@ -17,8 +17,8 @@ You are continuing a project another Claude session started. Everything you need
 | famous-algos | 37 | 0 | 54 | 91 | 30/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core | 27 | 0 | 52 | 79 | 24/47 |
-| **All** | **541** | **0** | **142** | **683** | |
+| cs-core | 29 | 0 | 50 | 79 | 25/47 |
+| **All** | **543** | **0** | **140** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -49,10 +49,10 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 #### cs-core
 - [ ] `cs-core-file-systems` (P0, deep-dive, cs-os): File Systems: Inodes, Directories and Allocation
-- [ ] `cs-core-concurrency-control` (P0, deep-dive, cs-dbms): Concurrency Control: Locks, 2PL and Timestamps
 - [ ] `cs-core-db-indexing-cs` (P0, deep-dive, cs-dbms): Indexing: B+ Trees and Hash Indexes
 - [ ] `cs-core-osi-tcpip` (P0, primer, cs-networks): The OSI and TCP/IP Models
 - [ ] `cs-core-classes-objects` (P0, primer, cs-oop): Classes and Objects in C++
+- [ ] `cs-core-memory-hierarchy` (P0, deep-dive, cs-architecture): The Memory Hierarchy and CPU Caches
 <!-- status:end -->
 
 ## UI review status: approved

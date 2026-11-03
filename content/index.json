@@ -1,7 +1,7 @@
 {
- "content_version": "8b297e903b6c655e",
+ "content_version": "a096efd91df7b1ae",
  "generated_at": "2026-11-03",
- "count": 541,
+ "count": 543,
  "subjects": [
   {
    "id": "ml",
@@ -56899,6 +56899,187 @@
    "hash": "c5bcff77aac8",
    "word_count": 1219,
    "excerpt": "In the last article, two transactions each read a balance of 100, added 10 and 20, and the result was 120 instead of 130. Running them one after the other would have been correct. Running them interleaved was fast, and wrong. But not every interleaving is wrong. Most of the time, a database…"
+  },
+  {
+   "id": "cs-core-concurrency-control",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "concurrency-control",
+   "title": "Booking Library Rooms With Sign-Up Sheets",
+   "subtitle": "Concurrency control: shared and exclusive locks, two-phase locking and its strict variants, deadlocks, timestamp ordering with the Thomas write rule, optimistic validation and MVCC",
+   "track": "cs-dbms",
+   "track_order": 13,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-serializability"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 6,
+   "topics": [
+    "dbms",
+    "concurrency control",
+    "locking",
+    "2pl",
+    "timestamp ordering",
+    "mvcc"
+   ],
+   "glossary": [
+    {
+     "term": "Shared lock",
+     "definition": "A read lock (S); many transactions can hold it on the same item at once."
+    },
+    {
+     "term": "Exclusive lock",
+     "definition": "A write lock (X); only one transaction can hold it, and no shared locks may coexist with it."
+    },
+    {
+     "term": "Two-phase locking",
+     "definition": "2PL: a transaction acquires all its locks before releasing any, so it has a growing phase followed by a shrinking phase."
+    },
+    {
+     "term": "Strict 2PL",
+     "definition": "2PL where exclusive locks are held until commit or abort, which also makes schedules strict and cascadeless."
+    },
+    {
+     "term": "Timestamp ordering",
+     "definition": "A lock-free protocol that orders transactions by start timestamp and aborts any operation that would arrive too late for that order."
+    },
+    {
+     "term": "MVCC",
+     "definition": "Multi-version concurrency control: writers create new versions and readers see a consistent snapshot, so reads do not block writes."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "T1 holds a shared lock on A. Which request is granted immediately?",
+     "options": [
+      "T2 asks for an exclusive lock on A",
+      "T2 asks for a shared lock on A",
+      "Both",
+      "Neither"
+     ],
+     "answer": 1,
+     "explain": "Shared locks are compatible with each other; an exclusive lock conflicts with any other lock."
+    },
+    {
+     "q": "Why does basic 2PL still allow cascading aborts?",
+     "options": [
+      "It does not guarantee serializability",
+      "Locks may be released in the shrinking phase before commit, so others can read uncommitted writes",
+      "It has no exclusive locks",
+      "It never deadlocks"
+     ],
+     "answer": 1,
+     "explain": "Strict 2PL fixes this by holding exclusive locks until the transaction finishes."
+    },
+    {
+     "q": "Timestamp ordering with TS(T1) = 1 and TS(T2) = 2: R2(A) has run, so the read timestamp of A is 2. What happens to W1(A)?",
+     "options": [
+      "It succeeds",
+      "T1 is aborted, because a younger transaction already read the old value",
+      "T2 is aborted",
+      "It waits"
+     ],
+     "answer": 1,
+     "explain": "Writing now would change a value that T2, which comes later in timestamp order, has already read. T1 is restarted with a new timestamp."
+    }
+   ],
+   "cover_seed": "concurrency-control",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.88,
+   "path": "cs-core/concurrency-control.md",
+   "hash": "1b687a492beb",
+   "word_count": 1354,
+   "excerpt": "The lost update again: two transactions read balance 100, both write, and ₹10 disappears. The previous article showed how to detect this on paper with a precedence graph. A real database cannot wait until afterwards and then draw a graph. It needs rules, applied as each operation arrives, that make…"
+  },
+  {
+   "id": "cs-core-db-recovery",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "db-recovery",
+   "title": "Rebuilding Events From the Ship's Log After a Storm",
+   "subtitle": "Crash recovery: why databases write the log first, undo and redo records, steal and no-force buffers, checkpoints, and the three passes of ARIES traced on a real log",
+   "track": "cs-dbms",
+   "track_order": 14,
+   "priority": "P1",
+   "prerequisites": [
+    "cs-core-transactions-acid"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "dbms",
+    "recovery",
+    "write-ahead logging",
+    "checkpoints",
+    "aries"
+   ],
+   "glossary": [
+    {
+     "term": "Write-ahead logging",
+     "definition": "WAL: a log record describing a change must reach stable storage before the changed data page does, and all of a transaction's records before it commits."
+    },
+    {
+     "term": "Undo and redo",
+     "definition": "Undo restores the old value of a change made by an uncommitted transaction; redo reapplies the new value of a change made by a committed one."
+    },
+    {
+     "term": "Steal and no-force",
+     "definition": "Steal lets dirty pages of uncommitted transactions be written to disk; no-force lets commit happen without writing the data pages. Together they need both undo and redo."
+    },
+    {
+     "term": "Checkpoint",
+     "definition": "A log record noting which transactions were active and which pages were dirty, so recovery can start near it instead of at the beginning of the log."
+    },
+    {
+     "term": "LSN",
+     "definition": "Log sequence number: the position of a record in the log; each page stores the LSN of the last change applied to it."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Under steal and no-force, which recovery actions can be needed after a crash?",
+     "options": [
+      "Only redo",
+      "Only undo",
+      "Both undo and redo",
+      "Neither"
+     ],
+     "answer": 2,
+     "explain": "Steal means uncommitted changes may be on disk (need undo); no-force means committed changes may not be on disk (need redo)."
+    },
+    {
+     "q": "Log: T1 updates and commits; T2 updates, no commit; then crash. Which transaction's changes are undone?",
+     "options": [
+      "T1",
+      "T2",
+      "Both",
+      "Neither"
+     ],
+     "answer": 1,
+     "explain": "T2 is a loser (no commit record), so its changes are rolled back. T1 is a winner; its changes are redone if needed."
+    },
+    {
+     "q": "Why does commit only need to flush the log, not the data pages?",
+     "options": [
+      "Data pages are never written",
+      "The log has enough information to redo the changes after a crash, and appending to it is sequential and fast",
+      "Because of indexes",
+      "Commit flushes everything"
+     ],
+     "answer": 1,
+     "explain": "That is the no-force policy, and it is why WAL databases commit quickly."
+    }
+   ],
+   "cover_seed": "db-recovery",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.8,
+   "path": "cs-core/db-recovery.md",
+   "hash": "4b2de187c347",
+   "word_count": 1267,
+   "excerpt": "A database tells you \"committed\" for a ₹30 transfer. A millisecond later the power fails. The data page with your new balance was still in memory, never written to disk. When the server restarts, is your transfer there? It must be: that is durability. And another transaction that was half-way…"
   }
  ]
 }
