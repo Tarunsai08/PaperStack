@@ -17,8 +17,8 @@ You are continuing a project another Claude session started. Everything you need
 | famous-algos | 39 | 0 | 52 | 91 | 32/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
 | ml | 83 | 0 | 36 | 119 | 0/0 |
-| cs-core | 57 | 0 | 22 | 79 | 34/47 |
-| **All** | **573** | **0** | **110** | **683** | |
+| cs-core | 59 | 0 | 20 | 79 | 36/47 |
+| **All** | **575** | **0** | **108** | **683** | |
 
 Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **0**
 
@@ -48,8 +48,11 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `paper-yolo` (P2, paper, deep-learning): You Only Look Once: Unified, Real-Time Object Detection
 
 #### cs-core
-- [ ] `cs-core-classes-objects` (P0, primer, cs-oop): Classes and Objects in C++
+- [ ] `cs-core-constructors-raii` (P0, deep-dive, cs-oop): Constructors, Destructors and RAII
+- [ ] `cs-core-inheritance` (P0, deep-dive, cs-oop): Inheritance in C++
 - [ ] `cs-core-memory-hierarchy` (P0, deep-dive, cs-architecture): The Memory Hierarchy and CPU Caches
+- [ ] `cs-core-static-friend` (P1, deep-dive, cs-oop): static Members, friend Functions and const Correctness
+- [ ] `cs-core-pointers-output-questions` (P1, primer, cs-oop): Pointers, References and Predict-the-Output Questions
 <!-- status:end -->
 
 ## UI review status: approved

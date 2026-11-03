@@ -1,7 +1,7 @@
 {
- "content_version": "31f91277ad004e74",
+ "content_version": "86380c3675f31f8f",
  "generated_at": "2026-11-03",
- "count": 573,
+ "count": 575,
  "subjects": [
   {
    "id": "ml",
@@ -59795,6 +59795,180 @@
    "hash": "660c3c7adeae",
    "word_count": 1266,
    "excerpt": "A satellite link can carry data very fast, but a signal takes a long time to reach the satellite and come back. Send one frame, then wait for its acknowledgement before sending the next, and the link sits idle almost all the time: the frame is out in a few milliseconds, and then everyone waits for…"
+  },
+  {
+   "id": "cs-core-classes-objects",
+   "kind": "primer",
+   "subject": "cs-core",
+   "slug": "classes-objects",
+   "title": "A Cookie Cutter and Its Cookies",
+   "subtitle": "Classes and objects in C++: the blueprint versus the instance, data members and member functions, where objects live in memory, what the this pointer is, and struct versus class",
+   "track": "cs-oop",
+   "track_order": 1,
+   "priority": "P0",
+   "prerequisites": [],
+   "difficulty": "beginner",
+   "read_minutes": 4,
+   "topics": [
+    "oop",
+    "c++",
+    "classes",
+    "objects",
+    "this pointer"
+   ],
+   "glossary": [
+    {
+     "term": "Class",
+     "definition": "A user-defined type that groups data members and the member functions that work on them; a blueprint, not a thing in memory."
+    },
+    {
+     "term": "Object",
+     "definition": "An instance of a class: actual memory holding one set of the class's data members."
+    },
+    {
+     "term": "Data member",
+     "definition": "A variable declared inside a class; each object has its own copy (unless it is static)."
+    },
+    {
+     "term": "Member function",
+     "definition": "A function declared inside a class that operates on a particular object; its code exists once and is shared by all objects."
+    },
+    {
+     "term": "this pointer",
+     "definition": "A hidden pointer passed to every non-static member function, pointing at the object the function was called on."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "A class has one int member and ten member functions. With g++ on a typical 64-bit machine, what is sizeof an object?",
+     "options": [
+      "44 bytes",
+      "4 bytes: functions are not stored in each object",
+      "84 bytes",
+      "0 bytes"
+     ],
+     "answer": 1,
+     "explain": "Member function code is shared; objects hold only data members. A struct with two ints and two methods measured 8 bytes."
+    },
+    {
+     "q": "Inside asha.deposit(100), what does this point to?",
+     "options": [
+      "The class BankAccount",
+      "The object asha",
+      "The deposit function",
+      "Nothing; this is only for constructors"
+     ],
+     "answer": 1,
+     "explain": "The compiler passes the address of the object the call was made on. The test program printed 1 for asha.self() == &asha."
+    },
+    {
+     "q": "What is the only difference between struct and class in C++?",
+     "options": [
+      "Structs cannot have functions",
+      "Default access: struct members are public by default, class members are private by default",
+      "Structs live on the stack",
+      "Classes cannot be copied"
+     ],
+     "answer": 1,
+     "explain": "Default inheritance access differs the same way. Otherwise they are identical."
+    }
+   ],
+   "cover_seed": "classes-objects",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.85,
+   "path": "cs-core/classes-objects.md",
+   "hash": "8d98c5c8f911",
+   "word_count": 878,
+   "excerpt": "A banking app has two million customers. Each has a name, a balance and a list of transactions, and each can deposit, withdraw and check a balance. Writing two million sets of variables is absurd; writing one set of loose global variables and functions means any line of code anywhere can change…"
+  },
+  {
+   "id": "cs-core-encapsulation-access",
+   "kind": "deep-dive",
+   "subject": "cs-core",
+   "slug": "encapsulation-access",
+   "title": "A Capsule That Protects the Medicine Inside",
+   "subtitle": "Encapsulation in C++: private, protected and public, invariants that only the class's own functions can break, when getters and setters help and when they are a leak, and what the compiler actually enforces",
+   "track": "cs-oop",
+   "track_order": 2,
+   "priority": "P0",
+   "prerequisites": [
+    "cs-core-classes-objects"
+   ],
+   "difficulty": "beginner",
+   "read_minutes": 5,
+   "topics": [
+    "oop",
+    "c++",
+    "encapsulation",
+    "access specifiers",
+    "invariants"
+   ],
+   "glossary": [
+    {
+     "term": "Encapsulation",
+     "definition": "Bundling data with the functions that operate on it and hiding the data, so outside code can change it only through those functions."
+    },
+    {
+     "term": "Access specifier",
+     "definition": "private, protected or public: who may name a class member."
+    },
+    {
+     "term": "Invariant",
+     "definition": "A condition that must always hold for an object between public calls, such as balance never being negative."
+    },
+    {
+     "term": "Getter and setter",
+     "definition": "Member functions that read or change a private member; useful when they enforce rules, harmful when they simply expose the data."
+    },
+    {
+     "term": "Abstraction",
+     "definition": "Showing users what an object does (its interface) while hiding how it does it (its implementation)."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Which members of class Account can a derived class Savings use in its own member functions?",
+     "options": [
+      "Only public",
+      "Public and protected",
+      "Public, protected and private",
+      "None"
+     ],
+     "answer": 1,
+     "explain": "Private members stay private to Account itself. The test program's Savings could read the protected balance but not the private pin."
+    },
+    {
+     "q": "A Wallet runs deposit(300), withdraw(500), withdraw(120). What are the balance and the transaction count?",
+     "options": [
+      "−320 and 3",
+      "180 and 2",
+      "180 and 3",
+      "300 and 1"
+     ],
+     "answer": 1,
+     "explain": "withdraw(500) is refused and changes nothing, so only the deposit and the 120 withdrawal count. The compiled program printed 180 2."
+    },
+    {
+     "q": "Why is a public setBalance(long long) setter on a bank account a design smell?",
+     "options": [
+      "Setters are slow",
+      "It lets any caller break the invariant and bypass the rules that deposit and withdraw enforce",
+      "It cannot compile",
+      "Private members cannot have setters"
+     ],
+     "answer": 1,
+     "explain": "Expose operations that keep the invariant (deposit, withdraw), not raw writes."
+    }
+   ],
+   "cover_seed": "encapsulation-access",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-03",
+   "importance_score": 0.82,
+   "path": "cs-core/encapsulation-access.md",
+   "hash": "a3c33b7d7af8",
+   "word_count": 992,
+   "excerpt": "A bug report: a customer's wallet balance is −₹4,000. The withdraw function checks for sufficient funds, so how? A search finds the culprit in a refund script written by another team: wallet.balance -= amount;, writing straight into the field and skipping every check. When any code anywhere can…"
   }
  ]
 }
