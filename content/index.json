@@ -1,7 +1,7 @@
 {
- "content_version": "fb002d37f817c604",
+ "content_version": "c55569da39e6f6c5",
  "generated_at": "2026-11-02",
- "count": 409,
+ "count": 411,
  "subjects": [
   {
    "id": "ml",
@@ -36663,9 +36663,239 @@
    "generated_at": "2026-11-02",
    "importance_score": 0.64,
    "path": "cp/suffix-array.md",
-   "hash": "bee1aa2d4a1b",
-   "word_count": 1524,
+   "hash": "f580ef5723ad",
+   "word_count": 1531,
    "excerpt": "Write down every ending of a word, from the whole word to its last letter, and sort the list as a dictionary would. For \"banana\" that is a, ana, anana, banana, na, nana. This tiny list answers surprisingly many questions: how many different substrings does the word have, which substring repeats and…"
+  },
+  {
+   "id": "cp-aho-corasick",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "aho-corasick",
+   "title": "A Spam Filter Scanning for Thousands of Words at Once",
+   "subtitle": "Aho–Corasick for contests: a trie of all patterns, failure links built by BFS, the full transition table, scanning a text in one pass, and the step everyone forgets: pushing visit counts down the failure links to count, find or locate every pattern",
+   "track": "cp-strings",
+   "track_order": 5,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-prefix-function",
+    "dsa-tries"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 7,
+   "topics": [
+    "strings",
+    "Aho-Corasick",
+    "trie",
+    "failure links",
+    "multi-pattern matching"
+   ],
+   "complexity": {
+    "time": "O(total pattern length · σ + text length)",
+    "space": "O(total pattern length · σ)"
+   },
+   "practice_problems": [
+    {
+     "name": "Finding Patterns",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2102",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Counting Patterns",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2103",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Pattern Positions",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/2104",
+     "difficulty": "Hard"
+    },
+    {
+     "name": "Stream of Characters",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/stream-of-characters/",
+     "difficulty": "Hard"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Pattern trie",
+     "definition": "A trie containing every pattern; each node is a string that is a prefix of at least one pattern."
+    },
+    {
+     "term": "Failure link",
+     "definition": "link[v], the node for the longest proper suffix of v's string that is also in the trie."
+    },
+    {
+     "term": "Transition table",
+     "definition": "go[v][c], the state reached from v on letter c: the trie child if it exists, otherwise go[link[v]][c]."
+    },
+    {
+     "term": "Deepest state",
+     "definition": "After reading part of the text, the trie node for the longest suffix of that text which is a trie string."
+    },
+    {
+     "term": "Link tree",
+     "definition": "The tree formed by failure links; every occurrence of a node's string ends where the scan stood at that node or at a descendant in this tree."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "How is the failure link of a node u = child of v by letter c computed?",
+     "options": [
+      "By searching the trie from the root",
+      "link[u] = go[link[v]][c]: extend v's longest proper suffix in the trie by c, using the already completed table of the shallower node",
+      "link[u] = v",
+      "link[u] = 0 always"
+     ],
+     "answer": 1,
+     "explain": "A suffix of v's string followed by c is a suffix of u's string. The longest one in the trie is found by following v's failure link and stepping by c, which BFS order has already prepared."
+    },
+    {
+     "q": "After scanning, why must visit counts be added along failure links?",
+     "options": [
+      "To save memory",
+      "The scan records only the deepest state at each position, but every shorter suffix in the trie, reached by failure links, also ends there; adding counts from deep nodes to their links, deepest first, counts every pattern occurrence",
+      "Because of hash collisions",
+      "It is optional"
+     ],
+     "answer": 1,
+     "explain": "In the example, 'ab' ends at three positions but the scan stands on node 'ab' only once; twice it stands on 'bab', whose failure link is 'ab'."
+    },
+    {
+     "q": "What is the total running time of building and scanning?",
+     "options": [
+      "O(text · patterns)",
+      "O(L·σ + |t|) for total pattern length L and alphabet size σ, plus O(L) to propagate counts",
+      "O(L²)",
+      "O(|t| log L)"
+     ],
+     "answer": 1,
+     "explain": "Each trie node fills σ table entries in O(1) each, and each text letter is one table lookup. Propagation visits each node once."
+    }
+   ],
+   "cover_seed": "cp-aho-corasick",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.6,
+   "path": "cp/aho-corasick.md",
+   "hash": "29d89746f961",
+   "word_count": 1469,
+   "excerpt": "A mail server checks every message against thousands of banned phrases. Running the prefix function from A Reader Who Never Rereads the Page once per phrase means reading the message thousands of times. Aho and Corasick showed in 1975 how to read it once, looking for all the phrases at the same…"
+  },
+  {
+   "id": "cp-manacher",
+   "kind": "pattern",
+   "subject": "cp",
+   "slug": "manacher",
+   "title": "A Mirror That Remembers the Reflections It Already Checked",
+   "subtitle": "Manacher's algorithm for contests: one transformed string for odd and even centres, the rightmost palindrome as a reusable mirror, why the work is linear, the index arithmetic back to the original string, and counting every palindromic substring",
+   "track": "cp-strings",
+   "track_order": 6,
+   "priority": "P1",
+   "prerequisites": [
+    "cp-z-function"
+   ],
+   "difficulty": "advanced",
+   "read_minutes": 6,
+   "topics": [
+    "strings",
+    "palindromes",
+    "Manacher",
+    "linear time"
+   ],
+   "complexity": {
+    "time": "O(n)",
+    "space": "O(n)"
+   },
+   "practice_problems": [
+    {
+     "name": "Longest Palindrome",
+     "platform": "CSES",
+     "url": "https://cses.fi/problemset/task/1111",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Longest Palindromic Substring",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/longest-palindromic-substring/",
+     "difficulty": "Medium"
+    },
+    {
+     "name": "Palindromic Substrings",
+     "platform": "LeetCode",
+     "url": "https://leetcode.com/problems/palindromic-substrings/",
+     "difficulty": "Medium"
+    }
+   ],
+   "glossary": [
+    {
+     "term": "Centre",
+     "definition": "The middle of a palindrome: a letter for odd lengths, the gap between two letters for even lengths."
+    },
+    {
+     "term": "Transformed string",
+     "definition": "t = '#' s₀ '#' s₁ '#' ... '#', of length 2n + 1, in which every palindrome of s has a single centre position, a letter or a '#'."
+    },
+    {
+     "term": "Radius",
+     "definition": "p[i], the largest k with t[i − k..i + k] a palindrome; it equals the length of the corresponding palindrome in s."
+    },
+    {
+     "term": "Palindrome box",
+     "definition": "[l, r], the palindrome with the rightmost end found so far; positions inside it have mirror images about its centre."
+    },
+    {
+     "term": "Mirror position",
+     "definition": "For i inside the box, j = l + r − i, the position reflected about the box's centre, whose radius is already known."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why insert '#' between all letters?",
+     "options": [
+      "To mark the start",
+      "So that odd and even palindromes both have a single centre position in t, and one loop handles both",
+      "To avoid collisions",
+      "To make the string longer for speed"
+     ],
+     "answer": 1,
+     "explain": "An even palindrome like 'abba' is centred between the two b's. In '#a#b#b#a#' that gap is a '#', a real position, so the same expansion code applies."
+    },
+    {
+     "q": "Inside the palindrome box, why is the starting radius min(r − i, p[l + r − i])?",
+     "options": [
+      "It is a heuristic",
+      "Reflection about the box's centre maps i to its mirror, so the letters around i repeat those around the mirror, but only up to the box's edge; beyond r nothing is known",
+      "Because palindromes are symmetric about i",
+      "To avoid going past the start"
+     ],
+     "answer": 1,
+     "explain": "The box is a palindrome, so the neighbourhood of i is the reverse of the mirror's neighbourhood. Its radius carries over, but only as far as the box guarantees."
+    },
+    {
+     "q": "A maximal radius p[i] = 7 occurs at position i = 7 of t. Where does the palindrome start in s?",
+     "options": [
+      "At 7",
+      "At (i − p[i]) / 2 = 0, with length p[i] = 7",
+      "At i / 2 = 3",
+      "At i − p[i] = 0 in t, which is also 0 in s by luck"
+     ],
+     "answer": 1,
+     "explain": "t[i − p[i]] is a '#', and the '#' before s[k] sits at index 2k in t. So the start in s is (i − p[i]) / 2."
+    }
+   ],
+   "cover_seed": "cp-manacher",
+   "generated_by": "claude-seed",
+   "generated_at": "2026-11-02",
+   "importance_score": 0.6,
+   "path": "cp/manacher.md",
+   "hash": "1ec58c4ae172",
+   "word_count": 1412,
+   "excerpt": "Find the longest palindrome inside a string of a million letters. Expanding around each of the 2n − 1 centres is O(n²) in the worst case, for example on a string of a single repeated letter, where every centre expands to the edge. Dynamic programming over all substrings is O(n²) as well. Manacher…"
   },
   {
    "id": "cp-game-theory",

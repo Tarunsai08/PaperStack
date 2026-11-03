@@ -148,7 +148,7 @@ After the round of 4 letters, every rank is distinct, so sorting is complete aft
 | 4 | na | nana | 3 − 1 = 2 | 2 |
 | 5 | a | ana | 2 − 1 = 1 | 1 |
 
-At suffixes 4 and 5 no letters need comparing beyond the inherited value, apart from the one comparison that fails.
+At suffixes 4 and 5 the inherited value is already the answer: the shorter suffix runs out of letters immediately, so no comparison is needed at all.
 
 **Answers.** Distinct substrings: 21 − (1 + 3 + 0 + 0 + 2) = 15. The longest repeated substring is the one with lcp 3, "ana". Searching "ana" by binary search finds the block {ana, anana}: 2 occurrences, at positions 3 and 1. Searching "nab" finds an empty block.
 
