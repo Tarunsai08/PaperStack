@@ -1,7 +1,7 @@
 {
- "content_version": "0644058f2fa0a908",
- "generated_at": "2026-11-03",
- "count": 595,
+ "content_version": "fab6f92220118f1a",
+ "generated_at": "2026-11-11",
+ "count": 597,
  "subjects": [
   {
    "id": "ml",
@@ -3157,6 +3157,102 @@
    "hash": "21f5d96d8db6",
    "word_count": 1577,
    "excerpt": "A hospital hands you a folder of kidney CT scans and asks for a tumour segmentation model. You pick the U-Net, the standard tool, and then the questions pile up: resample the thick slices or not, how big a crop fits in your GPU, 2D or 3D, how to normalise brightness. Get one of those wrong and an…"
+  },
+  {
+   "id": "paper-layer-normalization",
+   "kind": "paper",
+   "subject": "ml",
+   "slug": "layer-normalization",
+   "title": "Grade Each Student Against Themselves, Not the Class",
+   "subtitle": "How normalizing across features instead of batches freed deep networks from batch size limits",
+   "track": "deep-learning",
+   "track_order": 15,
+   "prerequisites": [
+    "paper-batch-normalization"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 10,
+   "topics": [
+    "deep-learning",
+    "normalization",
+    "rnns",
+    "transformers",
+    "optimization"
+   ],
+   "paper_title": "Layer Normalization",
+   "authors": [
+    "Jimmy Lei Ba",
+    "Jamie Ryan Kiros",
+    "Geoffrey E. Hinton"
+   ],
+   "year": 2016,
+   "venue": "arXiv",
+   "paper_url": "https://arxiv.org/abs/1607.06450",
+   "glossary": [
+    {
+     "term": "Batch Normalization",
+     "definition": "A method that standardizes activations across all examples in a mini-batch, separately for each feature channel."
+    },
+    {
+     "term": "Layer Normalization",
+     "definition": "A method that standardizes all hidden activations within a single training example, independent of any other examples in the batch."
+    },
+    {
+     "term": "Covariate Shift",
+     "definition": "The shift in the distribution of layer inputs that occurs as preceding layers update their weights during training."
+    },
+    {
+     "term": "Gain and Bias",
+     "definition": "Learnable scale and shift parameters applied elementwise after normalization to restore the expressive power of the network."
+    },
+    {
+     "term": "Online Learning",
+     "definition": "Training a model one example at a time with a batch size of one, where batch-wide statistics cannot be calculated."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why did Batch Normalization struggle in variable-length sequence models like recurrent neural networks?",
+     "options": [
+      "RNNs lack weights to support learnable gain and bias vectors.",
+      "Batch statistics at late sequence steps rely on very few samples or unseen sequence lengths at test time.",
+      "Batch Normalization requires square weight matrices while RNNs use rectangular ones.",
+      "Batch Normalization only works when non-linear activations are ReLUs."
+     ],
+     "answer": 1,
+     "explain": "In variable-length sequences, later time-steps have fewer active examples, making mini-batch mean and variance noisy or unavailable for long test sentences."
+    },
+    {
+     "q": "What is the key computational difference between Layer Normalization and Batch Normalization during test time?",
+     "options": [
+      "Layer Normalization switches to running moving averages, while Batch Normalization computes statistics on the fly.",
+      "Batch Normalization stores individual test samples, while Layer Normalization discards them.",
+      "Layer Normalization runs the exact same computation during training and test time without storing running statistics.",
+      "Layer Normalization drops the gain and bias vectors at test time."
+     ],
+     "answer": 2,
+     "explain": "Because Layer Normalization operates strictly within a single example, it computes mean and variance directly from that test example with no need for running statistics."
+    },
+    {
+     "q": "In which domain did the 2016 paper find that Batch Normalization still outperformed Layer Normalization?",
+     "options": [
+      "Convolutional neural networks on images",
+      "Deep Recurrent Attention Writer (DRAW) on MNIST",
+      "Skip-thought sentence representations",
+      "Attentive reader question-answering models"
+     ],
+     "answer": 0,
+     "explain": "In CNNs, edge pixels and central pixels have very different activation statistics, so pooling across the entire spatial layer hurts performance compared to pooling across the batch."
+    }
+   ],
+   "cover_seed": "layer-normalization",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-11-11",
+   "importance_score": 0.95,
+   "path": "papers/layer-normalization.md",
+   "hash": "932d187b6e38",
+   "word_count": 2284,
+   "excerpt": "In 2015, Batch Normalization looked like magic. It kept activations stable, allowed aggressive learning rates, and made deep vision networks train in a fraction of the time. But the moment researchers tried running it on text, audio, or recurrent networks, the machinery jammed. If your sentences…"
   },
   {
    "id": "paper-lstm",
@@ -40244,6 +40340,93 @@
    "hash": "0bb7933c1841",
    "word_count": 1307,
    "excerpt": "Your database holds a billion keys spread across hundreds of files on disk. A request arrives for a key that does not exist. Without help, the database might open file after file, paying for a slow disk read each time, only to answer \"not found\". Now imagine a little helper sitting in memory that…"
+  },
+  {
+   "id": "famous-algos-counting-bloom-cuckoo",
+   "kind": "concept",
+   "subject": "famous-algos",
+   "slug": "counting-bloom-cuckoo",
+   "title": "How to Delete From a Filter That Forgets Everything",
+   "subtitle": "Adding deletions to probabilistic set membership without blowing up your memory budget",
+   "track": "fa-sketches",
+   "track_order": 2,
+   "priority": "P1",
+   "prerequisites": [
+    "famous-algos-bloom-filter"
+   ],
+   "difficulty": "intermediate",
+   "read_minutes": 12,
+   "topics": [
+    "data structures",
+    "probabilistic sketches",
+    "hashing",
+    "caching"
+   ],
+   "glossary": [
+    {
+     "term": "Counting Bloom filter",
+     "definition": "An array of integer counters instead of single bits, incremented on insert and decremented on delete."
+    },
+    {
+     "term": "Cuckoo filter",
+     "definition": "A compact data structure storing small fingerprints in buckets using cuckoo hashing to support lookup, insertion, and deletion."
+    },
+    {
+     "term": "Fingerprint",
+     "definition": "A short hash of an item, typically 4 to 16 bits, stored inside a bucket to represent membership."
+    },
+    {
+     "term": "Counter overflow",
+     "definition": "A state where an increment pushes a fixed-width counter past its maximum value, forcing it to saturate."
+    },
+    {
+     "term": "Partial-key cuckoo hashing",
+     "definition": "A technique where an alternate bucket index is derived using only the current bucket index and the fingerprint hash via XOR."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Why can't a standard Bloom filter delete items by zeroing the bits where an item hashes?",
+     "options": [
+      "Bits in memory cannot be reset once set",
+      "Resetting bits causes false negatives for unrelated items sharing those bits",
+      "Bloom filters encrypt their inputs with a one-way trapdoor",
+      "Hash functions cannot be inverted to verify identity"
+     ],
+     "answer": 1,
+     "explain": "Multiple items share the same bit positions. Setting any of those shared bits back to zero makes the filter claim existing items are absent, causing catastrophic false negatives."
+    },
+    {
+     "q": "In a Cuckoo filter, how is the alternate bucket index computed without knowing the original item?",
+     "options": [
+      "By hashing the bucket index with SHA-256",
+      "By scanning linearly for the nearest empty bucket",
+      "Using the formula: i2 = (i1 XOR hash(fingerprint)) mod bucket_count",
+      "Using a central lookup table stored in main memory"
+     ],
+     "answer": 2,
+     "explain": "Partial-key cuckoo hashing XORs the current bucket index with the hash of the stored fingerprint, allowing navigation between alternate buckets without the original raw key."
+    },
+    {
+     "q": "What happens when a Cuckoo filter reaches an eviction loop and cannot find an empty slot within max kicks?",
+     "options": [
+      "It silently drops the item and continues",
+      "It converts into a Counting Bloom filter",
+      "Insertion fails, signalling that the filter is too full and must be expanded",
+      "It starts overwriting randomly chosen entries"
+     ],
+     "answer": 2,
+     "explain": "When kicking hits a cycle or exceeds the maximum kick threshold, the insertion fails. The client must rehash the table into a larger filter."
+    }
+   ],
+   "cover_seed": "counting-bloom-cuckoo",
+   "generated_by": "gemini-gemini-flash-latest",
+   "generated_at": "2026-11-11",
+   "importance_score": 0.88,
+   "path": "famous-algos/counting-bloom-cuckoo.md",
+   "hash": "7c6e5f085434",
+   "word_count": 2534,
+   "excerpt": "A standard Bloom filter is an astonishing bouncer. It memorises millions of items in a tiny sliver of memory and tells you instantly whether a guest has arrived, with zero false negatives. Then a user closes their account, a cached web page expires, or a malicious IP address is unbanned. You need…"
   },
   {
    "id": "famous-algos-count-min-sketch",

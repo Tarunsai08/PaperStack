@@ -666,8 +666,8 @@
    "prerequisites": [
     "paper-batch-normalization"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
    "paper_url": "https://arxiv.org/abs/1607.06450",
    "arxiv_id": "1607.06450",
    "brief": {

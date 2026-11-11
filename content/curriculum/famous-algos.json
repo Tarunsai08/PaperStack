@@ -49,8 +49,8 @@
    "prerequisites": [
     "famous-algos-bloom-filter"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
    "brief": {
     "key_points": [
      "Counters instead of bits",
