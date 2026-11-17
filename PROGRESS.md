@@ -11,13 +11,13 @@ Read `HANDOFF.md` first if you are picking this project up.
 |---|---|---|---|---|---|
 | dsa | 158 | 0 | 0 | 158 | 74/74 |
 | cp | 117 | 0 | 0 | 117 | 29/29 |
-| famous-algos | 40 | 0 | 51 | 91 | 32/32 |
+| famous-algos | 41 | 0 | 50 | 91 | 32/32 |
 | system-design | 119 | 0 | 0 | 119 | 60/60 |
-| ml | 84 | 0 | 35 | 119 | 0/0 |
+| ml | 85 | 0 | 34 | 119 | 0/0 |
 | cs-core | 79 | 0 | 0 | 79 | 47/47 |
-| **All** | **597** | **0** | **86** | **683** | |
+| **All** | **599** | **0** | **84** | **683** | |
 
-Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **2**
+Pipeline-generated articles not yet reviewed (see `REVIEW_LOG.md`): **4**
 
 ## Next to write
 
@@ -33,7 +33,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### famous-algos
 
-- [ ] `famous-algos-heavy-hitters` (P1, concept, fa-sketches): Finding Heavy Hitters in a Stream: Misra-Gries and Space-Saving
 - [ ] `famous-algos-lsh` (P1, concept, fa-sketches): Locality-Sensitive Hashing: Finding Near Neighbours Fast
 - [ ] `famous-algos-paxos` (P1, concept, fa-distributed): Paxos: The Original Consensus Algorithm
 - [ ] `famous-algos-crdts` (P1, concept, fa-distributed): CRDTs: Data Types That Merge Themselves
@@ -43,6 +42,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `famous-algos-swiss-tables` (P1, concept, fa-storage): The Hash Table You Use Every Day: Open Addressing and Swiss Tables
 - [ ] `famous-algos-quadtrees-rtrees` (P1, concept, fa-storage): Quadtrees and R-Trees: Spatial Indexes
 - [ ] `famous-algos-rope-piece-table` (P1, concept, fa-storage): How Text Editors Store Your File: Ropes, Gap Buffers and Piece Tables
+- [ ] `famous-algos-copy-on-write` (P1, concept, fa-storage): Copy-on-Write: Sharing Until Someone Changes Something
 
 ### system-design
 
@@ -50,7 +50,6 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 ### ml
 
-- [ ] `paper-knowledge-distillation` (P2, paper, deep-learning): Distilling the Knowledge in a Neural Network
 - [ ] `paper-vgg` (P2, paper, deep-learning): Very Deep Convolutional Networks for Large-Scale Image Recognition
 - [ ] `paper-faster-r-cnn` (P2, paper, deep-learning): Faster R-CNN: Towards Real-Time Object Detection
 - [ ] `paper-yolo` (P2, paper, deep-learning): You Only Look Once: Unified, Real-Time Object Detection
@@ -60,6 +59,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [ ] `paper-cyclegan` (P2, paper, generative): Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks
 - [ ] `paper-wavenet` (P2, paper, generative): WaveNet: A Generative Model for Raw Audio
 - [ ] `paper-alphazero` (P2, paper, reinforcement): Mastering Chess and Shogi by Self-Play with a General RL Algorithm
+- [ ] `paper-t5` (P2, paper, transformers-llms): T5: Exploring the Limits of Transfer Learning
 
 ### cs-core
 
@@ -352,12 +352,13 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>famous-algos: 40 written</summary>
+<details><summary>famous-algos: 41 written</summary>
 
 - [x] `famous-algos-bloom-filter` Bloom Filters: Saying No Without Looking
 - [x] `famous-algos-counting-bloom-cuckoo` Deletable Filters: Counting Bloom and Cuckoo Filters
 - [x] `famous-algos-count-min-sketch` Count-Min Sketch: Counting Billions of Things in Kilobytes
 - [x] `famous-algos-hyperloglog` HyperLogLog: Counting Unique Visitors With Almost No Memory
+- [x] `famous-algos-heavy-hitters` Finding Heavy Hitters in a Stream: Misra-Gries and Space-Saving
 - [x] `famous-algos-minhash` MinHash: Estimating Similarity Without Comparing Everything
 - [x] `famous-algos-consistent-hashing` Consistent Hashing: Adding Servers Without Moving Everything
 - [x] `famous-algos-lamport-clocks` Lamport Clocks: Ordering Events Without a Shared Clock
@@ -521,7 +522,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 
 </details>
 
-<details><summary>ml: 84 written</summary>
+<details><summary>ml: 85 written</summary>
 
 - [x] `paper-megatron-lm` When One GPU Is Not Enough
 - [x] `paper-flashattention` Faster Attention by Doing More Maths
@@ -542,6 +543,7 @@ _Nothing ready: every planned entry is waiting on a prerequisite, or the subject
 - [x] `paper-real-time-single-image-and-video-super-resolution-using-an-e` Pixel Shuffle: Upscaling Images at the Very End
 - [x] `paper-unet-redesigning-skip-connections-to-exploit-multiscale-feat` Fixing U-Net's Empty Middle
 - [x] `paper-layer-normalization` Layer Normalization
+- [x] `paper-knowledge-distillation` Distilling the Knowledge in a Neural Network
 - [x] `paper-turing-test` Can Machines Think? Turing's Brilliant Dodge
 - [x] `paper-perceptron` The Machine That Learned From Its Mistakes
 - [x] `paper-backpropagation` Four Pages That Woke Up Neural Networks

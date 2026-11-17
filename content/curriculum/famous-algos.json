@@ -150,8 +150,8 @@
    "prerequisites": [
     "famous-algos-count-min-sketch"
    ],
-   "status": "planned",
-   "written_by": null,
+   "status": "written",
+   "written_by": "gemini-gemini-flash-latest",
    "brief": {
     "key_points": [
      "k counters",
